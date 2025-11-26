@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-  static String get routeName => 'home';
+class WeatherReportScreen extends StatelessWidget {
+  const WeatherReportScreen({super.key});
+  static String get routeName => 'weather_report';
   static String get routeLocation => '/$routeName';
 
   @override
@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'ホーム画面',
+              'ウェザーリポート画面',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
