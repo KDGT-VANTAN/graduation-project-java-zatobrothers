@@ -12,3 +12,7 @@ generate:
 .PHONY: analyze
 analyze:
 	fvm flutter analyze
+
+.PHONY: gen
+gen:
+	fvm dart run build_runner build
