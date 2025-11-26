@@ -1,62 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/theme/app_colors.dart';
 import 'package:reimi_app/features/matching/presentation/home_screen.dart';
+import 'package:reimi_app/features/splash/presentation/widgets/loading_dots.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends HookConsumerWidget {
   const SplashScreen({super.key});
+  static String get routeName => 'splash';
+  static String get routeLocation => '/$routeName';
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = useState(true);
 
-class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
-  bool isLoading = true;
-
-  late AnimationController floatController;
-  late Animation<double> floatAnimation;
-
-  late AnimationController fadeOutController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // 3秒後にローディング完了
-    Future.delayed(const Duration(seconds: 3), () {
-      setState(() => isLoading = false);
-      fadeOutController.forward();
-    });
-
-    // アイコン上下アニメーション
-    floatController = AnimationController(
-      vsync: this,
+    final floatController = useAnimationController(
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
 
-    floatAnimation = Tween<double>(begin: 0, end: -10).animate(CurvedAnimation(
-      parent: floatController,
-      curve: Curves.easeInOut,
-    ));
-
-    // 白フェードアウト
-    fadeOutController = AnimationController(
-      vsync: this,
+    final fadeOutController = useAnimationController(
       duration: const Duration(milliseconds: 500),
     );
-  }
 
-  @override
-  void dispose() {
-    floatController.dispose();
-    fadeOutController.dispose();
-    super.dispose();
-  }
+    final floatAnimation = Tween<double>(begin: 0, end: -10).animate(
+      CurvedAnimation(
+        parent: floatController,
+        curve: Curves.easeInOut,
+      ),
+    );
 
-  @override
-  Widget build(BuildContext context) {
+    useEffect(() {
+      Future<void> start() async {
+        await Future.delayed(const Duration(seconds: 3));
+
+        // フェードアウト
+        isLoading.value = false;
+        fadeOutController.forward();
+        await Future.delayed(const Duration(milliseconds: 500));
+
+        // ホーム画面へ遷移
+        if (context.mounted) {
+          context.go(HomeScreen.routeLocation);
+        }
+      }
+
+      start();
+      return null;
+    }, []);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF5FA8A3),
+      backgroundColor: mainColor,
       body: Stack(
         children: [
           // ===== 背景：円弧2つ =====
@@ -150,21 +145,16 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           ),
           // ===== ローディング =====
-          if (isLoading)
-            Positioned(
+          if (isLoading.value)
+            const Positioned(
               bottom: 80,
               left: 0,
               right: 0,
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(3, (i) {
-                      return AnimatedDot(delay: i * 200);
-                    }),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
+                  LoadingDots(),
+                  SizedBox(height: 12),
+                  Text(
                     "読み込み中...",
                     style: TextStyle(color: Colors.white60),
                   ),
@@ -172,12 +162,11 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           // ===== ローディング後 =====
-          isLoading
-              ? const SizedBox()
-              : FadeTransition(
-                  opacity: fadeOutController,
-                  child: const MyHomePage(),
-                ),
+          if (!isLoading.value)
+            FadeTransition(
+              opacity: fadeOutController,
+              child: const ColoredBox(color: Colors.white),
+            ),
         ],
       ),
     );
