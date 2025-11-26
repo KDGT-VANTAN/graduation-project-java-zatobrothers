@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+  static String get routeName => 'home';
+  static String get routeLocation => '/$routeName';
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'セットアップ中…',
+              'ホーム画面',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
