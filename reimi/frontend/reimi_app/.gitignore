@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -90,3 +92,8 @@ app.*.map.json
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
+
+# 環境ごとの設定ファイルなど
+.env
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-Info.plist
