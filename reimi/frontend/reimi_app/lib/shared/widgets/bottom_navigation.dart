@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/core/theme/app_colors.dart';
 
 class BottomNavigation extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -23,34 +22,22 @@ class BottomNavigation extends StatelessWidget {
         destinations: const [
           NavigationDestination(
             icon: Icon(LineIcons.rainbow),
-            selectedIcon: Icon(
-              LineIcons.rainbow,
-              color: mainColor,
-            ),
+            selectedIcon: Icon(LineIcons.rainbow),
             label: 'であう',
           ),
           NavigationDestination(
             icon: Icon(LineIcons.heart),
-            selectedIcon: Icon(
-              LineIcons.heartAlt,
-              color: mainColor,
-            ),
+            selectedIcon: Icon(LineIcons.heartAlt),
             label: 'いいね',
           ),
           NavigationDestination(
             icon: Icon(LineIcons.comments),
-            selectedIcon: Icon(
-              LineIcons.comments,
-              color: mainColor,
-            ),
+            selectedIcon: Icon(LineIcons.comments),
             label: 'チャット',
           ),
           NavigationDestination(
             icon: Icon(LineIcons.camera),
-            selectedIcon: Icon(
-              LineIcons.camera,
-              color: mainColor,
-            ),
+            selectedIcon: Icon(LineIcons.camera),
             // 他のアイコン案
             // icon: Icon(LineIcons.satellite),
             // selectedIcon: Icon(LineIcons.satellite),
@@ -60,10 +47,7 @@ class BottomNavigation extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Icon(LineIcons.user),
-            selectedIcon: Icon(
-              LineIcons.user,
-              color: mainColor,
-            ),
+            selectedIcon: Icon(LineIcons.user),
             label: 'アカウント',
           ),
         ],
