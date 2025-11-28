@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/theme/reimi_theme.dart';
 import 'package:reimi_app/routers/app_router.dart';
 
 class MyApp extends ConsumerWidget {
@@ -13,9 +14,7 @@ class MyApp extends ConsumerWidget {
       routerDelegate: goRouter.routerDelegate,
       routeInformationProvider: goRouter.routeInformationProvider,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: reimiTheme,
     );
   }
 }
