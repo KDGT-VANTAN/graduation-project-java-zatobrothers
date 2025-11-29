@@ -100,6 +100,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<configFiles>
+                            <configFile>src/main/resources/flyway.properties</configFile>
+					</configFiles>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
