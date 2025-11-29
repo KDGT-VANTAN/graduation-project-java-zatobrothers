@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/core/theme/app_colors.dart';
+import 'package:reimi_app/core/theme/reimi_theme.dart';
 import 'package:reimi_app/features/matching/presentation/home_screen.dart';
 import 'package:reimi_app/features/splash/presentation/widgets/loading_dots.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
@@ -51,7 +51,7 @@ class SplashScreen extends HookConsumerWidget {
     }, []);
 
     return Scaffold(
-      backgroundColor: mainColor,
+      backgroundColor: reimiTheme.colorScheme.primary,
       body: Stack(
         children: [
           // ===== 背景：円弧2つ =====
@@ -66,7 +66,7 @@ class SplashScreen extends HookConsumerWidget {
                   MediaQuery.of(context).size.width,
                 ),
                 border: Border.all(
-                  color: const Color(0xFFE87A5D).withValues(alpha: 0.15),
+                  color: reimiTheme.colorScheme.secondary.withValues(alpha: 0.15),
                   width: 60,
                 ),
               ),
@@ -83,7 +83,7 @@ class SplashScreen extends HookConsumerWidget {
                   MediaQuery.of(context).size.width,
                 ),
                 border: Border.all(
-                  color: const Color(0xFFF4C563).withValues(alpha: 0.1),
+                  color: reimiTheme.colorScheme.tertiary.withValues(alpha: 0.1),
                   width: 50,
                 ),
               ),
