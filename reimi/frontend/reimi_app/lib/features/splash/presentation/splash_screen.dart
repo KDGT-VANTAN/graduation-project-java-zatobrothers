@@ -6,6 +6,7 @@ import 'package:reimi_app/core/theme/reimi_theme.dart';
 import 'package:reimi_app/features/matching/presentation/home_screen.dart';
 import 'package:reimi_app/features/splash/presentation/widgets/loading_dots.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
 
 class SplashScreen extends HookConsumerWidget {
   const SplashScreen({super.key});
@@ -14,6 +15,7 @@ class SplashScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final t = Translations.of(context);
     final isLoading = useState(true);
 
     final floatController = useAnimationController(
@@ -66,7 +68,8 @@ class SplashScreen extends HookConsumerWidget {
                   MediaQuery.of(context).size.width,
                 ),
                 border: Border.all(
-                  color: reimiTheme.colorScheme.secondary.withValues(alpha: 0.15),
+                  color:
+                      reimiTheme.colorScheme.secondary.withValues(alpha: 0.15),
                   width: 60,
                 ),
               ),
@@ -121,12 +124,12 @@ class SplashScreen extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                const AnimatedOpacity(
+                AnimatedOpacity(
                   opacity: 1,
-                  duration: Duration(milliseconds: 800),
+                  duration: const Duration(milliseconds: 800),
                   child: Text(
-                    "Reimi",
-                    style: TextStyle(
+                    t.splash.title,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 48,
                       fontWeight: FontWeight.w600,
@@ -134,9 +137,9 @@ class SplashScreen extends HookConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                const Text(
-                  "天気で繋がる、出会いのアプリ",
-                  style: TextStyle(
+                Text(
+                  t.splash.subtitle,
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 18,
                   ),
@@ -146,17 +149,17 @@ class SplashScreen extends HookConsumerWidget {
           ),
           // ===== ローディング =====
           if (isLoading.value)
-            const Positioned(
+            Positioned(
               bottom: 80,
               left: 0,
               right: 0,
               child: Column(
                 children: [
-                  LoadingDots(),
-                  SizedBox(height: 12),
+                  const LoadingDots(),
+                  const SizedBox(height: 12),
                   Text(
-                    "読み込み中...",
-                    style: TextStyle(color: Colors.white60),
+                    t.splash.loading,
+                    style: const TextStyle(color: Colors.white60),
                   ),
                 ],
               ),
@@ -169,68 +172,6 @@ class SplashScreen extends HookConsumerWidget {
             ),
         ],
       ),
-    );
-  }
-}
-
-// ローディングの3つの点アニメーション
-class AnimatedDot extends StatefulWidget {
-  final int delay;
-  const AnimatedDot({super.key, required this.delay});
-
-  @override
-  State<AnimatedDot> createState() => _AnimatedDotState();
-}
-
-class _AnimatedDotState extends State<AnimatedDot>
-    with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> anim;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
-
-    anim = Tween<double>(begin: -5, end: 5).animate(
-      CurvedAnimation(parent: controller, curve: Curves.easeInOut),
-    );
-
-    Future.delayed(Duration(milliseconds: widget.delay), () {
-      controller.repeat(reverse: true);
-    });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: anim,
-      builder: (context, child) {
-        return Transform.translate(
-          offset: Offset(0, anim.value),
-          child: Opacity(
-            opacity: 0.5 + (anim.value.abs() / 10),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 6),
-              width: 10,
-              height: 10,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

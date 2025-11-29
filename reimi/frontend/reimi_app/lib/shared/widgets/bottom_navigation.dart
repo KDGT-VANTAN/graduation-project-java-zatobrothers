@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
 
 class BottomNavigation extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -9,6 +10,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
@@ -19,36 +21,36 @@ class BottomNavigation extends StatelessWidget {
             initialLocation: index == navigationShell.currentIndex,
           );
         },
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(LineIcons.rainbow),
-            selectedIcon: Icon(LineIcons.rainbow),
-            label: 'であう',
+            icon: const Icon(LineIcons.rainbow),
+            selectedIcon: const Icon(LineIcons.rainbow),
+            label: t.navigationBar.home.title,
           ),
           NavigationDestination(
-            icon: Icon(LineIcons.heart),
-            selectedIcon: Icon(LineIcons.heartAlt),
-            label: 'いいね',
+            icon: const Icon(LineIcons.heart),
+            selectedIcon: const Icon(LineIcons.heartAlt),
+            label: t.navigationBar.like.title,
           ),
           NavigationDestination(
-            icon: Icon(LineIcons.comments),
-            selectedIcon: Icon(LineIcons.comments),
-            label: 'チャット',
+            icon: const Icon(LineIcons.comments),
+            selectedIcon: const Icon(LineIcons.comments),
+            label: t.navigationBar.chat.title,
           ),
           NavigationDestination(
-            icon: Icon(LineIcons.camera),
-            selectedIcon: Icon(LineIcons.camera),
+            icon: const Icon(LineIcons.camera),
+            selectedIcon: const Icon(LineIcons.camera),
             // 他のアイコン案
             // icon: Icon(LineIcons.satellite),
             // selectedIcon: Icon(LineIcons.satellite),
             // icon: Icon(LineIcons.paste),
             // selectedIcon: Icon(LineIcons.paste),
-            label: 'リポート',
+            label: t.navigationBar.weatherReport.title,
           ),
           NavigationDestination(
-            icon: Icon(LineIcons.user),
-            selectedIcon: Icon(LineIcons.user),
-            label: 'アカウント',
+            icon: const Icon(LineIcons.user),
+            selectedIcon: const Icon(LineIcons.user),
+            label: t.navigationBar.account.title,
           ),
         ],
       ),
