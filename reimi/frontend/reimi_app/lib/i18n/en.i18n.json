@@ -1,0 +1,24 @@
+{
+  "splash": {
+    "title": "Reimi",
+    "subtitle": "Connect through weather, a dating app",
+    "loading": "Loading..."
+  },
+  "navigationBar": {
+    "home": {
+      "title": "Meet"
+    },
+    "like": {
+      "title": "Likes"
+    },
+    "chat": {
+      "title": "Chat"
+    },
+    "weatherReport": {
+      "title": "Report"
+    },
+    "account": {
+      "title": "Account"
+    }
+  }
+}

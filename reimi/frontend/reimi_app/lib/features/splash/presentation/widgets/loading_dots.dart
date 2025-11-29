@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:reimi_app/features/splash/presentation/splash_screen.dart';
+import 'package:reimi_app/features/splash/presentation/widgets/animated_dot.dart';
 
 class LoadingDots extends HookWidget {
   const LoadingDots({super.key});
