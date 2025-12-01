@@ -1,8 +1,41 @@
 {
   "splash": {
-    "title": "Reimi",
-    "subtitle": "天気で繋がる、出会いのアプリ",
+    "appName": "Reimi",
+    "title": "天気で繋がる、出会いのアプリ",
     "loading": "読み込み中..."
+  },
+  "signUp": {
+    "appName": "Reimi",
+    "title": "天気で繋がる、出会いのアプリ",
+    "subtitle": "同じ天気を楽しむ人と、特別な出会いを",
+    "button": {
+      "apple": "Appleでサインアップ",
+      "google": "Googleでサインアップ"
+    },
+    "consent": {
+      "consentText1": "サインアップすることで、",
+      "tos": "利用規約",
+      "consentText2": "と",
+      "pp": "プライバシーポリシー",
+      "consentText3": "に同意したことになります"
+    },
+    "confirmation": {
+      "account": "すでにアカウントをお持ちですか？",
+      "signIn": "サインイン"
+    }
+  },
+  "signIn": {
+    "appName": "Reimi",
+    "title": "おかえりなさい",
+    "subtitle": "あなたの天気を共有しましょう",
+    "button": {
+      "apple": "Appleでサインイン",
+      "google": "Googleでサインイン"
+    },
+    "confirmation": {
+      "account": "アカウントをお持ちでないですか？",
+      "signUp": "サインアップ"
+    }
   },
   "navigationBar": {
     "home": {
