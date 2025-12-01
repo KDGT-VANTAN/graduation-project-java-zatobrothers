@@ -2,19 +2,31 @@ version: "3.9"
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: reimi-app
+    working_dir: /app
+    command:
+      - mvn
+      - spring-boot:run
+      - -Dspring-boot.run.profiles=dev
+      - -Dspring.devtools.restart.enabled=true
+      - -Dspring.devtools.livereload.enabled=true
+
     ports:
       - "8080:8080"
+    volumes:
+      - ./:/app
+      - ~/.m2:/root/.m2
     environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DEVTOOLS_RESTART_ENABLED: true
+      SPRING_DEVTOOLS_LIVERELOAD_ENABLED: true
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/reimi_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+
     depends_on:
       - db
-
   db:
     image: postgres:15.5
     container_name: reimi-db
