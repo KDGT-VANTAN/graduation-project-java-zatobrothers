@@ -14,6 +14,7 @@ services:
 
     ports:
       - "8080:8080"
+      - "35729:35729"
     volumes:
       - ./:/app
       - ~/.m2:/root/.m2
