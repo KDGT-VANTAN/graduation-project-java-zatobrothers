@@ -16,6 +16,9 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/icons
   $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
+
+  /// Directory path: assets/images/logo
+  $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
 }
 
 class $AssetsImagesIconsGen {
@@ -27,6 +30,17 @@ class $AssetsImagesIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsImagesLogoGen {
+  const $AssetsImagesLogoGen();
+
+  /// File path: assets/images/logo/icons8-google.png
+  AssetGenImage get icons8Google =>
+      const AssetGenImage('assets/images/logo/icons8-google.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [icons8Google];
 }
 
 class Assets {
