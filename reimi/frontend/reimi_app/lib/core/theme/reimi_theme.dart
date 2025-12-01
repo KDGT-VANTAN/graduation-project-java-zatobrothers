@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-ThemeData reimiTheme = ThemeData(
-  useMaterial3: true,
-  fontFamily: 'NotoSansJP',
+final base = ThemeData.light(useMaterial3: true);
 
-  scaffoldBackgroundColor: Colors.white,
+ThemeData reimiTheme = base.copyWith(
 
   // ===== color =====
   colorScheme: ColorScheme.fromSeed(
@@ -16,7 +14,8 @@ ThemeData reimiTheme = ThemeData(
   ),
 
   // ===== text =====
-  textTheme: GoogleFonts.notoSansJpTextTheme(),
+  textTheme: GoogleFonts.notoSansJpTextTheme(base.textTheme),
+  primaryTextTheme: GoogleFonts.notoSansJpTextTheme(base.primaryTextTheme),
 
   // ===== NavigationBar =====
   navigationBarTheme: NavigationBarThemeData(
