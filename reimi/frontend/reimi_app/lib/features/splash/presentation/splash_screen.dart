@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/core/theme/reimi_theme.dart';
 import 'package:reimi_app/features/matching/presentation/home_screen.dart';
 import 'package:reimi_app/features/splash/presentation/widgets/loading_dots.dart';
-import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/shared/widgets/app_icon.dart';
+import 'package:reimi_app/shared/widgets/arc_background.dart';
 
 class SplashScreen extends HookConsumerWidget {
   const SplashScreen({super.key});
@@ -15,7 +15,8 @@ class SplashScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context);
+    final t = Translations.of(context).splash;
+    final theme = Theme.of(context);
     final isLoading = useState(true);
 
     final floatController = useAnimationController(
@@ -53,46 +54,14 @@ class SplashScreen extends HookConsumerWidget {
     }, []);
 
     return Scaffold(
-      backgroundColor: reimiTheme.colorScheme.primary,
+      backgroundColor: theme.colorScheme.primary,
       body: Stack(
         children: [
-          // ===== 背景：円弧2つ =====
-          Positioned(
-            top: -MediaQuery.of(context).size.height * 0.2,
-            right: -MediaQuery.of(context).size.width * 0.3,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.width * 1.7,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.width,
-                ),
-                border: Border.all(
-                  color:
-                      reimiTheme.colorScheme.secondary.withValues(alpha: 0.15),
-                  width: 60,
-                ),
-              ),
-            ),
+          ...ArcBackground.buildArcs(
+            context: context,
+            topArcColor: theme.colorScheme.secondary,
+            bottomArcColor: theme.colorScheme.tertiary,
           ),
-          Positioned(
-            bottom: -MediaQuery.of(context).size.height * 0.25,
-            left: -MediaQuery.of(context).size.width * 0.25,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: MediaQuery.of(context).size.width * 1.5,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.width,
-                ),
-                border: Border.all(
-                  color: reimiTheme.colorScheme.tertiary.withValues(alpha: 0.1),
-                  width: 50,
-                ),
-              ),
-            ),
-          ),
-          // ===== メイン =====
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -105,49 +74,35 @@ class SplashScreen extends HookConsumerWidget {
                       child: child,
                     );
                   },
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 32),
+                  child: const AppIcon(
                     width: 128,
                     height: 128,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.3),
-                          blurRadius: 20,
-                        )
-                      ],
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: Assets.images.icons.appIcon.image(
-                      fit: BoxFit.cover,
-                    ),
                   ),
                 ),
+                const SizedBox(height: 32),
                 AnimatedOpacity(
                   opacity: 1,
                   duration: const Duration(milliseconds: 800),
                   child: Text(
-                    t.splash.title,
-                    style: const TextStyle(
+                    t.appName,
+                    style: theme.textTheme.displayLarge!.copyWith(
                       color: Colors.white,
                       fontSize: 48,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 16),
                 Text(
-                  t.splash.subtitle,
-                  style: const TextStyle(
+                  t.title,
+                  style: theme.textTheme.displayMedium!.copyWith(
                     color: Colors.white70,
                     fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
           ),
-          // ===== ローディング =====
           if (isLoading.value)
             Positioned(
               bottom: 80,
@@ -156,15 +111,17 @@ class SplashScreen extends HookConsumerWidget {
               child: Column(
                 children: [
                   const LoadingDots(),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   Text(
-                    t.splash.loading,
-                    style: const TextStyle(color: Colors.white60),
+                    t.loading,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: Colors.white60,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
             ),
-          // ===== ローディング後 =====
           if (!isLoading.value)
             FadeTransition(
               opacity: fadeOutController,

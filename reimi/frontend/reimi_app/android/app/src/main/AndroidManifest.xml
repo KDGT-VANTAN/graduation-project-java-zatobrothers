@@ -1,4 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- インターネット権限(通常は既にある) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    <!-- Android 11以降でWebブラウザ起動に必要 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
     <application
         android:label="reimi_app"
         android:name="${applicationName}"

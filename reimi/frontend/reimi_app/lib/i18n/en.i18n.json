@@ -1,8 +1,41 @@
 {
   "splash": {
-    "title": "Reimi",
-    "subtitle": "Connect through weather, a dating app",
+    "appName": "Reimi",
+    "title": "Connect through weather, a dating app",
     "loading": "Loading..."
+  },
+  "signUp": {
+    "appName": "Reimi",
+    "title": "Connect through weather, a dating app",
+    "subtitle": "Find special connections with people who enjoy the same weather",
+    "button": {
+      "apple": "Sign up with Apple",
+      "google": "Sign up with Google"
+    },
+    "consent": {
+      "consentText1": "By signing up, you agree to our ",
+      "tos": "Terms of Service",
+      "consentText2": " and ",
+      "pp": "Privacy Policy",
+      "consentText3": ""
+    },
+    "confirmation": {
+      "account": "Already have an account?",
+      "signIn": "Sign in"
+    }
+  },
+  "signIn": {
+    "appName": "Reimi",
+    "title": "Welcome back",
+    "subtitle": "Let's share your weather",
+    "button": {
+      "apple": "Sign in with Apple",
+      "google": "Sign in with Google"
+    },
+    "confirmation": {
+      "account": "Don't have an account?",
+      "signUp": "Sign up"
+    }
   },
   "navigationBar": {
     "home": {

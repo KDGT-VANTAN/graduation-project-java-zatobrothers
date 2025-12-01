@@ -38,6 +38,8 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 
 	// Translations
 	@override late final _TranslationsSplashJa splash = _TranslationsSplashJa._(_root);
+	@override late final _TranslationsSignUpJa signUp = _TranslationsSignUpJa._(_root);
+	@override late final _TranslationsSignInJa signIn = _TranslationsSignInJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
 }
 
@@ -48,9 +50,38 @@ class _TranslationsSplashJa implements TranslationsSplashEn {
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Reimi';
-	@override String get subtitle => '天気で繋がる、出会いのアプリ';
+	@override String get appName => 'Reimi';
+	@override String get title => '天気で繋がる、出会いのアプリ';
 	@override String get loading => '読み込み中...';
+}
+
+// Path: signUp
+class _TranslationsSignUpJa implements TranslationsSignUpEn {
+	_TranslationsSignUpJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get appName => 'Reimi';
+	@override String get title => '天気で繋がる、出会いのアプリ';
+	@override String get subtitle => '同じ天気を楽しむ人と、特別な出会いを';
+	@override late final _TranslationsSignUpButtonJa button = _TranslationsSignUpButtonJa._(_root);
+	@override late final _TranslationsSignUpConsentJa consent = _TranslationsSignUpConsentJa._(_root);
+	@override late final _TranslationsSignUpConfirmationJa confirmation = _TranslationsSignUpConfirmationJa._(_root);
+}
+
+// Path: signIn
+class _TranslationsSignInJa implements TranslationsSignInEn {
+	_TranslationsSignInJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get appName => 'Reimi';
+	@override String get title => 'おかえりなさい';
+	@override String get subtitle => 'あなたの天気を共有しましょう';
+	@override late final _TranslationsSignInButtonJa button = _TranslationsSignInButtonJa._(_root);
+	@override late final _TranslationsSignInConfirmationJa confirmation = _TranslationsSignInConfirmationJa._(_root);
 }
 
 // Path: navigationBar
@@ -65,6 +96,64 @@ class _TranslationsNavigationBarJa implements TranslationsNavigationBarEn {
 	@override late final _TranslationsNavigationBarChatJa chat = _TranslationsNavigationBarChatJa._(_root);
 	@override late final _TranslationsNavigationBarWeatherReportJa weatherReport = _TranslationsNavigationBarWeatherReportJa._(_root);
 	@override late final _TranslationsNavigationBarAccountJa account = _TranslationsNavigationBarAccountJa._(_root);
+}
+
+// Path: signUp.button
+class _TranslationsSignUpButtonJa implements TranslationsSignUpButtonEn {
+	_TranslationsSignUpButtonJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get apple => 'Appleでサインアップ';
+	@override String get google => 'Googleでサインアップ';
+}
+
+// Path: signUp.consent
+class _TranslationsSignUpConsentJa implements TranslationsSignUpConsentEn {
+	_TranslationsSignUpConsentJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get consentText1 => 'サインアップすることで、';
+	@override String get tos => '利用規約';
+	@override String get consentText2 => 'と';
+	@override String get pp => 'プライバシーポリシー';
+	@override String get consentText3 => 'に同意したことになります';
+}
+
+// Path: signUp.confirmation
+class _TranslationsSignUpConfirmationJa implements TranslationsSignUpConfirmationEn {
+	_TranslationsSignUpConfirmationJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get account => 'すでにアカウントをお持ちですか？';
+	@override String get signIn => 'サインイン';
+}
+
+// Path: signIn.button
+class _TranslationsSignInButtonJa implements TranslationsSignInButtonEn {
+	_TranslationsSignInButtonJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get apple => 'Appleでサインイン';
+	@override String get google => 'Googleでサインイン';
+}
+
+// Path: signIn.confirmation
+class _TranslationsSignInConfirmationJa implements TranslationsSignInConfirmationEn {
+	_TranslationsSignInConfirmationJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get account => 'アカウントをお持ちでないですか？';
+	@override String get signUp => 'サインアップ';
 }
 
 // Path: navigationBar.home
@@ -125,9 +214,28 @@ class _TranslationsNavigationBarAccountJa implements TranslationsNavigationBarAc
 extension on TranslationsJa {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'splash.title' => 'Reimi',
-			'splash.subtitle' => '天気で繋がる、出会いのアプリ',
+			'splash.appName' => 'Reimi',
+			'splash.title' => '天気で繋がる、出会いのアプリ',
 			'splash.loading' => '読み込み中...',
+			'signUp.appName' => 'Reimi',
+			'signUp.title' => '天気で繋がる、出会いのアプリ',
+			'signUp.subtitle' => '同じ天気を楽しむ人と、特別な出会いを',
+			'signUp.button.apple' => 'Appleでサインアップ',
+			'signUp.button.google' => 'Googleでサインアップ',
+			'signUp.consent.consentText1' => 'サインアップすることで、',
+			'signUp.consent.tos' => '利用規約',
+			'signUp.consent.consentText2' => 'と',
+			'signUp.consent.pp' => 'プライバシーポリシー',
+			'signUp.consent.consentText3' => 'に同意したことになります',
+			'signUp.confirmation.account' => 'すでにアカウントをお持ちですか？',
+			'signUp.confirmation.signIn' => 'サインイン',
+			'signIn.appName' => 'Reimi',
+			'signIn.title' => 'おかえりなさい',
+			'signIn.subtitle' => 'あなたの天気を共有しましょう',
+			'signIn.button.apple' => 'Appleでサインイン',
+			'signIn.button.google' => 'Googleでサインイン',
+			'signIn.confirmation.account' => 'アカウントをお持ちでないですか？',
+			'signIn.confirmation.signUp' => 'サインアップ',
 			'navigationBar.home.title' => 'であう',
 			'navigationBar.like.title' => 'いいね',
 			'navigationBar.chat.title' => 'チャット',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reimi_app/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:reimi_app/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:reimi_app/features/chat/presentation/chat_screen.dart';
 import 'package:reimi_app/features/like/presentation/like_screen.dart';
 import 'package:reimi_app/features/matching/presentation/home_screen.dart';
@@ -23,6 +25,20 @@ final goRouterProvider = Provider<GoRouter>(
           name: SplashScreen.routeName,
           builder: (context, state) {
             return const SplashScreen();
+          },
+        ),
+        GoRoute(
+          path: SignUpScreen.routeLocation,
+          name: SignUpScreen.routeName,
+          builder: (context, state) {
+            return const SignUpScreen();
+          },
+        ),
+        GoRoute(
+          path: SignInScreen.routeLocation,
+          name: SignInScreen.routeName,
+          builder: (context, state) {
+            return const SignInScreen();
           },
         ),
         StatefulShellRoute.indexedStack(
