@@ -37,6 +37,147 @@
       "signUp": "サインアップ"
     }
   },
+  "userRegistration": {
+    "common": {
+      "button": {
+        "next": "次へ"
+      },
+      "dialog": {
+        "button": {
+          "confirmation": "確認",
+          "cancel": "キャンセル"
+        }
+      },
+      "modalBottomSheet": {
+        "button": {
+          "selected": "選択"
+        }
+      }
+    },
+    "gender": {
+      "question": "性別を教えてください",
+      "dialog": {
+        "title": "性別の確認",
+        "contentText1": "選択した性別：",
+        "contentText2": "この内容で次に進みますか？"
+      },
+      "items": {
+        "man": "男性",
+        "woman": "女性",
+        "others": "その他"
+      }
+    },
+    "birthDate": {
+      "question": "生年月日を教えてください",
+      "dialog": {
+        "title": "生年月日の確認",
+        "contentText1": "選択した生年月日：",
+        "contentText2": "この内容で次に進みますか？"
+      },
+      "items": {
+        "year": "年",
+        "month": "月",
+        "day": "日"
+      }
+    },
+    "address": {
+      "question": "居住地を教えてください",
+      "dialog": {
+        "title": "居住地の確認",
+        "contentText1": "選択した居住地：",
+        "contentText2": "この内容で次に進みますか？"
+      },
+      "items": {
+        "placeholder": "都道府県を選択",
+        "prefecture": {
+          "hokkaido": "北海道",
+          "aomori": "青森県",
+          "iwate": "岩手県",
+          "miyagi": "宮城県",
+          "akita": "秋田県",
+          "yamagata": "山形県",
+          "fukushima": "福島県",
+          "ibaraki": "茨城県",
+          "tochigi": "栃木県",
+          "gunma": "群馬県",
+          "saitama": "埼玉県",
+          "chiba": "千葉県",
+          "tokyo": "東京都",
+          "kanagawa": "神奈川県",
+          "niigata": "新潟県",
+          "toyama": "富山県",
+          "ishikawa": "石川県",
+          "fukui": "福井県",
+          "yamanashi": "山梨県",
+          "nagano": "長野県",
+          "gifu": "岐阜県",
+          "shizuoka": "静岡県",
+          "aichi": "愛知県",
+          "mie": "三重県",
+          "shiga": "滋賀県",
+          "kyoto": "京都府",
+          "osaka": "大阪府",
+          "hyogo": "兵庫県",
+          "nara": "奈良県",
+          "wakayama": "和歌山県",
+          "tottori": "鳥取県",
+          "shimane": "島根県",
+          "okayama": "岡山県",
+          "hiroshima": "広島県",
+          "yamaguchi": "山口県",
+          "tokushima": "徳島県",
+          "kagawa": "香川県",
+          "ehime": "愛媛県",
+          "kochi": "高知県",
+          "fukuoka": "福岡県",
+          "saga": "佐賀県",
+          "nagasaki": "長崎県",
+          "kumamoto": "熊本県",
+          "oita": "大分県",
+          "miyazaki": "宮崎県",
+          "kagoshima": "鹿児島県",
+          "okinawa": "沖縄県"
+        },
+        "others": "その他"
+      }
+    },
+    "name": {
+      "question": "名前を教えてください",
+      "dialog": {
+        "title": "名前の確認",
+        "contentText1": "入力した名前：",
+        "contentText2": "この内容で次に進みますか？"
+      },
+      "items": {
+        "placeholder": "名前を入力"
+      }
+    },
+    "introduction": {
+      "question": "自己紹介を教えてください",
+      "dialog": {
+        "title": "自己紹介の確認",
+        "contentText1": "入力した自己紹介：",
+        "contentText2": "この内容で次に進みますか？"
+      },
+      "items": {
+        "placeholder": "自己紹介を入力（20文字以上）",
+        "charCountLabelText": "$textLength / 20文字",
+        "remainingCharsText": "あと$remainingTextLength文字必要です"
+      }
+    },
+    "mainPhoto": {
+      "question": "メイン写真を選んでください",
+      "dialog": {
+        "title": "写真の確認",
+        "contentText1": "選択した写真：",
+        "contentText2": "この内容で登録を完了しますか？" 
+      },
+      "items": {
+        "photoSelectInstructionText": "クリックして写真を選択",
+        "photoRecommendationHint": "笑顔の顔写真がおすすめ"
+      }
+    }
+  },
   "navigationBar": {
     "home": {
       "title": "であう"

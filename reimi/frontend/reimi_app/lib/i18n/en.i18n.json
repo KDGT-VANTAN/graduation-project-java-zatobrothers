@@ -37,6 +37,147 @@
       "signUp": "Sign up"
     }
   },
+  "userRegistration": {
+    "common": {
+      "button": {
+        "next": "Next"
+      },
+      "dialog": {
+        "button": {
+          "confirmation": "Confirm",
+          "cancel": "Cancel"
+        }
+      },
+      "modalBottomSheet": {
+        "button": {
+          "selected": "Select"
+        }
+      }
+    },
+    "gender": {
+      "question": "What is your gender?",
+      "dialog": {
+        "title": "Confirm Gender",
+        "contentText1": "Selected gender: ",
+        "contentText2": "Proceed with this selection?"
+      },
+      "items": {
+        "man": "Male",
+        "woman": "Female",
+        "others": "Other"
+      }
+    },
+    "birthDate": {
+      "question": "What is your date of birth?",
+      "dialog": {
+        "title": "Confirm Date of Birth",
+        "contentText1": "Selected date of birth: ",
+        "contentText2": "Proceed with this selection?"
+      },
+      "items": {
+        "year": "Year",
+        "month": "Month",
+        "day": "Day"
+      }
+    },
+    "address": {
+      "question": "Where do you live?",
+      "dialog": {
+        "title": "Confirm Address",
+        "contentText1": "Selected address: ",
+        "contentText2": "Proceed with this selection?"
+      },
+      "items": {
+        "placeholder": "Select prefecture",
+        "prefecture": {
+          "hokkaido": "Hokkaido",
+          "aomori": "Aomori",
+          "iwate": "Iwate",
+          "miyagi": "Miyagi",
+          "akita": "Akita",
+          "yamagata": "Yamagata",
+          "fukushima": "Fukushima",
+          "ibaraki": "Ibaraki",
+          "tochigi": "Tochigi",
+          "gunma": "Gunma",
+          "saitama": "Saitama",
+          "chiba": "Chiba",
+          "tokyo": "Tokyo",
+          "kanagawa": "Kanagawa",
+          "niigata": "Niigata",
+          "toyama": "Toyama",
+          "ishikawa": "Ishikawa",
+          "fukui": "Fukui",
+          "yamanashi": "Yamanashi",
+          "nagano": "Nagano",
+          "gifu": "Gifu",
+          "shizuoka": "Shizuoka",
+          "aichi": "Aichi",
+          "mie": "Mie",
+          "shiga": "Shiga",
+          "kyoto": "Kyoto",
+          "osaka": "Osaka",
+          "hyogo": "Hyogo",
+          "nara": "Nara",
+          "wakayama": "Wakayama",
+          "tottori": "Tottori",
+          "shimane": "Shimane",
+          "okayama": "Okayama",
+          "hiroshima": "Hiroshima",
+          "yamaguchi": "Yamaguchi",
+          "tokushima": "Tokushima",
+          "kagawa": "Kagawa",
+          "ehime": "Ehime",
+          "kochi": "Kochi",
+          "fukuoka": "Fukuoka",
+          "saga": "Saga",
+          "nagasaki": "Nagasaki",
+          "kumamoto": "Kumamoto",
+          "oita": "Oita",
+          "miyazaki": "Miyazaki",
+          "kagoshima": "Kagoshima",
+          "okinawa": "Okinawa"
+        },
+        "others": "Others"
+      }
+    },
+    "name": {
+      "question": "What is your name?",
+      "dialog": {
+        "title": "Confirm Name",
+        "contentText1": "Entered name: ",
+        "contentText2": "Proceed with this entry?"
+      },
+      "items": {
+        "placeholder": "Enter your name"
+      }
+    },
+    "introduction": {
+      "question": "Tell us about yourself",
+      "dialog": {
+        "title": "Confirm Introduction",
+        "contentText1": "Your introduction: ",
+        "contentText2": "Proceed with this entry?"
+      },
+      "items": {
+        "placeholder": "Enter your introduction (20 characters minimum)",
+        "charCountLabelText": "$textLength / 20 characters",
+        "remainingCharsText": "$remainingTextLength more characters needed"
+      }
+    },
+    "mainPhoto": {
+      "question": "Select your main photo",
+      "dialog": {
+        "title": "Confirm Photo",
+        "contentText1": "Selected photo: ",
+        "contentText2": "Complete registration with this photo?" 
+      },
+      "items": {
+        "photoSelectInstructionText": "Click to select photo",
+        "photoRecommendationHint": "A smiling face photo is recommended"
+      }
+    }
+  },
   "navigationBar": {
     "home": {
       "title": "Meet"

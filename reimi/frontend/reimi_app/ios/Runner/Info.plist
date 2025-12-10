@@ -46,11 +46,17 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<!-- 追加した項目 -->
+	<!-- 多言語対応 -->
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ja</string>
 		<string>en</string>
 	</array>
+	<!-- image_picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>写真ライブラリへのアクセスを許可してください。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラへのアクセスを許可してください。</string>
 	<!-- 追加した項目 -->
 </dict>
 </plist>
