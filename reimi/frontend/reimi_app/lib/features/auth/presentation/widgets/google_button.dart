@@ -4,10 +4,10 @@ import 'package:reimi_app/gen/assets.gen.dart';
 class GoogleButton extends StatelessWidget {
   const GoogleButton({
     super.key,
-    required this.text,
+    required this.label,
     required this.onTap,
   });
-  final String text;
+  final String label;
   final void Function()? onTap;
 
   @override
@@ -30,7 +30,7 @@ class GoogleButton extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              text,
+              label,
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: const Color(0xFF444444),
                     fontWeight: FontWeight.bold,

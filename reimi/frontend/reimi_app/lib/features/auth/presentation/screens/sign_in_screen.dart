@@ -69,12 +69,12 @@ class SignInScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   AppleButton(
-                    text: t.button.apple,
+                    label: t.button.apple,
                     onTap: () {},
                   ),
                   const SizedBox(height: 14),
                   GoogleButton(
-                    text: t.button.google,
+                    label: t.button.google,
                     onTap: () {},
                   ),
                   const SizedBox(height: 32),

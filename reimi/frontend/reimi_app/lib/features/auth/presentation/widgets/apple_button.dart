@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class AppleButton extends StatelessWidget {
   const AppleButton({
     super.key,
-    required this.text,
+    required this.label,
     required this.onTap,
   });
-  final String text;
+  final String label;
   final void Function()? onTap;
 
   @override
@@ -29,7 +29,7 @@ class AppleButton extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              text,
+              label,
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
