@@ -20,9 +20,9 @@ class UserAddressScreen extends ConsumerWidget {
     final t = Translations.of(context).userRegistration.address;
     final theme = Theme.of(context);
     final address = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.address),
+      userRegistrationNotifierProvider.select((state) => state.data!.address),
     );
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationBaseScreen(
       question: t.question,
       theme: theme,

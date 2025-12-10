@@ -18,9 +18,10 @@ class UserIntroductionScreen extends HookConsumerWidget {
     final t = Translations.of(context).userRegistration.introduction;
     final theme = Theme.of(context);
     final introduction = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.introduction),
+      userRegistrationNotifierProvider
+          .select((state) => state.data!.introduction),
     );
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
 
     final controller = useTextEditingController(text: introduction);
     final textLength = useState(0);

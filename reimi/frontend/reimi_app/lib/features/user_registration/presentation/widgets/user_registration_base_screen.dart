@@ -25,12 +25,12 @@ class UserRegistrationBaseScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context).userRegistration.common;
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     final currentPage = ref.watch(
-      userRegistrationProvider.select((state) => state.currentPage),
+      userRegistrationNotifierProvider.select((state) => state.currentPage),
     );
     final totalPages = ref.watch(
-      userRegistrationProvider.select((state) => state.totalPages),
+      userRegistrationNotifierProvider.select((state) => state.totalPages),
     );
     return Scaffold(
       backgroundColor: theme.colorScheme.primary,

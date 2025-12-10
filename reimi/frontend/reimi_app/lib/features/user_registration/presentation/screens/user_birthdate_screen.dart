@@ -20,9 +20,9 @@ class UserBirthdateScreen extends ConsumerWidget {
     final t = Translations.of(context).userRegistration.birthDate;
     final theme = Theme.of(context);
     final birthDate = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.birthDate),
+      userRegistrationNotifierProvider.select((state) => state.data!.birthDate),
     );
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationBaseScreen(
       question: t.question,
       theme: theme,
@@ -31,9 +31,8 @@ class UserBirthdateScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DateItemContainer(
-              label: birthDate == null
-                  ? t.items.year
-                  : birthDate.year.toString(),
+              label:
+                  birthDate == null ? t.items.year : birthDate.year.toString(),
               onTap: () {
                 customDatePicker(
                   context: context,

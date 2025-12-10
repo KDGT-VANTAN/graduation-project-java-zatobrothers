@@ -19,9 +19,9 @@ class UserGenderScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context).userRegistration.gender;
     final theme = Theme.of(context);
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     final gender = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.gender),
+      userRegistrationNotifierProvider.select((state) => state.data!.gender),
     );
     return UserRegistrationBaseScreen(
       question: t.question,

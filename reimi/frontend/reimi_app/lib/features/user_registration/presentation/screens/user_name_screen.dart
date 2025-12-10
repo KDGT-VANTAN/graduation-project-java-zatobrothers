@@ -17,9 +17,9 @@ class UserNameScreen extends ConsumerWidget {
     final t = Translations.of(context).userRegistration.name;
     final theme = Theme.of(context);
     final name = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.name),
+      userRegistrationNotifierProvider.select((state) => state.data!.name),
     );
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationBaseScreen(
       question: t.question,
       theme: theme,

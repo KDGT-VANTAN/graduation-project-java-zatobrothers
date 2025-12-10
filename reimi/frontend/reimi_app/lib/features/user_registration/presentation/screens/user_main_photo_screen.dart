@@ -21,9 +21,10 @@ class UserMainPhotoScreen extends ConsumerWidget {
     final t = Translations.of(context).userRegistration.mainPhoto;
     final theme = Theme.of(context);
     final mainPhotoUrl = ref.watch(
-      userRegistrationProvider.select((state) => state.data!.mainPhotoUrl),
+      userRegistrationNotifierProvider
+          .select((state) => state.data!.mainPhotoUrl),
     );
-    final notifier = ref.read(userRegistrationProvider.notifier);
+    final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationBaseScreen(
       question: t.question,
       theme: theme,
