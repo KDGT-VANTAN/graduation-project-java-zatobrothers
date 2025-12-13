@@ -45,6 +45,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsSignInEn signIn = TranslationsSignInEn._(_root);
 	late final TranslationsUserRegistrationEn userRegistration = TranslationsUserRegistrationEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
+	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
+	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
 
 // Path: splash
@@ -115,7 +117,6 @@ class TranslationsUserRegistrationEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsUserRegistrationCommonEn common = TranslationsUserRegistrationCommonEn._(_root);
 	late final TranslationsUserRegistrationGenderEn gender = TranslationsUserRegistrationGenderEn._(_root);
 	late final TranslationsUserRegistrationBirthDateEn birthDate = TranslationsUserRegistrationBirthDateEn._(_root);
 	late final TranslationsUserRegistrationAddressEn address = TranslationsUserRegistrationAddressEn._(_root);
@@ -136,6 +137,41 @@ class TranslationsNavigationBarEn {
 	late final TranslationsNavigationBarChatEn chat = TranslationsNavigationBarChatEn._(_root);
 	late final TranslationsNavigationBarWeatherReportEn weatherReport = TranslationsNavigationBarWeatherReportEn._(_root);
 	late final TranslationsNavigationBarAccountEn account = TranslationsNavigationBarAccountEn._(_root);
+}
+
+// Path: button
+class TranslationsButtonEn {
+	TranslationsButtonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Next'
+	String get next => 'Next';
+
+	/// en: 'Confirm'
+	String get confirmation => 'Confirm';
+
+	/// en: 'Cancel'
+	String get cancel => 'Cancel';
+
+	/// en: 'Select'
+	String get select => 'Select';
+
+	/// en: 'Logout'
+	String get logout => 'Logout';
+}
+
+// Path: kEnum
+class TranslationsKEnumEn {
+	TranslationsKEnumEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsKEnumGenderEn gender = TranslationsKEnumGenderEn._(_root);
+	late final TranslationsKEnumAddressEn address = TranslationsKEnumAddressEn._(_root);
 }
 
 // Path: signUp.button
@@ -222,18 +258,6 @@ class TranslationsSignInConfirmationEn {
 	String get signUp => 'Sign up';
 }
 
-// Path: userRegistration.common
-class TranslationsUserRegistrationCommonEn {
-	TranslationsUserRegistrationCommonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final TranslationsUserRegistrationCommonButtonEn button = TranslationsUserRegistrationCommonButtonEn._(_root);
-	late final TranslationsUserRegistrationCommonDialogEn dialog = TranslationsUserRegistrationCommonDialogEn._(_root);
-	late final TranslationsUserRegistrationCommonModalBottomSheetEn modalBottomSheet = TranslationsUserRegistrationCommonModalBottomSheetEn._(_root);
-}
-
 // Path: userRegistration.gender
 class TranslationsUserRegistrationGenderEn {
 	TranslationsUserRegistrationGenderEn._(this._root);
@@ -246,7 +270,6 @@ class TranslationsUserRegistrationGenderEn {
 	String get question => 'What is your gender?';
 
 	late final TranslationsUserRegistrationGenderDialogEn dialog = TranslationsUserRegistrationGenderDialogEn._(_root);
-	late final TranslationsUserRegistrationGenderItemsEn items = TranslationsUserRegistrationGenderItemsEn._(_root);
 }
 
 // Path: userRegistration.birthDate
@@ -384,36 +407,35 @@ class TranslationsNavigationBarAccountEn {
 	String get title => 'Account';
 }
 
-// Path: userRegistration.common.button
-class TranslationsUserRegistrationCommonButtonEn {
-	TranslationsUserRegistrationCommonButtonEn._(this._root);
+// Path: kEnum.gender
+class TranslationsKEnumGenderEn {
+	TranslationsKEnumGenderEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 
-	/// en: 'Next'
-	String get next => 'Next';
+	/// en: 'Male'
+	String get man => 'Male';
+
+	/// en: 'Female'
+	String get woman => 'Female';
+
+	/// en: 'Other'
+	String get other => 'Other';
 }
 
-// Path: userRegistration.common.dialog
-class TranslationsUserRegistrationCommonDialogEn {
-	TranslationsUserRegistrationCommonDialogEn._(this._root);
+// Path: kEnum.address
+class TranslationsKEnumAddressEn {
+	TranslationsKEnumAddressEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsUserRegistrationCommonDialogButtonEn button = TranslationsUserRegistrationCommonDialogButtonEn._(_root);
-}
+	late final TranslationsKEnumAddressPrefectureEn prefecture = TranslationsKEnumAddressPrefectureEn._(_root);
 
-// Path: userRegistration.common.modalBottomSheet
-class TranslationsUserRegistrationCommonModalBottomSheetEn {
-	TranslationsUserRegistrationCommonModalBottomSheetEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final TranslationsUserRegistrationCommonModalBottomSheetButtonEn button = TranslationsUserRegistrationCommonModalBottomSheetButtonEn._(_root);
+	/// en: 'Other'
+	String get other => 'Other';
 }
 
 // Path: userRegistration.gender.dialog
@@ -432,24 +454,6 @@ class TranslationsUserRegistrationGenderDialogEn {
 
 	/// en: 'Proceed with this selection?'
 	String get contentText2 => 'Proceed with this selection?';
-}
-
-// Path: userRegistration.gender.items
-class TranslationsUserRegistrationGenderItemsEn {
-	TranslationsUserRegistrationGenderItemsEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Male'
-	String get man => 'Male';
-
-	/// en: 'Female'
-	String get woman => 'Female';
-
-	/// en: 'Other'
-	String get others => 'Other';
 }
 
 // Path: userRegistration.birthDate.dialog
@@ -516,11 +520,6 @@ class TranslationsUserRegistrationAddressItemsEn {
 
 	/// en: 'Select prefecture'
 	String get placeholder => 'Select prefecture';
-
-	late final TranslationsUserRegistrationAddressItemsPrefectureEn prefecture = TranslationsUserRegistrationAddressItemsPrefectureEn._(_root);
-
-	/// en: 'Others'
-	String get others => 'Others';
 }
 
 // Path: userRegistration.name.dialog
@@ -622,36 +621,9 @@ class TranslationsUserRegistrationMainPhotoItemsEn {
 	String get photoRecommendationHint => 'A smiling face photo is recommended';
 }
 
-// Path: userRegistration.common.dialog.button
-class TranslationsUserRegistrationCommonDialogButtonEn {
-	TranslationsUserRegistrationCommonDialogButtonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Confirm'
-	String get confirmation => 'Confirm';
-
-	/// en: 'Cancel'
-	String get cancel => 'Cancel';
-}
-
-// Path: userRegistration.common.modalBottomSheet.button
-class TranslationsUserRegistrationCommonModalBottomSheetButtonEn {
-	TranslationsUserRegistrationCommonModalBottomSheetButtonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Select'
-	String get selected => 'Select';
-}
-
-// Path: userRegistration.address.items.prefecture
-class TranslationsUserRegistrationAddressItemsPrefectureEn {
-	TranslationsUserRegistrationAddressItemsPrefectureEn._(this._root);
+// Path: kEnum.address.prefecture
+class TranslationsKEnumAddressPrefectureEn {
+	TranslationsKEnumAddressPrefectureEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -829,17 +801,10 @@ extension on Translations {
 			'signIn.button.google' => 'Sign in with Google',
 			'signIn.confirmation.account' => 'Don\'t have an account?',
 			'signIn.confirmation.signUp' => 'Sign up',
-			'userRegistration.common.button.next' => 'Next',
-			'userRegistration.common.dialog.button.confirmation' => 'Confirm',
-			'userRegistration.common.dialog.button.cancel' => 'Cancel',
-			'userRegistration.common.modalBottomSheet.button.selected' => 'Select',
 			'userRegistration.gender.question' => 'What is your gender?',
 			'userRegistration.gender.dialog.title' => 'Confirm Gender',
 			'userRegistration.gender.dialog.contentText1' => 'Selected gender: ',
 			'userRegistration.gender.dialog.contentText2' => 'Proceed with this selection?',
-			'userRegistration.gender.items.man' => 'Male',
-			'userRegistration.gender.items.woman' => 'Female',
-			'userRegistration.gender.items.others' => 'Other',
 			'userRegistration.birthDate.question' => 'What is your date of birth?',
 			'userRegistration.birthDate.dialog.title' => 'Confirm Date of Birth',
 			'userRegistration.birthDate.dialog.contentText1' => 'Selected date of birth: ',
@@ -852,54 +817,6 @@ extension on Translations {
 			'userRegistration.address.dialog.contentText1' => 'Selected address: ',
 			'userRegistration.address.dialog.contentText2' => 'Proceed with this selection?',
 			'userRegistration.address.items.placeholder' => 'Select prefecture',
-			'userRegistration.address.items.prefecture.hokkaido' => 'Hokkaido',
-			'userRegistration.address.items.prefecture.aomori' => 'Aomori',
-			'userRegistration.address.items.prefecture.iwate' => 'Iwate',
-			'userRegistration.address.items.prefecture.miyagi' => 'Miyagi',
-			'userRegistration.address.items.prefecture.akita' => 'Akita',
-			'userRegistration.address.items.prefecture.yamagata' => 'Yamagata',
-			'userRegistration.address.items.prefecture.fukushima' => 'Fukushima',
-			'userRegistration.address.items.prefecture.ibaraki' => 'Ibaraki',
-			'userRegistration.address.items.prefecture.tochigi' => 'Tochigi',
-			'userRegistration.address.items.prefecture.gunma' => 'Gunma',
-			'userRegistration.address.items.prefecture.saitama' => 'Saitama',
-			'userRegistration.address.items.prefecture.chiba' => 'Chiba',
-			'userRegistration.address.items.prefecture.tokyo' => 'Tokyo',
-			'userRegistration.address.items.prefecture.kanagawa' => 'Kanagawa',
-			'userRegistration.address.items.prefecture.niigata' => 'Niigata',
-			'userRegistration.address.items.prefecture.toyama' => 'Toyama',
-			'userRegistration.address.items.prefecture.ishikawa' => 'Ishikawa',
-			'userRegistration.address.items.prefecture.fukui' => 'Fukui',
-			'userRegistration.address.items.prefecture.yamanashi' => 'Yamanashi',
-			'userRegistration.address.items.prefecture.nagano' => 'Nagano',
-			'userRegistration.address.items.prefecture.gifu' => 'Gifu',
-			'userRegistration.address.items.prefecture.shizuoka' => 'Shizuoka',
-			'userRegistration.address.items.prefecture.aichi' => 'Aichi',
-			'userRegistration.address.items.prefecture.mie' => 'Mie',
-			'userRegistration.address.items.prefecture.shiga' => 'Shiga',
-			'userRegistration.address.items.prefecture.kyoto' => 'Kyoto',
-			'userRegistration.address.items.prefecture.osaka' => 'Osaka',
-			'userRegistration.address.items.prefecture.hyogo' => 'Hyogo',
-			'userRegistration.address.items.prefecture.nara' => 'Nara',
-			'userRegistration.address.items.prefecture.wakayama' => 'Wakayama',
-			'userRegistration.address.items.prefecture.tottori' => 'Tottori',
-			'userRegistration.address.items.prefecture.shimane' => 'Shimane',
-			'userRegistration.address.items.prefecture.okayama' => 'Okayama',
-			'userRegistration.address.items.prefecture.hiroshima' => 'Hiroshima',
-			'userRegistration.address.items.prefecture.yamaguchi' => 'Yamaguchi',
-			'userRegistration.address.items.prefecture.tokushima' => 'Tokushima',
-			'userRegistration.address.items.prefecture.kagawa' => 'Kagawa',
-			'userRegistration.address.items.prefecture.ehime' => 'Ehime',
-			'userRegistration.address.items.prefecture.kochi' => 'Kochi',
-			'userRegistration.address.items.prefecture.fukuoka' => 'Fukuoka',
-			'userRegistration.address.items.prefecture.saga' => 'Saga',
-			'userRegistration.address.items.prefecture.nagasaki' => 'Nagasaki',
-			'userRegistration.address.items.prefecture.kumamoto' => 'Kumamoto',
-			'userRegistration.address.items.prefecture.oita' => 'Oita',
-			'userRegistration.address.items.prefecture.miyazaki' => 'Miyazaki',
-			'userRegistration.address.items.prefecture.kagoshima' => 'Kagoshima',
-			'userRegistration.address.items.prefecture.okinawa' => 'Okinawa',
-			'userRegistration.address.items.others' => 'Others',
 			'userRegistration.name.question' => 'What is your name?',
 			'userRegistration.name.dialog.title' => 'Confirm Name',
 			'userRegistration.name.dialog.contentText1' => 'Entered name: ',
@@ -923,6 +840,62 @@ extension on Translations {
 			'navigationBar.chat.title' => 'Chat',
 			'navigationBar.weatherReport.title' => 'Report',
 			'navigationBar.account.title' => 'Account',
+			'button.next' => 'Next',
+			'button.confirmation' => 'Confirm',
+			'button.cancel' => 'Cancel',
+			'button.select' => 'Select',
+			'button.logout' => 'Logout',
+			'kEnum.gender.man' => 'Male',
+			'kEnum.gender.woman' => 'Female',
+			'kEnum.gender.other' => 'Other',
+			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
+			'kEnum.address.prefecture.aomori' => 'Aomori',
+			'kEnum.address.prefecture.iwate' => 'Iwate',
+			'kEnum.address.prefecture.miyagi' => 'Miyagi',
+			'kEnum.address.prefecture.akita' => 'Akita',
+			'kEnum.address.prefecture.yamagata' => 'Yamagata',
+			'kEnum.address.prefecture.fukushima' => 'Fukushima',
+			'kEnum.address.prefecture.ibaraki' => 'Ibaraki',
+			'kEnum.address.prefecture.tochigi' => 'Tochigi',
+			'kEnum.address.prefecture.gunma' => 'Gunma',
+			'kEnum.address.prefecture.saitama' => 'Saitama',
+			'kEnum.address.prefecture.chiba' => 'Chiba',
+			'kEnum.address.prefecture.tokyo' => 'Tokyo',
+			'kEnum.address.prefecture.kanagawa' => 'Kanagawa',
+			'kEnum.address.prefecture.niigata' => 'Niigata',
+			'kEnum.address.prefecture.toyama' => 'Toyama',
+			'kEnum.address.prefecture.ishikawa' => 'Ishikawa',
+			'kEnum.address.prefecture.fukui' => 'Fukui',
+			'kEnum.address.prefecture.yamanashi' => 'Yamanashi',
+			'kEnum.address.prefecture.nagano' => 'Nagano',
+			'kEnum.address.prefecture.gifu' => 'Gifu',
+			'kEnum.address.prefecture.shizuoka' => 'Shizuoka',
+			'kEnum.address.prefecture.aichi' => 'Aichi',
+			'kEnum.address.prefecture.mie' => 'Mie',
+			'kEnum.address.prefecture.shiga' => 'Shiga',
+			'kEnum.address.prefecture.kyoto' => 'Kyoto',
+			'kEnum.address.prefecture.osaka' => 'Osaka',
+			'kEnum.address.prefecture.hyogo' => 'Hyogo',
+			'kEnum.address.prefecture.nara' => 'Nara',
+			'kEnum.address.prefecture.wakayama' => 'Wakayama',
+			'kEnum.address.prefecture.tottori' => 'Tottori',
+			'kEnum.address.prefecture.shimane' => 'Shimane',
+			'kEnum.address.prefecture.okayama' => 'Okayama',
+			'kEnum.address.prefecture.hiroshima' => 'Hiroshima',
+			'kEnum.address.prefecture.yamaguchi' => 'Yamaguchi',
+			'kEnum.address.prefecture.tokushima' => 'Tokushima',
+			'kEnum.address.prefecture.kagawa' => 'Kagawa',
+			'kEnum.address.prefecture.ehime' => 'Ehime',
+			'kEnum.address.prefecture.kochi' => 'Kochi',
+			'kEnum.address.prefecture.fukuoka' => 'Fukuoka',
+			'kEnum.address.prefecture.saga' => 'Saga',
+			'kEnum.address.prefecture.nagasaki' => 'Nagasaki',
+			'kEnum.address.prefecture.kumamoto' => 'Kumamoto',
+			'kEnum.address.prefecture.oita' => 'Oita',
+			'kEnum.address.prefecture.miyazaki' => 'Miyazaki',
+			'kEnum.address.prefecture.kagoshima' => 'Kagoshima',
+			'kEnum.address.prefecture.okinawa' => 'Okinawa',
+			'kEnum.address.other' => 'Other',
 			_ => null,
 		};
 	}

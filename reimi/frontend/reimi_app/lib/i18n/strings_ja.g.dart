@@ -42,6 +42,8 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsSignInJa signIn = _TranslationsSignInJa._(_root);
 	@override late final _TranslationsUserRegistrationJa userRegistration = _TranslationsUserRegistrationJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
+	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
+	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
 }
 
 // Path: splash
@@ -92,7 +94,6 @@ class _TranslationsUserRegistrationJa implements TranslationsUserRegistrationEn 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsUserRegistrationCommonJa common = _TranslationsUserRegistrationCommonJa._(_root);
 	@override late final _TranslationsUserRegistrationGenderJa gender = _TranslationsUserRegistrationGenderJa._(_root);
 	@override late final _TranslationsUserRegistrationBirthDateJa birthDate = _TranslationsUserRegistrationBirthDateJa._(_root);
 	@override late final _TranslationsUserRegistrationAddressJa address = _TranslationsUserRegistrationAddressJa._(_root);
@@ -113,6 +114,31 @@ class _TranslationsNavigationBarJa implements TranslationsNavigationBarEn {
 	@override late final _TranslationsNavigationBarChatJa chat = _TranslationsNavigationBarChatJa._(_root);
 	@override late final _TranslationsNavigationBarWeatherReportJa weatherReport = _TranslationsNavigationBarWeatherReportJa._(_root);
 	@override late final _TranslationsNavigationBarAccountJa account = _TranslationsNavigationBarAccountJa._(_root);
+}
+
+// Path: button
+class _TranslationsButtonJa implements TranslationsButtonEn {
+	_TranslationsButtonJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get next => '次へ';
+	@override String get confirmation => '確認';
+	@override String get cancel => 'キャンセル';
+	@override String get select => '選択';
+	@override String get logout => 'ログアウト';
+}
+
+// Path: kEnum
+class _TranslationsKEnumJa implements TranslationsKEnumEn {
+	_TranslationsKEnumJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsKEnumGenderJa gender = _TranslationsKEnumGenderJa._(_root);
+	@override late final _TranslationsKEnumAddressJa address = _TranslationsKEnumAddressJa._(_root);
 }
 
 // Path: signUp.button
@@ -173,18 +199,6 @@ class _TranslationsSignInConfirmationJa implements TranslationsSignInConfirmatio
 	@override String get signUp => 'サインアップ';
 }
 
-// Path: userRegistration.common
-class _TranslationsUserRegistrationCommonJa implements TranslationsUserRegistrationCommonEn {
-	_TranslationsUserRegistrationCommonJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override late final _TranslationsUserRegistrationCommonButtonJa button = _TranslationsUserRegistrationCommonButtonJa._(_root);
-	@override late final _TranslationsUserRegistrationCommonDialogJa dialog = _TranslationsUserRegistrationCommonDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationCommonModalBottomSheetJa modalBottomSheet = _TranslationsUserRegistrationCommonModalBottomSheetJa._(_root);
-}
-
 // Path: userRegistration.gender
 class _TranslationsUserRegistrationGenderJa implements TranslationsUserRegistrationGenderEn {
 	_TranslationsUserRegistrationGenderJa._(this._root);
@@ -194,7 +208,6 @@ class _TranslationsUserRegistrationGenderJa implements TranslationsUserRegistrat
 	// Translations
 	@override String get question => '性別を教えてください';
 	@override late final _TranslationsUserRegistrationGenderDialogJa dialog = _TranslationsUserRegistrationGenderDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationGenderItemsJa items = _TranslationsUserRegistrationGenderItemsJa._(_root);
 }
 
 // Path: userRegistration.birthDate
@@ -307,34 +320,27 @@ class _TranslationsNavigationBarAccountJa implements TranslationsNavigationBarAc
 	@override String get title => 'アカウント';
 }
 
-// Path: userRegistration.common.button
-class _TranslationsUserRegistrationCommonButtonJa implements TranslationsUserRegistrationCommonButtonEn {
-	_TranslationsUserRegistrationCommonButtonJa._(this._root);
+// Path: kEnum.gender
+class _TranslationsKEnumGenderJa implements TranslationsKEnumGenderEn {
+	_TranslationsKEnumGenderJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get next => '次へ';
+	@override String get man => '男性';
+	@override String get woman => '女性';
+	@override String get other => 'その他';
 }
 
-// Path: userRegistration.common.dialog
-class _TranslationsUserRegistrationCommonDialogJa implements TranslationsUserRegistrationCommonDialogEn {
-	_TranslationsUserRegistrationCommonDialogJa._(this._root);
+// Path: kEnum.address
+class _TranslationsKEnumAddressJa implements TranslationsKEnumAddressEn {
+	_TranslationsKEnumAddressJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsUserRegistrationCommonDialogButtonJa button = _TranslationsUserRegistrationCommonDialogButtonJa._(_root);
-}
-
-// Path: userRegistration.common.modalBottomSheet
-class _TranslationsUserRegistrationCommonModalBottomSheetJa implements TranslationsUserRegistrationCommonModalBottomSheetEn {
-	_TranslationsUserRegistrationCommonModalBottomSheetJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override late final _TranslationsUserRegistrationCommonModalBottomSheetButtonJa button = _TranslationsUserRegistrationCommonModalBottomSheetButtonJa._(_root);
+	@override late final _TranslationsKEnumAddressPrefectureJa prefecture = _TranslationsKEnumAddressPrefectureJa._(_root);
+	@override String get other => 'その他';
 }
 
 // Path: userRegistration.gender.dialog
@@ -347,18 +353,6 @@ class _TranslationsUserRegistrationGenderDialogJa implements TranslationsUserReg
 	@override String get title => '性別の確認';
 	@override String get contentText1 => '選択した性別：';
 	@override String get contentText2 => 'この内容で次に進みますか？';
-}
-
-// Path: userRegistration.gender.items
-class _TranslationsUserRegistrationGenderItemsJa implements TranslationsUserRegistrationGenderItemsEn {
-	_TranslationsUserRegistrationGenderItemsJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get man => '男性';
-	@override String get woman => '女性';
-	@override String get others => 'その他';
 }
 
 // Path: userRegistration.birthDate.dialog
@@ -405,8 +399,6 @@ class _TranslationsUserRegistrationAddressItemsJa implements TranslationsUserReg
 
 	// Translations
 	@override String get placeholder => '都道府県を選択';
-	@override late final _TranslationsUserRegistrationAddressItemsPrefectureJa prefecture = _TranslationsUserRegistrationAddressItemsPrefectureJa._(_root);
-	@override String get others => 'その他';
 }
 
 // Path: userRegistration.name.dialog
@@ -478,30 +470,9 @@ class _TranslationsUserRegistrationMainPhotoItemsJa implements TranslationsUserR
 	@override String get photoRecommendationHint => '笑顔の顔写真がおすすめ';
 }
 
-// Path: userRegistration.common.dialog.button
-class _TranslationsUserRegistrationCommonDialogButtonJa implements TranslationsUserRegistrationCommonDialogButtonEn {
-	_TranslationsUserRegistrationCommonDialogButtonJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get confirmation => '確認';
-	@override String get cancel => 'キャンセル';
-}
-
-// Path: userRegistration.common.modalBottomSheet.button
-class _TranslationsUserRegistrationCommonModalBottomSheetButtonJa implements TranslationsUserRegistrationCommonModalBottomSheetButtonEn {
-	_TranslationsUserRegistrationCommonModalBottomSheetButtonJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get selected => '選択';
-}
-
-// Path: userRegistration.address.items.prefecture
-class _TranslationsUserRegistrationAddressItemsPrefectureJa implements TranslationsUserRegistrationAddressItemsPrefectureEn {
-	_TranslationsUserRegistrationAddressItemsPrefectureJa._(this._root);
+// Path: kEnum.address.prefecture
+class _TranslationsKEnumAddressPrefectureJa implements TranslationsKEnumAddressPrefectureEn {
+	_TranslationsKEnumAddressPrefectureJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -585,17 +556,10 @@ extension on TranslationsJa {
 			'signIn.button.google' => 'Googleでサインイン',
 			'signIn.confirmation.account' => 'アカウントをお持ちでないですか？',
 			'signIn.confirmation.signUp' => 'サインアップ',
-			'userRegistration.common.button.next' => '次へ',
-			'userRegistration.common.dialog.button.confirmation' => '確認',
-			'userRegistration.common.dialog.button.cancel' => 'キャンセル',
-			'userRegistration.common.modalBottomSheet.button.selected' => '選択',
 			'userRegistration.gender.question' => '性別を教えてください',
 			'userRegistration.gender.dialog.title' => '性別の確認',
 			'userRegistration.gender.dialog.contentText1' => '選択した性別：',
 			'userRegistration.gender.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.gender.items.man' => '男性',
-			'userRegistration.gender.items.woman' => '女性',
-			'userRegistration.gender.items.others' => 'その他',
 			'userRegistration.birthDate.question' => '生年月日を教えてください',
 			'userRegistration.birthDate.dialog.title' => '生年月日の確認',
 			'userRegistration.birthDate.dialog.contentText1' => '選択した生年月日：',
@@ -608,54 +572,6 @@ extension on TranslationsJa {
 			'userRegistration.address.dialog.contentText1' => '選択した居住地：',
 			'userRegistration.address.dialog.contentText2' => 'この内容で次に進みますか？',
 			'userRegistration.address.items.placeholder' => '都道府県を選択',
-			'userRegistration.address.items.prefecture.hokkaido' => '北海道',
-			'userRegistration.address.items.prefecture.aomori' => '青森県',
-			'userRegistration.address.items.prefecture.iwate' => '岩手県',
-			'userRegistration.address.items.prefecture.miyagi' => '宮城県',
-			'userRegistration.address.items.prefecture.akita' => '秋田県',
-			'userRegistration.address.items.prefecture.yamagata' => '山形県',
-			'userRegistration.address.items.prefecture.fukushima' => '福島県',
-			'userRegistration.address.items.prefecture.ibaraki' => '茨城県',
-			'userRegistration.address.items.prefecture.tochigi' => '栃木県',
-			'userRegistration.address.items.prefecture.gunma' => '群馬県',
-			'userRegistration.address.items.prefecture.saitama' => '埼玉県',
-			'userRegistration.address.items.prefecture.chiba' => '千葉県',
-			'userRegistration.address.items.prefecture.tokyo' => '東京都',
-			'userRegistration.address.items.prefecture.kanagawa' => '神奈川県',
-			'userRegistration.address.items.prefecture.niigata' => '新潟県',
-			'userRegistration.address.items.prefecture.toyama' => '富山県',
-			'userRegistration.address.items.prefecture.ishikawa' => '石川県',
-			'userRegistration.address.items.prefecture.fukui' => '福井県',
-			'userRegistration.address.items.prefecture.yamanashi' => '山梨県',
-			'userRegistration.address.items.prefecture.nagano' => '長野県',
-			'userRegistration.address.items.prefecture.gifu' => '岐阜県',
-			'userRegistration.address.items.prefecture.shizuoka' => '静岡県',
-			'userRegistration.address.items.prefecture.aichi' => '愛知県',
-			'userRegistration.address.items.prefecture.mie' => '三重県',
-			'userRegistration.address.items.prefecture.shiga' => '滋賀県',
-			'userRegistration.address.items.prefecture.kyoto' => '京都府',
-			'userRegistration.address.items.prefecture.osaka' => '大阪府',
-			'userRegistration.address.items.prefecture.hyogo' => '兵庫県',
-			'userRegistration.address.items.prefecture.nara' => '奈良県',
-			'userRegistration.address.items.prefecture.wakayama' => '和歌山県',
-			'userRegistration.address.items.prefecture.tottori' => '鳥取県',
-			'userRegistration.address.items.prefecture.shimane' => '島根県',
-			'userRegistration.address.items.prefecture.okayama' => '岡山県',
-			'userRegistration.address.items.prefecture.hiroshima' => '広島県',
-			'userRegistration.address.items.prefecture.yamaguchi' => '山口県',
-			'userRegistration.address.items.prefecture.tokushima' => '徳島県',
-			'userRegistration.address.items.prefecture.kagawa' => '香川県',
-			'userRegistration.address.items.prefecture.ehime' => '愛媛県',
-			'userRegistration.address.items.prefecture.kochi' => '高知県',
-			'userRegistration.address.items.prefecture.fukuoka' => '福岡県',
-			'userRegistration.address.items.prefecture.saga' => '佐賀県',
-			'userRegistration.address.items.prefecture.nagasaki' => '長崎県',
-			'userRegistration.address.items.prefecture.kumamoto' => '熊本県',
-			'userRegistration.address.items.prefecture.oita' => '大分県',
-			'userRegistration.address.items.prefecture.miyazaki' => '宮崎県',
-			'userRegistration.address.items.prefecture.kagoshima' => '鹿児島県',
-			'userRegistration.address.items.prefecture.okinawa' => '沖縄県',
-			'userRegistration.address.items.others' => 'その他',
 			'userRegistration.name.question' => '名前を教えてください',
 			'userRegistration.name.dialog.title' => '名前の確認',
 			'userRegistration.name.dialog.contentText1' => '入力した名前：',
@@ -679,6 +595,62 @@ extension on TranslationsJa {
 			'navigationBar.chat.title' => 'チャット',
 			'navigationBar.weatherReport.title' => 'リポート',
 			'navigationBar.account.title' => 'アカウント',
+			'button.next' => '次へ',
+			'button.confirmation' => '確認',
+			'button.cancel' => 'キャンセル',
+			'button.select' => '選択',
+			'button.logout' => 'ログアウト',
+			'kEnum.gender.man' => '男性',
+			'kEnum.gender.woman' => '女性',
+			'kEnum.gender.other' => 'その他',
+			'kEnum.address.prefecture.hokkaido' => '北海道',
+			'kEnum.address.prefecture.aomori' => '青森県',
+			'kEnum.address.prefecture.iwate' => '岩手県',
+			'kEnum.address.prefecture.miyagi' => '宮城県',
+			'kEnum.address.prefecture.akita' => '秋田県',
+			'kEnum.address.prefecture.yamagata' => '山形県',
+			'kEnum.address.prefecture.fukushima' => '福島県',
+			'kEnum.address.prefecture.ibaraki' => '茨城県',
+			'kEnum.address.prefecture.tochigi' => '栃木県',
+			'kEnum.address.prefecture.gunma' => '群馬県',
+			'kEnum.address.prefecture.saitama' => '埼玉県',
+			'kEnum.address.prefecture.chiba' => '千葉県',
+			'kEnum.address.prefecture.tokyo' => '東京都',
+			'kEnum.address.prefecture.kanagawa' => '神奈川県',
+			'kEnum.address.prefecture.niigata' => '新潟県',
+			'kEnum.address.prefecture.toyama' => '富山県',
+			'kEnum.address.prefecture.ishikawa' => '石川県',
+			'kEnum.address.prefecture.fukui' => '福井県',
+			'kEnum.address.prefecture.yamanashi' => '山梨県',
+			'kEnum.address.prefecture.nagano' => '長野県',
+			'kEnum.address.prefecture.gifu' => '岐阜県',
+			'kEnum.address.prefecture.shizuoka' => '静岡県',
+			'kEnum.address.prefecture.aichi' => '愛知県',
+			'kEnum.address.prefecture.mie' => '三重県',
+			'kEnum.address.prefecture.shiga' => '滋賀県',
+			'kEnum.address.prefecture.kyoto' => '京都府',
+			'kEnum.address.prefecture.osaka' => '大阪府',
+			'kEnum.address.prefecture.hyogo' => '兵庫県',
+			'kEnum.address.prefecture.nara' => '奈良県',
+			'kEnum.address.prefecture.wakayama' => '和歌山県',
+			'kEnum.address.prefecture.tottori' => '鳥取県',
+			'kEnum.address.prefecture.shimane' => '島根県',
+			'kEnum.address.prefecture.okayama' => '岡山県',
+			'kEnum.address.prefecture.hiroshima' => '広島県',
+			'kEnum.address.prefecture.yamaguchi' => '山口県',
+			'kEnum.address.prefecture.tokushima' => '徳島県',
+			'kEnum.address.prefecture.kagawa' => '香川県',
+			'kEnum.address.prefecture.ehime' => '愛媛県',
+			'kEnum.address.prefecture.kochi' => '高知県',
+			'kEnum.address.prefecture.fukuoka' => '福岡県',
+			'kEnum.address.prefecture.saga' => '佐賀県',
+			'kEnum.address.prefecture.nagasaki' => '長崎県',
+			'kEnum.address.prefecture.kumamoto' => '熊本県',
+			'kEnum.address.prefecture.oita' => '大分県',
+			'kEnum.address.prefecture.miyazaki' => '宮崎県',
+			'kEnum.address.prefecture.kagoshima' => '鹿児島県',
+			'kEnum.address.prefecture.okinawa' => '沖縄県',
+			'kEnum.address.other' => 'その他',
 			_ => null,
 		};
 	}

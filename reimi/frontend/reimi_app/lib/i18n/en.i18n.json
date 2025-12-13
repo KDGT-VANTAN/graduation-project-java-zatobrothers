@@ -38,33 +38,12 @@
     }
   },
   "userRegistration": {
-    "common": {
-      "button": {
-        "next": "Next"
-      },
-      "dialog": {
-        "button": {
-          "confirmation": "Confirm",
-          "cancel": "Cancel"
-        }
-      },
-      "modalBottomSheet": {
-        "button": {
-          "selected": "Select"
-        }
-      }
-    },
     "gender": {
       "question": "What is your gender?",
       "dialog": {
         "title": "Confirm Gender",
         "contentText1": "Selected gender: ",
         "contentText2": "Proceed with this selection?"
-      },
-      "items": {
-        "man": "Male",
-        "woman": "Female",
-        "others": "Other"
       }
     },
     "birthDate": {
@@ -88,57 +67,7 @@
         "contentText2": "Proceed with this selection?"
       },
       "items": {
-        "placeholder": "Select prefecture",
-        "prefecture": {
-          "hokkaido": "Hokkaido",
-          "aomori": "Aomori",
-          "iwate": "Iwate",
-          "miyagi": "Miyagi",
-          "akita": "Akita",
-          "yamagata": "Yamagata",
-          "fukushima": "Fukushima",
-          "ibaraki": "Ibaraki",
-          "tochigi": "Tochigi",
-          "gunma": "Gunma",
-          "saitama": "Saitama",
-          "chiba": "Chiba",
-          "tokyo": "Tokyo",
-          "kanagawa": "Kanagawa",
-          "niigata": "Niigata",
-          "toyama": "Toyama",
-          "ishikawa": "Ishikawa",
-          "fukui": "Fukui",
-          "yamanashi": "Yamanashi",
-          "nagano": "Nagano",
-          "gifu": "Gifu",
-          "shizuoka": "Shizuoka",
-          "aichi": "Aichi",
-          "mie": "Mie",
-          "shiga": "Shiga",
-          "kyoto": "Kyoto",
-          "osaka": "Osaka",
-          "hyogo": "Hyogo",
-          "nara": "Nara",
-          "wakayama": "Wakayama",
-          "tottori": "Tottori",
-          "shimane": "Shimane",
-          "okayama": "Okayama",
-          "hiroshima": "Hiroshima",
-          "yamaguchi": "Yamaguchi",
-          "tokushima": "Tokushima",
-          "kagawa": "Kagawa",
-          "ehime": "Ehime",
-          "kochi": "Kochi",
-          "fukuoka": "Fukuoka",
-          "saga": "Saga",
-          "nagasaki": "Nagasaki",
-          "kumamoto": "Kumamoto",
-          "oita": "Oita",
-          "miyazaki": "Miyazaki",
-          "kagoshima": "Kagoshima",
-          "okinawa": "Okinawa"
-        },
-        "others": "Others"
+        "placeholder": "Select prefecture"
       }
     },
     "name": {
@@ -193,6 +122,72 @@
     },
     "account": {
       "title": "Account"
+    }
+  },
+  "button": {
+    "next": "Next",
+    "confirmation": "Confirm",
+    "cancel": "Cancel",
+    "select": "Select",
+    "logout": "Logout"
+  },
+  "enum": {
+    "gender": {
+        "man": "Male",
+        "woman": "Female",
+        "other": "Other"
+    },
+    "address": {
+      "prefecture": {
+        "hokkaido": "Hokkaido",
+        "aomori": "Aomori",
+        "iwate": "Iwate",
+        "miyagi": "Miyagi",
+        "akita": "Akita",
+        "yamagata": "Yamagata",
+        "fukushima": "Fukushima",
+        "ibaraki": "Ibaraki",
+        "tochigi": "Tochigi",
+        "gunma": "Gunma",
+        "saitama": "Saitama",
+        "chiba": "Chiba",
+        "tokyo": "Tokyo",
+        "kanagawa": "Kanagawa",
+        "niigata": "Niigata",
+        "toyama": "Toyama",
+        "ishikawa": "Ishikawa",
+        "fukui": "Fukui",
+        "yamanashi": "Yamanashi",
+        "nagano": "Nagano",
+        "gifu": "Gifu",
+        "shizuoka": "Shizuoka",
+        "aichi": "Aichi",
+        "mie": "Mie",
+        "shiga": "Shiga",
+        "kyoto": "Kyoto",
+        "osaka": "Osaka",
+        "hyogo": "Hyogo",
+        "nara": "Nara",
+        "wakayama": "Wakayama",
+        "tottori": "Tottori",
+        "shimane": "Shimane",
+        "okayama": "Okayama",
+        "hiroshima": "Hiroshima",
+        "yamaguchi": "Yamaguchi",
+        "tokushima": "Tokushima",
+        "kagawa": "Kagawa",
+        "ehime": "Ehime",
+        "kochi": "Kochi",
+        "fukuoka": "Fukuoka",
+        "saga": "Saga",
+        "nagasaki": "Nagasaki",
+        "kumamoto": "Kumamoto",
+        "oita": "Oita",
+        "miyazaki": "Miyazaki",
+        "kagoshima": "Kagoshima",
+        "okinawa": "Okinawa"
+      },
+      "other": "Other"
     }
   }
 }
