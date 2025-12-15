@@ -57,6 +57,18 @@
 	<string>写真ライブラリへのアクセスを許可してください。</string>
 	<key>NSCameraUsageDescription</key>
 	<string>カメラへのアクセスを許可してください。</string>
+	<!-- google認証 -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.590316043514-rds5crjgve7b3ku845ir0me8rvopblag</string>
+			</array>
+		</dict>
+	</array>
 	<!-- 追加した項目 -->
 </dict>
 </plist>

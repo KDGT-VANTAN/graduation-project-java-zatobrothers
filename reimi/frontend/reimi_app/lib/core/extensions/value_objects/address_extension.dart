@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+import 'package:reimi_app/domain/value_objects/address.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
+
+extension AddressExtension on Address {
+  String displayName(BuildContext context) {
+    final t = Translations.of(context).kEnum.address;
+    switch (this) {
+      case Address.hokkaido:
+        return t.prefecture.hokkaido;
+      case Address.aomori:
+        return t.prefecture.aomori;
+      case Address.iwate:
+        return t.prefecture.iwate;
+      case Address.miyagi:
+        return t.prefecture.miyagi;
+      case Address.akita:
+        return t.prefecture.akita;
+      case Address.yamagata:
+        return t.prefecture.yamagata;
+      case Address.fukushima:
+        return t.prefecture.fukushima;
+      case Address.ibaraki:
+        return t.prefecture.ibaraki;
+      case Address.tochigi:
+        return t.prefecture.tochigi;
+      case Address.gunma:
+        return t.prefecture.gunma;
+      case Address.saitama:
+        return t.prefecture.saitama;
+      case Address.chiba:
+        return t.prefecture.chiba;
+      case Address.tokyo:
+        return t.prefecture.tokyo;
+      case Address.kanagawa:
+        return t.prefecture.kanagawa;
+      case Address.niigata:
+        return t.prefecture.niigata;
+      case Address.toyama:
+        return t.prefecture.toyama;
+      case Address.ishikawa:
+        return t.prefecture.ishikawa;
+      case Address.fukui:
+        return t.prefecture.fukui;
+      case Address.yamanashi:
+        return t.prefecture.yamanashi;
+      case Address.nagano:
+        return t.prefecture.nagano;
+      case Address.gifu:
+        return t.prefecture.gifu;
+      case Address.shizuoka:
+        return t.prefecture.shizuoka;
+      case Address.aichi:
+        return t.prefecture.aichi;
+      case Address.mie:
+        return t.prefecture.mie;
+      case Address.shiga:
+        return t.prefecture.shiga;
+      case Address.kyoto:
+        return t.prefecture.kyoto;
+      case Address.osaka:
+        return t.prefecture.osaka;
+      case Address.hyogo:
+        return t.prefecture.hyogo;
+      case Address.nara:
+        return t.prefecture.nara;
+      case Address.wakayama:
+        return t.prefecture.wakayama;
+      case Address.tottori:
+        return t.prefecture.tottori;
+      case Address.shimane:
+        return t.prefecture.shimane;
+      case Address.okayama:
+        return t.prefecture.okayama;
+      case Address.hiroshima:
+        return t.prefecture.hiroshima;
+      case Address.yamaguchi:
+        return t.prefecture.yamaguchi;
+      case Address.tokushima:
+        return t.prefecture.tokushima;
+      case Address.kagawa:
+        return t.prefecture.kagawa;
+      case Address.ehime:
+        return t.prefecture.ehime;
+      case Address.kochi:
+        return t.prefecture.kochi;
+      case Address.fukuoka:
+        return t.prefecture.fukuoka;
+      case Address.saga:
+        return t.prefecture.saga;
+      case Address.nagasaki:
+        return t.prefecture.nagasaki;
+      case Address.kumamoto:
+        return t.prefecture.kumamoto;
+      case Address.oita:
+        return t.prefecture.oita;
+      case Address.miyazaki:
+        return t.prefecture.miyazaki;
+      case Address.kagoshima:
+        return t.prefecture.kagoshima;
+      case Address.okinawa:
+        return t.prefecture.okinawa;
+      case Address.other:
+        return t.other;
+    }
+  }
+}
