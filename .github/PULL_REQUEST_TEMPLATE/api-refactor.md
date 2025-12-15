@@ -15,6 +15,10 @@ close #
 
 - 
 
+### 【やったこと・開発メモ】
+
+- 
+
 ### 【変更箇所（Before / After）】
 
 | 項目 | Before | After |
