@@ -14,7 +14,7 @@ class UserNamePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistration.name;
+    final t = Translations.of(context).userRegistrationPage.name;
     final theme = Theme.of(context);
     final name = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.name),

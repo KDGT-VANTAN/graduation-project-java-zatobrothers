@@ -24,7 +24,7 @@ class UserGenderPage extends ConsumerWidget {
       userRegistrationNotifierProvider.select((state) => state.data!.gender),
     );
     return UserRegistrationPage(
-      question: t.userRegistration.gender.question,
+      question: t.userRegistrationPage.gender.question,
       theme: theme,
       mainContent: [
         GenderButton(
@@ -54,9 +54,9 @@ class UserGenderPage extends ConsumerWidget {
       answered: gender != null,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.userRegistration.gender.dialog.title,
-          contentText1: t.userRegistration.gender.dialog.contentText1,
-          contentText2: t.userRegistration.gender.dialog.contentText2,
+          title: t.userRegistrationPage.gender.dialog.title,
+          contentText1: t.userRegistrationPage.gender.dialog.contentText1,
+          contentText2: t.userRegistrationPage.gender.dialog.contentText2,
           context: context,
           value: gender!.displayName(context),
           onConfirm: () {

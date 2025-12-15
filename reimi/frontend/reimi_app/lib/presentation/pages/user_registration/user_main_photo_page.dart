@@ -18,7 +18,7 @@ class UserMainPhotoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistration.mainPhoto;
+    final t = Translations.of(context).userRegistrationPage.mainPhoto;
     final theme = Theme.of(context);
     final mainPhotoUrl = ref.watch(
       userRegistrationNotifierProvider

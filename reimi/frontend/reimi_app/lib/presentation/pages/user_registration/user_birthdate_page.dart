@@ -17,7 +17,7 @@ class UserBirthdatePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistration.birthDate;
+    final t = Translations.of(context).userRegistrationPage.birthDate;
     final theme = Theme.of(context);
     final birthDate = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.birthDate),

@@ -15,7 +15,7 @@ class UserIntroductionPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistration.introduction;
+    final t = Translations.of(context).userRegistrationPage.introduction;
     final theme = Theme.of(context);
     final introduction = ref.watch(
       userRegistrationNotifierProvider

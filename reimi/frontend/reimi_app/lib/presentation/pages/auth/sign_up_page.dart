@@ -20,7 +20,7 @@ class SignUpPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).signUp;
+    final t = Translations.of(context).signUpPage;
     final theme = Theme.of(context);
     final notifier = ref.read(authNotifierProvider.notifier);
 

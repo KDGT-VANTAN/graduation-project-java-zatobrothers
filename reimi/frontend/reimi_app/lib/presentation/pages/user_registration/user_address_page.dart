@@ -17,7 +17,7 @@ class UserAddressPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistration.address;
+    final t = Translations.of(context).userRegistrationPage.address;
     final theme = Theme.of(context);
     final address = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.address),

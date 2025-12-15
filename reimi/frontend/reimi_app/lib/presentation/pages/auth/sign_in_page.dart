@@ -18,7 +18,7 @@ class SignInPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).signIn;
+    final t = Translations.of(context).signInPage;
     final theme = Theme.of(context);
     final notifier = ref.read(authNotifierProvider.notifier);
     return Scaffold(
