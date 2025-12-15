@@ -4,7 +4,9 @@ API名：
 
 種別：API開発
 
-関連Issue：#
+関連Issue：
+
+- #X
 
 close #
 
