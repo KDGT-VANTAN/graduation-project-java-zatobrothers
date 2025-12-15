@@ -4,7 +4,9 @@
 
 種別：API修正
 
-関連Issue：#
+関連Issue：
+
+- #X
 
 close #
 
