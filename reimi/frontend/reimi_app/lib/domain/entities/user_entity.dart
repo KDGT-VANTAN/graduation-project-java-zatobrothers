@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reimi_app/core/utils/iso_date_time_converter.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
@@ -27,5 +28,22 @@ abstract class UserEntity with _$UserEntity {
     @IsoDateTimeOrNullConverter() DateTime? withdrawalAt,
   }) = _UserEntity;
 
-  factory UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
+  factory UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserEntityFromJson(json);
+
+  // TODO: 仮実装
+  factory UserEntity.fromFirebase(User firebaseUser) => UserEntity(
+        id: '',
+        firebaseUid: firebaseUser.uid,
+        name: '',
+        gender: Gender.other,
+        birthDate: DateTime.now(),
+        address: Address.other,
+        mainPhotoUrl: '',
+        email: firebaseUser.email!,
+        signupDate: DateTime.now(),
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        status: UserStatus.active,
+      );
 }
