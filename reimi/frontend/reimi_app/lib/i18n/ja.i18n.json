@@ -1,10 +1,10 @@
 {
-  "splash": {
+  "splashPage": {
     "appName": "Reimi",
     "title": "天気で繋がる、出会いのアプリ",
     "loading": "読み込み中..."
   },
-  "signUp": {
+  "signUpPage": {
     "appName": "Reimi",
     "title": "天気で繋がる、出会いのアプリ",
     "subtitle": "同じ天気を楽しむ人と、特別な出会いを",
@@ -24,7 +24,7 @@
       "signIn": "サインイン"
     }
   },
-  "signIn": {
+  "signInPage": {
     "appName": "Reimi",
     "title": "おかえりなさい",
     "subtitle": "あなたの天気を共有しましょう",
@@ -37,7 +37,11 @@
       "signUp": "サインアップ"
     }
   },
-  "userRegistration": {
+  "errorPage": {
+    "defaultMessage": "エラーが発生しました",
+    "subMessage": "通信環境をご確認のうえ、\nもう一度お試しください。"
+  },
+  "userRegistrationPage": {
     "gender": {
       "question": "性別を教えてください",
       "dialog": {
@@ -129,7 +133,9 @@
     "confirmation": "確認",
     "cancel": "キャンセル",
     "select": "選択",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "retry": "再読み込み",
+    "tryRater": "あとで試す"
   },
   "enum": {
     "gender": {

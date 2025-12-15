@@ -37,18 +37,19 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsJa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsJa(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsSplashJa splash = _TranslationsSplashJa._(_root);
-	@override late final _TranslationsSignUpJa signUp = _TranslationsSignUpJa._(_root);
-	@override late final _TranslationsSignInJa signIn = _TranslationsSignInJa._(_root);
-	@override late final _TranslationsUserRegistrationJa userRegistration = _TranslationsUserRegistrationJa._(_root);
+	@override late final _TranslationsSplashPageJa splashPage = _TranslationsSplashPageJa._(_root);
+	@override late final _TranslationsSignUpPageJa signUpPage = _TranslationsSignUpPageJa._(_root);
+	@override late final _TranslationsSignInPageJa signInPage = _TranslationsSignInPageJa._(_root);
+	@override late final _TranslationsErrorPageJa errorPage = _TranslationsErrorPageJa._(_root);
+	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
 	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
 	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
 }
 
-// Path: splash
-class _TranslationsSplashJa implements TranslationsSplashEn {
-	_TranslationsSplashJa._(this._root);
+// Path: splashPage
+class _TranslationsSplashPageJa implements TranslationsSplashPageEn {
+	_TranslationsSplashPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -58,9 +59,9 @@ class _TranslationsSplashJa implements TranslationsSplashEn {
 	@override String get loading => '読み込み中...';
 }
 
-// Path: signUp
-class _TranslationsSignUpJa implements TranslationsSignUpEn {
-	_TranslationsSignUpJa._(this._root);
+// Path: signUpPage
+class _TranslationsSignUpPageJa implements TranslationsSignUpPageEn {
+	_TranslationsSignUpPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -68,14 +69,14 @@ class _TranslationsSignUpJa implements TranslationsSignUpEn {
 	@override String get appName => 'Reimi';
 	@override String get title => '天気で繋がる、出会いのアプリ';
 	@override String get subtitle => '同じ天気を楽しむ人と、特別な出会いを';
-	@override late final _TranslationsSignUpButtonJa button = _TranslationsSignUpButtonJa._(_root);
-	@override late final _TranslationsSignUpConsentJa consent = _TranslationsSignUpConsentJa._(_root);
-	@override late final _TranslationsSignUpConfirmationJa confirmation = _TranslationsSignUpConfirmationJa._(_root);
+	@override late final _TranslationsSignUpPageButtonJa button = _TranslationsSignUpPageButtonJa._(_root);
+	@override late final _TranslationsSignUpPageConsentJa consent = _TranslationsSignUpPageConsentJa._(_root);
+	@override late final _TranslationsSignUpPageConfirmationJa confirmation = _TranslationsSignUpPageConfirmationJa._(_root);
 }
 
-// Path: signIn
-class _TranslationsSignInJa implements TranslationsSignInEn {
-	_TranslationsSignInJa._(this._root);
+// Path: signInPage
+class _TranslationsSignInPageJa implements TranslationsSignInPageEn {
+	_TranslationsSignInPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -83,23 +84,34 @@ class _TranslationsSignInJa implements TranslationsSignInEn {
 	@override String get appName => 'Reimi';
 	@override String get title => 'おかえりなさい';
 	@override String get subtitle => 'あなたの天気を共有しましょう';
-	@override late final _TranslationsSignInButtonJa button = _TranslationsSignInButtonJa._(_root);
-	@override late final _TranslationsSignInConfirmationJa confirmation = _TranslationsSignInConfirmationJa._(_root);
+	@override late final _TranslationsSignInPageButtonJa button = _TranslationsSignInPageButtonJa._(_root);
+	@override late final _TranslationsSignInPageConfirmationJa confirmation = _TranslationsSignInPageConfirmationJa._(_root);
 }
 
-// Path: userRegistration
-class _TranslationsUserRegistrationJa implements TranslationsUserRegistrationEn {
-	_TranslationsUserRegistrationJa._(this._root);
+// Path: errorPage
+class _TranslationsErrorPageJa implements TranslationsErrorPageEn {
+	_TranslationsErrorPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsUserRegistrationGenderJa gender = _TranslationsUserRegistrationGenderJa._(_root);
-	@override late final _TranslationsUserRegistrationBirthDateJa birthDate = _TranslationsUserRegistrationBirthDateJa._(_root);
-	@override late final _TranslationsUserRegistrationAddressJa address = _TranslationsUserRegistrationAddressJa._(_root);
-	@override late final _TranslationsUserRegistrationNameJa name = _TranslationsUserRegistrationNameJa._(_root);
-	@override late final _TranslationsUserRegistrationIntroductionJa introduction = _TranslationsUserRegistrationIntroductionJa._(_root);
-	@override late final _TranslationsUserRegistrationMainPhotoJa mainPhoto = _TranslationsUserRegistrationMainPhotoJa._(_root);
+	@override String get defaultMessage => 'エラーが発生しました';
+	@override String get subMessage => '通信環境をご確認のうえ、\nもう一度お試しください。';
+}
+
+// Path: userRegistrationPage
+class _TranslationsUserRegistrationPageJa implements TranslationsUserRegistrationPageEn {
+	_TranslationsUserRegistrationPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsUserRegistrationPageGenderJa gender = _TranslationsUserRegistrationPageGenderJa._(_root);
+	@override late final _TranslationsUserRegistrationPageBirthDateJa birthDate = _TranslationsUserRegistrationPageBirthDateJa._(_root);
+	@override late final _TranslationsUserRegistrationPageAddressJa address = _TranslationsUserRegistrationPageAddressJa._(_root);
+	@override late final _TranslationsUserRegistrationPageNameJa name = _TranslationsUserRegistrationPageNameJa._(_root);
+	@override late final _TranslationsUserRegistrationPageIntroductionJa introduction = _TranslationsUserRegistrationPageIntroductionJa._(_root);
+	@override late final _TranslationsUserRegistrationPageMainPhotoJa mainPhoto = _TranslationsUserRegistrationPageMainPhotoJa._(_root);
 }
 
 // Path: navigationBar
@@ -128,6 +140,8 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get cancel => 'キャンセル';
 	@override String get select => '選択';
 	@override String get logout => 'ログアウト';
+	@override String get retry => '再読み込み';
+	@override String get tryRater => 'あとで試す';
 }
 
 // Path: kEnum
@@ -141,9 +155,9 @@ class _TranslationsKEnumJa implements TranslationsKEnumEn {
 	@override late final _TranslationsKEnumAddressJa address = _TranslationsKEnumAddressJa._(_root);
 }
 
-// Path: signUp.button
-class _TranslationsSignUpButtonJa implements TranslationsSignUpButtonEn {
-	_TranslationsSignUpButtonJa._(this._root);
+// Path: signUpPage.button
+class _TranslationsSignUpPageButtonJa implements TranslationsSignUpPageButtonEn {
+	_TranslationsSignUpPageButtonJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -152,9 +166,9 @@ class _TranslationsSignUpButtonJa implements TranslationsSignUpButtonEn {
 	@override String get google => 'Googleでサインアップ';
 }
 
-// Path: signUp.consent
-class _TranslationsSignUpConsentJa implements TranslationsSignUpConsentEn {
-	_TranslationsSignUpConsentJa._(this._root);
+// Path: signUpPage.consent
+class _TranslationsSignUpPageConsentJa implements TranslationsSignUpPageConsentEn {
+	_TranslationsSignUpPageConsentJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -166,9 +180,9 @@ class _TranslationsSignUpConsentJa implements TranslationsSignUpConsentEn {
 	@override String get consentText3 => 'に同意したことになります';
 }
 
-// Path: signUp.confirmation
-class _TranslationsSignUpConfirmationJa implements TranslationsSignUpConfirmationEn {
-	_TranslationsSignUpConfirmationJa._(this._root);
+// Path: signUpPage.confirmation
+class _TranslationsSignUpPageConfirmationJa implements TranslationsSignUpPageConfirmationEn {
+	_TranslationsSignUpPageConfirmationJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -177,9 +191,9 @@ class _TranslationsSignUpConfirmationJa implements TranslationsSignUpConfirmatio
 	@override String get signIn => 'サインイン';
 }
 
-// Path: signIn.button
-class _TranslationsSignInButtonJa implements TranslationsSignInButtonEn {
-	_TranslationsSignInButtonJa._(this._root);
+// Path: signInPage.button
+class _TranslationsSignInPageButtonJa implements TranslationsSignInPageButtonEn {
+	_TranslationsSignInPageButtonJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -188,9 +202,9 @@ class _TranslationsSignInButtonJa implements TranslationsSignInButtonEn {
 	@override String get google => 'Googleでサインイン';
 }
 
-// Path: signIn.confirmation
-class _TranslationsSignInConfirmationJa implements TranslationsSignInConfirmationEn {
-	_TranslationsSignInConfirmationJa._(this._root);
+// Path: signInPage.confirmation
+class _TranslationsSignInPageConfirmationJa implements TranslationsSignInPageConfirmationEn {
+	_TranslationsSignInPageConfirmationJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -199,75 +213,75 @@ class _TranslationsSignInConfirmationJa implements TranslationsSignInConfirmatio
 	@override String get signUp => 'サインアップ';
 }
 
-// Path: userRegistration.gender
-class _TranslationsUserRegistrationGenderJa implements TranslationsUserRegistrationGenderEn {
-	_TranslationsUserRegistrationGenderJa._(this._root);
+// Path: userRegistrationPage.gender
+class _TranslationsUserRegistrationPageGenderJa implements TranslationsUserRegistrationPageGenderEn {
+	_TranslationsUserRegistrationPageGenderJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => '性別を教えてください';
-	@override late final _TranslationsUserRegistrationGenderDialogJa dialog = _TranslationsUserRegistrationGenderDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageGenderDialogJa dialog = _TranslationsUserRegistrationPageGenderDialogJa._(_root);
 }
 
-// Path: userRegistration.birthDate
-class _TranslationsUserRegistrationBirthDateJa implements TranslationsUserRegistrationBirthDateEn {
-	_TranslationsUserRegistrationBirthDateJa._(this._root);
+// Path: userRegistrationPage.birthDate
+class _TranslationsUserRegistrationPageBirthDateJa implements TranslationsUserRegistrationPageBirthDateEn {
+	_TranslationsUserRegistrationPageBirthDateJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => '生年月日を教えてください';
-	@override late final _TranslationsUserRegistrationBirthDateDialogJa dialog = _TranslationsUserRegistrationBirthDateDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationBirthDateItemsJa items = _TranslationsUserRegistrationBirthDateItemsJa._(_root);
+	@override late final _TranslationsUserRegistrationPageBirthDateDialogJa dialog = _TranslationsUserRegistrationPageBirthDateDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageBirthDateItemsJa items = _TranslationsUserRegistrationPageBirthDateItemsJa._(_root);
 }
 
-// Path: userRegistration.address
-class _TranslationsUserRegistrationAddressJa implements TranslationsUserRegistrationAddressEn {
-	_TranslationsUserRegistrationAddressJa._(this._root);
+// Path: userRegistrationPage.address
+class _TranslationsUserRegistrationPageAddressJa implements TranslationsUserRegistrationPageAddressEn {
+	_TranslationsUserRegistrationPageAddressJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => '居住地を教えてください';
-	@override late final _TranslationsUserRegistrationAddressDialogJa dialog = _TranslationsUserRegistrationAddressDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationAddressItemsJa items = _TranslationsUserRegistrationAddressItemsJa._(_root);
+	@override late final _TranslationsUserRegistrationPageAddressDialogJa dialog = _TranslationsUserRegistrationPageAddressDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageAddressItemsJa items = _TranslationsUserRegistrationPageAddressItemsJa._(_root);
 }
 
-// Path: userRegistration.name
-class _TranslationsUserRegistrationNameJa implements TranslationsUserRegistrationNameEn {
-	_TranslationsUserRegistrationNameJa._(this._root);
+// Path: userRegistrationPage.name
+class _TranslationsUserRegistrationPageNameJa implements TranslationsUserRegistrationPageNameEn {
+	_TranslationsUserRegistrationPageNameJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => '名前を教えてください';
-	@override late final _TranslationsUserRegistrationNameDialogJa dialog = _TranslationsUserRegistrationNameDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationNameItemsJa items = _TranslationsUserRegistrationNameItemsJa._(_root);
+	@override late final _TranslationsUserRegistrationPageNameDialogJa dialog = _TranslationsUserRegistrationPageNameDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageNameItemsJa items = _TranslationsUserRegistrationPageNameItemsJa._(_root);
 }
 
-// Path: userRegistration.introduction
-class _TranslationsUserRegistrationIntroductionJa implements TranslationsUserRegistrationIntroductionEn {
-	_TranslationsUserRegistrationIntroductionJa._(this._root);
+// Path: userRegistrationPage.introduction
+class _TranslationsUserRegistrationPageIntroductionJa implements TranslationsUserRegistrationPageIntroductionEn {
+	_TranslationsUserRegistrationPageIntroductionJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => '自己紹介を教えてください';
-	@override late final _TranslationsUserRegistrationIntroductionDialogJa dialog = _TranslationsUserRegistrationIntroductionDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationIntroductionItemsJa items = _TranslationsUserRegistrationIntroductionItemsJa._(_root);
+	@override late final _TranslationsUserRegistrationPageIntroductionDialogJa dialog = _TranslationsUserRegistrationPageIntroductionDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageIntroductionItemsJa items = _TranslationsUserRegistrationPageIntroductionItemsJa._(_root);
 }
 
-// Path: userRegistration.mainPhoto
-class _TranslationsUserRegistrationMainPhotoJa implements TranslationsUserRegistrationMainPhotoEn {
-	_TranslationsUserRegistrationMainPhotoJa._(this._root);
+// Path: userRegistrationPage.mainPhoto
+class _TranslationsUserRegistrationPageMainPhotoJa implements TranslationsUserRegistrationPageMainPhotoEn {
+	_TranslationsUserRegistrationPageMainPhotoJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get question => 'メイン写真を選んでください';
-	@override late final _TranslationsUserRegistrationMainPhotoDialogJa dialog = _TranslationsUserRegistrationMainPhotoDialogJa._(_root);
-	@override late final _TranslationsUserRegistrationMainPhotoItemsJa items = _TranslationsUserRegistrationMainPhotoItemsJa._(_root);
+	@override late final _TranslationsUserRegistrationPageMainPhotoDialogJa dialog = _TranslationsUserRegistrationPageMainPhotoDialogJa._(_root);
+	@override late final _TranslationsUserRegistrationPageMainPhotoItemsJa items = _TranslationsUserRegistrationPageMainPhotoItemsJa._(_root);
 }
 
 // Path: navigationBar.home
@@ -343,9 +357,9 @@ class _TranslationsKEnumAddressJa implements TranslationsKEnumAddressEn {
 	@override String get other => 'その他';
 }
 
-// Path: userRegistration.gender.dialog
-class _TranslationsUserRegistrationGenderDialogJa implements TranslationsUserRegistrationGenderDialogEn {
-	_TranslationsUserRegistrationGenderDialogJa._(this._root);
+// Path: userRegistrationPage.gender.dialog
+class _TranslationsUserRegistrationPageGenderDialogJa implements TranslationsUserRegistrationPageGenderDialogEn {
+	_TranslationsUserRegistrationPageGenderDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -355,9 +369,9 @@ class _TranslationsUserRegistrationGenderDialogJa implements TranslationsUserReg
 	@override String get contentText2 => 'この内容で次に進みますか？';
 }
 
-// Path: userRegistration.birthDate.dialog
-class _TranslationsUserRegistrationBirthDateDialogJa implements TranslationsUserRegistrationBirthDateDialogEn {
-	_TranslationsUserRegistrationBirthDateDialogJa._(this._root);
+// Path: userRegistrationPage.birthDate.dialog
+class _TranslationsUserRegistrationPageBirthDateDialogJa implements TranslationsUserRegistrationPageBirthDateDialogEn {
+	_TranslationsUserRegistrationPageBirthDateDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -367,9 +381,9 @@ class _TranslationsUserRegistrationBirthDateDialogJa implements TranslationsUser
 	@override String get contentText2 => 'この内容で次に進みますか？';
 }
 
-// Path: userRegistration.birthDate.items
-class _TranslationsUserRegistrationBirthDateItemsJa implements TranslationsUserRegistrationBirthDateItemsEn {
-	_TranslationsUserRegistrationBirthDateItemsJa._(this._root);
+// Path: userRegistrationPage.birthDate.items
+class _TranslationsUserRegistrationPageBirthDateItemsJa implements TranslationsUserRegistrationPageBirthDateItemsEn {
+	_TranslationsUserRegistrationPageBirthDateItemsJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -379,9 +393,9 @@ class _TranslationsUserRegistrationBirthDateItemsJa implements TranslationsUserR
 	@override String get day => '日';
 }
 
-// Path: userRegistration.address.dialog
-class _TranslationsUserRegistrationAddressDialogJa implements TranslationsUserRegistrationAddressDialogEn {
-	_TranslationsUserRegistrationAddressDialogJa._(this._root);
+// Path: userRegistrationPage.address.dialog
+class _TranslationsUserRegistrationPageAddressDialogJa implements TranslationsUserRegistrationPageAddressDialogEn {
+	_TranslationsUserRegistrationPageAddressDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -391,9 +405,9 @@ class _TranslationsUserRegistrationAddressDialogJa implements TranslationsUserRe
 	@override String get contentText2 => 'この内容で次に進みますか？';
 }
 
-// Path: userRegistration.address.items
-class _TranslationsUserRegistrationAddressItemsJa implements TranslationsUserRegistrationAddressItemsEn {
-	_TranslationsUserRegistrationAddressItemsJa._(this._root);
+// Path: userRegistrationPage.address.items
+class _TranslationsUserRegistrationPageAddressItemsJa implements TranslationsUserRegistrationPageAddressItemsEn {
+	_TranslationsUserRegistrationPageAddressItemsJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -401,9 +415,9 @@ class _TranslationsUserRegistrationAddressItemsJa implements TranslationsUserReg
 	@override String get placeholder => '都道府県を選択';
 }
 
-// Path: userRegistration.name.dialog
-class _TranslationsUserRegistrationNameDialogJa implements TranslationsUserRegistrationNameDialogEn {
-	_TranslationsUserRegistrationNameDialogJa._(this._root);
+// Path: userRegistrationPage.name.dialog
+class _TranslationsUserRegistrationPageNameDialogJa implements TranslationsUserRegistrationPageNameDialogEn {
+	_TranslationsUserRegistrationPageNameDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -413,9 +427,9 @@ class _TranslationsUserRegistrationNameDialogJa implements TranslationsUserRegis
 	@override String get contentText2 => 'この内容で次に進みますか？';
 }
 
-// Path: userRegistration.name.items
-class _TranslationsUserRegistrationNameItemsJa implements TranslationsUserRegistrationNameItemsEn {
-	_TranslationsUserRegistrationNameItemsJa._(this._root);
+// Path: userRegistrationPage.name.items
+class _TranslationsUserRegistrationPageNameItemsJa implements TranslationsUserRegistrationPageNameItemsEn {
+	_TranslationsUserRegistrationPageNameItemsJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -423,9 +437,9 @@ class _TranslationsUserRegistrationNameItemsJa implements TranslationsUserRegist
 	@override String get placeholder => '名前を入力';
 }
 
-// Path: userRegistration.introduction.dialog
-class _TranslationsUserRegistrationIntroductionDialogJa implements TranslationsUserRegistrationIntroductionDialogEn {
-	_TranslationsUserRegistrationIntroductionDialogJa._(this._root);
+// Path: userRegistrationPage.introduction.dialog
+class _TranslationsUserRegistrationPageIntroductionDialogJa implements TranslationsUserRegistrationPageIntroductionDialogEn {
+	_TranslationsUserRegistrationPageIntroductionDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -435,9 +449,9 @@ class _TranslationsUserRegistrationIntroductionDialogJa implements TranslationsU
 	@override String get contentText2 => 'この内容で次に進みますか？';
 }
 
-// Path: userRegistration.introduction.items
-class _TranslationsUserRegistrationIntroductionItemsJa implements TranslationsUserRegistrationIntroductionItemsEn {
-	_TranslationsUserRegistrationIntroductionItemsJa._(this._root);
+// Path: userRegistrationPage.introduction.items
+class _TranslationsUserRegistrationPageIntroductionItemsJa implements TranslationsUserRegistrationPageIntroductionItemsEn {
+	_TranslationsUserRegistrationPageIntroductionItemsJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -447,9 +461,9 @@ class _TranslationsUserRegistrationIntroductionItemsJa implements TranslationsUs
 	@override String remainingCharsText({required Object remainingTextLength}) => 'あと${remainingTextLength}文字必要です';
 }
 
-// Path: userRegistration.mainPhoto.dialog
-class _TranslationsUserRegistrationMainPhotoDialogJa implements TranslationsUserRegistrationMainPhotoDialogEn {
-	_TranslationsUserRegistrationMainPhotoDialogJa._(this._root);
+// Path: userRegistrationPage.mainPhoto.dialog
+class _TranslationsUserRegistrationPageMainPhotoDialogJa implements TranslationsUserRegistrationPageMainPhotoDialogEn {
+	_TranslationsUserRegistrationPageMainPhotoDialogJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -459,9 +473,9 @@ class _TranslationsUserRegistrationMainPhotoDialogJa implements TranslationsUser
 	@override String get contentText2 => 'この内容で登録を完了しますか？';
 }
 
-// Path: userRegistration.mainPhoto.items
-class _TranslationsUserRegistrationMainPhotoItemsJa implements TranslationsUserRegistrationMainPhotoItemsEn {
-	_TranslationsUserRegistrationMainPhotoItemsJa._(this._root);
+// Path: userRegistrationPage.mainPhoto.items
+class _TranslationsUserRegistrationPageMainPhotoItemsJa implements TranslationsUserRegistrationPageMainPhotoItemsEn {
+	_TranslationsUserRegistrationPageMainPhotoItemsJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -534,62 +548,64 @@ class _TranslationsKEnumAddressPrefectureJa implements TranslationsKEnumAddressP
 extension on TranslationsJa {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'splash.appName' => 'Reimi',
-			'splash.title' => '天気で繋がる、出会いのアプリ',
-			'splash.loading' => '読み込み中...',
-			'signUp.appName' => 'Reimi',
-			'signUp.title' => '天気で繋がる、出会いのアプリ',
-			'signUp.subtitle' => '同じ天気を楽しむ人と、特別な出会いを',
-			'signUp.button.apple' => 'Appleでサインアップ',
-			'signUp.button.google' => 'Googleでサインアップ',
-			'signUp.consent.consentText1' => 'サインアップすることで、',
-			'signUp.consent.tos' => '利用規約',
-			'signUp.consent.consentText2' => 'と',
-			'signUp.consent.pp' => 'プライバシーポリシー',
-			'signUp.consent.consentText3' => 'に同意したことになります',
-			'signUp.confirmation.account' => 'すでにアカウントをお持ちですか？',
-			'signUp.confirmation.signIn' => 'サインイン',
-			'signIn.appName' => 'Reimi',
-			'signIn.title' => 'おかえりなさい',
-			'signIn.subtitle' => 'あなたの天気を共有しましょう',
-			'signIn.button.apple' => 'Appleでサインイン',
-			'signIn.button.google' => 'Googleでサインイン',
-			'signIn.confirmation.account' => 'アカウントをお持ちでないですか？',
-			'signIn.confirmation.signUp' => 'サインアップ',
-			'userRegistration.gender.question' => '性別を教えてください',
-			'userRegistration.gender.dialog.title' => '性別の確認',
-			'userRegistration.gender.dialog.contentText1' => '選択した性別：',
-			'userRegistration.gender.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.birthDate.question' => '生年月日を教えてください',
-			'userRegistration.birthDate.dialog.title' => '生年月日の確認',
-			'userRegistration.birthDate.dialog.contentText1' => '選択した生年月日：',
-			'userRegistration.birthDate.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.birthDate.items.year' => '年',
-			'userRegistration.birthDate.items.month' => '月',
-			'userRegistration.birthDate.items.day' => '日',
-			'userRegistration.address.question' => '居住地を教えてください',
-			'userRegistration.address.dialog.title' => '居住地の確認',
-			'userRegistration.address.dialog.contentText1' => '選択した居住地：',
-			'userRegistration.address.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.address.items.placeholder' => '都道府県を選択',
-			'userRegistration.name.question' => '名前を教えてください',
-			'userRegistration.name.dialog.title' => '名前の確認',
-			'userRegistration.name.dialog.contentText1' => '入力した名前：',
-			'userRegistration.name.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.name.items.placeholder' => '名前を入力',
-			'userRegistration.introduction.question' => '自己紹介を教えてください',
-			'userRegistration.introduction.dialog.title' => '自己紹介の確認',
-			'userRegistration.introduction.dialog.contentText1' => '入力した自己紹介：',
-			'userRegistration.introduction.dialog.contentText2' => 'この内容で次に進みますか？',
-			'userRegistration.introduction.items.placeholder' => '自己紹介を入力（20文字以上）',
-			'userRegistration.introduction.items.charCountLabelText' => ({required Object textLength}) => '${textLength} / 20文字',
-			'userRegistration.introduction.items.remainingCharsText' => ({required Object remainingTextLength}) => 'あと${remainingTextLength}文字必要です',
-			'userRegistration.mainPhoto.question' => 'メイン写真を選んでください',
-			'userRegistration.mainPhoto.dialog.title' => '写真の確認',
-			'userRegistration.mainPhoto.dialog.contentText1' => '選択した写真：',
-			'userRegistration.mainPhoto.dialog.contentText2' => 'この内容で登録を完了しますか？',
-			'userRegistration.mainPhoto.items.photoSelectInstructionText' => 'クリックして写真を選択',
-			'userRegistration.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
+			'splashPage.appName' => 'Reimi',
+			'splashPage.title' => '天気で繋がる、出会いのアプリ',
+			'splashPage.loading' => '読み込み中...',
+			'signUpPage.appName' => 'Reimi',
+			'signUpPage.title' => '天気で繋がる、出会いのアプリ',
+			'signUpPage.subtitle' => '同じ天気を楽しむ人と、特別な出会いを',
+			'signUpPage.button.apple' => 'Appleでサインアップ',
+			'signUpPage.button.google' => 'Googleでサインアップ',
+			'signUpPage.consent.consentText1' => 'サインアップすることで、',
+			'signUpPage.consent.tos' => '利用規約',
+			'signUpPage.consent.consentText2' => 'と',
+			'signUpPage.consent.pp' => 'プライバシーポリシー',
+			'signUpPage.consent.consentText3' => 'に同意したことになります',
+			'signUpPage.confirmation.account' => 'すでにアカウントをお持ちですか？',
+			'signUpPage.confirmation.signIn' => 'サインイン',
+			'signInPage.appName' => 'Reimi',
+			'signInPage.title' => 'おかえりなさい',
+			'signInPage.subtitle' => 'あなたの天気を共有しましょう',
+			'signInPage.button.apple' => 'Appleでサインイン',
+			'signInPage.button.google' => 'Googleでサインイン',
+			'signInPage.confirmation.account' => 'アカウントをお持ちでないですか？',
+			'signInPage.confirmation.signUp' => 'サインアップ',
+			'errorPage.defaultMessage' => 'エラーが発生しました',
+			'errorPage.subMessage' => '通信環境をご確認のうえ、\nもう一度お試しください。',
+			'userRegistrationPage.gender.question' => '性別を教えてください',
+			'userRegistrationPage.gender.dialog.title' => '性別の確認',
+			'userRegistrationPage.gender.dialog.contentText1' => '選択した性別：',
+			'userRegistrationPage.gender.dialog.contentText2' => 'この内容で次に進みますか？',
+			'userRegistrationPage.birthDate.question' => '生年月日を教えてください',
+			'userRegistrationPage.birthDate.dialog.title' => '生年月日の確認',
+			'userRegistrationPage.birthDate.dialog.contentText1' => '選択した生年月日：',
+			'userRegistrationPage.birthDate.dialog.contentText2' => 'この内容で次に進みますか？',
+			'userRegistrationPage.birthDate.items.year' => '年',
+			'userRegistrationPage.birthDate.items.month' => '月',
+			'userRegistrationPage.birthDate.items.day' => '日',
+			'userRegistrationPage.address.question' => '居住地を教えてください',
+			'userRegistrationPage.address.dialog.title' => '居住地の確認',
+			'userRegistrationPage.address.dialog.contentText1' => '選択した居住地：',
+			'userRegistrationPage.address.dialog.contentText2' => 'この内容で次に進みますか？',
+			'userRegistrationPage.address.items.placeholder' => '都道府県を選択',
+			'userRegistrationPage.name.question' => '名前を教えてください',
+			'userRegistrationPage.name.dialog.title' => '名前の確認',
+			'userRegistrationPage.name.dialog.contentText1' => '入力した名前：',
+			'userRegistrationPage.name.dialog.contentText2' => 'この内容で次に進みますか？',
+			'userRegistrationPage.name.items.placeholder' => '名前を入力',
+			'userRegistrationPage.introduction.question' => '自己紹介を教えてください',
+			'userRegistrationPage.introduction.dialog.title' => '自己紹介の確認',
+			'userRegistrationPage.introduction.dialog.contentText1' => '入力した自己紹介：',
+			'userRegistrationPage.introduction.dialog.contentText2' => 'この内容で次に進みますか？',
+			'userRegistrationPage.introduction.items.placeholder' => '自己紹介を入力（20文字以上）',
+			'userRegistrationPage.introduction.items.charCountLabelText' => ({required Object textLength}) => '${textLength} / 20文字',
+			'userRegistrationPage.introduction.items.remainingCharsText' => ({required Object remainingTextLength}) => 'あと${remainingTextLength}文字必要です',
+			'userRegistrationPage.mainPhoto.question' => 'メイン写真を選んでください',
+			'userRegistrationPage.mainPhoto.dialog.title' => '写真の確認',
+			'userRegistrationPage.mainPhoto.dialog.contentText1' => '選択した写真：',
+			'userRegistrationPage.mainPhoto.dialog.contentText2' => 'この内容で登録を完了しますか？',
+			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'クリックして写真を選択',
+			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
 			'navigationBar.home.title' => 'であう',
 			'navigationBar.like.title' => 'いいね',
 			'navigationBar.chat.title' => 'チャット',
@@ -600,6 +616,8 @@ extension on TranslationsJa {
 			'button.cancel' => 'キャンセル',
 			'button.select' => '選択',
 			'button.logout' => 'ログアウト',
+			'button.retry' => '再読み込み',
+			'button.tryRater' => 'あとで試す',
 			'kEnum.gender.man' => '男性',
 			'kEnum.gender.woman' => '女性',
 			'kEnum.gender.other' => 'その他',

@@ -1,10 +1,10 @@
 {
-  "splash": {
+  "splashPage": {
     "appName": "Reimi",
     "title": "Connect through weather, a dating app",
     "loading": "Loading..."
   },
-  "signUp": {
+  "signUpPage": {
     "appName": "Reimi",
     "title": "Connect through weather, a dating app",
     "subtitle": "Find special connections with people who enjoy the same weather",
@@ -24,7 +24,7 @@
       "signIn": "Sign in"
     }
   },
-  "signIn": {
+  "signInPage": {
     "appName": "Reimi",
     "title": "Welcome back",
     "subtitle": "Let's share your weather",
@@ -37,7 +37,11 @@
       "signUp": "Sign up"
     }
   },
-  "userRegistration": {
+  "errorPage": {
+    "defaultMessage": "An error has occurred",
+    "subMessage": "Please check your communication environment and try again."
+  },
+  "userRegistrationPage": {
     "gender": {
       "question": "What is your gender?",
       "dialog": {
@@ -129,7 +133,9 @@
     "confirmation": "Confirm",
     "cancel": "Cancel",
     "select": "Select",
-    "logout": "Logout"
+    "logout": "Logout",
+    "retry": "Retry",
+    "tryRater": "Try Rater"
   },
   "enum": {
     "gender": {
