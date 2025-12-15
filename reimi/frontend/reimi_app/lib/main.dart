@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/config/firebase_options_dev.dart'
     as dev;
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/my_app.dart';
+import 'package:reimi_app/presentation/shared/pages/my_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

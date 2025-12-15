@@ -40,16 +40,19 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
-	late final TranslationsSplashEn splash = TranslationsSplashEn._(_root);
-	late final TranslationsSignUpEn signUp = TranslationsSignUpEn._(_root);
-	late final TranslationsSignInEn signIn = TranslationsSignInEn._(_root);
-	late final TranslationsUserRegistrationEn userRegistration = TranslationsUserRegistrationEn._(_root);
+	late final TranslationsSplashPageEn splashPage = TranslationsSplashPageEn._(_root);
+	late final TranslationsSignUpPageEn signUpPage = TranslationsSignUpPageEn._(_root);
+	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
+	late final TranslationsErrorPageEn errorPage = TranslationsErrorPageEn._(_root);
+	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
+	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
+	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
 
-// Path: splash
-class TranslationsSplashEn {
-	TranslationsSplashEn._(this._root);
+// Path: splashPage
+class TranslationsSplashPageEn {
+	TranslationsSplashPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -65,9 +68,9 @@ class TranslationsSplashEn {
 	String get loading => 'Loading...';
 }
 
-// Path: signUp
-class TranslationsSignUpEn {
-	TranslationsSignUpEn._(this._root);
+// Path: signUpPage
+class TranslationsSignUpPageEn {
+	TranslationsSignUpPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -82,14 +85,14 @@ class TranslationsSignUpEn {
 	/// en: 'Find special connections with people who enjoy the same weather'
 	String get subtitle => 'Find special connections with people who enjoy the same weather';
 
-	late final TranslationsSignUpButtonEn button = TranslationsSignUpButtonEn._(_root);
-	late final TranslationsSignUpConsentEn consent = TranslationsSignUpConsentEn._(_root);
-	late final TranslationsSignUpConfirmationEn confirmation = TranslationsSignUpConfirmationEn._(_root);
+	late final TranslationsSignUpPageButtonEn button = TranslationsSignUpPageButtonEn._(_root);
+	late final TranslationsSignUpPageConsentEn consent = TranslationsSignUpPageConsentEn._(_root);
+	late final TranslationsSignUpPageConfirmationEn confirmation = TranslationsSignUpPageConfirmationEn._(_root);
 }
 
-// Path: signIn
-class TranslationsSignInEn {
-	TranslationsSignInEn._(this._root);
+// Path: signInPage
+class TranslationsSignInPageEn {
+	TranslationsSignInPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -104,24 +107,38 @@ class TranslationsSignInEn {
 	/// en: 'Let's share your weather'
 	String get subtitle => 'Let\'s share your weather';
 
-	late final TranslationsSignInButtonEn button = TranslationsSignInButtonEn._(_root);
-	late final TranslationsSignInConfirmationEn confirmation = TranslationsSignInConfirmationEn._(_root);
+	late final TranslationsSignInPageButtonEn button = TranslationsSignInPageButtonEn._(_root);
+	late final TranslationsSignInPageConfirmationEn confirmation = TranslationsSignInPageConfirmationEn._(_root);
 }
 
-// Path: userRegistration
-class TranslationsUserRegistrationEn {
-	TranslationsUserRegistrationEn._(this._root);
+// Path: errorPage
+class TranslationsErrorPageEn {
+	TranslationsErrorPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsUserRegistrationCommonEn common = TranslationsUserRegistrationCommonEn._(_root);
-	late final TranslationsUserRegistrationGenderEn gender = TranslationsUserRegistrationGenderEn._(_root);
-	late final TranslationsUserRegistrationBirthDateEn birthDate = TranslationsUserRegistrationBirthDateEn._(_root);
-	late final TranslationsUserRegistrationAddressEn address = TranslationsUserRegistrationAddressEn._(_root);
-	late final TranslationsUserRegistrationNameEn name = TranslationsUserRegistrationNameEn._(_root);
-	late final TranslationsUserRegistrationIntroductionEn introduction = TranslationsUserRegistrationIntroductionEn._(_root);
-	late final TranslationsUserRegistrationMainPhotoEn mainPhoto = TranslationsUserRegistrationMainPhotoEn._(_root);
+
+	/// en: 'An error has occurred'
+	String get defaultMessage => 'An error has occurred';
+
+	/// en: 'Please check your communication environment and try again.'
+	String get subMessage => 'Please check your communication environment and try again.';
+}
+
+// Path: userRegistrationPage
+class TranslationsUserRegistrationPageEn {
+	TranslationsUserRegistrationPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsUserRegistrationPageGenderEn gender = TranslationsUserRegistrationPageGenderEn._(_root);
+	late final TranslationsUserRegistrationPageBirthDateEn birthDate = TranslationsUserRegistrationPageBirthDateEn._(_root);
+	late final TranslationsUserRegistrationPageAddressEn address = TranslationsUserRegistrationPageAddressEn._(_root);
+	late final TranslationsUserRegistrationPageNameEn name = TranslationsUserRegistrationPageNameEn._(_root);
+	late final TranslationsUserRegistrationPageIntroductionEn introduction = TranslationsUserRegistrationPageIntroductionEn._(_root);
+	late final TranslationsUserRegistrationPageMainPhotoEn mainPhoto = TranslationsUserRegistrationPageMainPhotoEn._(_root);
 }
 
 // Path: navigationBar
@@ -138,9 +155,50 @@ class TranslationsNavigationBarEn {
 	late final TranslationsNavigationBarAccountEn account = TranslationsNavigationBarAccountEn._(_root);
 }
 
-// Path: signUp.button
-class TranslationsSignUpButtonEn {
-	TranslationsSignUpButtonEn._(this._root);
+// Path: button
+class TranslationsButtonEn {
+	TranslationsButtonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Next'
+	String get next => 'Next';
+
+	/// en: 'Confirm'
+	String get confirmation => 'Confirm';
+
+	/// en: 'Cancel'
+	String get cancel => 'Cancel';
+
+	/// en: 'Select'
+	String get select => 'Select';
+
+	/// en: 'Logout'
+	String get logout => 'Logout';
+
+	/// en: 'Retry'
+	String get retry => 'Retry';
+
+	/// en: 'Try Rater'
+	String get tryRater => 'Try Rater';
+}
+
+// Path: kEnum
+class TranslationsKEnumEn {
+	TranslationsKEnumEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsKEnumGenderEn gender = TranslationsKEnumGenderEn._(_root);
+	late final TranslationsKEnumAddressEn address = TranslationsKEnumAddressEn._(_root);
+}
+
+// Path: signUpPage.button
+class TranslationsSignUpPageButtonEn {
+	TranslationsSignUpPageButtonEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -153,9 +211,9 @@ class TranslationsSignUpButtonEn {
 	String get google => 'Sign up with Google';
 }
 
-// Path: signUp.consent
-class TranslationsSignUpConsentEn {
-	TranslationsSignUpConsentEn._(this._root);
+// Path: signUpPage.consent
+class TranslationsSignUpPageConsentEn {
+	TranslationsSignUpPageConsentEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -177,9 +235,9 @@ class TranslationsSignUpConsentEn {
 	String get consentText3 => '';
 }
 
-// Path: signUp.confirmation
-class TranslationsSignUpConfirmationEn {
-	TranslationsSignUpConfirmationEn._(this._root);
+// Path: signUpPage.confirmation
+class TranslationsSignUpPageConfirmationEn {
+	TranslationsSignUpPageConfirmationEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -192,9 +250,9 @@ class TranslationsSignUpConfirmationEn {
 	String get signIn => 'Sign in';
 }
 
-// Path: signIn.button
-class TranslationsSignInButtonEn {
-	TranslationsSignInButtonEn._(this._root);
+// Path: signInPage.button
+class TranslationsSignInPageButtonEn {
+	TranslationsSignInPageButtonEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -207,9 +265,9 @@ class TranslationsSignInButtonEn {
 	String get google => 'Sign in with Google';
 }
 
-// Path: signIn.confirmation
-class TranslationsSignInConfirmationEn {
-	TranslationsSignInConfirmationEn._(this._root);
+// Path: signInPage.confirmation
+class TranslationsSignInPageConfirmationEn {
+	TranslationsSignInPageConfirmationEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -222,21 +280,9 @@ class TranslationsSignInConfirmationEn {
 	String get signUp => 'Sign up';
 }
 
-// Path: userRegistration.common
-class TranslationsUserRegistrationCommonEn {
-	TranslationsUserRegistrationCommonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final TranslationsUserRegistrationCommonButtonEn button = TranslationsUserRegistrationCommonButtonEn._(_root);
-	late final TranslationsUserRegistrationCommonDialogEn dialog = TranslationsUserRegistrationCommonDialogEn._(_root);
-	late final TranslationsUserRegistrationCommonModalBottomSheetEn modalBottomSheet = TranslationsUserRegistrationCommonModalBottomSheetEn._(_root);
-}
-
-// Path: userRegistration.gender
-class TranslationsUserRegistrationGenderEn {
-	TranslationsUserRegistrationGenderEn._(this._root);
+// Path: userRegistrationPage.gender
+class TranslationsUserRegistrationPageGenderEn {
+	TranslationsUserRegistrationPageGenderEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -245,13 +291,12 @@ class TranslationsUserRegistrationGenderEn {
 	/// en: 'What is your gender?'
 	String get question => 'What is your gender?';
 
-	late final TranslationsUserRegistrationGenderDialogEn dialog = TranslationsUserRegistrationGenderDialogEn._(_root);
-	late final TranslationsUserRegistrationGenderItemsEn items = TranslationsUserRegistrationGenderItemsEn._(_root);
+	late final TranslationsUserRegistrationPageGenderDialogEn dialog = TranslationsUserRegistrationPageGenderDialogEn._(_root);
 }
 
-// Path: userRegistration.birthDate
-class TranslationsUserRegistrationBirthDateEn {
-	TranslationsUserRegistrationBirthDateEn._(this._root);
+// Path: userRegistrationPage.birthDate
+class TranslationsUserRegistrationPageBirthDateEn {
+	TranslationsUserRegistrationPageBirthDateEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -260,13 +305,13 @@ class TranslationsUserRegistrationBirthDateEn {
 	/// en: 'What is your date of birth?'
 	String get question => 'What is your date of birth?';
 
-	late final TranslationsUserRegistrationBirthDateDialogEn dialog = TranslationsUserRegistrationBirthDateDialogEn._(_root);
-	late final TranslationsUserRegistrationBirthDateItemsEn items = TranslationsUserRegistrationBirthDateItemsEn._(_root);
+	late final TranslationsUserRegistrationPageBirthDateDialogEn dialog = TranslationsUserRegistrationPageBirthDateDialogEn._(_root);
+	late final TranslationsUserRegistrationPageBirthDateItemsEn items = TranslationsUserRegistrationPageBirthDateItemsEn._(_root);
 }
 
-// Path: userRegistration.address
-class TranslationsUserRegistrationAddressEn {
-	TranslationsUserRegistrationAddressEn._(this._root);
+// Path: userRegistrationPage.address
+class TranslationsUserRegistrationPageAddressEn {
+	TranslationsUserRegistrationPageAddressEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -275,13 +320,13 @@ class TranslationsUserRegistrationAddressEn {
 	/// en: 'Where do you live?'
 	String get question => 'Where do you live?';
 
-	late final TranslationsUserRegistrationAddressDialogEn dialog = TranslationsUserRegistrationAddressDialogEn._(_root);
-	late final TranslationsUserRegistrationAddressItemsEn items = TranslationsUserRegistrationAddressItemsEn._(_root);
+	late final TranslationsUserRegistrationPageAddressDialogEn dialog = TranslationsUserRegistrationPageAddressDialogEn._(_root);
+	late final TranslationsUserRegistrationPageAddressItemsEn items = TranslationsUserRegistrationPageAddressItemsEn._(_root);
 }
 
-// Path: userRegistration.name
-class TranslationsUserRegistrationNameEn {
-	TranslationsUserRegistrationNameEn._(this._root);
+// Path: userRegistrationPage.name
+class TranslationsUserRegistrationPageNameEn {
+	TranslationsUserRegistrationPageNameEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -290,13 +335,13 @@ class TranslationsUserRegistrationNameEn {
 	/// en: 'What is your name?'
 	String get question => 'What is your name?';
 
-	late final TranslationsUserRegistrationNameDialogEn dialog = TranslationsUserRegistrationNameDialogEn._(_root);
-	late final TranslationsUserRegistrationNameItemsEn items = TranslationsUserRegistrationNameItemsEn._(_root);
+	late final TranslationsUserRegistrationPageNameDialogEn dialog = TranslationsUserRegistrationPageNameDialogEn._(_root);
+	late final TranslationsUserRegistrationPageNameItemsEn items = TranslationsUserRegistrationPageNameItemsEn._(_root);
 }
 
-// Path: userRegistration.introduction
-class TranslationsUserRegistrationIntroductionEn {
-	TranslationsUserRegistrationIntroductionEn._(this._root);
+// Path: userRegistrationPage.introduction
+class TranslationsUserRegistrationPageIntroductionEn {
+	TranslationsUserRegistrationPageIntroductionEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -305,13 +350,13 @@ class TranslationsUserRegistrationIntroductionEn {
 	/// en: 'Tell us about yourself'
 	String get question => 'Tell us about yourself';
 
-	late final TranslationsUserRegistrationIntroductionDialogEn dialog = TranslationsUserRegistrationIntroductionDialogEn._(_root);
-	late final TranslationsUserRegistrationIntroductionItemsEn items = TranslationsUserRegistrationIntroductionItemsEn._(_root);
+	late final TranslationsUserRegistrationPageIntroductionDialogEn dialog = TranslationsUserRegistrationPageIntroductionDialogEn._(_root);
+	late final TranslationsUserRegistrationPageIntroductionItemsEn items = TranslationsUserRegistrationPageIntroductionItemsEn._(_root);
 }
 
-// Path: userRegistration.mainPhoto
-class TranslationsUserRegistrationMainPhotoEn {
-	TranslationsUserRegistrationMainPhotoEn._(this._root);
+// Path: userRegistrationPage.mainPhoto
+class TranslationsUserRegistrationPageMainPhotoEn {
+	TranslationsUserRegistrationPageMainPhotoEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -320,8 +365,8 @@ class TranslationsUserRegistrationMainPhotoEn {
 	/// en: 'Select your main photo'
 	String get question => 'Select your main photo';
 
-	late final TranslationsUserRegistrationMainPhotoDialogEn dialog = TranslationsUserRegistrationMainPhotoDialogEn._(_root);
-	late final TranslationsUserRegistrationMainPhotoItemsEn items = TranslationsUserRegistrationMainPhotoItemsEn._(_root);
+	late final TranslationsUserRegistrationPageMainPhotoDialogEn dialog = TranslationsUserRegistrationPageMainPhotoDialogEn._(_root);
+	late final TranslationsUserRegistrationPageMainPhotoItemsEn items = TranslationsUserRegistrationPageMainPhotoItemsEn._(_root);
 }
 
 // Path: navigationBar.home
@@ -384,41 +429,40 @@ class TranslationsNavigationBarAccountEn {
 	String get title => 'Account';
 }
 
-// Path: userRegistration.common.button
-class TranslationsUserRegistrationCommonButtonEn {
-	TranslationsUserRegistrationCommonButtonEn._(this._root);
+// Path: kEnum.gender
+class TranslationsKEnumGenderEn {
+	TranslationsKEnumGenderEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 
-	/// en: 'Next'
-	String get next => 'Next';
+	/// en: 'Male'
+	String get man => 'Male';
+
+	/// en: 'Female'
+	String get woman => 'Female';
+
+	/// en: 'Other'
+	String get other => 'Other';
 }
 
-// Path: userRegistration.common.dialog
-class TranslationsUserRegistrationCommonDialogEn {
-	TranslationsUserRegistrationCommonDialogEn._(this._root);
+// Path: kEnum.address
+class TranslationsKEnumAddressEn {
+	TranslationsKEnumAddressEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsUserRegistrationCommonDialogButtonEn button = TranslationsUserRegistrationCommonDialogButtonEn._(_root);
+	late final TranslationsKEnumAddressPrefectureEn prefecture = TranslationsKEnumAddressPrefectureEn._(_root);
+
+	/// en: 'Other'
+	String get other => 'Other';
 }
 
-// Path: userRegistration.common.modalBottomSheet
-class TranslationsUserRegistrationCommonModalBottomSheetEn {
-	TranslationsUserRegistrationCommonModalBottomSheetEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final TranslationsUserRegistrationCommonModalBottomSheetButtonEn button = TranslationsUserRegistrationCommonModalBottomSheetButtonEn._(_root);
-}
-
-// Path: userRegistration.gender.dialog
-class TranslationsUserRegistrationGenderDialogEn {
-	TranslationsUserRegistrationGenderDialogEn._(this._root);
+// Path: userRegistrationPage.gender.dialog
+class TranslationsUserRegistrationPageGenderDialogEn {
+	TranslationsUserRegistrationPageGenderDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -434,27 +478,9 @@ class TranslationsUserRegistrationGenderDialogEn {
 	String get contentText2 => 'Proceed with this selection?';
 }
 
-// Path: userRegistration.gender.items
-class TranslationsUserRegistrationGenderItemsEn {
-	TranslationsUserRegistrationGenderItemsEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Male'
-	String get man => 'Male';
-
-	/// en: 'Female'
-	String get woman => 'Female';
-
-	/// en: 'Other'
-	String get others => 'Other';
-}
-
-// Path: userRegistration.birthDate.dialog
-class TranslationsUserRegistrationBirthDateDialogEn {
-	TranslationsUserRegistrationBirthDateDialogEn._(this._root);
+// Path: userRegistrationPage.birthDate.dialog
+class TranslationsUserRegistrationPageBirthDateDialogEn {
+	TranslationsUserRegistrationPageBirthDateDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -470,9 +496,9 @@ class TranslationsUserRegistrationBirthDateDialogEn {
 	String get contentText2 => 'Proceed with this selection?';
 }
 
-// Path: userRegistration.birthDate.items
-class TranslationsUserRegistrationBirthDateItemsEn {
-	TranslationsUserRegistrationBirthDateItemsEn._(this._root);
+// Path: userRegistrationPage.birthDate.items
+class TranslationsUserRegistrationPageBirthDateItemsEn {
+	TranslationsUserRegistrationPageBirthDateItemsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -488,9 +514,9 @@ class TranslationsUserRegistrationBirthDateItemsEn {
 	String get day => 'Day';
 }
 
-// Path: userRegistration.address.dialog
-class TranslationsUserRegistrationAddressDialogEn {
-	TranslationsUserRegistrationAddressDialogEn._(this._root);
+// Path: userRegistrationPage.address.dialog
+class TranslationsUserRegistrationPageAddressDialogEn {
+	TranslationsUserRegistrationPageAddressDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -506,9 +532,9 @@ class TranslationsUserRegistrationAddressDialogEn {
 	String get contentText2 => 'Proceed with this selection?';
 }
 
-// Path: userRegistration.address.items
-class TranslationsUserRegistrationAddressItemsEn {
-	TranslationsUserRegistrationAddressItemsEn._(this._root);
+// Path: userRegistrationPage.address.items
+class TranslationsUserRegistrationPageAddressItemsEn {
+	TranslationsUserRegistrationPageAddressItemsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -516,16 +542,11 @@ class TranslationsUserRegistrationAddressItemsEn {
 
 	/// en: 'Select prefecture'
 	String get placeholder => 'Select prefecture';
-
-	late final TranslationsUserRegistrationAddressItemsPrefectureEn prefecture = TranslationsUserRegistrationAddressItemsPrefectureEn._(_root);
-
-	/// en: 'Others'
-	String get others => 'Others';
 }
 
-// Path: userRegistration.name.dialog
-class TranslationsUserRegistrationNameDialogEn {
-	TranslationsUserRegistrationNameDialogEn._(this._root);
+// Path: userRegistrationPage.name.dialog
+class TranslationsUserRegistrationPageNameDialogEn {
+	TranslationsUserRegistrationPageNameDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -541,9 +562,9 @@ class TranslationsUserRegistrationNameDialogEn {
 	String get contentText2 => 'Proceed with this entry?';
 }
 
-// Path: userRegistration.name.items
-class TranslationsUserRegistrationNameItemsEn {
-	TranslationsUserRegistrationNameItemsEn._(this._root);
+// Path: userRegistrationPage.name.items
+class TranslationsUserRegistrationPageNameItemsEn {
+	TranslationsUserRegistrationPageNameItemsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -553,9 +574,9 @@ class TranslationsUserRegistrationNameItemsEn {
 	String get placeholder => 'Enter your name';
 }
 
-// Path: userRegistration.introduction.dialog
-class TranslationsUserRegistrationIntroductionDialogEn {
-	TranslationsUserRegistrationIntroductionDialogEn._(this._root);
+// Path: userRegistrationPage.introduction.dialog
+class TranslationsUserRegistrationPageIntroductionDialogEn {
+	TranslationsUserRegistrationPageIntroductionDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -571,9 +592,9 @@ class TranslationsUserRegistrationIntroductionDialogEn {
 	String get contentText2 => 'Proceed with this entry?';
 }
 
-// Path: userRegistration.introduction.items
-class TranslationsUserRegistrationIntroductionItemsEn {
-	TranslationsUserRegistrationIntroductionItemsEn._(this._root);
+// Path: userRegistrationPage.introduction.items
+class TranslationsUserRegistrationPageIntroductionItemsEn {
+	TranslationsUserRegistrationPageIntroductionItemsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -589,9 +610,9 @@ class TranslationsUserRegistrationIntroductionItemsEn {
 	String remainingCharsText({required Object remainingTextLength}) => '${remainingTextLength} more characters needed';
 }
 
-// Path: userRegistration.mainPhoto.dialog
-class TranslationsUserRegistrationMainPhotoDialogEn {
-	TranslationsUserRegistrationMainPhotoDialogEn._(this._root);
+// Path: userRegistrationPage.mainPhoto.dialog
+class TranslationsUserRegistrationPageMainPhotoDialogEn {
+	TranslationsUserRegistrationPageMainPhotoDialogEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -607,9 +628,9 @@ class TranslationsUserRegistrationMainPhotoDialogEn {
 	String get contentText2 => 'Complete registration with this photo?';
 }
 
-// Path: userRegistration.mainPhoto.items
-class TranslationsUserRegistrationMainPhotoItemsEn {
-	TranslationsUserRegistrationMainPhotoItemsEn._(this._root);
+// Path: userRegistrationPage.mainPhoto.items
+class TranslationsUserRegistrationPageMainPhotoItemsEn {
+	TranslationsUserRegistrationPageMainPhotoItemsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -622,36 +643,9 @@ class TranslationsUserRegistrationMainPhotoItemsEn {
 	String get photoRecommendationHint => 'A smiling face photo is recommended';
 }
 
-// Path: userRegistration.common.dialog.button
-class TranslationsUserRegistrationCommonDialogButtonEn {
-	TranslationsUserRegistrationCommonDialogButtonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Confirm'
-	String get confirmation => 'Confirm';
-
-	/// en: 'Cancel'
-	String get cancel => 'Cancel';
-}
-
-// Path: userRegistration.common.modalBottomSheet.button
-class TranslationsUserRegistrationCommonModalBottomSheetButtonEn {
-	TranslationsUserRegistrationCommonModalBottomSheetButtonEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Select'
-	String get selected => 'Select';
-}
-
-// Path: userRegistration.address.items.prefecture
-class TranslationsUserRegistrationAddressItemsPrefectureEn {
-	TranslationsUserRegistrationAddressItemsPrefectureEn._(this._root);
+// Path: kEnum.address.prefecture
+class TranslationsKEnumAddressPrefectureEn {
+	TranslationsKEnumAddressPrefectureEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -807,122 +801,127 @@ class TranslationsUserRegistrationAddressItemsPrefectureEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'splash.appName' => 'Reimi',
-			'splash.title' => 'Connect through weather, a dating app',
-			'splash.loading' => 'Loading...',
-			'signUp.appName' => 'Reimi',
-			'signUp.title' => 'Connect through weather, a dating app',
-			'signUp.subtitle' => 'Find special connections with people who enjoy the same weather',
-			'signUp.button.apple' => 'Sign up with Apple',
-			'signUp.button.google' => 'Sign up with Google',
-			'signUp.consent.consentText1' => 'By signing up, you agree to our ',
-			'signUp.consent.tos' => 'Terms of Service',
-			'signUp.consent.consentText2' => ' and ',
-			'signUp.consent.pp' => 'Privacy Policy',
-			'signUp.consent.consentText3' => '',
-			'signUp.confirmation.account' => 'Already have an account?',
-			'signUp.confirmation.signIn' => 'Sign in',
-			'signIn.appName' => 'Reimi',
-			'signIn.title' => 'Welcome back',
-			'signIn.subtitle' => 'Let\'s share your weather',
-			'signIn.button.apple' => 'Sign in with Apple',
-			'signIn.button.google' => 'Sign in with Google',
-			'signIn.confirmation.account' => 'Don\'t have an account?',
-			'signIn.confirmation.signUp' => 'Sign up',
-			'userRegistration.common.button.next' => 'Next',
-			'userRegistration.common.dialog.button.confirmation' => 'Confirm',
-			'userRegistration.common.dialog.button.cancel' => 'Cancel',
-			'userRegistration.common.modalBottomSheet.button.selected' => 'Select',
-			'userRegistration.gender.question' => 'What is your gender?',
-			'userRegistration.gender.dialog.title' => 'Confirm Gender',
-			'userRegistration.gender.dialog.contentText1' => 'Selected gender: ',
-			'userRegistration.gender.dialog.contentText2' => 'Proceed with this selection?',
-			'userRegistration.gender.items.man' => 'Male',
-			'userRegistration.gender.items.woman' => 'Female',
-			'userRegistration.gender.items.others' => 'Other',
-			'userRegistration.birthDate.question' => 'What is your date of birth?',
-			'userRegistration.birthDate.dialog.title' => 'Confirm Date of Birth',
-			'userRegistration.birthDate.dialog.contentText1' => 'Selected date of birth: ',
-			'userRegistration.birthDate.dialog.contentText2' => 'Proceed with this selection?',
-			'userRegistration.birthDate.items.year' => 'Year',
-			'userRegistration.birthDate.items.month' => 'Month',
-			'userRegistration.birthDate.items.day' => 'Day',
-			'userRegistration.address.question' => 'Where do you live?',
-			'userRegistration.address.dialog.title' => 'Confirm Address',
-			'userRegistration.address.dialog.contentText1' => 'Selected address: ',
-			'userRegistration.address.dialog.contentText2' => 'Proceed with this selection?',
-			'userRegistration.address.items.placeholder' => 'Select prefecture',
-			'userRegistration.address.items.prefecture.hokkaido' => 'Hokkaido',
-			'userRegistration.address.items.prefecture.aomori' => 'Aomori',
-			'userRegistration.address.items.prefecture.iwate' => 'Iwate',
-			'userRegistration.address.items.prefecture.miyagi' => 'Miyagi',
-			'userRegistration.address.items.prefecture.akita' => 'Akita',
-			'userRegistration.address.items.prefecture.yamagata' => 'Yamagata',
-			'userRegistration.address.items.prefecture.fukushima' => 'Fukushima',
-			'userRegistration.address.items.prefecture.ibaraki' => 'Ibaraki',
-			'userRegistration.address.items.prefecture.tochigi' => 'Tochigi',
-			'userRegistration.address.items.prefecture.gunma' => 'Gunma',
-			'userRegistration.address.items.prefecture.saitama' => 'Saitama',
-			'userRegistration.address.items.prefecture.chiba' => 'Chiba',
-			'userRegistration.address.items.prefecture.tokyo' => 'Tokyo',
-			'userRegistration.address.items.prefecture.kanagawa' => 'Kanagawa',
-			'userRegistration.address.items.prefecture.niigata' => 'Niigata',
-			'userRegistration.address.items.prefecture.toyama' => 'Toyama',
-			'userRegistration.address.items.prefecture.ishikawa' => 'Ishikawa',
-			'userRegistration.address.items.prefecture.fukui' => 'Fukui',
-			'userRegistration.address.items.prefecture.yamanashi' => 'Yamanashi',
-			'userRegistration.address.items.prefecture.nagano' => 'Nagano',
-			'userRegistration.address.items.prefecture.gifu' => 'Gifu',
-			'userRegistration.address.items.prefecture.shizuoka' => 'Shizuoka',
-			'userRegistration.address.items.prefecture.aichi' => 'Aichi',
-			'userRegistration.address.items.prefecture.mie' => 'Mie',
-			'userRegistration.address.items.prefecture.shiga' => 'Shiga',
-			'userRegistration.address.items.prefecture.kyoto' => 'Kyoto',
-			'userRegistration.address.items.prefecture.osaka' => 'Osaka',
-			'userRegistration.address.items.prefecture.hyogo' => 'Hyogo',
-			'userRegistration.address.items.prefecture.nara' => 'Nara',
-			'userRegistration.address.items.prefecture.wakayama' => 'Wakayama',
-			'userRegistration.address.items.prefecture.tottori' => 'Tottori',
-			'userRegistration.address.items.prefecture.shimane' => 'Shimane',
-			'userRegistration.address.items.prefecture.okayama' => 'Okayama',
-			'userRegistration.address.items.prefecture.hiroshima' => 'Hiroshima',
-			'userRegistration.address.items.prefecture.yamaguchi' => 'Yamaguchi',
-			'userRegistration.address.items.prefecture.tokushima' => 'Tokushima',
-			'userRegistration.address.items.prefecture.kagawa' => 'Kagawa',
-			'userRegistration.address.items.prefecture.ehime' => 'Ehime',
-			'userRegistration.address.items.prefecture.kochi' => 'Kochi',
-			'userRegistration.address.items.prefecture.fukuoka' => 'Fukuoka',
-			'userRegistration.address.items.prefecture.saga' => 'Saga',
-			'userRegistration.address.items.prefecture.nagasaki' => 'Nagasaki',
-			'userRegistration.address.items.prefecture.kumamoto' => 'Kumamoto',
-			'userRegistration.address.items.prefecture.oita' => 'Oita',
-			'userRegistration.address.items.prefecture.miyazaki' => 'Miyazaki',
-			'userRegistration.address.items.prefecture.kagoshima' => 'Kagoshima',
-			'userRegistration.address.items.prefecture.okinawa' => 'Okinawa',
-			'userRegistration.address.items.others' => 'Others',
-			'userRegistration.name.question' => 'What is your name?',
-			'userRegistration.name.dialog.title' => 'Confirm Name',
-			'userRegistration.name.dialog.contentText1' => 'Entered name: ',
-			'userRegistration.name.dialog.contentText2' => 'Proceed with this entry?',
-			'userRegistration.name.items.placeholder' => 'Enter your name',
-			'userRegistration.introduction.question' => 'Tell us about yourself',
-			'userRegistration.introduction.dialog.title' => 'Confirm Introduction',
-			'userRegistration.introduction.dialog.contentText1' => 'Your introduction: ',
-			'userRegistration.introduction.dialog.contentText2' => 'Proceed with this entry?',
-			'userRegistration.introduction.items.placeholder' => 'Enter your introduction (20 characters minimum)',
-			'userRegistration.introduction.items.charCountLabelText' => ({required Object textLength}) => '${textLength} / 20 characters',
-			'userRegistration.introduction.items.remainingCharsText' => ({required Object remainingTextLength}) => '${remainingTextLength} more characters needed',
-			'userRegistration.mainPhoto.question' => 'Select your main photo',
-			'userRegistration.mainPhoto.dialog.title' => 'Confirm Photo',
-			'userRegistration.mainPhoto.dialog.contentText1' => 'Selected photo: ',
-			'userRegistration.mainPhoto.dialog.contentText2' => 'Complete registration with this photo?',
-			'userRegistration.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
-			'userRegistration.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
+			'splashPage.appName' => 'Reimi',
+			'splashPage.title' => 'Connect through weather, a dating app',
+			'splashPage.loading' => 'Loading...',
+			'signUpPage.appName' => 'Reimi',
+			'signUpPage.title' => 'Connect through weather, a dating app',
+			'signUpPage.subtitle' => 'Find special connections with people who enjoy the same weather',
+			'signUpPage.button.apple' => 'Sign up with Apple',
+			'signUpPage.button.google' => 'Sign up with Google',
+			'signUpPage.consent.consentText1' => 'By signing up, you agree to our ',
+			'signUpPage.consent.tos' => 'Terms of Service',
+			'signUpPage.consent.consentText2' => ' and ',
+			'signUpPage.consent.pp' => 'Privacy Policy',
+			'signUpPage.consent.consentText3' => '',
+			'signUpPage.confirmation.account' => 'Already have an account?',
+			'signUpPage.confirmation.signIn' => 'Sign in',
+			'signInPage.appName' => 'Reimi',
+			'signInPage.title' => 'Welcome back',
+			'signInPage.subtitle' => 'Let\'s share your weather',
+			'signInPage.button.apple' => 'Sign in with Apple',
+			'signInPage.button.google' => 'Sign in with Google',
+			'signInPage.confirmation.account' => 'Don\'t have an account?',
+			'signInPage.confirmation.signUp' => 'Sign up',
+			'errorPage.defaultMessage' => 'An error has occurred',
+			'errorPage.subMessage' => 'Please check your communication environment and try again.',
+			'userRegistrationPage.gender.question' => 'What is your gender?',
+			'userRegistrationPage.gender.dialog.title' => 'Confirm Gender',
+			'userRegistrationPage.gender.dialog.contentText1' => 'Selected gender: ',
+			'userRegistrationPage.gender.dialog.contentText2' => 'Proceed with this selection?',
+			'userRegistrationPage.birthDate.question' => 'What is your date of birth?',
+			'userRegistrationPage.birthDate.dialog.title' => 'Confirm Date of Birth',
+			'userRegistrationPage.birthDate.dialog.contentText1' => 'Selected date of birth: ',
+			'userRegistrationPage.birthDate.dialog.contentText2' => 'Proceed with this selection?',
+			'userRegistrationPage.birthDate.items.year' => 'Year',
+			'userRegistrationPage.birthDate.items.month' => 'Month',
+			'userRegistrationPage.birthDate.items.day' => 'Day',
+			'userRegistrationPage.address.question' => 'Where do you live?',
+			'userRegistrationPage.address.dialog.title' => 'Confirm Address',
+			'userRegistrationPage.address.dialog.contentText1' => 'Selected address: ',
+			'userRegistrationPage.address.dialog.contentText2' => 'Proceed with this selection?',
+			'userRegistrationPage.address.items.placeholder' => 'Select prefecture',
+			'userRegistrationPage.name.question' => 'What is your name?',
+			'userRegistrationPage.name.dialog.title' => 'Confirm Name',
+			'userRegistrationPage.name.dialog.contentText1' => 'Entered name: ',
+			'userRegistrationPage.name.dialog.contentText2' => 'Proceed with this entry?',
+			'userRegistrationPage.name.items.placeholder' => 'Enter your name',
+			'userRegistrationPage.introduction.question' => 'Tell us about yourself',
+			'userRegistrationPage.introduction.dialog.title' => 'Confirm Introduction',
+			'userRegistrationPage.introduction.dialog.contentText1' => 'Your introduction: ',
+			'userRegistrationPage.introduction.dialog.contentText2' => 'Proceed with this entry?',
+			'userRegistrationPage.introduction.items.placeholder' => 'Enter your introduction (20 characters minimum)',
+			'userRegistrationPage.introduction.items.charCountLabelText' => ({required Object textLength}) => '${textLength} / 20 characters',
+			'userRegistrationPage.introduction.items.remainingCharsText' => ({required Object remainingTextLength}) => '${remainingTextLength} more characters needed',
+			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
+			'userRegistrationPage.mainPhoto.dialog.title' => 'Confirm Photo',
+			'userRegistrationPage.mainPhoto.dialog.contentText1' => 'Selected photo: ',
+			'userRegistrationPage.mainPhoto.dialog.contentText2' => 'Complete registration with this photo?',
+			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
+			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
 			'navigationBar.home.title' => 'Meet',
 			'navigationBar.like.title' => 'Likes',
 			'navigationBar.chat.title' => 'Chat',
 			'navigationBar.weatherReport.title' => 'Report',
 			'navigationBar.account.title' => 'Account',
+			'button.next' => 'Next',
+			'button.confirmation' => 'Confirm',
+			'button.cancel' => 'Cancel',
+			'button.select' => 'Select',
+			'button.logout' => 'Logout',
+			'button.retry' => 'Retry',
+			'button.tryRater' => 'Try Rater',
+			'kEnum.gender.man' => 'Male',
+			'kEnum.gender.woman' => 'Female',
+			'kEnum.gender.other' => 'Other',
+			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
+			'kEnum.address.prefecture.aomori' => 'Aomori',
+			'kEnum.address.prefecture.iwate' => 'Iwate',
+			'kEnum.address.prefecture.miyagi' => 'Miyagi',
+			'kEnum.address.prefecture.akita' => 'Akita',
+			'kEnum.address.prefecture.yamagata' => 'Yamagata',
+			'kEnum.address.prefecture.fukushima' => 'Fukushima',
+			'kEnum.address.prefecture.ibaraki' => 'Ibaraki',
+			'kEnum.address.prefecture.tochigi' => 'Tochigi',
+			'kEnum.address.prefecture.gunma' => 'Gunma',
+			'kEnum.address.prefecture.saitama' => 'Saitama',
+			'kEnum.address.prefecture.chiba' => 'Chiba',
+			'kEnum.address.prefecture.tokyo' => 'Tokyo',
+			'kEnum.address.prefecture.kanagawa' => 'Kanagawa',
+			'kEnum.address.prefecture.niigata' => 'Niigata',
+			'kEnum.address.prefecture.toyama' => 'Toyama',
+			'kEnum.address.prefecture.ishikawa' => 'Ishikawa',
+			'kEnum.address.prefecture.fukui' => 'Fukui',
+			'kEnum.address.prefecture.yamanashi' => 'Yamanashi',
+			'kEnum.address.prefecture.nagano' => 'Nagano',
+			'kEnum.address.prefecture.gifu' => 'Gifu',
+			'kEnum.address.prefecture.shizuoka' => 'Shizuoka',
+			'kEnum.address.prefecture.aichi' => 'Aichi',
+			'kEnum.address.prefecture.mie' => 'Mie',
+			'kEnum.address.prefecture.shiga' => 'Shiga',
+			'kEnum.address.prefecture.kyoto' => 'Kyoto',
+			'kEnum.address.prefecture.osaka' => 'Osaka',
+			'kEnum.address.prefecture.hyogo' => 'Hyogo',
+			'kEnum.address.prefecture.nara' => 'Nara',
+			'kEnum.address.prefecture.wakayama' => 'Wakayama',
+			'kEnum.address.prefecture.tottori' => 'Tottori',
+			'kEnum.address.prefecture.shimane' => 'Shimane',
+			'kEnum.address.prefecture.okayama' => 'Okayama',
+			'kEnum.address.prefecture.hiroshima' => 'Hiroshima',
+			'kEnum.address.prefecture.yamaguchi' => 'Yamaguchi',
+			'kEnum.address.prefecture.tokushima' => 'Tokushima',
+			'kEnum.address.prefecture.kagawa' => 'Kagawa',
+			'kEnum.address.prefecture.ehime' => 'Ehime',
+			'kEnum.address.prefecture.kochi' => 'Kochi',
+			'kEnum.address.prefecture.fukuoka' => 'Fukuoka',
+			'kEnum.address.prefecture.saga' => 'Saga',
+			'kEnum.address.prefecture.nagasaki' => 'Nagasaki',
+			'kEnum.address.prefecture.kumamoto' => 'Kumamoto',
+			'kEnum.address.prefecture.oita' => 'Oita',
+			'kEnum.address.prefecture.miyazaki' => 'Miyazaki',
+			'kEnum.address.prefecture.kagoshima' => 'Kagoshima',
+			'kEnum.address.prefecture.okinawa' => 'Okinawa',
+			'kEnum.address.other' => 'Other',
 			_ => null,
 		};
 	}
