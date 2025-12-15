@@ -26,4 +26,3 @@ assignees: [NakazatoTaichi]
 <!-- このAPIで「できること」 -->
 - 例）ユーザー取得/ユーザー登録など
 
----
