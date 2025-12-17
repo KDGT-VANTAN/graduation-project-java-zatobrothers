@@ -23,14 +23,12 @@ mixin _$UserEntity {
   Address get address;
   String get mainPhotoUrl;
   String get email;
-  @IsoDateTimeConverter()
-  DateTime get signupDate;
   @IsoDateTimeOrNullConverter()
   DateTime? get lastLoginAt;
-  @IsoDateTimeConverter()
-  DateTime get createdAt;
-  @IsoDateTimeConverter()
-  DateTime get updatedAt;
+  @IsoDateTimeOrNullConverter()
+  DateTime? get createdAt;
+  @IsoDateTimeOrNullConverter()
+  DateTime? get updatedAt;
   UserStatus get status;
   @IsoDateTimeOrNullConverter()
   DateTime? get withdrawalAt;
@@ -61,8 +59,6 @@ mixin _$UserEntity {
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.signupDate, signupDate) ||
-                other.signupDate == signupDate) &&
             (identical(other.lastLoginAt, lastLoginAt) ||
                 other.lastLoginAt == lastLoginAt) &&
             (identical(other.createdAt, createdAt) ||
@@ -86,7 +82,6 @@ mixin _$UserEntity {
       address,
       mainPhotoUrl,
       email,
-      signupDate,
       lastLoginAt,
       createdAt,
       updatedAt,
@@ -95,7 +90,7 @@ mixin _$UserEntity {
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, email: $email, signupDate: $signupDate, lastLoginAt: $lastLoginAt, createdAt: $createdAt, updatedAt: $updatedAt, status: $status, withdrawalAt: $withdrawalAt)';
+    return 'UserEntity(id: $id, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, email: $email, lastLoginAt: $lastLoginAt, createdAt: $createdAt, updatedAt: $updatedAt, status: $status, withdrawalAt: $withdrawalAt)';
   }
 }
 
@@ -114,10 +109,9 @@ abstract mixin class $UserEntityCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String email,
-      @IsoDateTimeConverter() DateTime signupDate,
       @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      @IsoDateTimeConverter() DateTime createdAt,
-      @IsoDateTimeConverter() DateTime updatedAt,
+      @IsoDateTimeOrNullConverter() DateTime? createdAt,
+      @IsoDateTimeOrNullConverter() DateTime? updatedAt,
       UserStatus status,
       @IsoDateTimeOrNullConverter() DateTime? withdrawalAt});
 }
@@ -142,10 +136,9 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? email = null,
-    Object? signupDate = null,
     Object? lastLoginAt = freezed,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
     Object? status = null,
     Object? withdrawalAt = freezed,
   }) {
@@ -182,22 +175,18 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      signupDate: null == signupDate
-          ? _self.signupDate
-          : signupDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       lastLoginAt: freezed == lastLoginAt
           ? _self.lastLoginAt
           : lastLoginAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
+              as DateTime?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -312,10 +301,9 @@ extension UserEntityPatterns on UserEntity {
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeConverter() DateTime signupDate,
             @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeConverter() DateTime createdAt,
-            @IsoDateTimeConverter() DateTime updatedAt,
+            @IsoDateTimeOrNullConverter() DateTime? createdAt,
+            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
             UserStatus status,
             @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)?
         $default, {
@@ -333,7 +321,6 @@ extension UserEntityPatterns on UserEntity {
             _that.address,
             _that.mainPhotoUrl,
             _that.email,
-            _that.signupDate,
             _that.lastLoginAt,
             _that.createdAt,
             _that.updatedAt,
@@ -368,10 +355,9 @@ extension UserEntityPatterns on UserEntity {
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeConverter() DateTime signupDate,
             @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeConverter() DateTime createdAt,
-            @IsoDateTimeConverter() DateTime updatedAt,
+            @IsoDateTimeOrNullConverter() DateTime? createdAt,
+            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
             UserStatus status,
             @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)
         $default,
@@ -388,7 +374,6 @@ extension UserEntityPatterns on UserEntity {
             _that.address,
             _that.mainPhotoUrl,
             _that.email,
-            _that.signupDate,
             _that.lastLoginAt,
             _that.createdAt,
             _that.updatedAt,
@@ -422,10 +407,9 @@ extension UserEntityPatterns on UserEntity {
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeConverter() DateTime signupDate,
             @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeConverter() DateTime createdAt,
-            @IsoDateTimeConverter() DateTime updatedAt,
+            @IsoDateTimeOrNullConverter() DateTime? createdAt,
+            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
             UserStatus status,
             @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)?
         $default,
@@ -442,7 +426,6 @@ extension UserEntityPatterns on UserEntity {
             _that.address,
             _that.mainPhotoUrl,
             _that.email,
-            _that.signupDate,
             _that.lastLoginAt,
             _that.createdAt,
             _that.updatedAt,
@@ -467,10 +450,9 @@ class _UserEntity implements UserEntity {
       required this.address,
       required this.mainPhotoUrl,
       required this.email,
-      @IsoDateTimeConverter() required this.signupDate,
       @IsoDateTimeOrNullConverter() this.lastLoginAt,
-      @IsoDateTimeConverter() required this.createdAt,
-      @IsoDateTimeConverter() required this.updatedAt,
+      @IsoDateTimeOrNullConverter() this.createdAt,
+      @IsoDateTimeOrNullConverter() this.updatedAt,
       required this.status,
       @IsoDateTimeOrNullConverter() this.withdrawalAt});
   factory _UserEntity.fromJson(Map<String, dynamic> json) =>
@@ -494,17 +476,14 @@ class _UserEntity implements UserEntity {
   @override
   final String email;
   @override
-  @IsoDateTimeConverter()
-  final DateTime signupDate;
-  @override
   @IsoDateTimeOrNullConverter()
   final DateTime? lastLoginAt;
   @override
-  @IsoDateTimeConverter()
-  final DateTime createdAt;
+  @IsoDateTimeOrNullConverter()
+  final DateTime? createdAt;
   @override
-  @IsoDateTimeConverter()
-  final DateTime updatedAt;
+  @IsoDateTimeOrNullConverter()
+  final DateTime? updatedAt;
   @override
   final UserStatus status;
   @override
@@ -542,8 +521,6 @@ class _UserEntity implements UserEntity {
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.signupDate, signupDate) ||
-                other.signupDate == signupDate) &&
             (identical(other.lastLoginAt, lastLoginAt) ||
                 other.lastLoginAt == lastLoginAt) &&
             (identical(other.createdAt, createdAt) ||
@@ -567,7 +544,6 @@ class _UserEntity implements UserEntity {
       address,
       mainPhotoUrl,
       email,
-      signupDate,
       lastLoginAt,
       createdAt,
       updatedAt,
@@ -576,7 +552,7 @@ class _UserEntity implements UserEntity {
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, email: $email, signupDate: $signupDate, lastLoginAt: $lastLoginAt, createdAt: $createdAt, updatedAt: $updatedAt, status: $status, withdrawalAt: $withdrawalAt)';
+    return 'UserEntity(id: $id, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, email: $email, lastLoginAt: $lastLoginAt, createdAt: $createdAt, updatedAt: $updatedAt, status: $status, withdrawalAt: $withdrawalAt)';
   }
 }
 
@@ -597,10 +573,9 @@ abstract mixin class _$UserEntityCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String email,
-      @IsoDateTimeConverter() DateTime signupDate,
       @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      @IsoDateTimeConverter() DateTime createdAt,
-      @IsoDateTimeConverter() DateTime updatedAt,
+      @IsoDateTimeOrNullConverter() DateTime? createdAt,
+      @IsoDateTimeOrNullConverter() DateTime? updatedAt,
       UserStatus status,
       @IsoDateTimeOrNullConverter() DateTime? withdrawalAt});
 }
@@ -625,10 +600,9 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? email = null,
-    Object? signupDate = null,
     Object? lastLoginAt = freezed,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
     Object? status = null,
     Object? withdrawalAt = freezed,
   }) {
@@ -665,22 +639,18 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      signupDate: null == signupDate
-          ? _self.signupDate
-          : signupDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       lastLoginAt: freezed == lastLoginAt
           ? _self.lastLoginAt
           : lastLoginAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      createdAt: null == createdAt
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
+              as DateTime?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable

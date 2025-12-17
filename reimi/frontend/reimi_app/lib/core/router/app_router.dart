@@ -7,6 +7,8 @@ import 'package:reimi_app/presentation/pages/auth/sign_up_page.dart';
 import 'package:reimi_app/presentation/pages/chat/chat_page.dart';
 import 'package:reimi_app/presentation/pages/home/home_page.dart';
 import 'package:reimi_app/presentation/pages/like/like_page.dart';
+import 'package:reimi_app/presentation/pages/profile/profile_page.dart';
+import 'package:reimi_app/presentation/pages/profile_edit/profile_edit_page.dart';
 import 'package:reimi_app/presentation/pages/setting/setting_page.dart';
 import 'package:reimi_app/presentation/pages/splash/splash_page.dart';
 import 'package:reimi_app/presentation/pages/user_registration/user_address_page.dart';
@@ -135,6 +137,30 @@ GoRouter goRouter(Ref ref) {
         name: SettingPage.routeName,
         builder: (context, state) {
           return const SettingPage();
+        },
+      ),
+      GoRoute(
+        path: ProfilePage.routeLocation,
+        name: ProfilePage.routeName,
+        builder: (context, state) {
+          return const ProfilePage();
+        },
+      ),
+      GoRoute(
+        path: ProfileEditPage.routeLocation,
+        name: ProfileEditPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object?>;
+          final title = extra['title'] as String;
+          final initValue = extra['initValue'] as String?;
+          final onSave = extra['onSave'] as void Function(String value);
+          final isMultiline = extra['isMultiline'] as bool;
+          return ProfileEditPage(
+            title: title,
+            initValue: initValue,
+            onSave: onSave,
+            isMultiline: isMultiline,
+          );
         },
       ),
       // ----- bottom_navigation -----

@@ -14,14 +14,14 @@ class UserNamePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistrationPage.name;
+    final t = Translations.of(context);
     final theme = Theme.of(context);
     final name = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.name),
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
-      question: t.question,
+      question: t.userRegistrationPage.name.question,
       theme: theme,
       mainContent: [
         Container(
@@ -43,7 +43,7 @@ class UserNamePage extends ConsumerWidget {
               fontWeight: FontWeight.w600,
             ),
             decoration: InputDecoration(
-              hintText: t.items.placeholder,
+              hintText: t.userRegistrationPage.name.items.placeholder,
               hintStyle: theme.textTheme.bodyLarge!.copyWith(
                 color: Colors.white70,
               ),
@@ -58,9 +58,9 @@ class UserNamePage extends ConsumerWidget {
       answered: name != null && name.isNotEmpty,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.dialog.title,
-          contentText1: t.dialog.contentText1,
-          contentText2: t.dialog.contentText2,
+          title: t.dialog.userName.title,
+          contentText1: t.dialog.userName.contentText1,
+          contentText2: t.dialog.userName.contentText2,
           context: context,
           value: name!,
           onConfirm: () {

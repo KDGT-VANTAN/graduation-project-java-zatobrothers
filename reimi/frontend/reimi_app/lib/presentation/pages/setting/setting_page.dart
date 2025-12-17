@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/domain/auth_notifier.dart';
-import 'package:reimi_app/presentation/pages/setting/components/logout_dialog.dart';
+import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/pages/setting/components/section_title.dart';
-import 'package:reimi_app/presentation/pages/setting/components/setting_app_bar.dart';
 import 'package:reimi_app/presentation/pages/setting/components/settings_tile.dart';
 import 'package:reimi_app/presentation/shared/pages/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
@@ -16,7 +16,21 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final t = Translations.of(context);
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(
+          t.settingPage.title,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: BackgroundContainer(
         child: SafeArea(
           child: Padding(
@@ -24,30 +38,36 @@ class SettingPage extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SettingAppBar(title: '設定'),
                 Expanded(
                   child: ListView(
                     children: [
-                      const SectionTitle(title: 'アカウント設定'),
+                      SectionTitle(
+                          title: t.settingPage.section.accountSetting.title),
                       SettingsTile(
-                        title: '本人確認',
+                        title: t.settingPage.section.accountSetting
+                            .identityVerification,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
                       SettingsTile(
-                        title: 'プッシュ通知',
+                        title: t.settingPage.section.accountSetting
+                            .pushNotification,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
                       SettingsTile(
-                        title: 'ログアウト',
+                        title: t.settingPage.section.accountSetting.logout,
                         shouldNavigate: false,
                         onTap: () {
-                          logoutDialog(
+                          customConfirmationDialog(
                             context: context,
-                            onLogOut: () async {
+                            title: t.dialog.logout.title,
+                            contentText: t.dialog.logout.contentText,
+                            buttonLabel: t.button.logout,
+                            accentColor: Colors.red,
+                            onPressed: () async {
                               await ref
                                   .read(authNotifierProvider.notifier)
                                   .signOut(
@@ -61,52 +81,54 @@ class SettingPage extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       SettingsTile(
-                        title: '退会',
+                        title: t.settingPage.section.accountSetting.withdrawal,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
-                      const SectionTitle(title: '履歴'),
+                      SectionTitle(title: t.settingPage.section.history.title),
                       SettingsTile(
-                        title: 'マッチング',
-                        shouldNavigate: true,
-                        onTap: () {},
-                      ),
-                      const SizedBox(height: 10),
-                      SettingsTile(
-                        title: '非表示',
-                        shouldNavigate: true,
-                        onTap: () {},
-                      ),
-                      const SizedBox(height: 10),
-                      const SectionTitle(title: 'ヘルプ'),
-                      SettingsTile(
-                        title: 'よくある質問',
+                        title: t.settingPage.section.history.matching,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
                       SettingsTile(
-                        title: 'お問い合わせ',
+                        title: t.settingPage.section.history.hidden,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
-                      const SectionTitle(title: 'Reimiについて'),
+                      SectionTitle(title: t.settingPage.section.help.title),
                       SettingsTile(
-                        title: '利用規約',
-                        shouldNavigate: true,
-                        onTap: () {},
-                      ),
-                      const SizedBox(height: 10),
-                      SettingsTile(
-                        title: 'プライバシーポリシー',
+                        title: t.settingPage.section.help.faq,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
                       const SizedBox(height: 10),
                       SettingsTile(
-                        title: 'アプリケーション情報',
+                        title: t.settingPage.section.help.inquiry,
+                        shouldNavigate: true,
+                        onTap: () {},
+                      ),
+                      const SizedBox(height: 10),
+                      SectionTitle(
+                          title: t.settingPage.section.aboutReimi.title),
+                      SettingsTile(
+                        title: t.settingPage.section.aboutReimi.tos,
+                        shouldNavigate: true,
+                        onTap: () {},
+                      ),
+                      const SizedBox(height: 10),
+                      SettingsTile(
+                        title: t.settingPage.section.aboutReimi.pp,
+                        shouldNavigate: true,
+                        onTap: () {},
+                      ),
+                      const SizedBox(height: 10),
+                      SettingsTile(
+                        title: t.settingPage.section.aboutReimi
+                            .applicationInformation,
                         shouldNavigate: true,
                         onTap: () {},
                       ),

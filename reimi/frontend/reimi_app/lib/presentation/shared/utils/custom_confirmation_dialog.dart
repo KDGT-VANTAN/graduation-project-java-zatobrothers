@@ -2,8 +2,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 
-Future<void> logoutDialog(
-    {required BuildContext context, required VoidCallback onLogOut}) async {
+Future<void> customConfirmationDialog({
+  required BuildContext context,
+  required String title,
+  required String contentText,
+  required String buttonLabel,
+  required VoidCallback onPressed,
+  required Color accentColor,
+  VoidCallback? onCancel,
+}) async {
   return showDialog(
     context: context,
     barrierDismissible: true,
@@ -29,7 +36,7 @@ Future<void> logoutDialog(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'ログアウトの確認',
+                  title,
                   style: theme.textTheme.titleMedium!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A2F34),
@@ -40,7 +47,7 @@ Future<void> logoutDialog(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '本当にログアウトしますか？',
+                      contentText,
                       style: theme.textTheme.bodyMedium!.copyWith(
                         color: const Color(0xFF1A2F34),
                       ),
@@ -60,7 +67,10 @@ Future<void> logoutDialog(
                               borderRadius: BorderRadius.circular(16),
                             ),
                           ),
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            onCancel != null ? onCancel() : null;
+                          },
                           child: Text(
                             t.cancel,
                             style: theme.textTheme.labelLarge!.copyWith(
@@ -79,20 +89,20 @@ Future<void> logoutDialog(
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
-                              side: const BorderSide(
-                                color: Colors.red,
+                              side: BorderSide(
+                                color: accentColor,
                               ),
                             ),
                           ),
                           onPressed: () {
                             Navigator.pop(context);
-                            onLogOut();
+                            onPressed();
                           },
                           child: Text(
-                            t.logout,
+                            buttonLabel,
                             style: theme.textTheme.labelLarge!.copyWith(
                               fontWeight: FontWeight.w600,
-                              color: Colors.red,
+                              color: accentColor,
                             ),
                           ),
                         ),

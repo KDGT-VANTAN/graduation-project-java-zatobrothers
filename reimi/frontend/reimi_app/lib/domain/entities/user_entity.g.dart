@@ -16,14 +16,12 @@ _UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => _UserEntity(
       address: $enumDecode(_$AddressEnumMap, json['address']),
       mainPhotoUrl: json['main_photo_url'] as String,
       email: json['email'] as String,
-      signupDate:
-          const IsoDateTimeConverter().fromJson(json['signup_date'] as String),
       lastLoginAt: const IsoDateTimeOrNullConverter()
           .fromJson(json['last_login_at'] as String?),
-      createdAt:
-          const IsoDateTimeConverter().fromJson(json['created_at'] as String),
-      updatedAt:
-          const IsoDateTimeConverter().fromJson(json['updated_at'] as String),
+      createdAt: const IsoDateTimeOrNullConverter()
+          .fromJson(json['created_at'] as String?),
+      updatedAt: const IsoDateTimeOrNullConverter()
+          .fromJson(json['updated_at'] as String?),
       status: $enumDecode(_$UserStatusEnumMap, json['status']),
       withdrawalAt: const IsoDateTimeOrNullConverter()
           .fromJson(json['withdrawal_at'] as String?),
@@ -39,11 +37,12 @@ Map<String, dynamic> _$UserEntityToJson(_UserEntity instance) =>
       'address': _$AddressEnumMap[instance.address]!,
       'main_photo_url': instance.mainPhotoUrl,
       'email': instance.email,
-      'signup_date': const IsoDateTimeConverter().toJson(instance.signupDate),
       'last_login_at':
           const IsoDateTimeOrNullConverter().toJson(instance.lastLoginAt),
-      'created_at': const IsoDateTimeConverter().toJson(instance.createdAt),
-      'updated_at': const IsoDateTimeConverter().toJson(instance.updatedAt),
+      'created_at':
+          const IsoDateTimeOrNullConverter().toJson(instance.createdAt),
+      'updated_at':
+          const IsoDateTimeOrNullConverter().toJson(instance.updatedAt),
       'status': _$UserStatusEnumMap[instance.status]!,
       'withdrawal_at':
           const IsoDateTimeOrNullConverter().toJson(instance.withdrawalAt),

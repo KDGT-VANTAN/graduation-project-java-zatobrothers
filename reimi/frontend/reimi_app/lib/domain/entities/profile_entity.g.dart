@@ -1,0 +1,334 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'profile_entity.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_ProfileEntity _$ProfileEntityFromJson(Map<String, dynamic> json) =>
+    _ProfileEntity(
+      id: json['id'] as String,
+      userId: json['user_id'] as String,
+      introduction: json['introduction'] as String,
+      height: $enumDecodeNullable(_$HeightEnumMap, json['height']),
+      bodyShape: $enumDecodeNullable(_$BodyShapeEnumMap, json['body_shape']),
+      annualIncome:
+          $enumDecodeNullable(_$AnnualIncomeEnumMap, json['annual_income']),
+      bloodType: $enumDecodeNullable(_$BloodTypeEnumMap, json['blood_type']),
+      hometown: $enumDecodeNullable(_$AddressEnumMap, json['hometown']),
+      communicationStyle: $enumDecodeNullable(
+          _$CommunicationStyleEnumMap, json['communication_style']),
+      occupation: $enumDecodeNullable(_$OccupationEnumMap, json['occupation']),
+      education: $enumDecodeNullable(_$EducationEnumMap, json['education']),
+      smoking: $enumDecodeNullable(_$SmokingEnumMap, json['smoking']),
+      alcohol: $enumDecodeNullable(_$AlcoholEnumMap, json['alcohol']),
+      holiday: $enumDecodeNullable(_$HolidayEnumMap, json['holiday']),
+      sunnyDayHobbies: (json['sunny_day_hobbies'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      rainyDayHobbies: (json['rainy_day_hobbies'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      createdAt: _$JsonConverterFromJson<String, DateTime>(
+          json['created_at'], const IsoDateTimeConverter().fromJson),
+      updatedAt: _$JsonConverterFromJson<String, DateTime>(
+          json['updated_at'], const IsoDateTimeConverter().fromJson),
+    );
+
+Map<String, dynamic> _$ProfileEntityToJson(_ProfileEntity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'user_id': instance.userId,
+      'introduction': instance.introduction,
+      'height': _$HeightEnumMap[instance.height],
+      'body_shape': _$BodyShapeEnumMap[instance.bodyShape],
+      'annual_income': _$AnnualIncomeEnumMap[instance.annualIncome],
+      'blood_type': _$BloodTypeEnumMap[instance.bloodType],
+      'hometown': _$AddressEnumMap[instance.hometown],
+      'communication_style':
+          _$CommunicationStyleEnumMap[instance.communicationStyle],
+      'occupation': _$OccupationEnumMap[instance.occupation],
+      'education': _$EducationEnumMap[instance.education],
+      'smoking': _$SmokingEnumMap[instance.smoking],
+      'alcohol': _$AlcoholEnumMap[instance.alcohol],
+      'holiday': _$HolidayEnumMap[instance.holiday],
+      'sunny_day_hobbies': instance.sunnyDayHobbies,
+      'rainy_day_hobbies': instance.rainyDayHobbies,
+      'created_at': _$JsonConverterToJson<String, DateTime>(
+          instance.createdAt, const IsoDateTimeConverter().toJson),
+      'updated_at': _$JsonConverterToJson<String, DateTime>(
+          instance.updatedAt, const IsoDateTimeConverter().toJson),
+    };
+
+const _$HeightEnumMap = {
+  Height.under130cm: 130,
+  Height.just131cm: 131,
+  Height.just132cm: 132,
+  Height.just133cm: 133,
+  Height.just134cm: 134,
+  Height.just135cm: 135,
+  Height.just136cm: 136,
+  Height.just137cm: 137,
+  Height.just138cm: 138,
+  Height.just139cm: 139,
+  Height.just140cm: 140,
+  Height.just141cm: 141,
+  Height.just142cm: 142,
+  Height.just143cm: 143,
+  Height.just144cm: 144,
+  Height.just145cm: 145,
+  Height.just146cm: 146,
+  Height.just147cm: 147,
+  Height.just148cm: 148,
+  Height.just149cm: 149,
+  Height.just150cm: 150,
+  Height.just151cm: 151,
+  Height.just152cm: 152,
+  Height.just153cm: 153,
+  Height.just154cm: 154,
+  Height.just155cm: 155,
+  Height.just156cm: 156,
+  Height.just157cm: 157,
+  Height.just158cm: 158,
+  Height.just159cm: 159,
+  Height.just160cm: 160,
+  Height.just161cm: 161,
+  Height.just162cm: 162,
+  Height.just163cm: 163,
+  Height.just164cm: 164,
+  Height.just165cm: 165,
+  Height.just166cm: 166,
+  Height.just167cm: 167,
+  Height.just168cm: 168,
+  Height.just169cm: 169,
+  Height.just170cm: 170,
+  Height.just171cm: 171,
+  Height.just172cm: 172,
+  Height.just173cm: 173,
+  Height.just174cm: 174,
+  Height.just175cm: 175,
+  Height.just176cm: 176,
+  Height.just177cm: 177,
+  Height.just178cm: 178,
+  Height.just179cm: 179,
+  Height.just180cm: 180,
+  Height.just181cm: 181,
+  Height.just182cm: 182,
+  Height.just183cm: 183,
+  Height.just184cm: 184,
+  Height.just185cm: 185,
+  Height.just186cm: 186,
+  Height.just187cm: 187,
+  Height.just188cm: 188,
+  Height.just189cm: 189,
+  Height.just190cm: 190,
+  Height.just191cm: 191,
+  Height.just192cm: 192,
+  Height.just193cm: 193,
+  Height.just194cm: 194,
+  Height.just195cm: 195,
+  Height.just196cm: 196,
+  Height.just197cm: 197,
+  Height.just198cm: 198,
+  Height.just199cm: 199,
+  Height.over200cm: 200,
+};
+
+const _$BodyShapeEnumMap = {
+  BodyShape.slim: 'SLIM',
+  BodyShape.slender: 'SLENDER',
+  BodyShape.normal: 'NORMAL',
+  BodyShape.muscular: 'MUSCULAR',
+  BodyShape.chubby: 'CHUBBY',
+  BodyShape.overweight: 'OVERWEIGHT',
+};
+
+const _$AnnualIncomeEnumMap = {
+  AnnualIncome.under2M: 'UNDER_2M',
+  AnnualIncome.between2And4M: '2M_TO_4M',
+  AnnualIncome.between4And6M: '4M_TO_6M',
+  AnnualIncome.between6And8M: '6M_TO_8M',
+  AnnualIncome.between8And10M: '8M_TO_10M',
+  AnnualIncome.between10And15M: '10M_TO_15M',
+  AnnualIncome.between15And20M: '15M_TO_20M',
+  AnnualIncome.between20And30M: '20M_TO_30M',
+  AnnualIncome.over30M: 'OVER_30M',
+};
+
+const _$BloodTypeEnumMap = {
+  BloodType.a: 'A',
+  BloodType.b: 'B',
+  BloodType.o: 'O',
+  BloodType.ab: 'AB',
+  BloodType.unknown: 'UNKNOWN',
+};
+
+const _$AddressEnumMap = {
+  Address.hokkaido: 'HOKKAIDO',
+  Address.aomori: 'AOMORI',
+  Address.iwate: 'IWATE',
+  Address.miyagi: 'MIYAGI',
+  Address.akita: 'AKITA',
+  Address.yamagata: 'YAMAGATA',
+  Address.fukushima: 'FUKUSHIMA',
+  Address.ibaraki: 'IBARAKI',
+  Address.tochigi: 'TOCHIGI',
+  Address.gunma: 'GUNMA',
+  Address.saitama: 'SAITAMA',
+  Address.chiba: 'CHIBA',
+  Address.tokyo: 'TOKYO',
+  Address.kanagawa: 'KANAGAWA',
+  Address.niigata: 'NIIGATA',
+  Address.toyama: 'TOYAMA',
+  Address.ishikawa: 'ISHIKAWA',
+  Address.fukui: 'FUKUI',
+  Address.yamanashi: 'YAMANASHI',
+  Address.nagano: 'NAGANO',
+  Address.gifu: 'GIFU',
+  Address.shizuoka: 'SHIZUOKA',
+  Address.aichi: 'AICHI',
+  Address.mie: 'MIE',
+  Address.shiga: 'SHIGA',
+  Address.kyoto: 'KYOTO',
+  Address.osaka: 'OSAKA',
+  Address.hyogo: 'HYOGO',
+  Address.nara: 'NARA',
+  Address.wakayama: 'WAKAYAMA',
+  Address.tottori: 'TOTTORI',
+  Address.shimane: 'SHIMANE',
+  Address.okayama: 'OKAYAMA',
+  Address.hiroshima: 'HIROSHIMA',
+  Address.yamaguchi: 'YAMAGUCHI',
+  Address.tokushima: 'TOKUSHIMA',
+  Address.kagawa: 'KAGAWA',
+  Address.ehime: 'EHIME',
+  Address.kochi: 'KOCHI',
+  Address.fukuoka: 'FUKUOKA',
+  Address.saga: 'SAGA',
+  Address.nagasaki: 'NAGASAKI',
+  Address.kumamoto: 'KUMAMOTO',
+  Address.oita: 'OITA',
+  Address.miyazaki: 'MIYAZAKI',
+  Address.kagoshima: 'KAGOSHIMA',
+  Address.okinawa: 'OKINAWA',
+  Address.other: 'OTHER',
+};
+
+const _$CommunicationStyleEnumMap = {
+  CommunicationStyle.call: 'CALL',
+  CommunicationStyle.message: 'MESSAGE',
+  CommunicationStyle.inPerson: 'IN_PERSON',
+};
+
+const _$OccupationEnumMap = {
+  Occupation.universityStudent: 'UNIVERSITY_STUDENT',
+  Occupation.graduateStudent: 'GRADUATE_STUDENT',
+  Occupation.vocationalStudent: 'VOCATIONAL_STUDENT',
+  Occupation.juniorCollegeStudent: 'JUNIOR_COLLEGE_STUDENT',
+  Occupation.technicalCollegeStudent: 'TECHNICAL_COLLEGE_STUDENT',
+  Occupation.distribution: 'DISTRIBUTION',
+  Occupation.foodIndustry: 'FOOD_INDUSTRY',
+  Occupation.pharmaceutical: 'PHARMACEUTICAL',
+  Occupation.medical: 'MEDICAL',
+  Occupation.welfareCare: 'WELFARE_CARE',
+  Occupation.doctor: 'DOCTOR',
+  Occupation.nurse: 'NURSE',
+  Occupation.pharmacist: 'PHARMACIST',
+  Occupation.telecommunication: 'TELECOMMUNICATION',
+  Occupation.web: 'WEB',
+  Occupation.it: 'IT',
+  Occupation.engineer: 'ENGINEER',
+  Occupation.creator: 'CREATOR',
+  Occupation.designer: 'DESIGNER',
+  Occupation.architectureInterior: 'ARCHITECTURE_INTERIOR',
+  Occupation.finance: 'FINANCE',
+  Occupation.insurance: 'INSURANCE',
+  Occupation.consulting: 'CONSULTING',
+  Occupation.media: 'MEDIA',
+  Occupation.advertising: 'ADVERTISING',
+  Occupation.publishing: 'PUBLISHING',
+  Occupation.education: 'EDUCATION',
+  Occupation.retail: 'RETAIL',
+  Occupation.transportation: 'TRANSPORTATION',
+  Occupation.entertainment: 'ENTERTAINMENT',
+  Occupation.travel: 'TRAVEL',
+  Occupation.realEstate: 'REAL_ESTATE',
+  Occupation.tradingCompany: 'TRADING_COMPANY',
+  Occupation.manufacturer: 'MANUFACTURER',
+  Occupation.researcher: 'RESEARCHER',
+  Occupation.majorCompany: 'MAJOR_COMPANY',
+  Occupation.foreignCompany: 'FOREIGN_COMPANY',
+  Occupation.listedCompany: 'LISTED_COMPANY',
+  Occupation.executive: 'EXECUTIVE',
+  Occupation.legal: 'LEGAL',
+  Occupation.lawyer: 'LAWYER',
+  Occupation.certifiedPublicAccountant: 'CPA',
+  Occupation.taxAccountant: 'TAX_ACCOUNTANT',
+  Occupation.freelance: 'FREELANCE',
+  Occupation.publicServant: 'PUBLIC_SERVANT',
+  Occupation.firefighter: 'FIREFIGHTER',
+  Occupation.police: 'POLICE',
+  Occupation.selfDefenseForce: 'SELF_DEFENSE_FORCE',
+  Occupation.athlete: 'ATHLETE',
+  Occupation.pilot: 'PILOT',
+  Occupation.investor: 'INVESTOR',
+  Occupation.cabinAttendant: 'CABIN_ATTENDANT',
+  Occupation.apparel: 'APPAREL',
+  Occupation.beauty: 'BEAUTY',
+  Occupation.bridal: 'BRIDAL',
+  Occupation.chefNutritionist: 'CHEF_NUTRITIONIST',
+  Occupation.childcareWorker: 'CHILDCARE_WORKER',
+  Occupation.service: 'SERVICE',
+  Occupation.secretary: 'SECRETARY',
+  Occupation.announcer: 'ANNOUNCER',
+  Occupation.receptionist: 'RECEPTIONIST',
+  Occupation.entertainerModel: 'ENTERTAINER_MODEL',
+  Occupation.influencer: 'INFLUENCER',
+  Occupation.youtuber: 'YOUTUBER',
+  Occupation.proGamer: 'PRO_GAMER',
+  Occupation.companyEmployee: 'COMPANY_EMPLOYEE',
+  Occupation.officeWork: 'OFFICE_WORK',
+  Occupation.selfEmployed: 'SELF_EMPLOYED',
+  Occupation.other: 'OTHER',
+};
+
+const _$EducationEnumMap = {
+  Education.highSchoolGraduate: 'HIGH_SCHOOL_GRADUATE',
+  Education.juniorCollegeGraduate: 'JUNIOR_COLLEGE_GRADUATE',
+  Education.vocationalSchoolGraduate: 'VOCATIONAL_SCHOOL_GRADUATE',
+  Education.technicalCollegeGraduate: 'TECHNICAL_COLLEGE_GRADUATE',
+  Education.universityGraduate: 'UNIVERSITY_GRADUATE',
+  Education.graduateSchoolGraduate: 'GRADUATE_SCHOOL_GRADUATE',
+  Education.other: 'OTHER',
+};
+
+const _$SmokingEnumMap = {
+  Smoking.no: 'NO',
+  Smoking.sometimes: 'SOMETIMES',
+  Smoking.yes: 'YES',
+};
+
+const _$AlcoholEnumMap = {
+  Alcohol.no: 'NO',
+  Alcohol.sometimes: 'SOMETIMES',
+  Alcohol.yes: 'YES',
+};
+
+const _$HolidayEnumMap = {
+  Holiday.weekend: 'WEEKEND',
+  Holiday.weekday: 'WEEKDAY',
+  Holiday.irregular: 'IRREGULAR',
+};
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

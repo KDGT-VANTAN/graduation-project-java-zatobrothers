@@ -15,14 +15,13 @@ class UserIntroductionPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistrationPage.introduction;
+    final t = Translations.of(context);
     final theme = Theme.of(context);
     final introduction = ref.watch(
       userRegistrationNotifierProvider
           .select((state) => state.data!.introduction),
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
-
     final controller = useTextEditingController(text: introduction);
     final textLength = useState(0);
 
@@ -34,7 +33,7 @@ class UserIntroductionPage extends HookConsumerWidget {
     }, []);
 
     return UserRegistrationPage(
-      question: t.question,
+      question: t.userRegistrationPage.introduction.question,
       theme: theme,
       mainContent: [
         Expanded(
@@ -60,7 +59,7 @@ class UserIntroductionPage extends HookConsumerWidget {
               ),
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: t.items.placeholder,
+                hintText: t.userRegistrationPage.introduction.items.placeholder,
                 hintStyle: theme.textTheme.bodyLarge!.copyWith(
                   color: Colors.white70,
                 ),
@@ -76,7 +75,8 @@ class UserIntroductionPage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              t.items.charCountLabelText(textLength: textLength.value),
+              t.userRegistrationPage.introduction.items
+                  .charCountLabelText(textLength: textLength.value),
               style: theme.textTheme.bodyMedium!.copyWith(
                 color: Colors.white70,
               ),
@@ -85,7 +85,8 @@ class UserIntroductionPage extends HookConsumerWidget {
                     introduction.isNotEmpty &&
                     textLength.value < 20
                 ? Text(
-                    t.items.remainingCharsText(
+                    t.userRegistrationPage.introduction.items
+                        .remainingCharsText(
                       remainingTextLength: 20 - textLength.value,
                     ),
                     style: theme.textTheme.bodyMedium!.copyWith(
@@ -99,9 +100,9 @@ class UserIntroductionPage extends HookConsumerWidget {
       answered: textLength.value >= 20,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.dialog.title,
-          contentText1: t.dialog.contentText1,
-          contentText2: t.dialog.contentText2,
+          title: t.dialog.userIntroduction.title,
+          contentText1: t.dialog.userIntroduction.contentText1,
+          contentText2: t.dialog.userIntroduction.contentText2,
           context: context,
           value: introduction!,
           onConfirm: () {
