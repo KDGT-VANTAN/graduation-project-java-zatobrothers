@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/feature/user_registration_notifier.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/address_picker.dart';
+import 'package:reimi_app/presentation/shared/utils/enum_picker.dart';
 import 'package:reimi_app/presentation/pages/user_registration/components/confirmation_dialog.dart';
 import 'package:reimi_app/presentation/pages/user_registration/components/user_registration_page.dart';
 import 'package:reimi_app/presentation/pages/user_registration/user_name_page.dart';
@@ -17,22 +17,30 @@ class UserAddressPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistrationPage.address;
+    final t = Translations.of(context);
     final theme = Theme.of(context);
     final address = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.address),
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
-      question: t.question,
+      question: t.userRegistrationPage.address.question,
       theme: theme,
       mainContent: [
         GestureDetector(
           onTap: () {
-            addressPicker(
+            enumPicker<Address>(
               context: context,
-              initAddress: Address.hokkaido,
-              onPressedSelectedButton: notifier.updateAddress,
+              items: Address.values,
+              initialValue: address,
+              displayBuilder: (address, context) {
+                return address.displayName(context);
+              },
+              onSelected: (address) {
+                ref
+                    .read(userRegistrationNotifierProvider.notifier)
+                    .updateAddress(address);
+              },
             );
           },
           child: Container(
@@ -50,7 +58,7 @@ class UserAddressPage extends ConsumerWidget {
             ),
             child: Text(
               address == null
-                  ? t.items.placeholder
+                  ? t.userRegistrationPage.address.items.placeholder
                   : address.displayName(context),
               style: theme.textTheme.bodyLarge!.copyWith(
                 fontSize: 18,
@@ -64,9 +72,9 @@ class UserAddressPage extends ConsumerWidget {
       answered: address != null,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.dialog.title,
-          contentText1: t.dialog.contentText1,
-          contentText2: t.dialog.contentText2,
+          title: t.dialog.userAddress.title,
+          contentText1: t.dialog.userAddress.contentText1,
+          contentText2: t.dialog.userAddress.contentText2,
           context: context,
           value: address!.displayName(context),
           onConfirm: () {

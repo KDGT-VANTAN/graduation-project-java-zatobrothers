@@ -9,7 +9,7 @@ import 'package:reimi_app/presentation/notifiers/feature/user_registration_notif
 import 'package:reimi_app/presentation/pages/home/home_page.dart';
 import 'package:reimi_app/presentation/pages/user_registration/components/confirmation_dialog.dart';
 import 'package:reimi_app/presentation/pages/user_registration/components/user_registration_page.dart';
-import 'package:reimi_app/core/utils/pick_image_from_gallery.dart';
+import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
 
 class UserMainPhotoPage extends ConsumerWidget {
   const UserMainPhotoPage({super.key});
@@ -18,7 +18,7 @@ class UserMainPhotoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistrationPage.mainPhoto;
+    final t = Translations.of(context);
     final theme = Theme.of(context);
     final mainPhotoUrl = ref.watch(
       userRegistrationNotifierProvider
@@ -26,7 +26,7 @@ class UserMainPhotoPage extends ConsumerWidget {
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
-      question: t.question,
+      question: t.userRegistrationPage.mainPhoto.question,
       theme: theme,
       mainContent: [
         Align(
@@ -56,7 +56,7 @@ class UserMainPhotoPage extends ConsumerWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(24),
-                          child: Assets.images.mainPhotoSample.image(
+                          child: Assets.images.sample.mainPhotoSample.image(
                             width: double.infinity,
                             height: double.infinity,
                             fit: BoxFit.cover,
@@ -72,7 +72,8 @@ class UserMainPhotoPage extends ConsumerWidget {
                           child: Column(
                             children: [
                               Text(
-                                t.items.photoSelectInstructionText,
+                                t.userRegistrationPage.mainPhoto.items
+                                    .photoSelectInstructionText,
                                 style: theme.textTheme.titleMedium!.copyWith(
                                   fontSize: 18,
                                   color: Colors.white70,
@@ -81,7 +82,8 @@ class UserMainPhotoPage extends ConsumerWidget {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                t.items.photoRecommendationHint,
+                                t.userRegistrationPage.mainPhoto.items
+                                    .photoRecommendationHint,
                                 style: theme.textTheme.titleSmall!.copyWith(
                                   color: Colors.white70,
                                   fontWeight: FontWeight.w600,
@@ -108,9 +110,9 @@ class UserMainPhotoPage extends ConsumerWidget {
       answered: mainPhotoUrl != null,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.dialog.title,
-          contentText1: t.dialog.contentText1,
-          contentText2: t.dialog.contentText2,
+          title: t.dialog.userMainPhoto.title,
+          contentText1: t.dialog.userMainPhoto.contentText1,
+          contentText2: t.dialog.userMainPhoto.contentText2,
           context: context,
           value: mainPhotoUrl!,
           onConfirm: () {

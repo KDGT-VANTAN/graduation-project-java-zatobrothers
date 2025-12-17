@@ -54,9 +54,9 @@ class UserGenderPage extends ConsumerWidget {
       answered: gender != null,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.userRegistrationPage.gender.dialog.title,
-          contentText1: t.userRegistrationPage.gender.dialog.contentText1,
-          contentText2: t.userRegistrationPage.gender.dialog.contentText2,
+          title: t.dialog.userGender.title,
+          contentText1: t.dialog.userGender.contentText1,
+          contentText2: t.dialog.userGender.contentText2,
           context: context,
           value: gender!.displayName(context),
           onConfirm: () {
