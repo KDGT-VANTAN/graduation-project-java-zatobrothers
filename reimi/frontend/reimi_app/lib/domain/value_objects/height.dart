@@ -61,7 +61,6 @@ enum Height {
   just158cm,
   @JsonValue(159)
   just159cm,
-
   @JsonValue(160)
   just160cm,
   @JsonValue(161)
@@ -102,7 +101,6 @@ enum Height {
   just178cm,
   @JsonValue(179)
   just179cm,
-
   @JsonValue(180)
   just180cm,
   @JsonValue(181)
@@ -123,7 +121,6 @@ enum Height {
   just188cm,
   @JsonValue(189)
   just189cm,
-
   @JsonValue(190)
   just190cm,
   @JsonValue(191)
