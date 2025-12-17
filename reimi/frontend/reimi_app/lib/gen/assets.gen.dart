@@ -17,15 +17,14 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/icons
   $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
 
+  /// Directory path: assets/images/items
+  $AssetsImagesItemsGen get items => const $AssetsImagesItemsGen();
+
   /// Directory path: assets/images/logo
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
 
-  /// File path: assets/images/main_photo_sample.png
-  AssetGenImage get mainPhotoSample =>
-      const AssetGenImage('assets/images/main_photo_sample.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [mainPhotoSample];
+  /// Directory path: assets/images/sample
+  $AssetsImagesSampleGen get sample => const $AssetsImagesSampleGen();
 }
 
 class $AssetsImagesIconsGen {
@@ -39,6 +38,17 @@ class $AssetsImagesIconsGen {
   List<AssetGenImage> get values => [appIcon];
 }
 
+class $AssetsImagesItemsGen {
+  const $AssetsImagesItemsGen();
+
+  /// File path: assets/images/items/rainbow_like.png
+  AssetGenImage get rainbowLike =>
+      const AssetGenImage('assets/images/items/rainbow_like.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [rainbowLike];
+}
+
 class $AssetsImagesLogoGen {
   const $AssetsImagesLogoGen();
 
@@ -48,6 +58,21 @@ class $AssetsImagesLogoGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [icons8Google];
+}
+
+class $AssetsImagesSampleGen {
+  const $AssetsImagesSampleGen();
+
+  /// File path: assets/images/sample/main_photo_sample.png
+  AssetGenImage get mainPhotoSample =>
+      const AssetGenImage('assets/images/sample/main_photo_sample.png');
+
+  /// File path: assets/images/sample/man_image_sample.png
+  AssetGenImage get manImageSample =>
+      const AssetGenImage('assets/images/sample/man_image_sample.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [mainPhotoSample, manImageSample];
 }
 
 class Assets {
