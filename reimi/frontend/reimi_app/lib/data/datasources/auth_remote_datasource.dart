@@ -90,9 +90,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       address: Address.hokkaido,
       mainPhotoUrl: user.photoURL ?? '',
       email: user.email ?? '',
-      signupDate: DateTime.now(),
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
       status: UserStatus.active,
     );
   }
