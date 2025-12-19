@@ -43,20 +43,10 @@
   },
   "userRegistrationPage": {
     "gender": {
-      "question": "性別を教えてください",
-      "dialog": {
-        "title": "性別の確認",
-        "contentText1": "選択した性別：",
-        "contentText2": "この内容で次に進みますか？"
-      }
+      "question": "性別を教えてください"
     },
     "birthDate": {
       "question": "生年月日を教えてください",
-      "dialog": {
-        "title": "生年月日の確認",
-        "contentText1": "選択した生年月日：",
-        "contentText2": "この内容で次に進みますか？"
-      },
       "items": {
         "year": "年",
         "month": "月",
@@ -65,33 +55,18 @@
     },
     "address": {
       "question": "居住地を教えてください",
-      "dialog": {
-        "title": "居住地の確認",
-        "contentText1": "選択した居住地：",
-        "contentText2": "この内容で次に進みますか？"
-      },
       "items": {
         "placeholder": "都道府県を選択"
       }
     },
     "name": {
       "question": "名前を教えてください",
-      "dialog": {
-        "title": "名前の確認",
-        "contentText1": "入力した名前：",
-        "contentText2": "この内容で次に進みますか？"
-      },
       "items": {
         "placeholder": "名前を入力"
       }
     },
     "introduction": {
       "question": "自己紹介を教えてください",
-      "dialog": {
-        "title": "自己紹介の確認",
-        "contentText1": "入力した自己紹介：",
-        "contentText2": "この内容で次に進みますか？"
-      },
       "items": {
         "placeholder": "自己紹介を入力（20文字以上）",
         "charCountLabelText": "$textLength / 20文字",
@@ -100,14 +75,104 @@
     },
     "mainPhoto": {
       "question": "メイン写真を選んでください",
-      "dialog": {
-        "title": "写真の確認",
-        "contentText1": "選択した写真：",
-        "contentText2": "この内容で登録を完了しますか？" 
-      },
       "items": {
         "photoSelectInstructionText": "クリックして写真を選択",
         "photoRecommendationHint": "笑顔の顔写真がおすすめ"
+      }
+    }
+  },
+  "profilePage": {
+    "title": "プロフィール編集",
+    "section": {
+      "mainPhoto": "メイン写真",
+      "subPhoto": "サブ写真",
+      "weatherPersonality": "ウェザーパーソナリティ",
+      "introduction": "自己紹介文",
+      "sunnyDayHobbies": "晴れの日にやりたいことベスト3",
+      "rainyDayHobbies": "雨の日にやりたいことベスト3",
+      "basicInformation": {
+        "title": "基本情報",
+        "items": {
+          "name": "名前",
+          "gender": "性別",
+          "birthDate": "生年月日",
+          "address": "居住地",
+          "hometown": "出身地",
+          "bloodType": "血液型",
+          "height": "身長",
+          "bodyShape": "体型",
+          "education": "学歴",
+          "occupation": "職業",
+          "annualIncome": "年収",
+          "smoking": "タバコ",
+          "alcohol": "お酒",
+          "holiday": "休日",
+          "communicationStyle": "コミュニケーション"
+        }
+      }
+    },
+    "edit": {
+      "title": "$itemを編集",
+      "sunnyDayHobbies": {
+        "top1": "晴れの日ベスト1",
+        "top2": "晴れの日ベスト2",
+        "top3": "晴れの日ベスト3"
+      },
+      "rainyDayHobbies": {
+        "top1": "雨の日ベスト1",
+        "top2": "雨の日ベスト2",
+        "top3": "雨の日ベスト3"
+      }
+    },
+    "placeholder": {
+      "subPhoto": {
+        "labels": {
+          "smile": "笑顔",
+          "fullLength": "全身",
+          "hobby": "趣味",
+          "food": "食べ物",
+          "travel": "旅行",
+          "holiday": "休日"
+        }
+      },
+      "sunnyDayHobbies": {
+        "top1": "晴れの日ベスト1を入力",
+        "top2": "晴れの日ベスト2を入力",
+        "top3": "晴れの日ベスト3を入力"
+      },
+      "rainyDayHobbies": {
+        "top1": "雨の日ベスト1を入力",
+        "top2": "雨の日ベスト2を入力",
+        "top3": "雨の日ベスト3を入力"
+      },
+      "basicInformation": "未設定"
+    }
+  },
+  "settingPage": {
+    "title": "設定",
+    "section": {
+      "accountSetting": {
+        "title": "アカウント設定",
+        "identityVerification": "本人確認",
+        "pushNotification": "プッシュ通知",
+        "logout": "ログアウト",
+        "withdrawal": "退会"
+      },
+      "history": {
+        "title": "履歴",
+        "matching": "マッチング",
+        "hidden": "非表示"
+      },
+      "help": {
+        "title": "ヘルプ",
+        "faq": "よくある質問",
+        "inquiry": "お問い合わせ"
+      },
+      "aboutReimi": {
+        "title": "Reimiについて",
+        "tos": "利用規約",
+        "pp": "プライバシーポリシー",
+        "applicationInformation": "アプリケーション情報"
       }
     }
   },
@@ -128,6 +193,50 @@
       "title": "アカウント"
     }
   },
+  "dialog": {
+    "userAddress": {
+      "title": "居住地の確認",
+      "contentText1": "選択した居住地：",
+      "contentText2": "この内容で次に進みますか？"
+    },
+    "userBirthDate": {
+      "title": "生年月日の確認",
+      "contentText1": "選択した生年月日：",
+      "contentText2": "この内容で次に進みますか？"
+    },
+    "userGender": {
+      "title": "性別の確認",
+      "contentText1": "選択した性別：",
+      "contentText2": "この内容で次に進みますか？"
+    },
+    "userIntroduction": {
+      "title": "自己紹介の確認",
+      "contentText1": "入力した自己紹介：",
+      "contentText2": "この内容で次に進みますか？"
+    },
+    "userMainPhoto": {
+      "title": "写真の確認",
+      "contentText1": "選択した写真：",
+      "contentText2": "この内容で登録を完了しますか？" 
+    },
+    "userName": {
+      "title": "名前の確認",
+      "contentText1": "入力した名前：",
+      "contentText2": "この内容で次に進みますか？"
+    },
+    "logout": {
+      "title": "ログアウトの確認",
+      "contentText": "本当にログアウトしますか？"
+    },
+    "deletePhoto": {
+      "title": "写真削除の確認",
+      "contentText": "本当にこの写真を削除しますか？"
+    },
+    "saveChanges": {
+      "title": "変更保存の確認",
+      "contentText": "変更した内容を保存しますか？"
+    }
+  },
   "button": {
     "next": "次へ",
     "confirmation": "確認",
@@ -135,14 +244,11 @@
     "select": "選択",
     "logout": "ログアウト",
     "retry": "再読み込み",
-    "tryRater": "あとで試す"
+    "tryLater": "あとで試す",
+    "save": "保存",
+    "delete": "削除"
   },
   "enum": {
-    "gender": {
-        "man": "男性",
-        "woman": "女性",
-        "other": "その他"
-    },
     "address": {
       "prefecture": {
         "hokkaido": "北海道",
@@ -194,6 +300,210 @@
         "okinawa": "沖縄県"
       },
       "other": "その他"
+    },
+    "alcohol": {
+      "no": "飲まない",
+      "sometimes": "たまに飲む",
+      "yes": "飲む"
+    },
+    "annualIncome": {
+      "under2M": "200万円未満",
+      "between2And4M": "200万〜400万円",
+      "between4And6M": "400万〜600万円",
+      "between6And8M": "600万〜800万円",
+      "between8And10M": "800万〜1000万円",
+      "between10And15M": "1000万〜1500万円",
+      "between15And20M": "1500万〜2000万円",
+      "between20And30M": "2000万〜3000万円",
+      "over30M": "3000万円以上"
+    },
+    "bloodType": {
+      "a": "A型",
+      "b": "B型",
+      "o": "O型",
+      "ab": "AB型",
+      "unknown": "わからない"
+    },
+    "bodyShape": {
+      "slim": "スリム",
+      "slender": "やや細め",
+      "normal": "普通",
+      "muscular": "筋肉質",
+      "chubby": "ややぽっちゃり",
+      "overweight": "太め"
+    },
+    "communicationStyle": {
+      "call": "電話派",
+      "message": "メッセージ派",
+      "inPerson": "対面派"
+    },
+    "education": {
+      "highSchoolGraduate": "高校卒",
+      "juniorCollegeGraduate": "短大卒",
+      "vocationalSchoolGraduate": "専門卒",
+      "technicalCollegeGraduate": "高専卒",
+      "universityGraduate": "大学卒",
+      "graduateSchoolGraduate": "大学院卒",
+      "other": "その他"
+    },
+    "gender": {
+      "man": "男性",
+      "woman": "女性",
+      "other": "その他"
+    },
+    "height": {
+      "under130cm": "130cm以下",
+      "just131cm": "131cm",
+      "just132cm": "132cm",
+      "just133cm": "133cm",
+      "just134cm": "134cm",
+      "just135cm": "135cm",
+      "just136cm": "136cm",
+      "just137cm": "137cm",
+      "just138cm": "138cm",
+      "just139cm": "139cm",
+      "just140cm": "140cm",
+      "just141cm": "141cm",
+      "just142cm": "142cm",
+      "just143cm": "143cm",
+      "just144cm": "144cm",
+      "just145cm": "145cm",
+      "just146cm": "146cm",
+      "just147cm": "147cm",
+      "just148cm": "148cm",
+      "just149cm": "149cm",
+      "just150cm": "150cm",
+      "just151cm": "151cm",
+      "just152cm": "152cm",
+      "just153cm": "153cm",
+      "just154cm": "154cm",
+      "just155cm": "155cm",
+      "just156cm": "156cm",
+      "just157cm": "157cm",
+      "just158cm": "158cm",
+      "just159cm": "159cm",
+      "just160cm": "160cm",
+      "just161cm": "161cm",
+      "just162cm": "162cm",
+      "just163cm": "163cm",
+      "just164cm": "164cm",
+      "just165cm": "165cm",
+      "just166cm": "166cm",
+      "just167cm": "167cm",
+      "just168cm": "168cm",
+      "just169cm": "169cm",
+      "just170cm": "170cm",
+      "just171cm": "171cm",
+      "just172cm": "172cm",
+      "just173cm": "173cm",
+      "just174cm": "174cm",
+      "just175cm": "175cm",
+      "just176cm": "176cm",
+      "just177cm": "177cm",
+      "just178cm": "178cm",
+      "just179cm": "179cm",
+      "just180cm": "180cm",
+      "just181cm": "181cm",
+      "just182cm": "182cm",
+      "just183cm": "183cm",
+      "just184cm": "184cm",
+      "just185cm": "185cm",
+      "just186cm": "186cm",
+      "just187cm": "187cm",
+      "just188cm": "188cm",
+      "just189cm": "189cm",
+      "just190cm": "190cm",
+      "just191cm": "191cm",
+      "just192cm": "192cm",
+      "just193cm": "193cm",
+      "just194cm": "194cm",
+      "just195cm": "195cm",
+      "just196cm": "196cm",
+      "just197cm": "197cm",
+      "just198cm": "198cm",
+      "just199cm": "199cm",
+      "over200cm": "200cm以上"
+    },
+    "holiday": {
+      "weekend": "土日",
+      "weekday": "平日",
+      "irregular": "不定休"
+    },
+    "occupation": {
+      "universityStudent": "大学生",
+      "graduateStudent": "大学院生",
+      "vocationalStudent": "専門学生",
+      "juniorCollegeStudent": "短大生",
+      "technicalCollegeStudent": "高専生",
+      "distribution": "流通",
+      "foodIndustry": "食品関係",
+      "pharmaceutical": "製薬",
+      "medical": "医療関係",
+      "welfareCare": "福祉・介護",
+      "doctor": "医師",
+      "nurse": "看護師",
+      "pharmacist": "薬剤師",
+      "telecommunication": "通信",
+      "web": "WEB関係",
+      "it": "IT関係",
+      "engineer": "エンジニア",
+      "creator": "クリエイター",
+      "designer": "デザイナー",
+      "architectureInterior": "建築・インテリア",
+      "finance": "金融",
+      "insurance": "保険",
+      "consulting": "コンサル",
+      "media": "マスコミ",
+      "advertising": "広告",
+      "publishing": "出版",
+      "education": "教育関係",
+      "retail": "小売",
+      "transportation": "輸送・交通",
+      "entertainment": "エンターテイメント",
+      "travel": "旅行関係",
+      "realEstate": "不動産",
+      "tradingCompany": "商社",
+      "manufacturer": "メーカー",
+      "researcher": "研究職",
+      "majorCompany": "大手企業",
+      "foreignCompany": "外資企業",
+      "listedCompany": "上場企業",
+      "executive": "経営者・役員",
+      "legal": "法務関係",
+      "lawyer": "弁護士",
+      "certifiedPublicAccountant": "公認会計士",
+      "taxAccountant": "税理士",
+      "freelance": "自由業",
+      "publicServant": "公務員",
+      "firefighter": "消防士",
+      "police": "警察官",
+      "selfDefenseForce": "自衛隊",
+      "athlete": "スポーツ選手",
+      "pilot": "パイロット",
+      "investor": "投資家",
+      "cabinAttendant": "キャビンアテンダント",
+      "apparel": "アパレル",
+      "beauty": "美容関係",
+      "bridal": "ブライダル",
+      "chefNutritionist": "調理師・栄養士",
+      "childcareWorker": "保育士",
+      "service": "サービス業",
+      "secretary": "秘書",
+      "announcer": "アナウンサー",
+      "receptionist": "受付",
+      "entertainerModel": "芸能・モデル",
+      "influencer": "インフルエンサー",
+      "youtuber": "YouTuber",
+      "proGamer": "プロゲーマー",
+      "companyEmployee": "会社員",
+      "officeWork": "事務",
+      "selfEmployed": "自営業",
+      "other": "その他"
+    },
+    "smoking": {
+      "no": "吸わない",
+      "sometimes": "たまに吸う",
+      "yes": "吸う"
     }
   }
 }

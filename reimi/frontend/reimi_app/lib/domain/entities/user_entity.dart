@@ -20,10 +20,9 @@ abstract class UserEntity with _$UserEntity {
     required Address address,
     required String mainPhotoUrl,
     required String email,
-    @IsoDateTimeConverter() required DateTime signupDate,
     @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-    @IsoDateTimeConverter() required DateTime createdAt,
-    @IsoDateTimeConverter() required DateTime updatedAt,
+    @IsoDateTimeOrNullConverter() DateTime? createdAt,
+    @IsoDateTimeOrNullConverter() DateTime? updatedAt,
     required UserStatus status,
     @IsoDateTimeOrNullConverter() DateTime? withdrawalAt,
   }) = _UserEntity;
@@ -41,9 +40,6 @@ abstract class UserEntity with _$UserEntity {
         address: Address.other,
         mainPhotoUrl: '',
         email: firebaseUser.email!,
-        signupDate: DateTime.now(),
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
         status: UserStatus.active,
       );
 }

@@ -91,7 +91,7 @@ class ErrorPage extends StatelessWidget {
                       context.go(AuthGate.routeLocation);
                     },
                     child: Text(
-                      t.button.tryRater,
+                      t.button.tryLater,
                       style: theme.textTheme.labelLarge!.copyWith(
                         color: Colors.white,
                       ),

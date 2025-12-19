@@ -39,24 +39,14 @@
   },
   "errorPage": {
     "defaultMessage": "An error has occurred",
-    "subMessage": "Please check your communication environment and try again."
+    "subMessage": "Please check your internet connection\nand try again."
   },
   "userRegistrationPage": {
     "gender": {
-      "question": "What is your gender?",
-      "dialog": {
-        "title": "Confirm Gender",
-        "contentText1": "Selected gender: ",
-        "contentText2": "Proceed with this selection?"
-      }
+      "question": "What is your gender?"
     },
     "birthDate": {
       "question": "What is your date of birth?",
-      "dialog": {
-        "title": "Confirm Date of Birth",
-        "contentText1": "Selected date of birth: ",
-        "contentText2": "Proceed with this selection?"
-      },
       "items": {
         "year": "Year",
         "month": "Month",
@@ -65,33 +55,18 @@
     },
     "address": {
       "question": "Where do you live?",
-      "dialog": {
-        "title": "Confirm Address",
-        "contentText1": "Selected address: ",
-        "contentText2": "Proceed with this selection?"
-      },
       "items": {
         "placeholder": "Select prefecture"
       }
     },
     "name": {
       "question": "What is your name?",
-      "dialog": {
-        "title": "Confirm Name",
-        "contentText1": "Entered name: ",
-        "contentText2": "Proceed with this entry?"
-      },
       "items": {
         "placeholder": "Enter your name"
       }
     },
     "introduction": {
       "question": "Tell us about yourself",
-      "dialog": {
-        "title": "Confirm Introduction",
-        "contentText1": "Your introduction: ",
-        "contentText2": "Proceed with this entry?"
-      },
       "items": {
         "placeholder": "Enter your introduction (20 characters minimum)",
         "charCountLabelText": "$textLength / 20 characters",
@@ -100,14 +75,104 @@
     },
     "mainPhoto": {
       "question": "Select your main photo",
-      "dialog": {
-        "title": "Confirm Photo",
-        "contentText1": "Selected photo: ",
-        "contentText2": "Complete registration with this photo?" 
-      },
       "items": {
         "photoSelectInstructionText": "Click to select photo",
         "photoRecommendationHint": "A smiling face photo is recommended"
+      }
+    }
+  },
+  "profilePage": {
+    "title": "Edit Profile",
+    "section": {
+      "mainPhoto": "Main Photo",
+      "subPhoto": "Sub Photos",
+      "weatherPersonality": "Weather Personality",
+      "introduction": "Introduction",
+      "sunnyDayHobbies": "Top 3 Things to Do on Sunny Days",
+      "rainyDayHobbies": "Top 3 Things to Do on Rainy Days",
+      "basicInformation": {
+        "title": "Basic Information",
+        "items": {
+          "name": "Name",
+          "gender": "Gender",
+          "birthDate": "Date of Birth",
+          "address": "Location",
+          "hometown": "Hometown",
+          "bloodType": "Blood Type",
+          "height": "Height",
+          "bodyShape": "Body Type",
+          "education": "Education",
+          "occupation": "Occupation",
+          "annualIncome": "Annual Income",
+          "smoking": "Smoking",
+          "alcohol": "Alcohol",
+          "holiday": "Days Off",
+          "communicationStyle": "Communication Style"
+        }
+      }
+    },
+    "edit": {
+      "title": "Edit $item",
+      "sunnyDayHobbies": {
+        "top1": "Sunny Day Top 1",
+        "top2": "Sunny Day Top 2",
+        "top3": "Sunny Day Top 3"
+      },
+      "rainyDayHobbies": {
+        "top1": "Rainy Day Top 1",
+        "top2": "Rainy Day Top 2",
+        "top3": "Rainy Day Top 3"
+      }
+    },
+    "placeholder": {
+      "subPhoto": {
+        "labels": {
+          "smile": "Smile",
+          "fullLength": "Full Body",
+          "hobby": "Hobby",
+          "food": "Food",
+          "travel": "Travel",
+          "holiday": "Day Off"
+        }
+      },
+      "sunnyDayHobbies": {
+        "top1": "Enter sunny day top 1",
+        "top2": "Enter sunny day top 2",
+        "top3": "Enter sunny day top 3"
+      },
+      "rainyDayHobbies": {
+        "top1": "Enter rainy day top 1",
+        "top2": "Enter rainy day top 2",
+        "top3": "Enter rainy day top 3"
+      },
+      "basicInformation": "Not set"
+    }
+  },
+  "settingPage": {
+    "title": "Settings",
+    "section": {
+      "accountSetting": {
+        "title": "Account Settings",
+        "identityVerification": "Identity Verification",
+        "pushNotification": "Push Notifications",
+        "logout": "Logout",
+        "withdrawal": "Delete Account"
+      },
+      "history": {
+        "title": "History",
+        "matching": "Matches",
+        "hidden": "Hidden"
+      },
+      "help": {
+        "title": "Help",
+        "faq": "FAQ",
+        "inquiry": "Contact Us"
+      },
+      "aboutReimi": {
+        "title": "About Reimi",
+        "tos": "Terms of Service",
+        "pp": "Privacy Policy",
+        "applicationInformation": "App Information"
       }
     }
   },
@@ -128,21 +193,62 @@
       "title": "Account"
     }
   },
+  "dialog": {
+    "userAddress": {
+      "title": "Confirm Address",
+      "contentText1": "Selected address: ",
+      "contentText2": "Proceed with this selection?"
+    },
+    "userBirthDate": {
+      "title": "Confirm Date of Birth",
+      "contentText1": "Selected date of birth: ",
+      "contentText2": "Proceed with this selection?"
+    },
+    "userGender": {
+      "title": "Confirm Gender",
+      "contentText1": "Selected gender: ",
+      "contentText2": "Proceed with this selection?"
+    },
+    "userIntroduction": {
+      "title": "Confirm Introduction",
+      "contentText1": "Your introduction: ",
+      "contentText2": "Proceed with this entry?"
+    },
+    "userMainPhoto": {
+      "title": "Confirm Photo",
+      "contentText1": "Selected photo: ",
+      "contentText2": "Complete registration with this photo?" 
+    },
+    "userName": {
+      "title": "Confirm Name",
+      "contentText1": "Entered name: ",
+      "contentText2": "Proceed with this entry?"
+    },
+    "logout": {
+      "title": "Confirm Logout",
+      "contentText": "Are you sure you want to logout?"
+    },
+    "deletePhoto": {
+      "title": "Confirm Photo Deletion",
+      "contentText": "Do you really want to delete this photo?"
+    },
+    "saveChanges": {
+      "title": "Confirm Save Changes",
+      "contentText": "Do you want to save your changes?"
+    }
+  },
   "button": {
     "next": "Next",
     "confirmation": "Confirm",
     "cancel": "Cancel",
     "select": "Select",
     "logout": "Logout",
-    "retry": "Retry",
-    "tryRater": "Try Rater"
+    "retry": "Reload",
+    "tryLater": "Try Later",
+    "save": "Save",
+    "delete": "Delete"
   },
   "enum": {
-    "gender": {
-        "man": "Male",
-        "woman": "Female",
-        "other": "Other"
-    },
     "address": {
       "prefecture": {
         "hokkaido": "Hokkaido",
@@ -194,6 +300,210 @@
         "okinawa": "Okinawa"
       },
       "other": "Other"
+    },
+    "alcohol": {
+      "no": "Don't drink",
+      "sometimes": "Drink occasionally",
+      "yes": "Drink"
+    },
+    "annualIncome": {
+      "under2M": "Under ¥2M",
+      "between2And4M": "¥2M - ¥4M",
+      "between4And6M": "¥4M - ¥6M",
+      "between6And8M": "¥6M - ¥8M",
+      "between8And10M": "¥8M - ¥10M",
+      "between10And15M": "¥10M - ¥15M",
+      "between15And20M": "¥15M - ¥20M",
+      "between20And30M": "¥20M - ¥30M",
+      "over30M": "Over ¥30M"
+    },
+    "bloodType": {
+      "a": "Type A",
+      "b": "Type B",
+      "o": "Type O",
+      "ab": "Type AB",
+      "unknown": "Unknown"
+    },
+    "bodyShape": {
+      "slim": "Slim",
+      "slender": "Slender",
+      "normal": "Average",
+      "muscular": "Muscular",
+      "chubby": "Slightly Chubby",
+      "overweight": "Heavy"
+    },
+    "communicationStyle": {
+      "call": "Phone Calls",
+      "message": "Messaging",
+      "inPerson": "In Person"
+    },
+    "education": {
+      "highSchoolGraduate": "High School",
+      "juniorCollegeGraduate": "Junior College",
+      "vocationalSchoolGraduate": "Vocational School",
+      "technicalCollegeGraduate": "Technical College",
+      "universityGraduate": "University",
+      "graduateSchoolGraduate": "Graduate School",
+      "other": "Other"
+    },
+    "gender": {
+      "man": "Male",
+      "woman": "Female",
+      "other": "Other"
+    },
+    "height": {
+      "under130cm": "Under 130cm",
+      "just131cm": "131cm",
+      "just132cm": "132cm",
+      "just133cm": "133cm",
+      "just134cm": "134cm",
+      "just135cm": "135cm",
+      "just136cm": "136cm",
+      "just137cm": "137cm",
+      "just138cm": "138cm",
+      "just139cm": "139cm",
+      "just140cm": "140cm",
+      "just141cm": "141cm",
+      "just142cm": "142cm",
+      "just143cm": "143cm",
+      "just144cm": "144cm",
+      "just145cm": "145cm",
+      "just146cm": "146cm",
+      "just147cm": "147cm",
+      "just148cm": "148cm",
+      "just149cm": "149cm",
+      "just150cm": "150cm",
+      "just151cm": "151cm",
+      "just152cm": "152cm",
+      "just153cm": "153cm",
+      "just154cm": "154cm",
+      "just155cm": "155cm",
+      "just156cm": "156cm",
+      "just157cm": "157cm",
+      "just158cm": "158cm",
+      "just159cm": "159cm",
+      "just160cm": "160cm",
+      "just161cm": "161cm",
+      "just162cm": "162cm",
+      "just163cm": "163cm",
+      "just164cm": "164cm",
+      "just165cm": "165cm",
+      "just166cm": "166cm",
+      "just167cm": "167cm",
+      "just168cm": "168cm",
+      "just169cm": "169cm",
+      "just170cm": "170cm",
+      "just171cm": "171cm",
+      "just172cm": "172cm",
+      "just173cm": "173cm",
+      "just174cm": "174cm",
+      "just175cm": "175cm",
+      "just176cm": "176cm",
+      "just177cm": "177cm",
+      "just178cm": "178cm",
+      "just179cm": "179cm",
+      "just180cm": "180cm",
+      "just181cm": "181cm",
+      "just182cm": "182cm",
+      "just183cm": "183cm",
+      "just184cm": "184cm",
+      "just185cm": "185cm",
+      "just186cm": "186cm",
+      "just187cm": "187cm",
+      "just188cm": "188cm",
+      "just189cm": "189cm",
+      "just190cm": "190cm",
+      "just191cm": "191cm",
+      "just192cm": "192cm",
+      "just193cm": "193cm",
+      "just194cm": "194cm",
+      "just195cm": "195cm",
+      "just196cm": "196cm",
+      "just197cm": "197cm",
+      "just198cm": "198cm",
+      "just199cm": "199cm",
+      "over200cm": "Over 200cm"
+    },
+    "holiday": {
+      "weekend": "Weekends",
+      "weekday": "Weekdays",
+      "irregular": "Irregular"
+    },
+    "occupation": {
+      "universityStudent": "University Student",
+      "graduateStudent": "Graduate Student",
+      "vocationalStudent": "Vocational Student",
+      "juniorCollegeStudent": "Junior College Student",
+      "technicalCollegeStudent": "Technical College Student",
+      "distribution": "Distribution",
+      "foodIndustry": "Food Industry",
+      "pharmaceutical": "Pharmaceutical",
+      "medical": "Medical",
+      "welfareCare": "Welfare/Care",
+      "doctor": "Doctor",
+      "nurse": "Nurse",
+      "pharmacist": "Pharmacist",
+      "telecommunication": "Telecommunications",
+      "web": "Web",
+      "it": "IT",
+      "engineer": "Engineer",
+      "creator": "Creator",
+      "designer": "Designer",
+      "architectureInterior": "Architecture/Interior",
+      "finance": "Finance",
+      "insurance": "Insurance",
+      "consulting": "Consulting",
+      "media": "Media",
+      "advertising": "Advertising",
+      "publishing": "Publishing",
+      "education": "Education",
+      "retail": "Retail",
+      "transportation": "Transportation",
+      "entertainment": "Entertainment",
+      "travel": "Travel",
+      "realEstate": "Real Estate",
+      "tradingCompany": "Trading Company",
+      "manufacturer": "Manufacturer",
+      "researcher": "Researcher",
+      "majorCompany": "Major Company",
+      "foreignCompany": "Foreign Company",
+      "listedCompany": "Listed Company",
+      "executive": "Executive",
+      "legal": "Legal",
+      "lawyer": "Lawyer",
+      "certifiedPublicAccountant": "CPA",
+      "taxAccountant": "Tax Accountant",
+      "freelance": "Freelance",
+      "publicServant": "Civil Servant",
+      "firefighter": "Firefighter",
+      "police": "Police Officer",
+      "selfDefenseForce": "Self-Defense Force",
+      "athlete": "Athlete",
+      "pilot": "Pilot",
+      "investor": "Investor",
+      "cabinAttendant": "Cabin Attendant",
+      "apparel": "Apparel",
+      "beauty": "Beauty",
+      "bridal": "Bridal",
+      "chefNutritionist": "Chef/Nutritionist",
+      "childcareWorker": "Childcare Worker",
+      "service": "Service Industry",
+      "secretary": "Secretary",
+      "announcer": "Announcer",
+      "receptionist": "Receptionist",
+      "entertainerModel": "Entertainer/Model",
+      "influencer": "Influencer",
+      "youtuber": "YouTuber",
+      "proGamer": "Pro Gamer",
+      "companyEmployee": "Company Employee",
+      "officeWork": "Office Work",
+      "selfEmployed": "Self-Employed",
+      "other": "Other"
+    },
+    "smoking": {
+      "no": "Don't smoke",
+      "sometimes": "Smoke occasionally",
+      "yes": "Smoke"
     }
   }
 }

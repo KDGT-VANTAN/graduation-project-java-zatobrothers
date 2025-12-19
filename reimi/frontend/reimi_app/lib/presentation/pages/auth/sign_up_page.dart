@@ -8,7 +8,7 @@ import 'package:reimi_app/presentation/notifiers/domain/auth_notifier.dart';
 import 'package:reimi_app/presentation/pages/auth/components/apple_button.dart';
 import 'package:reimi_app/presentation/pages/auth/components/google_button.dart';
 import 'package:reimi_app/presentation/pages/auth/sign_in_page.dart';
-import 'package:reimi_app/core/utils/url_launcher_util.dart';
+import 'package:reimi_app/presentation/shared/utils/url_launcher_util.dart';
 import 'package:reimi_app/presentation/shared/pages/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_icon.dart';
 import 'package:reimi_app/presentation/shared/widgets/arc_background.dart';

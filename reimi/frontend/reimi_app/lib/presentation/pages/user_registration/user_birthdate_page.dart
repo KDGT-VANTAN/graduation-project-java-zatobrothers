@@ -17,22 +17,23 @@ class UserBirthdatePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context).userRegistrationPage.birthDate;
+    final t = Translations.of(context);
     final theme = Theme.of(context);
     final birthDate = ref.watch(
       userRegistrationNotifierProvider.select((state) => state.data!.birthDate),
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
-      question: t.question,
+      question: t.userRegistrationPage.birthDate.question,
       theme: theme,
       mainContent: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DateItemContainer(
-              label:
-                  birthDate == null ? t.items.year : birthDate.year.toString(),
+              label: birthDate == null
+                  ? t.userRegistrationPage.birthDate.items.year
+                  : birthDate.year.toString(),
               onTap: () {
                 customDatePicker(
                   context: context,
@@ -43,7 +44,7 @@ class UserBirthdatePage extends ConsumerWidget {
             ),
             DateItemContainer(
               label: birthDate == null
-                  ? t.items.month
+                  ? t.userRegistrationPage.birthDate.items.month
                   : birthDate.month.toString(),
               onTap: () {
                 customDatePicker(
@@ -54,7 +55,9 @@ class UserBirthdatePage extends ConsumerWidget {
               },
             ),
             DateItemContainer(
-              label: birthDate == null ? t.items.day : birthDate.day.toString(),
+              label: birthDate == null
+                  ? t.userRegistrationPage.birthDate.items.day
+                  : birthDate.day.toString(),
               onTap: () {
                 customDatePicker(
                   context: context,
@@ -69,9 +72,9 @@ class UserBirthdatePage extends ConsumerWidget {
       answered: birthDate != null,
       nextButtonOnPressed: () {
         confirmationDialog(
-          title: t.dialog.title,
-          contentText1: t.dialog.contentText1,
-          contentText2: t.dialog.contentText2,
+          title: t.dialog.userBirthDate.title,
+          contentText1: t.dialog.userBirthDate.contentText1,
+          contentText2: t.dialog.userBirthDate.contentText2,
           context: context,
           value: birthDate!.toJapaneseDate,
           onConfirm: () {

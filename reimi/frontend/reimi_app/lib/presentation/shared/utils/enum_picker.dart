@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
 
-void addressPicker({
+void enumPicker<T extends Enum>({
   required BuildContext context,
-  required Address? initAddress,
-  required Function(Address) onPressedSelectedButton,
+  required List<T> items,
+  required T? initialValue,
+  required String Function(T item, BuildContext context) displayBuilder,
+  required void Function(T selected) onSelected,
 }) {
   showModalBottomSheet(
     context: context,
@@ -15,13 +15,12 @@ void addressPicker({
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
-    builder: (BuildContext builder) {
-      final t = Translations.of(context).button;
+    builder: (_) {
       final theme = Theme.of(context);
-      const items = Address.values;
-      final int defaultIndex = items.indexOf(Address.hokkaido);
+      const defaultIndex = 0;
       int selectedIndex =
-          initAddress == null ? defaultIndex : items.indexOf(initAddress);
+          initialValue == null ? defaultIndex : items.indexOf(initialValue);
+
       return SizedBox(
         height: 300,
         child: Column(
@@ -31,18 +30,18 @@ void addressPicker({
               children: [
                 TextButton(
                   onPressed: () {
-                    onPressedSelectedButton(items[selectedIndex]);
+                    onSelected(items[selectedIndex]);
                     Navigator.pop(context);
                   },
                   child: Text(
-                    t.select,
+                    Translations.of(context).button.select,
                     style: theme.textTheme.labelMedium!.copyWith(
                       color: theme.colorScheme.primary,
                       fontSize: 16,
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 12),
               ],
             ),
             Expanded(
@@ -55,7 +54,11 @@ void addressPicker({
                   selectedIndex = index;
                 },
                 children: items
-                    .map((e) => Center(child: Text(e.displayName(context))))
+                    .map(
+                      (e) => Center(
+                        child: Text(displayBuilder(e, context)),
+                      ),
+                    )
                     .toList(),
               ),
             ),
