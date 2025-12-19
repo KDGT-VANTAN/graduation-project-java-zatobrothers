@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.model;
+package com.reimi.reimi_app.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.controller;
+package com.reimi.reimi_app.infrastructure.web.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

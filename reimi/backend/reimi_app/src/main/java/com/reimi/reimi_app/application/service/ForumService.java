@@ -1,12 +1,12 @@
-package com.reimi.reimi_app.service;
+package com.reimi.reimi_app.application.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.reimi.reimi_app.model.Forum;
-import com.reimi.reimi_app.repository.ForumRepository;
+import com.reimi.reimi_app.domain.model.Forum;
+import com.reimi.reimi_app.domain.repository.ForumRepository;
 
 import jakarta.transaction.Transactional;
 
