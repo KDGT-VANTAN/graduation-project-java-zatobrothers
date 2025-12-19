@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.controller;
+package com.reimi.reimi_app.infrastructure.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.reimi.reimi_app.model.Forum;
-import com.reimi.reimi_app.service.ForumService;
+import com.reimi.reimi_app.application.service.ForumService;
+import com.reimi.reimi_app.domain.model.Forum;
 
 @Controller
 public class ForumController {
