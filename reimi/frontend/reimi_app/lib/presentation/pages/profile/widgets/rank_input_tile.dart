@@ -52,7 +52,7 @@ class RankInputTile extends StatelessWidget {
                       ),
                     ),
             ),
-            if (value != null && value!.isNotEmpty)
+            if (value != null && value!.isNotEmpty && onDelete != null)
               GestureDetector(
                 onTap: onDelete,
                 child: const Icon(

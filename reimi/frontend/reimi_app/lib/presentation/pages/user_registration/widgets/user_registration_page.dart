@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/feature/user_registration_notifier.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/next_button.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/user_registration_header.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/next_button.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/user_registration_header.dart';
 import 'package:reimi_app/presentation/shared/widgets/arc_background.dart';
 
 class UserRegistrationPage extends ConsumerWidget {

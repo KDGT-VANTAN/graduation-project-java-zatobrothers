@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/domain/auth_notifier.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
-import 'package:reimi_app/presentation/pages/setting/components/section_title.dart';
-import 'package:reimi_app/presentation/pages/setting/components/settings_tile.dart';
+import 'package:reimi_app/presentation/pages/setting/widgets/section_title.dart';
+import 'package:reimi_app/presentation/pages/setting/widgets/settings_tile.dart';
 import 'package:reimi_app/presentation/shared/pages/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
 

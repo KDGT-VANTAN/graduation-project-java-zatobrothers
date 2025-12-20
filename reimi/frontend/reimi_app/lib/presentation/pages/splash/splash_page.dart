@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/pages/splash/components/loading_dots.dart';
+import 'package:reimi_app/presentation/pages/splash/widgets/loading_dots.dart';
 import 'package:reimi_app/presentation/shared/pages/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_icon.dart';
 import 'package:reimi_app/presentation/shared/widgets/arc_background.dart';

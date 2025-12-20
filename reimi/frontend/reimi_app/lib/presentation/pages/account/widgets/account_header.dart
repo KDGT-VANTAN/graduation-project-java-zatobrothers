@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/presentation/pages/account/components/circle_icon_button.dart';
+import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/pages/setting/setting_page.dart';
 
 class AccountHeader extends StatelessWidget {

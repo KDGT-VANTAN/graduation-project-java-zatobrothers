@@ -7,8 +7,8 @@ import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/feature/user_registration_notifier.dart';
 import 'package:reimi_app/presentation/pages/home/home_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/confirmation_dialog.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/user_registration_page.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/confirmation_dialog.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/user_registration_page.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
 
 class UserMainPhotoPage extends ConsumerWidget {

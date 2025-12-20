@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:reimi_app/presentation/pages/splash/components/loading_dots.dart';
+import 'package:reimi_app/presentation/pages/splash/widgets/loading_dots.dart';
 
 class BlurLoadingOverlay extends StatelessWidget {
   const BlurLoadingOverlay({super.key});

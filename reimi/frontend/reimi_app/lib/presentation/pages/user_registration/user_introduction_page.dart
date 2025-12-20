@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/notifiers/feature/user_registration_notifier.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/confirmation_dialog.dart';
-import 'package:reimi_app/presentation/pages/user_registration/components/user_registration_page.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/confirmation_dialog.dart';
+import 'package:reimi_app/presentation/pages/user_registration/widgets/user_registration_page.dart';
 import 'package:reimi_app/presentation/pages/user_registration/user_main_photo_page.dart';
 
 class UserIntroductionPage extends HookConsumerWidget {
