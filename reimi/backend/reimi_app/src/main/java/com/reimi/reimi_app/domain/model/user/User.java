@@ -1,0 +1,70 @@
+package com.reimi.reimi_app.domain.model.user;
+
+import java.time.LocalDate;
+import java.util.UUID;
+
+public class User {
+
+    private final UUID id;
+    private final String firebaseUid;
+    private final String name;
+    private final Gender gender;
+    private final LocalDate birthDate;
+    private final Address address;
+    private final String mainPhotoUrl;
+    private final String email;
+    private final Status status;
+
+    private User(
+            UUID id,
+            String firebaseUid,
+            String name,
+            Gender gender,
+            LocalDate birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String email,
+            Status status
+    ) {
+        this.id = id;
+        this.firebaseUid = firebaseUid;
+        this.name = name;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.mainPhotoUrl = mainPhotoUrl;
+        this.email = email;
+        this.status = status;
+    }
+    public static User create(
+            String firebaseUid,
+            String name,
+            Gender gender,
+            LocalDate birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String email
+    ) {
+        return new User(
+                UUID.randomUUID(),
+                firebaseUid,
+                name,
+                gender,
+                birthDate,
+                address,
+                mainPhotoUrl,
+                email,
+                Status.ACTIVE
+        );
+    }
+
+    public UUID getId() { return id; }
+    public String getFirebaseUid() { return firebaseUid; }
+    public String getName() { return name; }
+    public Gender getGender() { return gender; }
+    public LocalDate getBirthDate() { return birthDate; }
+    public Address getAddress() { return address; }
+    public String getMainPhotoUrl() { return mainPhotoUrl; }
+    public String getEmail() { return email; }
+    public Status getStatus() { return status; }
+}
