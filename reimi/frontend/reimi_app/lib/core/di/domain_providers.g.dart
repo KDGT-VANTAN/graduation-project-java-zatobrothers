@@ -26,5 +26,64 @@ final signInWithProviderUseCaseProvider =
 // ignore: unused_element
 typedef SignInWithProviderUseCaseRef
     = AutoDisposeProviderRef<SignInWithProviderUseCase>;
+String _$getHomeUsersUseCaseHash() =>
+    r'9e0664618ae3d35d1f1a435b98eef98c273940f8';
+
+/// See also [getHomeUsersUseCase].
+@ProviderFor(getHomeUsersUseCase)
+final getHomeUsersUseCaseProvider =
+    AutoDisposeProvider<GetHomeUsersUseCase>.internal(
+  getHomeUsersUseCase,
+  name: r'getHomeUsersUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getHomeUsersUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetHomeUsersUseCaseRef = AutoDisposeProviderRef<GetHomeUsersUseCase>;
+String _$getCurrentUserUseCaseHash() =>
+    r'164eab3a80abd1b521c3f629b511451a9ee58417';
+
+/// See also [getCurrentUserUseCase].
+@ProviderFor(getCurrentUserUseCase)
+final getCurrentUserUseCaseProvider =
+    AutoDisposeProvider<GetCurrentUserUseCase>.internal(
+  getCurrentUserUseCase,
+  name: r'getCurrentUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getCurrentUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetCurrentUserUseCaseRef
+    = AutoDisposeProviderRef<GetCurrentUserUseCase>;
+String _$getUserProfileUseCaseHash() =>
+    r'b06af33d9f418aeb674e7389161a7cd42444b067';
+
+/// See also [getUserProfileUseCase].
+@ProviderFor(getUserProfileUseCase)
+final getUserProfileUseCaseProvider =
+    AutoDisposeProvider<GetUserProfileUseCase>.internal(
+  getUserProfileUseCase,
+  name: r'getUserProfileUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getUserProfileUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUserProfileUseCaseRef
+    = AutoDisposeProviderRef<GetUserProfileUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

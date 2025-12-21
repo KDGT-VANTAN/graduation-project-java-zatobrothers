@@ -45,10 +45,12 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
 	late final TranslationsErrorPageEn errorPage = TranslationsErrorPageEn._(_root);
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
+	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsSettingPageEn settingPage = TranslationsSettingPageEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
 	late final TranslationsDialogEn dialog = TranslationsDialogEn._(_root);
+	late final TranslationsBottomSheetEn bottomSheet = TranslationsBottomSheetEn._(_root);
 	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
 	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
@@ -144,6 +146,18 @@ class TranslationsUserRegistrationPageEn {
 	late final TranslationsUserRegistrationPageMainPhotoEn mainPhoto = TranslationsUserRegistrationPageMainPhotoEn._(_root);
 }
 
+// Path: profileDetailPage
+class TranslationsProfileDetailPageEn {
+	TranslationsProfileDetailPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Profile Details'
+	String get title => 'Profile Details';
+}
+
 // Path: profilePage
 class TranslationsProfilePageEn {
 	TranslationsProfilePageEn._(this._root);
@@ -206,6 +220,17 @@ class TranslationsDialogEn {
 	late final TranslationsDialogSaveChangesEn saveChanges = TranslationsDialogSaveChangesEn._(_root);
 }
 
+// Path: bottomSheet
+class TranslationsBottomSheetEn {
+	TranslationsBottomSheetEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsBottomSheetSortUserEn sortUser = TranslationsBottomSheetSortUserEn._(_root);
+	late final TranslationsBottomSheetRefineSearchUserEn refineSearchUser = TranslationsBottomSheetRefineSearchUserEn._(_root);
+}
+
 // Path: button
 class TranslationsButtonEn {
 	TranslationsButtonEn._(this._root);
@@ -240,6 +265,12 @@ class TranslationsButtonEn {
 
 	/// en: 'Delete'
 	String get delete => 'Delete';
+
+	/// en: 'Apply'
+	String get apply => 'Apply';
+
+	/// en: 'Clear'
+	String get clear => 'Clear';
 }
 
 // Path: kEnum
@@ -261,6 +292,7 @@ class TranslationsKEnumEn {
 	late final TranslationsKEnumHolidayEn holiday = TranslationsKEnumHolidayEn._(_root);
 	late final TranslationsKEnumOccupationEn occupation = TranslationsKEnumOccupationEn._(_root);
 	late final TranslationsKEnumSmokingEn smoking = TranslationsKEnumSmokingEn._(_root);
+	late final TranslationsKEnumSortTypeEn sortType = TranslationsKEnumSortTypeEn._(_root);
 }
 
 // Path: signUpPage.button
@@ -712,6 +744,32 @@ class TranslationsDialogSaveChangesEn {
 
 	/// en: 'Do you want to save your changes?'
 	String get contentText => 'Do you want to save your changes?';
+}
+
+// Path: bottomSheet.sortUser
+class TranslationsBottomSheetSortUserEn {
+	TranslationsBottomSheetSortUserEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Sort'
+	String get title => 'Sort';
+}
+
+// Path: bottomSheet.refineSearchUser
+class TranslationsBottomSheetRefineSearchUserEn {
+	TranslationsBottomSheetRefineSearchUserEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Refine Search'
+	String get title => 'Refine Search';
+
+	late final TranslationsBottomSheetRefineSearchUserSectionEn section = TranslationsBottomSheetRefineSearchUserSectionEn._(_root);
 }
 
 // Path: kEnum.address
@@ -1372,6 +1430,21 @@ class TranslationsKEnumSmokingEn {
 	String get yes => 'Smoke';
 }
 
+// Path: kEnum.sortType
+class TranslationsKEnumSortTypeEn {
+	TranslationsKEnumSortTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Login Order'
+	String get login => 'Login Order';
+
+	/// en: 'Compatibility Order'
+	String get compatibility => 'Compatibility Order';
+}
+
 // Path: userRegistrationPage.birthDate.items
 class TranslationsUserRegistrationPageBirthDateItemsEn {
 	TranslationsUserRegistrationPageBirthDateItemsEn._(this._root);
@@ -1622,6 +1695,27 @@ class TranslationsSettingPageSectionAboutReimiEn {
 
 	/// en: 'App Information'
 	String get applicationInformation => 'App Information';
+}
+
+// Path: bottomSheet.refineSearchUser.section
+class TranslationsBottomSheetRefineSearchUserSectionEn {
+	TranslationsBottomSheetRefineSearchUserSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Age'
+	String get age => 'Age';
+
+	/// en: 'Address'
+	String get address => 'Address';
+
+	/// en: 'Gender'
+	String get gender => 'Gender';
+
+	/// en: 'Weather Personality'
+	String get weatherPersonality => 'Weather Personality';
 }
 
 // Path: kEnum.address.prefecture
@@ -1903,6 +1997,7 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
+			'profileDetailPage.title' => 'Profile Details',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.section.mainPhoto' => 'Main Photo',
 			'profilePage.section.subPhoto' => 'Sub Photos',
@@ -1991,6 +2086,12 @@ extension on Translations {
 			'dialog.deletePhoto.contentText' => 'Do you really want to delete this photo?',
 			'dialog.saveChanges.title' => 'Confirm Save Changes',
 			'dialog.saveChanges.contentText' => 'Do you want to save your changes?',
+			'bottomSheet.sortUser.title' => 'Sort',
+			'bottomSheet.refineSearchUser.title' => 'Refine Search',
+			'bottomSheet.refineSearchUser.section.age' => 'Age',
+			'bottomSheet.refineSearchUser.section.address' => 'Address',
+			'bottomSheet.refineSearchUser.section.gender' => 'Gender',
+			'bottomSheet.refineSearchUser.section.weatherPersonality' => 'Weather Personality',
 			'button.next' => 'Next',
 			'button.confirmation' => 'Confirm',
 			'button.cancel' => 'Cancel',
@@ -2000,6 +2101,8 @@ extension on Translations {
 			'button.tryLater' => 'Try Later',
 			'button.save' => 'Save',
 			'button.delete' => 'Delete',
+			'button.apply' => 'Apply',
+			'button.clear' => 'Clear',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
 			'kEnum.address.prefecture.aomori' => 'Aomori',
 			'kEnum.address.prefecture.iwate' => 'Iwate',
@@ -2230,6 +2333,8 @@ extension on Translations {
 			'kEnum.smoking.no' => 'Don\'t smoke',
 			'kEnum.smoking.sometimes' => 'Smoke occasionally',
 			'kEnum.smoking.yes' => 'Smoke',
+			'kEnum.sortType.login' => 'Login Order',
+			'kEnum.sortType.compatibility' => 'Compatibility Order',
 			_ => null,
 		};
 	}

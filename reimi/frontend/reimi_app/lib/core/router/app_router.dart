@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:reimi_app/presentation/pages/account/account_page.dart';
-import 'package:reimi_app/presentation/pages/auth/sign_in_page.dart';
-import 'package:reimi_app/presentation/pages/auth/sign_up_page.dart';
-import 'package:reimi_app/presentation/pages/chat/chat_page.dart';
-import 'package:reimi_app/presentation/pages/home/home_page.dart';
-import 'package:reimi_app/presentation/pages/like/like_page.dart';
-import 'package:reimi_app/presentation/pages/profile/profile_page.dart';
-import 'package:reimi_app/presentation/pages/profile_edit/profile_edit_page.dart';
-import 'package:reimi_app/presentation/pages/setting/setting_page.dart';
-import 'package:reimi_app/presentation/pages/splash/splash_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_address_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_birthdate_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_gender_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_introduction_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_main_photo_page.dart';
-import 'package:reimi_app/presentation/pages/user_registration/user_name_page.dart';
-import 'package:reimi_app/presentation/pages/weather_report/weather_report_page.dart';
-import 'package:reimi_app/presentation/shared/pages/auth_gate.dart';
+import 'package:reimi_app/presentation/features/account/account_page.dart';
+import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
+import 'package:reimi_app/presentation/features/auth/sign_up_page.dart';
+import 'package:reimi_app/presentation/features/chat/chat_page.dart';
+import 'package:reimi_app/presentation/features/home/home_page.dart';
+import 'package:reimi_app/presentation/features/like/like_page.dart';
+import 'package:reimi_app/presentation/features/profile/pages/profile_page.dart';
+import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
+import 'package:reimi_app/presentation/features/profile/pages/profile_edit_page.dart';
+import 'package:reimi_app/presentation/features/setting/setting_page.dart';
+import 'package:reimi_app/presentation/features/splash/splash_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_address_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_birthdate_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_gender_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_introduction_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_main_photo_page.dart';
+import 'package:reimi_app/presentation/features/user_registration/pages/user_name_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/weather_report_page.dart';
+import 'package:reimi_app/presentation/app/router/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/bottom_navigation.dart';
@@ -131,6 +132,18 @@ GoRouter goRouter(Ref ref) {
           return const UserMainPhotoPage();
         },
       ),
+      // ----- home -----
+      GoRoute(
+        path: ProfileDetailPage.routeLocation,
+        name: ProfileDetailPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object>;
+          final userId = extra['userId'] as String;
+          return ProfileDetailPage(
+            userId: userId,
+          );
+        },
+      ),
       // ----- account -----
       GoRoute(
         path: SettingPage.routeLocation,
@@ -143,7 +156,9 @@ GoRouter goRouter(Ref ref) {
         path: ProfilePage.routeLocation,
         name: ProfilePage.routeName,
         builder: (context, state) {
-          return const ProfilePage();
+          final extra = state.extra! as Map<String, Object?>;
+          final userId = extra['userId'] as String;
+          return ProfilePage(userId: userId);
         },
       ),
       GoRoute(
