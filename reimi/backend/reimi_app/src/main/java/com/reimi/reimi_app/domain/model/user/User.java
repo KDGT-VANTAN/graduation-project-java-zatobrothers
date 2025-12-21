@@ -2,6 +2,8 @@ package com.reimi.reimi_app.domain.model.user;
 
 import java.time.LocalDate;
 
+import com.reimi.reimi_app.domain.model.profile.Profile;
+
 public class User {
 
     private final UserId id;
@@ -13,6 +15,7 @@ public class User {
     private final String mainPhotoUrl;
     private final String email;
     private final Status status;
+    private final Profile profile;
 
     private User(
             UserId id,
@@ -23,7 +26,8 @@ public class User {
             Address address,
             String mainPhotoUrl,
             String email,
-            Status status
+            Status status,
+            Profile profile
     ) {
         this.id = id;
         this.firebaseUid = firebaseUid;
@@ -34,6 +38,7 @@ public class User {
         this.mainPhotoUrl = mainPhotoUrl;
         this.email = email;
         this.status = status;
+        this.profile = profile;
     }
     public static User create(
             String firebaseUid,
@@ -42,10 +47,14 @@ public class User {
             LocalDate birthDate,
             Address address,
             String mainPhotoUrl,
-            String email
+            String email,
+            String introduction
     ) {
+        UserId userId = UserId.generate();
+        Profile profile = Profile.create(userId, introduction);
+
         return new User(
-                UserId.generate(),
+                userId,
                 firebaseUid,
                 name,
                 gender,
@@ -53,11 +62,12 @@ public class User {
                 address,
                 mainPhotoUrl,
                 email,
-                Status.ACTIVE
+                Status.ACTIVE,
+                profile
         );
     }
 
-    public UserId Id() { return id; }
+    public UserId getId() { return id; }
     public String getFirebaseUid() { return firebaseUid; }
     public String getName() { return name; }
     public Gender getGender() { return gender; }
@@ -66,4 +76,5 @@ public class User {
     public String getMainPhotoUrl() { return mainPhotoUrl; }
     public String getEmail() { return email; }
     public Status getStatus() { return status; }
+    public Profile getProfile() { return profile; }
 }
