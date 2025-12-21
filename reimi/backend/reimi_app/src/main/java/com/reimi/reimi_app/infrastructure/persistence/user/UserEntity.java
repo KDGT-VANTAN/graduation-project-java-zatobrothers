@@ -74,7 +74,6 @@ public class UserEntity {
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
 
-    public UserEntity() {
-    }
+    public UserEntity() {}
 
 }

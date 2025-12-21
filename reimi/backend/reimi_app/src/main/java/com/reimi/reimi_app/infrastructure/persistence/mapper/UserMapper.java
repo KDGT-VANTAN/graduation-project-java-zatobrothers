@@ -7,7 +7,7 @@ public class UserMapper {
 
     public static UserEntity toEntity(User user) {
         UserEntity entity = new UserEntity();
-        entity.setId(user.Id().value());
+        entity.setId(user.getId().value());
         entity.setFirebaseUid(user.getFirebaseUid());
         entity.setName(user.getName());
         entity.setGender(user.getGender());
