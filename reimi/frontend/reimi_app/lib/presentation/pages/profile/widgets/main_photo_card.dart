@@ -6,7 +6,7 @@ class MainPhotoCard extends StatelessWidget {
     required this.image,
     required this.onTap,
   });
-  final ImageProvider<Object> image;
+  final ImageProvider<Object>? image;
   final void Function()? onTap;
 
   @override
@@ -23,17 +23,19 @@ class MainPhotoCard extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: AspectRatio(
-            // 正方形
-            aspectRatio: 1,
-            child: Image(
-              image: image,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+        child: image != null
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: AspectRatio(
+                  // 正方形
+                  aspectRatio: 1,
+                  child: Image(
+                    image: image!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            : null,
       ),
     );
   }
