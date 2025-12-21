@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_state.dart';
+part of 'profile_edit_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,23 +13,23 @@ part of 'profile_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$ProfileState {
-  ProfileModel? get data;
+mixin _$ProfileEditState {
+  UserWithProfileModel? get data;
   bool get isChanged;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $ProfileStateCopyWith<ProfileState> get copyWith =>
-      _$ProfileStateCopyWithImpl<ProfileState>(
-          this as ProfileState, _$identity);
+  $ProfileEditStateCopyWith<ProfileEditState> get copyWith =>
+      _$ProfileEditStateCopyWithImpl<ProfileEditState>(
+          this as ProfileEditState, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ProfileState &&
+            other is ProfileEditState &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged));
@@ -40,29 +40,30 @@ mixin _$ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(data: $data, isChanged: $isChanged)';
+    return 'ProfileEditState(data: $data, isChanged: $isChanged)';
   }
 }
 
 /// @nodoc
-abstract mixin class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) _then) =
-      _$ProfileStateCopyWithImpl;
+abstract mixin class $ProfileEditStateCopyWith<$Res> {
+  factory $ProfileEditStateCopyWith(
+          ProfileEditState value, $Res Function(ProfileEditState) _then) =
+      _$ProfileEditStateCopyWithImpl;
   @useResult
-  $Res call({ProfileModel? data, bool isChanged});
+  $Res call({UserWithProfileModel? data, bool isChanged});
 
-  $ProfileModelCopyWith<$Res>? get data;
+  $UserWithProfileModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._self, this._then);
+class _$ProfileEditStateCopyWithImpl<$Res>
+    implements $ProfileEditStateCopyWith<$Res> {
+  _$ProfileEditStateCopyWithImpl(this._self, this._then);
 
-  final ProfileState _self;
-  final $Res Function(ProfileState) _then;
+  final ProfileEditState _self;
+  final $Res Function(ProfileEditState) _then;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -74,7 +75,7 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ProfileModel?,
+              as UserWithProfileModel?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
@@ -82,23 +83,23 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
     ));
   }
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProfileModelCopyWith<$Res>? get data {
+  $UserWithProfileModelCopyWith<$Res>? get data {
     if (_self.data == null) {
       return null;
     }
 
-    return $ProfileModelCopyWith<$Res>(_self.data!, (value) {
+    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
       return _then(_self.copyWith(data: value));
     });
   }
 }
 
-/// Adds pattern-matching-related methods to [ProfileState].
-extension ProfileStatePatterns on ProfileState {
+/// Adds pattern-matching-related methods to [ProfileEditState].
+extension ProfileEditStatePatterns on ProfileEditState {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -113,12 +114,12 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ProfileState value)? $default, {
+    TResult Function(_ProfileEditState value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _ProfileState() when $default != null:
+      case _ProfileEditState() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -140,11 +141,11 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ProfileState value) $default,
+    TResult Function(_ProfileEditState value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ProfileState():
+      case _ProfileEditState():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -165,11 +166,11 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ProfileState value)? $default,
+    TResult? Function(_ProfileEditState value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ProfileState() when $default != null:
+      case _ProfileEditState() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -190,12 +191,12 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(ProfileModel? data, bool isChanged)? $default, {
+    TResult Function(UserWithProfileModel? data, bool isChanged)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _ProfileState() when $default != null:
+      case _ProfileEditState() when $default != null:
         return $default(_that.data, _that.isChanged);
       case _:
         return orElse();
@@ -217,11 +218,11 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(ProfileModel? data, bool isChanged) $default,
+    TResult Function(UserWithProfileModel? data, bool isChanged) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ProfileState():
+      case _ProfileEditState():
         return $default(_that.data, _that.isChanged);
       case _:
         throw StateError('Unexpected subclass');
@@ -242,11 +243,11 @@ extension ProfileStatePatterns on ProfileState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(ProfileModel? data, bool isChanged)? $default,
+    TResult? Function(UserWithProfileModel? data, bool isChanged)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ProfileState() when $default != null:
+      case _ProfileEditState() when $default != null:
         return $default(_that.data, _that.isChanged);
       case _:
         return null;
@@ -256,28 +257,28 @@ extension ProfileStatePatterns on ProfileState {
 
 /// @nodoc
 
-class _ProfileState implements ProfileState {
-  const _ProfileState({this.data, this.isChanged = false});
+class _ProfileEditState implements ProfileEditState {
+  const _ProfileEditState({this.data, this.isChanged = false});
 
   @override
-  final ProfileModel? data;
+  final UserWithProfileModel? data;
   @override
   @JsonKey()
   final bool isChanged;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ProfileStateCopyWith<_ProfileState> get copyWith =>
-      __$ProfileStateCopyWithImpl<_ProfileState>(this, _$identity);
+  _$ProfileEditStateCopyWith<_ProfileEditState> get copyWith =>
+      __$ProfileEditStateCopyWithImpl<_ProfileEditState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProfileState &&
+            other is _ProfileEditState &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged));
@@ -288,33 +289,33 @@ class _ProfileState implements ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(data: $data, isChanged: $isChanged)';
+    return 'ProfileEditState(data: $data, isChanged: $isChanged)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$ProfileStateCopyWith<$Res>
-    implements $ProfileStateCopyWith<$Res> {
-  factory _$ProfileStateCopyWith(
-          _ProfileState value, $Res Function(_ProfileState) _then) =
-      __$ProfileStateCopyWithImpl;
+abstract mixin class _$ProfileEditStateCopyWith<$Res>
+    implements $ProfileEditStateCopyWith<$Res> {
+  factory _$ProfileEditStateCopyWith(
+          _ProfileEditState value, $Res Function(_ProfileEditState) _then) =
+      __$ProfileEditStateCopyWithImpl;
   @override
   @useResult
-  $Res call({ProfileModel? data, bool isChanged});
+  $Res call({UserWithProfileModel? data, bool isChanged});
 
   @override
-  $ProfileModelCopyWith<$Res>? get data;
+  $UserWithProfileModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class __$ProfileStateCopyWithImpl<$Res>
-    implements _$ProfileStateCopyWith<$Res> {
-  __$ProfileStateCopyWithImpl(this._self, this._then);
+class __$ProfileEditStateCopyWithImpl<$Res>
+    implements _$ProfileEditStateCopyWith<$Res> {
+  __$ProfileEditStateCopyWithImpl(this._self, this._then);
 
-  final _ProfileState _self;
-  final $Res Function(_ProfileState) _then;
+  final _ProfileEditState _self;
+  final $Res Function(_ProfileEditState) _then;
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -322,11 +323,11 @@ class __$ProfileStateCopyWithImpl<$Res>
     Object? data = freezed,
     Object? isChanged = null,
   }) {
-    return _then(_ProfileState(
+    return _then(_ProfileEditState(
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ProfileModel?,
+              as UserWithProfileModel?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
@@ -334,16 +335,16 @@ class __$ProfileStateCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of ProfileState
+  /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProfileModelCopyWith<$Res>? get data {
+  $UserWithProfileModelCopyWith<$Res>? get data {
     if (_self.data == null) {
       return null;
     }
 
-    return $ProfileModelCopyWith<$Res>(_self.data!, (value) {
+    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
       return _then(_self.copyWith(data: value));
     });
   }
