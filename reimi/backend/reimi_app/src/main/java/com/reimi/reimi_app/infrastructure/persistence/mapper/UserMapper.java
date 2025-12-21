@@ -1,7 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.mapper;
 
 import com.reimi.reimi_app.domain.model.user.User;
-import com.reimi.reimi_app.infrastructure.persistence.user.UserEntity;
+import com.reimi.reimi_app.infrastructure.persistence.entity.UserEntity;
 
 public class UserMapper {
 
@@ -16,6 +16,7 @@ public class UserMapper {
         entity.setMainPhotoUrl(user.getMainPhotoUrl());
         entity.setEmail(user.getEmail());
         entity.setStatus(user.getStatus());
+        entity.setProfile(ProfileMapper.toEntity(user.getProfile(), entity));
 
         return entity;
     }
