@@ -1,4 +1,4 @@
-import 'package:reimi_app/data/models/profile_model.dart';
+import 'package:reimi_app/data/models/user_with_profile_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
 import 'package:reimi_app/domain/value_objects/annual_income.dart';
@@ -6,35 +6,23 @@ import 'package:reimi_app/domain/value_objects/blood_type.dart';
 import 'package:reimi_app/domain/value_objects/body_shape.dart';
 import 'package:reimi_app/domain/value_objects/communication_style.dart';
 import 'package:reimi_app/domain/value_objects/education.dart';
-import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
-import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/presentation/states/feature/profile_state.dart';
+import 'package:reimi_app/presentation/notifiers/domain/user_with_profile_notifier.dart';
+import 'package:reimi_app/presentation/states/feature/profile_edit_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'profile_notifier.g.dart';
+part 'profile_edit_notifier.g.dart';
 
 @riverpod
-class ProfileNotifier extends _$ProfileNotifier {
+class ProfileEditNotifier extends _$ProfileEditNotifier {
   @override
-  ProfileState build() {
-    return ProfileState(
-      // 仮実装
-      data: ProfileModel(
-        name: 'ラーメン太郎',
-        address: Address.aomori,
-        introduction:
-            'はじめまして！週末は登山やカフェ巡りを楽しんでいます。晴れの日は外でアクティブに、雨の日はゆっくり映画鑑賞が好きです。',
-        mainPhotoUrl: Assets.images.sample.manImageSample.path,
-        gender: Gender.man,
-        birthDate: DateTime.now(),
-        subPhotoUrls: List.filled(6, ''),
-        sunnyDayHobbies: List.filled(3, ''),
-        rainyDayHobbies: List.filled(3, ''),
-      ),
+  ProfileEditState build(String userId) {
+    final userWithProfile = ref.watch(userWithProfileNotifierProvider(userId)).value;
+    return ProfileEditState(
+      data: userWithProfile,
     );
   }
 
@@ -201,7 +189,7 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   // 共通更新処理
   void _updateProfile(
-    ProfileModel Function(ProfileModel data) updater,
+    UserWithProfileModel Function(UserWithProfileModel data) updater,
   ) {
     final current = state.data;
     if (current == null) return;
