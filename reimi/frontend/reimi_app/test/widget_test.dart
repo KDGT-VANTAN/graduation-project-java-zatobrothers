@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:reimi_app/presentation/shared/pages/my_app.dart';
+import 'package:reimi_app/app/my_app.dart';
 
 
 void main() {
