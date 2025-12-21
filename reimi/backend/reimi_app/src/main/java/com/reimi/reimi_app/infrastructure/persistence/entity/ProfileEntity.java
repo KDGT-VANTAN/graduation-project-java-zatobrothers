@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.persistence.user;
+package com.reimi.reimi_app.infrastructure.persistence.entity;
 
 import java.time.OffsetDateTime;
 

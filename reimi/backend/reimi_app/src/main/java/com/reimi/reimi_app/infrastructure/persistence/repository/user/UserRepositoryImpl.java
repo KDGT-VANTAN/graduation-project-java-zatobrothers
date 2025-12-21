@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.persistence.repository;
+package com.reimi.reimi_app.infrastructure.persistence.repository.user;
 
 import org.springframework.stereotype.Repository;
 
