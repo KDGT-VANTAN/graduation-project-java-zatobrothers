@@ -33,7 +33,8 @@ public class UserController {
                 request.birthDate(),
                 Address.valueOf(request.address()),
                 request.mainPhotoUrl(),
-                request.email()
+                request.email(),
+                request.introduction()
             )
         );
 

@@ -9,5 +9,6 @@ public record RegisterUserRequest (
         LocalDate birthDate,
         String address,
         String mainPhotoUrl,
-        String email
+        String email,
+        String introduction
 ) {}

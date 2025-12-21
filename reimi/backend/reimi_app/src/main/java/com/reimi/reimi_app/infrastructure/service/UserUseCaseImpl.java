@@ -32,7 +32,8 @@ public class UserUseCaseImpl implements UserUseCase {
                 command.birthDate(),
                 command.address(),
                 command.mainPhotoUrl(),
-                command.email()
+                command.email(),
+                command.introduction()
         );
 
         userRepository.save(user);

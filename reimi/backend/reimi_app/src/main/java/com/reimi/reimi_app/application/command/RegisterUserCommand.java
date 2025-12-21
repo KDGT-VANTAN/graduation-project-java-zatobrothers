@@ -13,5 +13,6 @@ public record RegisterUserCommand (
         LocalDate birthDate,
         Address address,
         String mainPhotoUrl,
-        String email
+        String email,
+        String introduction
 ) {}
