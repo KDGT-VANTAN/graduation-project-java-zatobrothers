@@ -4,12 +4,17 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.domain.model.user.Status;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
@@ -21,6 +26,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
 
     @Id
@@ -60,9 +66,11 @@ public class UserEntity {
     @Column(name = "withdrawal_at")
     private OffsetDateTime withdrawalAt;
 
+    @CreatedDate
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 
+    @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
 
