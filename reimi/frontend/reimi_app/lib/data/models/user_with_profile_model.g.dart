@@ -1,22 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_model.dart';
+part of 'user_with_profile_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) =>
-    _ProfileModel(
+_UserWithProfileModel _$UserWithProfileModelFromJson(
+        Map<String, dynamic> json) =>
+    _UserWithProfileModel(
+      userId: json['user_id'] as String,
+      firebaseUid: json['firebase_uid'] as String,
       name: json['name'] as String,
       gender: $enumDecode(_$GenderEnumMap, json['gender']),
-      birthDate: DateTime.parse(json['birth_date'] as String),
+      birthDate:
+          const IsoDateTimeConverter().fromJson(json['birth_date'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
-      introduction: json['introduction'] as String,
       mainPhotoUrl: json['main_photo_url'] as String,
-      subPhotoUrls: (json['sub_photo_urls'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      lastLoginAt: const IsoDateTimeOrNullConverter()
+          .fromJson(json['last_login_at'] as String?),
+      status: $enumDecode(_$UserStatusEnumMap, json['status']),
+      profileId: json['profile_id'] as String,
+      introduction: json['introduction'] as String,
       height: $enumDecodeNullable(_$HeightEnumMap, json['height']),
       bodyShape: $enumDecodeNullable(_$BodyShapeEnumMap, json['body_shape']),
       annualIncome:
@@ -36,21 +41,26 @@ _ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) =>
       rainyDayHobbies: (json['rainy_day_hobbies'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      createdAt: _$JsonConverterFromJson<String, DateTime>(
-          json['created_at'], const IsoDateTimeConverter().fromJson),
-      updatedAt: _$JsonConverterFromJson<String, DateTime>(
-          json['updated_at'], const IsoDateTimeConverter().fromJson),
+      subPhotoUrls: (json['sub_photo_urls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
-Map<String, dynamic> _$ProfileModelToJson(_ProfileModel instance) =>
+Map<String, dynamic> _$UserWithProfileModelToJson(
+        _UserWithProfileModel instance) =>
     <String, dynamic>{
+      'user_id': instance.userId,
+      'firebase_uid': instance.firebaseUid,
       'name': instance.name,
       'gender': _$GenderEnumMap[instance.gender]!,
-      'birth_date': instance.birthDate.toIso8601String(),
+      'birth_date': const IsoDateTimeConverter().toJson(instance.birthDate),
       'address': _$AddressEnumMap[instance.address]!,
-      'introduction': instance.introduction,
       'main_photo_url': instance.mainPhotoUrl,
-      'sub_photo_urls': instance.subPhotoUrls,
+      'last_login_at':
+          const IsoDateTimeOrNullConverter().toJson(instance.lastLoginAt),
+      'status': _$UserStatusEnumMap[instance.status]!,
+      'profile_id': instance.profileId,
+      'introduction': instance.introduction,
       'height': _$HeightEnumMap[instance.height],
       'body_shape': _$BodyShapeEnumMap[instance.bodyShape],
       'annual_income': _$AnnualIncomeEnumMap[instance.annualIncome],
@@ -65,10 +75,7 @@ Map<String, dynamic> _$ProfileModelToJson(_ProfileModel instance) =>
       'holiday': _$HolidayEnumMap[instance.holiday],
       'sunny_day_hobbies': instance.sunnyDayHobbies,
       'rainy_day_hobbies': instance.rainyDayHobbies,
-      'created_at': _$JsonConverterToJson<String, DateTime>(
-          instance.createdAt, const IsoDateTimeConverter().toJson),
-      'updated_at': _$JsonConverterToJson<String, DateTime>(
-          instance.updatedAt, const IsoDateTimeConverter().toJson),
+      'sub_photo_urls': instance.subPhotoUrls,
     };
 
 const _$GenderEnumMap = {
@@ -126,6 +133,13 @@ const _$AddressEnumMap = {
   Address.kagoshima: 'KAGOSHIMA',
   Address.okinawa: 'OKINAWA',
   Address.other: 'OTHER',
+};
+
+const _$UserStatusEnumMap = {
+  UserStatus.active: 'ACTIVE',
+  UserStatus.withdrawn: 'WITHDRAWN',
+  UserStatus.banned: 'BANNED',
+  UserStatus.suspended: 'SUSPENDED',
 };
 
 const _$HeightEnumMap = {
@@ -336,15 +350,3 @@ const _$HolidayEnumMap = {
   Holiday.weekday: 'WEEKDAY',
   Holiday.irregular: 'IRREGULAR',
 };
-
-Value? _$JsonConverterFromJson<Json, Value>(
-  Object? json,
-  Value? Function(Json json) fromJson,
-) =>
-    json == null ? null : fromJson(json as Json);
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);

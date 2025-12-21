@@ -12,21 +12,26 @@ import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
+import 'package:reimi_app/domain/value_objects/user_status.dart';
 
-part 'profile_model.freezed.dart';
-part 'profile_model.g.dart';
+part 'user_with_profile_model.freezed.dart';
+part 'user_with_profile_model.g.dart';
 
 @freezed
-abstract class ProfileModel with _$ProfileModel {
+abstract class UserWithProfileModel with _$UserWithProfileModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory ProfileModel({
+  const factory UserWithProfileModel({
+    required String userId, // --- User fields ---
+    required String firebaseUid,
     required String name,
     required Gender gender,
-    required DateTime birthDate,
+    @IsoDateTimeConverter() required DateTime birthDate,
     required Address address,
-    required String introduction,
     required String mainPhotoUrl,
-    List<String>? subPhotoUrls,
+    @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
+    required UserStatus status,
+    required String profileId, // --- Profile fields ---
+    required String introduction,
     Height? height,
     BodyShape? bodyShape,
     AnnualIncome? annualIncome,
@@ -40,10 +45,9 @@ abstract class ProfileModel with _$ProfileModel {
     Holiday? holiday,
     List<String>? sunnyDayHobbies,
     List<String>? rainyDayHobbies,
-    @IsoDateTimeConverter() DateTime? createdAt,
-    @IsoDateTimeConverter() DateTime? updatedAt,
-  }) = _ProfileModel;
+    List<String>? subPhotoUrls,
+  }) = _UserWithProfileModel;
 
-  factory ProfileModel.fromJson(Map<String, dynamic> json) =>
-      _$ProfileModelFromJson(json);
+  factory UserWithProfileModel.fromJson(Map<String, dynamic> json) =>
+      _$UserWithProfileModelFromJson(json);
 }
