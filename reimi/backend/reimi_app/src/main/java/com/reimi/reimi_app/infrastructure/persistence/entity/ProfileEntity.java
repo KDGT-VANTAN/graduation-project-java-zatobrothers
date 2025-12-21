@@ -1,12 +1,11 @@
 package com.reimi.reimi_app.infrastructure.persistence.entity;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.reimi.reimi_app.domain.model.user.UserId;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +28,7 @@ public class ProfileEntity {
 
     @Id
     @Column(name = "user_id")
-    private UserId userId;
+    private UUID userId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
