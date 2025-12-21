@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/presentation/notifiers/domain/auth_notifier.dart';
+import 'package:reimi_app/presentation/notifiers/domain/current_user_notifier.dart';
 import 'package:reimi_app/presentation/pages/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/pages/home/home_page.dart';
 import 'package:reimi_app/presentation/pages/splash/splash_page.dart';
+import 'package:reimi_app/presentation/pages/user_registration/user_gender_page.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
 import 'package:reimi_app/presentation/states/domain/auth_state.dart';
@@ -22,6 +24,37 @@ class AuthGate extends ConsumerWidget {
       initial: () => const SplashPage(),
       loading: () => const LoadingPage(),
       authenticated: (user) {
+        final userAsync = ref.read(currentUserNotifierProvider);
+        userAsync.when(
+          data: (userData) {
+            if (userData != null) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                context.go(HomePage.routeLocation);
+              });
+            } else if (userData == null) {
+              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                context.go(UserGenderPage.routeLocation);
+              });
+            }
+          },
+          error: (e, _) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.go(
+                ErrorPage.routeLocation,
+                extra: {
+                  'message': e.toString(),
+                  'onRetry': null,
+                },
+              );
+            });
+          },
+          loading: () {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.go(LoadingPage.routeLocation);
+            });
+          },
+        );
         WidgetsBinding.instance.addPostFrameCallback((_) {
           context.go(HomePage.routeLocation);
         });
