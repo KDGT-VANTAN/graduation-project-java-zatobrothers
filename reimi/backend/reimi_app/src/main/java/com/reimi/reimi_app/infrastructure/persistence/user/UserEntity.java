@@ -30,7 +30,7 @@ import lombok.Setter;
 public class UserEntity {
 
     @Id
-    @Column(name = "id", columnDefinition = "uuid")
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
     @Column(name = "firebase_uid", nullable = false)

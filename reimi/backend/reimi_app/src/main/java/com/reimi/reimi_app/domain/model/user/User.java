@@ -1,11 +1,10 @@
 package com.reimi.reimi_app.domain.model.user;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class User {
 
-    private final UUID id;
+    private final UserId id;
     private final String firebaseUid;
     private final String name;
     private final Gender gender;
@@ -16,7 +15,7 @@ public class User {
     private final Status status;
 
     private User(
-            UUID id,
+            UserId id,
             String firebaseUid,
             String name,
             Gender gender,
@@ -46,7 +45,7 @@ public class User {
             String email
     ) {
         return new User(
-                UUID.randomUUID(),
+                UserId.generate(),
                 firebaseUid,
                 name,
                 gender,
@@ -58,7 +57,7 @@ public class User {
         );
     }
 
-    public UUID getId() { return id; }
+    public UserId Id() { return id; }
     public String getFirebaseUid() { return firebaseUid; }
     public String getName() { return name; }
     public Gender getGender() { return gender; }
