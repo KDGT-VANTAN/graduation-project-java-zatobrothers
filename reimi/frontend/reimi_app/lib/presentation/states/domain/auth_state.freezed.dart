@@ -165,7 +165,7 @@ extension AuthStatePatterns on AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserEntity user)? authenticated,
+    TResult Function(User user)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(AuthFailure failure)? failure,
     required TResult orElse(),
@@ -204,7 +204,7 @@ extension AuthStatePatterns on AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserEntity user) authenticated,
+    required TResult Function(User user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(AuthFailure failure) failure,
   }) {
@@ -241,7 +241,7 @@ extension AuthStatePatterns on AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserEntity user)? authenticated,
+    TResult? Function(User user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(AuthFailure failure)? failure,
   }) {
@@ -308,7 +308,7 @@ class _Loading implements AuthState {
 class _Authenticated implements AuthState {
   const _Authenticated(this.user);
 
-  final UserEntity user;
+  final User user;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -341,9 +341,7 @@ abstract mixin class _$AuthenticatedCopyWith<$Res>
           _Authenticated value, $Res Function(_Authenticated) _then) =
       __$AuthenticatedCopyWithImpl;
   @useResult
-  $Res call({UserEntity user});
-
-  $UserEntityCopyWith<$Res> get user;
+  $Res call({User user});
 }
 
 /// @nodoc
@@ -364,18 +362,8 @@ class __$AuthenticatedCopyWithImpl<$Res>
       null == user
           ? _self.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserEntity,
+              as User,
     ));
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserEntityCopyWith<$Res> get user {
-    return $UserEntityCopyWith<$Res>(_self.user, (value) {
-      return _then(_self.copyWith(user: value));
-    });
   }
 }
 

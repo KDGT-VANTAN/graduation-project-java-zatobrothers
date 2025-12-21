@@ -1,7 +1,6 @@
 import 'package:reimi_app/core/di/data_providers.dart';
 import 'package:reimi_app/core/di/domain_providers.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
-import 'package:reimi_app/domain/entities/user_entity.dart';
 import 'package:reimi_app/domain/value_objects/user_auth_provider.dart';
 import 'package:reimi_app/presentation/states/domain/auth_failure.dart';
 import 'package:reimi_app/presentation/states/domain/auth_state.dart';
@@ -20,8 +19,7 @@ class AuthNotifier extends _$AuthNotifier {
         if (user == null) {
           return const AuthState.unauthenticated();
         }
-        final userEntity = UserEntity.fromFirebase(user);
-        return AuthState.authenticated(userEntity);
+        return AuthState.authenticated(user);
       },
       loading: () => const AuthState.loading(),
       error: (error, stack) => const AuthState.failure(

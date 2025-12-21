@@ -1,8 +1,8 @@
-import '../entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../value_objects/user_auth_provider.dart';
 
 abstract class AuthRepository {
-  Future<UserEntity?> getCurrentUser();
-  Future<UserEntity?> signIn(UserAuthProvider provider);
+  Future<User?> getCurrentUser();
+  Future<User?> signIn(UserAuthProvider provider);
   Future<void> signOut();
 }
