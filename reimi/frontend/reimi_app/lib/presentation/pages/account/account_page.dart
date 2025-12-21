@@ -111,12 +111,15 @@ class AccountPage extends ConsumerWidget {
                         color: Colors.white.withValues(alpha: 0.7),
                         borderRadius: BorderRadius.circular(24),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.wb_sunny, color: Colors.orange),
-                          SizedBox(width: 8),
-                          Text('晴れ男'),
+                          const Icon(Icons.wb_sunny, color: Colors.orange),
+                          const SizedBox(width: 8),
+                          Text(
+                            '晴れ男',
+                            style: theme.textTheme.bodyMedium,
+                          ),
                         ],
                       ),
                     ),

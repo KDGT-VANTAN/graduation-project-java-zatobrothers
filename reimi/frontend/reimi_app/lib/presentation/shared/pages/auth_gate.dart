@@ -24,17 +24,17 @@ class AuthGate extends ConsumerWidget {
       initial: () => const SplashPage(),
       loading: () => const LoadingPage(),
       authenticated: (user) {
-        final userAsync = ref.read(currentUserNotifierProvider);
+        final userAsync = ref.watch(currentUserNotifierProvider);
         userAsync.when(
           data: (userData) {
-            if (userData != null) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                context.go(HomePage.routeLocation);
-              });
-            } else if (userData == null) {
-              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
+            if (userData == null) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.go(UserGenderPage.routeLocation);
+              });
+            } else {
+              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                context.go(HomePage.routeLocation);
               });
             }
           },
@@ -55,9 +55,6 @@ class AuthGate extends ConsumerWidget {
             });
           },
         );
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.go(HomePage.routeLocation);
-        });
         return const LoadingPage();
       },
       unauthenticated: () {
