@@ -25,6 +25,10 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/sample
   $AssetsImagesSampleGen get sample => const $AssetsImagesSampleGen();
+
+  /// Directory path: assets/images/weather_personality
+  $AssetsImagesWeatherPersonalityGen get weatherPersonality =>
+      const $AssetsImagesWeatherPersonalityGen();
 }
 
 class $AssetsImagesIconsGen {
@@ -67,18 +71,66 @@ class $AssetsImagesSampleGen {
   AssetGenImage get mainPhotoSample =>
       const AssetGenImage('assets/images/sample/main_photo_sample.png');
 
-  /// File path: assets/images/sample/man_image_sample.png
-  AssetGenImage get manImageSample =>
-      const AssetGenImage('assets/images/sample/man_image_sample.png');
+  /// File path: assets/images/sample/user_000_sample_image.png
+  AssetGenImage get user000SampleImage =>
+      const AssetGenImage('assets/images/sample/user_000_sample_image.png');
+
+  /// File path: assets/images/sample/user_001_sample_image.png
+  AssetGenImage get user001SampleImage =>
+      const AssetGenImage('assets/images/sample/user_001_sample_image.png');
+
+  /// File path: assets/images/sample/user_002_sample_image.png
+  AssetGenImage get user002SampleImage =>
+      const AssetGenImage('assets/images/sample/user_002_sample_image.png');
+
+  /// File path: assets/images/sample/user_003_sample_image.png
+  AssetGenImage get user003SampleImage =>
+      const AssetGenImage('assets/images/sample/user_003_sample_image.png');
+
+  /// File path: assets/images/sample/user_004_sample_image.png
+  AssetGenImage get user004SampleImage =>
+      const AssetGenImage('assets/images/sample/user_004_sample_image.png');
+
+  /// File path: assets/images/sample/user_005_sample_image.png
+  AssetGenImage get user005SampleImage =>
+      const AssetGenImage('assets/images/sample/user_005_sample_image.png');
+
+  /// File path: assets/images/sample/user_006_sample_image.png
+  AssetGenImage get user006SampleImage =>
+      const AssetGenImage('assets/images/sample/user_006_sample_image.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [mainPhotoSample, manImageSample];
+  List<AssetGenImage> get values => [
+        mainPhotoSample,
+        user000SampleImage,
+        user001SampleImage,
+        user002SampleImage,
+        user003SampleImage,
+        user004SampleImage,
+        user005SampleImage,
+        user006SampleImage
+      ];
+}
+
+class $AssetsImagesWeatherPersonalityGen {
+  const $AssetsImagesWeatherPersonalityGen();
+
+  /// File path: assets/images/weather_personality/nfie_soft_octopus_image.png
+  AssetGenImage get nfieSoftOctopusImage => const AssetGenImage(
+      'assets/images/weather_personality/nfie_soft_octopus_image.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [nfieSoftOctopusImage];
 }
 
 class Assets {
   const Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
