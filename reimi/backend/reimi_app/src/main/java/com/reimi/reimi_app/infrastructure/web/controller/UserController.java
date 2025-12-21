@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.web.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void registerUser(@RequestBody RegisterUserRequest request) {
+    public ResponseEntity<Void>  registerUser(@RequestBody RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.firebaseUid(),
@@ -34,5 +36,7 @@ public class UserController {
                 request.email()
             )
         );
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
