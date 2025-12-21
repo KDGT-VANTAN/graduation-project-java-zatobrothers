@@ -8,6 +8,7 @@ import 'package:reimi_app/presentation/pages/chat/chat_page.dart';
 import 'package:reimi_app/presentation/pages/home/home_page.dart';
 import 'package:reimi_app/presentation/pages/like/like_page.dart';
 import 'package:reimi_app/presentation/pages/profile/profile_page.dart';
+import 'package:reimi_app/presentation/pages/profile_detail/profile_detail_page.dart';
 import 'package:reimi_app/presentation/pages/profile_edit/profile_edit_page.dart';
 import 'package:reimi_app/presentation/pages/setting/setting_page.dart';
 import 'package:reimi_app/presentation/pages/splash/splash_page.dart';
@@ -131,6 +132,18 @@ GoRouter goRouter(Ref ref) {
           return const UserMainPhotoPage();
         },
       ),
+      // ----- home -----
+      GoRoute(
+        path: ProfileDetailPage.routeLocation,
+        name: ProfileDetailPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object>;
+          final userId = extra['userId'] as String;
+          return ProfileDetailPage(
+            userId: userId,
+          );
+        },
+      ),
       // ----- account -----
       GoRoute(
         path: SettingPage.routeLocation,
@@ -143,7 +156,9 @@ GoRouter goRouter(Ref ref) {
         path: ProfilePage.routeLocation,
         name: ProfilePage.routeName,
         builder: (context, state) {
-          return const ProfilePage();
+          final extra = state.extra! as Map<String, Object?>;
+          final userId = extra['userId'] as String;
+          return ProfilePage(userId: userId);
         },
       ),
       GoRoute(
