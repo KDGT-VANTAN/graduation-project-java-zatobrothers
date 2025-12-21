@@ -14,19 +14,17 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "users")
 public class UserEntity {
+
     @Id
-    @Column(columnDefinition = "uuid")
+    @Column(name = "id", columnDefinition = "uuid")
     private UUID id;
 
     @Column(name = "firebase_uid", nullable = false)
@@ -67,4 +65,7 @@ public class UserEntity {
 
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
+
+    public UserEntity() {
+    }
 }
