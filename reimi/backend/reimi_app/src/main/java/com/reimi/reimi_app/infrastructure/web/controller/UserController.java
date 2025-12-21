@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void>  registerUser(@RequestBody RegisterUserRequest request) {
+    public ResponseEntity<Void> registerUser(@RequestBody RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.firebaseUid(),
