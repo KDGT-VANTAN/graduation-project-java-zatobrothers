@@ -81,6 +81,9 @@
       }
     }
   },
+  "profileDetailPage": {
+    "title": "Profile Details"
+  },
   "profilePage": {
     "title": "Edit Profile",
     "section": {
@@ -237,6 +240,20 @@
       "contentText": "Do you want to save your changes?"
     }
   },
+  "bottomSheet": {
+    "sortUser": {
+      "title": "Sort"
+    },
+    "refineSearchUser": {
+      "title": "Refine Search",
+      "section": {
+        "age": "Age",
+        "address": "Address",
+        "gender": "Gender",
+        "weatherPersonality": "Weather Personality"
+      }
+    }
+  },
   "button": {
     "next": "Next",
     "confirmation": "Confirm",
@@ -246,7 +263,9 @@
     "retry": "Reload",
     "tryLater": "Try Later",
     "save": "Save",
-    "delete": "Delete"
+    "delete": "Delete",
+    "apply": "Apply",
+    "clear": "Clear"
   },
   "enum": {
     "address": {
@@ -504,6 +523,10 @@
       "no": "Don't smoke",
       "sometimes": "Smoke occasionally",
       "yes": "Smoke"
+    },
+    "sortType": {
+      "login": "Login Order",
+      "compatibility": "Compatibility Order"
     }
   }
 }

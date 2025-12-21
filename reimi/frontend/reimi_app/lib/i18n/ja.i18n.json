@@ -81,6 +81,9 @@
       }
     }
   },
+  "profileDetailPage": {
+    "title": "プロフィール詳細"
+  },
   "profilePage": {
     "title": "プロフィール編集",
     "section": {
@@ -237,6 +240,20 @@
       "contentText": "変更した内容を保存しますか？"
     }
   },
+  "bottomSheet": {
+    "sortUser": {
+      "title": "並び替え"
+    },
+    "refineSearchUser": {
+      "title": "絞り込み条件",
+      "section": {
+        "age": "年齢",
+        "address": "居住地",
+        "gender": "性別",
+        "weatherPersonality": "ウェザーパーソナリティ"
+      }
+    }
+  },
   "button": {
     "next": "次へ",
     "confirmation": "確認",
@@ -246,7 +263,9 @@
     "retry": "再読み込み",
     "tryLater": "あとで試す",
     "save": "保存",
-    "delete": "削除"
+    "delete": "削除",
+    "apply": "適用する",
+    "clear": "クリア"
   },
   "enum": {
     "address": {
@@ -504,6 +523,10 @@
       "no": "吸わない",
       "sometimes": "たまに吸う",
       "yes": "吸う"
+    },
+    "sortType": {
+      "login": "ログイン順",
+      "compatibility": "相性順"
     }
   }
 }

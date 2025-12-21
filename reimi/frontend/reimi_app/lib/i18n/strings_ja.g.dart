@@ -42,10 +42,12 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsSignInPageJa signInPage = _TranslationsSignInPageJa._(_root);
 	@override late final _TranslationsErrorPageJa errorPage = _TranslationsErrorPageJa._(_root);
 	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
+	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
 	@override late final _TranslationsSettingPageJa settingPage = _TranslationsSettingPageJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
 	@override late final _TranslationsDialogJa dialog = _TranslationsDialogJa._(_root);
+	@override late final _TranslationsBottomSheetJa bottomSheet = _TranslationsBottomSheetJa._(_root);
 	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
 	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
 }
@@ -117,6 +119,16 @@ class _TranslationsUserRegistrationPageJa implements TranslationsUserRegistratio
 	@override late final _TranslationsUserRegistrationPageMainPhotoJa mainPhoto = _TranslationsUserRegistrationPageMainPhotoJa._(_root);
 }
 
+// Path: profileDetailPage
+class _TranslationsProfileDetailPageJa implements TranslationsProfileDetailPageEn {
+	_TranslationsProfileDetailPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'プロフィール詳細';
+}
+
 // Path: profilePage
 class _TranslationsProfilePageJa implements TranslationsProfilePageEn {
 	_TranslationsProfilePageJa._(this._root);
@@ -173,6 +185,17 @@ class _TranslationsDialogJa implements TranslationsDialogEn {
 	@override late final _TranslationsDialogSaveChangesJa saveChanges = _TranslationsDialogSaveChangesJa._(_root);
 }
 
+// Path: bottomSheet
+class _TranslationsBottomSheetJa implements TranslationsBottomSheetEn {
+	_TranslationsBottomSheetJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsBottomSheetSortUserJa sortUser = _TranslationsBottomSheetSortUserJa._(_root);
+	@override late final _TranslationsBottomSheetRefineSearchUserJa refineSearchUser = _TranslationsBottomSheetRefineSearchUserJa._(_root);
+}
+
 // Path: button
 class _TranslationsButtonJa implements TranslationsButtonEn {
 	_TranslationsButtonJa._(this._root);
@@ -189,6 +212,8 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get tryLater => 'あとで試す';
 	@override String get save => '保存';
 	@override String get delete => '削除';
+	@override String get apply => '適用する';
+	@override String get clear => 'クリア';
 }
 
 // Path: kEnum
@@ -210,6 +235,7 @@ class _TranslationsKEnumJa implements TranslationsKEnumEn {
 	@override late final _TranslationsKEnumHolidayJa holiday = _TranslationsKEnumHolidayJa._(_root);
 	@override late final _TranslationsKEnumOccupationJa occupation = _TranslationsKEnumOccupationJa._(_root);
 	@override late final _TranslationsKEnumSmokingJa smoking = _TranslationsKEnumSmokingJa._(_root);
+	@override late final _TranslationsKEnumSortTypeJa sortType = _TranslationsKEnumSortTypeJa._(_root);
 }
 
 // Path: signUpPage.button
@@ -544,6 +570,27 @@ class _TranslationsDialogSaveChangesJa implements TranslationsDialogSaveChangesE
 	@override String get contentText => '変更した内容を保存しますか？';
 }
 
+// Path: bottomSheet.sortUser
+class _TranslationsBottomSheetSortUserJa implements TranslationsBottomSheetSortUserEn {
+	_TranslationsBottomSheetSortUserJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '並び替え';
+}
+
+// Path: bottomSheet.refineSearchUser
+class _TranslationsBottomSheetRefineSearchUserJa implements TranslationsBottomSheetRefineSearchUserEn {
+	_TranslationsBottomSheetRefineSearchUserJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '絞り込み条件';
+	@override late final _TranslationsBottomSheetRefineSearchUserSectionJa section = _TranslationsBottomSheetRefineSearchUserSectionJa._(_root);
+}
+
 // Path: kEnum.address
 class _TranslationsKEnumAddressJa implements TranslationsKEnumAddressEn {
 	_TranslationsKEnumAddressJa._(this._root);
@@ -836,6 +883,17 @@ class _TranslationsKEnumSmokingJa implements TranslationsKEnumSmokingEn {
 	@override String get yes => '吸う';
 }
 
+// Path: kEnum.sortType
+class _TranslationsKEnumSortTypeJa implements TranslationsKEnumSortTypeEn {
+	_TranslationsKEnumSortTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => 'ログイン順';
+	@override String get compatibility => '相性順';
+}
+
 // Path: userRegistrationPage.birthDate.items
 class _TranslationsUserRegistrationPageBirthDateItemsJa implements TranslationsUserRegistrationPageBirthDateItemsEn {
 	_TranslationsUserRegistrationPageBirthDateItemsJa._(this._root);
@@ -1011,6 +1069,19 @@ class _TranslationsSettingPageSectionAboutReimiJa implements TranslationsSetting
 	@override String get applicationInformation => 'アプリケーション情報';
 }
 
+// Path: bottomSheet.refineSearchUser.section
+class _TranslationsBottomSheetRefineSearchUserSectionJa implements TranslationsBottomSheetRefineSearchUserSectionEn {
+	_TranslationsBottomSheetRefineSearchUserSectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get age => '年齢';
+	@override String get address => '居住地';
+	@override String get gender => '性別';
+	@override String get weatherPersonality => 'ウェザーパーソナリティ';
+}
+
 // Path: kEnum.address.prefecture
 class _TranslationsKEnumAddressPrefectureJa implements TranslationsKEnumAddressPrefectureEn {
 	_TranslationsKEnumAddressPrefectureJa._(this._root);
@@ -1154,6 +1225,7 @@ extension on TranslationsJa {
 			'userRegistrationPage.mainPhoto.question' => 'メイン写真を選んでください',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'クリックして写真を選択',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
+			'profileDetailPage.title' => 'プロフィール詳細',
 			'profilePage.title' => 'プロフィール編集',
 			'profilePage.section.mainPhoto' => 'メイン写真',
 			'profilePage.section.subPhoto' => 'サブ写真',
@@ -1242,6 +1314,12 @@ extension on TranslationsJa {
 			'dialog.deletePhoto.contentText' => '本当にこの写真を削除しますか？',
 			'dialog.saveChanges.title' => '変更保存の確認',
 			'dialog.saveChanges.contentText' => '変更した内容を保存しますか？',
+			'bottomSheet.sortUser.title' => '並び替え',
+			'bottomSheet.refineSearchUser.title' => '絞り込み条件',
+			'bottomSheet.refineSearchUser.section.age' => '年齢',
+			'bottomSheet.refineSearchUser.section.address' => '居住地',
+			'bottomSheet.refineSearchUser.section.gender' => '性別',
+			'bottomSheet.refineSearchUser.section.weatherPersonality' => 'ウェザーパーソナリティ',
 			'button.next' => '次へ',
 			'button.confirmation' => '確認',
 			'button.cancel' => 'キャンセル',
@@ -1251,6 +1329,8 @@ extension on TranslationsJa {
 			'button.tryLater' => 'あとで試す',
 			'button.save' => '保存',
 			'button.delete' => '削除',
+			'button.apply' => '適用する',
+			'button.clear' => 'クリア',
 			'kEnum.address.prefecture.hokkaido' => '北海道',
 			'kEnum.address.prefecture.aomori' => '青森県',
 			'kEnum.address.prefecture.iwate' => '岩手県',
@@ -1481,6 +1561,8 @@ extension on TranslationsJa {
 			'kEnum.smoking.no' => '吸わない',
 			'kEnum.smoking.sometimes' => 'たまに吸う',
 			'kEnum.smoking.yes' => '吸う',
+			'kEnum.sortType.login' => 'ログイン順',
+			'kEnum.sortType.compatibility' => '相性順',
 			_ => null,
 		};
 	}
