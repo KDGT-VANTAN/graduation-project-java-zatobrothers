@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,22 +27,29 @@ import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/notifiers/feature/profile_notifier.dart';
-import 'package:reimi_app/presentation/pages/profile/components/basic_info_tile.dart';
+import 'package:reimi_app/presentation/notifiers/feature/profile_edit_notifier.dart';
+import 'package:reimi_app/presentation/pages/profile/widgets/basic_info_tile.dart';
 import 'package:reimi_app/presentation/pages/profile_edit/profile_edit_page.dart';
 import 'package:reimi_app/presentation/shared/utils/enum_picker.dart';
-import 'package:reimi_app/presentation/pages/profile/components/glass_tile.dart';
-import 'package:reimi_app/presentation/pages/profile/components/main_photo_card.dart';
-import 'package:reimi_app/presentation/pages/profile/components/rank_input_tile.dart';
-import 'package:reimi_app/presentation/pages/profile/components/sub_photo_card.dart';
+import 'package:reimi_app/presentation/pages/profile/widgets/glass_tile.dart';
+import 'package:reimi_app/presentation/pages/profile/widgets/main_photo_card.dart';
+import 'package:reimi_app/presentation/pages/profile/widgets/rank_input_tile.dart';
+import 'package:reimi_app/presentation/pages/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
+import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
 class ProfilePage extends HookConsumerWidget {
-  const ProfilePage({super.key});
   static String get routeName => 'profile';
   static String get routeLocation => '/$routeName';
+  const ProfilePage({
+    super.key,
+    required this.userId,
+  });
+
+  final String userId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,160 +63,105 @@ class ProfilePage extends HookConsumerWidget {
       t.profilePage.placeholder.subPhoto.labels.travel,
       t.profilePage.placeholder.subPhoto.labels.holiday,
     ];
-    final notifier = ref.read(profileNotifierProvider.notifier);
-    final mainPhotoUrl = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.mainPhotoUrl),
-    );
-    final subPhotoUrls = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.subPhotoUrls),
-    );
-    final name = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.name),
-    );
-    final gender = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.gender),
-    );
-    final birthDate = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.birthDate),
-    );
-    final introduction = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.introduction),
-    );
-    final sunnyDayHobbies = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.sunnyDayHobbies),
-    );
-    final rainyDayHobbies = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.rainyDayHobbies),
-    );
-    final address = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.address),
-    );
-    final hometown = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.hometown),
-    );
-    final bloodType = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.bloodType),
-    );
-    final height = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.height),
-    );
-    final bodyShape = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.bodyShape),
-    );
-    final education = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.education),
-    );
-    final occupation = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.occupation),
-    );
-    final annualIncome = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.annualIncome),
-    );
-    final smoking = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.smoking),
-    );
-    final alcohol = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.alcohol),
-    );
-    final holiday = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.holiday),
-    );
-    final communicationStyle = ref.watch(
-      profileNotifierProvider.select((state) => state.data!.communicationStyle),
-    );
+    final notifier = ref.read(profileEditNotifierProvider(userId).notifier);
     final isChanged = ref.watch(
-      profileNotifierProvider.select((state) => state.isChanged),
+      profileEditNotifierProvider(userId).select((state) => state.isChanged),
     );
+    final data = ref.watch(
+        profileEditNotifierProvider(userId).select((state) => state.data));
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: GestureDetector(
-          onTap: () async {
-            if (isChanged) {
-              await customConfirmationDialog(
-                context: context,
-                title: t.dialog.saveChanges.title,
-                contentText: t.dialog.saveChanges.contentText,
-                buttonLabel: t.button.save,
-                accentColor: theme.colorScheme.primary,
-                onPressed: () async {
-                  await ref.read(profileNotifierProvider.notifier).submit();
-                },
-                onCancel: () async {
-                  await ref
-                      .read(profileNotifierProvider.notifier)
-                      .discardChangesAndClose();
-                },
-              );
-            }
-            // ignore: use_build_context_synchronously
-            context.pop();
-          },
-          child: const Icon(Icons.arrow_back_ios_new),
-        ),
-        title: Text(
-          t.profilePage.title,
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: BackgroundContainer(
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 16),
-                  Text(
-                    t.profilePage.section.mainPhoto,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  MainPhotoCard(
-                    image: mainPhotoUrl.toImageProvider(),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              leading: GestureDetector(
+                onTap: () async {
+                  if (isChanged) {
+                    await customConfirmationDialog(
+                      context: context,
+                      title: t.dialog.saveChanges.title,
+                      contentText: t.dialog.saveChanges.contentText,
+                      buttonLabel: t.button.save,
+                      accentColor: theme.colorScheme.primary,
+                      onPressed: () async {
+                        await notifier.submit();
+                      },
+                      onCancel: () async {
+                        await notifier.discardChangesAndClose();
+                      },
+                    );
+                  }
+                  // ignore: use_build_context_synchronously
+                  context.pop();
+                },
+                child: const Icon(Icons.arrow_back_ios_new),
+              ),
+              title: Text(
+                t.profilePage.title,
+                style: theme.textTheme.titleMedium!.copyWith(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+            if (data == null) ...[
+              const SliverToBoxAdapter(
+                child: Center(
+                  child: Text('ユーザーのプロフィールが取得できませんでした。'),
+                ),
+              )
+            ] else ...[
+              const Gap(height: 16),
+              SliverSectionTitle(
+                text: t.profilePage.section.mainPhoto,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: MainPhotoCard(
+                    image: data.mainPhotoUrl.toImageProvider(),
                     onTap: () async {
-                      File? pickedImageFile = await pickImageFromGallery();
-                      if (pickedImageFile != null) {
-                        notifier.updateMainPhotoUrl(pickedImageFile.path);
+                      final file = await pickImageFromGallery();
+                      if (file != null) {
+                        notifier.updateMainPhotoUrl(file.path);
                       }
                     },
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    t.profilePage.section.subPhoto,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  GridView.count(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.subPhoto,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
-                    children: List.generate(6, (index) {
+                    childAspectRatio: 1,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
                       return SubPhotoCard(
                         label: labels[index],
-                        subPhotoUrl: subPhotoUrls?[index],
+                        subPhotoUrl: data.subPhotoUrls?[index],
                         onTap: () async {
-                          File? pickedImageFile = await pickImageFromGallery();
-                          if (pickedImageFile != null) {
+                          final file = await pickImageFromGallery();
+                          if (file != null) {
                             notifier.setSubPhoto(
-                              url: pickedImageFile.path,
+                              url: file.path,
                               index: index,
                             );
                           }
@@ -229,47 +179,48 @@ class ProfilePage extends HookConsumerWidget {
                           );
                         },
                       );
-                    }),
+                    },
+                    childCount: 6,
                   ),
-                  const SizedBox(height: 32),
-                  // TODO: 天気タイプは仮実装
-                  Text(
-                    t.profilePage.section.weatherPersonality,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  GlassTile(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.weatherPersonality,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: GlassTile(
                     onTap: () {},
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(Icons.wb_sunny, color: Colors.orange),
-                        SizedBox(width: 12),
+                        const Icon(Icons.wb_sunny, color: Colors.orange),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
                             '晴れ男',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: theme.textTheme.bodyMedium,
                           ),
                         ),
-                        Icon(Icons.chevron_right),
+                        const Icon(Icons.chevron_right),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    t.profilePage.section.introduction,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  GlassTile(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.introduction,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: GlassTile(
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
@@ -277,41 +228,40 @@ class ProfilePage extends HookConsumerWidget {
                           'title': t.profilePage.edit.title(
                             item: t.profilePage.section.introduction,
                           ),
-                          'initValue': introduction,
-                          'onSave': (value) {
-                            notifier.updateIntroduction(value);
-                          },
+                          'initValue': data.introduction,
+                          'onSave': notifier.updateIntroduction,
                           'isMultiline': true,
                         },
                       );
                     },
                     child: Text(
-                      introduction,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      data.introduction,
+                      style: theme.textTheme.bodyMedium!.copyWith(
                         height: 1.6,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    t.profilePage.section.sunnyDayHobbies,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.sunnyDayHobbies,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 1,
                     hint: t.profilePage.placeholder.sunnyDayHobbies.top1,
-                    value: sunnyDayHobbies?[0],
+                    value: data.sunnyDayHobbies?[0],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.sunnyDayHobbies.top1,
-                          'initValue': sunnyDayHobbies?[0],
+                          'initValue': data.sunnyDayHobbies?[0],
                           'onSave': (hobby) {
                             notifier.setSunnyDayHobby(hobby: hobby, index: 0);
                           },
@@ -323,17 +273,22 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeSunnyDayHobby(0);
                     },
                   ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 2,
                     hint: t.profilePage.placeholder.sunnyDayHobbies.top2,
-                    value: sunnyDayHobbies?[1],
+                    value: data.sunnyDayHobbies?[1],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.sunnyDayHobbies.top2,
-                          'initValue': sunnyDayHobbies?[1],
+                          'initValue': data.sunnyDayHobbies?[1],
                           'onSave': (hobby) {
                             notifier.setSunnyDayHobby(hobby: hobby, index: 1);
                           },
@@ -345,17 +300,22 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeSunnyDayHobby(1);
                     },
                   ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 3,
                     hint: t.profilePage.placeholder.sunnyDayHobbies.top3,
-                    value: sunnyDayHobbies?[2],
+                    value: data.sunnyDayHobbies?[2],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.sunnyDayHobbies.top3,
-                          'initValue': sunnyDayHobbies?[2],
+                          'initValue': data.sunnyDayHobbies?[2],
                           'onSave': (hobby) {
                             notifier.setSunnyDayHobby(hobby: hobby, index: 2);
                           },
@@ -367,25 +327,27 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeSunnyDayHobby(2);
                     },
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    t.profilePage.section.rainyDayHobbies,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.rainyDayHobbies,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 1,
                     hint: t.profilePage.placeholder.rainyDayHobbies.top1,
-                    value: rainyDayHobbies?[0],
+                    value: data.rainyDayHobbies?[0],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.rainyDayHobbies.top1,
-                          'initValue': rainyDayHobbies?[0],
+                          'initValue': data.rainyDayHobbies?[0],
                           'onSave': (hobby) {
                             notifier.setRainyDayHobby(hobby: hobby, index: 0);
                           },
@@ -397,17 +359,22 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeRainyDayHobby(0);
                     },
                   ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 2,
                     hint: t.profilePage.placeholder.rainyDayHobbies.top2,
-                    value: rainyDayHobbies?[1],
+                    value: data.rainyDayHobbies?[1],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.rainyDayHobbies.top2,
-                          'initValue': rainyDayHobbies?[1],
+                          'initValue': data.rainyDayHobbies?[1],
                           'onSave': (hobby) {
                             notifier.setRainyDayHobby(hobby: hobby, index: 1);
                           },
@@ -419,17 +386,22 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeRainyDayHobby(1);
                     },
                   ),
-                  const SizedBox(height: 12),
-                  RankInputTile(
+                ),
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: RankInputTile(
                     rank: 3,
                     hint: t.profilePage.placeholder.rainyDayHobbies.top3,
-                    value: rainyDayHobbies?[2],
+                    value: data.rainyDayHobbies?[2],
                     onTap: () {
                       context.push(
                         ProfileEditPage.routeLocation,
                         extra: {
                           'title': t.profilePage.edit.rainyDayHobbies.top3,
-                          'initValue': rainyDayHobbies?[2],
+                          'initValue': data.rainyDayHobbies?[2],
                           'onSave': (hobby) {
                             notifier.setRainyDayHobby(hobby: hobby, index: 2);
                           },
@@ -441,16 +413,18 @@ class ProfilePage extends HookConsumerWidget {
                       notifier.removeRainyDayHobby(2);
                     },
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    t.profilePage.section.basicInformation.title,
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
+                ),
+              ),
+              const Gap(height: 32),
+              SliverSectionTitle(
+                text: t.profilePage.section.basicInformation.title,
+                paddingHorizontal: 24,
+              ),
+              const Gap(height: 12),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverToBoxAdapter(
+                  child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(16),
@@ -460,7 +434,7 @@ class ProfilePage extends HookConsumerWidget {
                         BasicInfoTile(
                           title:
                               t.profilePage.section.basicInformation.items.name,
-                          value: name,
+                          value: data.name,
                           onTap: () {
                             context.push(
                               ProfileEditPage.routeLocation,
@@ -469,40 +443,38 @@ class ProfilePage extends HookConsumerWidget {
                                   item: t.profilePage.section.basicInformation
                                       .items.name,
                                 ),
-                                'initValue': name,
-                                'onSave': (value) {
-                                  notifier.updateName(value);
-                                },
+                                'initValue': data.name,
+                                'onSave': notifier.updateName,
                                 'isMultiline': false,
                               },
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .gender,
-                          value: gender.displayName(context),
+                          value: data.gender.displayName(context),
                           // TODO: 変更できない項目はダイアログを表示させた方がわかりやすそう
                           onTap: null,
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .birthDate,
-                          value: birthDate.toJapaneseDate,
+                          value: data.birthDate.toJapaneseDate,
                           onTap: null,
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .address,
-                          value: address.displayName(context),
+                          value: data.address.displayName(context),
                           onTap: () {
                             enumPicker<Address>(
                               context: context,
                               items: Address.values,
-                              initialValue: address,
+                              initialValue: data.address,
                               displayBuilder: (address, context) {
                                 return address.displayName(context);
                               },
@@ -512,16 +484,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .hometown,
-                          value: hometown?.displayName(context),
+                          value: data.hometown?.displayName(context),
                           onTap: () {
                             enumPicker<Address>(
                               context: context,
                               items: Address.values,
-                              initialValue: hometown,
+                              initialValue: data.hometown,
                               displayBuilder: (hometown, context) {
                                 return hometown.displayName(context);
                               },
@@ -531,16 +503,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .bloodType,
-                          value: bloodType?.displayName(context),
+                          value: data.bloodType?.displayName(context),
                           onTap: () {
                             enumPicker<BloodType>(
                               context: context,
                               items: BloodType.values,
-                              initialValue: bloodType,
+                              initialValue: data.bloodType,
                               displayBuilder: (bloodType, context) {
                                 return bloodType.displayName(context);
                               },
@@ -550,16 +522,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .height,
-                          value: height?.displayName(context),
+                          value: data.height?.displayName(context),
                           onTap: () {
                             enumPicker<Height>(
                               context: context,
                               items: Height.values,
-                              initialValue: height,
+                              initialValue: data.height,
                               displayBuilder: (height, context) {
                                 return height.displayName(context);
                               },
@@ -569,16 +541,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .bodyShape,
-                          value: bodyShape?.displayName(context),
+                          value: data.bodyShape?.displayName(context),
                           onTap: () {
                             enumPicker<BodyShape>(
                               context: context,
                               items: BodyShape.values,
-                              initialValue: bodyShape,
+                              initialValue: data.bodyShape,
                               displayBuilder: (bodyShape, context) {
                                 return bodyShape.displayName(context);
                               },
@@ -588,16 +560,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .education,
-                          value: education?.displayName(context),
+                          value: data.education?.displayName(context),
                           onTap: () {
                             enumPicker<Education>(
                               context: context,
                               items: Education.values,
-                              initialValue: education,
+                              initialValue: data.education,
                               displayBuilder: (education, context) {
                                 return education.displayName(context);
                               },
@@ -607,16 +579,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .occupation,
-                          value: occupation?.displayName(context),
+                          value: data.occupation?.displayName(context),
                           onTap: () {
                             enumPicker<Occupation>(
                               context: context,
                               items: Occupation.values,
-                              initialValue: occupation,
+                              initialValue: data.occupation,
                               displayBuilder: (occupation, context) {
                                 return occupation.displayName(context);
                               },
@@ -626,16 +598,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .annualIncome,
-                          value: annualIncome?.displayName(context),
+                          value: data.annualIncome?.displayName(context),
                           onTap: () {
                             enumPicker<AnnualIncome>(
                               context: context,
                               items: AnnualIncome.values,
-                              initialValue: annualIncome,
+                              initialValue: data.annualIncome,
                               displayBuilder: (annualIncome, context) {
                                 return annualIncome.displayName(context);
                               },
@@ -645,16 +617,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .smoking,
-                          value: smoking?.displayName(context),
+                          value: data.smoking?.displayName(context),
                           onTap: () {
                             enumPicker<Smoking>(
                               context: context,
                               items: Smoking.values,
-                              initialValue: smoking,
+                              initialValue: data.smoking,
                               displayBuilder: (smoking, context) {
                                 return smoking.displayName(context);
                               },
@@ -664,16 +636,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .alcohol,
-                          value: alcohol?.displayName(context),
+                          value: data.alcohol?.displayName(context),
                           onTap: () {
                             enumPicker<Alcohol>(
                               context: context,
                               items: Alcohol.values,
-                              initialValue: alcohol,
+                              initialValue: data.alcohol,
                               displayBuilder: (alcohol, context) {
                                 return alcohol.displayName(context);
                               },
@@ -683,16 +655,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .holiday,
-                          value: holiday?.displayName(context),
+                          value: data.holiday?.displayName(context),
                           onTap: () {
                             enumPicker<Holiday>(
                               context: context,
                               items: Holiday.values,
-                              initialValue: holiday,
+                              initialValue: data.holiday,
                               displayBuilder: (holiday, context) {
                                 return holiday.displayName(context);
                               },
@@ -702,16 +674,16 @@ class ProfilePage extends HookConsumerWidget {
                             );
                           },
                         ),
-                        const _Divider(),
+                        const CustomDivider(),
                         BasicInfoTile(
                           title: t.profilePage.section.basicInformation.items
                               .communicationStyle,
-                          value: communicationStyle?.displayName(context),
+                          value: data.communicationStyle?.displayName(context),
                           onTap: () {
                             enumPicker<CommunicationStyle>(
                               context: context,
                               items: CommunicationStyle.values,
-                              initialValue: communicationStyle,
+                              initialValue: data.communicationStyle,
                               displayBuilder: (communicationStyle, context) {
                                 return communicationStyle.displayName(context);
                               },
@@ -725,26 +697,13 @@ class ProfilePage extends HookConsumerWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 80),
-                ],
+                ),
               ),
-            ),
-          ),
+              const Gap(height: 80),
+            ],
+          ],
         ),
       ),
-    );
-  }
-}
-
-class _Divider extends StatelessWidget {
-  const _Divider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Divider(
-      height: 1,
-      thickness: 0.5,
-      color: Colors.white.withValues(alpha: 0.5),
     );
   }
 }
