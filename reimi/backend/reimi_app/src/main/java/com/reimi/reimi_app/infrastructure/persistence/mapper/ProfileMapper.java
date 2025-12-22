@@ -7,7 +7,6 @@ import com.reimi.reimi_app.infrastructure.persistence.entity.UserEntity;
 public class ProfileMapper {
     public static ProfileEntity toEntity(Profile profile, UserEntity userEntity) {
         ProfileEntity entity = new ProfileEntity();
-        entity.setUserId(profile.getUserId());
         entity.setUser(userEntity);
         entity.setIntroduction(profile.getIntroduction());
 
