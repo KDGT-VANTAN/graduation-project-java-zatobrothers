@@ -2,11 +2,8 @@ package com.reimi.reimi_app.infrastructure.persistence.entity;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.UUID;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
@@ -15,12 +12,13 @@ import com.reimi.reimi_app.domain.model.user.Status;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +27,6 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-@EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
 
     @Id
@@ -69,11 +66,9 @@ public class UserEntity {
     @Column(name = "withdrawal_at")
     private OffsetDateTime withdrawalAt;
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
 
-    @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
 
@@ -84,6 +79,18 @@ public class UserEntity {
         fetch = FetchType.LAZY
     )
     private ProfileEntity profile;
+
+    @PrePersist
+    protected void prePersist() {
+        OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
+
+    @PreUpdate
+    protected void preUpdate() {
+        this.updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
+    }
 
     public UserEntity() {}
 
