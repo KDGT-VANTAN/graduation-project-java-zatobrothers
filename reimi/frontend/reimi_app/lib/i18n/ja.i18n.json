@@ -81,6 +81,12 @@
       }
     }
   },
+  "likePage": {
+    "segment": {
+      "fromUser": "相手から",
+      "toUser": "自分から"
+    }
+  },
   "profileDetailPage": {
     "title": "プロフィール詳細"
   },
