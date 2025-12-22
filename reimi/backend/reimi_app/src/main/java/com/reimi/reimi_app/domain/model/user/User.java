@@ -1,0 +1,80 @@
+package com.reimi.reimi_app.domain.model.user;
+
+import java.time.LocalDate;
+
+import com.reimi.reimi_app.domain.model.profile.Profile;
+
+public class User {
+
+    private final UserId id;
+    private final String firebaseUid;
+    private final String name;
+    private final Gender gender;
+    private final LocalDate birthDate;
+    private final Address address;
+    private final String mainPhotoUrl;
+    private final String email;
+    private final Status status;
+    private final Profile profile;
+
+    private User(
+            UserId id,
+            String firebaseUid,
+            String name,
+            Gender gender,
+            LocalDate birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String email,
+            Status status,
+            Profile profile
+    ) {
+        this.id = id;
+        this.firebaseUid = firebaseUid;
+        this.name = name;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.mainPhotoUrl = mainPhotoUrl;
+        this.email = email;
+        this.status = status;
+        this.profile = profile;
+    }
+    public static User create(
+            String firebaseUid,
+            String name,
+            Gender gender,
+            LocalDate birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String email,
+            String introduction
+    ) {
+        UserId userId = UserId.generate();
+        Profile profile = Profile.create(userId, introduction);
+
+        return new User(
+                userId,
+                firebaseUid,
+                name,
+                gender,
+                birthDate,
+                address,
+                mainPhotoUrl,
+                email,
+                Status.ACTIVE,
+                profile
+        );
+    }
+
+    public UserId getId() { return id; }
+    public String getFirebaseUid() { return firebaseUid; }
+    public String getName() { return name; }
+    public Gender getGender() { return gender; }
+    public LocalDate getBirthDate() { return birthDate; }
+    public Address getAddress() { return address; }
+    public String getMainPhotoUrl() { return mainPhotoUrl; }
+    public String getEmail() { return email; }
+    public Status getStatus() { return status; }
+    public Profile getProfile() { return profile; }
+}
