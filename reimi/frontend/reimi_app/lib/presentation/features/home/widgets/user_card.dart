@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
 import 'package:reimi_app/data/models/home_user_model.dart';
@@ -117,7 +118,7 @@ class UserCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  ' (${DateTime.now().year - user.birthDate.year})',
+                  ' ${user.birthDate.toAge}',
                   style: theme.textTheme.bodySmall,
                 ),
                 if (true)
