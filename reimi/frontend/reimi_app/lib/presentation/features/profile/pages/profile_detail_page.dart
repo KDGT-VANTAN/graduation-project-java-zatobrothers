@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/alcohol_extension.dart';
@@ -107,7 +108,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                '(${DateTime.now().year - data.birthDate.year})',
+                                ' ${data.birthDate.toAge}',
                                 style: theme.textTheme.bodyMedium,
                               ),
                               const SizedBox(width: 8),

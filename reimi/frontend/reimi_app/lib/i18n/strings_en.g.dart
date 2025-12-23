@@ -45,6 +45,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
 	late final TranslationsErrorPageEn errorPage = TranslationsErrorPageEn._(_root);
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
+	late final TranslationsLikePageEn likePage = TranslationsLikePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsSettingPageEn settingPage = TranslationsSettingPageEn._(_root);
@@ -144,6 +145,16 @@ class TranslationsUserRegistrationPageEn {
 	late final TranslationsUserRegistrationPageNameEn name = TranslationsUserRegistrationPageNameEn._(_root);
 	late final TranslationsUserRegistrationPageIntroductionEn introduction = TranslationsUserRegistrationPageIntroductionEn._(_root);
 	late final TranslationsUserRegistrationPageMainPhotoEn mainPhoto = TranslationsUserRegistrationPageMainPhotoEn._(_root);
+}
+
+// Path: likePage
+class TranslationsLikePageEn {
+	TranslationsLikePageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsLikePageSegmentEn segment = TranslationsLikePageSegmentEn._(_root);
 }
 
 // Path: profileDetailPage
@@ -459,6 +470,21 @@ class TranslationsUserRegistrationPageMainPhotoEn {
 	String get question => 'Select your main photo';
 
 	late final TranslationsUserRegistrationPageMainPhotoItemsEn items = TranslationsUserRegistrationPageMainPhotoItemsEn._(_root);
+}
+
+// Path: likePage.segment
+class TranslationsLikePageSegmentEn {
+	TranslationsLikePageSegmentEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'FromUser'
+	String get fromUser => 'FromUser';
+
+	/// en: 'ToUser'
+	String get toUser => 'ToUser';
 }
 
 // Path: profilePage.section
@@ -1997,6 +2023,8 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
+			'likePage.segment.fromUser' => 'FromUser',
+			'likePage.segment.toUser' => 'ToUser',
 			'profileDetailPage.title' => 'Profile Details',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.section.mainPhoto' => 'Main Photo',

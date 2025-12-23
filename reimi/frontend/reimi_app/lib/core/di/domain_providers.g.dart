@@ -85,5 +85,45 @@ final getUserProfileUseCaseProvider =
 // ignore: unused_element
 typedef GetUserProfileUseCaseRef
     = AutoDisposeProviderRef<GetUserProfileUseCase>;
+String _$getLikeUsersFromUserUseCaseHash() =>
+    r'798e5d96398b28563f53cc80b9b409f10b7befcc';
+
+/// See also [getLikeUsersFromUserUseCase].
+@ProviderFor(getLikeUsersFromUserUseCase)
+final getLikeUsersFromUserUseCaseProvider =
+    AutoDisposeProvider<GetLikeUsersFromUserUseCase>.internal(
+  getLikeUsersFromUserUseCase,
+  name: r'getLikeUsersFromUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getLikeUsersFromUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetLikeUsersFromUserUseCaseRef
+    = AutoDisposeProviderRef<GetLikeUsersFromUserUseCase>;
+String _$getLikeUsersToUserUseCaseHash() =>
+    r'89e934ec3946930d3f867a9b287330091f06ccba';
+
+/// See also [getLikeUsersToUserUseCase].
+@ProviderFor(getLikeUsersToUserUseCase)
+final getLikeUsersToUserUseCaseProvider =
+    AutoDisposeProvider<GetLikeUsersToUserUseCase>.internal(
+  getLikeUsersToUserUseCase,
+  name: r'getLikeUsersToUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getLikeUsersToUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetLikeUsersToUserUseCaseRef
+    = AutoDisposeProviderRef<GetLikeUsersToUserUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

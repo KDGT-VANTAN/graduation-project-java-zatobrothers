@@ -42,6 +42,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsSignInPageJa signInPage = _TranslationsSignInPageJa._(_root);
 	@override late final _TranslationsErrorPageJa errorPage = _TranslationsErrorPageJa._(_root);
 	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
+	@override late final _TranslationsLikePageJa likePage = _TranslationsLikePageJa._(_root);
 	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
 	@override late final _TranslationsSettingPageJa settingPage = _TranslationsSettingPageJa._(_root);
@@ -117,6 +118,16 @@ class _TranslationsUserRegistrationPageJa implements TranslationsUserRegistratio
 	@override late final _TranslationsUserRegistrationPageNameJa name = _TranslationsUserRegistrationPageNameJa._(_root);
 	@override late final _TranslationsUserRegistrationPageIntroductionJa introduction = _TranslationsUserRegistrationPageIntroductionJa._(_root);
 	@override late final _TranslationsUserRegistrationPageMainPhotoJa mainPhoto = _TranslationsUserRegistrationPageMainPhotoJa._(_root);
+}
+
+// Path: likePage
+class _TranslationsLikePageJa implements TranslationsLikePageEn {
+	_TranslationsLikePageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsLikePageSegmentJa segment = _TranslationsLikePageSegmentJa._(_root);
 }
 
 // Path: profileDetailPage
@@ -359,6 +370,17 @@ class _TranslationsUserRegistrationPageMainPhotoJa implements TranslationsUserRe
 	// Translations
 	@override String get question => 'メイン写真を選んでください';
 	@override late final _TranslationsUserRegistrationPageMainPhotoItemsJa items = _TranslationsUserRegistrationPageMainPhotoItemsJa._(_root);
+}
+
+// Path: likePage.segment
+class _TranslationsLikePageSegmentJa implements TranslationsLikePageSegmentEn {
+	_TranslationsLikePageSegmentJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get fromUser => '相手から';
+	@override String get toUser => '自分から';
 }
 
 // Path: profilePage.section
@@ -1225,6 +1247,8 @@ extension on TranslationsJa {
 			'userRegistrationPage.mainPhoto.question' => 'メイン写真を選んでください',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'クリックして写真を選択',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
+			'likePage.segment.fromUser' => '相手から',
+			'likePage.segment.toUser' => '自分から',
 			'profileDetailPage.title' => 'プロフィール詳細',
 			'profilePage.title' => 'プロフィール編集',
 			'profilePage.section.mainPhoto' => 'メイン写真',

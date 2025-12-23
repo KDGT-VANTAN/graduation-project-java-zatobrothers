@@ -81,6 +81,12 @@
       }
     }
   },
+  "likePage": {
+    "segment": {
+      "fromUser": "FromUser",
+      "toUser": "ToUser"
+    }
+  },
   "profileDetailPage": {
     "title": "Profile Details"
   },

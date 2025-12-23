@@ -16,4 +16,7 @@ extension DateTimeFormatExtension on DateTime {
   // 曜日付き
   String get toJapaneseDateWithWeekday =>
       DateFormat('yyyy年MM月dd日(E)', 'ja').format(this);
+
+  // 年齢
+  String get toAge => '(${DateTime.now().year - year})';
 }

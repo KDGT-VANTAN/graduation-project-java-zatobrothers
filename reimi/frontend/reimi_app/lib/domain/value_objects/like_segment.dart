@@ -1,0 +1,4 @@
+enum LikeSegment {
+  fromUser,
+  toUser,
+}

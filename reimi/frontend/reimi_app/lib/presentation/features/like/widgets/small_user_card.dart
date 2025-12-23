@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
-import 'package:reimi_app/data/models/home_user_model.dart';
+import 'package:reimi_app/data/models/like_user_model.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/presentation/features/home/widgets/circle_badge.dart';
 
-class UserCard extends StatelessWidget {
-  const UserCard({
+class SmallUserCard extends StatelessWidget {
+  const SmallUserCard({
     super.key,
     required this.user,
     required this.onTap,
   });
 
-  final HomeUserModel user;
+  final LikeUserModel user;
   final void Function()? onTap;
 
   @override
@@ -24,7 +24,6 @@ class UserCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFDDF5FB),
-          // color: const Color(0xFFEAF4F6),
           borderRadius: BorderRadius.circular(20),
         ),
         padding: const EdgeInsets.all(12),
@@ -112,9 +111,9 @@ class UserCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  user.name,
+                  user.address.displayName(context),
                   style: theme.textTheme.bodySmall!.copyWith(
-                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
                 Text(
@@ -127,23 +126,8 @@ class UserCard extends StatelessWidget {
                     child:
                         Icon(Icons.check_circle, color: Colors.green, size: 16),
                   ),
+                const SizedBox(height: 24),
               ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              user.address.displayName(context),
-              style: theme.textTheme.bodySmall!.copyWith(
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              user.introduction,
-              style: theme.textTheme.bodySmall!.copyWith(
-                fontSize: 10,
-                color: Colors.black87.withValues(alpha: 0.6),
-                overflow: TextOverflow.ellipsis,
-              ),
             ),
           ],
         ),

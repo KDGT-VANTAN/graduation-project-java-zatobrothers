@@ -28,11 +28,11 @@ class AuthGate extends ConsumerWidget {
         userAsync.when(
           data: (userData) {
             if (userData == null) {
+              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.go(UserGenderPage.routeLocation);
               });
             } else {
-              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.go(HomePage.routeLocation);
               });

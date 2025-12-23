@@ -116,5 +116,41 @@ final profileRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ProfileRepositoryRef = AutoDisposeProviderRef<ProfileRepository>;
+String _$likeRemoteDataSourceHash() =>
+    r'8cfd5563d76e465f5c013176bd1a802d65bd256e';
+
+/// See also [likeRemoteDataSource].
+@ProviderFor(likeRemoteDataSource)
+final likeRemoteDataSourceProvider =
+    AutoDisposeProvider<LikeRemoteDataSource>.internal(
+  likeRemoteDataSource,
+  name: r'likeRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$likeRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LikeRemoteDataSourceRef = AutoDisposeProviderRef<LikeRemoteDataSource>;
+String _$likeRepositoryHash() => r'4fdc6a16b92896780a50e71e7d4e2d6f821b41a4';
+
+/// See also [likeRepository].
+@ProviderFor(likeRepository)
+final likeRepositoryProvider = AutoDisposeProvider<LikeRepository>.internal(
+  likeRepository,
+  name: r'likeRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$likeRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LikeRepositoryRef = AutoDisposeProviderRef<LikeRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
