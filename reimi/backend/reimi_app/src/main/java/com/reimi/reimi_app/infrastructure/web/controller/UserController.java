@@ -1,7 +1,10 @@
 package com.reimi.reimi_app.infrastructure.web.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -25,6 +29,24 @@ public class UserController {
 
     public UserController(UserUseCase userUseCase) {
         this.userUseCase = userUseCase;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<GetUserListResponse>> getUsers() {
+        List<GetUserListResponse> response = userUseCase.getUsers()
+                .stream()
+                .map(user -> new GetUserListResponse(
+                    user.getId().value(),
+                    user.getFirebaseUid(),
+                    user.getName(),
+                    user.getBirthDate(),
+                    user.getAddress().getLabel(),
+                    user.getMainPhotoUrl(),
+                    user.getProfile().getIntroduction()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(response);
     }
 
     @Operation(
