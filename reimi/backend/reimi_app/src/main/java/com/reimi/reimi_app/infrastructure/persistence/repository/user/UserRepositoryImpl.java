@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.user;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.domain.model.user.User;
@@ -15,6 +17,13 @@ public class UserRepositoryImpl implements UserRepository {
         this.jpaUserRepository = jpaUserRepository;
     }
 
+    @Override
+    public List<User> findAll() {
+        return jpaUserRepository.findAll()
+            .stream()
+            .map(UserMapper::toDomain)
+            .toList();
+    }
     @Override
     public boolean existsByEmail(String email) {
         return jpaUserRepository.existsByEmail(email);
