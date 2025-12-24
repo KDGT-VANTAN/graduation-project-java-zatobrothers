@@ -31,6 +31,13 @@ public class UserController {
         this.userUseCase = userUseCase;
     }
 
+    @Operation(
+        summary = "ユーザー一覧取得",
+        description = "登録されているユーザーの一覧を取得できるAPI"
+    )
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "ユーザーの一覧を取得しました"),
+    })
     @GetMapping
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
         List<GetUserListResponse> response = userUseCase.getUsers()
