@@ -67,6 +67,33 @@ public class User {
         );
     }
 
+    public static User reconstruct(
+        UserId id,
+        String firebaseUid,
+        String name,
+        Gender gender,
+        LocalDate birthDate,
+        Address address,
+        String mainPhotoUrl,
+        String email,
+        Status status,
+        Profile profile
+    ) {
+        return new User(
+                id,
+                firebaseUid,
+                name,
+                gender,
+                birthDate,
+                address,
+                mainPhotoUrl,
+                email,
+                status,
+                profile
+        );
+    }
+
+
     public UserId getId() { return id; }
     public String getFirebaseUid() { return firebaseUid; }
     public String getName() { return name; }

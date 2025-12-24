@@ -15,8 +15,24 @@ public class Profile {
         this.userId = userId;
         this.introduction = introduction;
     }
-    public static Profile create(UserId userId, String introduction) {
-        return new Profile(userId, introduction);
+    public static Profile create(
+        UserId userId,
+        String introduction
+    ) {
+        return new Profile(
+            userId,
+            introduction
+        );
+    }
+
+    public static Profile reconstruct(
+        UserId userId,
+        String introduction
+    ) {
+        return new Profile(
+                userId,
+                introduction
+        );
     }
 
     public UserId getUserId() { return userId; }

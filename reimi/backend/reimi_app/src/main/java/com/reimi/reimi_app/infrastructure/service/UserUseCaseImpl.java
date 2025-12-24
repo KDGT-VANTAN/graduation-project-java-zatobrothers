@@ -6,6 +6,7 @@ import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,11 @@ public class UserUseCaseImpl implements UserUseCase {
 
     public UserUseCaseImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
     @Override
     @Transactional
