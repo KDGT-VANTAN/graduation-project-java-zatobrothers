@@ -1,5 +1,5 @@
 import 'package:reimi_app/data/datasources/profile_remote_datasource.dart';
-import 'package:reimi_app/domain/entities/profile_entity.dart';
+import 'package:reimi_app/data/models/user_with_profile_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
 import 'package:reimi_app/domain/value_objects/annual_income.dart';
@@ -7,36 +7,42 @@ import 'package:reimi_app/domain/value_objects/blood_type.dart';
 import 'package:reimi_app/domain/value_objects/body_shape.dart';
 import 'package:reimi_app/domain/value_objects/communication_style.dart';
 import 'package:reimi_app/domain/value_objects/education.dart';
+import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
+import 'package:reimi_app/domain/value_objects/user_status.dart';
+import 'package:reimi_app/gen/assets.gen.dart';
 
 class ProfileMockDataSourceImpl implements ProfileRemoteDataSource {
   const ProfileMockDataSourceImpl();
 
   @override
-  Future<List<ProfileEntity>> fetchProfiles(List<String> userIds) async {
-    return mockProfiles;
-  }
-
-  @override
-  Future<ProfileEntity?> fetchProfile(String userId) async {
+  Future<UserWithProfileModel?> fetchUserProfile(String userId) async {
     // 仮実装
-    for (var profile in mockProfiles) {
-      if (profile.userId == userId) {
-        return profile;
+    for (var userProfile in mockUserProfiles) {
+      if (userProfile.userId == userId) {
+        return userProfile;
       }
     }
     return null;
   }
 }
 
-final List<ProfileEntity> mockProfiles = [
-  // user_001: 佐藤 葵 (20代後半・東京)
-  ProfileEntity(
-    id: 'prof_001',
+final List<UserWithProfileModel> mockUserProfiles = [
+  // user_001: 佐藤 葵
+  UserWithProfileModel(
     userId: 'user_001',
+    firebaseUid: 'fb_uid_1234567890',
+    name: '佐藤 葵',
+    gender: Gender.woman,
+    birthDate: DateTime(1995, 5, 15),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 2)),
+    status: UserStatus.active,
+    profileId: 'prof_001',
     introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
     height: Height.just160cm,
     bodyShape: BodyShape.normal,
@@ -51,13 +57,21 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['カフェ巡り', 'カメラ', 'ヨガ'],
     rainyDayHobbies: ['映画鑑賞', '料理', '読書'],
-    createdAt: DateTime(2023, 1, 10),
+    subPhotoUrls: [], // 必要に応じてパスを追加
   ),
 
-  // user_002: 田中 健 (40代後半・大阪)
-  ProfileEntity(
-    id: 'prof_002',
+  // user_002: 田中 健
+  UserWithProfileModel(
     userId: 'user_002',
+    firebaseUid: 'fb_uid_0987654321',
+    name: '田中 健',
+    gender: Gender.man,
+    birthDate: DateTime(1978, 11, 3),
+    address: Address.osaka,
+    mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(days: 1)),
+    status: UserStatus.active,
+    profileId: 'prof_002',
     introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
     height: Height.just171cm,
     bodyShape: BodyShape.normal,
@@ -72,13 +86,21 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.irregular,
     sunnyDayHobbies: ['ゴルフ', 'ドライブ', ''],
     rainyDayHobbies: ['ワイン', 'ジャズ鑑賞', ''],
-    createdAt: DateTime(2022, 5, 20),
+    subPhotoUrls: [],
   ),
 
-  // user_003: 鈴木 翔太 (20代前半・愛知)
-  ProfileEntity(
-    id: 'prof_003',
+  // user_003: 鈴木 翔太
+  UserWithProfileModel(
     userId: 'user_003',
+    firebaseUid: 'fb_uid_1122334455',
+    name: '鈴木 翔太',
+    gender: Gender.man,
+    birthDate: DateTime(2001, 3, 22),
+    address: Address.aichi,
+    mainPhotoUrl: Assets.images.sample.user003SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(minutes: 30)),
+    status: UserStatus.active,
+    profileId: 'prof_003',
     introduction: 'エンジニアを目指して勉強中です！最近はキャンプにハマっています。一緒に盛り上がれる友達募集中です。',
     height: Height.just182cm,
     bodyShape: BodyShape.slim,
@@ -93,13 +115,21 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['キャンプ', 'サウナ', 'スケボー'],
     rainyDayHobbies: ['ゲーム', 'アニメ', 'プログラミング'],
-    createdAt: DateTime(2023, 9, 1),
+    subPhotoUrls: [],
   ),
 
-  // user_004: 高橋 美咲 (30代半ば・福岡)
-  ProfileEntity(
-    id: 'prof_004',
+  // user_004: 高橋 美咲
+  UserWithProfileModel(
     userId: 'user_004',
+    firebaseUid: 'fb_uid_6677889900',
+    name: '高橋 美咲',
+    gender: Gender.woman,
+    birthDate: DateTime(1988, 7, 12),
+    address: Address.fukuoka,
+    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 5)),
+    status: UserStatus.active,
+    profileId: 'prof_004',
     introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
     height: Height.just155cm,
     bodyShape: BodyShape.chubby,
@@ -114,13 +144,21 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['食べ歩き', '旅行', ''],
     rainyDayHobbies: ['イラスト', '猫と遊ぶ', 'ネットフリックス'],
-    createdAt: DateTime(2023, 11, 15),
+    subPhotoUrls: [],
   ),
 
-  // user_005: 伊藤 健太 (20代後半・北海道)
-  ProfileEntity(
-    id: 'prof_005',
+  // user_005: 伊藤 健太
+  UserWithProfileModel(
     userId: 'user_005',
+    firebaseUid: 'fb_uid_5544332211',
+    name: '伊藤 健太',
+    gender: Gender.man,
+    birthDate: DateTime(1996, 9, 5),
+    address: Address.hokkaido,
+    mainPhotoUrl: Assets.images.sample.user005SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(days: 3)),
+    status: UserStatus.active,
+    profileId: 'prof_005',
     introduction: '北海道の大自然の中で育ちました。冬はスキー、夏はハイキングをしています。アクティブな方が好きです！',
     height: Height.just170cm,
     bodyShape: BodyShape.muscular,
@@ -135,13 +173,21 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['スキー', '登山', '釣り'],
     rainyDayHobbies: ['筋トレ', '読書', ''],
-    createdAt: DateTime(2024, 1, 20),
+    subPhotoUrls: [],
   ),
 
-  // user_006: 渡辺 由美子 (50代後半・東京)
-  ProfileEntity(
-    id: 'prof_006',
+  // user_006: 渡辺 由美子
+  UserWithProfileModel(
     userId: 'user_006',
+    firebaseUid: 'fb_uid_9988776655',
+    name: '渡辺 由美子',
+    gender: Gender.woman,
+    birthDate: DateTime(1965, 2, 28),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 1)),
+    status: UserStatus.active,
+    profileId: 'prof_006',
     introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
     height: Height.just163cm,
     bodyShape: BodyShape.normal,
@@ -156,13 +202,23 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['ガーデニング', '散歩', ''],
     rainyDayHobbies: ['ピアノ', '刺繍', ''],
-    createdAt: DateTime(2022, 12, 1),
+    subPhotoUrls: [],
   ),
-  ProfileEntity(
-    id: 'prof_000',
+
+  // user_000: 山田 涼介
+  UserWithProfileModel(
     userId: 'user_000',
+    firebaseUid: 'fb_uid_0000000000',
+    name: '山田 涼介',
+    gender: Gender.man,
+    birthDate: DateTime(1993, 5, 9),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.user000SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 1)),
+    status: UserStatus.active,
+    profileId: 'prof_000',
     introduction:
-        '都内でITコンサルタントとして働いています。仕事は忙しいですが、オンとオフはしっかり切り替えるタイプです。休日は趣味のドライブや、話題のレストランを開拓するのが好きです。落ち着いた関係を築ける方と出会えれば嬉しいです！',
+        '都内でITコンサルタントとして働いています。仕事は忙しいですが、オンとオフはしっかり切り替えるタイプです。休日は趣味のドライブや、話題のレストランを開拓するのが好きです。',
     height: Height.just164cm,
     bodyShape: BodyShape.normal,
     annualIncome: AnnualIncome.between20And30M,
@@ -176,7 +232,297 @@ final List<ProfileEntity> mockProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['ドライブ', '食べ歩き', 'フットサル'],
     rainyDayHobbies: ['映画鑑賞', '料理', 'YouTube視聴'],
-    createdAt: DateTime(2022, 12, 1),
-    updatedAt: DateTime(2023, 6, 30),
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_001: さくら
+  UserWithProfileModel(
+    userId: 'chat_user_001',
+    firebaseUid: 'fb_uid_chat_001',
+    name: 'さくら',
+    gender: Gender.woman,
+    birthDate: DateTime(2000, 4, 15),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.chatUser001SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(minutes: 15)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_001',
+    introduction: 'アパレル店員をしています！休日はよくショッピングに行ったり、新作のスイーツをチェックしたりしています🍰',
+    height: Height.just158cm,
+    bodyShape: BodyShape.slim,
+    annualIncome: AnnualIncome.between2And4M,
+    bloodType: BloodType.a,
+    hometown: Address.kanagawa,
+    communicationStyle: CommunicationStyle.message,
+    occupation: Occupation.apparel,
+    education: Education.juniorCollegeGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.sometimes,
+    holiday: Holiday.weekday,
+    sunnyDayHobbies: ['ショッピング', 'カフェ巡り', ''],
+    rainyDayHobbies: ['雑誌を読む', 'SNSチェック', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_002: ゆうき
+  UserWithProfileModel(
+    userId: 'chat_user_002',
+    firebaseUid: 'fb_uid_chat_002',
+    name: 'ゆうき',
+    gender: Gender.man,
+    birthDate: DateTime(1997, 8, 20),
+    address: Address.kanagawa,
+    mainPhotoUrl: Assets.images.sample.chatUser002SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 1)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_002',
+    introduction: 'メーカーで営業をしています。スポーツが好きで、週末はフットサルをしたりジムに行ったりしています！',
+    height: Height.just175cm,
+    bodyShape: BodyShape.muscular,
+    annualIncome: AnnualIncome.between4And6M,
+    bloodType: BloodType.o,
+    hometown: Address.shizuoka,
+    communicationStyle: CommunicationStyle.inPerson,
+    occupation: Occupation.manufacturer,
+    education: Education.universityGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.yes,
+    holiday: Holiday.weekend,
+    sunnyDayHobbies: ['フットサル', 'ランニング', ''],
+    rainyDayHobbies: ['筋トレ', '映画鑑賞', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_003: あおい
+  UserWithProfileModel(
+    userId: 'chat_user_003',
+    firebaseUid: 'fb_uid_chat_003',
+    name: 'あおい',
+    gender: Gender.woman,
+    birthDate: DateTime(2002, 11, 10),
+    address: Address.osaka,
+    mainPhotoUrl: Assets.images.sample.chatUser003SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 2)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_003',
+    introduction: '大学院でデザインの勉強をしています🎨 食べることが大好きで、特に美味しいラーメン屋さんを探すのが趣味です！',
+    height: Height.just162cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between2And4M,
+    bloodType: BloodType.b,
+    hometown: Address.hyogo,
+    communicationStyle: CommunicationStyle.call,
+    occupation: Occupation.universityStudent,
+    education: Education.universityGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.sometimes,
+    holiday: Holiday.irregular,
+    sunnyDayHobbies: ['美術館巡り', '食べ歩き', ''],
+    rainyDayHobbies: ['イラスト', '自炊', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_004: りく
+  UserWithProfileModel(
+    userId: 'chat_user_004',
+    firebaseUid: 'fb_uid_chat_004',
+    name: 'りく',
+    gender: Gender.man,
+    birthDate: DateTime(1995, 2, 5),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.chatUser004SampleImage.path,
+    lastLoginAt: DateTime.now().subtract(const Duration(days: 1)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_004',
+    introduction: 'エンジニアをしています。最近はキャンプギアを揃えるのにハマっています。焚き火を見ながらゆっくりするのが好きです。',
+    height: Height.just180cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between6And8M,
+    bloodType: BloodType.ab,
+    hometown: Address.nagano,
+    communicationStyle: CommunicationStyle.message,
+    occupation: Occupation.engineer,
+    education: Education.universityGraduate,
+    smoking: Smoking.sometimes,
+    alcohol: Alcohol.yes,
+    holiday: Holiday.weekend,
+    sunnyDayHobbies: ['キャンプ', 'ドライブ', ''],
+    rainyDayHobbies: ['ガジェット収集', 'プログラミング', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_005: みお
+  UserWithProfileModel(
+    userId: 'chat_user_005',
+    firebaseUid: 'fb_uid_chat_005',
+    name: 'みお',
+    gender: Gender.woman,
+    birthDate: DateTime(1999, 6, 25),
+    address: Address.chiba,
+    mainPhotoUrl:
+        'https://images.unsplash.com/photo-1489440543286-a69330151c0b?w=500&q=80',
+    lastLoginAt: DateTime.now().subtract(const Duration(minutes: 45)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_005',
+    introduction: '看護師をしています💉 忙しい毎日ですが、休日はディズニーランドに行ってリフレッシュしています！',
+    height: Height.just155cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between4And6M,
+    bloodType: BloodType.a,
+    hometown: Address.chiba,
+    communicationStyle: CommunicationStyle.call,
+    occupation: Occupation.nurse,
+    education: Education.juniorCollegeGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.no,
+    holiday: Holiday.irregular,
+    sunnyDayHobbies: ['ディズニー', '散歩', ''],
+    rainyDayHobbies: ['ヨガ', 'ドラマ鑑賞', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_006: さくら
+  UserWithProfileModel(
+    userId: 'chat_user_006',
+    firebaseUid: 'fb_uid_chat_006',
+    name: 'さくら', // 重複名
+    gender: Gender.woman,
+    birthDate: DateTime(2000, 4, 15),
+    address: Address.tokyo,
+    mainPhotoUrl: '',
+    lastLoginAt: DateTime.now(),
+    status: UserStatus.active,
+    profileId: 'prof_chat_006',
+    introduction: 'IT企業で広報をしています。お喋りが大好きなので、たくさんお話しできる方と出会いたいです！',
+    height: Height.just160cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between4And6M,
+    bloodType: BloodType.o,
+    hometown: Address.tokyo,
+    communicationStyle: CommunicationStyle.inPerson,
+    occupation: Occupation.officeWork,
+    education: Education.universityGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.yes,
+    holiday: Holiday.weekend,
+    sunnyDayHobbies: ['旅行', '写真', ''],
+    rainyDayHobbies: ['読書', 'ネットフリックス', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_007: ゆうき
+  UserWithProfileModel(
+    userId: 'chat_user_007',
+    firebaseUid: 'fb_uid_chat_007',
+    name: 'ゆうき',
+    gender: Gender.man,
+    birthDate: DateTime(1997, 8, 20),
+    address: Address.kanagawa,
+    mainPhotoUrl: '',
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 5)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_007',
+    introduction: '建築関係の仕事をしています。DIYが趣味で、自分の部屋の家具を作ったりしています🔨',
+    height: Height.just172cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between4And6M,
+    bloodType: BloodType.a,
+    hometown: Address.kanagawa,
+    communicationStyle: CommunicationStyle.message,
+    occupation: Occupation.architectureInterior,
+    education: Education.universityGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.sometimes,
+    holiday: Holiday.weekend,
+    sunnyDayHobbies: ['DIY', 'サイクリング', ''],
+    rainyDayHobbies: ['家具の設計', 'ゲーム', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_008: あおい
+  UserWithProfileModel(
+    userId: 'chat_user_008',
+    firebaseUid: 'fb_uid_chat_008',
+    name: 'あおい',
+    gender: Gender.woman,
+    birthDate: DateTime(2002, 11, 10),
+    address: Address.osaka,
+    mainPhotoUrl: '',
+    lastLoginAt: DateTime.now().subtract(const Duration(minutes: 5)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_008',
+    introduction: '保育士をしています。子供が大好きです！休日はパン屋さん巡りをしてのんびり過ごすのが好きです🥐',
+    height: Height.just150cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between2And4M,
+    bloodType: BloodType.ab,
+    hometown: Address.osaka,
+    communicationStyle: CommunicationStyle.message,
+    occupation: Occupation.childcareWorker,
+    education: Education.technicalCollegeGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.no,
+    holiday: Holiday.weekday,
+    sunnyDayHobbies: ['パン作り', '公園散歩', ''],
+    rainyDayHobbies: ['刺繍', '料理', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_009: りく
+  UserWithProfileModel(
+    userId: 'chat_user_009',
+    firebaseUid: 'fb_uid_chat_009',
+    name: 'りく',
+    gender: Gender.man,
+    birthDate: DateTime(1995, 2, 5),
+    address: Address.tokyo,
+    mainPhotoUrl: '',
+    lastLoginAt: DateTime.now().subtract(const Duration(days: 2)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_009',
+    introduction: '公務員をしています。落ち着いたお付き合いができる方を探しています。趣味はサウナです♨️',
+    height: Height.just178cm,
+    bodyShape: BodyShape.normal,
+    annualIncome: AnnualIncome.between6And8M,
+    bloodType: BloodType.o,
+    hometown: Address.saitama,
+    communicationStyle: CommunicationStyle.inPerson,
+    occupation: Occupation.publicServant,
+    education: Education.universityGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.sometimes,
+    holiday: Holiday.weekend,
+    sunnyDayHobbies: ['サウナ', '寺社巡り', ''],
+    rainyDayHobbies: ['温泉雑誌を読む', '将棋', ''],
+    subPhotoUrls: [],
+  ),
+
+  // chat_user_010: みお
+  UserWithProfileModel(
+    userId: 'chat_user_010',
+    firebaseUid: 'fb_uid_chat_010',
+    name: 'みお',
+    gender: Gender.woman,
+    birthDate: DateTime(1999, 6, 25),
+    address: Address.chiba,
+    mainPhotoUrl: '',
+    lastLoginAt: DateTime.now().subtract(const Duration(hours: 10)),
+    status: UserStatus.active,
+    profileId: 'prof_chat_010',
+    introduction: '美容師をしています✂️ お洒落やコスメが大好きです！一緒に美容の話ができる友達や素敵な出会いがあれば嬉しいです。',
+    height: Height.just165cm,
+    bodyShape: BodyShape.slim,
+    annualIncome: AnnualIncome.between2And4M,
+    bloodType: BloodType.b,
+    hometown: Address.chiba,
+    communicationStyle: CommunicationStyle.call,
+    occupation: Occupation.beauty,
+    education: Education.technicalCollegeGraduate,
+    smoking: Smoking.no,
+    alcohol: Alcohol.yes,
+    holiday: Holiday.weekday,
+    sunnyDayHobbies: ['カフェ', 'メイク研究', ''],
+    rainyDayHobbies: ['映画鑑賞', 'ヘアアレンジ', ''],
+    subPhotoUrls: [],
   ),
 ];
