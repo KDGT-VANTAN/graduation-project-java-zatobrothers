@@ -21,7 +21,7 @@ part 'user_with_profile_model.g.dart';
 abstract class UserWithProfileModel with _$UserWithProfileModel {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory UserWithProfileModel({
-    required String userId, // --- User fields ---
+    required String userId,
     required String firebaseUid,
     required String name,
     required Gender gender,
@@ -30,7 +30,7 @@ abstract class UserWithProfileModel with _$UserWithProfileModel {
     required String mainPhotoUrl,
     @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
     required UserStatus status,
-    required String profileId, // --- Profile fields ---
+    required String profileId,
     required String introduction,
     Height? height,
     BodyShape? bodyShape,
