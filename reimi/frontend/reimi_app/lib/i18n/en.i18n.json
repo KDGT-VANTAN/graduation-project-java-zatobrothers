@@ -81,14 +81,17 @@
       }
     }
   },
-  "likePage": {
-    "segment": {
-      "fromUser": "FromUser",
-      "toUser": "ToUser"
+  "chatPage": {
+    "sectionTitle": {
+      "matching": "Matching",
+      "messages": "Messages"
+    },
+    "subSectionTitle": {
+      "matching": "Let's send your first message!"
     }
   },
-  "profileDetailPage": {
-    "title": "Profile Details"
+  "chatDetailPage": {
+    "placeHolder": "Enter your message"
   },
   "profilePage": {
     "title": "Edit Profile",
@@ -156,6 +159,9 @@
       },
       "basicInformation": "Not set"
     }
+  },
+  "profileDetailPage": {
+    "title": "Profile Details"
   },
   "settingPage": {
     "title": "Settings",
@@ -272,6 +278,16 @@
     "delete": "Delete",
     "apply": "Apply",
     "clear": "Clear"
+  },
+  "segmentedSwitch": {
+    "like": {
+      "fromUser": "FromUser",
+      "toUser": "ToUser"
+    },
+    "chat": {
+      "message": "Message",
+      "profile": "Profile"
+    }
   },
   "enum": {
     "address": {

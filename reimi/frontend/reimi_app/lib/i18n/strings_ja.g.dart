@@ -42,14 +42,16 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsSignInPageJa signInPage = _TranslationsSignInPageJa._(_root);
 	@override late final _TranslationsErrorPageJa errorPage = _TranslationsErrorPageJa._(_root);
 	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
-	@override late final _TranslationsLikePageJa likePage = _TranslationsLikePageJa._(_root);
-	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
+	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
+	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
+	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
 	@override late final _TranslationsSettingPageJa settingPage = _TranslationsSettingPageJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
 	@override late final _TranslationsDialogJa dialog = _TranslationsDialogJa._(_root);
 	@override late final _TranslationsBottomSheetJa bottomSheet = _TranslationsBottomSheetJa._(_root);
 	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
+	@override late final _TranslationsSegmentedSwitchJa segmentedSwitch = _TranslationsSegmentedSwitchJa._(_root);
 	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
 }
 
@@ -120,24 +122,25 @@ class _TranslationsUserRegistrationPageJa implements TranslationsUserRegistratio
 	@override late final _TranslationsUserRegistrationPageMainPhotoJa mainPhoto = _TranslationsUserRegistrationPageMainPhotoJa._(_root);
 }
 
-// Path: likePage
-class _TranslationsLikePageJa implements TranslationsLikePageEn {
-	_TranslationsLikePageJa._(this._root);
+// Path: chatPage
+class _TranslationsChatPageJa implements TranslationsChatPageEn {
+	_TranslationsChatPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsLikePageSegmentJa segment = _TranslationsLikePageSegmentJa._(_root);
+	@override late final _TranslationsChatPageSectionTitleJa sectionTitle = _TranslationsChatPageSectionTitleJa._(_root);
+	@override late final _TranslationsChatPageSubSectionTitleJa subSectionTitle = _TranslationsChatPageSubSectionTitleJa._(_root);
 }
 
-// Path: profileDetailPage
-class _TranslationsProfileDetailPageJa implements TranslationsProfileDetailPageEn {
-	_TranslationsProfileDetailPageJa._(this._root);
+// Path: chatDetailPage
+class _TranslationsChatDetailPageJa implements TranslationsChatDetailPageEn {
+	_TranslationsChatDetailPageJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'プロフィール詳細';
+	@override String get placeHolder => 'メッセージを入力';
 }
 
 // Path: profilePage
@@ -151,6 +154,16 @@ class _TranslationsProfilePageJa implements TranslationsProfilePageEn {
 	@override late final _TranslationsProfilePageSectionJa section = _TranslationsProfilePageSectionJa._(_root);
 	@override late final _TranslationsProfilePageEditJa edit = _TranslationsProfilePageEditJa._(_root);
 	@override late final _TranslationsProfilePagePlaceholderJa placeholder = _TranslationsProfilePagePlaceholderJa._(_root);
+}
+
+// Path: profileDetailPage
+class _TranslationsProfileDetailPageJa implements TranslationsProfileDetailPageEn {
+	_TranslationsProfileDetailPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'プロフィール詳細';
 }
 
 // Path: settingPage
@@ -225,6 +238,17 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get delete => '削除';
 	@override String get apply => '適用する';
 	@override String get clear => 'クリア';
+}
+
+// Path: segmentedSwitch
+class _TranslationsSegmentedSwitchJa implements TranslationsSegmentedSwitchEn {
+	_TranslationsSegmentedSwitchJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsSegmentedSwitchLikeJa like = _TranslationsSegmentedSwitchLikeJa._(_root);
+	@override late final _TranslationsSegmentedSwitchChatJa chat = _TranslationsSegmentedSwitchChatJa._(_root);
 }
 
 // Path: kEnum
@@ -372,15 +396,25 @@ class _TranslationsUserRegistrationPageMainPhotoJa implements TranslationsUserRe
 	@override late final _TranslationsUserRegistrationPageMainPhotoItemsJa items = _TranslationsUserRegistrationPageMainPhotoItemsJa._(_root);
 }
 
-// Path: likePage.segment
-class _TranslationsLikePageSegmentJa implements TranslationsLikePageSegmentEn {
-	_TranslationsLikePageSegmentJa._(this._root);
+// Path: chatPage.sectionTitle
+class _TranslationsChatPageSectionTitleJa implements TranslationsChatPageSectionTitleEn {
+	_TranslationsChatPageSectionTitleJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get fromUser => '相手から';
-	@override String get toUser => '自分から';
+	@override String get matching => 'マッチング';
+	@override String get messages => 'メッセージ';
+}
+
+// Path: chatPage.subSectionTitle
+class _TranslationsChatPageSubSectionTitleJa implements TranslationsChatPageSubSectionTitleEn {
+	_TranslationsChatPageSubSectionTitleJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get matching => '最初のメッセージを送りましょう！';
 }
 
 // Path: profilePage.section
@@ -611,6 +645,28 @@ class _TranslationsBottomSheetRefineSearchUserJa implements TranslationsBottomSh
 	// Translations
 	@override String get title => '絞り込み条件';
 	@override late final _TranslationsBottomSheetRefineSearchUserSectionJa section = _TranslationsBottomSheetRefineSearchUserSectionJa._(_root);
+}
+
+// Path: segmentedSwitch.like
+class _TranslationsSegmentedSwitchLikeJa implements TranslationsSegmentedSwitchLikeEn {
+	_TranslationsSegmentedSwitchLikeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get fromUser => '相手から';
+	@override String get toUser => '自分から';
+}
+
+// Path: segmentedSwitch.chat
+class _TranslationsSegmentedSwitchChatJa implements TranslationsSegmentedSwitchChatEn {
+	_TranslationsSegmentedSwitchChatJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get message => 'メッセージ';
+	@override String get profile => 'プロフィール';
 }
 
 // Path: kEnum.address
@@ -1247,9 +1303,10 @@ extension on TranslationsJa {
 			'userRegistrationPage.mainPhoto.question' => 'メイン写真を選んでください',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'クリックして写真を選択',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
-			'likePage.segment.fromUser' => '相手から',
-			'likePage.segment.toUser' => '自分から',
-			'profileDetailPage.title' => 'プロフィール詳細',
+			'chatPage.sectionTitle.matching' => 'マッチング',
+			'chatPage.sectionTitle.messages' => 'メッセージ',
+			'chatPage.subSectionTitle.matching' => '最初のメッセージを送りましょう！',
+			'chatDetailPage.placeHolder' => 'メッセージを入力',
 			'profilePage.title' => 'プロフィール編集',
 			'profilePage.section.mainPhoto' => 'メイン写真',
 			'profilePage.section.subPhoto' => 'サブ写真',
@@ -1293,6 +1350,7 @@ extension on TranslationsJa {
 			'profilePage.placeholder.rainyDayHobbies.top2' => '雨の日ベスト2を入力',
 			'profilePage.placeholder.rainyDayHobbies.top3' => '雨の日ベスト3を入力',
 			'profilePage.placeholder.basicInformation' => '未設定',
+			'profileDetailPage.title' => 'プロフィール詳細',
 			'settingPage.title' => '設定',
 			'settingPage.section.accountSetting.title' => 'アカウント設定',
 			'settingPage.section.accountSetting.identityVerification' => '本人確認',
@@ -1355,6 +1413,10 @@ extension on TranslationsJa {
 			'button.delete' => '削除',
 			'button.apply' => '適用する',
 			'button.clear' => 'クリア',
+			'segmentedSwitch.like.fromUser' => '相手から',
+			'segmentedSwitch.like.toUser' => '自分から',
+			'segmentedSwitch.chat.message' => 'メッセージ',
+			'segmentedSwitch.chat.profile' => 'プロフィール',
 			'kEnum.address.prefecture.hokkaido' => '北海道',
 			'kEnum.address.prefecture.aomori' => '青森県',
 			'kEnum.address.prefecture.iwate' => '岩手県',
