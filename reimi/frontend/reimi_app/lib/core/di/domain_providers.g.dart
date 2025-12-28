@@ -66,7 +66,7 @@ final getCurrentUserUseCaseProvider =
 typedef GetCurrentUserUseCaseRef
     = AutoDisposeProviderRef<GetCurrentUserUseCase>;
 String _$getUserProfileUseCaseHash() =>
-    r'b06af33d9f418aeb674e7389161a7cd42444b067';
+    r'4cd021971ff338091f95f1d76bea522877386b22';
 
 /// See also [getUserProfileUseCase].
 @ProviderFor(getUserProfileUseCase)
@@ -125,5 +125,83 @@ final getLikeUsersToUserUseCaseProvider =
 // ignore: unused_element
 typedef GetLikeUsersToUserUseCaseRef
     = AutoDisposeProviderRef<GetLikeUsersToUserUseCase>;
+String _$getUnmessagedMatchUsersUseCaseHash() =>
+    r'f19b364e5540940c6a4f04ed894ab18b2229c5e6';
+
+/// See also [getUnmessagedMatchUsersUseCase].
+@ProviderFor(getUnmessagedMatchUsersUseCase)
+final getUnmessagedMatchUsersUseCaseProvider =
+    AutoDisposeProvider<GetUnmessagedMatchUsersUseCase>.internal(
+  getUnmessagedMatchUsersUseCase,
+  name: r'getUnmessagedMatchUsersUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getUnmessagedMatchUsersUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUnmessagedMatchUsersUseCaseRef
+    = AutoDisposeProviderRef<GetUnmessagedMatchUsersUseCase>;
+String _$getChatRoomSummariesUseCaseHash() =>
+    r'a5aab7589274507402d587b4f4453daed2518252';
+
+/// See also [getChatRoomSummariesUseCase].
+@ProviderFor(getChatRoomSummariesUseCase)
+final getChatRoomSummariesUseCaseProvider =
+    AutoDisposeProvider<GetChatRoomSummariesUsecase>.internal(
+  getChatRoomSummariesUseCase,
+  name: r'getChatRoomSummariesUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getChatRoomSummariesUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetChatRoomSummariesUseCaseRef
+    = AutoDisposeProviderRef<GetChatRoomSummariesUsecase>;
+String _$sendMessageUseCaseHash() =>
+    r'0ae03af33dd7753c631d4441a82fc2dea05b090c';
+
+/// See also [sendMessageUseCase].
+@ProviderFor(sendMessageUseCase)
+final sendMessageUseCaseProvider =
+    AutoDisposeProvider<SendMessageUseCase>.internal(
+  sendMessageUseCase,
+  name: r'sendMessageUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sendMessageUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SendMessageUseCaseRef = AutoDisposeProviderRef<SendMessageUseCase>;
+String _$watchMessagesUseCaseHash() =>
+    r'587538cb433c3aefe8f5a2b1b3395f24658dfe88';
+
+/// See also [watchMessagesUseCase].
+@ProviderFor(watchMessagesUseCase)
+final watchMessagesUseCaseProvider =
+    AutoDisposeProvider<WatchMessagesUseCase>.internal(
+  watchMessagesUseCase,
+  name: r'watchMessagesUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$watchMessagesUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WatchMessagesUseCaseRef = AutoDisposeProviderRef<WatchMessagesUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
