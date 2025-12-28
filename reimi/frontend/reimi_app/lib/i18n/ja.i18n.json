@@ -81,14 +81,17 @@
       }
     }
   },
-  "likePage": {
-    "segment": {
-      "fromUser": "相手から",
-      "toUser": "自分から"
+  "chatPage": {
+    "sectionTitle": {
+      "matching": "マッチング",
+      "messages": "メッセージ"
+    },
+    "subSectionTitle": {
+      "matching": "最初のメッセージを送りましょう！"
     }
   },
-  "profileDetailPage": {
-    "title": "プロフィール詳細"
+  "chatDetailPage": {
+    "placeHolder": "メッセージを入力"
   },
   "profilePage": {
     "title": "プロフィール編集",
@@ -156,6 +159,9 @@
       },
       "basicInformation": "未設定"
     }
+  },
+  "profileDetailPage": {
+    "title": "プロフィール詳細"
   },
   "settingPage": {
     "title": "設定",
@@ -272,6 +278,16 @@
     "delete": "削除",
     "apply": "適用する",
     "clear": "クリア"
+  },
+  "segmentedSwitch": {
+    "like": {
+      "fromUser": "相手から",
+      "toUser": "自分から"
+    },
+    "chat": {
+      "message": "メッセージ",
+      "profile": "プロフィール"
+    }
   },
   "enum": {
     "address": {

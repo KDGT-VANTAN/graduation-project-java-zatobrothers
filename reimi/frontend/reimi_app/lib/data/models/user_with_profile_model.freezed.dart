@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserWithProfileModel {
-  String get userId; // --- User fields ---
+  String get userId;
   String get firebaseUid;
   String get name;
   Gender get gender;
@@ -25,7 +25,7 @@ mixin _$UserWithProfileModel {
   @IsoDateTimeOrNullConverter()
   DateTime? get lastLoginAt;
   UserStatus get status;
-  String get profileId; // --- Profile fields ---
+  String get profileId;
   String get introduction;
   Height? get height;
   BodyShape? get bodyShape;
@@ -664,7 +664,6 @@ class _UserWithProfileModel implements UserWithProfileModel {
 
   @override
   final String userId;
-// --- User fields ---
   @override
   final String firebaseUid;
   @override
@@ -685,7 +684,6 @@ class _UserWithProfileModel implements UserWithProfileModel {
   final UserStatus status;
   @override
   final String profileId;
-// --- Profile fields ---
   @override
   final String introduction;
   @override

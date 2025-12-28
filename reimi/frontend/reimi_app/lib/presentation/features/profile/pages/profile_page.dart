@@ -119,7 +119,7 @@ class ProfilePage extends HookConsumerWidget {
             ] else ...[
               const Gap(height: 16),
               SliverSectionTitle(
-                text: t.profilePage.section.mainPhoto,
+                title: t.profilePage.section.mainPhoto,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -139,7 +139,7 @@ class ProfilePage extends HookConsumerWidget {
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.subPhoto,
+                title: t.profilePage.section.subPhoto,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -154,9 +154,13 @@ class ProfilePage extends HookConsumerWidget {
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
+                      final subPhotoUrl = (data.subPhotoUrls != null &&
+                              index < data.subPhotoUrls!.length)
+                          ? data.subPhotoUrls![index]
+                          : null;
                       return SubPhotoCard(
                         label: labels[index],
-                        subPhotoUrl: data.subPhotoUrls?[index],
+                        subPhotoUrl: subPhotoUrl,
                         onTap: () async {
                           final file = await pickImageFromGallery();
                           if (file != null) {
@@ -180,13 +184,13 @@ class ProfilePage extends HookConsumerWidget {
                         },
                       );
                     },
-                    childCount: 6,
+                    childCount: labels.length,
                   ),
                 ),
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.weatherPersonality,
+                title: t.profilePage.section.weatherPersonality,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -213,7 +217,7 @@ class ProfilePage extends HookConsumerWidget {
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.introduction,
+                title: t.profilePage.section.introduction,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -245,7 +249,7 @@ class ProfilePage extends HookConsumerWidget {
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.sunnyDayHobbies,
+                title: t.profilePage.section.sunnyDayHobbies,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -331,7 +335,7 @@ class ProfilePage extends HookConsumerWidget {
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.rainyDayHobbies,
+                title: t.profilePage.section.rainyDayHobbies,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),
@@ -417,7 +421,7 @@ class ProfilePage extends HookConsumerWidget {
               ),
               const Gap(height: 32),
               SliverSectionTitle(
-                text: t.profilePage.section.basicInformation.title,
+                title: t.profilePage.section.basicInformation.title,
                 paddingHorizontal: 24,
               ),
               const Gap(height: 12),

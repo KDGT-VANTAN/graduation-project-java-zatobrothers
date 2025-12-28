@@ -1,6 +1,5 @@
-import 'package:reimi_app/domain/entities/profile_entity.dart';
+import 'package:reimi_app/data/models/user_with_profile_model.dart';
 
 abstract class ProfileRepository {
-  Future<List<ProfileEntity>?> fetchProfiles(List<String> userIds);
-  Future<ProfileEntity?> fetchProfile(String userId);
+  Future<UserWithProfileModel?> fetchUserProfile(String userId);
 }

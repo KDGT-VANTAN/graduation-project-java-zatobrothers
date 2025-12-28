@@ -23,7 +23,10 @@ class LikePage extends ConsumerWidget {
             child: Column(
               children: [
                 const SizedBox(height: 16),
-                const LikeSegmentSwitch(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  child: LikeSegmentSwitch(),
+                ),
                 const SizedBox(height: 16),
                 usersAsync.when(
                   data: (users) {

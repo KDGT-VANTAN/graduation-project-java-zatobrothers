@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 final base = ThemeData.light(useMaterial3: true);
 
 ThemeData reimiTheme = base.copyWith(
-
   // ===== color =====
   colorScheme: ColorScheme.fromSeed(
     seedColor: const Color(0xFF5FA8A3),
@@ -26,25 +25,25 @@ ThemeData reimiTheme = base.copyWith(
       if (states.contains(WidgetState.selected)) {
         return const IconThemeData(
           color: Color(0xFF5FA8A3),
-          size: 26,
+          size: 24,
         );
       }
       return const IconThemeData(
         color: Color(0xFF5F7673),
-        size: 24,
+        size: 22,
       );
     }),
     labelTextStyle: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
         return GoogleFonts.notoSansJp(
           color: const Color(0xFF5FA8A3),
-          fontSize: 14,
+          fontSize: 12,
           fontWeight: FontWeight.w600,
         );
       }
       return GoogleFonts.notoSansJp(
         color: const Color(0xFF5F7673),
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w500,
       );
     }),

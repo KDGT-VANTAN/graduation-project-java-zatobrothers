@@ -19,7 +19,7 @@ class GetHomeUsersUseCase {
     final homeUsers = <HomeUserModel>[];
 
     for (final user in users) {
-      final profile = await profileRepository.fetchProfile(user.id);
+      final profile = await profileRepository.fetchUserProfile(user.id);
       if (profile == null) {
         return null;
       }

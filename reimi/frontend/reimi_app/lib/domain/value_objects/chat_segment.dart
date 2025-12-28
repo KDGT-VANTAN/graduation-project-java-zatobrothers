@@ -1,0 +1,4 @@
+enum ChatSegment {
+  message,
+  profile,
+}

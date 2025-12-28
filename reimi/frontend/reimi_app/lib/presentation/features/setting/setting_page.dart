@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
-import 'package:reimi_app/presentation/features/setting/widgets/section_title.dart';
+import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/features/setting/widgets/settings_tile.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
@@ -36,27 +36,29 @@ class SettingPage extends ConsumerWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Expanded(
                   child: ListView(
                     children: [
+                      const SizedBox(height: 16),
                       SectionTitle(
                           title: t.settingPage.section.accountSetting.title),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: t.settingPage.section.accountSetting
                             .identityVerification,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.accountSetting
                             .pushNotification,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.accountSetting.logout,
                         shouldNavigate: false,
@@ -79,60 +81,63 @@ class SettingPage extends ConsumerWidget {
                           );
                         },
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.accountSetting.withdrawal,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       SectionTitle(title: t.settingPage.section.history.title),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: t.settingPage.section.history.matching,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.history.hidden,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       SectionTitle(title: t.settingPage.section.help.title),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: t.settingPage.section.help.faq,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.help.inquiry,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       SectionTitle(
                           title: t.settingPage.section.aboutReimi.title),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: t.settingPage.section.aboutReimi.tos,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.aboutReimi.pp,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.aboutReimi
                             .applicationInformation,
                         shouldNavigate: true,
                         onTap: () {},
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 32),
                     ],
                   ),
                 ),

@@ -16,10 +16,10 @@ class Gap extends StatelessWidget {
 class SliverSectionTitle extends StatelessWidget {
   const SliverSectionTitle({
     super.key,
-    required this.text,
+    required this.title,
     required this.paddingHorizontal,
   });
-  final String text;
+  final String title;
   final double paddingHorizontal;
 
   @override
@@ -28,7 +28,7 @@ class SliverSectionTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: paddingHorizontal),
       sliver: SliverToBoxAdapter(
         child: Text(
-          text,
+          title,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.w600,
               ),

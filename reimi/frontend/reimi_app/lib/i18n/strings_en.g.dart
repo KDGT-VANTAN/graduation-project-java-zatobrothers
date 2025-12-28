@@ -45,14 +45,16 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
 	late final TranslationsErrorPageEn errorPage = TranslationsErrorPageEn._(_root);
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
-	late final TranslationsLikePageEn likePage = TranslationsLikePageEn._(_root);
-	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
+	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
+	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
+	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsSettingPageEn settingPage = TranslationsSettingPageEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
 	late final TranslationsDialogEn dialog = TranslationsDialogEn._(_root);
 	late final TranslationsBottomSheetEn bottomSheet = TranslationsBottomSheetEn._(_root);
 	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
+	late final TranslationsSegmentedSwitchEn segmentedSwitch = TranslationsSegmentedSwitchEn._(_root);
 	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
 
@@ -147,26 +149,27 @@ class TranslationsUserRegistrationPageEn {
 	late final TranslationsUserRegistrationPageMainPhotoEn mainPhoto = TranslationsUserRegistrationPageMainPhotoEn._(_root);
 }
 
-// Path: likePage
-class TranslationsLikePageEn {
-	TranslationsLikePageEn._(this._root);
+// Path: chatPage
+class TranslationsChatPageEn {
+	TranslationsChatPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsLikePageSegmentEn segment = TranslationsLikePageSegmentEn._(_root);
+	late final TranslationsChatPageSectionTitleEn sectionTitle = TranslationsChatPageSectionTitleEn._(_root);
+	late final TranslationsChatPageSubSectionTitleEn subSectionTitle = TranslationsChatPageSubSectionTitleEn._(_root);
 }
 
-// Path: profileDetailPage
-class TranslationsProfileDetailPageEn {
-	TranslationsProfileDetailPageEn._(this._root);
+// Path: chatDetailPage
+class TranslationsChatDetailPageEn {
+	TranslationsChatDetailPageEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 
-	/// en: 'Profile Details'
-	String get title => 'Profile Details';
+	/// en: 'Enter your message'
+	String get placeHolder => 'Enter your message';
 }
 
 // Path: profilePage
@@ -183,6 +186,18 @@ class TranslationsProfilePageEn {
 	late final TranslationsProfilePageSectionEn section = TranslationsProfilePageSectionEn._(_root);
 	late final TranslationsProfilePageEditEn edit = TranslationsProfilePageEditEn._(_root);
 	late final TranslationsProfilePagePlaceholderEn placeholder = TranslationsProfilePagePlaceholderEn._(_root);
+}
+
+// Path: profileDetailPage
+class TranslationsProfileDetailPageEn {
+	TranslationsProfileDetailPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Profile Details'
+	String get title => 'Profile Details';
 }
 
 // Path: settingPage
@@ -282,6 +297,17 @@ class TranslationsButtonEn {
 
 	/// en: 'Clear'
 	String get clear => 'Clear';
+}
+
+// Path: segmentedSwitch
+class TranslationsSegmentedSwitchEn {
+	TranslationsSegmentedSwitchEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsSegmentedSwitchLikeEn like = TranslationsSegmentedSwitchLikeEn._(_root);
+	late final TranslationsSegmentedSwitchChatEn chat = TranslationsSegmentedSwitchChatEn._(_root);
 }
 
 // Path: kEnum
@@ -472,19 +498,31 @@ class TranslationsUserRegistrationPageMainPhotoEn {
 	late final TranslationsUserRegistrationPageMainPhotoItemsEn items = TranslationsUserRegistrationPageMainPhotoItemsEn._(_root);
 }
 
-// Path: likePage.segment
-class TranslationsLikePageSegmentEn {
-	TranslationsLikePageSegmentEn._(this._root);
+// Path: chatPage.sectionTitle
+class TranslationsChatPageSectionTitleEn {
+	TranslationsChatPageSectionTitleEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 
-	/// en: 'FromUser'
-	String get fromUser => 'FromUser';
+	/// en: 'Matching'
+	String get matching => 'Matching';
 
-	/// en: 'ToUser'
-	String get toUser => 'ToUser';
+	/// en: 'Messages'
+	String get messages => 'Messages';
+}
+
+// Path: chatPage.subSectionTitle
+class TranslationsChatPageSubSectionTitleEn {
+	TranslationsChatPageSubSectionTitleEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Let's send your first message!'
+	String get matching => 'Let\'s send your first message!';
 }
 
 // Path: profilePage.section
@@ -796,6 +834,36 @@ class TranslationsBottomSheetRefineSearchUserEn {
 	String get title => 'Refine Search';
 
 	late final TranslationsBottomSheetRefineSearchUserSectionEn section = TranslationsBottomSheetRefineSearchUserSectionEn._(_root);
+}
+
+// Path: segmentedSwitch.like
+class TranslationsSegmentedSwitchLikeEn {
+	TranslationsSegmentedSwitchLikeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'FromUser'
+	String get fromUser => 'FromUser';
+
+	/// en: 'ToUser'
+	String get toUser => 'ToUser';
+}
+
+// Path: segmentedSwitch.chat
+class TranslationsSegmentedSwitchChatEn {
+	TranslationsSegmentedSwitchChatEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Message'
+	String get message => 'Message';
+
+	/// en: 'Profile'
+	String get profile => 'Profile';
 }
 
 // Path: kEnum.address
@@ -2023,9 +2091,10 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
-			'likePage.segment.fromUser' => 'FromUser',
-			'likePage.segment.toUser' => 'ToUser',
-			'profileDetailPage.title' => 'Profile Details',
+			'chatPage.sectionTitle.matching' => 'Matching',
+			'chatPage.sectionTitle.messages' => 'Messages',
+			'chatPage.subSectionTitle.matching' => 'Let\'s send your first message!',
+			'chatDetailPage.placeHolder' => 'Enter your message',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.section.mainPhoto' => 'Main Photo',
 			'profilePage.section.subPhoto' => 'Sub Photos',
@@ -2069,6 +2138,7 @@ extension on Translations {
 			'profilePage.placeholder.rainyDayHobbies.top2' => 'Enter rainy day top 2',
 			'profilePage.placeholder.rainyDayHobbies.top3' => 'Enter rainy day top 3',
 			'profilePage.placeholder.basicInformation' => 'Not set',
+			'profileDetailPage.title' => 'Profile Details',
 			'settingPage.title' => 'Settings',
 			'settingPage.section.accountSetting.title' => 'Account Settings',
 			'settingPage.section.accountSetting.identityVerification' => 'Identity Verification',
@@ -2131,6 +2201,10 @@ extension on Translations {
 			'button.delete' => 'Delete',
 			'button.apply' => 'Apply',
 			'button.clear' => 'Clear',
+			'segmentedSwitch.like.fromUser' => 'FromUser',
+			'segmentedSwitch.like.toUser' => 'ToUser',
+			'segmentedSwitch.chat.message' => 'Message',
+			'segmentedSwitch.chat.profile' => 'Profile',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
 			'kEnum.address.prefecture.aomori' => 'Aomori',
 			'kEnum.address.prefecture.iwate' => 'Iwate',
