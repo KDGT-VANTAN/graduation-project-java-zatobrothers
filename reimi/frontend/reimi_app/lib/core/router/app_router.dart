@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
 import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/features/auth/sign_up_page.dart';
+import 'package:reimi_app/presentation/features/chat/chat_detail_page.dart';
 import 'package:reimi_app/presentation/features/chat/chat_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/like/like_page.dart';
@@ -140,6 +141,20 @@ GoRouter goRouter(Ref ref) {
           final extra = state.extra! as Map<String, Object>;
           final userId = extra['userId'] as String;
           return ProfileDetailPage(
+            userId: userId,
+          );
+        },
+      ),
+      // ----- account -----
+      GoRoute(
+        path: ChatDetailPage.routeLocation,
+        name: ChatDetailPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object>;
+          final chatRoomId = extra['chatRoomId'] as String;
+          final userId = extra['userId'] as String;
+          return ChatDetailPage(
+            chatRoomId: chatRoomId,
             userId: userId,
           );
         },
