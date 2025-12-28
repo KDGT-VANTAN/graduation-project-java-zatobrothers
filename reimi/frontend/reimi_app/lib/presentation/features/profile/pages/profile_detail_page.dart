@@ -138,7 +138,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                   ),
                 ] else ...[
                   SliverSectionTitle(
-                    text: t.profilePage.section.subPhoto,
+                    title: t.profilePage.section.subPhoto,
                     paddingHorizontal: 24,
                   ),
                   const Gap(height: 12),
@@ -158,7 +158,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                             );
                           }
                         },
-                        childCount: 6,
+                        childCount: data.subPhotoUrls?.length ?? 0,
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -171,7 +171,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                   const Gap(height: 32),
                 ],
                 SliverSectionTitle(
-                  text: t.profilePage.section.weatherPersonality,
+                  title: t.profilePage.section.weatherPersonality,
                   paddingHorizontal: 24,
                 ),
                 const Gap(height: 12),
@@ -198,7 +198,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                 ),
                 const Gap(height: 32),
                 SliverSectionTitle(
-                  text: t.profilePage.section.introduction,
+                  title: t.profilePage.section.introduction,
                   paddingHorizontal: 24,
                 ),
                 const Gap(height: 12),
@@ -224,7 +224,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                   ),
                 ] else ...[
                   SliverSectionTitle(
-                    text: t.profilePage.section.sunnyDayHobbies,
+                    title: t.profilePage.section.sunnyDayHobbies,
                     paddingHorizontal: 24,
                   ),
                   if (data.sunnyDayHobbies![0].isNotEmpty) ...[
@@ -281,7 +281,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                   ),
                 ] else ...[
                   SliverSectionTitle(
-                    text: t.profilePage.section.rainyDayHobbies,
+                    title: t.profilePage.section.rainyDayHobbies,
                     paddingHorizontal: 24,
                   ),
                   if (data.rainyDayHobbies![0].isNotEmpty) ...[
@@ -332,7 +332,7 @@ class ProfileDetailPage extends HookConsumerWidget {
                   const Gap(height: 32),
                 ],
                 SliverSectionTitle(
-                  text: t.profilePage.section.basicInformation.title,
+                  title: t.profilePage.section.basicInformation.title,
                   paddingHorizontal: 24,
                 ),
                 const Gap(height: 12),
