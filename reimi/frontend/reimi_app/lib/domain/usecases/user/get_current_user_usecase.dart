@@ -1,8 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../domain/entities/user_entity.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../../domain/repositories/user_repository.dart';
+import '../../entities/user_entity.dart';
+import '../../repositories/auth_repository.dart';
+import '../../repositories/user_repository.dart';
 
 class GetCurrentUserUseCase {
   const GetCurrentUserUseCase({
