@@ -1,18 +1,26 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/data/datasources/auth_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/chat_room_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/like_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/message_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/mocks/chat_room_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/like_mock_datasource.dart';
+import 'package:reimi_app/data/datasources/mocks/message_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/profile_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/user_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/profile_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/user_remote_datasource.dart';
 import 'package:reimi_app/data/repositories/auth_repository_impl.dart';
+import 'package:reimi_app/data/repositories/chat_room_repository_impl.dart';
 import 'package:reimi_app/data/repositories/like_repository_impl.dart';
+import 'package:reimi_app/data/repositories/message_repository_Impl.dart';
 import 'package:reimi_app/data/repositories/profile_repository_impl.dart';
 import 'package:reimi_app/data/repositories/user_repository_impl.dart';
 import 'package:reimi_app/domain/repositories/auth_repository.dart';
+import 'package:reimi_app/domain/repositories/chat_room_repository.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
+import 'package:reimi_app/domain/repositories/message_repository.dart';
 import 'package:reimi_app/domain/repositories/profile_repository.dart';
 import 'package:reimi_app/domain/repositories/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -66,4 +74,28 @@ LikeRemoteDataSource likeRemoteDataSource(Ref ref) {
 @riverpod
 LikeRepository likeRepository(Ref ref) {
   return LikeRepositoryImpl(ref.watch(likeRemoteDataSourceProvider));
+}
+
+// chatRoom関連
+@riverpod
+ChatRoomRemoteDataSource chatRoomRemoteDataSource(Ref ref) {
+  if (useMock) return const ChatRoomMockDataSource();
+  return const ChatRoomRemoteDataSourceImpl();
+}
+
+@riverpod
+ChatRoomRepository chatRoomRepository(Ref ref) {
+  return ChatRoomRepositoryImpl(ref.watch(chatRoomRemoteDataSourceProvider));
+}
+
+// message関連
+@riverpod
+MessageRemoteDataSource messageRemoteDataSource(Ref ref) {
+  if (useMock) return const MessageMockDataSource();
+  return const MessageRemoteDataSourceImpl();
+}
+
+@riverpod
+MessageRepository messageRepository(Ref ref) {
+  return MessageRepositoryImpl(ref.watch(messageRemoteDataSourceProvider));
 }

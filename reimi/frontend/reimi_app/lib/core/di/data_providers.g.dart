@@ -152,5 +152,82 @@ final likeRepositoryProvider = AutoDisposeProvider<LikeRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LikeRepositoryRef = AutoDisposeProviderRef<LikeRepository>;
+String _$chatRoomRemoteDataSourceHash() =>
+    r'61cb361f319670579420dd1304daf4427d41d686';
+
+/// See also [chatRoomRemoteDataSource].
+@ProviderFor(chatRoomRemoteDataSource)
+final chatRoomRemoteDataSourceProvider =
+    AutoDisposeProvider<ChatRoomRemoteDataSource>.internal(
+  chatRoomRemoteDataSource,
+  name: r'chatRoomRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$chatRoomRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ChatRoomRemoteDataSourceRef
+    = AutoDisposeProviderRef<ChatRoomRemoteDataSource>;
+String _$chatRoomRepositoryHash() =>
+    r'1f43a73884d6826db9f9fea1c32a465105baf621';
+
+/// See also [chatRoomRepository].
+@ProviderFor(chatRoomRepository)
+final chatRoomRepositoryProvider =
+    AutoDisposeProvider<ChatRoomRepository>.internal(
+  chatRoomRepository,
+  name: r'chatRoomRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$chatRoomRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ChatRoomRepositoryRef = AutoDisposeProviderRef<ChatRoomRepository>;
+String _$messageRemoteDataSourceHash() =>
+    r'76d2e651c0194712a4d0a96aa91ab528c952270b';
+
+/// See also [messageRemoteDataSource].
+@ProviderFor(messageRemoteDataSource)
+final messageRemoteDataSourceProvider =
+    AutoDisposeProvider<MessageRemoteDataSource>.internal(
+  messageRemoteDataSource,
+  name: r'messageRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$messageRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef MessageRemoteDataSourceRef
+    = AutoDisposeProviderRef<MessageRemoteDataSource>;
+String _$messageRepositoryHash() => r'3af2249c523a51219bfbfd84f0ba9eb2e0a36dbe';
+
+/// See also [messageRepository].
+@ProviderFor(messageRepository)
+final messageRepositoryProvider =
+    AutoDisposeProvider<MessageRepository>.internal(
+  messageRepository,
+  name: r'messageRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$messageRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef MessageRepositoryRef = AutoDisposeProviderRef<MessageRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
