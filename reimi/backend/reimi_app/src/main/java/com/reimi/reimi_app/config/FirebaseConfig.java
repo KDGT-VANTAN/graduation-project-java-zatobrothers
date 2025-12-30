@@ -24,6 +24,10 @@ public class FirebaseConfig {
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
 
+        if (!FirebaseApp.getApps().isEmpty()) {
+            return FirebaseApp.getInstance();
+        }
+
         InputStream credentials = privateKey.getInputStream();
 
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
