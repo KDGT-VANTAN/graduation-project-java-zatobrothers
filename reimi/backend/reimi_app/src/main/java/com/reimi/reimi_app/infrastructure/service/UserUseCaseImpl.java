@@ -35,7 +35,9 @@ public class UserUseCaseImpl implements UserUseCase {
     @Transactional
     public void registerUser(RegisterUserCommand command) {
 
-        if (userRepository.existsByFirebaseUid(command.firebaseUid())) {
+        String firebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        if (userRepository.existsByFirebaseUid(firebaseUid)) {
             throw new AlreadyRegisteredException();
         }
 
@@ -44,7 +46,7 @@ public class UserUseCaseImpl implements UserUseCase {
         }
 
         User user = User.create(
-                command.firebaseUid(),
+                firebaseUid,
                 command.name(),
                 command.gender(),
                 command.birthDate(),
