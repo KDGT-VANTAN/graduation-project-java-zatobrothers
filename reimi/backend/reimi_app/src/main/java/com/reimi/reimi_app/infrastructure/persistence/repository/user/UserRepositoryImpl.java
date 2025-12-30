@@ -24,6 +24,12 @@ public class UserRepositoryImpl implements UserRepository {
             .map(UserMapper::toDomain)
             .toList();
     }
+
+    @Override
+    public boolean existsByFirebaseUid(String firebaseUid) {
+        return jpaUserRepository.existsByFirebaseUid(firebaseUid);
+    }
+
     @Override
     public boolean existsByEmail(String email) {
         return jpaUserRepository.existsByEmail(email);
