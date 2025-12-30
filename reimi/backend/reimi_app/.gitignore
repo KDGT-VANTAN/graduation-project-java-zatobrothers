@@ -7,6 +7,8 @@ src/main/resources/flyway.properties
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+src/main/resources/private-key.json
+
 ### STS ###
 .apt_generated
 .classpath
