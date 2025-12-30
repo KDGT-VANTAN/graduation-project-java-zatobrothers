@@ -8,6 +8,8 @@ public interface UserRepository {
 
     List<User> findAll();
 
+    boolean existsByFirebaseUid(String firebaseUid);
+
     boolean existsByEmail(String email);
 
     void save(User user);
