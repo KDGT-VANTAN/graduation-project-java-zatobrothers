@@ -7,7 +7,7 @@ import com.reimi.reimi_app.domain.model.user.User;
 
 public interface UserUseCase {
 
-    List<User> getUsers();
+    List<User> getUsersExcludingMe(String firebaseUid);
 
     void registerUser(RegisterUserCommand command);
 }

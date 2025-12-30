@@ -28,8 +28,9 @@ public class UserUseCaseImpl implements UserUseCase {
     }
     @Override
     @Transactional(readOnly = true)
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public List<User> getUsersExcludingMe(String firebaseUid) {
+
+        return userRepository.findAllExcludingUserFirebaseUid(firebaseUid);
     }
     @Override
     @Transactional
