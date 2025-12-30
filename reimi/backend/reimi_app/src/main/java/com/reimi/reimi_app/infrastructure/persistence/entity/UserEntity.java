@@ -20,20 +20,26 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        uniqueConstraints = {
+        @UniqueConstraint(name = "uk_users_firebase_uid", columnNames = "firebase_uid"),
+        @UniqueConstraint(name = "uk_users_email", columnNames = "email")
+    }
+)
 public class UserEntity {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "firebase_uid", nullable = false)
+    @Column(name = "firebase_uid", nullable = false, updatable = false)
     private String firebaseUid;
 
     @Column(name = "name", nullable = false, length = 64)

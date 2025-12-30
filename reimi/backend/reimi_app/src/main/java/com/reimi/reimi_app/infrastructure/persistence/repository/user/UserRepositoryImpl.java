@@ -18,12 +18,18 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findAll() {
-        return jpaUserRepository.findAll()
+    public List<User> findAllExcludingUserFirebaseUid(String firebaseUid) {
+        return jpaUserRepository.findByFirebaseUidNot(firebaseUid)
             .stream()
             .map(UserMapper::toDomain)
             .toList();
     }
+
+    @Override
+    public boolean existsByFirebaseUid(String firebaseUid) {
+        return jpaUserRepository.existsByFirebaseUid(firebaseUid);
+    }
+
     @Override
     public boolean existsByEmail(String email) {
         return jpaUserRepository.existsByEmail(email);

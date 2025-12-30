@@ -10,8 +10,6 @@ public record GetUserListResponse (
 
         @Schema(description = "ユーザーID", type = "string", example = "5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93")
         UUID id,
-        @Schema(description = "Firebase AuthenticationのUID", type = "string", example = "f7KQ9sLm2A8P0xVZrEwN3HjU1BcD")
-        String firebaseUid,
 
         @Schema(description = "名前", type = "string", example = "山田 太郎")
         String name,
