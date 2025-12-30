@@ -44,7 +44,6 @@ public class UserController {
                 .stream()
                 .map(user -> new GetUserListResponse(
                     user.getId().value(),
-                    user.getFirebaseUid(),
                     user.getName(),
                     user.getBirthDate(),
                     user.getAddress().getLabel(),
