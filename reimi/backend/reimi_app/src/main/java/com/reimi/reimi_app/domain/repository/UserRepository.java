@@ -6,7 +6,7 @@ import com.reimi.reimi_app.domain.model.user.User;
 
 public interface UserRepository {
 
-    List<User> findAll();
+    List<User> findAllExcludingUserFirebaseUid(String firebaseUid);
 
     boolean existsByFirebaseUid(String firebaseUid);
 
