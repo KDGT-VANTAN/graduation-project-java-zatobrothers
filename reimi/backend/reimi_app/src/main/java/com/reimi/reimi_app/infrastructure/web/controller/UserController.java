@@ -16,6 +16,7 @@ import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -25,9 +26,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RequestMapping("/users")
 public class UserController {
 
+    private final AuthenticatedUserProvider authenticatedUserProvider;
     private final UserUseCase userUseCase;
 
-    public UserController(UserUseCase userUseCase) {
+    public UserController(
+        AuthenticatedUserProvider authenticatedUserProvider,
+        UserUseCase userUseCase
+    ) {
+        this.authenticatedUserProvider = authenticatedUserProvider;
         this.userUseCase = userUseCase;
     }
 
@@ -40,7 +46,10 @@ public class UserController {
     })
     @GetMapping
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
-        List<GetUserListResponse> response = userUseCase.getUsers()
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        List<GetUserListResponse> response = userUseCase.getUsersExcludingMe(myFirebaseUid)
                 .stream()
                 .map(user -> new GetUserListResponse(
                     user.getId().value(),
