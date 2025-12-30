@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 
 public record RegisterUserCommand (
-        String firebaseUid,
         String name,
         Gender gender,
         LocalDate birthDate,

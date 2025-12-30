@@ -7,9 +7,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "ユーザー新規登録用リクエスト")
 public record RegisterUserRequest (
 
-        @Schema(description = "Firebase AuthenticationのUID", type = "string", example = "f7KQ9sLm2A8P0xVZrEwN3HjU1BcD")
-        String firebaseUid,
-
         @Schema(description = "名前", type = "string", example = "山田 太郎")
         String name,
 

@@ -68,7 +68,6 @@ public class UserController {
     public ResponseEntity<Void> registerUser(@RequestBody RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
-                request.firebaseUid(),
                 request.name(),
                 Gender.valueOf(request.gender()),
                 request.birthDate(),
