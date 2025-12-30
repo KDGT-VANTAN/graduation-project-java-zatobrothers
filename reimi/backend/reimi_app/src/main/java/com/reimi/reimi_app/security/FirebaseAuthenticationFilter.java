@@ -1,11 +1,16 @@
 package com.reimi.reimi_app.security;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -33,7 +38,15 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
             String token = header.substring(7);
 
             try {
-                verifier.verify(token);
+                FirebaseToken decoded = verifier.verify(token);
+                Authentication auth =
+                    new UsernamePasswordAuthenticationToken(
+                        decoded.getUid(),
+                        null,
+                        List.of()
+                    );
+
+                SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (FirebaseAuthException e) {
                 response.setStatus(HttpStatus.UNAUTHORIZED.value());
