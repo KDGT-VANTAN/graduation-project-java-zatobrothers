@@ -1,9 +1,14 @@
 package com.reimi.reimi_app.application.exception;
 
-public class EmailAlreadyExistsException extends RuntimeException {
+import org.springframework.http.HttpStatus;
 
-    public EmailAlreadyExistsException() {
-        super("すでに使用されているメールアドレスです");
+public class EmailAlreadyExistsException extends ClientErrorException {
+    public EmailAlreadyExistsException(String email) {
+        super(
+            "EMAIL_ALREADY_EXISTS",
+            "既に使用されているメールアドレスです",
+            HttpStatus.CONFLICT
+        );
     }
 }
 
