@@ -20,4 +20,15 @@ public class GlobalExceptionHandler {
                 null
             ));
     }
+    // 想定外エラー
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiErrorResponse> handleException(Exception ex) {
+        return ResponseEntity
+            .internalServerError()
+            .body(new ApiErrorResponse(
+                "INTERNAL_SERVER_ERROR",
+                "予期しないエラーが発生しました",
+                null
+            ));
+    }
 }
