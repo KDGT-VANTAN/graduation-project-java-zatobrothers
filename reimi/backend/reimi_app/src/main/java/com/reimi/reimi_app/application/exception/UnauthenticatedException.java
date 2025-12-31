@@ -1,8 +1,13 @@
 package com.reimi.reimi_app.application.exception;
 
-public class UnauthenticatedException extends RuntimeException {
+import org.springframework.http.HttpStatus;
 
+public class UnauthenticatedException extends ClientErrorException {
     public UnauthenticatedException() {
-        super("ユーザーの認証情報がありません");
+        super(
+            "UNAUTHENTICATED",
+            "認証されていません",
+            HttpStatus.UNAUTHORIZED
+        );
     }
 }
