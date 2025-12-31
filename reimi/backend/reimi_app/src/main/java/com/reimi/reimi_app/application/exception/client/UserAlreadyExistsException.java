@@ -1,6 +1,8 @@
-package com.reimi.reimi_app.application.exception;
+package com.reimi.reimi_app.application.exception.client;
 
 import org.springframework.http.HttpStatus;
+
+import com.reimi.reimi_app.application.exception.ClientErrorException;
 
 public class UserAlreadyExistsException  extends ClientErrorException {
     public UserAlreadyExistsException() {

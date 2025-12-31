@@ -2,7 +2,7 @@ package com.reimi.reimi_app.security;
 
 import org.springframework.stereotype.Component;
 
-import com.reimi.reimi_app.application.exception.UnauthenticatedException;
+import com.reimi.reimi_app.application.exception.client.UnauthenticatedException;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

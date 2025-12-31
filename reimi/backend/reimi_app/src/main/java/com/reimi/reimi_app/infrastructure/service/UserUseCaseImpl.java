@@ -1,8 +1,8 @@
 package com.reimi.reimi_app.infrastructure.service;
 
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
-import com.reimi.reimi_app.application.exception.UserAlreadyExistsException;
-import com.reimi.reimi_app.application.exception.EmailAlreadyExistsException;
+import com.reimi.reimi_app.application.exception.client.UserAlreadyExistsException;
+import com.reimi.reimi_app.application.exception.client.EmailAlreadyExistsException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.repository.UserRepository;
