@@ -19,8 +19,13 @@ import 'package:reimi_app/presentation/features/user_registration/pages/user_gen
 import 'package:reimi_app/presentation/features/user_registration/pages/user_introduction_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_main_photo_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_name_page.dart';
-import 'package:reimi_app/presentation/features/weather_report/weather_report_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/feeling_select_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/forecast_select_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_detail_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_post_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_select_page.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/bottom_navigation.dart';
@@ -145,7 +150,7 @@ GoRouter goRouter(Ref ref) {
           );
         },
       ),
-      // ----- account -----
+      // ----- chat -----
       GoRoute(
         path: ChatDetailPage.routeLocation,
         name: ChatDetailPage.routeName,
@@ -157,6 +162,44 @@ GoRouter goRouter(Ref ref) {
             chatRoomId: chatRoomId,
             userId: userId,
           );
+        },
+      ),
+      // ----- weather_report -----
+      GoRoute(
+        path: WeatherReportPostPage.routeLocation,
+        name: WeatherReportPostPage.routeName,
+        builder: (context, state) {
+          return const WeatherReportPostPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherSelectPage.routeLocation,
+        name: WeatherSelectPage.routeName,
+        builder: (context, state) {
+          return const WeatherSelectPage();
+        },
+      ),
+      GoRoute(
+        path: FeelingSelectPage.routeLocation,
+        name: FeelingSelectPage.routeName,
+        builder: (context, state) {
+          return const FeelingSelectPage();
+        },
+      ),
+      GoRoute(
+        path: ForecastSelectPage.routeLocation,
+        name: ForecastSelectPage.routeName,
+        builder: (context, state) {
+          return const ForecastSelectPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherReportDetailPage.routeLocation,
+        name: WeatherReportDetailPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object>;
+          final reportId = extra['reportId'] as String;
+          return WeatherReportDetailPage(reportId: reportId);
         },
       ),
       // ----- account -----
