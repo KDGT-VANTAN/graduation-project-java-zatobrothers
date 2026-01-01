@@ -26,6 +26,9 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/sample
   $AssetsImagesSampleGen get sample => const $AssetsImagesSampleGen();
 
+  /// Directory path: assets/images/status
+  $AssetsImagesStatusGen get status => const $AssetsImagesStatusGen();
+
   /// Directory path: assets/images/weather_personality
   $AssetsImagesWeatherPersonalityGen get weatherPersonality =>
       const $AssetsImagesWeatherPersonalityGen();
@@ -135,6 +138,17 @@ class $AssetsImagesSampleGen {
         user005SampleImage,
         user006SampleImage
       ];
+}
+
+class $AssetsImagesStatusGen {
+  const $AssetsImagesStatusGen();
+
+  /// File path: assets/images/status/weather_report_status.png
+  AssetGenImage get weatherReportStatus =>
+      const AssetGenImage('assets/images/status/weather_report_status.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [weatherReportStatus];
 }
 
 class $AssetsImagesWeatherPersonalityGen {
