@@ -47,12 +47,18 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
+	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
+	late final TranslationsWeatherReportPostPageEn weatherReportPostPage = TranslationsWeatherReportPostPageEn._(_root);
+	late final TranslationsWeatherSelectPageEn weatherSelectPage = TranslationsWeatherSelectPageEn._(_root);
+	late final TranslationsFeelingSelectPageEn feelingSelectPage = TranslationsFeelingSelectPageEn._(_root);
+	late final TranslationsForecastSelectPageEn forecastSelectPage = TranslationsForecastSelectPageEn._(_root);
+	late final TranslationsWeatherReportDetailPageEn weatherReportDetailPage = TranslationsWeatherReportDetailPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsSettingPageEn settingPage = TranslationsSettingPageEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
 	late final TranslationsDialogEn dialog = TranslationsDialogEn._(_root);
-	late final TranslationsBottomSheetEn bottomSheet = TranslationsBottomSheetEn._(_root);
+	late final TranslationsModalSheetEn modalSheet = TranslationsModalSheetEn._(_root);
 	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
 	late final TranslationsSegmentedSwitchEn segmentedSwitch = TranslationsSegmentedSwitchEn._(_root);
 	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
@@ -168,8 +174,94 @@ class TranslationsChatDetailPageEn {
 
 	// Translations
 
-	/// en: 'Enter your message'
-	String get placeHolder => 'Enter your message';
+	/// en: 'Enter message'
+	String get placeHolder => 'Enter message';
+}
+
+// Path: weatherReportPage
+class TranslationsWeatherReportPageEn {
+	TranslationsWeatherReportPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Weather Report'
+	String get sectionTitle => 'Weather Report';
+}
+
+// Path: weatherReportPostPage
+class TranslationsWeatherReportPostPageEn {
+	TranslationsWeatherReportPostPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Send Weather Report'
+	String get title => 'Send Weather Report';
+
+	late final TranslationsWeatherReportPostPagePlaceHolderEn placeHolder = TranslationsWeatherReportPostPagePlaceHolderEn._(_root);
+	late final TranslationsWeatherReportPostPageLabelEn label = TranslationsWeatherReportPostPageLabelEn._(_root);
+}
+
+// Path: weatherSelectPage
+class TranslationsWeatherSelectPageEn {
+	TranslationsWeatherSelectPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Select Weather'
+	String get title => 'Select Weather';
+
+	/// en: 'What's the weather now?'
+	String get sectionTitle => 'What\'s the weather now?';
+}
+
+// Path: feelingSelectPage
+class TranslationsFeelingSelectPageEn {
+	TranslationsFeelingSelectPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Select Feeling'
+	String get title => 'Select Feeling';
+
+	/// en: 'How does it feel now?'
+	String get sectionTitle => 'How does it feel now?';
+}
+
+// Path: forecastSelectPage
+class TranslationsForecastSelectPageEn {
+	TranslationsForecastSelectPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Select Forecast'
+	String get title => 'Select Forecast';
+
+	/// en: 'What about in a few hours?'
+	String get sectionTitle => 'What about in a few hours?';
+}
+
+// Path: weatherReportDetailPage
+class TranslationsWeatherReportDetailPageEn {
+	TranslationsWeatherReportDetailPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Post Details'
+	String get title => 'Post Details';
+
+	late final TranslationsWeatherReportDetailPageLabelEn label = TranslationsWeatherReportDetailPageLabelEn._(_root);
 }
 
 // Path: profilePage
@@ -244,17 +336,20 @@ class TranslationsDialogEn {
 	late final TranslationsDialogLogoutEn logout = TranslationsDialogLogoutEn._(_root);
 	late final TranslationsDialogDeletePhotoEn deletePhoto = TranslationsDialogDeletePhotoEn._(_root);
 	late final TranslationsDialogSaveChangesEn saveChanges = TranslationsDialogSaveChangesEn._(_root);
+	late final TranslationsDialogWeatherReportCompleteEn weatherReportComplete = TranslationsDialogWeatherReportCompleteEn._(_root);
 }
 
-// Path: bottomSheet
-class TranslationsBottomSheetEn {
-	TranslationsBottomSheetEn._(this._root);
+// Path: modalSheet
+class TranslationsModalSheetEn {
+	TranslationsModalSheetEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsBottomSheetSortUserEn sortUser = TranslationsBottomSheetSortUserEn._(_root);
-	late final TranslationsBottomSheetRefineSearchUserEn refineSearchUser = TranslationsBottomSheetRefineSearchUserEn._(_root);
+	late final TranslationsModalSheetSortUserEn sortUser = TranslationsModalSheetSortUserEn._(_root);
+	late final TranslationsModalSheetRefineSearchUserEn refineSearchUser = TranslationsModalSheetRefineSearchUserEn._(_root);
+	late final TranslationsModalSheetPickMediaEn pickMedia = TranslationsModalSheetPickMediaEn._(_root);
+	late final TranslationsModalSheetCommentEn comment = TranslationsModalSheetCommentEn._(_root);
 }
 
 // Path: button
@@ -297,6 +392,12 @@ class TranslationsButtonEn {
 
 	/// en: 'Clear'
 	String get clear => 'Clear';
+
+	/// en: 'Send'
+	String get send => 'Send';
+
+	/// en: 'Close'
+	String get close => 'Close';
 }
 
 // Path: segmentedSwitch
@@ -324,12 +425,16 @@ class TranslationsKEnumEn {
 	late final TranslationsKEnumBodyShapeEn bodyShape = TranslationsKEnumBodyShapeEn._(_root);
 	late final TranslationsKEnumCommunicationStyleEn communicationStyle = TranslationsKEnumCommunicationStyleEn._(_root);
 	late final TranslationsKEnumEducationEn education = TranslationsKEnumEducationEn._(_root);
+	late final TranslationsKEnumFeelingTypeEn feelingType = TranslationsKEnumFeelingTypeEn._(_root);
+	late final TranslationsKEnumForecastTypeEn forecastType = TranslationsKEnumForecastTypeEn._(_root);
 	late final TranslationsKEnumGenderEn gender = TranslationsKEnumGenderEn._(_root);
 	late final TranslationsKEnumHeightEn height = TranslationsKEnumHeightEn._(_root);
 	late final TranslationsKEnumHolidayEn holiday = TranslationsKEnumHolidayEn._(_root);
 	late final TranslationsKEnumOccupationEn occupation = TranslationsKEnumOccupationEn._(_root);
 	late final TranslationsKEnumSmokingEn smoking = TranslationsKEnumSmokingEn._(_root);
 	late final TranslationsKEnumSortTypeEn sortType = TranslationsKEnumSortTypeEn._(_root);
+	late final TranslationsKEnumWeatherTypeEn weatherType = TranslationsKEnumWeatherTypeEn._(_root);
+	late final TranslationsKEnumWindDirectionEn windDirection = TranslationsKEnumWindDirectionEn._(_root);
 }
 
 // Path: signUpPage.button
@@ -506,8 +611,8 @@ class TranslationsChatPageSectionTitleEn {
 
 	// Translations
 
-	/// en: 'Matching'
-	String get matching => 'Matching';
+	/// en: 'Matches'
+	String get matching => 'Matches';
 
 	/// en: 'Messages'
 	String get messages => 'Messages';
@@ -521,8 +626,62 @@ class TranslationsChatPageSubSectionTitleEn {
 
 	// Translations
 
-	/// en: 'Let's send your first message!'
-	String get matching => 'Let\'s send your first message!';
+	/// en: 'Send your first message!'
+	String get matching => 'Send your first message!';
+}
+
+// Path: weatherReportPostPage.placeHolder
+class TranslationsWeatherReportPostPagePlaceHolderEn {
+	TranslationsWeatherReportPostPagePlaceHolderEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Add photo/video'
+	String get media => 'Add photo/video';
+
+	/// en: 'Enter comment'
+	String get comment1 => 'Enter comment';
+
+	/// en: 'If you select a photo or video from your album, please include the date and time it was taken in the comment section'
+	String get comment2 => 'If you select a photo or video from your album, please include the date and time it was taken in the comment section';
+}
+
+// Path: weatherReportPostPage.label
+class TranslationsWeatherReportPostPageLabelEn {
+	TranslationsWeatherReportPostPageLabelEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Location'
+	String get location => 'Location';
+
+	/// en: 'Weather/Feeling/Forecast'
+	String get weatherFeelingForecast => 'Weather/Feeling/Forecast';
+
+	/// en: 'Observation'
+	String get observation => 'Observation';
+}
+
+// Path: weatherReportDetailPage.label
+class TranslationsWeatherReportDetailPageLabelEn {
+	TranslationsWeatherReportDetailPageLabelEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Weather'
+	String get weather => 'Weather';
+
+	/// en: 'Feeling'
+	String get feeling => 'Feeling';
+
+	/// en: 'Sensory Forecast'
+	String get forecast => 'Sensory Forecast';
 }
 
 // Path: profilePage.section
@@ -791,8 +950,8 @@ class TranslationsDialogDeletePhotoEn {
 	/// en: 'Confirm Photo Deletion'
 	String get title => 'Confirm Photo Deletion';
 
-	/// en: 'Do you really want to delete this photo?'
-	String get contentText => 'Do you really want to delete this photo?';
+	/// en: 'Are you sure you want to delete this photo?'
+	String get contentText => 'Are you sure you want to delete this photo?';
 }
 
 // Path: dialog.saveChanges
@@ -810,9 +969,24 @@ class TranslationsDialogSaveChangesEn {
 	String get contentText => 'Do you want to save your changes?';
 }
 
-// Path: bottomSheet.sortUser
-class TranslationsBottomSheetSortUserEn {
-	TranslationsBottomSheetSortUserEn._(this._root);
+// Path: dialog.weatherReportComplete
+class TranslationsDialogWeatherReportCompleteEn {
+	TranslationsDialogWeatherReportCompleteEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Weather Report Complete'
+	String get title => 'Weather Report Complete';
+
+	/// en: 'Congratulations! You earned 1 Rainbow Like.'
+	String get contentText => 'Congratulations!\nYou earned 1 Rainbow Like.';
+}
+
+// Path: modalSheet.sortUser
+class TranslationsModalSheetSortUserEn {
+	TranslationsModalSheetSortUserEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -822,18 +996,43 @@ class TranslationsBottomSheetSortUserEn {
 	String get title => 'Sort';
 }
 
-// Path: bottomSheet.refineSearchUser
-class TranslationsBottomSheetRefineSearchUserEn {
-	TranslationsBottomSheetRefineSearchUserEn._(this._root);
+// Path: modalSheet.refineSearchUser
+class TranslationsModalSheetRefineSearchUserEn {
+	TranslationsModalSheetRefineSearchUserEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 
-	/// en: 'Refine Search'
-	String get title => 'Refine Search';
+	/// en: 'Filter'
+	String get title => 'Filter';
 
-	late final TranslationsBottomSheetRefineSearchUserSectionEn section = TranslationsBottomSheetRefineSearchUserSectionEn._(_root);
+	late final TranslationsModalSheetRefineSearchUserSectionEn section = TranslationsModalSheetRefineSearchUserSectionEn._(_root);
+}
+
+// Path: modalSheet.pickMedia
+class TranslationsModalSheetPickMediaEn {
+	TranslationsModalSheetPickMediaEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsModalSheetPickMediaLabelEn label = TranslationsModalSheetPickMediaLabelEn._(_root);
+}
+
+// Path: modalSheet.comment
+class TranslationsModalSheetCommentEn {
+	TranslationsModalSheetCommentEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Comment'
+	String get title => 'Comment';
+
+	/// en: 'Enter comment'
+	String get placeHolder => 'Enter comment';
 }
 
 // Path: segmentedSwitch.like
@@ -844,11 +1043,11 @@ class TranslationsSegmentedSwitchLikeEn {
 
 	// Translations
 
-	/// en: 'FromUser'
-	String get fromUser => 'FromUser';
+	/// en: 'From Them'
+	String get fromUser => 'From Them';
 
-	/// en: 'ToUser'
-	String get toUser => 'ToUser';
+	/// en: 'From Me'
+	String get toUser => 'From Me';
 }
 
 // Path: segmentedSwitch.chat
@@ -1030,6 +1229,48 @@ class TranslationsKEnumEducationEn {
 
 	/// en: 'Other'
 	String get other => 'Other';
+}
+
+// Path: kEnum.feelingType
+class TranslationsKEnumFeelingTypeEn {
+	TranslationsKEnumFeelingTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Freezing'
+	String get freezing => 'Freezing';
+
+	/// en: 'Cold'
+	String get cold => 'Cold';
+
+	/// en: 'Comfortable'
+	String get comfortable => 'Comfortable';
+
+	/// en: 'Warm'
+	String get warm => 'Warm';
+
+	/// en: 'Not Applicable'
+	String get notApplicable => 'Not Applicable';
+}
+
+// Path: kEnum.forecastType
+class TranslationsKEnumForecastTypeEn {
+	TranslationsKEnumForecastTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'No change expected'
+	String get noChange => 'No change expected';
+
+	/// en: 'Likely to improve'
+	String get improving => 'Likely to improve';
+
+	/// en: 'Likely to worsen'
+	String get worsening => 'Likely to worsen';
 }
 
 // Path: kEnum.gender
@@ -1532,11 +1773,77 @@ class TranslationsKEnumSortTypeEn {
 
 	// Translations
 
-	/// en: 'Login Order'
-	String get login => 'Login Order';
+	/// en: 'Recently Active'
+	String get login => 'Recently Active';
 
-	/// en: 'Compatibility Order'
-	String get compatibility => 'Compatibility Order';
+	/// en: 'Compatibility'
+	String get compatibility => 'Compatibility';
+}
+
+// Path: kEnum.weatherType
+class TranslationsKEnumWeatherTypeEn {
+	TranslationsKEnumWeatherTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Clear Stars'
+	String get clearStar => 'Clear Stars';
+
+	/// en: 'Faint Stars'
+	String get faintStar => 'Faint Stars';
+
+	/// en: 'No Stars'
+	String get noStar => 'No Stars';
+
+	/// en: 'Drizzle'
+	String get drizzle => 'Drizzle';
+
+	/// en: 'Light Rain'
+	String get lightRain => 'Light Rain';
+
+	/// en: 'Rain'
+	String get rain => 'Rain';
+
+	/// en: 'Heavy Rain'
+	String get heavyRain => 'Heavy Rain';
+}
+
+// Path: kEnum.windDirection
+class TranslationsKEnumWindDirectionEn {
+	TranslationsKEnumWindDirectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'North'
+	String get north => 'North';
+
+	/// en: 'North-East'
+	String get northEast => 'North-East';
+
+	/// en: 'East'
+	String get east => 'East';
+
+	/// en: 'South-East'
+	String get southEast => 'South-East';
+
+	/// en: 'South'
+	String get south => 'South';
+
+	/// en: 'South-West'
+	String get southWest => 'South-West';
+
+	/// en: 'West'
+	String get west => 'West';
+
+	/// en: 'North-West'
+	String get northWest => 'North-West';
+
+	/// en: 'Unknown'
+	String get unknown => 'Unknown';
 }
 
 // Path: userRegistrationPage.birthDate.items
@@ -1791,9 +2098,9 @@ class TranslationsSettingPageSectionAboutReimiEn {
 	String get applicationInformation => 'App Information';
 }
 
-// Path: bottomSheet.refineSearchUser.section
-class TranslationsBottomSheetRefineSearchUserSectionEn {
-	TranslationsBottomSheetRefineSearchUserSectionEn._(this._root);
+// Path: modalSheet.refineSearchUser.section
+class TranslationsModalSheetRefineSearchUserSectionEn {
+	TranslationsModalSheetRefineSearchUserSectionEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1802,14 +2109,35 @@ class TranslationsBottomSheetRefineSearchUserSectionEn {
 	/// en: 'Age'
 	String get age => 'Age';
 
-	/// en: 'Address'
-	String get address => 'Address';
+	/// en: 'Location'
+	String get address => 'Location';
 
 	/// en: 'Gender'
 	String get gender => 'Gender';
 
 	/// en: 'Weather Personality'
 	String get weatherPersonality => 'Weather Personality';
+}
+
+// Path: modalSheet.pickMedia.label
+class TranslationsModalSheetPickMediaLabelEn {
+	TranslationsModalSheetPickMediaLabelEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Take Photo'
+	String get takePhoto => 'Take Photo';
+
+	/// en: 'Record Video'
+	String get recordVideo => 'Record Video';
+
+	/// en: 'Select Existing Photo'
+	String get selectExistingPhoto => 'Select Existing Photo';
+
+	/// en: 'Select Existing Video'
+	String get selectExistingVideo => 'Select Existing Video';
 }
 
 // Path: kEnum.address.prefecture
@@ -2091,10 +2419,28 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
-			'chatPage.sectionTitle.matching' => 'Matching',
+			'chatPage.sectionTitle.matching' => 'Matches',
 			'chatPage.sectionTitle.messages' => 'Messages',
-			'chatPage.subSectionTitle.matching' => 'Let\'s send your first message!',
-			'chatDetailPage.placeHolder' => 'Enter your message',
+			'chatPage.subSectionTitle.matching' => 'Send your first message!',
+			'chatDetailPage.placeHolder' => 'Enter message',
+			'weatherReportPage.sectionTitle' => 'Weather Report',
+			'weatherReportPostPage.title' => 'Send Weather Report',
+			'weatherReportPostPage.placeHolder.media' => 'Add photo/video',
+			'weatherReportPostPage.placeHolder.comment1' => 'Enter comment',
+			'weatherReportPostPage.placeHolder.comment2' => 'If you select a photo or video from your album, please include the date and time it was taken in the comment section',
+			'weatherReportPostPage.label.location' => 'Location',
+			'weatherReportPostPage.label.weatherFeelingForecast' => 'Weather/Feeling/Forecast',
+			'weatherReportPostPage.label.observation' => 'Observation',
+			'weatherSelectPage.title' => 'Select Weather',
+			'weatherSelectPage.sectionTitle' => 'What\'s the weather now?',
+			'feelingSelectPage.title' => 'Select Feeling',
+			'feelingSelectPage.sectionTitle' => 'How does it feel now?',
+			'forecastSelectPage.title' => 'Select Forecast',
+			'forecastSelectPage.sectionTitle' => 'What about in a few hours?',
+			'weatherReportDetailPage.title' => 'Post Details',
+			'weatherReportDetailPage.label.weather' => 'Weather',
+			'weatherReportDetailPage.label.feeling' => 'Feeling',
+			'weatherReportDetailPage.label.forecast' => 'Sensory Forecast',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.section.mainPhoto' => 'Main Photo',
 			'profilePage.section.subPhoto' => 'Sub Photos',
@@ -2181,15 +2527,23 @@ extension on Translations {
 			'dialog.logout.title' => 'Confirm Logout',
 			'dialog.logout.contentText' => 'Are you sure you want to logout?',
 			'dialog.deletePhoto.title' => 'Confirm Photo Deletion',
-			'dialog.deletePhoto.contentText' => 'Do you really want to delete this photo?',
+			'dialog.deletePhoto.contentText' => 'Are you sure you want to delete this photo?',
 			'dialog.saveChanges.title' => 'Confirm Save Changes',
 			'dialog.saveChanges.contentText' => 'Do you want to save your changes?',
-			'bottomSheet.sortUser.title' => 'Sort',
-			'bottomSheet.refineSearchUser.title' => 'Refine Search',
-			'bottomSheet.refineSearchUser.section.age' => 'Age',
-			'bottomSheet.refineSearchUser.section.address' => 'Address',
-			'bottomSheet.refineSearchUser.section.gender' => 'Gender',
-			'bottomSheet.refineSearchUser.section.weatherPersonality' => 'Weather Personality',
+			'dialog.weatherReportComplete.title' => 'Weather Report Complete',
+			'dialog.weatherReportComplete.contentText' => 'Congratulations!\nYou earned 1 Rainbow Like.',
+			'modalSheet.sortUser.title' => 'Sort',
+			'modalSheet.refineSearchUser.title' => 'Filter',
+			'modalSheet.refineSearchUser.section.age' => 'Age',
+			'modalSheet.refineSearchUser.section.address' => 'Location',
+			'modalSheet.refineSearchUser.section.gender' => 'Gender',
+			'modalSheet.refineSearchUser.section.weatherPersonality' => 'Weather Personality',
+			'modalSheet.pickMedia.label.takePhoto' => 'Take Photo',
+			'modalSheet.pickMedia.label.recordVideo' => 'Record Video',
+			'modalSheet.pickMedia.label.selectExistingPhoto' => 'Select Existing Photo',
+			'modalSheet.pickMedia.label.selectExistingVideo' => 'Select Existing Video',
+			'modalSheet.comment.title' => 'Comment',
+			'modalSheet.comment.placeHolder' => 'Enter comment',
 			'button.next' => 'Next',
 			'button.confirmation' => 'Confirm',
 			'button.cancel' => 'Cancel',
@@ -2201,8 +2555,10 @@ extension on Translations {
 			'button.delete' => 'Delete',
 			'button.apply' => 'Apply',
 			'button.clear' => 'Clear',
-			'segmentedSwitch.like.fromUser' => 'FromUser',
-			'segmentedSwitch.like.toUser' => 'ToUser',
+			'button.send' => 'Send',
+			'button.close' => 'Close',
+			'segmentedSwitch.like.fromUser' => 'From Them',
+			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
 			'segmentedSwitch.chat.profile' => 'Profile',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
@@ -2286,6 +2642,14 @@ extension on Translations {
 			'kEnum.education.universityGraduate' => 'University',
 			'kEnum.education.graduateSchoolGraduate' => 'Graduate School',
 			'kEnum.education.other' => 'Other',
+			'kEnum.feelingType.freezing' => 'Freezing',
+			'kEnum.feelingType.cold' => 'Cold',
+			'kEnum.feelingType.comfortable' => 'Comfortable',
+			'kEnum.feelingType.warm' => 'Warm',
+			'kEnum.feelingType.notApplicable' => 'Not Applicable',
+			'kEnum.forecastType.noChange' => 'No change expected',
+			'kEnum.forecastType.improving' => 'Likely to improve',
+			'kEnum.forecastType.worsening' => 'Likely to worsen',
 			'kEnum.gender.man' => 'Male',
 			'kEnum.gender.woman' => 'Female',
 			'kEnum.gender.other' => 'Other',
@@ -2435,8 +2799,24 @@ extension on Translations {
 			'kEnum.smoking.no' => 'Don\'t smoke',
 			'kEnum.smoking.sometimes' => 'Smoke occasionally',
 			'kEnum.smoking.yes' => 'Smoke',
-			'kEnum.sortType.login' => 'Login Order',
-			'kEnum.sortType.compatibility' => 'Compatibility Order',
+			'kEnum.sortType.login' => 'Recently Active',
+			'kEnum.sortType.compatibility' => 'Compatibility',
+			'kEnum.weatherType.clearStar' => 'Clear Stars',
+			'kEnum.weatherType.faintStar' => 'Faint Stars',
+			'kEnum.weatherType.noStar' => 'No Stars',
+			'kEnum.weatherType.drizzle' => 'Drizzle',
+			'kEnum.weatherType.lightRain' => 'Light Rain',
+			'kEnum.weatherType.rain' => 'Rain',
+			'kEnum.weatherType.heavyRain' => 'Heavy Rain',
+			'kEnum.windDirection.north' => 'North',
+			'kEnum.windDirection.northEast' => 'North-East',
+			'kEnum.windDirection.east' => 'East',
+			'kEnum.windDirection.southEast' => 'South-East',
+			'kEnum.windDirection.south' => 'South',
+			'kEnum.windDirection.southWest' => 'South-West',
+			'kEnum.windDirection.west' => 'West',
+			'kEnum.windDirection.northWest' => 'North-West',
+			'kEnum.windDirection.unknown' => 'Unknown',
 			_ => null,
 		};
 	}
