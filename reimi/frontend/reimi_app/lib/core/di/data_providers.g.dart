@@ -43,7 +43,7 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$userRemoteDataSourceHash() =>
-    r'36409869af1665e3a782ccaf629807d47b4dd921';
+    r'a8704632a5cfe4e042d891c829d91c8d5b4417e7';
 
 /// See also [userRemoteDataSource].
 @ProviderFor(userRemoteDataSource)
@@ -79,7 +79,7 @@ final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
 // ignore: unused_element
 typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
 String _$profileRemoteDataSourceHash() =>
-    r'04ce86a5bf8c1f48e9811ea8c39379da7911ee1f';
+    r'b3fdbc92f1a33d661767b365285ef0fee08567de';
 
 /// See also [profileRemoteDataSource].
 @ProviderFor(profileRemoteDataSource)
@@ -229,5 +229,45 @@ final messageRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MessageRepositoryRef = AutoDisposeProviderRef<MessageRepository>;
+String _$weatherReportRemoteDataSourceHash() =>
+    r'3680d62369ba072aa066a052ed9d34443b6a4de9';
+
+/// See also [weatherReportRemoteDataSource].
+@ProviderFor(weatherReportRemoteDataSource)
+final weatherReportRemoteDataSourceProvider =
+    AutoDisposeProvider<WeatherReportRemoteDataSource>.internal(
+  weatherReportRemoteDataSource,
+  name: r'weatherReportRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$weatherReportRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WeatherReportRemoteDataSourceRef
+    = AutoDisposeProviderRef<WeatherReportRemoteDataSource>;
+String _$weatherReportRepositoryHash() =>
+    r'8a456f7115b00cb788f7b144f10bb2df0fc55962';
+
+/// See also [weatherReportRepository].
+@ProviderFor(weatherReportRepository)
+final weatherReportRepositoryProvider =
+    AutoDisposeProvider<WeatherReportRepository>.internal(
+  weatherReportRepository,
+  name: r'weatherReportRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$weatherReportRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WeatherReportRepositoryRef
+    = AutoDisposeProviderRef<WeatherReportRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

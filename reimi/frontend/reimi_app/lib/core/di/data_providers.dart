@@ -9,20 +9,24 @@ import 'package:reimi_app/data/datasources/mocks/like_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/message_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/profile_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/user_mock_datasource.dart';
+import 'package:reimi_app/data/datasources/mocks/weather_report_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/profile_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/user_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/weather_report_remote_datasource.dart';
 import 'package:reimi_app/data/repositories/auth_repository_impl.dart';
 import 'package:reimi_app/data/repositories/chat_room_repository_impl.dart';
 import 'package:reimi_app/data/repositories/like_repository_impl.dart';
 import 'package:reimi_app/data/repositories/message_repository_Impl.dart';
 import 'package:reimi_app/data/repositories/profile_repository_impl.dart';
 import 'package:reimi_app/data/repositories/user_repository_impl.dart';
+import 'package:reimi_app/data/repositories/weather_report_repository_impl.dart';
 import 'package:reimi_app/domain/repositories/auth_repository.dart';
 import 'package:reimi_app/domain/repositories/chat_room_repository.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
 import 'package:reimi_app/domain/repositories/message_repository.dart';
 import 'package:reimi_app/domain/repositories/profile_repository.dart';
 import 'package:reimi_app/domain/repositories/user_repository.dart';
+import 'package:reimi_app/domain/repositories/weather_report_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'data_providers.g.dart';
@@ -43,7 +47,7 @@ AuthRepository authRepository(Ref ref) {
 // user関連
 @riverpod
 UserRemoteDataSource userRemoteDataSource(Ref ref) {
-  if (useMock) return const UserMockDataSourceImpl();
+  if (useMock) return const UserMockDataSource();
   return const UserRemoteDataSourceImpl();
 }
 
@@ -55,7 +59,7 @@ UserRepository userRepository(Ref ref) {
 // profile関連
 @riverpod
 ProfileRemoteDataSource profileRemoteDataSource(Ref ref) {
-  if (useMock) return const ProfileMockDataSourceImpl();
+  if (useMock) return const ProfileMockDataSource();
   return const ProfileRemoteDataSourceImpl();
 }
 
@@ -98,4 +102,16 @@ MessageRemoteDataSource messageRemoteDataSource(Ref ref) {
 @riverpod
 MessageRepository messageRepository(Ref ref) {
   return MessageRepositoryImpl(ref.watch(messageRemoteDataSourceProvider));
+}
+
+// weather_report関連
+@riverpod
+WeatherReportRemoteDataSource weatherReportRemoteDataSource(Ref ref) {
+  if (useMock) return const WeatherReportMockDataSource();
+  return const WeatherReportRemoteDataSourceImpl();
+}
+
+@riverpod
+WeatherReportRepository weatherReportRepository(Ref ref) {
+  return WeatherReportRepositoryImpl(ref.watch(weatherReportRemoteDataSourceProvider));
 }
