@@ -10,8 +10,8 @@ import 'package:reimi_app/domain/usecases/profile/get_user_profile_usecase.dart'
 import 'package:reimi_app/domain/usecases/message/send_message_usecase.dart';
 import 'package:reimi_app/domain/usecases/auth/sign_in_with_provider_usecase.dart';
 import 'package:reimi_app/domain/usecases/message/watch_messages_usecase.dart';
-import 'package:reimi_app/domain/usecases/weather_report/get_weather_report_post_usecase.dart';
-import 'package:reimi_app/domain/usecases/weather_report/get_weather_report_posts_usecase.dart';
+import 'package:reimi_app/domain/usecases/weather_report/get_weather_report_usecase.dart';
+import 'package:reimi_app/domain/usecases/weather_report/get_weather_reports_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'domain_providers.g.dart';

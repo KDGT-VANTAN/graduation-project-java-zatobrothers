@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -16,10 +18,12 @@ class AnimatedDot extends HookWidget {
     );
 
     useEffect(() {
-      Future.delayed(Duration(milliseconds: delay), () {
-        controller.repeat(reverse: true);
-      });
-      return null;
+      final timer = Timer(
+        Duration(milliseconds: delay),
+        () => controller.repeat(reverse: true),
+      );
+
+      return timer.cancel;
     }, []);
 
     return AnimatedBuilder(

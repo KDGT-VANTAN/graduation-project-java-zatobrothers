@@ -15,8 +15,8 @@ import 'package:reimi_app/domain/value_objects/smoking.dart';
 import 'package:reimi_app/domain/value_objects/user_status.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
-class ProfileMockDataSourceImpl implements ProfileRemoteDataSource {
-  const ProfileMockDataSourceImpl();
+class ProfileMockDataSource implements ProfileRemoteDataSource {
+  const ProfileMockDataSource();
 
   @override
   Future<UserWithProfileModel?> fetchUserProfile(String userId) async {
