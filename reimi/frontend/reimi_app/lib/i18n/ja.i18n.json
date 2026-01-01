@@ -93,6 +93,42 @@
   "chatDetailPage": {
     "placeHolder": "メッセージを入力"
   },
+  "weatherReportPage": {
+    "sectionTitle": "ウェザーリポート"
+  },
+  "weatherReportPostPage": {
+    "title": "ウェザーリポート送信",
+    "placeHolder": {
+      "media": "写真・動画を追加",
+      "comment1": "コメントを入力",
+      "comment2": "アルバムから写真や動画を選んだ場合は、コメント欄に撮影日時も添えてください"
+    },
+    "label": {
+      "location": "場所",
+      "weatherFeelingForecast": "天気/体感/予想",
+      "observation": "観測値"
+    }
+  },
+  "weatherSelectPage": {
+    "title": "天気を選択",
+    "sectionTitle": "今の天気は？"
+  },
+  "feelingSelectPage": {
+    "title": "体感を選択",
+    "sectionTitle": "今の体感は？"
+  },
+  "forecastSelectPage": {
+    "title": "予想を選択",
+    "sectionTitle": "数時間後は？"
+  },
+  "weatherReportDetailPage": {
+    "title": "投稿詳細",
+    "label": {
+      "weather": "天気",
+      "feeling": "体感",
+      "forecast": "五感予想"
+    }
+  },
   "profilePage": {
     "title": "プロフィール編集",
     "section": {
@@ -250,9 +286,13 @@
     "saveChanges": {
       "title": "変更保存の確認",
       "contentText": "変更した内容を保存しますか？"
+    },
+    "weatherReportComplete": {
+      "title": "ウェザーリポート完了",
+      "contentText": "おめでとうございます！\nレインボーいいねを1つ獲得しました。"
     }
   },
-  "bottomSheet": {
+  "modalSheet": {
     "sortUser": {
       "title": "並び替え"
     },
@@ -264,6 +304,18 @@
         "gender": "性別",
         "weatherPersonality": "ウェザーパーソナリティ"
       }
+    },
+    "pickMedia": {
+      "label": {
+        "takePhoto": "写真を撮る",
+        "recordVideo": "動画を撮る",
+        "selectExistingPhoto": "既存の写真を選択",
+        "selectExistingVideo": "既存の動画を選択"
+      }
+    },
+    "comment": {
+      "title": "コメント",
+      "placeHolder": "コメントを追加"
     }
   },
   "button": {
@@ -277,7 +329,9 @@
     "save": "保存",
     "delete": "削除",
     "apply": "適用する",
-    "clear": "クリア"
+    "clear": "クリア",
+    "send": "送信",
+    "close": "閉じる"
   },
   "segmentedSwitch": {
     "like": {
@@ -386,6 +440,18 @@
       "universityGraduate": "大学卒",
       "graduateSchoolGraduate": "大学院卒",
       "other": "その他"
+    },
+    "feelingType": {
+      "freezing": "極寒",
+      "cold": "寒い",
+      "comfortable": "ちょうどいい",
+      "warm": "暖かい",
+      "notApplicable": "あてはまらない"
+    },
+    "forecastType": {
+      "noChange": "今と変化なさそう",
+      "improving": "回復しそう",
+      "worsening": "下り坂になりそう"
     },
     "gender": {
       "man": "男性",
@@ -549,6 +615,26 @@
     "sortType": {
       "login": "ログイン順",
       "compatibility": "相性順"
+    },
+    "weatherType": {
+      "clearStar": "星がはっきり",
+      "faintStar": "星がうっすら",
+      "noStar": "星が見えない",
+      "drizzle": "ポツポツ",
+      "lightRain": "パラパラ",
+      "rain": "サー",
+      "heavyRain": "サーサー"
+    },
+    "windDirection": {
+      "north": "北",
+      "northEast": "北東",
+      "east": "東",
+      "southEast": "南東",
+      "south": "南",
+      "southWest": "南西",
+      "west": "西",
+      "northWest": "北西",
+      "unknown": "分からない"
     }
   }
 }

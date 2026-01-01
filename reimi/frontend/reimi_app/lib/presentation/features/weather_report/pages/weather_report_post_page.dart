@@ -1,0 +1,162 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/extensions/value_objects/feeling_type_extension.dart';
+import 'package:reimi_app/core/extensions/value_objects/forecast_type_extension.dart';
+import 'package:reimi_app/core/extensions/value_objects/weather_type_extension.dart';
+import 'package:reimi_app/domain/value_objects/media_type.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_post_notifier.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/weather_select_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/add_media_box.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/comment_box.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/show_pick_media_modal_sheet.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/send_button.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/weather_report_complete_dialog.dart';
+import 'package:reimi_app/presentation/features/weather_report/widgets/info_tile.dart';
+import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
+
+class WeatherReportPostPage extends HookConsumerWidget {
+  const WeatherReportPostPage({super.key});
+  static String get routeName => 'weather_report_post';
+  static String get routeLocation => '/$routeName';
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = Translations.of(context);
+    final url = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.data!.url));
+    final comment = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.data!.comment));
+    final weatherType = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.data!.weatherType));
+    final feelingType = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.data!.feelingType));
+    final forecastType = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.data!.forecastType));
+    final isAllTypeSelected =
+        weatherType != null && feelingType != null && forecastType != null;
+    final canSubmit = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.canSubmit));
+    final controller = useTextEditingController(text: comment);
+    final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.white,
+          ),
+        ),
+        title: Text(
+          t.weatherReportPostPage.title,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF2E4154),
+              Color(0xFF3F566B),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AddMediaBox(
+                      url: url,
+                      onTap: () {
+                        showPickMediaModalSheet(
+                          context: context,
+                          selectExistingPhoto: () async {
+                            final file = await pickImageFromGallery();
+                            if (file != null) {
+                              notifier.updateMedia(
+                                mediaType: MediaType.photo,
+                                url: file.path,
+                              );
+                            }
+                          },
+                        );
+                      },
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: CommentBox(
+                        comment: comment,
+                        controller: controller,
+                        onChanged: (value) {
+                          notifier.updateComment(value);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                InfoTile(
+                    label: t.weatherReportPostPage.label.location,
+                    value: '東京都渋谷区',
+                    onTap: () {}),
+                const SizedBox(height: 12),
+                InfoTile(
+                  label: t.weatherReportPostPage.label.weatherFeelingForecast,
+                  value: isAllTypeSelected
+                      ? '${weatherType.displayName(context)}/${feelingType.displayName(context)}/${forecastType.displayName(context)}'
+                      : null,
+                  onTap: () {
+                    context.push(WeatherSelectPage.routeLocation);
+                  },
+                ),
+                const SizedBox(height: 12),
+                InfoTile(
+                  label: t.weatherReportPostPage.label.observation,
+                  value: '1006.5hPa',
+                  onTap: () {},
+                ),
+                const SizedBox(height: 40),
+                SendButton(
+                  canSubmit: canSubmit,
+                  onTap: !canSubmit
+                      ? null
+                      : () async {
+                          await weatherReportCompleteDialog(
+                            context: context,
+                            onConfirm: () {
+                              context.go(WeatherReportPage.routeLocation);
+                            },
+                          );
+                        },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

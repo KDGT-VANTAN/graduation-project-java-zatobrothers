@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/domain/value_objects/sort_type.dart';
 import 'package:reimi_app/presentation/features/home/notifiers/home_users_notifier.dart';
-import 'package:reimi_app/presentation/features/home/widgets/refine_search_user_bottom_sheet.dart';
-import 'package:reimi_app/presentation/features/home/widgets/sort_user_bottom_sheet.dart';
+import 'package:reimi_app/presentation/features/home/widgets/show_refine_search_user_modal_sheet.dart';
+import 'package:reimi_app/presentation/features/home/widgets/show_sort_user_modal_sheet.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/features/home/widgets/user_card.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
@@ -42,7 +42,7 @@ class HomePage extends ConsumerWidget {
                             CircleIconButton(
                               icon: const Icon(LineIcons.search),
                               onPressed: () {
-                                refineSearchUserBottomSheet(
+                                showRefineSearchUserModalSheet(
                                   context: context,
                                   onApply: () {},
                                   onClear: () {},
@@ -53,7 +53,7 @@ class HomePage extends ConsumerWidget {
                             CircleIconButton(
                               icon: const Icon(LineIcons.horizontalSliders),
                               onPressed: () {
-                                sortUserBottomSheet(
+                                showSortUserModalSheet(
                                   context: context,
                                   initialValue: SortType.login,
                                   onApply: (SortType p1) {},

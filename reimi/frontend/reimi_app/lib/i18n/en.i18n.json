@@ -83,15 +83,51 @@
   },
   "chatPage": {
     "sectionTitle": {
-      "matching": "Matching",
+      "matching": "Matches",
       "messages": "Messages"
     },
     "subSectionTitle": {
-      "matching": "Let's send your first message!"
+      "matching": "Send your first message!"
     }
   },
   "chatDetailPage": {
-    "placeHolder": "Enter your message"
+    "placeHolder": "Enter message"
+  },
+  "weatherReportPage": {
+    "sectionTitle": "Weather Report"
+  },
+  "weatherReportPostPage": {
+    "title": "Send Weather Report",
+    "placeHolder": {
+      "media": "Add photo/video",
+      "comment1": "Enter comment",
+      "comment2": "If you select a photo or video from your album, please include the date and time it was taken in the comment section"
+    },
+    "label": {
+      "location": "Location",
+      "weatherFeelingForecast": "Weather/Feeling/Forecast",
+      "observation": "Observation"
+    }
+  },
+  "weatherSelectPage": {
+    "title": "Select Weather",
+    "sectionTitle": "What's the weather now?"
+  },
+  "feelingSelectPage": {
+    "title": "Select Feeling",
+    "sectionTitle": "How does it feel now?"
+  },
+  "forecastSelectPage": {
+    "title": "Select Forecast",
+    "sectionTitle": "What about in a few hours?"
+  },
+  "weatherReportDetailPage": {
+    "title": "Post Details",
+    "label": {
+      "weather": "Weather",
+      "feeling": "Feeling",
+      "forecast": "Sensory Forecast"
+    }
   },
   "profilePage": {
     "title": "Edit Profile",
@@ -245,25 +281,41 @@
     },
     "deletePhoto": {
       "title": "Confirm Photo Deletion",
-      "contentText": "Do you really want to delete this photo?"
+      "contentText": "Are you sure you want to delete this photo?"
     },
     "saveChanges": {
       "title": "Confirm Save Changes",
       "contentText": "Do you want to save your changes?"
+    },
+    "weatherReportComplete": {
+      "title": "Weather Report Complete",
+      "contentText": "Congratulations!\nYou earned 1 Rainbow Like."
     }
   },
-  "bottomSheet": {
+  "modalSheet": {
     "sortUser": {
       "title": "Sort"
     },
     "refineSearchUser": {
-      "title": "Refine Search",
+      "title": "Filter",
       "section": {
         "age": "Age",
-        "address": "Address",
+        "address": "Location",
         "gender": "Gender",
         "weatherPersonality": "Weather Personality"
       }
+    },
+    "pickMedia": {
+      "label": {
+        "takePhoto": "Take Photo",
+        "recordVideo": "Record Video",
+        "selectExistingPhoto": "Select Existing Photo",
+        "selectExistingVideo": "Select Existing Video"
+      }
+    },
+    "comment": {
+      "title": "Comment",
+      "placeHolder": "Enter comment"
     }
   },
   "button": {
@@ -277,12 +329,14 @@
     "save": "Save",
     "delete": "Delete",
     "apply": "Apply",
-    "clear": "Clear"
+    "clear": "Clear",
+    "send": "Send",
+    "close": "Close"
   },
   "segmentedSwitch": {
     "like": {
-      "fromUser": "FromUser",
-      "toUser": "ToUser"
+      "fromUser": "From Them",
+      "toUser": "From Me"
     },
     "chat": {
       "message": "Message",
@@ -386,6 +440,18 @@
       "universityGraduate": "University",
       "graduateSchoolGraduate": "Graduate School",
       "other": "Other"
+    },
+    "feelingType": {
+      "freezing": "Freezing",
+      "cold": "Cold",
+      "comfortable": "Comfortable",
+      "warm": "Warm",
+      "notApplicable": "Not Applicable"
+    },
+    "forecastType": {
+      "noChange": "No change expected",
+      "improving": "Likely to improve",
+      "worsening": "Likely to worsen"
     },
     "gender": {
       "man": "Male",
@@ -547,8 +613,28 @@
       "yes": "Smoke"
     },
     "sortType": {
-      "login": "Login Order",
-      "compatibility": "Compatibility Order"
+      "login": "Recently Active",
+      "compatibility": "Compatibility"
+    },
+    "weatherType": {
+      "clearStar": "Clear Stars",
+      "faintStar": "Faint Stars",
+      "noStar": "No Stars",
+      "drizzle": "Drizzle",
+      "lightRain": "Light Rain",
+      "rain": "Rain",
+      "heavyRain": "Heavy Rain"
+    },
+    "windDirection": {
+      "north": "North",
+      "northEast": "North-East",
+      "east": "East",
+      "southEast": "South-East",
+      "south": "South",
+      "southWest": "South-West",
+      "west": "West",
+      "northWest": "North-West",
+      "unknown": "Unknown"
     }
   }
 }

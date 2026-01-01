@@ -203,5 +203,45 @@ final watchMessagesUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef WatchMessagesUseCaseRef = AutoDisposeProviderRef<WatchMessagesUseCase>;
+String _$getWeatherReportsUseCaseHash() =>
+    r'0db3ee9d6c24fec856011bb1e8063218cc476676';
+
+/// See also [getWeatherReportsUseCase].
+@ProviderFor(getWeatherReportsUseCase)
+final getWeatherReportsUseCaseProvider =
+    AutoDisposeProvider<GetWeatherReportsUseCase>.internal(
+  getWeatherReportsUseCase,
+  name: r'getWeatherReportsUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherReportsUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherReportsUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherReportsUseCase>;
+String _$getWeatherReportUseCaseHash() =>
+    r'd247a7af6f2a1e9ac9d14af5cf71b1689de57a4b';
+
+/// See also [getWeatherReportUseCase].
+@ProviderFor(getWeatherReportUseCase)
+final getWeatherReportUseCaseProvider =
+    AutoDisposeProvider<GetWeatherReportUseCase>.internal(
+  getWeatherReportUseCase,
+  name: r'getWeatherReportUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherReportUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherReportUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherReportUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

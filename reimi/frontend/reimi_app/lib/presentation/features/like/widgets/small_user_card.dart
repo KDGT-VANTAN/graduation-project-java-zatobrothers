@@ -121,10 +121,11 @@ class SmallUserCard extends StatelessWidget {
                   style: theme.textTheme.bodySmall,
                 ),
                 if (true)
-                  const Padding(
-                    padding: EdgeInsets.only(left: 4),
-                    child:
-                        Icon(Icons.check_circle, color: Colors.green, size: 16),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Assets.images.status.weatherReportStatus.image(
+                      height: 18,
+                    ),
                   ),
                 const SizedBox(height: 24),
               ],

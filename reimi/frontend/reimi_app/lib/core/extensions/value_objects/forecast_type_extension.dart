@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/domain/value_objects/forecast_type.dart';
+
+extension ForecastTypeExtension on ForecastType {
+  String displayName(BuildContext context) {
+    final t = Translations.of(context).kEnum.forecastType;
+    switch (this) {
+      case ForecastType.noChange:
+        return t.noChange;
+      case ForecastType.improving:
+        return t.improving;
+      case ForecastType.worsening:
+        return t.worsening;
+    }
+  }
+}

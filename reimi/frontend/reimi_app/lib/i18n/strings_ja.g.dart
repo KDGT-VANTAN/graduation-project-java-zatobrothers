@@ -44,12 +44,18 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
 	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
 	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
+	@override late final _TranslationsWeatherReportPageJa weatherReportPage = _TranslationsWeatherReportPageJa._(_root);
+	@override late final _TranslationsWeatherReportPostPageJa weatherReportPostPage = _TranslationsWeatherReportPostPageJa._(_root);
+	@override late final _TranslationsWeatherSelectPageJa weatherSelectPage = _TranslationsWeatherSelectPageJa._(_root);
+	@override late final _TranslationsFeelingSelectPageJa feelingSelectPage = _TranslationsFeelingSelectPageJa._(_root);
+	@override late final _TranslationsForecastSelectPageJa forecastSelectPage = _TranslationsForecastSelectPageJa._(_root);
+	@override late final _TranslationsWeatherReportDetailPageJa weatherReportDetailPage = _TranslationsWeatherReportDetailPageJa._(_root);
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
 	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
 	@override late final _TranslationsSettingPageJa settingPage = _TranslationsSettingPageJa._(_root);
 	@override late final _TranslationsNavigationBarJa navigationBar = _TranslationsNavigationBarJa._(_root);
 	@override late final _TranslationsDialogJa dialog = _TranslationsDialogJa._(_root);
-	@override late final _TranslationsBottomSheetJa bottomSheet = _TranslationsBottomSheetJa._(_root);
+	@override late final _TranslationsModalSheetJa modalSheet = _TranslationsModalSheetJa._(_root);
 	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
 	@override late final _TranslationsSegmentedSwitchJa segmentedSwitch = _TranslationsSegmentedSwitchJa._(_root);
 	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
@@ -143,6 +149,72 @@ class _TranslationsChatDetailPageJa implements TranslationsChatDetailPageEn {
 	@override String get placeHolder => 'メッセージを入力';
 }
 
+// Path: weatherReportPage
+class _TranslationsWeatherReportPageJa implements TranslationsWeatherReportPageEn {
+	_TranslationsWeatherReportPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get sectionTitle => 'ウェザーリポート';
+}
+
+// Path: weatherReportPostPage
+class _TranslationsWeatherReportPostPageJa implements TranslationsWeatherReportPostPageEn {
+	_TranslationsWeatherReportPostPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ウェザーリポート送信';
+	@override late final _TranslationsWeatherReportPostPagePlaceHolderJa placeHolder = _TranslationsWeatherReportPostPagePlaceHolderJa._(_root);
+	@override late final _TranslationsWeatherReportPostPageLabelJa label = _TranslationsWeatherReportPostPageLabelJa._(_root);
+}
+
+// Path: weatherSelectPage
+class _TranslationsWeatherSelectPageJa implements TranslationsWeatherSelectPageEn {
+	_TranslationsWeatherSelectPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '天気を選択';
+	@override String get sectionTitle => '今の天気は？';
+}
+
+// Path: feelingSelectPage
+class _TranslationsFeelingSelectPageJa implements TranslationsFeelingSelectPageEn {
+	_TranslationsFeelingSelectPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '体感を選択';
+	@override String get sectionTitle => '今の体感は？';
+}
+
+// Path: forecastSelectPage
+class _TranslationsForecastSelectPageJa implements TranslationsForecastSelectPageEn {
+	_TranslationsForecastSelectPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '予想を選択';
+	@override String get sectionTitle => '数時間後は？';
+}
+
+// Path: weatherReportDetailPage
+class _TranslationsWeatherReportDetailPageJa implements TranslationsWeatherReportDetailPageEn {
+	_TranslationsWeatherReportDetailPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '投稿詳細';
+	@override late final _TranslationsWeatherReportDetailPageLabelJa label = _TranslationsWeatherReportDetailPageLabelJa._(_root);
+}
+
 // Path: profilePage
 class _TranslationsProfilePageJa implements TranslationsProfilePageEn {
 	_TranslationsProfilePageJa._(this._root);
@@ -207,17 +279,20 @@ class _TranslationsDialogJa implements TranslationsDialogEn {
 	@override late final _TranslationsDialogLogoutJa logout = _TranslationsDialogLogoutJa._(_root);
 	@override late final _TranslationsDialogDeletePhotoJa deletePhoto = _TranslationsDialogDeletePhotoJa._(_root);
 	@override late final _TranslationsDialogSaveChangesJa saveChanges = _TranslationsDialogSaveChangesJa._(_root);
+	@override late final _TranslationsDialogWeatherReportCompleteJa weatherReportComplete = _TranslationsDialogWeatherReportCompleteJa._(_root);
 }
 
-// Path: bottomSheet
-class _TranslationsBottomSheetJa implements TranslationsBottomSheetEn {
-	_TranslationsBottomSheetJa._(this._root);
+// Path: modalSheet
+class _TranslationsModalSheetJa implements TranslationsModalSheetEn {
+	_TranslationsModalSheetJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsBottomSheetSortUserJa sortUser = _TranslationsBottomSheetSortUserJa._(_root);
-	@override late final _TranslationsBottomSheetRefineSearchUserJa refineSearchUser = _TranslationsBottomSheetRefineSearchUserJa._(_root);
+	@override late final _TranslationsModalSheetSortUserJa sortUser = _TranslationsModalSheetSortUserJa._(_root);
+	@override late final _TranslationsModalSheetRefineSearchUserJa refineSearchUser = _TranslationsModalSheetRefineSearchUserJa._(_root);
+	@override late final _TranslationsModalSheetPickMediaJa pickMedia = _TranslationsModalSheetPickMediaJa._(_root);
+	@override late final _TranslationsModalSheetCommentJa comment = _TranslationsModalSheetCommentJa._(_root);
 }
 
 // Path: button
@@ -238,6 +313,8 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get delete => '削除';
 	@override String get apply => '適用する';
 	@override String get clear => 'クリア';
+	@override String get send => '送信';
+	@override String get close => '閉じる';
 }
 
 // Path: segmentedSwitch
@@ -265,12 +342,16 @@ class _TranslationsKEnumJa implements TranslationsKEnumEn {
 	@override late final _TranslationsKEnumBodyShapeJa bodyShape = _TranslationsKEnumBodyShapeJa._(_root);
 	@override late final _TranslationsKEnumCommunicationStyleJa communicationStyle = _TranslationsKEnumCommunicationStyleJa._(_root);
 	@override late final _TranslationsKEnumEducationJa education = _TranslationsKEnumEducationJa._(_root);
+	@override late final _TranslationsKEnumFeelingTypeJa feelingType = _TranslationsKEnumFeelingTypeJa._(_root);
+	@override late final _TranslationsKEnumForecastTypeJa forecastType = _TranslationsKEnumForecastTypeJa._(_root);
 	@override late final _TranslationsKEnumGenderJa gender = _TranslationsKEnumGenderJa._(_root);
 	@override late final _TranslationsKEnumHeightJa height = _TranslationsKEnumHeightJa._(_root);
 	@override late final _TranslationsKEnumHolidayJa holiday = _TranslationsKEnumHolidayJa._(_root);
 	@override late final _TranslationsKEnumOccupationJa occupation = _TranslationsKEnumOccupationJa._(_root);
 	@override late final _TranslationsKEnumSmokingJa smoking = _TranslationsKEnumSmokingJa._(_root);
 	@override late final _TranslationsKEnumSortTypeJa sortType = _TranslationsKEnumSortTypeJa._(_root);
+	@override late final _TranslationsKEnumWeatherTypeJa weatherType = _TranslationsKEnumWeatherTypeJa._(_root);
+	@override late final _TranslationsKEnumWindDirectionJa windDirection = _TranslationsKEnumWindDirectionJa._(_root);
 }
 
 // Path: signUpPage.button
@@ -415,6 +496,42 @@ class _TranslationsChatPageSubSectionTitleJa implements TranslationsChatPageSubS
 
 	// Translations
 	@override String get matching => '最初のメッセージを送りましょう！';
+}
+
+// Path: weatherReportPostPage.placeHolder
+class _TranslationsWeatherReportPostPagePlaceHolderJa implements TranslationsWeatherReportPostPagePlaceHolderEn {
+	_TranslationsWeatherReportPostPagePlaceHolderJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get media => '写真・動画を追加';
+	@override String get comment1 => 'コメントを入力';
+	@override String get comment2 => 'アルバムから写真や動画を選んだ場合は、コメント欄に撮影日時も添えてください';
+}
+
+// Path: weatherReportPostPage.label
+class _TranslationsWeatherReportPostPageLabelJa implements TranslationsWeatherReportPostPageLabelEn {
+	_TranslationsWeatherReportPostPageLabelJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get location => '場所';
+	@override String get weatherFeelingForecast => '天気/体感/予想';
+	@override String get observation => '観測値';
+}
+
+// Path: weatherReportDetailPage.label
+class _TranslationsWeatherReportDetailPageLabelJa implements TranslationsWeatherReportDetailPageLabelEn {
+	_TranslationsWeatherReportDetailPageLabelJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get weather => '天気';
+	@override String get feeling => '体感';
+	@override String get forecast => '五感予想';
 }
 
 // Path: profilePage.section
@@ -626,9 +743,20 @@ class _TranslationsDialogSaveChangesJa implements TranslationsDialogSaveChangesE
 	@override String get contentText => '変更した内容を保存しますか？';
 }
 
-// Path: bottomSheet.sortUser
-class _TranslationsBottomSheetSortUserJa implements TranslationsBottomSheetSortUserEn {
-	_TranslationsBottomSheetSortUserJa._(this._root);
+// Path: dialog.weatherReportComplete
+class _TranslationsDialogWeatherReportCompleteJa implements TranslationsDialogWeatherReportCompleteEn {
+	_TranslationsDialogWeatherReportCompleteJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ウェザーリポート完了';
+	@override String get contentText => 'おめでとうございます！\nレインボーいいねを1つ獲得しました。';
+}
+
+// Path: modalSheet.sortUser
+class _TranslationsModalSheetSortUserJa implements TranslationsModalSheetSortUserEn {
+	_TranslationsModalSheetSortUserJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -636,15 +764,36 @@ class _TranslationsBottomSheetSortUserJa implements TranslationsBottomSheetSortU
 	@override String get title => '並び替え';
 }
 
-// Path: bottomSheet.refineSearchUser
-class _TranslationsBottomSheetRefineSearchUserJa implements TranslationsBottomSheetRefineSearchUserEn {
-	_TranslationsBottomSheetRefineSearchUserJa._(this._root);
+// Path: modalSheet.refineSearchUser
+class _TranslationsModalSheetRefineSearchUserJa implements TranslationsModalSheetRefineSearchUserEn {
+	_TranslationsModalSheetRefineSearchUserJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '絞り込み条件';
-	@override late final _TranslationsBottomSheetRefineSearchUserSectionJa section = _TranslationsBottomSheetRefineSearchUserSectionJa._(_root);
+	@override late final _TranslationsModalSheetRefineSearchUserSectionJa section = _TranslationsModalSheetRefineSearchUserSectionJa._(_root);
+}
+
+// Path: modalSheet.pickMedia
+class _TranslationsModalSheetPickMediaJa implements TranslationsModalSheetPickMediaEn {
+	_TranslationsModalSheetPickMediaJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsModalSheetPickMediaLabelJa label = _TranslationsModalSheetPickMediaLabelJa._(_root);
+}
+
+// Path: modalSheet.comment
+class _TranslationsModalSheetCommentJa implements TranslationsModalSheetCommentEn {
+	_TranslationsModalSheetCommentJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'コメント';
+	@override String get placeHolder => 'コメントを追加';
 }
 
 // Path: segmentedSwitch.like
@@ -765,6 +914,32 @@ class _TranslationsKEnumEducationJa implements TranslationsKEnumEducationEn {
 	@override String get universityGraduate => '大学卒';
 	@override String get graduateSchoolGraduate => '大学院卒';
 	@override String get other => 'その他';
+}
+
+// Path: kEnum.feelingType
+class _TranslationsKEnumFeelingTypeJa implements TranslationsKEnumFeelingTypeEn {
+	_TranslationsKEnumFeelingTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get freezing => '極寒';
+	@override String get cold => '寒い';
+	@override String get comfortable => 'ちょうどいい';
+	@override String get warm => '暖かい';
+	@override String get notApplicable => 'あてはまらない';
+}
+
+// Path: kEnum.forecastType
+class _TranslationsKEnumForecastTypeJa implements TranslationsKEnumForecastTypeEn {
+	_TranslationsKEnumForecastTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get noChange => '今と変化なさそう';
+	@override String get improving => '回復しそう';
+	@override String get worsening => '下り坂になりそう';
 }
 
 // Path: kEnum.gender
@@ -972,6 +1147,40 @@ class _TranslationsKEnumSortTypeJa implements TranslationsKEnumSortTypeEn {
 	@override String get compatibility => '相性順';
 }
 
+// Path: kEnum.weatherType
+class _TranslationsKEnumWeatherTypeJa implements TranslationsKEnumWeatherTypeEn {
+	_TranslationsKEnumWeatherTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get clearStar => '星がはっきり';
+	@override String get faintStar => '星がうっすら';
+	@override String get noStar => '星が見えない';
+	@override String get drizzle => 'ポツポツ';
+	@override String get lightRain => 'パラパラ';
+	@override String get rain => 'サー';
+	@override String get heavyRain => 'サーサー';
+}
+
+// Path: kEnum.windDirection
+class _TranslationsKEnumWindDirectionJa implements TranslationsKEnumWindDirectionEn {
+	_TranslationsKEnumWindDirectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get north => '北';
+	@override String get northEast => '北東';
+	@override String get east => '東';
+	@override String get southEast => '南東';
+	@override String get south => '南';
+	@override String get southWest => '南西';
+	@override String get west => '西';
+	@override String get northWest => '北西';
+	@override String get unknown => '分からない';
+}
+
 // Path: userRegistrationPage.birthDate.items
 class _TranslationsUserRegistrationPageBirthDateItemsJa implements TranslationsUserRegistrationPageBirthDateItemsEn {
 	_TranslationsUserRegistrationPageBirthDateItemsJa._(this._root);
@@ -1147,9 +1356,9 @@ class _TranslationsSettingPageSectionAboutReimiJa implements TranslationsSetting
 	@override String get applicationInformation => 'アプリケーション情報';
 }
 
-// Path: bottomSheet.refineSearchUser.section
-class _TranslationsBottomSheetRefineSearchUserSectionJa implements TranslationsBottomSheetRefineSearchUserSectionEn {
-	_TranslationsBottomSheetRefineSearchUserSectionJa._(this._root);
+// Path: modalSheet.refineSearchUser.section
+class _TranslationsModalSheetRefineSearchUserSectionJa implements TranslationsModalSheetRefineSearchUserSectionEn {
+	_TranslationsModalSheetRefineSearchUserSectionJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -1158,6 +1367,19 @@ class _TranslationsBottomSheetRefineSearchUserSectionJa implements TranslationsB
 	@override String get address => '居住地';
 	@override String get gender => '性別';
 	@override String get weatherPersonality => 'ウェザーパーソナリティ';
+}
+
+// Path: modalSheet.pickMedia.label
+class _TranslationsModalSheetPickMediaLabelJa implements TranslationsModalSheetPickMediaLabelEn {
+	_TranslationsModalSheetPickMediaLabelJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get takePhoto => '写真を撮る';
+	@override String get recordVideo => '動画を撮る';
+	@override String get selectExistingPhoto => '既存の写真を選択';
+	@override String get selectExistingVideo => '既存の動画を選択';
 }
 
 // Path: kEnum.address.prefecture
@@ -1307,6 +1529,24 @@ extension on TranslationsJa {
 			'chatPage.sectionTitle.messages' => 'メッセージ',
 			'chatPage.subSectionTitle.matching' => '最初のメッセージを送りましょう！',
 			'chatDetailPage.placeHolder' => 'メッセージを入力',
+			'weatherReportPage.sectionTitle' => 'ウェザーリポート',
+			'weatherReportPostPage.title' => 'ウェザーリポート送信',
+			'weatherReportPostPage.placeHolder.media' => '写真・動画を追加',
+			'weatherReportPostPage.placeHolder.comment1' => 'コメントを入力',
+			'weatherReportPostPage.placeHolder.comment2' => 'アルバムから写真や動画を選んだ場合は、コメント欄に撮影日時も添えてください',
+			'weatherReportPostPage.label.location' => '場所',
+			'weatherReportPostPage.label.weatherFeelingForecast' => '天気/体感/予想',
+			'weatherReportPostPage.label.observation' => '観測値',
+			'weatherSelectPage.title' => '天気を選択',
+			'weatherSelectPage.sectionTitle' => '今の天気は？',
+			'feelingSelectPage.title' => '体感を選択',
+			'feelingSelectPage.sectionTitle' => '今の体感は？',
+			'forecastSelectPage.title' => '予想を選択',
+			'forecastSelectPage.sectionTitle' => '数時間後は？',
+			'weatherReportDetailPage.title' => '投稿詳細',
+			'weatherReportDetailPage.label.weather' => '天気',
+			'weatherReportDetailPage.label.feeling' => '体感',
+			'weatherReportDetailPage.label.forecast' => '五感予想',
 			'profilePage.title' => 'プロフィール編集',
 			'profilePage.section.mainPhoto' => 'メイン写真',
 			'profilePage.section.subPhoto' => 'サブ写真',
@@ -1396,12 +1636,20 @@ extension on TranslationsJa {
 			'dialog.deletePhoto.contentText' => '本当にこの写真を削除しますか？',
 			'dialog.saveChanges.title' => '変更保存の確認',
 			'dialog.saveChanges.contentText' => '変更した内容を保存しますか？',
-			'bottomSheet.sortUser.title' => '並び替え',
-			'bottomSheet.refineSearchUser.title' => '絞り込み条件',
-			'bottomSheet.refineSearchUser.section.age' => '年齢',
-			'bottomSheet.refineSearchUser.section.address' => '居住地',
-			'bottomSheet.refineSearchUser.section.gender' => '性別',
-			'bottomSheet.refineSearchUser.section.weatherPersonality' => 'ウェザーパーソナリティ',
+			'dialog.weatherReportComplete.title' => 'ウェザーリポート完了',
+			'dialog.weatherReportComplete.contentText' => 'おめでとうございます！\nレインボーいいねを1つ獲得しました。',
+			'modalSheet.sortUser.title' => '並び替え',
+			'modalSheet.refineSearchUser.title' => '絞り込み条件',
+			'modalSheet.refineSearchUser.section.age' => '年齢',
+			'modalSheet.refineSearchUser.section.address' => '居住地',
+			'modalSheet.refineSearchUser.section.gender' => '性別',
+			'modalSheet.refineSearchUser.section.weatherPersonality' => 'ウェザーパーソナリティ',
+			'modalSheet.pickMedia.label.takePhoto' => '写真を撮る',
+			'modalSheet.pickMedia.label.recordVideo' => '動画を撮る',
+			'modalSheet.pickMedia.label.selectExistingPhoto' => '既存の写真を選択',
+			'modalSheet.pickMedia.label.selectExistingVideo' => '既存の動画を選択',
+			'modalSheet.comment.title' => 'コメント',
+			'modalSheet.comment.placeHolder' => 'コメントを追加',
 			'button.next' => '次へ',
 			'button.confirmation' => '確認',
 			'button.cancel' => 'キャンセル',
@@ -1413,6 +1661,8 @@ extension on TranslationsJa {
 			'button.delete' => '削除',
 			'button.apply' => '適用する',
 			'button.clear' => 'クリア',
+			'button.send' => '送信',
+			'button.close' => '閉じる',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
@@ -1498,6 +1748,14 @@ extension on TranslationsJa {
 			'kEnum.education.universityGraduate' => '大学卒',
 			'kEnum.education.graduateSchoolGraduate' => '大学院卒',
 			'kEnum.education.other' => 'その他',
+			'kEnum.feelingType.freezing' => '極寒',
+			'kEnum.feelingType.cold' => '寒い',
+			'kEnum.feelingType.comfortable' => 'ちょうどいい',
+			'kEnum.feelingType.warm' => '暖かい',
+			'kEnum.feelingType.notApplicable' => 'あてはまらない',
+			'kEnum.forecastType.noChange' => '今と変化なさそう',
+			'kEnum.forecastType.improving' => '回復しそう',
+			'kEnum.forecastType.worsening' => '下り坂になりそう',
 			'kEnum.gender.man' => '男性',
 			'kEnum.gender.woman' => '女性',
 			'kEnum.gender.other' => 'その他',
@@ -1649,6 +1907,22 @@ extension on TranslationsJa {
 			'kEnum.smoking.yes' => '吸う',
 			'kEnum.sortType.login' => 'ログイン順',
 			'kEnum.sortType.compatibility' => '相性順',
+			'kEnum.weatherType.clearStar' => '星がはっきり',
+			'kEnum.weatherType.faintStar' => '星がうっすら',
+			'kEnum.weatherType.noStar' => '星が見えない',
+			'kEnum.weatherType.drizzle' => 'ポツポツ',
+			'kEnum.weatherType.lightRain' => 'パラパラ',
+			'kEnum.weatherType.rain' => 'サー',
+			'kEnum.weatherType.heavyRain' => 'サーサー',
+			'kEnum.windDirection.north' => '北',
+			'kEnum.windDirection.northEast' => '北東',
+			'kEnum.windDirection.east' => '東',
+			'kEnum.windDirection.southEast' => '南東',
+			'kEnum.windDirection.south' => '南',
+			'kEnum.windDirection.southWest' => '南西',
+			'kEnum.windDirection.west' => '西',
+			'kEnum.windDirection.northWest' => '北西',
+			'kEnum.windDirection.unknown' => '分からない',
 			_ => null,
 		};
 	}

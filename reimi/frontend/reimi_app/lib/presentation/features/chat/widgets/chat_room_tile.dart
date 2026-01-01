@@ -82,7 +82,7 @@ class ChatRoomTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  chatRoomSummary.lastMessageAt.toChatPageDisplay(),
+                  chatRoomSummary.lastMessageAt.toDisplayDateText(),
                   style: theme.textTheme.bodySmall!.copyWith(
                     fontSize: 10,
                   ),

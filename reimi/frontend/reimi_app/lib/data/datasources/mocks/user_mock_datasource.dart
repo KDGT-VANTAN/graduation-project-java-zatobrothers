@@ -5,8 +5,8 @@ import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/user_status.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
-class UserMockDataSourceImpl implements UserRemoteDataSource {
-  const UserMockDataSourceImpl();
+class UserMockDataSource implements UserRemoteDataSource {
+  const UserMockDataSource();
 
   @override
   Future<List<UserEntity>> fetchUsers() async {

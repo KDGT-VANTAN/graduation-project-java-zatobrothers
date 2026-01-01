@@ -22,12 +22,12 @@ List<Widget> chatMessageList({
             if (isMe) {
               return SentMessage(
                 text: message.content,
-                time: message.sentAt.toMessageSentAtDisplay(),
+                time: message.sentAt.toHHmmTimeDisplay(),
               );
             } else {
               return ReceivedMessage(
                 text: message.content,
-                time: message.sentAt.toMessageSentAtDisplay(),
+                time: message.sentAt.toHHmmTimeDisplay(),
                 mainPhotoUrl: mainPhotoUrl,
               );
             }

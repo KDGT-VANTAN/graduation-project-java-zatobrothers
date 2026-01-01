@@ -22,16 +22,16 @@ extension DateTimeFormatExtension on DateTime {
 
   /* 
     チャット画面の時刻表示
-      - 今日: hh:mm
+      - 今日: HH:mm
       - 昨日: 昨日
       - 2日前以降: n日前
   */
-  String toChatPageDisplay() {
+  String toDisplayDateText() {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final targetDate = DateTime(year, month, day);
     final differenceInDays = today.difference(targetDate).inDays;
-    
+
     if (differenceInDays == 0) {
       final hour = this.hour.toString().padLeft(2, '0');
       final minute = this.minute.toString().padLeft(2, '0');
@@ -43,10 +43,37 @@ extension DateTimeFormatExtension on DateTime {
     }
   }
 
-  // チャット詳細画面の時刻表示 hh:mm
-  String toMessageSentAtDisplay() {
+  // HH:mm
+  String toHHmmTimeDisplay() {
     final hour = this.hour.toString().padLeft(2, '0');
     final minute = this.minute.toString().padLeft(2, '0');
     return '$hour:$minute';
+  }
+
+  String toRelativeDateTime() {
+    final now = DateTime.now();
+    final difference = now.difference(this);
+
+    if (difference.isNegative) {
+      return 'たった今';
+    }
+
+    final isToday = now.year == year && now.month == month && now.day == day;
+
+    if (isToday) {
+      if (difference.inMinutes < 1) {
+        return 'たった今';
+      } else if (difference.inMinutes < 60) {
+        return '${difference.inMinutes}分前';
+      } else {
+        return '${difference.inHours}時間前';
+      }
+    } else {
+      if (difference.inDays == 1) {
+        return '1日前';
+      } else {
+        return '${difference.inDays}日前';
+      }
+    }
   }
 }
