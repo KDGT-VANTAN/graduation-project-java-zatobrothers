@@ -41,6 +41,19 @@ public class GlobalExceptionHandler {
         );
     }
 
+    // 引数が不正である場合のエラー処理（enum変換・UUID変換・日付変換など）
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiErrorResponse> handleIllegalArgument(IllegalArgumentException ex) {
+        return ResponseEntity
+            .badRequest()
+            .body(new ApiErrorResponse(
+                "INVALID_REQUEST",
+                "入力値が不正です",
+                null
+            )
+        );
+    }
+
     // バリデーションエラー処理
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiErrorResponse> handleValidationError(MethodArgumentNotValidException ex) {
