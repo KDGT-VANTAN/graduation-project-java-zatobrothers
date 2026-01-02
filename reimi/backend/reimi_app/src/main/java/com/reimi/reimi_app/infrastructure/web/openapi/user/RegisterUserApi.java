@@ -54,8 +54,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                         "code": "INVALID_REQUEST",
                         "message": "入力値が不正です",
                         "details": {
-                            "email": "メールアドレスの形式が正しくありません",
-                            "introduction": "自己紹介文は20〜500文字である必要があります"
+                            "email": "メールアドレスの形式が不正です",
+                            "introduction": "自己紹介文は20文字以上500文字以下で入力してください"
                         }
                     }
                     """
@@ -107,6 +107,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                     """
                 )
             }
+        )
+    ),
+    @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "INTERNAL_SERVER_ERROR",
+                    "message": "予期しないエラーが発生しました"
+                }
+                """
+            )
         )
     )
 })

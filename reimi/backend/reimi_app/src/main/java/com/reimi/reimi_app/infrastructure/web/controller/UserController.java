@@ -20,6 +20,8 @@ import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/users")
@@ -59,7 +61,7 @@ public class UserController {
 
     @PostMapping
     @RegisterUserApi
-    public ResponseEntity<Void> registerUser(@RequestBody RegisterUserRequest request) {
+    public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.name(),
