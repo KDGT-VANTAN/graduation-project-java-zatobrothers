@@ -1,6 +1,11 @@
 package com.reimi.reimi_app.infrastructure.web.advice;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -18,8 +23,33 @@ public class GlobalExceptionHandler {
                 ex.getCode(),
                 ex.getMessage(),
                 null
-            ));
+            )
+        );
     }
+
+    // バリデーションエラー処理
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiErrorResponse> handleValidationError(MethodArgumentNotValidException ex) {
+        Map<String, String> details = ex.getBindingResult()
+            .getFieldErrors()
+            .stream()
+            .collect(Collectors.toMap(
+                FieldError::getField,
+                FieldError::getDefaultMessage,
+                (a, b) -> a
+            )
+        );
+
+        return ResponseEntity
+            .badRequest()
+            .body(new ApiErrorResponse(
+                "INVALID_REQUEST",
+                "入力値が不正です",
+                details
+            )
+        );
+    }
+
     // 想定外エラー
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorResponse> handleException(Exception ex) {
@@ -29,6 +59,7 @@ public class GlobalExceptionHandler {
                 "INTERNAL_SERVER_ERROR",
                 "予期しないエラーが発生しました",
                 null
-            ));
+            )
+        );
     }
 }
