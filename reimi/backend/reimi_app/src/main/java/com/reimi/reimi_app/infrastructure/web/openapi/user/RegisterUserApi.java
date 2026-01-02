@@ -54,8 +54,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                         "code": "INVALID_REQUEST",
                         "message": "入力値が不正です",
                         "details": {
-                            "email": "メールアドレスの形式が正しくありません",
-                            "introduction": "自己紹介文は20〜500文字である必要があります"
+                            "email": "メールアドレスの形式が不正です",
+                            "introduction": "自己紹介文は20文字以上500文字以下で入力してください"
                         }
                     }
                     """
