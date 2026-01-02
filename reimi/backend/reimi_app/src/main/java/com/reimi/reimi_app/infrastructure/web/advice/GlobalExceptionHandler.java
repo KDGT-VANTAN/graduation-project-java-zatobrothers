@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,6 +28,19 @@ public class GlobalExceptionHandler {
         );
     }
 
+    // JSONパースエラー処理
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiErrorResponse> handleJsonParseError(HttpMessageNotReadableException ex) {
+        return ResponseEntity
+            .badRequest()
+            .body(new ApiErrorResponse(
+                    "INVALID_REQUEST",
+                    "リクエスト形式が不正です",
+                    null
+            )
+        );
+    }
+
     // バリデーションエラー処理
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiErrorResponse> handleValidationError(MethodArgumentNotValidException ex) {
@@ -39,7 +53,6 @@ public class GlobalExceptionHandler {
                 (a, b) -> a
             )
         );
-
         return ResponseEntity
             .badRequest()
             .body(new ApiErrorResponse(
