@@ -1,0 +1,55 @@
+package com.reimi.reimi_app.infrastructure.web.openapi.user;
+
+import java.lang.annotation.Target;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Operation(
+    summary = "ユーザー一覧取得",
+    description = "登録されているユーザーの一覧を取得できるAPI",
+    tags = { "User" }
+)
+@ApiResponses({
+    @ApiResponse(
+        responseCode = "200",
+        description = "ユーザーの一覧取得成功",
+        content = @Content(
+            mediaType = "application/json",
+            array = @ArraySchema(
+                schema = @Schema(implementation = GetUserListResponse.class)
+            )
+        )
+    ),
+    @ApiResponse(
+        responseCode = "401",
+        description = "認証エラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "UNAUTHENTICATED",
+                    "message": "認証されていません"
+                }
+                """
+            )
+        )
+    )
+})
+public @interface GetUsersApi {
+}

@@ -17,6 +17,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, FirebaseTokenVerifier verifier) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
+            .formLogin(form -> form.disable())
+            .httpBasic(basic -> basic.disable())
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(

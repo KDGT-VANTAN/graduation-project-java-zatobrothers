@@ -1,8 +1,8 @@
 package com.reimi.reimi_app.infrastructure.service;
 
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
-import com.reimi.reimi_app.application.exception.AlreadyRegisteredException;
-import com.reimi.reimi_app.application.exception.EmailAlreadyExistsException;
+import com.reimi.reimi_app.application.exception.client.UserAlreadyExistsException;
+import com.reimi.reimi_app.application.exception.client.EmailAlreadyExistsException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.repository.UserRepository;
@@ -39,7 +39,7 @@ public class UserUseCaseImpl implements UserUseCase {
         String firebaseUid = authenticatedUserProvider.getFirebaseUid();
 
         if (userRepository.existsByFirebaseUid(firebaseUid)) {
-            throw new AlreadyRegisteredException();
+            throw new UserAlreadyExistsException();
         }
 
         if (userRepository.existsByEmail(command.email())) {
