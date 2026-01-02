@@ -49,10 +49,12 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (FirebaseAuthException e) {
+                SecurityContextHolder.clearContext();
                 response.setStatus(HttpStatus.UNAUTHORIZED.value());
                 return;
             }
         }
+
         filterChain.doFilter(request, response);
     }
 }
