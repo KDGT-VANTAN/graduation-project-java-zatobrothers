@@ -42,7 +42,7 @@ public class UserEntity {
     @Column(name = "firebase_uid", nullable = false, updatable = false)
     private String firebaseUid;
 
-    @Column(name = "name", nullable = false, length = 64)
+    @Column(name = "name", nullable = false, length = 16)
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -59,7 +59,7 @@ public class UserEntity {
     @Column(name = "main_photo_url", nullable = false, length = 255)
     private String mainPhotoUrl;
 
-    @Column(name = "email", nullable = false, length = 255)
+    @Column(name = "email", nullable = false, length = 64)
     private String email;
 
     @Column(name = "last_login_at")
