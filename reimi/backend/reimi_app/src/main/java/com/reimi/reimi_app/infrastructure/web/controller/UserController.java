@@ -15,15 +15,11 @@ import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
-import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
+import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/users")
@@ -40,29 +36,8 @@ public class UserController {
         this.userUseCase = userUseCase;
     }
 
-    @Operation(
-        summary = "ユーザー一覧取得",
-        description = "登録されているユーザーの一覧を取得できるAPI"
-    )
-    @ApiResponses({
-        @ApiResponse(
-            responseCode = "200",
-            description = "ユーザーの一覧を取得しました",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = GetUserListResponse.class)
-            )
-        ),
-        @ApiResponse(
-            responseCode = "401",
-            description = "認証エラー",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = ApiErrorResponse.class)
-            )
-        )
-    })
     @GetMapping
+    @GetUsersApi
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
 
         String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
@@ -82,33 +57,8 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(
-        summary = "ユーザー新規登録",
-        description = "ユーザーの新規登録実行時のAPI"
-    )
-    @ApiResponses({
-        @ApiResponse(
-            responseCode = "201",
-            description = "ユーザーの新規登録が完了しました"
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "無効なリクエストです",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = ApiErrorResponse.class)
-            )
-        ),
-        @ApiResponse(
-            responseCode = "401",
-            description = "認証エラー",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = ApiErrorResponse.class)
-            )
-        )
-    })
     @PostMapping
+    @RegisterUserApi
     public ResponseEntity<Void> registerUser(@RequestBody RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
