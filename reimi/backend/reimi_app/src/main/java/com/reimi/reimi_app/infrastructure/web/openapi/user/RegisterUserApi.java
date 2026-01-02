@@ -108,6 +108,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                 )
             }
         )
+    ),
+    @ApiResponse(
+        responseCode = "500",
+        description = "サーバーエラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "INTERNAL_SERVER_ERROR",
+                    "message": "予期しないエラーが発生しました"
+                }
+                """
+            )
+        )
     )
 })
 public @interface RegisterUserApi {
