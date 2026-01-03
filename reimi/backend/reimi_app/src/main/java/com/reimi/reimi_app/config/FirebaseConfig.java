@@ -13,6 +13,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 import org.springframework.core.io.Resource;
 
 
@@ -20,6 +21,9 @@ import org.springframework.core.io.Resource;
 public class FirebaseConfig {
     @Value("classpath:private-key.json")
     private Resource privateKey;
+
+    @Value("${firebase.storage.bucket}")
+    private String storageBucket;
 
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
@@ -32,6 +36,7 @@ public class FirebaseConfig {
 
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(credentials))
+            .setStorageBucket(storageBucket)
             .build();
 
         return FirebaseApp.initializeApp(firebaseOptions);
