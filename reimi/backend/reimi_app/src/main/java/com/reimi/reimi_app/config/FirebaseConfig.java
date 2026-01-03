@@ -49,7 +49,7 @@ public class FirebaseConfig {
     }
 
     @Bean
-    public Bucket firebaseStorageBucket(FirebaseApp firebaseApp) {
+    public Bucket defaultStorageBucket(FirebaseApp firebaseApp) {
         return StorageClient.getInstance(firebaseApp).bucket();
     }
 }
