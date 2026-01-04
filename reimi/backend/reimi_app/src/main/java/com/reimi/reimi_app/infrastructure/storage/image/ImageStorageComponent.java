@@ -18,6 +18,10 @@ public class ImageStorageComponent extends AbstractFirebaseStorage {
         return upload(file, basePath, this::validateImage);
     }
 
+    public String getSignedUrl(String objectPath) {
+        return signedUrl(objectPath);
+    }
+
     private void validateImage(MultipartFile file) {
         if (file == null || file.isEmpty()) {
             throw new InvalidRequestException("画像ファイルが空です");
