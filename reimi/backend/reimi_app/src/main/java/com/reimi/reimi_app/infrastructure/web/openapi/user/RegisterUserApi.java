@@ -5,12 +5,14 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -19,7 +21,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Operation(
     summary = "ユーザー新規登録",
     description = "ユーザーの新規登録実行時のAPI",
-    tags = { "User" }
+    tags = { "User" },
+    requestBody = @RequestBody(
+        required = true,
+        content = @Content(
+            mediaType = "multipart/form-data",
+            schema = @Schema(implementation = RegisterUserRequest.class)
+        )
+    )
 )
 @ApiResponses({
     @ApiResponse(
