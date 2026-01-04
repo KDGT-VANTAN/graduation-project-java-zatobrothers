@@ -56,7 +56,7 @@ public class UserEntity {
     @Column(name = "address", nullable = false, length = 64)
     private Address address;
 
-    @Column(name = "main_photo_url", nullable = false, length = 255)
+    @Column(name = "main_photo_url", nullable = false)
     private String mainPhotoUrl;
 
     @Column(name = "email", nullable = false, length = 64)
