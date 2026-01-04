@@ -75,7 +75,7 @@ class HomePage extends ConsumerWidget {
                             onTap: () {
                               context.push(
                                 ProfileDetailPage.routeLocation,
-                                extra: {'userId': users[index].userId},
+                                extra: {'userId': users[index].id},
                               );
                             },
                           );

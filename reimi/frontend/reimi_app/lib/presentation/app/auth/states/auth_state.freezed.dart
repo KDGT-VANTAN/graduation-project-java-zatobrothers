@@ -165,7 +165,7 @@ extension AuthStatePatterns on AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(AuthFailure failure)? failure,
     required TResult orElse(),
@@ -177,7 +177,7 @@ extension AuthStatePatterns on AuthState {
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated() when unauthenticated != null:
         return unauthenticated();
       case _Failure() when failure != null:
@@ -204,7 +204,7 @@ extension AuthStatePatterns on AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(AuthFailure failure) failure,
   }) {
@@ -215,7 +215,7 @@ extension AuthStatePatterns on AuthState {
       case _Loading():
         return loading();
       case _Authenticated():
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated():
         return unauthenticated();
       case _Failure():
@@ -241,7 +241,7 @@ extension AuthStatePatterns on AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(AuthFailure failure)? failure,
   }) {
@@ -252,7 +252,7 @@ extension AuthStatePatterns on AuthState {
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated() when unauthenticated != null:
         return unauthenticated();
       case _Failure() when failure != null:
@@ -306,9 +306,9 @@ class _Loading implements AuthState {
 /// @nodoc
 
 class _Authenticated implements AuthState {
-  const _Authenticated(this.user);
+  const _Authenticated(this.firebaseUser);
 
-  final User user;
+  final User firebaseUser;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -322,15 +322,16 @@ class _Authenticated implements AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Authenticated &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.firebaseUser, firebaseUser) ||
+                other.firebaseUser == firebaseUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, firebaseUser);
 
   @override
   String toString() {
-    return 'AuthState.authenticated(user: $user)';
+    return 'AuthState.authenticated(firebaseUser: $firebaseUser)';
   }
 }
 
@@ -341,7 +342,7 @@ abstract mixin class _$AuthenticatedCopyWith<$Res>
           _Authenticated value, $Res Function(_Authenticated) _then) =
       __$AuthenticatedCopyWithImpl;
   @useResult
-  $Res call({User user});
+  $Res call({User firebaseUser});
 }
 
 /// @nodoc
@@ -356,12 +357,12 @@ class __$AuthenticatedCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? user = null,
+    Object? firebaseUser = null,
   }) {
     return _then(_Authenticated(
-      null == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
+      null == firebaseUser
+          ? _self.firebaseUser
+          : firebaseUser // ignore: cast_nullable_to_non_nullable
               as User,
     ));
   }

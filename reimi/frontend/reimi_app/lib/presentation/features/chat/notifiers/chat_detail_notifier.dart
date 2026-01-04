@@ -12,7 +12,7 @@ part 'chat_detail_notifier.g.dart';
 class ChatDetailNotifier extends _$ChatDetailNotifier {
   StreamSubscription<List<ChatMessageModel>>? _chatMessagesSub;
   late final String _chatRoomId;
-  late final String _userId;
+  late final String _otherUserId;
   late final String _currentUserId;
 
   @override
@@ -25,11 +25,11 @@ class ChatDetailNotifier extends _$ChatDetailNotifier {
 
   Future<void> init({
     required String chatRoomId,
-    required String userId,
+    required String otherUserId,
     required String currentUserId,
   }) async {
     _chatRoomId = chatRoomId;
-    _userId = userId;
+    _otherUserId = otherUserId;
     _currentUserId = currentUserId;
     await Future.wait([
       loadMessages(),
@@ -61,7 +61,7 @@ class ChatDetailNotifier extends _$ChatDetailNotifier {
     state = state.copyWith(isLoadingProfile: true, errorMessage: null);
     try {
       final userProfile =
-          await ref.read(getUserProfileUseCaseProvider).call(_userId);
+          await ref.read(getUserProfileUseCaseProvider).call(_otherUserId);
       state = state.copyWith(
         userProfile: userProfile,
         isLoadingProfile: false,

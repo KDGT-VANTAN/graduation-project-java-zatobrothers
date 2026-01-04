@@ -12,7 +12,7 @@ part 'auth_notifier.g.dart';
 class AuthNotifier extends _$AuthNotifier {
   @override
   AuthState build() {
-    final authStateAsync = ref.watch(authStateChangeProvider);
+    final authStateAsync = ref.watch(authStateChangesProvider);
 
     return authStateAsync.when(
       data: (user) {

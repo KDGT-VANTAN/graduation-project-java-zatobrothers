@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/domain/value_objects/chat_segment.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/app/auth/notifiers/current_user_notifier.dart';
+import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/chat_page.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_segment_notifier.dart';
@@ -21,10 +21,10 @@ class ChatDetailPage extends HookConsumerWidget {
   static String get routeLocation => '/$routeName';
   const ChatDetailPage({
     super.key,
-    required this.userId,
+    required this.otherUserId,
     required this.chatRoomId,
   });
-  final String userId;
+  final String otherUserId;
   final String chatRoomId;
 
   @override
@@ -36,15 +36,14 @@ class ChatDetailPage extends HookConsumerWidget {
     final inputText = ref
         .watch(chatDetailNotifierProvider.select((state) => state.inputText));
     final controller = useTextEditingController(text: inputText);
-    final currentUserId =
-        ref.watch(currentUserNotifierProvider).value?.id ?? '';
+    final currentUserId = ref.watch(appUserNotifierProvider).value?.id ?? '';
 
     useEffect(() {
       // build 完了後に一度だけ実行
       Future.microtask(() {
         notifier.init(
           chatRoomId: chatRoomId,
-          userId: userId,
+          otherUserId: otherUserId,
           currentUserId: currentUserId,
         );
       });

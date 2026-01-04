@@ -100,7 +100,9 @@ GoRouter goRouter(Ref ref) {
         path: UserGenderPage.routeLocation,
         name: UserGenderPage.routeName,
         builder: (context, state) {
-          return const UserGenderPage();
+          final extra = state.extra! as Map<String, Object?>;
+          final email = extra['email'] as String;
+          return UserGenderPage(email: email);
         },
       ),
       GoRoute(
@@ -157,10 +159,10 @@ GoRouter goRouter(Ref ref) {
         builder: (context, state) {
           final extra = state.extra! as Map<String, Object>;
           final chatRoomId = extra['chatRoomId'] as String;
-          final userId = extra['userId'] as String;
+          final otherUserId = extra['otherUserId'] as String;
           return ChatDetailPage(
             chatRoomId: chatRoomId,
-            userId: userId,
+            otherUserId: otherUserId,
           );
         },
       ),

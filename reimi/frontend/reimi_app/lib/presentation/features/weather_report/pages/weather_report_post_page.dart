@@ -97,7 +97,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
                             final file = await pickImageFromGallery();
                             if (file != null) {
                               notifier.updateMedia(
-                                mediaType: MediaType.photo,
+                                mediaType: MediaType.image,
                                 url: file.path,
                               );
                             }
