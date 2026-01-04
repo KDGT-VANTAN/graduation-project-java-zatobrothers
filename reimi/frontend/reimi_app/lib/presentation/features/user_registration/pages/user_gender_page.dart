@@ -11,9 +11,13 @@ import 'package:reimi_app/presentation/features/user_registration/pages/user_bir
 import 'package:reimi_app/core/extensions/value_objects/gender_extension.dart';
 
 class UserGenderPage extends ConsumerWidget {
-  const UserGenderPage({super.key});
   static String get routeName => 'user_gender';
   static String get routeLocation => '/$routeName';
+  const UserGenderPage({
+    super.key,
+    required this.email,
+  });
+  final String email;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,6 +64,7 @@ class UserGenderPage extends ConsumerWidget {
           context: context,
           value: gender!.displayName(context),
           onConfirm: () {
+            notifier.updateEmail(email);
             notifier.nextPage();
             context.push(UserBirthdatePage.routeLocation);
           },
