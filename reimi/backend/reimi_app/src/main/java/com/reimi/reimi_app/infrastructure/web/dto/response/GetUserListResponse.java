@@ -20,7 +20,7 @@ public record GetUserListResponse (
         @Schema(description = "居住地", example = "東京都")
         String address,
 
-        @Schema(description = "メイン写真の保存URL", example = "images/users/main_12345.jpg")
+        @Schema(description = "メイン写真URL")
         String mainPhotoUrl,
 
         @Schema(description = "自己紹介文", example = "都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。")
