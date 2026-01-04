@@ -1,3 +1,4 @@
+import 'package:reimi_app/core/di/domain_providers.dart';
 import 'package:reimi_app/data/models/user_registration_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
@@ -27,35 +28,49 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
     }
   }
 
+  void updateEmail(String email) {
+    _updateUserInfo((data) => data.copyWith(email: email));
+  }
+
   void updateGender(Gender gender) {
-    state = state.copyWith(data: state.data!.copyWith(gender: gender));
+    _updateUserInfo((data) => data.copyWith(gender: gender));
   }
 
   void updateBirthDate(DateTime birthDate) {
-    state = state.copyWith(data: state.data!.copyWith(birthDate: birthDate));
+    _updateUserInfo((data) => data.copyWith(birthDate: birthDate));
   }
 
   void updateAddress(Address address) {
-    state = state.copyWith(data: state.data!.copyWith(address: address));
+    _updateUserInfo((data) => data.copyWith(address: address));
   }
 
   void updateName(String name) {
-    state = state.copyWith(data: state.data!.copyWith(name: name));
+    _updateUserInfo((data) => data.copyWith(name: name));
   }
 
   void updateIntroduction(String introduction) {
-    state = state.copyWith(
-      data: state.data!.copyWith(introduction: introduction),
-    );
+    _updateUserInfo((data) => data.copyWith(introduction: introduction));
   }
 
   void updateMainImage(String mainPhotoUrl) {
+    _updateUserInfo((data) => data.copyWith(mainPhotoUrl: mainPhotoUrl));
+  }
+
+  void _updateUserInfo(
+    UserRegistrationModel Function(UserRegistrationModel data) updater,
+  ) {
+    final current = state.data;
+    if (current == null) return;
+
     state = state.copyWith(
-      data: state.data!.copyWith(mainPhotoUrl: mainPhotoUrl),
+      data: updater(current),
     );
   }
 
-  Future<void> submit() async {
-    // 送信処理
+  Future<bool> submit() async {
+    final user = state.data;
+    if (user == null) return false;
+    final result = await ref.read(registerUserUseCaseProvider).call(user);
+    return result;
   }
 }
