@@ -5,13 +5,15 @@ import com.reimi.reimi_app.domain.model.user.Address;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public record RegisterUserCommand (
         String name,
         Gender gender,
         LocalDate birthDate,
         Address address,
-        String mainPhotoUrl,
+        MultipartFile mainPhoto,
         String email,
         String introduction
 ) {}
