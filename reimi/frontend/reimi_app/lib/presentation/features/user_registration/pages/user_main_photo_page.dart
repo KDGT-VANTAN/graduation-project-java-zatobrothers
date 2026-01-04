@@ -115,8 +115,11 @@ class UserMainPhotoPage extends ConsumerWidget {
           contentText2: t.dialog.userMainPhoto.contentText2,
           context: context,
           value: mainPhotoUrl!,
-          onConfirm: () {
-            context.go(HomePage.routeLocation);
+          onConfirm: () async {
+            final result = await notifier.submit();
+            if (result && context.mounted) {
+              context.go(HomePage.routeLocation);
+            }
           },
           isLargeConfirmation: true,
           child: Container(
