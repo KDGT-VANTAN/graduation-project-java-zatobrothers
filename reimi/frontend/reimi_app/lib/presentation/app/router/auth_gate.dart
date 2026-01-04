@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
-import 'package:reimi_app/presentation/app/auth/notifiers/current_user_notifier.dart';
 import 'package:reimi_app/presentation/app/auth/states/auth_state.dart';
 import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
@@ -24,10 +24,10 @@ class AuthGate extends ConsumerWidget {
       initial: () => const SplashPage(),
       loading: () => const LoadingPage(),
       authenticated: (user) {
-        final userAsync = ref.watch(currentUserNotifierProvider);
-        userAsync.when(
-          data: (userData) {
-            if (userData == null) {
+        final appUserAsync = ref.watch(appUserNotifierProvider);
+        appUserAsync.when(
+          data: (appUser) {
+            if (appUser == null) {
               // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.go(UserGenderPage.routeLocation);

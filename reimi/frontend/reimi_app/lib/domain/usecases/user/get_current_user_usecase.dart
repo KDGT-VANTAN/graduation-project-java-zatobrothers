@@ -1,26 +1,12 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import '../../entities/user_entity.dart';
-import '../../repositories/auth_repository.dart';
+import 'package:reimi_app/data/models/app_user_model.dart';
 import '../../repositories/user_repository.dart';
 
 class GetCurrentUserUseCase {
-  const GetCurrentUserUseCase({
-    required this.authRepository,
-    required this.userRepository,
-  });
-  final AuthRepository authRepository;
+  const GetCurrentUserUseCase(this.userRepository);
   final UserRepository userRepository;
 
-  Future<UserEntity?> call() async {
-    final user = await authRepository.getCurrentUser();
-    if (user == null) {
-      return null;
-    } 
-    // TODO: DBにデータがないので仮実装
-    else if (user.uid == dotenv.get('FIREBASE_UID')) {
-      return userRepository.fetchUser("user_000");
-    }
-    return userRepository.fetchUser(user.uid);
+  Future<AppUserModel?> call() async {
+    final user = userRepository.fetchCurrentUser();
+    return user;
   }
 }

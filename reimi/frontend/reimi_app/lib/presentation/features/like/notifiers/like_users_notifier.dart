@@ -1,7 +1,7 @@
 import 'package:reimi_app/core/di/domain_providers.dart';
 import 'package:reimi_app/data/models/like_user_model.dart';
 import 'package:reimi_app/domain/value_objects/like_segment.dart';
-import 'package:reimi_app/presentation/app/auth/notifiers/current_user_notifier.dart';
+import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
 import 'package:reimi_app/presentation/features/like/notifiers/like_segment_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,13 +12,13 @@ class LikeUsersNotifier extends _$LikeUsersNotifier {
   @override
   Future<List<LikeUserModel>?> build() async {
     final segment = ref.watch(likeSegmentNotifierProvider);
-    final userId = ref.watch(currentUserNotifierProvider).value?.id;
-    if (userId == null) {
-      return null;
+    final appUser = ref.watch(appUserNotifierProvider).value;
+    if (appUser == null) {
+      return [];
     }
-    final users = await fetchLikeUsers(segment: segment, userId: userId);
+    final users = await fetchLikeUsers(segment: segment, userId: appUser.id);
     if (users == null) {
-      return null;
+      return [];
     }
     return users;
   }
