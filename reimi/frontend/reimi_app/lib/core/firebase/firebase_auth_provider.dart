@@ -4,12 +4,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'firebase_auth_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 FirebaseAuth firebaseAuth(Ref ref) {
   return FirebaseAuth.instance;
 }
 
-@riverpod
-Stream<User?> authStateChange(Ref ref) {
+@Riverpod(keepAlive: true)
+Stream<User?> authStateChanges(Ref ref) {
   return ref.watch(firebaseAuthProvider).authStateChanges();
+}
+
+@Riverpod(keepAlive: true)
+User? currentUser(Ref ref) {
+  final auth = ref.watch(authStateChangesProvider);
+  return auth.maybeWhen(
+    data: (user) => user,
+    orElse: () => null,
+  );
 }
