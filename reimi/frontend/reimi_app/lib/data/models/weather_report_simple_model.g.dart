@@ -29,6 +29,6 @@ Map<String, dynamic> _$WeatherReportSimpleModelToJson(
     };
 
 const _$MediaTypeEnumMap = {
-  MediaType.photo: 'PHOTO',
+  MediaType.image: 'IMAGE',
   MediaType.video: 'VIDEO',
 };

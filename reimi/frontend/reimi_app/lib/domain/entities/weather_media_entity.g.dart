@@ -26,6 +26,6 @@ Map<String, dynamic> _$WeatherMediaEntityToJson(_WeatherMediaEntity instance) =>
     };
 
 const _$MediaTypeEnumMap = {
-  MediaType.photo: 'PHOTO',
+  MediaType.image: 'IMAGE',
   MediaType.video: 'VIDEO',
 };
