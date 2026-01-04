@@ -39,7 +39,13 @@ public class UserUseCaseImpl implements UserUseCase {
     @Transactional(readOnly = true)
     public List<User> getUsersExcludingMe(String firebaseUid) {
 
-        return userRepository.findAllExcludingUserFirebaseUid(firebaseUid);
+        List<User> users = userRepository.findAllExcludingUserFirebaseUid(firebaseUid);
+
+        for (User user : users) {
+            user.setSignedMainPhotoUrl(imageStorage.getSignedUrl(user.getMainPhotoUrl()));
+        }
+
+        return users;
     }
     @Override
     @Transactional
