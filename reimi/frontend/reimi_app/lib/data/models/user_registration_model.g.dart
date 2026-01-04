@@ -10,24 +10,25 @@ _UserRegistrationModel _$UserRegistrationModelFromJson(
         Map<String, dynamic> json) =>
     _UserRegistrationModel(
       gender: $enumDecodeNullable(_$GenderEnumMap, json['gender']),
-      birthDate: json['birth_date'] == null
-          ? null
-          : DateTime.parse(json['birth_date'] as String),
+      birthDate:
+          const YyyyMmDdDateConverter().fromJson(json['birthDate'] as String?),
       address: $enumDecodeNullable(_$AddressEnumMap, json['address']),
       name: json['name'] as String?,
       introduction: json['introduction'] as String?,
-      mainPhotoUrl: json['main_photo_url'] as String?,
+      mainPhotoUrl: json['mainPhotoUrl'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$UserRegistrationModelToJson(
         _UserRegistrationModel instance) =>
     <String, dynamic>{
       'gender': _$GenderEnumMap[instance.gender],
-      'birth_date': instance.birthDate?.toIso8601String(),
+      'birthDate': const YyyyMmDdDateConverter().toJson(instance.birthDate),
       'address': _$AddressEnumMap[instance.address],
       'name': instance.name,
       'introduction': instance.introduction,
-      'main_photo_url': instance.mainPhotoUrl,
+      'mainPhotoUrl': instance.mainPhotoUrl,
+      'email': instance.email,
     };
 
 const _$GenderEnumMap = {

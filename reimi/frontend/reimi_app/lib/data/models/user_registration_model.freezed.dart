@@ -15,11 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserRegistrationModel {
   Gender? get gender;
+  @YyyyMmDdDateConverter()
   DateTime? get birthDate;
   Address? get address;
   String? get name;
   String? get introduction;
   String? get mainPhotoUrl;
+  String? get email;
 
   /// Create a copy of UserRegistrationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -45,17 +47,18 @@ mixin _$UserRegistrationModel {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl));
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, gender, birthDate, address, name,
-      introduction, mainPhotoUrl);
+      introduction, mainPhotoUrl, email);
 
   @override
   String toString() {
-    return 'UserRegistrationModel(gender: $gender, birthDate: $birthDate, address: $address, name: $name, introduction: $introduction, mainPhotoUrl: $mainPhotoUrl)';
+    return 'UserRegistrationModel(gender: $gender, birthDate: $birthDate, address: $address, name: $name, introduction: $introduction, mainPhotoUrl: $mainPhotoUrl, email: $email)';
   }
 }
 
@@ -67,11 +70,12 @@ abstract mixin class $UserRegistrationModelCopyWith<$Res> {
   @useResult
   $Res call(
       {Gender? gender,
-      DateTime? birthDate,
+      @YyyyMmDdDateConverter() DateTime? birthDate,
       Address? address,
       String? name,
       String? introduction,
-      String? mainPhotoUrl});
+      String? mainPhotoUrl,
+      String? email});
 }
 
 /// @nodoc
@@ -93,6 +97,7 @@ class _$UserRegistrationModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? introduction = freezed,
     Object? mainPhotoUrl = freezed,
+    Object? email = freezed,
   }) {
     return _then(_self.copyWith(
       gender: freezed == gender
@@ -118,6 +123,10 @@ class _$UserRegistrationModelCopyWithImpl<$Res>
       mainPhotoUrl: freezed == mainPhotoUrl
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -216,8 +225,14 @@ extension UserRegistrationModelPatterns on UserRegistrationModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Gender? gender, DateTime? birthDate, Address? address,
-            String? name, String? introduction, String? mainPhotoUrl)?
+    TResult Function(
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? name,
+            String? introduction,
+            String? mainPhotoUrl,
+            String? email)?
         $default, {
     required TResult orElse(),
   }) {
@@ -225,7 +240,7 @@ extension UserRegistrationModelPatterns on UserRegistrationModel {
     switch (_that) {
       case _UserRegistrationModel() when $default != null:
         return $default(_that.gender, _that.birthDate, _that.address,
-            _that.name, _that.introduction, _that.mainPhotoUrl);
+            _that.name, _that.introduction, _that.mainPhotoUrl, _that.email);
       case _:
         return orElse();
     }
@@ -246,15 +261,21 @@ extension UserRegistrationModelPatterns on UserRegistrationModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(Gender? gender, DateTime? birthDate, Address? address,
-            String? name, String? introduction, String? mainPhotoUrl)
+    TResult Function(
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? name,
+            String? introduction,
+            String? mainPhotoUrl,
+            String? email)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UserRegistrationModel():
         return $default(_that.gender, _that.birthDate, _that.address,
-            _that.name, _that.introduction, _that.mainPhotoUrl);
+            _that.name, _that.introduction, _that.mainPhotoUrl, _that.email);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -274,15 +295,21 @@ extension UserRegistrationModelPatterns on UserRegistrationModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Gender? gender, DateTime? birthDate, Address? address,
-            String? name, String? introduction, String? mainPhotoUrl)?
+    TResult? Function(
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? name,
+            String? introduction,
+            String? mainPhotoUrl,
+            String? email)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UserRegistrationModel() when $default != null:
         return $default(_that.gender, _that.birthDate, _that.address,
-            _that.name, _that.introduction, _that.mainPhotoUrl);
+            _that.name, _that.introduction, _that.mainPhotoUrl, _that.email);
       case _:
         return null;
     }
@@ -290,22 +317,23 @@ extension UserRegistrationModelPatterns on UserRegistrationModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _UserRegistrationModel implements UserRegistrationModel {
   const _UserRegistrationModel(
       {this.gender,
-      this.birthDate,
+      @YyyyMmDdDateConverter() this.birthDate,
       this.address,
       this.name,
       this.introduction,
-      this.mainPhotoUrl});
+      this.mainPhotoUrl,
+      this.email});
   factory _UserRegistrationModel.fromJson(Map<String, dynamic> json) =>
       _$UserRegistrationModelFromJson(json);
 
   @override
   final Gender? gender;
   @override
+  @YyyyMmDdDateConverter()
   final DateTime? birthDate;
   @override
   final Address? address;
@@ -315,6 +343,8 @@ class _UserRegistrationModel implements UserRegistrationModel {
   final String? introduction;
   @override
   final String? mainPhotoUrl;
+  @override
+  final String? email;
 
   /// Create a copy of UserRegistrationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -345,17 +375,18 @@ class _UserRegistrationModel implements UserRegistrationModel {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl));
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, gender, birthDate, address, name,
-      introduction, mainPhotoUrl);
+      introduction, mainPhotoUrl, email);
 
   @override
   String toString() {
-    return 'UserRegistrationModel(gender: $gender, birthDate: $birthDate, address: $address, name: $name, introduction: $introduction, mainPhotoUrl: $mainPhotoUrl)';
+    return 'UserRegistrationModel(gender: $gender, birthDate: $birthDate, address: $address, name: $name, introduction: $introduction, mainPhotoUrl: $mainPhotoUrl, email: $email)';
   }
 }
 
@@ -369,11 +400,12 @@ abstract mixin class _$UserRegistrationModelCopyWith<$Res>
   @useResult
   $Res call(
       {Gender? gender,
-      DateTime? birthDate,
+      @YyyyMmDdDateConverter() DateTime? birthDate,
       Address? address,
       String? name,
       String? introduction,
-      String? mainPhotoUrl});
+      String? mainPhotoUrl,
+      String? email});
 }
 
 /// @nodoc
@@ -395,6 +427,7 @@ class __$UserRegistrationModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? introduction = freezed,
     Object? mainPhotoUrl = freezed,
+    Object? email = freezed,
   }) {
     return _then(_UserRegistrationModel(
       gender: freezed == gender
@@ -420,6 +453,10 @@ class __$UserRegistrationModelCopyWithImpl<$Res>
       mainPhotoUrl: freezed == mainPhotoUrl
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }

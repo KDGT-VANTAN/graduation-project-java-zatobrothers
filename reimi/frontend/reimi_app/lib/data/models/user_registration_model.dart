@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:reimi_app/core/utils/yyyy_mm_dd_date_converter.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
 
@@ -7,15 +8,16 @@ part 'user_registration_model.g.dart';
 
 @freezed
 abstract class UserRegistrationModel with _$UserRegistrationModel {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory UserRegistrationModel({
     Gender? gender,
-    DateTime? birthDate,
+    @YyyyMmDdDateConverter() DateTime? birthDate,
     Address? address,
     String? name,
     String? introduction,
     String? mainPhotoUrl,
+    String? email,
   }) = _UserRegistrationModel;
 
-  factory UserRegistrationModel.fromJson(Map<String, dynamic> json) => _$UserRegistrationModelFromJson(json);
+  factory UserRegistrationModel.fromJson(Map<String, dynamic> json) =>
+      _$UserRegistrationModelFromJson(json);
 }
