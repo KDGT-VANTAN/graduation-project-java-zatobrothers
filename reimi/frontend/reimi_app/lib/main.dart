@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/config/crashlytics_config.dart';
 import 'package:reimi_app/core/config/firebase_options_dev.dart' as dev;
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/app/my_app.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
     options: dev.DefaultFirebaseOptions.currentPlatform,
   );
   await dotenv.load(fileName: '.env');
+  setupCrashlytics();
   runApp(
     ProviderScope(
       child: TranslationProvider(
