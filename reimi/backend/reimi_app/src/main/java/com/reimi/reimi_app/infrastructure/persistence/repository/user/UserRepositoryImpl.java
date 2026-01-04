@@ -18,7 +18,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findAllExcludingUserFirebaseUid(String firebaseUid) {
+    public List<User> findAllUserExcludingMeByFirebaseUid(String firebaseUid) {
         return jpaUserRepository.findByFirebaseUidNot(firebaseUid)
             .stream()
             .map(UserMapper::toDomain)
