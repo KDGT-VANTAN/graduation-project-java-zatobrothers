@@ -3,6 +3,7 @@ package com.reimi.reimi_app.infrastructure.web.advice;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -59,9 +60,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<ApiErrorResponse> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException ex) {
         return ResponseEntity
-            .badRequest()
+            .status(HttpStatus.PAYLOAD_TOO_LARGE)
             .body(new ApiErrorResponse(
-                "INVALID_REQUEST",
+                "PAYLOAD_TOO_LARGE",
                 "アップロード可能なファイルサイズを超えています",
                 null
             )
