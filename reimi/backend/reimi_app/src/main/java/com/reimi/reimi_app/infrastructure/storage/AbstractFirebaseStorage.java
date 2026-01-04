@@ -2,11 +2,15 @@ package com.reimi.reimi_app.infrastructure.storage;
 
 import java.io.IOException;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.Storage.SignUrlOption;
 import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
+import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 
 public abstract class AbstractFirebaseStorage {
 
@@ -41,6 +45,21 @@ public abstract class AbstractFirebaseStorage {
         }
 
         return fullPath;
+    }
+
+    protected String signedUrl(String objectPath) {
+        Blob blob = bucket.get(objectPath);
+
+        if (blob == null) {
+            throw new ResourceNotFoundException("メイン写真");
+        }
+
+        String url = blob.signUrl(
+            15, TimeUnit.MINUTES,
+            SignUrlOption.withV4Signature()
+        ).toString();
+
+        return url;
     }
 
     @FunctionalInterface
