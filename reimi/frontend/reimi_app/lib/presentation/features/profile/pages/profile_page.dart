@@ -37,7 +37,6 @@ import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart'
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
-import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
@@ -169,7 +168,11 @@ class ProfilePage extends HookConsumerWidget {
                         label: labels[index],
                         subPhotoUrl: subPhotoUrl,
                         onTap: () async {
-                          final file = await pickImageFromGallery();
+                          final uploadMediaNotifier =
+                              ref.read(uploadMediaNotifierProvider.notifier);
+                          final file = await uploadMediaNotifier.pickImage(
+                            mediaPurpose: MediaPurpose.subPhoto,
+                          );
                           if (file != null) {
                             notifier.setSubPhoto(
                               url: file.path,
