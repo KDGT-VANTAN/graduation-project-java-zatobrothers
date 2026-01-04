@@ -14,17 +14,14 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$HomeUserModel {
-  String get userId;
-  String get firebaseUid;
+  String get id;
   String get name;
-  @IsoDateTimeConverter()
+  @YyyyMmDdDateConverter()
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get lastLoginAt;
-  UserStatus get status;
   String get introduction;
+  bool get isTodayReported;
 
   /// Create a copy of HomeUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -42,30 +39,27 @@ mixin _$HomeUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HomeUserModel &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.firebaseUid, firebaseUid) ||
-                other.firebaseUid == firebaseUid) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt) &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.introduction, introduction) ||
-                other.introduction == introduction));
+                other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, firebaseUid, name,
-      birthDate, address, mainPhotoUrl, lastLoginAt, status, introduction);
+  int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
+      mainPhotoUrl, introduction, isTodayReported);
 
   @override
   String toString() {
-    return 'HomeUserModel(userId: $userId, firebaseUid: $firebaseUid, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt, status: $status, introduction: $introduction)';
+    return 'HomeUserModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
   }
 }
 
@@ -76,15 +70,13 @@ abstract mixin class $HomeUserModelCopyWith<$Res> {
       _$HomeUserModelCopyWithImpl;
   @useResult
   $Res call(
-      {String userId,
-      String firebaseUid,
+      {String id,
       String name,
-      @IsoDateTimeConverter() DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      UserStatus status,
-      String introduction});
+      String introduction,
+      bool isTodayReported});
 }
 
 /// @nodoc
@@ -100,24 +92,18 @@ class _$HomeUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? firebaseUid = null,
+    Object? id = null,
     Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
-    Object? status = null,
     Object? introduction = null,
+    Object? isTodayReported = null,
   }) {
     return _then(_self.copyWith(
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firebaseUid: null == firebaseUid
-          ? _self.firebaseUid
-          : firebaseUid // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _self.name
@@ -135,18 +121,14 @@ class _$HomeUserModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus,
       introduction: null == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      isTodayReported: null == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -245,31 +227,21 @@ extension HomeUserModelPatterns on HomeUserModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String userId,
-            String firebaseUid,
+            String id,
             String name,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String introduction)?
+            String introduction,
+            bool isTodayReported)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _HomeUserModel() when $default != null:
-        return $default(
-            _that.userId,
-            _that.firebaseUid,
-            _that.name,
-            _that.birthDate,
-            _that.address,
-            _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.introduction);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         return orElse();
     }
@@ -291,30 +263,20 @@ extension HomeUserModelPatterns on HomeUserModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String userId,
-            String firebaseUid,
+            String id,
             String name,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String introduction)
+            String introduction,
+            bool isTodayReported)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserModel():
-        return $default(
-            _that.userId,
-            _that.firebaseUid,
-            _that.name,
-            _that.birthDate,
-            _that.address,
-            _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.introduction);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -335,30 +297,20 @@ extension HomeUserModelPatterns on HomeUserModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String userId,
-            String firebaseUid,
+            String id,
             String name,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String introduction)?
+            String introduction,
+            bool isTodayReported)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserModel() when $default != null:
-        return $default(
-            _that.userId,
-            _that.firebaseUid,
-            _that.name,
-            _that.birthDate,
-            _that.address,
-            _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.introduction);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         return null;
     }
@@ -366,42 +318,34 @@ extension HomeUserModelPatterns on HomeUserModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _HomeUserModel implements HomeUserModel {
   const _HomeUserModel(
-      {required this.userId,
-      required this.firebaseUid,
+      {required this.id,
       required this.name,
-      @IsoDateTimeConverter() required this.birthDate,
+      @YyyyMmDdDateConverter() required this.birthDate,
       required this.address,
       required this.mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() this.lastLoginAt,
-      required this.status,
-      required this.introduction});
+      required this.introduction,
+      required this.isTodayReported});
   factory _HomeUserModel.fromJson(Map<String, dynamic> json) =>
       _$HomeUserModelFromJson(json);
 
   @override
-  final String userId;
-  @override
-  final String firebaseUid;
+  final String id;
   @override
   final String name;
   @override
-  @IsoDateTimeConverter()
+  @YyyyMmDdDateConverter()
   final DateTime birthDate;
   @override
   final Address address;
   @override
   final String mainPhotoUrl;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? lastLoginAt;
-  @override
-  final UserStatus status;
-  @override
   final String introduction;
+  @override
+  final bool isTodayReported;
 
   /// Create a copy of HomeUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -423,30 +367,27 @@ class _HomeUserModel implements HomeUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HomeUserModel &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.firebaseUid, firebaseUid) ||
-                other.firebaseUid == firebaseUid) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt) &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.introduction, introduction) ||
-                other.introduction == introduction));
+                other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, firebaseUid, name,
-      birthDate, address, mainPhotoUrl, lastLoginAt, status, introduction);
+  int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
+      mainPhotoUrl, introduction, isTodayReported);
 
   @override
   String toString() {
-    return 'HomeUserModel(userId: $userId, firebaseUid: $firebaseUid, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt, status: $status, introduction: $introduction)';
+    return 'HomeUserModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
   }
 }
 
@@ -459,15 +400,13 @@ abstract mixin class _$HomeUserModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userId,
-      String firebaseUid,
+      {String id,
       String name,
-      @IsoDateTimeConverter() DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      UserStatus status,
-      String introduction});
+      String introduction,
+      bool isTodayReported});
 }
 
 /// @nodoc
@@ -483,24 +422,18 @@ class __$HomeUserModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? userId = null,
-    Object? firebaseUid = null,
+    Object? id = null,
     Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
-    Object? status = null,
     Object? introduction = null,
+    Object? isTodayReported = null,
   }) {
     return _then(_HomeUserModel(
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firebaseUid: null == firebaseUid
-          ? _self.firebaseUid
-          : firebaseUid // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _self.name
@@ -518,18 +451,14 @@ class __$HomeUserModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus,
       introduction: null == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      isTodayReported: null == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }

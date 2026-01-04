@@ -8,31 +8,24 @@ part of 'home_user_model.dart';
 
 _HomeUserModel _$HomeUserModelFromJson(Map<String, dynamic> json) =>
     _HomeUserModel(
-      userId: json['user_id'] as String,
-      firebaseUid: json['firebase_uid'] as String,
+      id: json['id'] as String,
       name: json['name'] as String,
-      birthDate:
-          const IsoDateTimeConverter().fromJson(json['birth_date'] as String),
+      birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
-      mainPhotoUrl: json['main_photo_url'] as String,
-      lastLoginAt: const IsoDateTimeOrNullConverter()
-          .fromJson(json['last_login_at'] as String?),
-      status: $enumDecode(_$UserStatusEnumMap, json['status']),
+      mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String,
+      isTodayReported: json['isTodayReported'] as bool,
     );
 
 Map<String, dynamic> _$HomeUserModelToJson(_HomeUserModel instance) =>
     <String, dynamic>{
-      'user_id': instance.userId,
-      'firebase_uid': instance.firebaseUid,
+      'id': instance.id,
       'name': instance.name,
-      'birth_date': const IsoDateTimeConverter().toJson(instance.birthDate),
+      'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
-      'main_photo_url': instance.mainPhotoUrl,
-      'last_login_at':
-          const IsoDateTimeOrNullConverter().toJson(instance.lastLoginAt),
-      'status': _$UserStatusEnumMap[instance.status]!,
+      'mainPhotoUrl': instance.mainPhotoUrl,
       'introduction': instance.introduction,
+      'isTodayReported': instance.isTodayReported,
     };
 
 const _$AddressEnumMap = {
@@ -84,11 +77,4 @@ const _$AddressEnumMap = {
   Address.kagoshima: 'KAGOSHIMA',
   Address.okinawa: 'OKINAWA',
   Address.other: 'OTHER',
-};
-
-const _$UserStatusEnumMap = {
-  UserStatus.active: 'ACTIVE',
-  UserStatus.withdrawn: 'WITHDRAWN',
-  UserStatus.banned: 'BANNED',
-  UserStatus.suspended: 'SUSPENDED',
 };
