@@ -2,6 +2,8 @@ package com.reimi.reimi_app.infrastructure.web.dto.request;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -28,10 +30,9 @@ public record RegisterUserRequest (
         @Schema(description = "居住地", example = "TOKYO")
         String address,
 
-        @NotBlank(message = "メイン写真URLは必須です")
-        @Size(max = 255, message = "メイン写真URLは255文字以内で入力してください")
-        @Schema(description = "メイン写真の保存URL", example = "images/users/main_12345.jpg")
-        String mainPhotoUrl,
+        @NotNull(message = "メイン写真URLは必須です")
+        @Schema(description = "メイン写真", format = "binary")
+        MultipartFile mainPhoto,
 
         @NotBlank(message = "メールアドレスは必須です")
         @Email(message = "メールアドレスの形式が不正です")

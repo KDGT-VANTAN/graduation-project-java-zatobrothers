@@ -3,10 +3,11 @@ package com.reimi.reimi_app.infrastructure.web.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,7 +52,7 @@ public class UserController {
                     user.getName(),
                     user.getBirthDate(),
                     user.getAddress().getLabel(),
-                    user.getMainPhotoUrl(),
+                    user.getSignedMainPhotoUrl(),
                     user.getProfile().getIntroduction()
                 ))
                 .toList();
@@ -59,16 +60,16 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @RegisterUserApi
-    public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserRequest request) {
+    public ResponseEntity<Void> registerUser(@ModelAttribute @Valid RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.name(),
                 Gender.valueOf(request.gender()),
                 request.birthDate(),
                 Address.valueOf(request.address()),
-                request.mainPhotoUrl(),
+                request.mainPhoto(),
                 request.email(),
                 request.introduction()
             )
