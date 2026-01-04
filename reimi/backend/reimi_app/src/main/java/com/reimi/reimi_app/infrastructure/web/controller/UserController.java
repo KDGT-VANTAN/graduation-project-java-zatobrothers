@@ -52,7 +52,7 @@ public class UserController {
                     user.getName(),
                     user.getBirthDate(),
                     user.getAddress().getLabel(),
-                    user.getMainPhotoUrl(),
+                    user.getSignedMainPhotoUrl(),
                     user.getProfile().getIntroduction()
                 ))
                 .toList();
