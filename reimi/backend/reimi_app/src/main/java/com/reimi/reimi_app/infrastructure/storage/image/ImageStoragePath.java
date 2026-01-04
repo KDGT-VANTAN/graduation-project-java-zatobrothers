@@ -4,4 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ImageStoragePath {
+    public String userMainPhotoPath() {
+        return "images/users/mainPhoto";
+    }
 }
