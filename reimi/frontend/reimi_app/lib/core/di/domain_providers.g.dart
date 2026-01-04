@@ -27,7 +27,7 @@ final signInWithProviderUseCaseProvider =
 typedef SignInWithProviderUseCaseRef
     = AutoDisposeProviderRef<SignInWithProviderUseCase>;
 String _$getHomeUsersUseCaseHash() =>
-    r'9e0664618ae3d35d1f1a435b98eef98c273940f8';
+    r'fd6f2cbcdf59d1373df21fc6f9cfb6913552b5a8';
 
 /// See also [getHomeUsersUseCase].
 @ProviderFor(getHomeUsersUseCase)
@@ -65,6 +65,25 @@ final getCurrentUserUseCaseProvider =
 // ignore: unused_element
 typedef GetCurrentUserUseCaseRef
     = AutoDisposeProviderRef<GetCurrentUserUseCase>;
+String _$registerUserUseCaseHash() =>
+    r'81e94cb3a4461d93fd7e57408709abfcadc4fc0d';
+
+/// See also [registerUserUseCase].
+@ProviderFor(registerUserUseCase)
+final registerUserUseCaseProvider =
+    AutoDisposeProvider<RegisterUserUseCase>.internal(
+  registerUserUseCase,
+  name: r'registerUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$registerUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RegisterUserUseCaseRef = AutoDisposeProviderRef<RegisterUserUseCase>;
 String _$getUserProfileUseCaseHash() =>
     r'4cd021971ff338091f95f1d76bea522877386b22';
 
@@ -243,5 +262,24 @@ final getWeatherReportUseCaseProvider =
 // ignore: unused_element
 typedef GetWeatherReportUseCaseRef
     = AutoDisposeProviderRef<GetWeatherReportUseCase>;
+String _$uploadMediaUseCaseHash() =>
+    r'd18fbee6f56f6a2cfe97d82fccae199d274b7cdc';
+
+/// See also [uploadMediaUseCase].
+@ProviderFor(uploadMediaUseCase)
+final uploadMediaUseCaseProvider =
+    AutoDisposeProvider<UploadMediaUseCase>.internal(
+  uploadMediaUseCase,
+  name: r'uploadMediaUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$uploadMediaUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UploadMediaUseCaseRef = AutoDisposeProviderRef<UploadMediaUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

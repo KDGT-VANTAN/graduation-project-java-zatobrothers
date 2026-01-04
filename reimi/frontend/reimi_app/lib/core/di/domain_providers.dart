@@ -2,14 +2,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/di/data_providers.dart';
 import 'package:reimi_app/domain/usecases/chat_room/get_chat_room_summaries_usecase.dart';
 import 'package:reimi_app/domain/usecases/chat_room/get_unmessaged_match_users_usecase.dart';
+import 'package:reimi_app/domain/usecases/storage/upload_media_usecase.dart';
 import 'package:reimi_app/domain/usecases/user/get_current_user_usecase.dart';
-import 'package:reimi_app/domain/usecases/home/get_home_users_usecase.dart';
+import 'package:reimi_app/domain/usecases/user/get_home_users_usecase.dart';
 import 'package:reimi_app/domain/usecases/like/get_like_users_from_user_usecase.dart';
-import 'package:reimi_app/domain/usecases/like/get_like_users_to_user_usecase.dart';
 import 'package:reimi_app/domain/usecases/profile/get_user_profile_usecase.dart';
 import 'package:reimi_app/domain/usecases/message/send_message_usecase.dart';
 import 'package:reimi_app/domain/usecases/auth/sign_in_with_provider_usecase.dart';
 import 'package:reimi_app/domain/usecases/message/watch_messages_usecase.dart';
+import 'package:reimi_app/domain/usecases/like/get_like_users_to_user_usecase.dart';
+import 'package:reimi_app/domain/usecases/user/register_user_usecase.dart';
 import 'package:reimi_app/domain/usecases/weather_report/get_weather_report_usecase.dart';
 import 'package:reimi_app/domain/usecases/weather_report/get_weather_reports_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -25,18 +27,17 @@ SignInWithProviderUseCase signInWithProviderUseCase(Ref ref) {
 // user関連
 @riverpod
 GetHomeUsersUseCase getHomeUsersUseCase(Ref ref) {
-  return GetHomeUsersUseCase(
-    profileRepository: ref.watch(profileRepositoryProvider),
-    userRepository: ref.watch(userRepositoryProvider),
-  );
+  return GetHomeUsersUseCase(ref.watch(userRepositoryProvider));
 }
 
 @riverpod
 GetCurrentUserUseCase getCurrentUserUseCase(Ref ref) {
-  return GetCurrentUserUseCase(
-    authRepository: ref.watch(authRepositoryProvider),
-    userRepository: ref.watch(userRepositoryProvider),
-  );
+  return GetCurrentUserUseCase(ref.watch(userRepositoryProvider));
+}
+
+@riverpod
+RegisterUserUseCase registerUserUseCase(Ref ref) {
+  return RegisterUserUseCase(ref.watch(userRepositoryProvider));
 }
 
 // profile関連
@@ -81,12 +82,16 @@ WatchMessagesUseCase watchMessagesUseCase(Ref ref) {
 // weather_report関連
 @riverpod
 GetWeatherReportsUseCase getWeatherReportsUseCase(Ref ref) {
-  return GetWeatherReportsUseCase(
-      ref.watch(weatherReportRepositoryProvider));
+  return GetWeatherReportsUseCase(ref.watch(weatherReportRepositoryProvider));
 }
 
 @riverpod
 GetWeatherReportUseCase getWeatherReportUseCase(Ref ref) {
-  return GetWeatherReportUseCase(
-      ref.watch(weatherReportRepositoryProvider));
+  return GetWeatherReportUseCase(ref.watch(weatherReportRepositoryProvider));
+}
+
+// storage関連
+@riverpod
+UploadMediaUseCase uploadMediaUseCase(Ref ref) {
+  return UploadMediaUseCase(ref.watch(storageRepositoryProvider));
 }
