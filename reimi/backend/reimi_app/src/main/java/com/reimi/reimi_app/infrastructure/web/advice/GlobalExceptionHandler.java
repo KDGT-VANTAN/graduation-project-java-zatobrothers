@@ -9,6 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.reimi.reimi_app.application.exception.ClientErrorException;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
@@ -49,6 +50,19 @@ public class GlobalExceptionHandler {
             .body(new ApiErrorResponse(
                 "INVALID_REQUEST",
                 "入力値が不正です",
+                null
+            )
+        );
+    }
+
+    // ファイルアップロードサイズ超過のエラー処理
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ApiErrorResponse> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException ex) {
+        return ResponseEntity
+            .badRequest()
+            .body(new ApiErrorResponse(
+                "INVALID_REQUEST",
+                "アップロード可能なファイルサイズを超えています",
                 null
             )
         );
