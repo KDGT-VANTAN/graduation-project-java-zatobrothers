@@ -24,12 +24,14 @@ import 'package:reimi_app/domain/value_objects/communication_style.dart';
 import 'package:reimi_app/domain/value_objects/education.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
+import 'package:reimi_app/domain/value_objects/media_purpose.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_edit_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_edit_page.dart';
+import 'package:reimi_app/presentation/features/storage/upload_media_notifier.dart';
 import 'package:reimi_app/presentation/shared/utils/enum_picker.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';
@@ -129,8 +131,13 @@ class ProfilePage extends HookConsumerWidget {
                   child: MainPhotoCard(
                     image: data.mainPhotoUrl.toImageProvider(),
                     onTap: () async {
-                      final file = await pickImageFromGallery();
+                      final uploadMediaNotifier =
+                          ref.read(uploadMediaNotifierProvider.notifier);
+                      final file = await uploadMediaNotifier.pickImage(
+                        mediaPurpose: MediaPurpose.mainPhoto,
+                      );
                       if (file != null) {
+                        await uploadMediaNotifier.upload(userId: userId);
                         notifier.updateMainPhotoUrl(file.path);
                       }
                     },
