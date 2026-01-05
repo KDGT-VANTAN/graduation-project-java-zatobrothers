@@ -34,7 +34,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(hours: 1)),
+    createdAt: DateTime.now().subtract(const Duration(hours: 1)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_002',
@@ -43,7 +43,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 1)),
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_003',
@@ -52,7 +52,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(minutes: 5)),
+    createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_004',
@@ -61,7 +61,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(hours: 8)),
+    createdAt: DateTime.now().subtract(const Duration(hours: 8)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_005',
@@ -70,7 +70,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1470252649358-96962407e9d9?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(hours: 3)),
+    createdAt: DateTime.now().subtract(const Duration(hours: 3)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_006',
@@ -79,7 +79,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+    createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_007',
@@ -88,7 +88,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 1, hours: 5)),
+    createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 5)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_008',
@@ -97,7 +97,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1525920980995-f8a382bf42c5?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 2)),
+    createdAt: DateTime.now().subtract(const Duration(days: 2)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_009',
@@ -106,7 +106,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 2, hours: 4)),
+    createdAt: DateTime.now().subtract(const Duration(days: 2, hours: 4)),
   ),
   WeatherReportSimpleModel(
     reportId: 'report_010',
@@ -115,7 +115,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=1000',
-    postAt: DateTime.now().subtract(const Duration(days: 3)),
+    createdAt: DateTime.now().subtract(const Duration(days: 3)),
   ),
 ];
 
@@ -135,7 +135,7 @@ final List<WeatherReportModel> mockWeatherReports = [
     reportComment: ['#快晴', '#青空'],
     likeCount: 124,
     commentCount: 8,
-    postAt: DateTime.now().subtract(const Duration(hours: 1)),
+    createdAt: DateTime.now().subtract(const Duration(hours: 1)),
     latitude: 35.6895,
     longitude: 139.6917,
   ),
@@ -154,6 +154,6 @@ final List<WeatherReportModel> mockWeatherReports = [
     reportComment: ['#夕焼け', '#マジックアワー'],
     likeCount: 89,
     commentCount: 3,
-    postAt: DateTime.now().subtract(const Duration(hours: 3)),
+    createdAt: DateTime.now().subtract(const Duration(hours: 3)),
   ),
 ];

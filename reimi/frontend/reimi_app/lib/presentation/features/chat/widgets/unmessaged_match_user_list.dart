@@ -23,7 +23,7 @@ class UnmessagedMatchUserList extends StatelessWidget {
         itemBuilder: (_, index) {
           return GestureDetector(
             onTap: () {
-              onTap(users[index].userId);
+              onTap(users[index].id);
             },
             child: Container(
               width: 86,

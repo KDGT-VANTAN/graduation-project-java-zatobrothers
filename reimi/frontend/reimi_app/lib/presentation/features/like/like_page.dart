@@ -48,7 +48,7 @@ class LikePage extends ConsumerWidget {
                               onTap: () {
                                 context.push(
                                   ProfileDetailPage.routeLocation,
-                                  extra: {'userId': user.userId},
+                                  extra: {'userId': user.id},
                                 );
                               },
                             );

@@ -57,7 +57,7 @@ class WeatherReportCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      weatherReport.postAt.toRelativeDateTime(),
+                      weatherReport.createdAt.toRelativeDateTime(),
                       style: theme.textTheme.bodySmall!.copyWith(
                         fontSize: 10,
                         color: Colors.black54,
