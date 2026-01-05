@@ -21,7 +21,6 @@ mixin _$WeatherObservationEntity {
   double? get pressure;
   double? get windSpeed;
   WindDirection? get windDir;
-  @IsoDateTimeConverter()
   DateTime get createdAt;
 
   /// Create a copy of WeatherObservationEntity
@@ -31,9 +30,6 @@ mixin _$WeatherObservationEntity {
   $WeatherObservationEntityCopyWith<WeatherObservationEntity> get copyWith =>
       _$WeatherObservationEntityCopyWithImpl<WeatherObservationEntity>(
           this as WeatherObservationEntity, _$identity);
-
-  /// Serializes this WeatherObservationEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +52,6 @@ mixin _$WeatherObservationEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, weatherReportId, temperature,
       humidity, pressure, windSpeed, windDir, createdAt);
@@ -81,7 +76,7 @@ abstract mixin class $WeatherObservationEntityCopyWith<$Res> {
       double? pressure,
       double? windSpeed,
       WindDirection? windDir,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -244,7 +239,7 @@ extension WeatherObservationEntityPatterns on WeatherObservationEntity {
             double? pressure,
             double? windSpeed,
             WindDirection? windDir,
-            @IsoDateTimeConverter() DateTime createdAt)?
+            DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -288,7 +283,7 @@ extension WeatherObservationEntityPatterns on WeatherObservationEntity {
             double? pressure,
             double? windSpeed,
             WindDirection? windDir,
-            @IsoDateTimeConverter() DateTime createdAt)
+            DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -330,7 +325,7 @@ extension WeatherObservationEntityPatterns on WeatherObservationEntity {
             double? pressure,
             double? windSpeed,
             WindDirection? windDir,
-            @IsoDateTimeConverter() DateTime createdAt)?
+            DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -352,7 +347,7 @@ extension WeatherObservationEntityPatterns on WeatherObservationEntity {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _WeatherObservationEntity implements WeatherObservationEntity {
   const _WeatherObservationEntity(
       {required this.id,
@@ -362,9 +357,7 @@ class _WeatherObservationEntity implements WeatherObservationEntity {
       this.pressure,
       this.windSpeed,
       this.windDir,
-      @IsoDateTimeConverter() required this.createdAt});
-  factory _WeatherObservationEntity.fromJson(Map<String, dynamic> json) =>
-      _$WeatherObservationEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -381,7 +374,6 @@ class _WeatherObservationEntity implements WeatherObservationEntity {
   @override
   final WindDirection? windDir;
   @override
-  @IsoDateTimeConverter()
   final DateTime createdAt;
 
   /// Create a copy of WeatherObservationEntity
@@ -392,13 +384,6 @@ class _WeatherObservationEntity implements WeatherObservationEntity {
   _$WeatherObservationEntityCopyWith<_WeatherObservationEntity> get copyWith =>
       __$WeatherObservationEntityCopyWithImpl<_WeatherObservationEntity>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherObservationEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -421,7 +406,6 @@ class _WeatherObservationEntity implements WeatherObservationEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, weatherReportId, temperature,
       humidity, pressure, windSpeed, windDir, createdAt);
@@ -448,7 +432,7 @@ abstract mixin class _$WeatherObservationEntityCopyWith<$Res>
       double? pressure,
       double? windSpeed,
       WindDirection? windDir,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc

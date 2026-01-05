@@ -17,6 +17,8 @@ mixin _$ProfileEntity {
   String get id;
   String get userId;
   String get introduction;
+  DateTime get createdAt;
+  DateTime get updatedAt;
   Height? get height;
   BodyShape? get bodyShape;
   AnnualIncome? get annualIncome;
@@ -30,10 +32,6 @@ mixin _$ProfileEntity {
   Holiday? get holiday;
   List<String>? get sunnyDayHobbies;
   List<String>? get rainyDayHobbies;
-  @IsoDateTimeConverter()
-  DateTime? get createdAt;
-  @IsoDateTimeConverter()
-  DateTime? get updatedAt;
 
   /// Create a copy of ProfileEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -42,9 +40,6 @@ mixin _$ProfileEntity {
   $ProfileEntityCopyWith<ProfileEntity> get copyWith =>
       _$ProfileEntityCopyWithImpl<ProfileEntity>(
           this as ProfileEntity, _$identity);
-
-  /// Serializes this ProfileEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -55,6 +50,10 @@ mixin _$ProfileEntity {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.bodyShape, bodyShape) ||
                 other.bodyShape == bodyShape) &&
@@ -76,20 +75,17 @@ mixin _$ProfileEntity {
             const DeepCollectionEquality()
                 .equals(other.sunnyDayHobbies, sunnyDayHobbies) &&
             const DeepCollectionEquality()
-                .equals(other.rainyDayHobbies, rainyDayHobbies) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                .equals(other.rainyDayHobbies, rainyDayHobbies));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       id,
       userId,
       introduction,
+      createdAt,
+      updatedAt,
       height,
       bodyShape,
       annualIncome,
@@ -102,13 +98,11 @@ mixin _$ProfileEntity {
       alcohol,
       holiday,
       const DeepCollectionEquality().hash(sunnyDayHobbies),
-      const DeepCollectionEquality().hash(rainyDayHobbies),
-      createdAt,
-      updatedAt);
+      const DeepCollectionEquality().hash(rainyDayHobbies));
 
   @override
   String toString() {
-    return 'ProfileEntity(id: $id, userId: $userId, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ProfileEntity(id: $id, userId: $userId, introduction: $introduction, createdAt: $createdAt, updatedAt: $updatedAt, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies)';
   }
 }
 
@@ -122,6 +116,8 @@ abstract mixin class $ProfileEntityCopyWith<$Res> {
       {String id,
       String userId,
       String introduction,
+      DateTime createdAt,
+      DateTime updatedAt,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -134,9 +130,7 @@ abstract mixin class $ProfileEntityCopyWith<$Res> {
       Alcohol? alcohol,
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
-      List<String>? rainyDayHobbies,
-      @IsoDateTimeConverter() DateTime? createdAt,
-      @IsoDateTimeConverter() DateTime? updatedAt});
+      List<String>? rainyDayHobbies});
 }
 
 /// @nodoc
@@ -155,6 +149,8 @@ class _$ProfileEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? introduction = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -168,8 +164,6 @@ class _$ProfileEntityCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -184,6 +178,14 @@ class _$ProfileEntityCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -236,14 +238,6 @@ class _$ProfileEntityCopyWithImpl<$Res>
           ? _self.rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      createdAt: freezed == createdAt
-          ? _self.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _self.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ));
   }
 }
@@ -345,6 +339,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             String id,
             String userId,
             String introduction,
+            DateTime createdAt,
+            DateTime updatedAt,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -357,9 +353,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             Alcohol? alcohol,
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
-            List<String>? rainyDayHobbies,
-            @IsoDateTimeConverter() DateTime? createdAt,
-            @IsoDateTimeConverter() DateTime? updatedAt)?
+            List<String>? rainyDayHobbies)?
         $default, {
     required TResult orElse(),
   }) {
@@ -370,6 +364,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.id,
             _that.userId,
             _that.introduction,
+            _that.createdAt,
+            _that.updatedAt,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -382,9 +378,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.alcohol,
             _that.holiday,
             _that.sunnyDayHobbies,
-            _that.rainyDayHobbies,
-            _that.createdAt,
-            _that.updatedAt);
+            _that.rainyDayHobbies);
       case _:
         return orElse();
     }
@@ -409,6 +403,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             String id,
             String userId,
             String introduction,
+            DateTime createdAt,
+            DateTime updatedAt,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -421,9 +417,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             Alcohol? alcohol,
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
-            List<String>? rainyDayHobbies,
-            @IsoDateTimeConverter() DateTime? createdAt,
-            @IsoDateTimeConverter() DateTime? updatedAt)
+            List<String>? rainyDayHobbies)
         $default,
   ) {
     final _that = this;
@@ -433,6 +427,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.id,
             _that.userId,
             _that.introduction,
+            _that.createdAt,
+            _that.updatedAt,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -445,9 +441,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.alcohol,
             _that.holiday,
             _that.sunnyDayHobbies,
-            _that.rainyDayHobbies,
-            _that.createdAt,
-            _that.updatedAt);
+            _that.rainyDayHobbies);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -471,6 +465,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             String id,
             String userId,
             String introduction,
+            DateTime createdAt,
+            DateTime updatedAt,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -483,9 +479,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             Alcohol? alcohol,
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
-            List<String>? rainyDayHobbies,
-            @IsoDateTimeConverter() DateTime? createdAt,
-            @IsoDateTimeConverter() DateTime? updatedAt)?
+            List<String>? rainyDayHobbies)?
         $default,
   ) {
     final _that = this;
@@ -495,6 +489,8 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.id,
             _that.userId,
             _that.introduction,
+            _that.createdAt,
+            _that.updatedAt,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -507,9 +503,7 @@ extension ProfileEntityPatterns on ProfileEntity {
             _that.alcohol,
             _that.holiday,
             _that.sunnyDayHobbies,
-            _that.rainyDayHobbies,
-            _that.createdAt,
-            _that.updatedAt);
+            _that.rainyDayHobbies);
       case _:
         return null;
     }
@@ -518,12 +512,13 @@ extension ProfileEntityPatterns on ProfileEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProfileEntity implements ProfileEntity {
   const _ProfileEntity(
       {required this.id,
       required this.userId,
       required this.introduction,
+      required this.createdAt,
+      required this.updatedAt,
       this.height,
       this.bodyShape,
       this.annualIncome,
@@ -536,13 +531,9 @@ class _ProfileEntity implements ProfileEntity {
       this.alcohol,
       this.holiday,
       final List<String>? sunnyDayHobbies,
-      final List<String>? rainyDayHobbies,
-      @IsoDateTimeConverter() this.createdAt,
-      @IsoDateTimeConverter() this.updatedAt})
+      final List<String>? rainyDayHobbies})
       : _sunnyDayHobbies = sunnyDayHobbies,
         _rainyDayHobbies = rainyDayHobbies;
-  factory _ProfileEntity.fromJson(Map<String, dynamic> json) =>
-      _$ProfileEntityFromJson(json);
 
   @override
   final String id;
@@ -550,6 +541,10 @@ class _ProfileEntity implements ProfileEntity {
   final String userId;
   @override
   final String introduction;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
   @override
   final Height? height;
   @override
@@ -592,13 +587,6 @@ class _ProfileEntity implements ProfileEntity {
     return EqualUnmodifiableListView(value);
   }
 
-  @override
-  @IsoDateTimeConverter()
-  final DateTime? createdAt;
-  @override
-  @IsoDateTimeConverter()
-  final DateTime? updatedAt;
-
   /// Create a copy of ProfileEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -606,13 +594,6 @@ class _ProfileEntity implements ProfileEntity {
   @pragma('vm:prefer-inline')
   _$ProfileEntityCopyWith<_ProfileEntity> get copyWith =>
       __$ProfileEntityCopyWithImpl<_ProfileEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$ProfileEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -623,6 +604,10 @@ class _ProfileEntity implements ProfileEntity {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.bodyShape, bodyShape) ||
                 other.bodyShape == bodyShape) &&
@@ -644,20 +629,17 @@ class _ProfileEntity implements ProfileEntity {
             const DeepCollectionEquality()
                 .equals(other._sunnyDayHobbies, _sunnyDayHobbies) &&
             const DeepCollectionEquality()
-                .equals(other._rainyDayHobbies, _rainyDayHobbies) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                .equals(other._rainyDayHobbies, _rainyDayHobbies));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       id,
       userId,
       introduction,
+      createdAt,
+      updatedAt,
       height,
       bodyShape,
       annualIncome,
@@ -670,13 +652,11 @@ class _ProfileEntity implements ProfileEntity {
       alcohol,
       holiday,
       const DeepCollectionEquality().hash(_sunnyDayHobbies),
-      const DeepCollectionEquality().hash(_rainyDayHobbies),
-      createdAt,
-      updatedAt);
+      const DeepCollectionEquality().hash(_rainyDayHobbies));
 
   @override
   String toString() {
-    return 'ProfileEntity(id: $id, userId: $userId, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ProfileEntity(id: $id, userId: $userId, introduction: $introduction, createdAt: $createdAt, updatedAt: $updatedAt, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies)';
   }
 }
 
@@ -692,6 +672,8 @@ abstract mixin class _$ProfileEntityCopyWith<$Res>
       {String id,
       String userId,
       String introduction,
+      DateTime createdAt,
+      DateTime updatedAt,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -704,9 +686,7 @@ abstract mixin class _$ProfileEntityCopyWith<$Res>
       Alcohol? alcohol,
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
-      List<String>? rainyDayHobbies,
-      @IsoDateTimeConverter() DateTime? createdAt,
-      @IsoDateTimeConverter() DateTime? updatedAt});
+      List<String>? rainyDayHobbies});
 }
 
 /// @nodoc
@@ -725,6 +705,8 @@ class __$ProfileEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? introduction = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -738,8 +720,6 @@ class __$ProfileEntityCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
   }) {
     return _then(_ProfileEntity(
       id: null == id
@@ -754,6 +734,14 @@ class __$ProfileEntityCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -806,14 +794,6 @@ class __$ProfileEntityCopyWithImpl<$Res>
           ? _self._rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      createdAt: freezed == createdAt
-          ? _self.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _self.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ));
   }
 }

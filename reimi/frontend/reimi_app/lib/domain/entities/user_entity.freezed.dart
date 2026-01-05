@@ -18,20 +18,15 @@ mixin _$UserEntity {
   String get firebaseUid;
   String get name;
   Gender get gender;
-  @IsoDateTimeConverter()
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
   String get email;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get lastLoginAt;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get createdAt;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get updatedAt;
+  DateTime get lastLoginAt;
+  DateTime get createdAt;
+  DateTime get updatedAt;
   UserStatus get status;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get withdrawalAt;
+  DateTime get withdrawalAt;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -39,9 +34,6 @@ mixin _$UserEntity {
   @pragma('vm:prefer-inline')
   $UserEntityCopyWith<UserEntity> get copyWith =>
       _$UserEntityCopyWithImpl<UserEntity>(this as UserEntity, _$identity);
-
-  /// Serializes this UserEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -70,7 +62,6 @@ mixin _$UserEntity {
                 other.withdrawalAt == withdrawalAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -105,15 +96,15 @@ abstract mixin class $UserEntityCopyWith<$Res> {
       String firebaseUid,
       String name,
       Gender gender,
-      @IsoDateTimeConverter() DateTime birthDate,
+      DateTime birthDate,
       Address address,
       String mainPhotoUrl,
       String email,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt,
-      @IsoDateTimeOrNullConverter() DateTime? updatedAt,
+      DateTime lastLoginAt,
+      DateTime createdAt,
+      DateTime updatedAt,
       UserStatus status,
-      @IsoDateTimeOrNullConverter() DateTime? withdrawalAt});
+      DateTime withdrawalAt});
 }
 
 /// @nodoc
@@ -136,11 +127,11 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? email = null,
-    Object? lastLoginAt = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? lastLoginAt = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? status = null,
-    Object? withdrawalAt = freezed,
+    Object? withdrawalAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -175,26 +166,26 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
+      lastLoginAt: null == lastLoginAt
           ? _self.lastLoginAt
           : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdAt: freezed == createdAt
+              as DateTime,
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as UserStatus,
-      withdrawalAt: freezed == withdrawalAt
+      withdrawalAt: null == withdrawalAt
           ? _self.withdrawalAt
           : withdrawalAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -297,15 +288,15 @@ extension UserEntityPatterns on UserEntity {
             String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            DateTime birthDate,
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
+            DateTime lastLoginAt,
+            DateTime createdAt,
+            DateTime updatedAt,
             UserStatus status,
-            @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)?
+            DateTime withdrawalAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -351,15 +342,15 @@ extension UserEntityPatterns on UserEntity {
             String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            DateTime birthDate,
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
+            DateTime lastLoginAt,
+            DateTime createdAt,
+            DateTime updatedAt,
             UserStatus status,
-            @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)
+            DateTime withdrawalAt)
         $default,
   ) {
     final _that = this;
@@ -403,15 +394,15 @@ extension UserEntityPatterns on UserEntity {
             String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            DateTime birthDate,
             Address address,
             String mainPhotoUrl,
             String email,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt,
+            DateTime lastLoginAt,
+            DateTime createdAt,
+            DateTime updatedAt,
             UserStatus status,
-            @IsoDateTimeOrNullConverter() DateTime? withdrawalAt)?
+            DateTime withdrawalAt)?
         $default,
   ) {
     final _that = this;
@@ -439,24 +430,21 @@ extension UserEntityPatterns on UserEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _UserEntity implements UserEntity {
   const _UserEntity(
       {required this.id,
       required this.firebaseUid,
       required this.name,
       required this.gender,
-      @IsoDateTimeConverter() required this.birthDate,
+      required this.birthDate,
       required this.address,
       required this.mainPhotoUrl,
       required this.email,
-      @IsoDateTimeOrNullConverter() this.lastLoginAt,
-      @IsoDateTimeOrNullConverter() this.createdAt,
-      @IsoDateTimeOrNullConverter() this.updatedAt,
+      required this.lastLoginAt,
+      required this.createdAt,
+      required this.updatedAt,
       required this.status,
-      @IsoDateTimeOrNullConverter() this.withdrawalAt});
-  factory _UserEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserEntityFromJson(json);
+      required this.withdrawalAt});
 
   @override
   final String id;
@@ -467,7 +455,6 @@ class _UserEntity implements UserEntity {
   @override
   final Gender gender;
   @override
-  @IsoDateTimeConverter()
   final DateTime birthDate;
   @override
   final Address address;
@@ -476,19 +463,15 @@ class _UserEntity implements UserEntity {
   @override
   final String email;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? lastLoginAt;
+  final DateTime lastLoginAt;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? updatedAt;
+  final DateTime updatedAt;
   @override
   final UserStatus status;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? withdrawalAt;
+  final DateTime withdrawalAt;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -497,13 +480,6 @@ class _UserEntity implements UserEntity {
   @pragma('vm:prefer-inline')
   _$UserEntityCopyWith<_UserEntity> get copyWith =>
       __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$UserEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -532,7 +508,6 @@ class _UserEntity implements UserEntity {
                 other.withdrawalAt == withdrawalAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -569,15 +544,15 @@ abstract mixin class _$UserEntityCopyWith<$Res>
       String firebaseUid,
       String name,
       Gender gender,
-      @IsoDateTimeConverter() DateTime birthDate,
+      DateTime birthDate,
       Address address,
       String mainPhotoUrl,
       String email,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt,
-      @IsoDateTimeOrNullConverter() DateTime? updatedAt,
+      DateTime lastLoginAt,
+      DateTime createdAt,
+      DateTime updatedAt,
       UserStatus status,
-      @IsoDateTimeOrNullConverter() DateTime? withdrawalAt});
+      DateTime withdrawalAt});
 }
 
 /// @nodoc
@@ -600,11 +575,11 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? email = null,
-    Object? lastLoginAt = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? lastLoginAt = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? status = null,
-    Object? withdrawalAt = freezed,
+    Object? withdrawalAt = null,
   }) {
     return _then(_UserEntity(
       id: null == id
@@ -639,26 +614,26 @@ class __$UserEntityCopyWithImpl<$Res> implements _$UserEntityCopyWith<$Res> {
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
+      lastLoginAt: null == lastLoginAt
           ? _self.lastLoginAt
           : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdAt: freezed == createdAt
+              as DateTime,
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       status: null == status
           ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as UserStatus,
-      withdrawalAt: freezed == withdrawalAt
+      withdrawalAt: null == withdrawalAt
           ? _self.withdrawalAt
           : withdrawalAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }

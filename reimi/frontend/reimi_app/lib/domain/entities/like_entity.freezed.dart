@@ -17,8 +17,7 @@ mixin _$LikeEntity {
   String get id;
   String get fromUserId;
   String get toUserId;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get createdAt;
+  DateTime get createdAt;
 
   /// Create a copy of LikeEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -26,9 +25,6 @@ mixin _$LikeEntity {
   @pragma('vm:prefer-inline')
   $LikeEntityCopyWith<LikeEntity> get copyWith =>
       _$LikeEntityCopyWithImpl<LikeEntity>(this as LikeEntity, _$identity);
-
-  /// Serializes this LikeEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -44,7 +40,6 @@ mixin _$LikeEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, fromUserId, toUserId, createdAt);
@@ -62,10 +57,7 @@ abstract mixin class $LikeEntityCopyWith<$Res> {
       _$LikeEntityCopyWithImpl;
   @useResult
   $Res call(
-      {String id,
-      String fromUserId,
-      String toUserId,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      {String id, String fromUserId, String toUserId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -83,7 +75,7 @@ class _$LikeEntityCopyWithImpl<$Res> implements $LikeEntityCopyWith<$Res> {
     Object? id = null,
     Object? fromUserId = null,
     Object? toUserId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -98,10 +90,10 @@ class _$LikeEntityCopyWithImpl<$Res> implements $LikeEntityCopyWith<$Res> {
           ? _self.toUserId
           : toUserId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -199,8 +191,8 @@ extension LikeEntityPatterns on LikeEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String fromUserId, String toUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+    TResult Function(
+            String id, String fromUserId, String toUserId, DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -229,8 +221,8 @@ extension LikeEntityPatterns on LikeEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String fromUserId, String toUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)
+    TResult Function(
+            String id, String fromUserId, String toUserId, DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -257,8 +249,8 @@ extension LikeEntityPatterns on LikeEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String fromUserId, String toUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+    TResult? Function(
+            String id, String fromUserId, String toUserId, DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -274,15 +266,12 @@ extension LikeEntityPatterns on LikeEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _LikeEntity implements LikeEntity {
   const _LikeEntity(
       {required this.id,
       required this.fromUserId,
       required this.toUserId,
-      @IsoDateTimeOrNullConverter() this.createdAt});
-  factory _LikeEntity.fromJson(Map<String, dynamic> json) =>
-      _$LikeEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -291,8 +280,7 @@ class _LikeEntity implements LikeEntity {
   @override
   final String toUserId;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   /// Create a copy of LikeEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -301,13 +289,6 @@ class _LikeEntity implements LikeEntity {
   @pragma('vm:prefer-inline')
   _$LikeEntityCopyWith<_LikeEntity> get copyWith =>
       __$LikeEntityCopyWithImpl<_LikeEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$LikeEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -323,7 +304,6 @@ class _LikeEntity implements LikeEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, fromUserId, toUserId, createdAt);
@@ -343,10 +323,7 @@ abstract mixin class _$LikeEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String fromUserId,
-      String toUserId,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      {String id, String fromUserId, String toUserId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -364,7 +341,7 @@ class __$LikeEntityCopyWithImpl<$Res> implements _$LikeEntityCopyWith<$Res> {
     Object? id = null,
     Object? fromUserId = null,
     Object? toUserId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_LikeEntity(
       id: null == id
@@ -379,10 +356,10 @@ class __$LikeEntityCopyWithImpl<$Res> implements _$LikeEntityCopyWith<$Res> {
           ? _self.toUserId
           : toUserId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
