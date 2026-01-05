@@ -19,6 +19,7 @@ import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.user.GetMeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
@@ -42,6 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/me")
+    @GetMeApi
     public ResponseEntity<GetMeResponse> getMe() {
 
         String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
