@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
+import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.user.GetMeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
@@ -39,6 +42,25 @@ public class UserController {
         this.userUseCase = userUseCase;
     }
 
+    @GetMapping("/me")
+    @GetMeApi
+    public ResponseEntity<GetMeResponse> getMe() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+        GetMeResponse getMeResponse = userUseCase.getUser(myFirebaseUid)
+            .map(user -> new GetMeResponse(
+                user.getId().value(),
+                user.getName(),
+                user.getGender().getLabel(),
+                user.getBirthDate(),
+                user.getAddress().getLabel(),
+                user.getEmail(),
+                user.getStatus().getLabel()
+            ))
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        return ResponseEntity.ok(getMeResponse);
+    }
     @GetMapping
     @GetUsersApi
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
