@@ -8,22 +8,22 @@ part of 'chat_message_model.dart';
 
 _ChatMessageModel _$ChatMessageModelFromJson(Map<String, dynamic> json) =>
     _ChatMessageModel(
-      messageId: json['message_id'] as String,
-      chatRoomId: json['chat_room_id'] as String,
-      senderId: json['sender_id'] as String,
+      messageId: json['messageId'] as String,
+      chatRoomId: json['chatRoomId'] as String,
+      senderId: json['senderId'] as String,
       content: json['content'] as String,
-      messageType: $enumDecode(_$MessageTypeEnumMap, json['message_type']),
-      sentAt: DateTime.parse(json['sent_at'] as String),
+      messageType: $enumDecode(_$MessageTypeEnumMap, json['messageType']),
+      sentAt: DateTime.parse(json['sentAt'] as String),
     );
 
 Map<String, dynamic> _$ChatMessageModelToJson(_ChatMessageModel instance) =>
     <String, dynamic>{
-      'message_id': instance.messageId,
-      'chat_room_id': instance.chatRoomId,
-      'sender_id': instance.senderId,
+      'messageId': instance.messageId,
+      'chatRoomId': instance.chatRoomId,
+      'senderId': instance.senderId,
       'content': instance.content,
-      'message_type': _$MessageTypeEnumMap[instance.messageType]!,
-      'sent_at': instance.sentAt.toIso8601String(),
+      'messageType': _$MessageTypeEnumMap[instance.messageType]!,
+      'sentAt': instance.sentAt.toIso8601String(),
     };
 
 const _$MessageTypeEnumMap = {

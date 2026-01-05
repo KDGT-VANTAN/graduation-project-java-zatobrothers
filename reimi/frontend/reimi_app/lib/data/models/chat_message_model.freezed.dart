@@ -291,8 +291,7 @@ extension ChatMessageModelPatterns on ChatMessageModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _ChatMessageModel implements ChatMessageModel {
   const _ChatMessageModel(
       {required this.messageId,

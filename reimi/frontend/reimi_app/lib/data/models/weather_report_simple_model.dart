@@ -5,16 +5,14 @@ part 'weather_report_simple_model.freezed.dart';
 part 'weather_report_simple_model.g.dart';
 
 @freezed
-abstract class WeatherReportSimpleModel
-    with _$WeatherReportSimpleModel {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+abstract class WeatherReportSimpleModel with _$WeatherReportSimpleModel {
   const factory WeatherReportSimpleModel({
     required String reportId,
     required String userId,
     required String comment,
     required MediaType mediaType,
     required String url,
-    required DateTime postAt,
+    required DateTime createdAt,
   }) = _WeatherReportSimpleModel;
 
   factory WeatherReportSimpleModel.fromJson(Map<String, dynamic> json) =>

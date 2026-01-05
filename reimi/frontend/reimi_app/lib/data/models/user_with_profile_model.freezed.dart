@@ -15,18 +15,14 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserWithProfileModel {
   String get userId;
-  String get firebaseUid;
   String get name;
   Gender get gender;
-  @IsoDateTimeConverter()
+  @YyyyMmDdDateConverter()
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get lastLoginAt;
-  UserStatus get status;
-  String get profileId;
   String get introduction;
+  bool get isTodayReported;
   Height? get height;
   BodyShape? get bodyShape;
   AnnualIncome? get annualIncome;
@@ -59,8 +55,6 @@ mixin _$UserWithProfileModel {
         (other.runtimeType == runtimeType &&
             other is UserWithProfileModel &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.firebaseUid, firebaseUid) ||
-                other.firebaseUid == firebaseUid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.birthDate, birthDate) ||
@@ -68,13 +62,10 @@ mixin _$UserWithProfileModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.profileId, profileId) ||
-                other.profileId == profileId) &&
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.bodyShape, bodyShape) ||
                 other.bodyShape == bodyShape) &&
@@ -106,16 +97,13 @@ mixin _$UserWithProfileModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         userId,
-        firebaseUid,
         name,
         gender,
         birthDate,
         address,
         mainPhotoUrl,
-        lastLoginAt,
-        status,
-        profileId,
         introduction,
+        isTodayReported,
         height,
         bodyShape,
         annualIncome,
@@ -134,7 +122,7 @@ mixin _$UserWithProfileModel {
 
   @override
   String toString() {
-    return 'UserWithProfileModel(userId: $userId, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt, status: $status, profileId: $profileId, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
+    return 'UserWithProfileModel(userId: $userId, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
   }
 }
 
@@ -146,16 +134,13 @@ abstract mixin class $UserWithProfileModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      String firebaseUid,
       String name,
       Gender gender,
-      @IsoDateTimeConverter() DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      UserStatus status,
-      String profileId,
       String introduction,
+      bool isTodayReported,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -186,16 +171,13 @@ class _$UserWithProfileModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? firebaseUid = null,
     Object? name = null,
     Object? gender = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
-    Object? status = null,
-    Object? profileId = null,
     Object? introduction = null,
+    Object? isTodayReported = null,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -215,10 +197,6 @@ class _$UserWithProfileModelCopyWithImpl<$Res>
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firebaseUid: null == firebaseUid
-          ? _self.firebaseUid
-          : firebaseUid // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _self.name
@@ -240,22 +218,14 @@ class _$UserWithProfileModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus,
-      profileId: null == profileId
-          ? _self.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as String,
       introduction: null == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      isTodayReported: null == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -411,16 +381,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String userId,
-            String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String profileId,
             String introduction,
+            bool isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -443,16 +410,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
       case _UserWithProfileModel() when $default != null:
         return $default(
             _that.userId,
-            _that.firebaseUid,
             _that.name,
             _that.gender,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.profileId,
             _that.introduction,
+            _that.isTodayReported,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -489,16 +453,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
   TResult when<TResult extends Object?>(
     TResult Function(
             String userId,
-            String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String profileId,
             String introduction,
+            bool isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -520,16 +481,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
       case _UserWithProfileModel():
         return $default(
             _that.userId,
-            _that.firebaseUid,
             _that.name,
             _that.gender,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.profileId,
             _that.introduction,
+            _that.isTodayReported,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -565,16 +523,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             String userId,
-            String firebaseUid,
             String name,
             Gender gender,
-            @IsoDateTimeConverter() DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-            UserStatus status,
-            String profileId,
             String introduction,
+            bool isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -596,16 +551,13 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
       case _UserWithProfileModel() when $default != null:
         return $default(
             _that.userId,
-            _that.firebaseUid,
             _that.name,
             _that.gender,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastLoginAt,
-            _that.status,
-            _that.profileId,
             _that.introduction,
+            _that.isTodayReported,
             _that.height,
             _that.bodyShape,
             _that.annualIncome,
@@ -627,21 +579,17 @@ extension UserWithProfileModelPatterns on UserWithProfileModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _UserWithProfileModel implements UserWithProfileModel {
   const _UserWithProfileModel(
       {required this.userId,
-      required this.firebaseUid,
       required this.name,
       required this.gender,
-      @IsoDateTimeConverter() required this.birthDate,
+      @YyyyMmDdDateConverter() required this.birthDate,
       required this.address,
       required this.mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() this.lastLoginAt,
-      required this.status,
-      required this.profileId,
       required this.introduction,
+      required this.isTodayReported,
       this.height,
       this.bodyShape,
       this.annualIncome,
@@ -665,27 +613,20 @@ class _UserWithProfileModel implements UserWithProfileModel {
   @override
   final String userId;
   @override
-  final String firebaseUid;
-  @override
   final String name;
   @override
   final Gender gender;
   @override
-  @IsoDateTimeConverter()
+  @YyyyMmDdDateConverter()
   final DateTime birthDate;
   @override
   final Address address;
   @override
   final String mainPhotoUrl;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? lastLoginAt;
-  @override
-  final UserStatus status;
-  @override
-  final String profileId;
-  @override
   final String introduction;
+  @override
+  final bool isTodayReported;
   @override
   final Height? height;
   @override
@@ -760,8 +701,6 @@ class _UserWithProfileModel implements UserWithProfileModel {
         (other.runtimeType == runtimeType &&
             other is _UserWithProfileModel &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.firebaseUid, firebaseUid) ||
-                other.firebaseUid == firebaseUid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.birthDate, birthDate) ||
@@ -769,13 +708,10 @@ class _UserWithProfileModel implements UserWithProfileModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.profileId, profileId) ||
-                other.profileId == profileId) &&
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.bodyShape, bodyShape) ||
                 other.bodyShape == bodyShape) &&
@@ -807,16 +743,13 @@ class _UserWithProfileModel implements UserWithProfileModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         userId,
-        firebaseUid,
         name,
         gender,
         birthDate,
         address,
         mainPhotoUrl,
-        lastLoginAt,
-        status,
-        profileId,
         introduction,
+        isTodayReported,
         height,
         bodyShape,
         annualIncome,
@@ -835,7 +768,7 @@ class _UserWithProfileModel implements UserWithProfileModel {
 
   @override
   String toString() {
-    return 'UserWithProfileModel(userId: $userId, firebaseUid: $firebaseUid, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt, status: $status, profileId: $profileId, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
+    return 'UserWithProfileModel(userId: $userId, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
   }
 }
 
@@ -849,16 +782,13 @@ abstract mixin class _$UserWithProfileModelCopyWith<$Res>
   @useResult
   $Res call(
       {String userId,
-      String firebaseUid,
       String name,
       Gender gender,
-      @IsoDateTimeConverter() DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt,
-      UserStatus status,
-      String profileId,
       String introduction,
+      bool isTodayReported,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -889,16 +819,13 @@ class __$UserWithProfileModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? userId = null,
-    Object? firebaseUid = null,
     Object? name = null,
     Object? gender = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
-    Object? status = null,
-    Object? profileId = null,
     Object? introduction = null,
+    Object? isTodayReported = null,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -918,10 +845,6 @@ class __$UserWithProfileModelCopyWithImpl<$Res>
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firebaseUid: null == firebaseUid
-          ? _self.firebaseUid
-          : firebaseUid // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _self.name
@@ -943,22 +866,14 @@ class __$UserWithProfileModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      status: null == status
-          ? _self.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UserStatus,
-      profileId: null == profileId
-          ? _self.profileId
-          : profileId // ignore: cast_nullable_to_non_nullable
-              as String,
       introduction: null == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
+      isTodayReported: null == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable

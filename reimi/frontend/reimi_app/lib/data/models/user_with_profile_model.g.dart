@@ -9,39 +9,34 @@ part of 'user_with_profile_model.dart';
 _UserWithProfileModel _$UserWithProfileModelFromJson(
         Map<String, dynamic> json) =>
     _UserWithProfileModel(
-      userId: json['user_id'] as String,
-      firebaseUid: json['firebase_uid'] as String,
+      userId: json['userId'] as String,
       name: json['name'] as String,
       gender: $enumDecode(_$GenderEnumMap, json['gender']),
-      birthDate:
-          const IsoDateTimeConverter().fromJson(json['birth_date'] as String),
+      birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
-      mainPhotoUrl: json['main_photo_url'] as String,
-      lastLoginAt: const IsoDateTimeOrNullConverter()
-          .fromJson(json['last_login_at'] as String?),
-      status: $enumDecode(_$UserStatusEnumMap, json['status']),
-      profileId: json['profile_id'] as String,
+      mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String,
+      isTodayReported: json['isTodayReported'] as bool,
       height: $enumDecodeNullable(_$HeightEnumMap, json['height']),
-      bodyShape: $enumDecodeNullable(_$BodyShapeEnumMap, json['body_shape']),
+      bodyShape: $enumDecodeNullable(_$BodyShapeEnumMap, json['bodyShape']),
       annualIncome:
-          $enumDecodeNullable(_$AnnualIncomeEnumMap, json['annual_income']),
-      bloodType: $enumDecodeNullable(_$BloodTypeEnumMap, json['blood_type']),
+          $enumDecodeNullable(_$AnnualIncomeEnumMap, json['annualIncome']),
+      bloodType: $enumDecodeNullable(_$BloodTypeEnumMap, json['bloodType']),
       hometown: $enumDecodeNullable(_$AddressEnumMap, json['hometown']),
       communicationStyle: $enumDecodeNullable(
-          _$CommunicationStyleEnumMap, json['communication_style']),
+          _$CommunicationStyleEnumMap, json['communicationStyle']),
       occupation: $enumDecodeNullable(_$OccupationEnumMap, json['occupation']),
       education: $enumDecodeNullable(_$EducationEnumMap, json['education']),
       smoking: $enumDecodeNullable(_$SmokingEnumMap, json['smoking']),
       alcohol: $enumDecodeNullable(_$AlcoholEnumMap, json['alcohol']),
       holiday: $enumDecodeNullable(_$HolidayEnumMap, json['holiday']),
-      sunnyDayHobbies: (json['sunny_day_hobbies'] as List<dynamic>?)
+      sunnyDayHobbies: (json['sunnyDayHobbies'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      rainyDayHobbies: (json['rainy_day_hobbies'] as List<dynamic>?)
+      rainyDayHobbies: (json['rainyDayHobbies'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      subPhotoUrls: (json['sub_photo_urls'] as List<dynamic>?)
+      subPhotoUrls: (json['subPhotoUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
@@ -49,33 +44,29 @@ _UserWithProfileModel _$UserWithProfileModelFromJson(
 Map<String, dynamic> _$UserWithProfileModelToJson(
         _UserWithProfileModel instance) =>
     <String, dynamic>{
-      'user_id': instance.userId,
-      'firebase_uid': instance.firebaseUid,
+      'userId': instance.userId,
       'name': instance.name,
       'gender': _$GenderEnumMap[instance.gender]!,
-      'birth_date': const IsoDateTimeConverter().toJson(instance.birthDate),
+      'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
-      'main_photo_url': instance.mainPhotoUrl,
-      'last_login_at':
-          const IsoDateTimeOrNullConverter().toJson(instance.lastLoginAt),
-      'status': _$UserStatusEnumMap[instance.status]!,
-      'profile_id': instance.profileId,
+      'mainPhotoUrl': instance.mainPhotoUrl,
       'introduction': instance.introduction,
+      'isTodayReported': instance.isTodayReported,
       'height': _$HeightEnumMap[instance.height],
-      'body_shape': _$BodyShapeEnumMap[instance.bodyShape],
-      'annual_income': _$AnnualIncomeEnumMap[instance.annualIncome],
-      'blood_type': _$BloodTypeEnumMap[instance.bloodType],
+      'bodyShape': _$BodyShapeEnumMap[instance.bodyShape],
+      'annualIncome': _$AnnualIncomeEnumMap[instance.annualIncome],
+      'bloodType': _$BloodTypeEnumMap[instance.bloodType],
       'hometown': _$AddressEnumMap[instance.hometown],
-      'communication_style':
+      'communicationStyle':
           _$CommunicationStyleEnumMap[instance.communicationStyle],
       'occupation': _$OccupationEnumMap[instance.occupation],
       'education': _$EducationEnumMap[instance.education],
       'smoking': _$SmokingEnumMap[instance.smoking],
       'alcohol': _$AlcoholEnumMap[instance.alcohol],
       'holiday': _$HolidayEnumMap[instance.holiday],
-      'sunny_day_hobbies': instance.sunnyDayHobbies,
-      'rainy_day_hobbies': instance.rainyDayHobbies,
-      'sub_photo_urls': instance.subPhotoUrls,
+      'sunnyDayHobbies': instance.sunnyDayHobbies,
+      'rainyDayHobbies': instance.rainyDayHobbies,
+      'subPhotoUrls': instance.subPhotoUrls,
     };
 
 const _$GenderEnumMap = {
@@ -133,13 +124,6 @@ const _$AddressEnumMap = {
   Address.kagoshima: 'KAGOSHIMA',
   Address.okinawa: 'OKINAWA',
   Address.other: 'OTHER',
-};
-
-const _$UserStatusEnumMap = {
-  UserStatus.active: 'ACTIVE',
-  UserStatus.withdrawn: 'WITHDRAWN',
-  UserStatus.banned: 'BANNED',
-  UserStatus.suspended: 'SUSPENDED',
 };
 
 const _$HeightEnumMap = {

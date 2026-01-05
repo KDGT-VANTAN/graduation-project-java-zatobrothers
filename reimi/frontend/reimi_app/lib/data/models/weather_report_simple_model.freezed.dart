@@ -19,7 +19,7 @@ mixin _$WeatherReportSimpleModel {
   String get comment;
   MediaType get mediaType;
   String get url;
-  DateTime get postAt;
+  DateTime get createdAt;
 
   /// Create a copy of WeatherReportSimpleModel
   /// with the given fields replaced by the non-null parameter values.
@@ -44,17 +44,18 @@ mixin _$WeatherReportSimpleModel {
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.postAt, postAt) || other.postAt == postAt));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, reportId, userId, comment, mediaType, url, postAt);
+      runtimeType, reportId, userId, comment, mediaType, url, createdAt);
 
   @override
   String toString() {
-    return 'WeatherReportSimpleModel(reportId: $reportId, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, postAt: $postAt)';
+    return 'WeatherReportSimpleModel(reportId: $reportId, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, createdAt: $createdAt)';
   }
 }
 
@@ -70,7 +71,7 @@ abstract mixin class $WeatherReportSimpleModelCopyWith<$Res> {
       String comment,
       MediaType mediaType,
       String url,
-      DateTime postAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -91,7 +92,7 @@ class _$WeatherReportSimpleModelCopyWithImpl<$Res>
     Object? comment = null,
     Object? mediaType = null,
     Object? url = null,
-    Object? postAt = null,
+    Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
       reportId: null == reportId
@@ -114,9 +115,9 @@ class _$WeatherReportSimpleModelCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      postAt: null == postAt
-          ? _self.postAt
-          : postAt // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -216,7 +217,7 @@ extension WeatherReportSimpleModelPatterns on WeatherReportSimpleModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String reportId, String userId, String comment,
-            MediaType mediaType, String url, DateTime postAt)?
+            MediaType mediaType, String url, DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -224,7 +225,7 @@ extension WeatherReportSimpleModelPatterns on WeatherReportSimpleModel {
     switch (_that) {
       case _WeatherReportSimpleModel() when $default != null:
         return $default(_that.reportId, _that.userId, _that.comment,
-            _that.mediaType, _that.url, _that.postAt);
+            _that.mediaType, _that.url, _that.createdAt);
       case _:
         return orElse();
     }
@@ -246,14 +247,14 @@ extension WeatherReportSimpleModelPatterns on WeatherReportSimpleModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String reportId, String userId, String comment,
-            MediaType mediaType, String url, DateTime postAt)
+            MediaType mediaType, String url, DateTime createdAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportSimpleModel():
         return $default(_that.reportId, _that.userId, _that.comment,
-            _that.mediaType, _that.url, _that.postAt);
+            _that.mediaType, _that.url, _that.createdAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -274,14 +275,14 @@ extension WeatherReportSimpleModelPatterns on WeatherReportSimpleModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(String reportId, String userId, String comment,
-            MediaType mediaType, String url, DateTime postAt)?
+            MediaType mediaType, String url, DateTime createdAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportSimpleModel() when $default != null:
         return $default(_that.reportId, _that.userId, _that.comment,
-            _that.mediaType, _that.url, _that.postAt);
+            _that.mediaType, _that.url, _that.createdAt);
       case _:
         return null;
     }
@@ -289,8 +290,7 @@ extension WeatherReportSimpleModelPatterns on WeatherReportSimpleModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _WeatherReportSimpleModel implements WeatherReportSimpleModel {
   const _WeatherReportSimpleModel(
       {required this.reportId,
@@ -298,7 +298,7 @@ class _WeatherReportSimpleModel implements WeatherReportSimpleModel {
       required this.comment,
       required this.mediaType,
       required this.url,
-      required this.postAt});
+      required this.createdAt});
   factory _WeatherReportSimpleModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherReportSimpleModelFromJson(json);
 
@@ -313,7 +313,7 @@ class _WeatherReportSimpleModel implements WeatherReportSimpleModel {
   @override
   final String url;
   @override
-  final DateTime postAt;
+  final DateTime createdAt;
 
   /// Create a copy of WeatherReportSimpleModel
   /// with the given fields replaced by the non-null parameter values.
@@ -343,17 +343,18 @@ class _WeatherReportSimpleModel implements WeatherReportSimpleModel {
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.postAt, postAt) || other.postAt == postAt));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, reportId, userId, comment, mediaType, url, postAt);
+      runtimeType, reportId, userId, comment, mediaType, url, createdAt);
 
   @override
   String toString() {
-    return 'WeatherReportSimpleModel(reportId: $reportId, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, postAt: $postAt)';
+    return 'WeatherReportSimpleModel(reportId: $reportId, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, createdAt: $createdAt)';
   }
 }
 
@@ -371,7 +372,7 @@ abstract mixin class _$WeatherReportSimpleModelCopyWith<$Res>
       String comment,
       MediaType mediaType,
       String url,
-      DateTime postAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -392,7 +393,7 @@ class __$WeatherReportSimpleModelCopyWithImpl<$Res>
     Object? comment = null,
     Object? mediaType = null,
     Object? url = null,
-    Object? postAt = null,
+    Object? createdAt = null,
   }) {
     return _then(_WeatherReportSimpleModel(
       reportId: null == reportId
@@ -415,9 +416,9 @@ class __$WeatherReportSimpleModelCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      postAt: null == postAt
-          ? _self.postAt
-          : postAt // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }

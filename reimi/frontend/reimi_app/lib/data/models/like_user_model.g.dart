@@ -8,23 +8,20 @@ part of 'like_user_model.dart';
 
 _LikeUserModel _$LikeUserModelFromJson(Map<String, dynamic> json) =>
     _LikeUserModel(
-      userId: json['user_id'] as String,
-      birthDate:
-          const IsoDateTimeConverter().fromJson(json['birth_date'] as String),
+      id: json['id'] as String,
+      name: json['name'] as String,
+      birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
-      mainPhotoUrl: json['main_photo_url'] as String,
-      lastLoginAt: const IsoDateTimeOrNullConverter()
-          .fromJson(json['last_login_at'] as String?),
+      mainPhotoUrl: json['mainPhotoUrl'] as String,
     );
 
 Map<String, dynamic> _$LikeUserModelToJson(_LikeUserModel instance) =>
     <String, dynamic>{
-      'user_id': instance.userId,
-      'birth_date': const IsoDateTimeConverter().toJson(instance.birthDate),
+      'id': instance.id,
+      'name': instance.name,
+      'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
-      'main_photo_url': instance.mainPhotoUrl,
-      'last_login_at':
-          const IsoDateTimeOrNullConverter().toJson(instance.lastLoginAt),
+      'mainPhotoUrl': instance.mainPhotoUrl,
     };
 
 const _$AddressEnumMap = {

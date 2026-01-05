@@ -14,8 +14,6 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportPostModel {
-  String? get reportId;
-  String? get userId;
   String? get comment;
   WeatherType? get weatherType;
   FeelingType? get feelingType;
@@ -41,9 +39,6 @@ mixin _$WeatherReportPostModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WeatherReportPostModel &&
-            (identical(other.reportId, reportId) ||
-                other.reportId == reportId) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.weatherType, weatherType) ||
                 other.weatherType == weatherType) &&
@@ -62,22 +57,12 @@ mixin _$WeatherReportPostModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      reportId,
-      userId,
-      comment,
-      weatherType,
-      feelingType,
-      forecastType,
-      mediaType,
-      url,
-      latitude,
-      longitude);
+  int get hashCode => Object.hash(runtimeType, comment, weatherType,
+      feelingType, forecastType, mediaType, url, latitude, longitude);
 
   @override
   String toString() {
-    return 'WeatherReportPostModel(reportId: $reportId, userId: $userId, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportPostModel(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
   }
 }
 
@@ -88,9 +73,7 @@ abstract mixin class $WeatherReportPostModelCopyWith<$Res> {
       _$WeatherReportPostModelCopyWithImpl;
   @useResult
   $Res call(
-      {String? reportId,
-      String? userId,
-      String? comment,
+      {String? comment,
       WeatherType? weatherType,
       FeelingType? feelingType,
       ForecastType? forecastType,
@@ -113,8 +96,6 @@ class _$WeatherReportPostModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? reportId = freezed,
-    Object? userId = freezed,
     Object? comment = freezed,
     Object? weatherType = freezed,
     Object? feelingType = freezed,
@@ -125,14 +106,6 @@ class _$WeatherReportPostModelCopyWithImpl<$Res>
     Object? longitude = freezed,
   }) {
     return _then(_self.copyWith(
-      reportId: freezed == reportId
-          ? _self.reportId
-          : reportId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
       comment: freezed == comment
           ? _self.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -263,8 +236,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String? reportId,
-            String? userId,
             String? comment,
             WeatherType? weatherType,
             FeelingType? feelingType,
@@ -280,8 +251,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
     switch (_that) {
       case _WeatherReportPostModel() when $default != null:
         return $default(
-            _that.reportId,
-            _that.userId,
             _that.comment,
             _that.weatherType,
             _that.feelingType,
@@ -311,8 +280,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String? reportId,
-            String? userId,
             String? comment,
             WeatherType? weatherType,
             FeelingType? feelingType,
@@ -327,8 +294,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
     switch (_that) {
       case _WeatherReportPostModel():
         return $default(
-            _that.reportId,
-            _that.userId,
             _that.comment,
             _that.weatherType,
             _that.feelingType,
@@ -357,8 +322,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String? reportId,
-            String? userId,
             String? comment,
             WeatherType? weatherType,
             FeelingType? feelingType,
@@ -373,8 +336,6 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
     switch (_that) {
       case _WeatherReportPostModel() when $default != null:
         return $default(
-            _that.reportId,
-            _that.userId,
             _that.comment,
             _that.weatherType,
             _that.feelingType,
@@ -390,13 +351,10 @@ extension WeatherReportPostModelPatterns on WeatherReportPostModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _WeatherReportPostModel implements WeatherReportPostModel {
   const _WeatherReportPostModel(
-      {this.reportId,
-      this.userId,
-      this.comment,
+      {this.comment,
       this.weatherType,
       this.feelingType,
       this.forecastType,
@@ -407,10 +365,6 @@ class _WeatherReportPostModel implements WeatherReportPostModel {
   factory _WeatherReportPostModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherReportPostModelFromJson(json);
 
-  @override
-  final String? reportId;
-  @override
-  final String? userId;
   @override
   final String? comment;
   @override
@@ -449,9 +403,6 @@ class _WeatherReportPostModel implements WeatherReportPostModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WeatherReportPostModel &&
-            (identical(other.reportId, reportId) ||
-                other.reportId == reportId) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.weatherType, weatherType) ||
                 other.weatherType == weatherType) &&
@@ -470,22 +421,12 @@ class _WeatherReportPostModel implements WeatherReportPostModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      reportId,
-      userId,
-      comment,
-      weatherType,
-      feelingType,
-      forecastType,
-      mediaType,
-      url,
-      latitude,
-      longitude);
+  int get hashCode => Object.hash(runtimeType, comment, weatherType,
+      feelingType, forecastType, mediaType, url, latitude, longitude);
 
   @override
   String toString() {
-    return 'WeatherReportPostModel(reportId: $reportId, userId: $userId, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportPostModel(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
   }
 }
 
@@ -498,9 +439,7 @@ abstract mixin class _$WeatherReportPostModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? reportId,
-      String? userId,
-      String? comment,
+      {String? comment,
       WeatherType? weatherType,
       FeelingType? feelingType,
       ForecastType? forecastType,
@@ -523,8 +462,6 @@ class __$WeatherReportPostModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? reportId = freezed,
-    Object? userId = freezed,
     Object? comment = freezed,
     Object? weatherType = freezed,
     Object? feelingType = freezed,
@@ -535,14 +472,6 @@ class __$WeatherReportPostModelCopyWithImpl<$Res>
     Object? longitude = freezed,
   }) {
     return _then(_WeatherReportPostModel(
-      reportId: freezed == reportId
-          ? _self.reportId
-          : reportId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
       comment: freezed == comment
           ? _self.comment
           : comment // ignore: cast_nullable_to_non_nullable

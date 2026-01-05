@@ -7,7 +7,7 @@ part of 'upload_media_notifier.dart';
 // **************************************************************************
 
 String _$uploadMediaNotifierHash() =>
-    r'7423980b9734c1d8eb2ad458c50eaba53e0aecab';
+    r'a307eca0ea6c857301dfb507572f54a17d4b7394';
 
 /// See also [UploadMediaNotifier].
 @ProviderFor(UploadMediaNotifier)

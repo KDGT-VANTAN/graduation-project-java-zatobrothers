@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UnmessagedMatchUserModel {
-  String get matchId;
-  String get userId;
+  String get id;
   String get mainPhotoUrl;
 
   /// Create a copy of UnmessagedMatchUserModel
@@ -34,19 +33,18 @@ mixin _$UnmessagedMatchUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is UnmessagedMatchUserModel &&
-            (identical(other.matchId, matchId) || other.matchId == matchId) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, matchId, userId, mainPhotoUrl);
+  int get hashCode => Object.hash(runtimeType, id, mainPhotoUrl);
 
   @override
   String toString() {
-    return 'UnmessagedMatchUserModel(matchId: $matchId, userId: $userId, mainPhotoUrl: $mainPhotoUrl)';
+    return 'UnmessagedMatchUserModel(id: $id, mainPhotoUrl: $mainPhotoUrl)';
   }
 }
 
@@ -56,7 +54,7 @@ abstract mixin class $UnmessagedMatchUserModelCopyWith<$Res> {
           $Res Function(UnmessagedMatchUserModel) _then) =
       _$UnmessagedMatchUserModelCopyWithImpl;
   @useResult
-  $Res call({String matchId, String userId, String mainPhotoUrl});
+  $Res call({String id, String mainPhotoUrl});
 }
 
 /// @nodoc
@@ -72,18 +70,13 @@ class _$UnmessagedMatchUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? matchId = null,
-    Object? userId = null,
+    Object? id = null,
     Object? mainPhotoUrl = null,
   }) {
     return _then(_self.copyWith(
-      matchId: null == matchId
-          ? _self.matchId
-          : matchId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       mainPhotoUrl: null == mainPhotoUrl
           ? _self.mainPhotoUrl
@@ -186,14 +179,13 @@ extension UnmessagedMatchUserModelPatterns on UnmessagedMatchUserModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String matchId, String userId, String mainPhotoUrl)?
-        $default, {
+    TResult Function(String id, String mainPhotoUrl)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _UnmessagedMatchUserModel() when $default != null:
-        return $default(_that.matchId, _that.userId, _that.mainPhotoUrl);
+        return $default(_that.id, _that.mainPhotoUrl);
       case _:
         return orElse();
     }
@@ -214,13 +206,12 @@ extension UnmessagedMatchUserModelPatterns on UnmessagedMatchUserModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String matchId, String userId, String mainPhotoUrl)
-        $default,
+    TResult Function(String id, String mainPhotoUrl) $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UnmessagedMatchUserModel():
-        return $default(_that.matchId, _that.userId, _that.mainPhotoUrl);
+        return $default(_that.id, _that.mainPhotoUrl);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -240,13 +231,12 @@ extension UnmessagedMatchUserModelPatterns on UnmessagedMatchUserModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String matchId, String userId, String mainPhotoUrl)?
-        $default,
+    TResult? Function(String id, String mainPhotoUrl)? $default,
   ) {
     final _that = this;
     switch (_that) {
       case _UnmessagedMatchUserModel() when $default != null:
-        return $default(_that.matchId, _that.userId, _that.mainPhotoUrl);
+        return $default(_that.id, _that.mainPhotoUrl);
       case _:
         return null;
     }
@@ -254,20 +244,15 @@ extension UnmessagedMatchUserModelPatterns on UnmessagedMatchUserModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _UnmessagedMatchUserModel implements UnmessagedMatchUserModel {
   const _UnmessagedMatchUserModel(
-      {required this.matchId,
-      required this.userId,
-      required this.mainPhotoUrl});
+      {required this.id, required this.mainPhotoUrl});
   factory _UnmessagedMatchUserModel.fromJson(Map<String, dynamic> json) =>
       _$UnmessagedMatchUserModelFromJson(json);
 
   @override
-  final String matchId;
-  @override
-  final String userId;
+  final String id;
   @override
   final String mainPhotoUrl;
 
@@ -292,19 +277,18 @@ class _UnmessagedMatchUserModel implements UnmessagedMatchUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UnmessagedMatchUserModel &&
-            (identical(other.matchId, matchId) || other.matchId == matchId) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, matchId, userId, mainPhotoUrl);
+  int get hashCode => Object.hash(runtimeType, id, mainPhotoUrl);
 
   @override
   String toString() {
-    return 'UnmessagedMatchUserModel(matchId: $matchId, userId: $userId, mainPhotoUrl: $mainPhotoUrl)';
+    return 'UnmessagedMatchUserModel(id: $id, mainPhotoUrl: $mainPhotoUrl)';
   }
 }
 
@@ -316,7 +300,7 @@ abstract mixin class _$UnmessagedMatchUserModelCopyWith<$Res>
       __$UnmessagedMatchUserModelCopyWithImpl;
   @override
   @useResult
-  $Res call({String matchId, String userId, String mainPhotoUrl});
+  $Res call({String id, String mainPhotoUrl});
 }
 
 /// @nodoc
@@ -332,18 +316,13 @@ class __$UnmessagedMatchUserModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? matchId = null,
-    Object? userId = null,
+    Object? id = null,
     Object? mainPhotoUrl = null,
   }) {
     return _then(_UnmessagedMatchUserModel(
-      matchId: null == matchId
-          ? _self.matchId
-          : matchId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       mainPhotoUrl: null == mainPhotoUrl
           ? _self.mainPhotoUrl

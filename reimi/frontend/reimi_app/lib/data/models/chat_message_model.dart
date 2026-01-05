@@ -6,7 +6,6 @@ part 'chat_message_model.g.dart';
 
 @freezed
 abstract class ChatMessageModel with _$ChatMessageModel {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ChatMessageModel({
     required String messageId,
     required String chatRoomId,

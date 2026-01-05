@@ -9,7 +9,6 @@ part 'weather_report_model.g.dart';
 
 @freezed
 abstract class WeatherReportModel with _$WeatherReportModel {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory WeatherReportModel({
     required String reportId,
     required String userId,
@@ -21,10 +20,10 @@ abstract class WeatherReportModel with _$WeatherReportModel {
     required ForecastType forecastType,
     required MediaType mediaType,
     required String url,
-    required List<String> reportComment,
-    required int likeCount,
-    required int commentCount,
-    required DateTime postAt,
+    required DateTime createdAt,
+    List<String>? reportComment,
+    int? likeCount,
+    int? commentCount,
     double? latitude,
     double? longitude,
   }) = _WeatherReportModel;

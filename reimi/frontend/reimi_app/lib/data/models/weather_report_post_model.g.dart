@@ -9,16 +9,14 @@ part of 'weather_report_post_model.dart';
 _WeatherReportPostModel _$WeatherReportPostModelFromJson(
         Map<String, dynamic> json) =>
     _WeatherReportPostModel(
-      reportId: json['report_id'] as String?,
-      userId: json['user_id'] as String?,
       comment: json['comment'] as String?,
       weatherType:
-          $enumDecodeNullable(_$WeatherTypeEnumMap, json['weather_type']),
+          $enumDecodeNullable(_$WeatherTypeEnumMap, json['weatherType']),
       feelingType:
-          $enumDecodeNullable(_$FeelingTypeEnumMap, json['feeling_type']),
+          $enumDecodeNullable(_$FeelingTypeEnumMap, json['feelingType']),
       forecastType:
-          $enumDecodeNullable(_$ForecastTypeEnumMap, json['forecast_type']),
-      mediaType: $enumDecodeNullable(_$MediaTypeEnumMap, json['media_type']),
+          $enumDecodeNullable(_$ForecastTypeEnumMap, json['forecastType']),
+      mediaType: $enumDecodeNullable(_$MediaTypeEnumMap, json['mediaType']),
       url: json['url'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
@@ -27,13 +25,11 @@ _WeatherReportPostModel _$WeatherReportPostModelFromJson(
 Map<String, dynamic> _$WeatherReportPostModelToJson(
         _WeatherReportPostModel instance) =>
     <String, dynamic>{
-      'report_id': instance.reportId,
-      'user_id': instance.userId,
       'comment': instance.comment,
-      'weather_type': _$WeatherTypeEnumMap[instance.weatherType],
-      'feeling_type': _$FeelingTypeEnumMap[instance.feelingType],
-      'forecast_type': _$ForecastTypeEnumMap[instance.forecastType],
-      'media_type': _$MediaTypeEnumMap[instance.mediaType],
+      'weatherType': _$WeatherTypeEnumMap[instance.weatherType],
+      'feelingType': _$FeelingTypeEnumMap[instance.feelingType],
+      'forecastType': _$ForecastTypeEnumMap[instance.forecastType],
+      'mediaType': _$MediaTypeEnumMap[instance.mediaType],
       'url': instance.url,
       'latitude': instance.latitude,
       'longitude': instance.longitude,

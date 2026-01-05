@@ -9,10 +9,7 @@ part 'weather_report_post_model.g.dart';
 
 @freezed
 abstract class WeatherReportPostModel with _$WeatherReportPostModel {
-  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory WeatherReportPostModel({
-    String? reportId,
-    String? userId,
     String? comment,
     WeatherType? weatherType,
     FeelingType? feelingType,

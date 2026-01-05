@@ -14,13 +14,12 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$LikeUserModel {
-  String get userId;
-  @IsoDateTimeConverter()
+  String get id;
+  String get name;
+  @YyyyMmDdDateConverter()
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get lastLoginAt;
 
   /// Create a copy of LikeUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -38,24 +37,23 @@ mixin _$LikeUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is LikeUserModel &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt));
+                other.mainPhotoUrl == mainPhotoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, birthDate, address, mainPhotoUrl, lastLoginAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, birthDate, address, mainPhotoUrl);
 
   @override
   String toString() {
-    return 'LikeUserModel(userId: $userId, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt)';
+    return 'LikeUserModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl)';
   }
 }
 
@@ -66,11 +64,11 @@ abstract mixin class $LikeUserModelCopyWith<$Res> {
       _$LikeUserModelCopyWithImpl;
   @useResult
   $Res call(
-      {String userId,
-      @IsoDateTimeConverter() DateTime birthDate,
+      {String id,
+      String name,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
-      String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt});
+      String mainPhotoUrl});
 }
 
 /// @nodoc
@@ -86,16 +84,20 @@ class _$LikeUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? id = null,
+    Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
   }) {
     return _then(_self.copyWith(
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       birthDate: null == birthDate
           ? _self.birthDate
@@ -109,10 +111,6 @@ class _$LikeUserModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ));
   }
 }
@@ -211,19 +209,19 @@ extension LikeUserModelPatterns on LikeUserModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String userId,
-            @IsoDateTimeConverter() DateTime birthDate,
+            String id,
+            String name,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt)?
+            String mainPhotoUrl)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _LikeUserModel() when $default != null:
-        return $default(_that.userId, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.lastLoginAt);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl);
       case _:
         return orElse();
     }
@@ -245,18 +243,18 @@ extension LikeUserModelPatterns on LikeUserModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String userId,
-            @IsoDateTimeConverter() DateTime birthDate,
+            String id,
+            String name,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt)
+            String mainPhotoUrl)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserModel():
-        return $default(_that.userId, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.lastLoginAt);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -277,18 +275,18 @@ extension LikeUserModelPatterns on LikeUserModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String userId,
-            @IsoDateTimeConverter() DateTime birthDate,
+            String id,
+            String name,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl,
-            @IsoDateTimeOrNullConverter() DateTime? lastLoginAt)?
+            String mainPhotoUrl)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserModel() when $default != null:
-        return $default(_that.userId, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.lastLoginAt);
+        return $default(_that.id, _that.name, _that.birthDate, _that.address,
+            _that.mainPhotoUrl);
       case _:
         return null;
     }
@@ -296,30 +294,28 @@ extension LikeUserModelPatterns on LikeUserModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _LikeUserModel implements LikeUserModel {
   const _LikeUserModel(
-      {required this.userId,
-      @IsoDateTimeConverter() required this.birthDate,
+      {required this.id,
+      required this.name,
+      @YyyyMmDdDateConverter() required this.birthDate,
       required this.address,
-      required this.mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() this.lastLoginAt});
+      required this.mainPhotoUrl});
   factory _LikeUserModel.fromJson(Map<String, dynamic> json) =>
       _$LikeUserModelFromJson(json);
 
   @override
-  final String userId;
+  final String id;
   @override
-  @IsoDateTimeConverter()
+  final String name;
+  @override
+  @YyyyMmDdDateConverter()
   final DateTime birthDate;
   @override
   final Address address;
   @override
   final String mainPhotoUrl;
-  @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? lastLoginAt;
 
   /// Create a copy of LikeUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -341,24 +337,23 @@ class _LikeUserModel implements LikeUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LikeUserModel &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastLoginAt, lastLoginAt) ||
-                other.lastLoginAt == lastLoginAt));
+                other.mainPhotoUrl == mainPhotoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, birthDate, address, mainPhotoUrl, lastLoginAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, birthDate, address, mainPhotoUrl);
 
   @override
   String toString() {
-    return 'LikeUserModel(userId: $userId, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastLoginAt: $lastLoginAt)';
+    return 'LikeUserModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl)';
   }
 }
 
@@ -371,11 +366,11 @@ abstract mixin class _$LikeUserModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userId,
-      @IsoDateTimeConverter() DateTime birthDate,
+      {String id,
+      String name,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
-      String mainPhotoUrl,
-      @IsoDateTimeOrNullConverter() DateTime? lastLoginAt});
+      String mainPhotoUrl});
 }
 
 /// @nodoc
@@ -391,16 +386,20 @@ class __$LikeUserModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? userId = null,
+    Object? id = null,
+    Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastLoginAt = freezed,
   }) {
     return _then(_LikeUserModel(
-      userId: null == userId
-          ? _self.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       birthDate: null == birthDate
           ? _self.birthDate
@@ -414,10 +413,6 @@ class __$LikeUserModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastLoginAt: freezed == lastLoginAt
-          ? _self.lastLoginAt
-          : lastLoginAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ));
   }
 }

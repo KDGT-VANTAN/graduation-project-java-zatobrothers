@@ -24,10 +24,10 @@ mixin _$WeatherReportModel {
   ForecastType get forecastType;
   MediaType get mediaType;
   String get url;
-  List<String> get reportComment;
-  int get likeCount;
-  int get commentCount;
-  DateTime get postAt;
+  DateTime get createdAt;
+  List<String>? get reportComment;
+  int? get likeCount;
+  int? get commentCount;
   double? get latitude;
   double? get longitude;
 
@@ -64,13 +64,14 @@ mixin _$WeatherReportModel {
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             const DeepCollectionEquality()
                 .equals(other.reportComment, reportComment) &&
             (identical(other.likeCount, likeCount) ||
                 other.likeCount == likeCount) &&
             (identical(other.commentCount, commentCount) ||
                 other.commentCount == commentCount) &&
-            (identical(other.postAt, postAt) || other.postAt == postAt) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -91,16 +92,16 @@ mixin _$WeatherReportModel {
       forecastType,
       mediaType,
       url,
+      createdAt,
       const DeepCollectionEquality().hash(reportComment),
       likeCount,
       commentCount,
-      postAt,
       latitude,
       longitude);
 
   @override
   String toString() {
-    return 'WeatherReportModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, postAt: $postAt, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, createdAt: $createdAt, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, latitude: $latitude, longitude: $longitude)';
   }
 }
 
@@ -121,10 +122,10 @@ abstract mixin class $WeatherReportModelCopyWith<$Res> {
       ForecastType forecastType,
       MediaType mediaType,
       String url,
-      List<String> reportComment,
-      int likeCount,
-      int commentCount,
-      DateTime postAt,
+      DateTime createdAt,
+      List<String>? reportComment,
+      int? likeCount,
+      int? commentCount,
       double? latitude,
       double? longitude});
 }
@@ -152,10 +153,10 @@ class _$WeatherReportModelCopyWithImpl<$Res>
     Object? forecastType = null,
     Object? mediaType = null,
     Object? url = null,
-    Object? reportComment = null,
-    Object? likeCount = null,
-    Object? commentCount = null,
-    Object? postAt = null,
+    Object? createdAt = null,
+    Object? reportComment = freezed,
+    Object? likeCount = freezed,
+    Object? commentCount = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -200,22 +201,22 @@ class _$WeatherReportModelCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      reportComment: null == reportComment
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      reportComment: freezed == reportComment
           ? _self.reportComment
           : reportComment // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      likeCount: null == likeCount
+              as List<String>?,
+      likeCount: freezed == likeCount
           ? _self.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      commentCount: null == commentCount
+              as int?,
+      commentCount: freezed == commentCount
           ? _self.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      postAt: null == postAt
-          ? _self.postAt
-          : postAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as int?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -332,10 +333,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             ForecastType forecastType,
             MediaType mediaType,
             String url,
-            List<String> reportComment,
-            int likeCount,
-            int commentCount,
-            DateTime postAt,
+            DateTime createdAt,
+            List<String>? reportComment,
+            int? likeCount,
+            int? commentCount,
             double? latitude,
             double? longitude)?
         $default, {
@@ -355,10 +356,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             _that.forecastType,
             _that.mediaType,
             _that.url,
+            _that.createdAt,
             _that.reportComment,
             _that.likeCount,
             _that.commentCount,
-            _that.postAt,
             _that.latitude,
             _that.longitude);
       case _:
@@ -392,10 +393,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             ForecastType forecastType,
             MediaType mediaType,
             String url,
-            List<String> reportComment,
-            int likeCount,
-            int commentCount,
-            DateTime postAt,
+            DateTime createdAt,
+            List<String>? reportComment,
+            int? likeCount,
+            int? commentCount,
             double? latitude,
             double? longitude)
         $default,
@@ -414,10 +415,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             _that.forecastType,
             _that.mediaType,
             _that.url,
+            _that.createdAt,
             _that.reportComment,
             _that.likeCount,
             _that.commentCount,
-            _that.postAt,
             _that.latitude,
             _that.longitude);
       case _:
@@ -450,10 +451,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             ForecastType forecastType,
             MediaType mediaType,
             String url,
-            List<String> reportComment,
-            int likeCount,
-            int commentCount,
-            DateTime postAt,
+            DateTime createdAt,
+            List<String>? reportComment,
+            int? likeCount,
+            int? commentCount,
             double? latitude,
             double? longitude)?
         $default,
@@ -472,10 +473,10 @@ extension WeatherReportModelPatterns on WeatherReportModel {
             _that.forecastType,
             _that.mediaType,
             _that.url,
+            _that.createdAt,
             _that.reportComment,
             _that.likeCount,
             _that.commentCount,
-            _that.postAt,
             _that.latitude,
             _that.longitude);
       case _:
@@ -485,8 +486,7 @@ extension WeatherReportModelPatterns on WeatherReportModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _WeatherReportModel implements WeatherReportModel {
   const _WeatherReportModel(
       {required this.reportId,
@@ -499,10 +499,10 @@ class _WeatherReportModel implements WeatherReportModel {
       required this.forecastType,
       required this.mediaType,
       required this.url,
-      required final List<String> reportComment,
-      required this.likeCount,
-      required this.commentCount,
-      required this.postAt,
+      required this.createdAt,
+      final List<String>? reportComment,
+      this.likeCount,
+      this.commentCount,
       this.latitude,
       this.longitude})
       : _reportComment = reportComment;
@@ -529,20 +529,22 @@ class _WeatherReportModel implements WeatherReportModel {
   final MediaType mediaType;
   @override
   final String url;
-  final List<String> _reportComment;
   @override
-  List<String> get reportComment {
+  final DateTime createdAt;
+  final List<String>? _reportComment;
+  @override
+  List<String>? get reportComment {
+    final value = _reportComment;
+    if (value == null) return null;
     if (_reportComment is EqualUnmodifiableListView) return _reportComment;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_reportComment);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final int likeCount;
+  final int? likeCount;
   @override
-  final int commentCount;
-  @override
-  final DateTime postAt;
+  final int? commentCount;
   @override
   final double? latitude;
   @override
@@ -585,13 +587,14 @@ class _WeatherReportModel implements WeatherReportModel {
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             const DeepCollectionEquality()
                 .equals(other._reportComment, _reportComment) &&
             (identical(other.likeCount, likeCount) ||
                 other.likeCount == likeCount) &&
             (identical(other.commentCount, commentCount) ||
                 other.commentCount == commentCount) &&
-            (identical(other.postAt, postAt) || other.postAt == postAt) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -612,16 +615,16 @@ class _WeatherReportModel implements WeatherReportModel {
       forecastType,
       mediaType,
       url,
+      createdAt,
       const DeepCollectionEquality().hash(_reportComment),
       likeCount,
       commentCount,
-      postAt,
       latitude,
       longitude);
 
   @override
   String toString() {
-    return 'WeatherReportModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, postAt: $postAt, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, createdAt: $createdAt, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, latitude: $latitude, longitude: $longitude)';
   }
 }
 
@@ -644,10 +647,10 @@ abstract mixin class _$WeatherReportModelCopyWith<$Res>
       ForecastType forecastType,
       MediaType mediaType,
       String url,
-      List<String> reportComment,
-      int likeCount,
-      int commentCount,
-      DateTime postAt,
+      DateTime createdAt,
+      List<String>? reportComment,
+      int? likeCount,
+      int? commentCount,
       double? latitude,
       double? longitude});
 }
@@ -675,10 +678,10 @@ class __$WeatherReportModelCopyWithImpl<$Res>
     Object? forecastType = null,
     Object? mediaType = null,
     Object? url = null,
-    Object? reportComment = null,
-    Object? likeCount = null,
-    Object? commentCount = null,
-    Object? postAt = null,
+    Object? createdAt = null,
+    Object? reportComment = freezed,
+    Object? likeCount = freezed,
+    Object? commentCount = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -723,22 +726,22 @@ class __$WeatherReportModelCopyWithImpl<$Res>
           ? _self.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      reportComment: null == reportComment
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      reportComment: freezed == reportComment
           ? _self._reportComment
           : reportComment // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      likeCount: null == likeCount
+              as List<String>?,
+      likeCount: freezed == likeCount
           ? _self.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      commentCount: null == commentCount
+              as int?,
+      commentCount: freezed == commentCount
           ? _self.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      postAt: null == postAt
-          ? _self.postAt
-          : postAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as int?,
       latitude: freezed == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable

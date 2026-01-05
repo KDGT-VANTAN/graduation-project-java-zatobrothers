@@ -8,42 +8,42 @@ part of 'weather_report_model.dart';
 
 _WeatherReportModel _$WeatherReportModelFromJson(Map<String, dynamic> json) =>
     _WeatherReportModel(
-      reportId: json['report_id'] as String,
-      userId: json['user_id'] as String,
-      userName: json['user_name'] as String,
-      mainPhotoUrl: json['main_photo_url'] as String,
+      reportId: json['reportId'] as String,
+      userId: json['userId'] as String,
+      userName: json['userName'] as String,
+      mainPhotoUrl: json['mainPhotoUrl'] as String,
       comment: json['comment'] as String,
-      weatherType: $enumDecode(_$WeatherTypeEnumMap, json['weather_type']),
-      feelingType: $enumDecode(_$FeelingTypeEnumMap, json['feeling_type']),
-      forecastType: $enumDecode(_$ForecastTypeEnumMap, json['forecast_type']),
-      mediaType: $enumDecode(_$MediaTypeEnumMap, json['media_type']),
+      weatherType: $enumDecode(_$WeatherTypeEnumMap, json['weatherType']),
+      feelingType: $enumDecode(_$FeelingTypeEnumMap, json['feelingType']),
+      forecastType: $enumDecode(_$ForecastTypeEnumMap, json['forecastType']),
+      mediaType: $enumDecode(_$MediaTypeEnumMap, json['mediaType']),
       url: json['url'] as String,
-      reportComment: (json['report_comment'] as List<dynamic>)
-          .map((e) => e as String)
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      reportComment: (json['reportComment'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
-      likeCount: (json['like_count'] as num).toInt(),
-      commentCount: (json['comment_count'] as num).toInt(),
-      postAt: DateTime.parse(json['post_at'] as String),
+      likeCount: (json['likeCount'] as num?)?.toInt(),
+      commentCount: (json['commentCount'] as num?)?.toInt(),
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$WeatherReportModelToJson(_WeatherReportModel instance) =>
     <String, dynamic>{
-      'report_id': instance.reportId,
-      'user_id': instance.userId,
-      'user_name': instance.userName,
-      'main_photo_url': instance.mainPhotoUrl,
+      'reportId': instance.reportId,
+      'userId': instance.userId,
+      'userName': instance.userName,
+      'mainPhotoUrl': instance.mainPhotoUrl,
       'comment': instance.comment,
-      'weather_type': _$WeatherTypeEnumMap[instance.weatherType]!,
-      'feeling_type': _$FeelingTypeEnumMap[instance.feelingType]!,
-      'forecast_type': _$ForecastTypeEnumMap[instance.forecastType]!,
-      'media_type': _$MediaTypeEnumMap[instance.mediaType]!,
+      'weatherType': _$WeatherTypeEnumMap[instance.weatherType]!,
+      'feelingType': _$FeelingTypeEnumMap[instance.feelingType]!,
+      'forecastType': _$ForecastTypeEnumMap[instance.forecastType]!,
+      'mediaType': _$MediaTypeEnumMap[instance.mediaType]!,
       'url': instance.url,
-      'report_comment': instance.reportComment,
-      'like_count': instance.likeCount,
-      'comment_count': instance.commentCount,
-      'post_at': instance.postAt.toIso8601String(),
+      'createdAt': instance.createdAt.toIso8601String(),
+      'reportComment': instance.reportComment,
+      'likeCount': instance.likeCount,
+      'commentCount': instance.commentCount,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
     };

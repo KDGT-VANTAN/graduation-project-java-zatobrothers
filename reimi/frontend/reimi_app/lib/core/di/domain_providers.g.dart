@@ -46,7 +46,7 @@ final getHomeUsersUseCaseProvider =
 // ignore: unused_element
 typedef GetHomeUsersUseCaseRef = AutoDisposeProviderRef<GetHomeUsersUseCase>;
 String _$getCurrentUserUseCaseHash() =>
-    r'164eab3a80abd1b521c3f629b511451a9ee58417';
+    r'11d80e5eb4aaba28d8dfb73bffacd3ba4dd09bd7';
 
 /// See also [getCurrentUserUseCase].
 @ProviderFor(getCurrentUserUseCase)

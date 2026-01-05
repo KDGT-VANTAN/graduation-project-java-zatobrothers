@@ -6,7 +6,7 @@ part of 'firebase_auth_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAuthHash() => r'8c3e9d11b27110ca96130356b5ef4d5d34a5ffc2';
+String _$firebaseAuthHash() => r'cb440927c3ab863427fd4b052a8ccba4c024c863';
 
 /// See also [firebaseAuth].
 @ProviderFor(firebaseAuth)
@@ -22,7 +22,7 @@ final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef FirebaseAuthRef = ProviderRef<FirebaseAuth>;
-String _$authStateChangesHash() => r'fbc1119daa6ac470aeac4f186072c2b179f82dc5';
+String _$authStateChangesHash() => r'0a9f36ffcb9a23e7632ec6e1e70179b3e9653a96';
 
 /// See also [authStateChanges].
 @ProviderFor(authStateChanges)

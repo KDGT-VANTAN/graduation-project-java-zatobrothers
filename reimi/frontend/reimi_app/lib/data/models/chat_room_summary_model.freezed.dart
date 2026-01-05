@@ -15,16 +15,14 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatRoomSummaryModel {
   String get chatRoomId;
-  String get matchId;
   String get userId;
   String get name;
+  @YyyyMmDdDateConverter()
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
-  String get lastMessageId;
   String get lastMessageText;
-  String get lastMessageSenderId;
-  DateTime get lastMessageAt;
+  DateTime get lastSentAt;
   int get unreadCount;
 
   /// Create a copy of ChatRoomSummaryModel
@@ -45,7 +43,6 @@ mixin _$ChatRoomSummaryModel {
             other is ChatRoomSummaryModel &&
             (identical(other.chatRoomId, chatRoomId) ||
                 other.chatRoomId == chatRoomId) &&
-            (identical(other.matchId, matchId) || other.matchId == matchId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
@@ -53,14 +50,10 @@ mixin _$ChatRoomSummaryModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastMessageId, lastMessageId) ||
-                other.lastMessageId == lastMessageId) &&
             (identical(other.lastMessageText, lastMessageText) ||
                 other.lastMessageText == lastMessageText) &&
-            (identical(other.lastMessageSenderId, lastMessageSenderId) ||
-                other.lastMessageSenderId == lastMessageSenderId) &&
-            (identical(other.lastMessageAt, lastMessageAt) ||
-                other.lastMessageAt == lastMessageAt) &&
+            (identical(other.lastSentAt, lastSentAt) ||
+                other.lastSentAt == lastSentAt) &&
             (identical(other.unreadCount, unreadCount) ||
                 other.unreadCount == unreadCount));
   }
@@ -70,21 +63,18 @@ mixin _$ChatRoomSummaryModel {
   int get hashCode => Object.hash(
       runtimeType,
       chatRoomId,
-      matchId,
       userId,
       name,
       birthDate,
       address,
       mainPhotoUrl,
-      lastMessageId,
       lastMessageText,
-      lastMessageSenderId,
-      lastMessageAt,
+      lastSentAt,
       unreadCount);
 
   @override
   String toString() {
-    return 'ChatRoomSummaryModel(chatRoomId: $chatRoomId, matchId: $matchId, userId: $userId, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageSenderId: $lastMessageSenderId, lastMessageAt: $lastMessageAt, unreadCount: $unreadCount)';
+    return 'ChatRoomSummaryModel(chatRoomId: $chatRoomId, userId: $userId, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastMessageText: $lastMessageText, lastSentAt: $lastSentAt, unreadCount: $unreadCount)';
   }
 }
 
@@ -96,16 +86,13 @@ abstract mixin class $ChatRoomSummaryModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String chatRoomId,
-      String matchId,
       String userId,
       String name,
-      DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      String lastMessageId,
       String lastMessageText,
-      String lastMessageSenderId,
-      DateTime lastMessageAt,
+      DateTime lastSentAt,
       int unreadCount});
 }
 
@@ -123,26 +110,19 @@ class _$ChatRoomSummaryModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chatRoomId = null,
-    Object? matchId = null,
     Object? userId = null,
     Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastMessageId = null,
     Object? lastMessageText = null,
-    Object? lastMessageSenderId = null,
-    Object? lastMessageAt = null,
+    Object? lastSentAt = null,
     Object? unreadCount = null,
   }) {
     return _then(_self.copyWith(
       chatRoomId: null == chatRoomId
           ? _self.chatRoomId
           : chatRoomId // ignore: cast_nullable_to_non_nullable
-              as String,
-      matchId: null == matchId
-          ? _self.matchId
-          : matchId // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _self.userId
@@ -164,21 +144,13 @@ class _$ChatRoomSummaryModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastMessageId: null == lastMessageId
-          ? _self.lastMessageId
-          : lastMessageId // ignore: cast_nullable_to_non_nullable
-              as String,
       lastMessageText: null == lastMessageText
           ? _self.lastMessageText
           : lastMessageText // ignore: cast_nullable_to_non_nullable
               as String,
-      lastMessageSenderId: null == lastMessageSenderId
-          ? _self.lastMessageSenderId
-          : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastMessageAt: null == lastMessageAt
-          ? _self.lastMessageAt
-          : lastMessageAt // ignore: cast_nullable_to_non_nullable
+      lastSentAt: null == lastSentAt
+          ? _self.lastSentAt
+          : lastSentAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       unreadCount: null == unreadCount
           ? _self.unreadCount
@@ -283,16 +255,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String chatRoomId,
-            String matchId,
             String userId,
             String name,
-            DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            String lastMessageId,
             String lastMessageText,
-            String lastMessageSenderId,
-            DateTime lastMessageAt,
+            DateTime lastSentAt,
             int unreadCount)?
         $default, {
     required TResult orElse(),
@@ -302,16 +271,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
       case _ChatRoomSummaryModel() when $default != null:
         return $default(
             _that.chatRoomId,
-            _that.matchId,
             _that.userId,
             _that.name,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastMessageId,
             _that.lastMessageText,
-            _that.lastMessageSenderId,
-            _that.lastMessageAt,
+            _that.lastSentAt,
             _that.unreadCount);
       case _:
         return orElse();
@@ -335,16 +301,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
   TResult when<TResult extends Object?>(
     TResult Function(
             String chatRoomId,
-            String matchId,
             String userId,
             String name,
-            DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            String lastMessageId,
             String lastMessageText,
-            String lastMessageSenderId,
-            DateTime lastMessageAt,
+            DateTime lastSentAt,
             int unreadCount)
         $default,
   ) {
@@ -353,16 +316,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
       case _ChatRoomSummaryModel():
         return $default(
             _that.chatRoomId,
-            _that.matchId,
             _that.userId,
             _that.name,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastMessageId,
             _that.lastMessageText,
-            _that.lastMessageSenderId,
-            _that.lastMessageAt,
+            _that.lastSentAt,
             _that.unreadCount);
       case _:
         throw StateError('Unexpected subclass');
@@ -385,16 +345,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             String chatRoomId,
-            String matchId,
             String userId,
             String name,
-            DateTime birthDate,
+            @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
             String mainPhotoUrl,
-            String lastMessageId,
             String lastMessageText,
-            String lastMessageSenderId,
-            DateTime lastMessageAt,
+            DateTime lastSentAt,
             int unreadCount)?
         $default,
   ) {
@@ -403,16 +360,13 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
       case _ChatRoomSummaryModel() when $default != null:
         return $default(
             _that.chatRoomId,
-            _that.matchId,
             _that.userId,
             _that.name,
             _that.birthDate,
             _that.address,
             _that.mainPhotoUrl,
-            _that.lastMessageId,
             _that.lastMessageText,
-            _that.lastMessageSenderId,
-            _that.lastMessageAt,
+            _that.lastSentAt,
             _that.unreadCount);
       case _:
         return null;
@@ -421,21 +375,17 @@ extension ChatRoomSummaryModelPatterns on ChatRoomSummaryModel {
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _ChatRoomSummaryModel implements ChatRoomSummaryModel {
   const _ChatRoomSummaryModel(
       {required this.chatRoomId,
-      required this.matchId,
       required this.userId,
       required this.name,
-      required this.birthDate,
+      @YyyyMmDdDateConverter() required this.birthDate,
       required this.address,
       required this.mainPhotoUrl,
-      required this.lastMessageId,
       required this.lastMessageText,
-      required this.lastMessageSenderId,
-      required this.lastMessageAt,
+      required this.lastSentAt,
       this.unreadCount = 0});
   factory _ChatRoomSummaryModel.fromJson(Map<String, dynamic> json) =>
       _$ChatRoomSummaryModelFromJson(json);
@@ -443,25 +393,20 @@ class _ChatRoomSummaryModel implements ChatRoomSummaryModel {
   @override
   final String chatRoomId;
   @override
-  final String matchId;
-  @override
   final String userId;
   @override
   final String name;
   @override
+  @YyyyMmDdDateConverter()
   final DateTime birthDate;
   @override
   final Address address;
   @override
   final String mainPhotoUrl;
   @override
-  final String lastMessageId;
-  @override
   final String lastMessageText;
   @override
-  final String lastMessageSenderId;
-  @override
-  final DateTime lastMessageAt;
+  final DateTime lastSentAt;
   @override
   @JsonKey()
   final int unreadCount;
@@ -489,7 +434,6 @@ class _ChatRoomSummaryModel implements ChatRoomSummaryModel {
             other is _ChatRoomSummaryModel &&
             (identical(other.chatRoomId, chatRoomId) ||
                 other.chatRoomId == chatRoomId) &&
-            (identical(other.matchId, matchId) || other.matchId == matchId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.birthDate, birthDate) ||
@@ -497,14 +441,10 @@ class _ChatRoomSummaryModel implements ChatRoomSummaryModel {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
                 other.mainPhotoUrl == mainPhotoUrl) &&
-            (identical(other.lastMessageId, lastMessageId) ||
-                other.lastMessageId == lastMessageId) &&
             (identical(other.lastMessageText, lastMessageText) ||
                 other.lastMessageText == lastMessageText) &&
-            (identical(other.lastMessageSenderId, lastMessageSenderId) ||
-                other.lastMessageSenderId == lastMessageSenderId) &&
-            (identical(other.lastMessageAt, lastMessageAt) ||
-                other.lastMessageAt == lastMessageAt) &&
+            (identical(other.lastSentAt, lastSentAt) ||
+                other.lastSentAt == lastSentAt) &&
             (identical(other.unreadCount, unreadCount) ||
                 other.unreadCount == unreadCount));
   }
@@ -514,21 +454,18 @@ class _ChatRoomSummaryModel implements ChatRoomSummaryModel {
   int get hashCode => Object.hash(
       runtimeType,
       chatRoomId,
-      matchId,
       userId,
       name,
       birthDate,
       address,
       mainPhotoUrl,
-      lastMessageId,
       lastMessageText,
-      lastMessageSenderId,
-      lastMessageAt,
+      lastSentAt,
       unreadCount);
 
   @override
   String toString() {
-    return 'ChatRoomSummaryModel(chatRoomId: $chatRoomId, matchId: $matchId, userId: $userId, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageSenderId: $lastMessageSenderId, lastMessageAt: $lastMessageAt, unreadCount: $unreadCount)';
+    return 'ChatRoomSummaryModel(chatRoomId: $chatRoomId, userId: $userId, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, lastMessageText: $lastMessageText, lastSentAt: $lastSentAt, unreadCount: $unreadCount)';
   }
 }
 
@@ -542,16 +479,13 @@ abstract mixin class _$ChatRoomSummaryModelCopyWith<$Res>
   @useResult
   $Res call(
       {String chatRoomId,
-      String matchId,
       String userId,
       String name,
-      DateTime birthDate,
+      @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
       String mainPhotoUrl,
-      String lastMessageId,
       String lastMessageText,
-      String lastMessageSenderId,
-      DateTime lastMessageAt,
+      DateTime lastSentAt,
       int unreadCount});
 }
 
@@ -569,26 +503,19 @@ class __$ChatRoomSummaryModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? chatRoomId = null,
-    Object? matchId = null,
     Object? userId = null,
     Object? name = null,
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
-    Object? lastMessageId = null,
     Object? lastMessageText = null,
-    Object? lastMessageSenderId = null,
-    Object? lastMessageAt = null,
+    Object? lastSentAt = null,
     Object? unreadCount = null,
   }) {
     return _then(_ChatRoomSummaryModel(
       chatRoomId: null == chatRoomId
           ? _self.chatRoomId
           : chatRoomId // ignore: cast_nullable_to_non_nullable
-              as String,
-      matchId: null == matchId
-          ? _self.matchId
-          : matchId // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _self.userId
@@ -610,21 +537,13 @@ class __$ChatRoomSummaryModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      lastMessageId: null == lastMessageId
-          ? _self.lastMessageId
-          : lastMessageId // ignore: cast_nullable_to_non_nullable
-              as String,
       lastMessageText: null == lastMessageText
           ? _self.lastMessageText
           : lastMessageText // ignore: cast_nullable_to_non_nullable
               as String,
-      lastMessageSenderId: null == lastMessageSenderId
-          ? _self.lastMessageSenderId
-          : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastMessageAt: null == lastMessageAt
-          ? _self.lastMessageAt
-          : lastMessageAt // ignore: cast_nullable_to_non_nullable
+      lastSentAt: null == lastSentAt
+          ? _self.lastSentAt
+          : lastSentAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       unreadCount: null == unreadCount
           ? _self.unreadCount
