@@ -104,4 +104,10 @@ public class User {
     public String getEmail() { return email; }
     public Status getStatus() { return status; }
     public Profile getProfile() { return profile; }
+
+    //メイン写真を署名URLとして管理したいためシリアライズ対象外とする
+    private transient String signedMainPhotoUrl;
+
+    public String getSignedMainPhotoUrl() { return signedMainPhotoUrl; }
+    public void setSignedMainPhotoUrl(String signedMainPhotoUrl) { this.signedMainPhotoUrl = signedMainPhotoUrl; }
 }

@@ -8,7 +8,7 @@ public class ResourceNotFoundException extends ClientErrorException {
     public ResourceNotFoundException(String resourceName) {
         super(
             "RESOURCE_NOT_FOUND",
-            resourceName + " が見つかりません",
+            resourceName + "が見つかりません",
             HttpStatus.NOT_FOUND
         );
     }

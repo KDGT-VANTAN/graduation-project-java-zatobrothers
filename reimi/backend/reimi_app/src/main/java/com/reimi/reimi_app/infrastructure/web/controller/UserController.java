@@ -3,19 +3,23 @@ package com.reimi.reimi_app.infrastructure.web.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
+import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.user.GetMeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
@@ -38,6 +42,25 @@ public class UserController {
         this.userUseCase = userUseCase;
     }
 
+    @GetMapping("/me")
+    @GetMeApi
+    public ResponseEntity<GetMeResponse> getMe() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+        GetMeResponse getMeResponse = userUseCase.getUser(myFirebaseUid)
+            .map(user -> new GetMeResponse(
+                user.getId().value(),
+                user.getName(),
+                user.getGender().getLabel(),
+                user.getBirthDate(),
+                user.getAddress().getLabel(),
+                user.getEmail(),
+                user.getStatus().getLabel()
+            ))
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        return ResponseEntity.ok(getMeResponse);
+    }
     @GetMapping
     @GetUsersApi
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
@@ -51,7 +74,7 @@ public class UserController {
                     user.getName(),
                     user.getBirthDate(),
                     user.getAddress().getLabel(),
-                    user.getMainPhotoUrl(),
+                    user.getSignedMainPhotoUrl(),
                     user.getProfile().getIntroduction()
                 ))
                 .toList();
@@ -59,16 +82,16 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @RegisterUserApi
-    public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserRequest request) {
+    public ResponseEntity<Void> registerUser(@ModelAttribute @Valid RegisterUserRequest request) {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.name(),
                 Gender.valueOf(request.gender()),
                 request.birthDate(),
                 Address.valueOf(request.address()),
-                request.mainPhotoUrl(),
+                request.mainPhoto(),
                 request.email(),
                 request.introduction()
             )

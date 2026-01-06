@@ -1,6 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.user;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findAllExcludingUserFirebaseUid(String firebaseUid) {
+    public Optional<User> findMeByFirebaseUid(String firebaseUid) {
+        return jpaUserRepository.findByFirebaseUid(firebaseUid)
+            .map(UserMapper::toDomain);
+    }
+
+    @Override
+    public List<User> findAllUserExcludingMeByFirebaseUid(String firebaseUid) {
         return jpaUserRepository.findByFirebaseUidNot(firebaseUid)
             .stream()
             .map(UserMapper::toDomain)
