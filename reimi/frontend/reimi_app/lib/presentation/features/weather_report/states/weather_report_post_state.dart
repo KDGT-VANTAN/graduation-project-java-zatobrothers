@@ -9,5 +9,6 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
     WeatherReportPostModel? data,
     @Default(false) bool canSubmit,
     @Default(false) bool isSubmitting,
+    @Default(false) bool isChanged,
   }) = _WeatherReportPostState;
 }

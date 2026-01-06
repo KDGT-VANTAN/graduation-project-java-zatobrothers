@@ -48,12 +48,18 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
     final current = state.data;
     if (current == null) return;
 
-    if (state.data!.comment?.isNotEmpty == true &&
-        state.data!.weatherType != null &&
-        state.data!.feelingType != null &&
-        state.data!.forecastType != null &&
-        state.data!.mediaType != null &&
-        state.data!.url?.isNotEmpty == true &&
+    if (!state.isChanged) {
+      state = state.copyWith(
+        isChanged: true,
+      );
+    }
+
+    if (current.comment?.isNotEmpty == true &&
+        current.weatherType != null &&
+        current.feelingType != null &&
+        current.forecastType != null &&
+        current.mediaType != null &&
+        current.url?.isNotEmpty == true &&
         !state.isSubmitting) {
       state = state.copyWith(canSubmit: true);
     }
@@ -63,8 +69,20 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
     );
   }
 
+  Future<void> discardChangesAndClose() async {
+    if (state.isChanged) {
+      state = state.copyWith(
+        data: const WeatherReportPostModel(),
+        isChanged: false,
+      );
+    }
+  }
+
   Future<void> submit() async {
     // 連続送信できないようにする
-    state = state.copyWith(isSubmitting: true);
+    state = state.copyWith(
+      isSubmitting: true,
+      isChanged: false,
+    );
   }
 }

@@ -16,6 +16,7 @@ import 'package:reimi_app/presentation/features/weather_report/widgets/show_pick
 import 'package:reimi_app/presentation/features/weather_report/widgets/send_button.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/weather_report_complete_dialog.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/info_tile.dart';
+import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
 
 class WeatherReportPostPage extends HookConsumerWidget {
@@ -26,6 +27,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context);
+    final theme = Theme.of(context);
     final url = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.data!.url));
     final comment = ref.watch(weatherReportPostNotifierProvider
@@ -40,6 +42,8 @@ class WeatherReportPostPage extends HookConsumerWidget {
         weatherType != null && feelingType != null && forecastType != null;
     final canSubmit = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.canSubmit));
+    final isChanged = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.isChanged));
     final controller = useTextEditingController(text: comment);
     final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
 
@@ -48,9 +52,26 @@ class WeatherReportPostPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: GestureDetector(
-          onTap: () {
-            context.pop();
-          },
+          onTap: isChanged
+              ? () async {
+                  await customConfirmationDialog(
+                    context: context,
+                    title: t.dialog.destructionChanges.title,
+                    contentText: t.dialog.destructionChanges.contentText,
+                    buttonLabel: t.button.destruction,
+                    accentColor: theme.colorScheme.primary,
+                    onPressed: () async {
+                      await notifier.discardChangesAndClose();
+                      if (context.mounted) {
+                        context.go(WeatherReportPage.routeLocation);
+                      }
+                    },
+                    onCancel: () {},
+                  );
+                }
+              : () {
+                  context.pop();
+                },
           child: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.white,
@@ -144,6 +165,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
                   onTap: !canSubmit
                       ? null
                       : () async {
+                          notifier.submit();
                           await weatherReportCompleteDialog(
                             context: context,
                             onConfirm: () {
