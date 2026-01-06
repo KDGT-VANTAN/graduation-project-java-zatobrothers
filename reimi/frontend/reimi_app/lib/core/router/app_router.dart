@@ -35,6 +35,14 @@ part 'app_router.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
+// StatefulShellBranch用のnavigatorKeyを追加
+final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Home');
+final _likeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Like');
+final _chatNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Chat');
+final _weatherReportNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'WeatherReport');
+final _accountNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Account');
+
 @Riverpod(keepAlive: true)
 GoRouter goRouter(Ref ref) {
   return GoRouter(
@@ -244,6 +252,7 @@ GoRouter goRouter(Ref ref) {
             BottomNavigation(navigationShell: navigationShell),
         branches: [
           StatefulShellBranch(
+            navigatorKey: _homeNavigatorKey,
             routes: [
               GoRoute(
                 path: HomePage.routeLocation,
@@ -252,6 +261,7 @@ GoRouter goRouter(Ref ref) {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _likeNavigatorKey,
             routes: [
               GoRoute(
                 path: LikePage.routeLocation,
@@ -260,6 +270,7 @@ GoRouter goRouter(Ref ref) {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _chatNavigatorKey,
             routes: [
               GoRoute(
                 path: ChatPage.routeLocation,
@@ -268,6 +279,7 @@ GoRouter goRouter(Ref ref) {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _weatherReportNavigatorKey,
             routes: [
               GoRoute(
                 path: WeatherReportPage.routeLocation,
@@ -276,6 +288,7 @@ GoRouter goRouter(Ref ref) {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _accountNavigatorKey,
             routes: [
               GoRoute(
                 path: AccountPage.routeLocation,
