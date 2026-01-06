@@ -29,9 +29,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         description = "ユーザーの取得成功",
         content = @Content(
             mediaType = "application/json",
-            array = @ArraySchema(
-                schema = @Schema(implementation = GetMeResponse.class)
-            )
+            schema = @Schema(implementation = GetMeResponse.class)
         )
     ),
     @ApiResponse(
