@@ -288,8 +288,11 @@
       "contentText": "変更した内容を保存しますか？"
     },
     "weatherReportComplete": {
-      "title": "ウェザーリポート完了",
-      "contentText": "おめでとうございます！\nレインボーいいねを1つ獲得しました。"
+      "title": "ウェザーリポート完了"
+    },
+    "destructionChanges": {
+      "title": "変更破棄の確認",
+      "contentText": "変更した内容を破棄しますか？"
     }
   },
   "modalSheet": {
@@ -331,7 +334,8 @@
     "apply": "適用する",
     "clear": "クリア",
     "send": "送信",
-    "close": "閉じる"
+    "close": "閉じる",
+    "destruction": "破棄"
   },
   "segmentedSwitch": {
     "like": {

@@ -280,6 +280,7 @@ class _TranslationsDialogJa implements TranslationsDialogEn {
 	@override late final _TranslationsDialogDeletePhotoJa deletePhoto = _TranslationsDialogDeletePhotoJa._(_root);
 	@override late final _TranslationsDialogSaveChangesJa saveChanges = _TranslationsDialogSaveChangesJa._(_root);
 	@override late final _TranslationsDialogWeatherReportCompleteJa weatherReportComplete = _TranslationsDialogWeatherReportCompleteJa._(_root);
+	@override late final _TranslationsDialogDestructionChangesJa destructionChanges = _TranslationsDialogDestructionChangesJa._(_root);
 }
 
 // Path: modalSheet
@@ -315,6 +316,7 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get clear => 'クリア';
 	@override String get send => '送信';
 	@override String get close => '閉じる';
+	@override String get destruction => '破棄';
 }
 
 // Path: segmentedSwitch
@@ -751,7 +753,17 @@ class _TranslationsDialogWeatherReportCompleteJa implements TranslationsDialogWe
 
 	// Translations
 	@override String get title => 'ウェザーリポート完了';
-	@override String get contentText => 'おめでとうございます！\nレインボーいいねを1つ獲得しました。';
+}
+
+// Path: dialog.destructionChanges
+class _TranslationsDialogDestructionChangesJa implements TranslationsDialogDestructionChangesEn {
+	_TranslationsDialogDestructionChangesJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '変更破棄の確認';
+	@override String get contentText => '変更した内容を破棄しますか？';
 }
 
 // Path: modalSheet.sortUser
@@ -1637,7 +1649,8 @@ extension on TranslationsJa {
 			'dialog.saveChanges.title' => '変更保存の確認',
 			'dialog.saveChanges.contentText' => '変更した内容を保存しますか？',
 			'dialog.weatherReportComplete.title' => 'ウェザーリポート完了',
-			'dialog.weatherReportComplete.contentText' => 'おめでとうございます！\nレインボーいいねを1つ獲得しました。',
+			'dialog.destructionChanges.title' => '変更破棄の確認',
+			'dialog.destructionChanges.contentText' => '変更した内容を破棄しますか？',
 			'modalSheet.sortUser.title' => '並び替え',
 			'modalSheet.refineSearchUser.title' => '絞り込み条件',
 			'modalSheet.refineSearchUser.section.age' => '年齢',
@@ -1663,6 +1676,7 @@ extension on TranslationsJa {
 			'button.clear' => 'クリア',
 			'button.send' => '送信',
 			'button.close' => '閉じる',
+			'button.destruction' => '破棄',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',

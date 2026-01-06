@@ -288,8 +288,11 @@
       "contentText": "Do you want to save your changes?"
     },
     "weatherReportComplete": {
-      "title": "Weather Report Complete",
-      "contentText": "Congratulations!\nYou earned 1 Rainbow Like."
+      "title": "Weather Report Complete"
+    },
+    "destructionChanges": {
+      "title": "Confirmation Of Discarding Changes",
+      "contentText": "Do you want to discard your changes?"
     }
   },
   "modalSheet": {
@@ -331,7 +334,8 @@
     "apply": "Apply",
     "clear": "Clear",
     "send": "Send",
-    "close": "Close"
+    "close": "Close",
+    "destruction": "Destruction"
   },
   "segmentedSwitch": {
     "like": {

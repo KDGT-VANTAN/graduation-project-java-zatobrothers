@@ -337,6 +337,7 @@ class TranslationsDialogEn {
 	late final TranslationsDialogDeletePhotoEn deletePhoto = TranslationsDialogDeletePhotoEn._(_root);
 	late final TranslationsDialogSaveChangesEn saveChanges = TranslationsDialogSaveChangesEn._(_root);
 	late final TranslationsDialogWeatherReportCompleteEn weatherReportComplete = TranslationsDialogWeatherReportCompleteEn._(_root);
+	late final TranslationsDialogDestructionChangesEn destructionChanges = TranslationsDialogDestructionChangesEn._(_root);
 }
 
 // Path: modalSheet
@@ -398,6 +399,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Close'
 	String get close => 'Close';
+
+	/// en: 'Destruction'
+	String get destruction => 'Destruction';
 }
 
 // Path: segmentedSwitch
@@ -979,9 +983,21 @@ class TranslationsDialogWeatherReportCompleteEn {
 
 	/// en: 'Weather Report Complete'
 	String get title => 'Weather Report Complete';
+}
 
-	/// en: 'Congratulations! You earned 1 Rainbow Like.'
-	String get contentText => 'Congratulations!\nYou earned 1 Rainbow Like.';
+// Path: dialog.destructionChanges
+class TranslationsDialogDestructionChangesEn {
+	TranslationsDialogDestructionChangesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Confirmation Of Discarding Changes'
+	String get title => 'Confirmation Of Discarding Changes';
+
+	/// en: 'Do you want to discard your changes?'
+	String get contentText => 'Do you want to discard your changes?';
 }
 
 // Path: modalSheet.sortUser
@@ -2531,7 +2547,8 @@ extension on Translations {
 			'dialog.saveChanges.title' => 'Confirm Save Changes',
 			'dialog.saveChanges.contentText' => 'Do you want to save your changes?',
 			'dialog.weatherReportComplete.title' => 'Weather Report Complete',
-			'dialog.weatherReportComplete.contentText' => 'Congratulations!\nYou earned 1 Rainbow Like.',
+			'dialog.destructionChanges.title' => 'Confirmation Of Discarding Changes',
+			'dialog.destructionChanges.contentText' => 'Do you want to discard your changes?',
 			'modalSheet.sortUser.title' => 'Sort',
 			'modalSheet.refineSearchUser.title' => 'Filter',
 			'modalSheet.refineSearchUser.section.age' => 'Age',
@@ -2557,6 +2574,7 @@ extension on Translations {
 			'button.clear' => 'Clear',
 			'button.send' => 'Send',
 			'button.close' => 'Close',
+			'button.destruction' => 'Destruction',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
