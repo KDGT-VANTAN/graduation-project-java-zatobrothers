@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.domain.model.profile;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Height {
@@ -86,4 +87,14 @@ public enum Height {
         return value;
     }
 
+    @JsonCreator
+    public static Height fromValue(int value) {
+        for (Height height : values()) {
+            if (height.value == value) {
+                return height;
+            }
+        }
+
+        throw new IllegalArgumentException();
+    }
 }
