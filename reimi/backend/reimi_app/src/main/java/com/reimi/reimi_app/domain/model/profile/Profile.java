@@ -120,4 +120,17 @@ public class Profile {
 
     public UserId getUserId() { return userId; }
     public String getIntroduction() { return introduction; }
+    public Height getHeight() { return height; }
+    public BodyShape getBodyShape() { return bodyShape; }
+    public AnnualIncome getAnnualIncome() { return annualIncome; }
+    public BloodType getBloodType() { return bloodType; }
+    public Hometown getHometown() { return hometown; }
+    public CommunicationStyle getCommunicationStyle() { return communicationStyle; }
+    public Occupation getOccupation() { return occupation; }
+    public Education getEducation() { return education; }
+    public Smoking getSmoking() { return smoking; }
+    public Alcohol getAlcohol() { return alcohol; }
+    public Holiday getHoliday() { return holiday; }
+    public List<String> getSunnyDayHobbies() { return sunnyDayHobbies; }
+    public List<String> getRainyDayHobbies() { return rainyDayHobbies; }
 }
