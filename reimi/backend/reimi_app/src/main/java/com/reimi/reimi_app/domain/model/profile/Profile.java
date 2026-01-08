@@ -8,7 +8,7 @@ public class Profile {
 
     private final UserId userId;
     private final String introduction;
-    private final Height height;
+    private final Integer height;
     private final BodyShape bodyShape;
     private final AnnualIncome annualIncome;
     private final BloodType bloodType;
@@ -26,7 +26,7 @@ public class Profile {
     private Profile(
         UserId userId,
         String introduction,
-        Height height,
+        Integer height,
         BodyShape bodyShape,
         AnnualIncome annualIncome,
         BloodType bloodType,
@@ -43,11 +43,13 @@ public class Profile {
         if (introduction == null || introduction.length() < 20 || introduction.length() > 500) {
             throw new IllegalArgumentException("自己紹介文は20〜500文字である必要があります");
         }
+        if (height != null && height < 130) { height = 130; }
+        if (height != null && height > 200) { height = 200; }
         if (sunnyDayHobbies != null && sunnyDayHobbies.size() > 3) {
-            throw new IllegalArgumentException("晴れの日の趣味は最大3つまでです");
+            throw new IllegalArgumentException("晴れの日にやりたいことは最大3つまでです");
         }
         if (rainyDayHobbies != null && rainyDayHobbies.size() > 3) {
-            throw new IllegalArgumentException("雨の日の趣味は最大3つまでです");
+            throw new IllegalArgumentException("雨の日にやりたいことは最大3つまでです");
         }
         this.userId = userId;
         this.introduction = introduction;
@@ -91,7 +93,7 @@ public class Profile {
     public static Profile reconstruct(
         UserId userId,
         String introduction,
-        Height height,
+        Integer height,
         BodyShape bodyShape,
         AnnualIncome annualIncome,
         BloodType bloodType,
@@ -126,7 +128,7 @@ public class Profile {
 
     public UserId getUserId() { return userId; }
     public String getIntroduction() { return introduction; }
-    public Height getHeight() { return height; }
+    public Integer getHeight() { return height; }
     public BodyShape getBodyShape() { return bodyShape; }
     public AnnualIncome getAnnualIncome() { return annualIncome; }
     public BloodType getBloodType() { return bloodType; }
