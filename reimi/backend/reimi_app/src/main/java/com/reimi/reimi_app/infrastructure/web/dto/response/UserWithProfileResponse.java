@@ -2,9 +2,10 @@ package com.reimi.reimi_app.infrastructure.web.dto.response;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public record UserWithProfileResponse(
-    String id,
+    UUID id,
     String name,
     String gender,
     LocalDate birthDate,
