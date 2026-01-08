@@ -43,6 +43,12 @@ public class Profile {
         if (introduction == null || introduction.length() < 20 || introduction.length() > 500) {
             throw new IllegalArgumentException("自己紹介文は20〜500文字である必要があります");
         }
+        if (sunnyDayHobbies != null && sunnyDayHobbies.size() > 3) {
+            throw new IllegalArgumentException("晴れの日の趣味は最大3つまでです");
+        }
+        if (rainyDayHobbies != null && rainyDayHobbies.size() > 3) {
+            throw new IllegalArgumentException("雨の日の趣味は最大3つまでです");
+        }
         this.userId = userId;
         this.introduction = introduction;
         this.height = height;
