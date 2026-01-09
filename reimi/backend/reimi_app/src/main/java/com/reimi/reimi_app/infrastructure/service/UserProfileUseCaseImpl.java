@@ -45,19 +45,19 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             user.getAddress().name(),
             user.getSignedMainPhotoUrl(),
             profile.getIntroduction(),
-            profile != null ? profile.getHeight() : null,
-            profile != null ? profile.getBodyShape().name() : null,
-            profile != null ? profile.getAnnualIncome().name() : null,
-            profile != null ? profile.getBloodType().name() : null,
-            profile != null ? profile.getHometown().name() : null,
-            profile != null ? profile.getCommunicationStyle().name() : null,
-            profile != null ? profile.getOccupation().name() : null,
-            profile != null ? profile.getEducation().name() : null,
-            profile != null ? profile.getSmoking().name() : null,
-            profile != null ? profile.getAlcohol().name() : null,
-            profile != null ? profile.getHoliday().name() : null,
-            profile != null ? profile.getSunnyDayHobbies() : null,
-            profile != null ? profile.getRainyDayHobbies() : null
+            profile != null && profile.getHeight() != null ? profile.getHeight() : null,
+            profile != null && profile.getBodyShape() != null ? profile.getBodyShape().name() : null,
+            profile != null && profile.getAnnualIncome() != null ? profile.getAnnualIncome().name() : null,
+            profile != null && profile.getBloodType() != null ? profile.getBloodType().name() : null,
+            profile != null && profile.getHometown() != null ? profile.getHometown().name() : null,
+            profile != null && profile.getCommunicationStyle() != null ? profile.getCommunicationStyle().name() : null,
+            profile != null && profile.getOccupation() != null ? profile.getOccupation().name() : null,
+            profile != null && profile.getEducation() != null ? profile.getEducation().name() : null,
+            profile != null && profile.getSmoking() != null ? profile.getSmoking().name() : null,
+            profile != null && profile.getAlcohol() != null ? profile.getAlcohol().name() : null,
+            profile != null && profile.getHoliday() != null ? profile.getHoliday().name() : null,
+            profile != null && profile.getSunnyDayHobbies() != null ? profile.getSunnyDayHobbies() : null,
+            profile != null && profile.getRainyDayHobbies() != null ? profile.getRainyDayHobbies() : null
         );
     }
 }
