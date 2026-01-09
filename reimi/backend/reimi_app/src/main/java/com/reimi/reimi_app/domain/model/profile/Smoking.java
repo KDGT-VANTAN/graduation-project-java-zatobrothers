@@ -3,7 +3,7 @@ package com.reimi.reimi_app.domain.model.profile;
 public enum Smoking {
     NO("吸わない"),
     SOMETIMES("たまに吸う"),
-    YES("不定休");
+    YES("吸う");
 
     private final String label;
 
