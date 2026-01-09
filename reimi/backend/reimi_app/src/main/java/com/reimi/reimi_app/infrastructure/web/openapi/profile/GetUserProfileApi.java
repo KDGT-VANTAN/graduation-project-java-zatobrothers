@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.openapi.user;
+package com.reimi.reimi_app.infrastructure.web.openapi.profile;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
-import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.UserWithProfileResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,17 +18,17 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "ユーザー取得",
-    description = "ログインしているユーザー情報を取得できるAPI",
-    tags = { "User" }
+    summary = "ユーザープロフィール取得",
+    description = "ユーザーのプロフィール詳細を取得できるAPI",
+    tags = { "UserProfile" }
 )
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",
-        description = "ユーザーの取得成功",
+        description = "ユーザープロフィール取得成功",
         content = @Content(
             mediaType = "application/json",
-            schema = @Schema(implementation = GetMeResponse.class)
+            schema = @Schema(implementation = UserWithProfileResponse.class)
         )
     ),
     @ApiResponse(
@@ -80,5 +80,5 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 })
-public @interface GetMeApi {
+public @interface GetUserProfileApi {
 }
