@@ -1,6 +1,6 @@
-import 'package:reimi_app/data/datasources/like_remote_datasource.dart';
-import 'package:reimi_app/data/models/like_user_model.dart';
+import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
 import 'package:reimi_app/domain/entities/like_entity.dart';
+import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
 
 class LikeRepositoryImpl implements LikeRepository {
@@ -8,13 +8,13 @@ class LikeRepositoryImpl implements LikeRepository {
   final LikeRemoteDataSource _remote;
 
   @override
-  Future<List<LikeUserModel>?> getLikeUsersFromUser(String userId) {
-    return _remote.getLikeUsersFromUser(userId);
+  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
+    return _remote.fetchLikeUsersFromUser();
   }
 
   @override
-  Future<List<LikeUserModel>?> getLikeUsersToUser(String userId) {
-    return _remote.getLikeUsersToUser(userId);
+  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
+    return _remote.fetchLikeUsersToUser();
   }
 
   @override

@@ -17,7 +17,7 @@ class UserNamePage extends ConsumerWidget {
     final t = Translations.of(context);
     final theme = Theme.of(context);
     final name = ref.watch(
-      userRegistrationNotifierProvider.select((state) => state.data!.name),
+      userRegistrationNotifierProvider.select((state) => state.name),
     );
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(

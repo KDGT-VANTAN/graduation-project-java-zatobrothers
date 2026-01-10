@@ -20,8 +20,7 @@ class UserBirthdatePage extends ConsumerWidget {
     final t = Translations.of(context);
     final theme = Theme.of(context);
     final birthDate = ref.watch(
-      userRegistrationNotifierProvider.select((state) => state.data!.birthDate),
-    );
+        userRegistrationNotifierProvider.select((state) => state.birthDate));
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
       question: t.userRegistrationPage.birthDate.question,

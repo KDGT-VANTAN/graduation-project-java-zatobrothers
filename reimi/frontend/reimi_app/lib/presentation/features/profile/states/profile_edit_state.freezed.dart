@@ -14,7 +14,27 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ProfileEditState {
-  UserWithProfileModel? get data;
+  String get name;
+  Gender get gender;
+  @YyyyMmDdDateConverter()
+  DateTime get birthDate;
+  Address get address;
+  String get mainPhotoUrl;
+  String get introduction;
+  Height? get height;
+  BodyShape? get bodyShape;
+  AnnualIncome? get annualIncome;
+  BloodType? get bloodType;
+  Address? get hometown;
+  CommunicationStyle? get communicationStyle;
+  Occupation? get occupation;
+  Education? get education;
+  Smoking? get smoking;
+  Alcohol? get alcohol;
+  Holiday? get holiday;
+  List<String>? get sunnyDayHobbies;
+  List<String>? get rainyDayHobbies;
+  List<String>? get subPhotoUrls;
   bool get isChanged;
 
   /// Create a copy of ProfileEditState
@@ -30,17 +50,72 @@ mixin _$ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ProfileEditState &&
-            (identical(other.data, data) || other.data == data) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.mainPhotoUrl, mainPhotoUrl) ||
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.introduction, introduction) ||
+                other.introduction == introduction) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.bodyShape, bodyShape) ||
+                other.bodyShape == bodyShape) &&
+            (identical(other.annualIncome, annualIncome) ||
+                other.annualIncome == annualIncome) &&
+            (identical(other.bloodType, bloodType) ||
+                other.bloodType == bloodType) &&
+            (identical(other.hometown, hometown) ||
+                other.hometown == hometown) &&
+            (identical(other.communicationStyle, communicationStyle) ||
+                other.communicationStyle == communicationStyle) &&
+            (identical(other.occupation, occupation) ||
+                other.occupation == occupation) &&
+            (identical(other.education, education) ||
+                other.education == education) &&
+            (identical(other.smoking, smoking) || other.smoking == smoking) &&
+            (identical(other.alcohol, alcohol) || other.alcohol == alcohol) &&
+            (identical(other.holiday, holiday) || other.holiday == holiday) &&
+            const DeepCollectionEquality()
+                .equals(other.sunnyDayHobbies, sunnyDayHobbies) &&
+            const DeepCollectionEquality()
+                .equals(other.rainyDayHobbies, rainyDayHobbies) &&
+            const DeepCollectionEquality()
+                .equals(other.subPhotoUrls, subPhotoUrls) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data, isChanged);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        name,
+        gender,
+        birthDate,
+        address,
+        mainPhotoUrl,
+        introduction,
+        height,
+        bodyShape,
+        annualIncome,
+        bloodType,
+        hometown,
+        communicationStyle,
+        occupation,
+        education,
+        smoking,
+        alcohol,
+        holiday,
+        const DeepCollectionEquality().hash(sunnyDayHobbies),
+        const DeepCollectionEquality().hash(rainyDayHobbies),
+        const DeepCollectionEquality().hash(subPhotoUrls),
+        isChanged
+      ]);
 
   @override
   String toString() {
-    return 'ProfileEditState(data: $data, isChanged: $isChanged)';
+    return 'ProfileEditState(name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls, isChanged: $isChanged)';
   }
 }
 
@@ -50,9 +125,28 @@ abstract mixin class $ProfileEditStateCopyWith<$Res> {
           ProfileEditState value, $Res Function(ProfileEditState) _then) =
       _$ProfileEditStateCopyWithImpl;
   @useResult
-  $Res call({UserWithProfileModel? data, bool isChanged});
-
-  $UserWithProfileModelCopyWith<$Res>? get data;
+  $Res call(
+      {String name,
+      Gender gender,
+      @YyyyMmDdDateConverter() DateTime birthDate,
+      Address address,
+      String mainPhotoUrl,
+      String introduction,
+      Height? height,
+      BodyShape? bodyShape,
+      AnnualIncome? annualIncome,
+      BloodType? bloodType,
+      Address? hometown,
+      CommunicationStyle? communicationStyle,
+      Occupation? occupation,
+      Education? education,
+      Smoking? smoking,
+      Alcohol? alcohol,
+      Holiday? holiday,
+      List<String>? sunnyDayHobbies,
+      List<String>? rainyDayHobbies,
+      List<String>? subPhotoUrls,
+      bool isChanged});
 }
 
 /// @nodoc
@@ -68,33 +162,114 @@ class _$ProfileEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? name = null,
+    Object? gender = null,
+    Object? birthDate = null,
+    Object? address = null,
+    Object? mainPhotoUrl = null,
+    Object? introduction = null,
+    Object? height = freezed,
+    Object? bodyShape = freezed,
+    Object? annualIncome = freezed,
+    Object? bloodType = freezed,
+    Object? hometown = freezed,
+    Object? communicationStyle = freezed,
+    Object? occupation = freezed,
+    Object? education = freezed,
+    Object? smoking = freezed,
+    Object? alcohol = freezed,
+    Object? holiday = freezed,
+    Object? sunnyDayHobbies = freezed,
+    Object? rainyDayHobbies = freezed,
+    Object? subPhotoUrls = freezed,
     Object? isChanged = null,
   }) {
     return _then(_self.copyWith(
-      data: freezed == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _self.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender,
+      birthDate: null == birthDate
+          ? _self.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+      mainPhotoUrl: null == mainPhotoUrl
+          ? _self.mainPhotoUrl
+          : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      introduction: null == introduction
+          ? _self.introduction
+          : introduction // ignore: cast_nullable_to_non_nullable
+              as String,
+      height: freezed == height
+          ? _self.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as Height?,
+      bodyShape: freezed == bodyShape
+          ? _self.bodyShape
+          : bodyShape // ignore: cast_nullable_to_non_nullable
+              as BodyShape?,
+      annualIncome: freezed == annualIncome
+          ? _self.annualIncome
+          : annualIncome // ignore: cast_nullable_to_non_nullable
+              as AnnualIncome?,
+      bloodType: freezed == bloodType
+          ? _self.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
+              as BloodType?,
+      hometown: freezed == hometown
+          ? _self.hometown
+          : hometown // ignore: cast_nullable_to_non_nullable
+              as Address?,
+      communicationStyle: freezed == communicationStyle
+          ? _self.communicationStyle
+          : communicationStyle // ignore: cast_nullable_to_non_nullable
+              as CommunicationStyle?,
+      occupation: freezed == occupation
+          ? _self.occupation
+          : occupation // ignore: cast_nullable_to_non_nullable
+              as Occupation?,
+      education: freezed == education
+          ? _self.education
+          : education // ignore: cast_nullable_to_non_nullable
+              as Education?,
+      smoking: freezed == smoking
+          ? _self.smoking
+          : smoking // ignore: cast_nullable_to_non_nullable
+              as Smoking?,
+      alcohol: freezed == alcohol
+          ? _self.alcohol
+          : alcohol // ignore: cast_nullable_to_non_nullable
+              as Alcohol?,
+      holiday: freezed == holiday
+          ? _self.holiday
+          : holiday // ignore: cast_nullable_to_non_nullable
+              as Holiday?,
+      sunnyDayHobbies: freezed == sunnyDayHobbies
+          ? _self.sunnyDayHobbies
+          : sunnyDayHobbies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      rainyDayHobbies: freezed == rainyDayHobbies
+          ? _self.rainyDayHobbies
+          : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      subPhotoUrls: freezed == subPhotoUrls
+          ? _self.subPhotoUrls
+          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
-  }
-
-  /// Create a copy of ProfileEditState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get data {
-    if (_self.data == null) {
-      return null;
-    }
-
-    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }
 
@@ -191,13 +366,56 @@ extension ProfileEditStatePatterns on ProfileEditState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(UserWithProfileModel? data, bool isChanged)? $default, {
+    TResult Function(
+            String name,
+            Gender gender,
+            @YyyyMmDdDateConverter() DateTime birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String introduction,
+            Height? height,
+            BodyShape? bodyShape,
+            AnnualIncome? annualIncome,
+            BloodType? bloodType,
+            Address? hometown,
+            CommunicationStyle? communicationStyle,
+            Occupation? occupation,
+            Education? education,
+            Smoking? smoking,
+            Alcohol? alcohol,
+            Holiday? holiday,
+            List<String>? sunnyDayHobbies,
+            List<String>? rainyDayHobbies,
+            List<String>? subPhotoUrls,
+            bool isChanged)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ProfileEditState() when $default != null:
-        return $default(_that.data, _that.isChanged);
+        return $default(
+            _that.name,
+            _that.gender,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.height,
+            _that.bodyShape,
+            _that.annualIncome,
+            _that.bloodType,
+            _that.hometown,
+            _that.communicationStyle,
+            _that.occupation,
+            _that.education,
+            _that.smoking,
+            _that.alcohol,
+            _that.holiday,
+            _that.sunnyDayHobbies,
+            _that.rainyDayHobbies,
+            _that.subPhotoUrls,
+            _that.isChanged);
       case _:
         return orElse();
     }
@@ -218,12 +436,55 @@ extension ProfileEditStatePatterns on ProfileEditState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(UserWithProfileModel? data, bool isChanged) $default,
+    TResult Function(
+            String name,
+            Gender gender,
+            @YyyyMmDdDateConverter() DateTime birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String introduction,
+            Height? height,
+            BodyShape? bodyShape,
+            AnnualIncome? annualIncome,
+            BloodType? bloodType,
+            Address? hometown,
+            CommunicationStyle? communicationStyle,
+            Occupation? occupation,
+            Education? education,
+            Smoking? smoking,
+            Alcohol? alcohol,
+            Holiday? holiday,
+            List<String>? sunnyDayHobbies,
+            List<String>? rainyDayHobbies,
+            List<String>? subPhotoUrls,
+            bool isChanged)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileEditState():
-        return $default(_that.data, _that.isChanged);
+        return $default(
+            _that.name,
+            _that.gender,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.height,
+            _that.bodyShape,
+            _that.annualIncome,
+            _that.bloodType,
+            _that.hometown,
+            _that.communicationStyle,
+            _that.occupation,
+            _that.education,
+            _that.smoking,
+            _that.alcohol,
+            _that.holiday,
+            _that.sunnyDayHobbies,
+            _that.rainyDayHobbies,
+            _that.subPhotoUrls,
+            _that.isChanged);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -243,12 +504,55 @@ extension ProfileEditStatePatterns on ProfileEditState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(UserWithProfileModel? data, bool isChanged)? $default,
+    TResult? Function(
+            String name,
+            Gender gender,
+            @YyyyMmDdDateConverter() DateTime birthDate,
+            Address address,
+            String mainPhotoUrl,
+            String introduction,
+            Height? height,
+            BodyShape? bodyShape,
+            AnnualIncome? annualIncome,
+            BloodType? bloodType,
+            Address? hometown,
+            CommunicationStyle? communicationStyle,
+            Occupation? occupation,
+            Education? education,
+            Smoking? smoking,
+            Alcohol? alcohol,
+            Holiday? holiday,
+            List<String>? sunnyDayHobbies,
+            List<String>? rainyDayHobbies,
+            List<String>? subPhotoUrls,
+            bool isChanged)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileEditState() when $default != null:
-        return $default(_that.data, _that.isChanged);
+        return $default(
+            _that.name,
+            _that.gender,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.height,
+            _that.bodyShape,
+            _that.annualIncome,
+            _that.bloodType,
+            _that.hometown,
+            _that.communicationStyle,
+            _that.occupation,
+            _that.education,
+            _that.smoking,
+            _that.alcohol,
+            _that.holiday,
+            _that.sunnyDayHobbies,
+            _that.rainyDayHobbies,
+            _that.subPhotoUrls,
+            _that.isChanged);
       case _:
         return null;
     }
@@ -258,10 +562,97 @@ extension ProfileEditStatePatterns on ProfileEditState {
 /// @nodoc
 
 class _ProfileEditState implements ProfileEditState {
-  const _ProfileEditState({this.data, this.isChanged = false});
+  const _ProfileEditState(
+      {required this.name,
+      required this.gender,
+      @YyyyMmDdDateConverter() required this.birthDate,
+      required this.address,
+      required this.mainPhotoUrl,
+      required this.introduction,
+      this.height,
+      this.bodyShape,
+      this.annualIncome,
+      this.bloodType,
+      this.hometown,
+      this.communicationStyle,
+      this.occupation,
+      this.education,
+      this.smoking,
+      this.alcohol,
+      this.holiday,
+      final List<String>? sunnyDayHobbies,
+      final List<String>? rainyDayHobbies,
+      final List<String>? subPhotoUrls,
+      this.isChanged = false})
+      : _sunnyDayHobbies = sunnyDayHobbies,
+        _rainyDayHobbies = rainyDayHobbies,
+        _subPhotoUrls = subPhotoUrls;
 
   @override
-  final UserWithProfileModel? data;
+  final String name;
+  @override
+  final Gender gender;
+  @override
+  @YyyyMmDdDateConverter()
+  final DateTime birthDate;
+  @override
+  final Address address;
+  @override
+  final String mainPhotoUrl;
+  @override
+  final String introduction;
+  @override
+  final Height? height;
+  @override
+  final BodyShape? bodyShape;
+  @override
+  final AnnualIncome? annualIncome;
+  @override
+  final BloodType? bloodType;
+  @override
+  final Address? hometown;
+  @override
+  final CommunicationStyle? communicationStyle;
+  @override
+  final Occupation? occupation;
+  @override
+  final Education? education;
+  @override
+  final Smoking? smoking;
+  @override
+  final Alcohol? alcohol;
+  @override
+  final Holiday? holiday;
+  final List<String>? _sunnyDayHobbies;
+  @override
+  List<String>? get sunnyDayHobbies {
+    final value = _sunnyDayHobbies;
+    if (value == null) return null;
+    if (_sunnyDayHobbies is EqualUnmodifiableListView) return _sunnyDayHobbies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _rainyDayHobbies;
+  @override
+  List<String>? get rainyDayHobbies {
+    final value = _rainyDayHobbies;
+    if (value == null) return null;
+    if (_rainyDayHobbies is EqualUnmodifiableListView) return _rainyDayHobbies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _subPhotoUrls;
+  @override
+  List<String>? get subPhotoUrls {
+    final value = _subPhotoUrls;
+    if (value == null) return null;
+    if (_subPhotoUrls is EqualUnmodifiableListView) return _subPhotoUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey()
   final bool isChanged;
@@ -279,17 +670,72 @@ class _ProfileEditState implements ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ProfileEditState &&
-            (identical(other.data, data) || other.data == data) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.mainPhotoUrl, mainPhotoUrl) ||
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.introduction, introduction) ||
+                other.introduction == introduction) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.bodyShape, bodyShape) ||
+                other.bodyShape == bodyShape) &&
+            (identical(other.annualIncome, annualIncome) ||
+                other.annualIncome == annualIncome) &&
+            (identical(other.bloodType, bloodType) ||
+                other.bloodType == bloodType) &&
+            (identical(other.hometown, hometown) ||
+                other.hometown == hometown) &&
+            (identical(other.communicationStyle, communicationStyle) ||
+                other.communicationStyle == communicationStyle) &&
+            (identical(other.occupation, occupation) ||
+                other.occupation == occupation) &&
+            (identical(other.education, education) ||
+                other.education == education) &&
+            (identical(other.smoking, smoking) || other.smoking == smoking) &&
+            (identical(other.alcohol, alcohol) || other.alcohol == alcohol) &&
+            (identical(other.holiday, holiday) || other.holiday == holiday) &&
+            const DeepCollectionEquality()
+                .equals(other._sunnyDayHobbies, _sunnyDayHobbies) &&
+            const DeepCollectionEquality()
+                .equals(other._rainyDayHobbies, _rainyDayHobbies) &&
+            const DeepCollectionEquality()
+                .equals(other._subPhotoUrls, _subPhotoUrls) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data, isChanged);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        name,
+        gender,
+        birthDate,
+        address,
+        mainPhotoUrl,
+        introduction,
+        height,
+        bodyShape,
+        annualIncome,
+        bloodType,
+        hometown,
+        communicationStyle,
+        occupation,
+        education,
+        smoking,
+        alcohol,
+        holiday,
+        const DeepCollectionEquality().hash(_sunnyDayHobbies),
+        const DeepCollectionEquality().hash(_rainyDayHobbies),
+        const DeepCollectionEquality().hash(_subPhotoUrls),
+        isChanged
+      ]);
 
   @override
   String toString() {
-    return 'ProfileEditState(data: $data, isChanged: $isChanged)';
+    return 'ProfileEditState(name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls, isChanged: $isChanged)';
   }
 }
 
@@ -301,10 +747,28 @@ abstract mixin class _$ProfileEditStateCopyWith<$Res>
       __$ProfileEditStateCopyWithImpl;
   @override
   @useResult
-  $Res call({UserWithProfileModel? data, bool isChanged});
-
-  @override
-  $UserWithProfileModelCopyWith<$Res>? get data;
+  $Res call(
+      {String name,
+      Gender gender,
+      @YyyyMmDdDateConverter() DateTime birthDate,
+      Address address,
+      String mainPhotoUrl,
+      String introduction,
+      Height? height,
+      BodyShape? bodyShape,
+      AnnualIncome? annualIncome,
+      BloodType? bloodType,
+      Address? hometown,
+      CommunicationStyle? communicationStyle,
+      Occupation? occupation,
+      Education? education,
+      Smoking? smoking,
+      Alcohol? alcohol,
+      Holiday? holiday,
+      List<String>? sunnyDayHobbies,
+      List<String>? rainyDayHobbies,
+      List<String>? subPhotoUrls,
+      bool isChanged});
 }
 
 /// @nodoc
@@ -320,33 +784,114 @@ class __$ProfileEditStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? data = freezed,
+    Object? name = null,
+    Object? gender = null,
+    Object? birthDate = null,
+    Object? address = null,
+    Object? mainPhotoUrl = null,
+    Object? introduction = null,
+    Object? height = freezed,
+    Object? bodyShape = freezed,
+    Object? annualIncome = freezed,
+    Object? bloodType = freezed,
+    Object? hometown = freezed,
+    Object? communicationStyle = freezed,
+    Object? occupation = freezed,
+    Object? education = freezed,
+    Object? smoking = freezed,
+    Object? alcohol = freezed,
+    Object? holiday = freezed,
+    Object? sunnyDayHobbies = freezed,
+    Object? rainyDayHobbies = freezed,
+    Object? subPhotoUrls = freezed,
     Object? isChanged = null,
   }) {
     return _then(_ProfileEditState(
-      data: freezed == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _self.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender,
+      birthDate: null == birthDate
+          ? _self.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+      mainPhotoUrl: null == mainPhotoUrl
+          ? _self.mainPhotoUrl
+          : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      introduction: null == introduction
+          ? _self.introduction
+          : introduction // ignore: cast_nullable_to_non_nullable
+              as String,
+      height: freezed == height
+          ? _self.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as Height?,
+      bodyShape: freezed == bodyShape
+          ? _self.bodyShape
+          : bodyShape // ignore: cast_nullable_to_non_nullable
+              as BodyShape?,
+      annualIncome: freezed == annualIncome
+          ? _self.annualIncome
+          : annualIncome // ignore: cast_nullable_to_non_nullable
+              as AnnualIncome?,
+      bloodType: freezed == bloodType
+          ? _self.bloodType
+          : bloodType // ignore: cast_nullable_to_non_nullable
+              as BloodType?,
+      hometown: freezed == hometown
+          ? _self.hometown
+          : hometown // ignore: cast_nullable_to_non_nullable
+              as Address?,
+      communicationStyle: freezed == communicationStyle
+          ? _self.communicationStyle
+          : communicationStyle // ignore: cast_nullable_to_non_nullable
+              as CommunicationStyle?,
+      occupation: freezed == occupation
+          ? _self.occupation
+          : occupation // ignore: cast_nullable_to_non_nullable
+              as Occupation?,
+      education: freezed == education
+          ? _self.education
+          : education // ignore: cast_nullable_to_non_nullable
+              as Education?,
+      smoking: freezed == smoking
+          ? _self.smoking
+          : smoking // ignore: cast_nullable_to_non_nullable
+              as Smoking?,
+      alcohol: freezed == alcohol
+          ? _self.alcohol
+          : alcohol // ignore: cast_nullable_to_non_nullable
+              as Alcohol?,
+      holiday: freezed == holiday
+          ? _self.holiday
+          : holiday // ignore: cast_nullable_to_non_nullable
+              as Holiday?,
+      sunnyDayHobbies: freezed == sunnyDayHobbies
+          ? _self._sunnyDayHobbies
+          : sunnyDayHobbies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      rainyDayHobbies: freezed == rainyDayHobbies
+          ? _self._rainyDayHobbies
+          : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      subPhotoUrls: freezed == subPhotoUrls
+          ? _self._subPhotoUrls
+          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
-  }
-
-  /// Create a copy of ProfileEditState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get data {
-    if (_self.data == null) {
-      return null;
-    }
-
-    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
-import 'package:reimi_app/data/models/weather_report_simple_model.dart';
+import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
 
 class WeatherReportCard extends StatelessWidget {
   const WeatherReportCard({
@@ -10,7 +10,7 @@ class WeatherReportCard extends StatelessWidget {
     required this.onTap,
   });
 
-  final WeatherReportSimpleModel weatherReport;
+  final WeatherReportSimpleReadModel weatherReport;
   final void Function()? onTap;
 
   @override
@@ -57,7 +57,7 @@ class WeatherReportCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      weatherReport.postAt.toRelativeDateTime(),
+                      weatherReport.createdAt.toRelativeDateTime(),
                       style: theme.textTheme.bodySmall!.copyWith(
                         fontSize: 10,
                         color: Colors.black54,

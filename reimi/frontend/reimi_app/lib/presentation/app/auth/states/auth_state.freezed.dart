@@ -50,7 +50,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -59,8 +58,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
       case _Authenticated() when authenticated != null:
@@ -89,7 +86,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -97,8 +93,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial():
-        return initial(_that);
       case _Loading():
         return loading(_that);
       case _Authenticated():
@@ -126,7 +120,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -134,8 +127,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
       case _Authenticated() when authenticated != null:
@@ -163,21 +154,18 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(AuthFailure failure)? failure,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial();
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated() when unauthenticated != null:
         return unauthenticated();
       case _Failure() when failure != null:
@@ -202,20 +190,17 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(AuthFailure failure) failure,
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial():
-        return initial();
       case _Loading():
         return loading();
       case _Authenticated():
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated():
         return unauthenticated();
       case _Failure():
@@ -239,20 +224,17 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(AuthFailure failure)? failure,
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial();
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
-        return authenticated(_that.user);
+        return authenticated(_that.firebaseUser);
       case _Unauthenticated() when unauthenticated != null:
         return unauthenticated();
       case _Failure() when failure != null:
@@ -260,26 +242,6 @@ extension AuthStatePatterns on AuthState {
       case _:
         return null;
     }
-  }
-}
-
-/// @nodoc
-
-class _Initial implements AuthState {
-  const _Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AuthState.initial()';
   }
 }
 
@@ -306,9 +268,9 @@ class _Loading implements AuthState {
 /// @nodoc
 
 class _Authenticated implements AuthState {
-  const _Authenticated(this.user);
+  const _Authenticated(this.firebaseUser);
 
-  final User user;
+  final User firebaseUser;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -322,15 +284,16 @@ class _Authenticated implements AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Authenticated &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.firebaseUser, firebaseUser) ||
+                other.firebaseUser == firebaseUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, firebaseUser);
 
   @override
   String toString() {
-    return 'AuthState.authenticated(user: $user)';
+    return 'AuthState.authenticated(firebaseUser: $firebaseUser)';
   }
 }
 
@@ -341,7 +304,7 @@ abstract mixin class _$AuthenticatedCopyWith<$Res>
           _Authenticated value, $Res Function(_Authenticated) _then) =
       __$AuthenticatedCopyWithImpl;
   @useResult
-  $Res call({User user});
+  $Res call({User firebaseUser});
 }
 
 /// @nodoc
@@ -356,12 +319,12 @@ class __$AuthenticatedCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? user = null,
+    Object? firebaseUser = null,
   }) {
     return _then(_Authenticated(
-      null == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
+      null == firebaseUser
+          ? _self.firebaseUser
+          : firebaseUser // ignore: cast_nullable_to_non_nullable
               as User,
     ));
   }

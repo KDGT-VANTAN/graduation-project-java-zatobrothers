@@ -27,7 +27,7 @@ class HomePage extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: usersAsync.when(
               data: (users) {
-                if (users == null) {
+                if (users.isEmpty) {
                   return const Text('現在、表示できるユーザーがいません。');
                 }
                 return CustomScrollView(
@@ -75,7 +75,7 @@ class HomePage extends ConsumerWidget {
                             onTap: () {
                               context.push(
                                 ProfileDetailPage.routeLocation,
-                                extra: {'userId': users[index].userId},
+                                extra: {'userId': users[index].id},
                               );
                             },
                           );

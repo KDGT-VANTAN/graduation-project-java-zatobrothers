@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportDetailState {
-  WeatherReportModel? get weatherReport;
+  WeatherReportReadModel? get weatherReport;
 
   /// Create a copy of WeatherReportDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -48,9 +48,9 @@ abstract mixin class $WeatherReportDetailStateCopyWith<$Res> {
           $Res Function(WeatherReportDetailState) _then) =
       _$WeatherReportDetailStateCopyWithImpl;
   @useResult
-  $Res call({WeatherReportModel? weatherReport});
+  $Res call({WeatherReportReadModel? weatherReport});
 
-  $WeatherReportModelCopyWith<$Res>? get weatherReport;
+  $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
 }
 
 /// @nodoc
@@ -72,7 +72,7 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
       weatherReport: freezed == weatherReport
           ? _self.weatherReport
           : weatherReport // ignore: cast_nullable_to_non_nullable
-              as WeatherReportModel?,
+              as WeatherReportReadModel?,
     ));
   }
 
@@ -80,12 +80,12 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $WeatherReportModelCopyWith<$Res>? get weatherReport {
+  $WeatherReportReadModelCopyWith<$Res>? get weatherReport {
     if (_self.weatherReport == null) {
       return null;
     }
 
-    return $WeatherReportModelCopyWith<$Res>(_self.weatherReport!, (value) {
+    return $WeatherReportReadModelCopyWith<$Res>(_self.weatherReport!, (value) {
       return _then(_self.copyWith(weatherReport: value));
     });
   }
@@ -184,7 +184,7 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(WeatherReportModel? weatherReport)? $default, {
+    TResult Function(WeatherReportReadModel? weatherReport)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -211,7 +211,7 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(WeatherReportModel? weatherReport) $default,
+    TResult Function(WeatherReportReadModel? weatherReport) $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -236,7 +236,7 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(WeatherReportModel? weatherReport)? $default,
+    TResult? Function(WeatherReportReadModel? weatherReport)? $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -254,7 +254,7 @@ class _WeatherReportDetailState implements WeatherReportDetailState {
   const _WeatherReportDetailState({this.weatherReport});
 
   @override
-  final WeatherReportModel? weatherReport;
+  final WeatherReportReadModel? weatherReport;
 
   /// Create a copy of WeatherReportDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -291,10 +291,10 @@ abstract mixin class _$WeatherReportDetailStateCopyWith<$Res>
       __$WeatherReportDetailStateCopyWithImpl;
   @override
   @useResult
-  $Res call({WeatherReportModel? weatherReport});
+  $Res call({WeatherReportReadModel? weatherReport});
 
   @override
-  $WeatherReportModelCopyWith<$Res>? get weatherReport;
+  $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
 }
 
 /// @nodoc
@@ -316,7 +316,7 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
       weatherReport: freezed == weatherReport
           ? _self.weatherReport
           : weatherReport // ignore: cast_nullable_to_non_nullable
-              as WeatherReportModel?,
+              as WeatherReportReadModel?,
     ));
   }
 
@@ -324,12 +324,12 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $WeatherReportModelCopyWith<$Res>? get weatherReport {
+  $WeatherReportReadModelCopyWith<$Res>? get weatherReport {
     if (_self.weatherReport == null) {
       return null;
     }
 
-    return $WeatherReportModelCopyWith<$Res>(_self.weatherReport!, (value) {
+    return $WeatherReportReadModelCopyWith<$Res>(_self.weatherReport!, (value) {
       return _then(_self.copyWith(weatherReport: value));
     });
   }

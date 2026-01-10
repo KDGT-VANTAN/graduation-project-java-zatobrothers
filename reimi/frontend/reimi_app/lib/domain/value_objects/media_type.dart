@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum MediaType {
-  @JsonValue('PHOTO')
-  photo,
+  @JsonValue('IMAGE')
+  image,
   @JsonValue('VIDEO')
   video,
 }

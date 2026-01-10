@@ -18,7 +18,6 @@ mixin _$WeatherMediaEntity {
   String get weatherReportId;
   MediaType get mediaType;
   String get url;
-  @IsoDateTimeConverter()
   DateTime get createdAt;
 
   /// Create a copy of WeatherMediaEntity
@@ -28,9 +27,6 @@ mixin _$WeatherMediaEntity {
   $WeatherMediaEntityCopyWith<WeatherMediaEntity> get copyWith =>
       _$WeatherMediaEntityCopyWithImpl<WeatherMediaEntity>(
           this as WeatherMediaEntity, _$identity);
-
-  /// Serializes this WeatherMediaEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -47,7 +43,6 @@ mixin _$WeatherMediaEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, weatherReportId, mediaType, url, createdAt);
@@ -69,7 +64,7 @@ abstract mixin class $WeatherMediaEntityCopyWith<$Res> {
       String weatherReportId,
       MediaType mediaType,
       String url,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -210,7 +205,7 @@ extension WeatherMediaEntityPatterns on WeatherMediaEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String id, String weatherReportId, MediaType mediaType,
-            String url, @IsoDateTimeConverter() DateTime createdAt)?
+            String url, DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -240,7 +235,7 @@ extension WeatherMediaEntityPatterns on WeatherMediaEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String id, String weatherReportId, MediaType mediaType,
-            String url, @IsoDateTimeConverter() DateTime createdAt)
+            String url, DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -268,7 +263,7 @@ extension WeatherMediaEntityPatterns on WeatherMediaEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(String id, String weatherReportId, MediaType mediaType,
-            String url, @IsoDateTimeConverter() DateTime createdAt)?
+            String url, DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -283,16 +278,14 @@ extension WeatherMediaEntityPatterns on WeatherMediaEntity {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _WeatherMediaEntity implements WeatherMediaEntity {
   const _WeatherMediaEntity(
       {required this.id,
       required this.weatherReportId,
       required this.mediaType,
       required this.url,
-      @IsoDateTimeConverter() required this.createdAt});
-  factory _WeatherMediaEntity.fromJson(Map<String, dynamic> json) =>
-      _$WeatherMediaEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -303,7 +296,6 @@ class _WeatherMediaEntity implements WeatherMediaEntity {
   @override
   final String url;
   @override
-  @IsoDateTimeConverter()
   final DateTime createdAt;
 
   /// Create a copy of WeatherMediaEntity
@@ -313,13 +305,6 @@ class _WeatherMediaEntity implements WeatherMediaEntity {
   @pragma('vm:prefer-inline')
   _$WeatherMediaEntityCopyWith<_WeatherMediaEntity> get copyWith =>
       __$WeatherMediaEntityCopyWithImpl<_WeatherMediaEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherMediaEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -336,7 +321,6 @@ class _WeatherMediaEntity implements WeatherMediaEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, weatherReportId, mediaType, url, createdAt);
@@ -360,7 +344,7 @@ abstract mixin class _$WeatherMediaEntityCopyWith<$Res>
       String weatherReportId,
       MediaType mediaType,
       String url,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc

@@ -59,10 +59,10 @@ class ChatPage extends ConsumerWidget {
                     },
                     child: UnmessagedMatchUserList(
                       users: unmessagedMatchUsers,
-                      onTap: (userId) {
+                      onTap: (otherUserId) {
                         context.push(
                           ChatDetailPage.routeLocation,
-                          extra: {'userId': userId},
+                          extra: {'otherUserId': otherUserId},
                         );
                       },
                     ),
@@ -93,7 +93,7 @@ class ChatPage extends ConsumerWidget {
                             context.push(
                               ChatDetailPage.routeLocation,
                               extra: {
-                                'userId': chatRoomSummaries[index].userId,
+                                'otherUserId': chatRoomSummaries[index].userId,
                                 'chatRoomId':
                                     chatRoomSummaries[index].chatRoomId,
                               },

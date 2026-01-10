@@ -7,7 +7,7 @@ part of 'user_with_profile_notifier.dart';
 // **************************************************************************
 
 String _$userWithProfileNotifierHash() =>
-    r'a116e60ed4733fa5c3037378bf3f673932838209';
+    r'38962777fd35ac3ed13722094741d8bd8f13661e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$UserWithProfileNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<UserWithProfileModel?> {
+    extends BuildlessAutoDisposeAsyncNotifier<UserWithProfileReadModel?> {
   late final String userId;
 
-  FutureOr<UserWithProfileModel?> build(
+  FutureOr<UserWithProfileReadModel?> build(
     String userId,
   );
 }
@@ -45,7 +45,7 @@ const userWithProfileNotifierProvider = UserWithProfileNotifierFamily();
 
 /// See also [UserWithProfileNotifier].
 class UserWithProfileNotifierFamily
-    extends Family<AsyncValue<UserWithProfileModel?>> {
+    extends Family<AsyncValue<UserWithProfileReadModel?>> {
   /// See also [UserWithProfileNotifier].
   const UserWithProfileNotifierFamily();
 
@@ -85,7 +85,7 @@ class UserWithProfileNotifierFamily
 /// See also [UserWithProfileNotifier].
 class UserWithProfileNotifierProvider
     extends AutoDisposeAsyncNotifierProviderImpl<UserWithProfileNotifier,
-        UserWithProfileModel?> {
+        UserWithProfileReadModel?> {
   /// See also [UserWithProfileNotifier].
   UserWithProfileNotifierProvider(
     String userId,
@@ -116,7 +116,7 @@ class UserWithProfileNotifierProvider
   final String userId;
 
   @override
-  FutureOr<UserWithProfileModel?> runNotifierBuild(
+  FutureOr<UserWithProfileReadModel?> runNotifierBuild(
     covariant UserWithProfileNotifier notifier,
   ) {
     return notifier.build(
@@ -142,7 +142,7 @@ class UserWithProfileNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<UserWithProfileNotifier,
-      UserWithProfileModel?> createElement() {
+      UserWithProfileReadModel?> createElement() {
     return _UserWithProfileNotifierProviderElement(this);
   }
 
@@ -163,14 +163,14 @@ class UserWithProfileNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserWithProfileNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<UserWithProfileModel?> {
+    on AutoDisposeAsyncNotifierProviderRef<UserWithProfileReadModel?> {
   /// The parameter `userId` of this provider.
   String get userId;
 }
 
 class _UserWithProfileNotifierProviderElement
     extends AutoDisposeAsyncNotifierProviderElement<UserWithProfileNotifier,
-        UserWithProfileModel?> with UserWithProfileNotifierRef {
+        UserWithProfileReadModel?> with UserWithProfileNotifierRef {
   _UserWithProfileNotifierProviderElement(super.provider);
 
   @override

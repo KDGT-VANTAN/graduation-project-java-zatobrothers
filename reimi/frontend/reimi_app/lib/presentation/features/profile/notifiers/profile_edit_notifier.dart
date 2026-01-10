@@ -1,4 +1,5 @@
-import 'package:reimi_app/data/models/user_with_profile_model.dart';
+import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/domain/params/update_profile_params.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
 import 'package:reimi_app/domain/value_objects/annual_income.dart';
@@ -20,39 +21,59 @@ part 'profile_edit_notifier.g.dart';
 class ProfileEditNotifier extends _$ProfileEditNotifier {
   @override
   ProfileEditState build(String userId) {
-    final userWithProfile = ref.watch(userWithProfileNotifierProvider(userId)).value;
+    final user = ref.watch(userWithProfileNotifierProvider(userId)).value!;
+
     return ProfileEditState(
-      data: userWithProfile,
+      name: user.name,
+      gender: user.gender,
+      birthDate: user.birthDate,
+      address: user.address,
+      mainPhotoUrl: user.mainPhotoUrl,
+      introduction: user.introduction,
+      height: user.height,
+      bodyShape: user.bodyShape,
+      annualIncome: user.annualIncome,
+      bloodType: user.bloodType,
+      hometown: user.hometown,
+      communicationStyle: user.communicationStyle,
+      occupation: user.occupation,
+      education: user.education,
+      smoking: user.smoking,
+      alcohol: user.alcohol,
+      holiday: user.holiday,
+      sunnyDayHobbies: _normalize(list: user.sunnyDayHobbies, length: 3),
+      rainyDayHobbies: _normalize(list: user.rainyDayHobbies, length: 3),
+      subPhotoUrls: _normalize(list: user.subPhotoUrls, length: 6),
     );
   }
 
   // 必須項目
   void updateName(String name) {
-    _updateProfile((data) => data.copyWith(name: name));
+    _update((s) => s.copyWith(name: name));
   }
 
   void updateAddress(Address address) {
-    _updateProfile((data) => data.copyWith(address: address));
+    _update((s) => s.copyWith(address: address));
   }
 
   void updateIntroduction(String introduction) {
-    _updateProfile((data) => data.copyWith(introduction: introduction));
+    _update((s) => s.copyWith(introduction: introduction));
   }
 
   void updateMainPhotoUrl(String url) {
-    _updateProfile((data) => data.copyWith(mainPhotoUrl: url));
+    _update((s) => s.copyWith(mainPhotoUrl: url));
   }
 
   // ユーティリティ：必ず{length}件に整形
-  List<String> normalize({
-    required List<String>? targetList,
+  List<String> _normalize({
+    required List<String>? list,
     required int length,
   }) {
-    final list = List<String>.from(targetList ?? []);
-    while (list.length < length) {
-      list.add('');
+    final result = List<String>.from(list ?? []);
+    while (result.length < length) {
+      result.add('');
     }
-    return list.take(length).toList(growable: false);
+    return result.take(length).toList(growable: false);
   }
 
   // 写真関連
@@ -60,66 +81,64 @@ class ProfileEditNotifier extends _$ProfileEditNotifier {
     required int index,
     required String url,
   }) {
-    final current = normalize(targetList: state.data!.subPhotoUrls, length: 6);
-    current[index] = url;
-    _updateProfile((data) => data.copyWith(subPhotoUrls: current));
+    _update((s) {
+      final current = _normalize(list: s.subPhotoUrls, length: 6);
+      current[index] = url;
+      return s.copyWith(subPhotoUrls: current);
+    });
   }
 
   void removeSubPhoto(int index) {
-    final current = normalize(targetList: state.data!.subPhotoUrls, length: 6);
-    current[index] = '';
-    _updateProfile((data) => data.copyWith(subPhotoUrls: current));
+    _update((s) {
+      final current = _normalize(list: s.subPhotoUrls, length: 6);
+      current[index] = '';
+      return s.copyWith(subPhotoUrls: current);
+    });
   }
-
-  /// 一括更新（APIレスポンスなど）
-  // void replaceSubPhotos(List<String> urls) {
-  //   _updateProfile((data) =>
-  //       data.copyWith(subPhotoUrls: normalize(targetList: urls, length: 6)));
-  // }
 
   // 基本情報（任意）
   void updateHeight(Height? height) {
-    _updateProfile((data) => data.copyWith(height: height));
+    _update((s) => s.copyWith(height: height));
   }
 
   void updateBodyShape(BodyShape? bodyShape) {
-    _updateProfile((data) => data.copyWith(bodyShape: bodyShape));
+    _update((s) => s.copyWith(bodyShape: bodyShape));
   }
 
   void updateAnnualIncome(AnnualIncome? income) {
-    _updateProfile((data) => data.copyWith(annualIncome: income));
+    _update((s) => s.copyWith(annualIncome: income));
   }
 
   void updateBloodType(BloodType? bloodType) {
-    _updateProfile((data) => data.copyWith(bloodType: bloodType));
+    _update((s) => s.copyWith(bloodType: bloodType));
   }
 
   void updateHometown(Address? hometown) {
-    _updateProfile((data) => data.copyWith(hometown: hometown));
+    _update((s) => s.copyWith(hometown: hometown));
   }
 
   void updateCommunicationStyle(CommunicationStyle? style) {
-    _updateProfile((data) => data.copyWith(communicationStyle: style));
+    _update((s) => s.copyWith(communicationStyle: style));
   }
 
   void updateOccupation(Occupation? occupation) {
-    _updateProfile((data) => data.copyWith(occupation: occupation));
+    _update((s) => s.copyWith(occupation: occupation));
   }
 
   void updateEducation(Education? education) {
-    _updateProfile((data) => data.copyWith(education: education));
+    _update((s) => s.copyWith(education: education));
   }
 
   void updateSmoking(Smoking? smoking) {
-    _updateProfile((data) => data.copyWith(smoking: smoking));
+    _update((s) => s.copyWith(smoking: smoking));
   }
 
   void updateAlcohol(Alcohol? alcohol) {
-    _updateProfile((data) => data.copyWith(alcohol: alcohol));
+    _update((s) => s.copyWith(alcohol: alcohol));
   }
 
   void updateHoliday(Holiday? holiday) {
-    _updateProfile((data) => data.copyWith(holiday: holiday));
+    _update((s) => s.copyWith(holiday: holiday));
   }
 
   // 趣味（最大3つ想定）
@@ -127,99 +146,74 @@ class ProfileEditNotifier extends _$ProfileEditNotifier {
     required int index,
     required String hobby,
   }) {
-    final current =
-        normalize(targetList: state.data!.sunnyDayHobbies, length: 3);
-    current[index] = hobby;
-
-    _updateProfile(
-      (data) => data.copyWith(sunnyDayHobbies: current),
-    );
+    _update((s) {
+      final current = _normalize(list: s.sunnyDayHobbies, length: 3);
+      current[index] = hobby;
+      return s.copyWith(sunnyDayHobbies: current);
+    });
   }
 
   void removeSunnyDayHobby(int index) {
-    final current =
-        normalize(targetList: state.data!.sunnyDayHobbies, length: 3);
-    current[index] = '';
-
-    _updateProfile(
-      (data) => data.copyWith(sunnyDayHobbies: current),
-    );
+    _update((s) {
+      final current = _normalize(list: s.sunnyDayHobbies, length: 3);
+      current[index] = '';
+      return s.copyWith(sunnyDayHobbies: current);
+    });
   }
-
-  /// 一括更新（APIレスポンスなど）
-  // void replaceSunnyDayHobbies(List<String> hobbies) {
-  //   _updateProfile(
-  //     (data) => data.copyWith(
-  //       sunnyDayHobbies: normalize(targetList: hobbies, length: 3),
-  //     ),
-  //   );
-  // }
 
   void setRainyDayHobby({
     required int index,
     required String hobby,
   }) {
-    final current =
-        normalize(targetList: state.data!.rainyDayHobbies, length: 3);
-    current[index] = hobby;
-
-    _updateProfile(
-      (data) => data.copyWith(rainyDayHobbies: current),
-    );
+    _update((s) {
+      final current = _normalize(list: s.rainyDayHobbies, length: 3);
+      current[index] = hobby;
+      return s.copyWith(rainyDayHobbies: current);
+    });
   }
 
   void removeRainyDayHobby(int index) {
-    final current =
-        normalize(targetList: state.data!.rainyDayHobbies, length: 3);
-    current[index] = '';
-
-    _updateProfile(
-      (data) => data.copyWith(rainyDayHobbies: current),
-    );
+    _update((s) {
+      final current = _normalize(list: s.rainyDayHobbies, length: 3);
+      current[index] = '';
+      return s.copyWith(rainyDayHobbies: current);
+    });
   }
 
-  /// 一括更新（APIレスポンスなど）
-  // void replaceRainyDayHobbies(List<String> hobbies) {
-  //   _updateProfile(
-  //     (data) => data.copyWith(
-  //       rainyDayHobbies: normalize(targetList: hobbies, length: 3),
-  //     ),
-  //   );
-  // }
-
-  // 共通更新処理
-  void _updateProfile(
-    UserWithProfileModel Function(UserWithProfileModel data) updater,
-  ) {
-    final current = state.data;
-    if (current == null) return;
-
-    if (!state.isChanged) {
-      state = state.copyWith(
-        isChanged: true,
-      );
-    }
-
-    state = state.copyWith(
-      data: updater(current),
-    );
+  void _update(ProfileEditState Function(ProfileEditState) updater) {
+    final next = updater(state);
+    state = next.isChanged ? next : next.copyWith(isChanged: true);
   }
 
   Future<void> discardChangesAndClose() async {
-    if (state.isChanged) {
-      state = state.copyWith(
-        isChanged: false,
-      );
-    }
-    // TODO: プロフィール初期化処理
+    ref.invalidateSelf();
   }
 
   Future<void> submit() async {
-    if (state.isChanged) {
-      state = state.copyWith(
-        isChanged: false,
-      );
-    }
-    // TODO: 送信処理
+    if (!state.isChanged) return;
+    final params = UpdateProfileParams(
+      name: state.name,
+      gender: state.gender,
+      address: state.address,
+      mainPhoto: state.mainPhotoUrl,
+      introduction: state.introduction,
+      height: state.height,
+      bodyShape: state.bodyShape,
+      annualIncome: state.annualIncome,
+      bloodType: state.bloodType,
+      hometown: state.hometown,
+      communicationStyle: state.communicationStyle,
+      occupation: state.occupation,
+      education: state.education,
+      smoking: state.smoking,
+      alcohol: state.alcohol,
+      holiday: state.holiday,
+      sunnyDayHobbies: state.sunnyDayHobbies,
+      rainyDayHobbies: state.rainyDayHobbies,
+      subPhotos: state.subPhotoUrls,
+    );
+
+    await ref.read(updateUserProfileUseCaseProvider).call(params);
+    state = state.copyWith(isChanged: false);
   }
 }

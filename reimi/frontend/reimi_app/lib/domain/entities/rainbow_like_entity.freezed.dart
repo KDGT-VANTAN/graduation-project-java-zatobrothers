@@ -18,8 +18,7 @@ mixin _$RainbowLikeEntity {
   String get fromUserId;
   String get toUserId;
   String get message;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get createdAt;
+  DateTime get createdAt;
 
   /// Create a copy of RainbowLikeEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -28,9 +27,6 @@ mixin _$RainbowLikeEntity {
   $RainbowLikeEntityCopyWith<RainbowLikeEntity> get copyWith =>
       _$RainbowLikeEntityCopyWithImpl<RainbowLikeEntity>(
           this as RainbowLikeEntity, _$identity);
-
-  /// Serializes this RainbowLikeEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -47,7 +43,6 @@ mixin _$RainbowLikeEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, fromUserId, toUserId, message, createdAt);
@@ -69,7 +64,7 @@ abstract mixin class $RainbowLikeEntityCopyWith<$Res> {
       String fromUserId,
       String toUserId,
       String message,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -89,7 +84,7 @@ class _$RainbowLikeEntityCopyWithImpl<$Res>
     Object? fromUserId = null,
     Object? toUserId = null,
     Object? message = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -108,10 +103,10 @@ class _$RainbowLikeEntityCopyWithImpl<$Res>
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -210,7 +205,7 @@ extension RainbowLikeEntityPatterns on RainbowLikeEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String id, String fromUserId, String toUserId,
-            String message, @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+            String message, DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -240,7 +235,7 @@ extension RainbowLikeEntityPatterns on RainbowLikeEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String id, String fromUserId, String toUserId,
-            String message, @IsoDateTimeOrNullConverter() DateTime? createdAt)
+            String message, DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -268,7 +263,7 @@ extension RainbowLikeEntityPatterns on RainbowLikeEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(String id, String fromUserId, String toUserId,
-            String message, @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+            String message, DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -284,16 +279,13 @@ extension RainbowLikeEntityPatterns on RainbowLikeEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _RainbowLikeEntity implements RainbowLikeEntity {
   const _RainbowLikeEntity(
       {required this.id,
       required this.fromUserId,
       required this.toUserId,
       required this.message,
-      @IsoDateTimeOrNullConverter() this.createdAt});
-  factory _RainbowLikeEntity.fromJson(Map<String, dynamic> json) =>
-      _$RainbowLikeEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -304,8 +296,7 @@ class _RainbowLikeEntity implements RainbowLikeEntity {
   @override
   final String message;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   /// Create a copy of RainbowLikeEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -314,13 +305,6 @@ class _RainbowLikeEntity implements RainbowLikeEntity {
   @pragma('vm:prefer-inline')
   _$RainbowLikeEntityCopyWith<_RainbowLikeEntity> get copyWith =>
       __$RainbowLikeEntityCopyWithImpl<_RainbowLikeEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$RainbowLikeEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -337,7 +321,6 @@ class _RainbowLikeEntity implements RainbowLikeEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, fromUserId, toUserId, message, createdAt);
@@ -361,7 +344,7 @@ abstract mixin class _$RainbowLikeEntityCopyWith<$Res>
       String fromUserId,
       String toUserId,
       String message,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -381,7 +364,7 @@ class __$RainbowLikeEntityCopyWithImpl<$Res>
     Object? fromUserId = null,
     Object? toUserId = null,
     Object? message = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_RainbowLikeEntity(
       id: null == id
@@ -400,10 +383,10 @@ class __$RainbowLikeEntityCopyWithImpl<$Res>
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }

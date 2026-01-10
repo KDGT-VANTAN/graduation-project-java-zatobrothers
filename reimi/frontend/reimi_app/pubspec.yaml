@@ -34,6 +34,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_auth: ^6.1.2
   firebase_core: ^4.2.1
+  firebase_crashlytics: ^5.0.6
+  firebase_storage: ^13.0.5
   flutter_hooks: ^0.21.3+1
   flutter_localizations:
     sdk: flutter
@@ -46,12 +48,14 @@ dependencies:
   intl: ^0.20.2
   json_annotation: ^4.9.0
   line_icons: ^2.0.3
+  logger: ^2.6.2
+  path: ^1.9.1
   riverpod_annotation: ^2.6.1
   sign_in_with_apple: ^7.0.1
   slang: ^4.11.0
   slang_flutter: ^4.11.0
   url_launcher: ^6.3.2
-  flutter_dotenv: ^6.0.0
+  dio: ^5.9.0
 
 dev_dependencies:
   build_runner: ^2.5.4
@@ -79,9 +83,7 @@ flutter:
     - assets/images/sample/
     - assets/images/status/
     - assets/images/weather_personality/
-
-    # 環境変数ファイルを読み込む設定
-    - .env
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

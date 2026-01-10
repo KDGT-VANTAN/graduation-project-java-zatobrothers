@@ -18,7 +18,6 @@ mixin _$MessageEntity {
   String get chatRoomId;
   String get senderId;
   MessageType get messageType;
-  @IsoDateTimeConverter()
   DateTime get sentAt;
 
   /// Create a copy of MessageEntity
@@ -28,9 +27,6 @@ mixin _$MessageEntity {
   $MessageEntityCopyWith<MessageEntity> get copyWith =>
       _$MessageEntityCopyWithImpl<MessageEntity>(
           this as MessageEntity, _$identity);
-
-  /// Serializes this MessageEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -47,7 +43,6 @@ mixin _$MessageEntity {
             (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, chatRoomId, senderId, messageType, sentAt);
@@ -69,7 +64,7 @@ abstract mixin class $MessageEntityCopyWith<$Res> {
       String chatRoomId,
       String senderId,
       MessageType messageType,
-      @IsoDateTimeConverter() DateTime sentAt});
+      DateTime sentAt});
 }
 
 /// @nodoc
@@ -210,7 +205,7 @@ extension MessageEntityPatterns on MessageEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String id, String chatRoomId, String senderId,
-            MessageType messageType, @IsoDateTimeConverter() DateTime sentAt)?
+            MessageType messageType, DateTime sentAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -240,7 +235,7 @@ extension MessageEntityPatterns on MessageEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String id, String chatRoomId, String senderId,
-            MessageType messageType, @IsoDateTimeConverter() DateTime sentAt)
+            MessageType messageType, DateTime sentAt)
         $default,
   ) {
     final _that = this;
@@ -268,7 +263,7 @@ extension MessageEntityPatterns on MessageEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(String id, String chatRoomId, String senderId,
-            MessageType messageType, @IsoDateTimeConverter() DateTime sentAt)?
+            MessageType messageType, DateTime sentAt)?
         $default,
   ) {
     final _that = this;
@@ -284,16 +279,13 @@ extension MessageEntityPatterns on MessageEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _MessageEntity implements MessageEntity {
   const _MessageEntity(
       {required this.id,
       required this.chatRoomId,
       required this.senderId,
       required this.messageType,
-      @IsoDateTimeConverter() required this.sentAt});
-  factory _MessageEntity.fromJson(Map<String, dynamic> json) =>
-      _$MessageEntityFromJson(json);
+      required this.sentAt});
 
   @override
   final String id;
@@ -304,7 +296,6 @@ class _MessageEntity implements MessageEntity {
   @override
   final MessageType messageType;
   @override
-  @IsoDateTimeConverter()
   final DateTime sentAt;
 
   /// Create a copy of MessageEntity
@@ -314,13 +305,6 @@ class _MessageEntity implements MessageEntity {
   @pragma('vm:prefer-inline')
   _$MessageEntityCopyWith<_MessageEntity> get copyWith =>
       __$MessageEntityCopyWithImpl<_MessageEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$MessageEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -337,7 +321,6 @@ class _MessageEntity implements MessageEntity {
             (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, chatRoomId, senderId, messageType, sentAt);
@@ -361,7 +344,7 @@ abstract mixin class _$MessageEntityCopyWith<$Res>
       String chatRoomId,
       String senderId,
       MessageType messageType,
-      @IsoDateTimeConverter() DateTime sentAt});
+      DateTime sentAt});
 }
 
 /// @nodoc

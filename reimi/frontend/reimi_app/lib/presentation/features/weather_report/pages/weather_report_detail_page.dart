@@ -79,7 +79,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                '${value.weatherReport!.postAt.toSlashDate} ${value.weatherReport!.postAt.toHHmmTimeDisplay()}',
+                                '${value.weatherReport!.createdAt.toSlashDate} ${value.weatherReport!.createdAt.toHHmmTimeDisplay()}',
                                 style: theme.textTheme.bodySmall!.copyWith(
                                   color: const Color(0xFF6B7280),
                                 ),

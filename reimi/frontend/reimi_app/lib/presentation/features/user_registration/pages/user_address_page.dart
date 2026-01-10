@@ -20,8 +20,7 @@ class UserAddressPage extends ConsumerWidget {
     final t = Translations.of(context);
     final theme = Theme.of(context);
     final address = ref.watch(
-      userRegistrationNotifierProvider.select((state) => state.data!.address),
-    );
+        userRegistrationNotifierProvider.select((state) => state.address));
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     return UserRegistrationPage(
       question: t.userRegistrationPage.address.question,

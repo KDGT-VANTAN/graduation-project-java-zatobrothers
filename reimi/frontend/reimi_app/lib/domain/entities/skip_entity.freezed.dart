@@ -17,8 +17,7 @@ mixin _$SkipEntity {
   String get id;
   String get userId;
   String get skippedUserId;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get createdAt;
+  DateTime get createdAt;
 
   /// Create a copy of SkipEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -26,9 +25,6 @@ mixin _$SkipEntity {
   @pragma('vm:prefer-inline')
   $SkipEntityCopyWith<SkipEntity> get copyWith =>
       _$SkipEntityCopyWithImpl<SkipEntity>(this as SkipEntity, _$identity);
-
-  /// Serializes this SkipEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -43,7 +39,6 @@ mixin _$SkipEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, userId, skippedUserId, createdAt);
@@ -61,10 +56,7 @@ abstract mixin class $SkipEntityCopyWith<$Res> {
       _$SkipEntityCopyWithImpl;
   @useResult
   $Res call(
-      {String id,
-      String userId,
-      String skippedUserId,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      {String id, String userId, String skippedUserId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -82,7 +74,7 @@ class _$SkipEntityCopyWithImpl<$Res> implements $SkipEntityCopyWith<$Res> {
     Object? id = null,
     Object? userId = null,
     Object? skippedUserId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -97,10 +89,10 @@ class _$SkipEntityCopyWithImpl<$Res> implements $SkipEntityCopyWith<$Res> {
           ? _self.skippedUserId
           : skippedUserId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -198,8 +190,8 @@ extension SkipEntityPatterns on SkipEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String userId, String skippedUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+    TResult Function(
+            String id, String userId, String skippedUserId, DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -228,8 +220,8 @@ extension SkipEntityPatterns on SkipEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String userId, String skippedUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)
+    TResult Function(
+            String id, String userId, String skippedUserId, DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -256,8 +248,8 @@ extension SkipEntityPatterns on SkipEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String userId, String skippedUserId,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt)?
+    TResult? Function(
+            String id, String userId, String skippedUserId, DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -273,15 +265,12 @@ extension SkipEntityPatterns on SkipEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _SkipEntity implements SkipEntity {
   const _SkipEntity(
       {required this.id,
       required this.userId,
       required this.skippedUserId,
-      @IsoDateTimeOrNullConverter() this.createdAt});
-  factory _SkipEntity.fromJson(Map<String, dynamic> json) =>
-      _$SkipEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -290,8 +279,7 @@ class _SkipEntity implements SkipEntity {
   @override
   final String skippedUserId;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   /// Create a copy of SkipEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -300,13 +288,6 @@ class _SkipEntity implements SkipEntity {
   @pragma('vm:prefer-inline')
   _$SkipEntityCopyWith<_SkipEntity> get copyWith =>
       __$SkipEntityCopyWithImpl<_SkipEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$SkipEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -321,7 +302,6 @@ class _SkipEntity implements SkipEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, userId, skippedUserId, createdAt);
@@ -341,10 +321,7 @@ abstract mixin class _$SkipEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String userId,
-      String skippedUserId,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt});
+      {String id, String userId, String skippedUserId, DateTime createdAt});
 }
 
 /// @nodoc
@@ -362,7 +339,7 @@ class __$SkipEntityCopyWithImpl<$Res> implements _$SkipEntityCopyWith<$Res> {
     Object? id = null,
     Object? userId = null,
     Object? skippedUserId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_SkipEntity(
       id: null == id
@@ -377,10 +354,10 @@ class __$SkipEntityCopyWithImpl<$Res> implements _$SkipEntityCopyWith<$Res> {
           ? _self.skippedUserId
           : skippedUserId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }

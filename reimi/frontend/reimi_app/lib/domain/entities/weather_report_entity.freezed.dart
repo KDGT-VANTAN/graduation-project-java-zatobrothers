@@ -22,7 +22,6 @@ mixin _$WeatherReportEntity {
   ForecastType get forecast;
   double get latitude;
   double get longitude;
-  @IsoDateTimeConverter()
   DateTime get createdAt;
 
   /// Create a copy of WeatherReportEntity
@@ -32,9 +31,6 @@ mixin _$WeatherReportEntity {
   $WeatherReportEntityCopyWith<WeatherReportEntity> get copyWith =>
       _$WeatherReportEntityCopyWithImpl<WeatherReportEntity>(
           this as WeatherReportEntity, _$identity);
-
-  /// Serializes this WeatherReportEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +52,6 @@ mixin _$WeatherReportEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, comment, weather,
       feeling, forecast, latitude, longitude, createdAt);
@@ -82,7 +77,7 @@ abstract mixin class $WeatherReportEntityCopyWith<$Res> {
       ForecastType forecast,
       double latitude,
       double longitude,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -251,7 +246,7 @@ extension WeatherReportEntityPatterns on WeatherReportEntity {
             ForecastType forecast,
             double latitude,
             double longitude,
-            @IsoDateTimeConverter() DateTime createdAt)?
+            DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -297,7 +292,7 @@ extension WeatherReportEntityPatterns on WeatherReportEntity {
             ForecastType forecast,
             double latitude,
             double longitude,
-            @IsoDateTimeConverter() DateTime createdAt)
+            DateTime createdAt)
         $default,
   ) {
     final _that = this;
@@ -341,7 +336,7 @@ extension WeatherReportEntityPatterns on WeatherReportEntity {
             ForecastType forecast,
             double latitude,
             double longitude,
-            @IsoDateTimeConverter() DateTime createdAt)?
+            DateTime createdAt)?
         $default,
   ) {
     final _that = this;
@@ -365,7 +360,6 @@ extension WeatherReportEntityPatterns on WeatherReportEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _WeatherReportEntity implements WeatherReportEntity {
   const _WeatherReportEntity(
       {required this.id,
@@ -376,9 +370,7 @@ class _WeatherReportEntity implements WeatherReportEntity {
       required this.forecast,
       required this.latitude,
       required this.longitude,
-      @IsoDateTimeConverter() required this.createdAt});
-  factory _WeatherReportEntity.fromJson(Map<String, dynamic> json) =>
-      _$WeatherReportEntityFromJson(json);
+      required this.createdAt});
 
   @override
   final String id;
@@ -397,7 +389,6 @@ class _WeatherReportEntity implements WeatherReportEntity {
   @override
   final double longitude;
   @override
-  @IsoDateTimeConverter()
   final DateTime createdAt;
 
   /// Create a copy of WeatherReportEntity
@@ -408,13 +399,6 @@ class _WeatherReportEntity implements WeatherReportEntity {
   _$WeatherReportEntityCopyWith<_WeatherReportEntity> get copyWith =>
       __$WeatherReportEntityCopyWithImpl<_WeatherReportEntity>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherReportEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -436,7 +420,6 @@ class _WeatherReportEntity implements WeatherReportEntity {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, comment, weather,
       feeling, forecast, latitude, longitude, createdAt);
@@ -464,7 +447,7 @@ abstract mixin class _$WeatherReportEntityCopyWith<$Res>
       ForecastType forecast,
       double latitude,
       double longitude,
-      @IsoDateTimeConverter() DateTime createdAt});
+      DateTime createdAt});
 }
 
 /// @nodoc

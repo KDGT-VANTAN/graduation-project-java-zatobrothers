@@ -1,5 +1,7 @@
 import 'package:reimi_app/core/di/data_providers.dart';
-import 'package:reimi_app/core/di/domain_providers.dart';
+import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/core/error/auth_exception.dart';
+import 'package:reimi_app/core/extensions/error/auth_exception_mapper.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/domain/value_objects/user_auth_provider.dart';
 import 'package:reimi_app/presentation/app/auth/states/auth_failure.dart';
@@ -12,7 +14,7 @@ part 'auth_notifier.g.dart';
 class AuthNotifier extends _$AuthNotifier {
   @override
   AuthState build() {
-    final authStateAsync = ref.watch(authStateChangeProvider);
+    final authStateAsync = ref.watch(authStateChangesProvider);
 
     return authStateAsync.when(
       data: (user) {
@@ -22,9 +24,8 @@ class AuthNotifier extends _$AuthNotifier {
         return AuthState.authenticated(user);
       },
       loading: () => const AuthState.loading(),
-      error: (error, stack) => const AuthState.failure(
-        AuthFailure.serverError(),
-      ),
+      error: (error, stack) =>
+          const AuthState.failure(AuthFailure.cancelledByUser()),
     );
   }
 
@@ -40,20 +41,26 @@ class AuthNotifier extends _$AuthNotifier {
       if (user == null) {
         state = const AuthState.failure(AuthFailure.cancelledByUser());
         return;
-      } else {
-        state = AuthState.authenticated(user);
-        onSuccess();
       }
-    } catch (_) {
-      state = const AuthState.failure(AuthFailure.serverError());
+
+      state = AuthState.authenticated(user);
+      await onSuccess();
+    } on AuthException catch (e) {
+      state = AuthState.failure(e.toFailure());
+    } catch (e) {
+      state = AuthState.failure(AuthFailure.unknown(message: e.toString()));
     }
   }
 
   Future<void> signOut({
     required Future<void> Function() onSuccess,
   }) async {
-    await ref.read(authRepositoryProvider).signOut();
-    state = const AuthState.unauthenticated();
-    onSuccess();
+    try {
+      await ref.read(authRepositoryProvider).signOut();
+      state = const AuthState.unauthenticated();
+      onSuccess();
+    } on AuthException catch (e) {
+      state = AuthState.failure(e.toFailure());
+    }
   }
 }

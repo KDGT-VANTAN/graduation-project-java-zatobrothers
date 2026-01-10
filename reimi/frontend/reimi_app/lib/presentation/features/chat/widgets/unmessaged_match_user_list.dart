@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
-import 'package:reimi_app/data/models/unmessaged_match_user_model.dart';
+import 'package:reimi_app/domain/read_models/unmessaged_match_user_read_model.dart';
 
 class UnmessagedMatchUserList extends StatelessWidget {
   const UnmessagedMatchUserList({
@@ -8,7 +8,7 @@ class UnmessagedMatchUserList extends StatelessWidget {
     required this.users,
     required this.onTap,
   });
-  final List<UnmessagedMatchUserModel> users;
+  final List<UnmessagedMatchUserReadModel> users;
   final void Function(String userId) onTap;
 
   @override
@@ -23,7 +23,7 @@ class UnmessagedMatchUserList extends StatelessWidget {
         itemBuilder: (_, index) {
           return GestureDetector(
             onTap: () {
-              onTap(users[index].userId);
+              onTap(users[index].id);
             },
             child: Container(
               width: 86,

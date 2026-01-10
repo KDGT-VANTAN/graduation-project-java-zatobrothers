@@ -14,8 +14,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ChatDetailState {
-  List<ChatMessageModel> get chatMessages;
-  UserWithProfileModel? get userProfile;
+  List<ChatMessageReadModel> get chatMessages;
+  UserWithProfileReadModel? get userProfile;
   bool get isLoadingMessages;
   bool get isLoadingProfile;
   String? get errorMessage;
@@ -71,14 +71,14 @@ abstract mixin class $ChatDetailStateCopyWith<$Res> {
       _$ChatDetailStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<ChatMessageModel> chatMessages,
-      UserWithProfileModel? userProfile,
+      {List<ChatMessageReadModel> chatMessages,
+      UserWithProfileReadModel? userProfile,
       bool isLoadingMessages,
       bool isLoadingProfile,
       String? errorMessage,
       String inputText});
 
-  $UserWithProfileModelCopyWith<$Res>? get userProfile;
+  $UserWithProfileReadModelCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -105,11 +105,11 @@ class _$ChatDetailStateCopyWithImpl<$Res>
       chatMessages: null == chatMessages
           ? _self.chatMessages
           : chatMessages // ignore: cast_nullable_to_non_nullable
-              as List<ChatMessageModel>,
+              as List<ChatMessageReadModel>,
       userProfile: freezed == userProfile
           ? _self.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+              as UserWithProfileReadModel?,
       isLoadingMessages: null == isLoadingMessages
           ? _self.isLoadingMessages
           : isLoadingMessages // ignore: cast_nullable_to_non_nullable
@@ -133,12 +133,12 @@ class _$ChatDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get userProfile {
+  $UserWithProfileReadModelCopyWith<$Res>? get userProfile {
     if (_self.userProfile == null) {
       return null;
     }
 
-    return $UserWithProfileModelCopyWith<$Res>(_self.userProfile!, (value) {
+    return $UserWithProfileReadModelCopyWith<$Res>(_self.userProfile!, (value) {
       return _then(_self.copyWith(userProfile: value));
     });
   }
@@ -238,8 +238,8 @@ extension ChatDetailStatePatterns on ChatDetailState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            List<ChatMessageModel> chatMessages,
-            UserWithProfileModel? userProfile,
+            List<ChatMessageReadModel> chatMessages,
+            UserWithProfileReadModel? userProfile,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -278,8 +278,8 @@ extension ChatDetailStatePatterns on ChatDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            List<ChatMessageModel> chatMessages,
-            UserWithProfileModel? userProfile,
+            List<ChatMessageReadModel> chatMessages,
+            UserWithProfileReadModel? userProfile,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -316,8 +316,8 @@ extension ChatDetailStatePatterns on ChatDetailState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            List<ChatMessageModel> chatMessages,
-            UserWithProfileModel? userProfile,
+            List<ChatMessageReadModel> chatMessages,
+            UserWithProfileReadModel? userProfile,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -344,7 +344,8 @@ extension ChatDetailStatePatterns on ChatDetailState {
 
 class _ChatDetailState implements ChatDetailState {
   const _ChatDetailState(
-      {final List<ChatMessageModel> chatMessages = const <ChatMessageModel>[],
+      {final List<ChatMessageReadModel> chatMessages =
+          const <ChatMessageReadModel>[],
       this.userProfile,
       this.isLoadingMessages = false,
       this.isLoadingProfile = false,
@@ -352,17 +353,17 @@ class _ChatDetailState implements ChatDetailState {
       this.inputText = ''})
       : _chatMessages = chatMessages;
 
-  final List<ChatMessageModel> _chatMessages;
+  final List<ChatMessageReadModel> _chatMessages;
   @override
   @JsonKey()
-  List<ChatMessageModel> get chatMessages {
+  List<ChatMessageReadModel> get chatMessages {
     if (_chatMessages is EqualUnmodifiableListView) return _chatMessages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_chatMessages);
   }
 
   @override
-  final UserWithProfileModel? userProfile;
+  final UserWithProfileReadModel? userProfile;
   @override
   @JsonKey()
   final bool isLoadingMessages;
@@ -427,15 +428,15 @@ abstract mixin class _$ChatDetailStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<ChatMessageModel> chatMessages,
-      UserWithProfileModel? userProfile,
+      {List<ChatMessageReadModel> chatMessages,
+      UserWithProfileReadModel? userProfile,
       bool isLoadingMessages,
       bool isLoadingProfile,
       String? errorMessage,
       String inputText});
 
   @override
-  $UserWithProfileModelCopyWith<$Res>? get userProfile;
+  $UserWithProfileReadModelCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -462,11 +463,11 @@ class __$ChatDetailStateCopyWithImpl<$Res>
       chatMessages: null == chatMessages
           ? _self._chatMessages
           : chatMessages // ignore: cast_nullable_to_non_nullable
-              as List<ChatMessageModel>,
+              as List<ChatMessageReadModel>,
       userProfile: freezed == userProfile
           ? _self.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+              as UserWithProfileReadModel?,
       isLoadingMessages: null == isLoadingMessages
           ? _self.isLoadingMessages
           : isLoadingMessages // ignore: cast_nullable_to_non_nullable
@@ -490,12 +491,12 @@ class __$ChatDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get userProfile {
+  $UserWithProfileReadModelCopyWith<$Res>? get userProfile {
     if (_self.userProfile == null) {
       return null;
     }
 
-    return $UserWithProfileModelCopyWith<$Res>(_self.userProfile!, (value) {
+    return $UserWithProfileReadModelCopyWith<$Res>(_self.userProfile!, (value) {
       return _then(_self.copyWith(userProfile: value));
     });
   }

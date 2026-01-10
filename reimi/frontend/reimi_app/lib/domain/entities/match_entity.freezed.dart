@@ -18,10 +18,8 @@ mixin _$MatchEntity {
   String get user1Id;
   String get user2Id;
   bool get isActive;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get createdAt;
-  @IsoDateTimeOrNullConverter()
-  DateTime? get updatedAt;
+  DateTime get createdAt;
+  DateTime get updatedAt;
 
   /// Create a copy of MatchEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -29,9 +27,6 @@ mixin _$MatchEntity {
   @pragma('vm:prefer-inline')
   $MatchEntityCopyWith<MatchEntity> get copyWith =>
       _$MatchEntityCopyWithImpl<MatchEntity>(this as MatchEntity, _$identity);
-
-  /// Serializes this MatchEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -49,7 +44,6 @@ mixin _$MatchEntity {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, user1Id, user2Id, isActive, createdAt, updatedAt);
@@ -71,8 +65,8 @@ abstract mixin class $MatchEntityCopyWith<$Res> {
       String user1Id,
       String user2Id,
       bool isActive,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt,
-      @IsoDateTimeOrNullConverter() DateTime? updatedAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -91,8 +85,8 @@ class _$MatchEntityCopyWithImpl<$Res> implements $MatchEntityCopyWith<$Res> {
     Object? user1Id = null,
     Object? user2Id = null,
     Object? isActive = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -111,14 +105,14 @@ class _$MatchEntityCopyWithImpl<$Res> implements $MatchEntityCopyWith<$Res> {
           ? _self.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -216,13 +210,8 @@ extension MatchEntityPatterns on MatchEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String id,
-            String user1Id,
-            String user2Id,
-            bool isActive,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt)?
+    TResult Function(String id, String user1Id, String user2Id, bool isActive,
+            DateTime createdAt, DateTime updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -251,13 +240,8 @@ extension MatchEntityPatterns on MatchEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            String id,
-            String user1Id,
-            String user2Id,
-            bool isActive,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt)
+    TResult Function(String id, String user1Id, String user2Id, bool isActive,
+            DateTime createdAt, DateTime updatedAt)
         $default,
   ) {
     final _that = this;
@@ -284,13 +268,8 @@ extension MatchEntityPatterns on MatchEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String id,
-            String user1Id,
-            String user2Id,
-            bool isActive,
-            @IsoDateTimeOrNullConverter() DateTime? createdAt,
-            @IsoDateTimeOrNullConverter() DateTime? updatedAt)?
+    TResult? Function(String id, String user1Id, String user2Id, bool isActive,
+            DateTime createdAt, DateTime updatedAt)?
         $default,
   ) {
     final _that = this;
@@ -306,17 +285,14 @@ extension MatchEntityPatterns on MatchEntity {
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _MatchEntity implements MatchEntity {
   const _MatchEntity(
       {required this.id,
       required this.user1Id,
       required this.user2Id,
       required this.isActive,
-      @IsoDateTimeOrNullConverter() this.createdAt,
-      @IsoDateTimeOrNullConverter() this.updatedAt});
-  factory _MatchEntity.fromJson(Map<String, dynamic> json) =>
-      _$MatchEntityFromJson(json);
+      required this.createdAt,
+      required this.updatedAt});
 
   @override
   final String id;
@@ -327,11 +303,9 @@ class _MatchEntity implements MatchEntity {
   @override
   final bool isActive;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
   @override
-  @IsoDateTimeOrNullConverter()
-  final DateTime? updatedAt;
+  final DateTime updatedAt;
 
   /// Create a copy of MatchEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -340,13 +314,6 @@ class _MatchEntity implements MatchEntity {
   @pragma('vm:prefer-inline')
   _$MatchEntityCopyWith<_MatchEntity> get copyWith =>
       __$MatchEntityCopyWithImpl<_MatchEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$MatchEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -364,7 +331,6 @@ class _MatchEntity implements MatchEntity {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, user1Id, user2Id, isActive, createdAt, updatedAt);
@@ -388,8 +354,8 @@ abstract mixin class _$MatchEntityCopyWith<$Res>
       String user1Id,
       String user2Id,
       bool isActive,
-      @IsoDateTimeOrNullConverter() DateTime? createdAt,
-      @IsoDateTimeOrNullConverter() DateTime? updatedAt});
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -408,8 +374,8 @@ class __$MatchEntityCopyWithImpl<$Res> implements _$MatchEntityCopyWith<$Res> {
     Object? user1Id = null,
     Object? user2Id = null,
     Object? isActive = null,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_MatchEntity(
       id: null == id
@@ -428,14 +394,14 @@ class __$MatchEntityCopyWithImpl<$Res> implements _$MatchEntityCopyWith<$Res> {
           ? _self.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
