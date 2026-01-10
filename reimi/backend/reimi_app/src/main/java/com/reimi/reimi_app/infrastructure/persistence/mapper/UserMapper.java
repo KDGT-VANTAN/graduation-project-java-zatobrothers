@@ -36,4 +36,12 @@ public class UserMapper {
 
         return entity;
     }
+
+    public static UserEntity toUpdateEntity(User user ,UserEntity entity) {
+        entity.setName(user.getName());
+        entity.setAddress(user.getAddress());
+        entity.setMainPhotoUrl(user.getMainPhotoUrl());
+
+        return entity;
+    }
 }
