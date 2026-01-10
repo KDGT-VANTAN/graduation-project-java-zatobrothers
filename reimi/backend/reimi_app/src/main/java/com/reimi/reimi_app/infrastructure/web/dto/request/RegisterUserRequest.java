@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.reimi.reimi_app.domain.model.user.Address;
+import com.reimi.reimi_app.domain.model.user.Gender;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,17 +21,17 @@ public record RegisterUserRequest (
         @Schema(description = "名前", example = "山田 太郎")
         String name,
 
-        @NotBlank(message = "性別は必須です")
+        @NotNull(message = "性別は必須です")
         @Schema(description = "性別", example = "MAN")
-        String gender,
+        Gender gender,
 
         @NotNull(message = "生年月日は必須です")
         @Schema(description = "生年月日", example = "1996-04-18")
         LocalDate birthDate,
 
-        @NotBlank(message = "居住地は必須です")
+        @NotNull(message = "居住地は必須です")
         @Schema(description = "居住地", example = "TOKYO")
-        String address,
+        Address address,
 
         @NotNull(message = "メイン写真URLは必須です")
         @Schema(description = "メイン写真", format = "binary")

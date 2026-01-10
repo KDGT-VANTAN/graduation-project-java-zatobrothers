@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
-import com.reimi.reimi_app.domain.model.user.Address;
-import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
@@ -51,11 +49,11 @@ public class UserController {
             .map(user -> new GetMeResponse(
                 user.getId().value(),
                 user.getName(),
-                user.getGender().getLabel(),
+                user.getGender(),
                 user.getBirthDate(),
-                user.getAddress().getLabel(),
+                user.getAddress(),
                 user.getEmail(),
-                user.getStatus().getLabel()
+                user.getStatus()
             ))
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
@@ -73,7 +71,7 @@ public class UserController {
                     user.getId().value(),
                     user.getName(),
                     user.getBirthDate(),
-                    user.getAddress().getLabel(),
+                    user.getAddress(),
                     user.getSignedMainPhotoUrl(),
                     user.getProfile().getIntroduction()
                 ))
@@ -88,9 +86,9 @@ public class UserController {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.name(),
-                Gender.valueOf(request.gender()),
+                request.gender(),
                 request.birthDate(),
-                Address.valueOf(request.address()),
+                request.address(),
                 request.mainPhoto(),
                 request.email(),
                 request.introduction()

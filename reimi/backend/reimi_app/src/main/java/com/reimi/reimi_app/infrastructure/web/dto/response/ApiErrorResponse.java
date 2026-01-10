@@ -7,13 +7,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "共通エラーレスポンス")
 public record ApiErrorResponse (
 
-    @Schema(description = "コード", type = "string")
+    @Schema(description = "コード")
     String code,
 
-    @Schema(description = "エラーメッセージ", type = "string")
+    @Schema(description = "エラーメッセージ")
     String message,
 
-    @Schema(description = "詳細内容（主にバリデーションエラー）", type = "string")
+    @Schema(description = "詳細内容（主にバリデーションエラー）")
     Map<String, String> details
 
 ) {}
