@@ -49,13 +49,13 @@ public class UserController {
         String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
         GetMeResponse getMeResponse = userUseCase.getUser(myFirebaseUid)
             .map(user -> new GetMeResponse(
-                user.getId().value(),
+                user.getId(),
                 user.getName(),
-                user.getGender().getLabel(),
+                user.getGender(),
                 user.getBirthDate(),
-                user.getAddress().getLabel(),
+                user.getAddress(),
                 user.getEmail(),
-                user.getStatus().getLabel()
+                user.getStatus()
             ))
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
@@ -70,10 +70,10 @@ public class UserController {
         List<GetUserListResponse> response = userUseCase.getUsersExcludingMe(myFirebaseUid)
                 .stream()
                 .map(user -> new GetUserListResponse(
-                    user.getId().value(),
+                    user.getId(),
                     user.getName(),
                     user.getBirthDate(),
-                    user.getAddress().getLabel(),
+                    user.getAddress(),
                     user.getSignedMainPhotoUrl(),
                     user.getProfile().getIntroduction()
                 ))

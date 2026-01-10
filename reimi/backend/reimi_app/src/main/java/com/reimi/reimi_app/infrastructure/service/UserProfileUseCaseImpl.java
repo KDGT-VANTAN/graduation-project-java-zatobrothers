@@ -38,26 +38,26 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
 
         return new UserWithProfileResponse(
-            user.getId().value(),
+            user.getId(),
             user.getName(),
-            user.getGender().name(),
+            user.getGender(),
             user.getBirthDate(),
-            user.getAddress().name(),
+            user.getAddress(),
             user.getSignedMainPhotoUrl(),
             profile.getIntroduction(),
-            profile != null && profile.getHeight() != null ? profile.getHeight() : null,
-            profile != null && profile.getBodyShape() != null ? profile.getBodyShape().name() : null,
-            profile != null && profile.getAnnualIncome() != null ? profile.getAnnualIncome().name() : null,
-            profile != null && profile.getBloodType() != null ? profile.getBloodType().name() : null,
-            profile != null && profile.getHometown() != null ? profile.getHometown().name() : null,
-            profile != null && profile.getCommunicationStyle() != null ? profile.getCommunicationStyle().name() : null,
-            profile != null && profile.getOccupation() != null ? profile.getOccupation().name() : null,
-            profile != null && profile.getEducation() != null ? profile.getEducation().name() : null,
-            profile != null && profile.getSmoking() != null ? profile.getSmoking().name() : null,
-            profile != null && profile.getAlcohol() != null ? profile.getAlcohol().name() : null,
-            profile != null && profile.getHoliday() != null ? profile.getHoliday().name() : null,
-            profile != null && profile.getSunnyDayHobbies() != null ? profile.getSunnyDayHobbies() : null,
-            profile != null && profile.getRainyDayHobbies() != null ? profile.getRainyDayHobbies() : null
+            profile.getHeight() != null ? profile.getHeight() : null,
+            profile.getBodyShape() != null ? profile.getBodyShape() : null,
+            profile.getAnnualIncome() != null ? profile.getAnnualIncome() : null,
+            profile.getBloodType() != null ? profile.getBloodType() : null,
+            profile.getHometown() != null ? profile.getHometown() : null,
+            profile.getCommunicationStyle() != null ? profile.getCommunicationStyle() : null,
+            profile.getOccupation() != null ? profile.getOccupation() : null,
+            profile.getEducation() != null ? profile.getEducation() : null,
+            profile.getSmoking() != null ? profile.getSmoking() : null,
+            profile.getAlcohol() != null ? profile.getAlcohol() : null,
+            profile.getHoliday() != null ? profile.getHoliday() : null,
+            profile.getSunnyDayHobbies() != null ? profile.getSunnyDayHobbies() : null,
+            profile.getRainyDayHobbies() != null ? profile.getRainyDayHobbies() : null
         );
     }
 }
