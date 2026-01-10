@@ -48,20 +48,20 @@ public class ProfileMapper {
     }
 
     public static ProfileEntity toUpdateEntity(Profile profile,ProfileEntity entity) {
-        if (profile.getIntroduction() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getHeight() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getBodyShape() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getAnnualIncome() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getBloodType() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getHometown() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getCommunicationStyle() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getOccupation() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getEducation() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getSmoking() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getAlcohol() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getHoliday() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getSunnyDayHobbies() != null) entity.setIntroduction(profile.getIntroduction());
-        if (profile.getRainyDayHobbies() != null) entity.setIntroduction(profile.getIntroduction());
+        entity.setIntroduction(profile.getIntroduction());
+        if (profile.getHeight() != null) entity.setHeight(profile.getHeight());
+        if (profile.getBodyShape() != null) entity.setBodyShape(profile.getBodyShape());
+        if (profile.getAnnualIncome() != null) entity.setAnnualIncome(profile.getAnnualIncome());
+        if (profile.getBloodType() != null) entity.setBloodType(profile.getBloodType());
+        if (profile.getHometown() != null) entity.setHometown(profile.getHometown());
+        if (profile.getCommunicationStyle() != null) entity.setCommunicationStyle(profile.getCommunicationStyle());
+        if (profile.getOccupation() != null) entity.setOccupation(profile.getOccupation());
+        if (profile.getEducation() != null) entity.setEducation(profile.getEducation());
+        if (profile.getSmoking() != null) entity.setSmoking(profile.getSmoking());
+        if (profile.getAlcohol() != null) entity.setAlcohol(profile.getAlcohol());
+        if (profile.getHoliday() != null) entity.setHoliday(profile.getHoliday());
+        if (profile.getSunnyDayHobbies() != null) entity.setSunnyDayHobbies(profile.getSunnyDayHobbies());
+        if (profile.getRainyDayHobbies() != null) entity.setRainyDayHobbies(profile.getRainyDayHobbies());
 
         return entity;
     }
