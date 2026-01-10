@@ -1,5 +1,7 @@
-import 'package:reimi_app/core/di/domain_providers.dart';
-import 'package:reimi_app/data/models/user_registration_model.dart';
+import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/core/error/api_exception.dart';
+import 'package:reimi_app/core/logger/logger_provider.dart';
+import 'package:reimi_app/domain/params/create_user_params.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/presentation/features/user_registration/user_registration_state.dart';
@@ -11,9 +13,7 @@ part 'user_registration_notifier.g.dart';
 class UserRegistrationNotifier extends _$UserRegistrationNotifier {
   @override
   UserRegistrationState build() {
-    return const UserRegistrationState(
-      data: UserRegistrationModel(),
-    );
+    return const UserRegistrationState();
   }
 
   void nextPage() {
@@ -29,48 +29,86 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
   }
 
   void updateEmail(String email) {
-    _updateUserInfo((data) => data.copyWith(email: email));
+    state = state.copyWith(email: email);
   }
 
   void updateGender(Gender gender) {
-    _updateUserInfo((data) => data.copyWith(gender: gender));
+    state = state.copyWith(gender: gender);
   }
 
   void updateBirthDate(DateTime birthDate) {
-    _updateUserInfo((data) => data.copyWith(birthDate: birthDate));
+    state = state.copyWith(birthDate: birthDate);
   }
 
   void updateAddress(Address address) {
-    _updateUserInfo((data) => data.copyWith(address: address));
+    state = state.copyWith(address: address);
   }
 
   void updateName(String name) {
-    _updateUserInfo((data) => data.copyWith(name: name));
+    state = state.copyWith(name: name);
   }
 
   void updateIntroduction(String introduction) {
-    _updateUserInfo((data) => data.copyWith(introduction: introduction));
+    state = state.copyWith(introduction: introduction);
   }
 
-  void updateMainImage(String mainPhotoUrl) {
-    _updateUserInfo((data) => data.copyWith(mainPhotoUrl: mainPhotoUrl));
+  void updateMainImage(String mainPhoto) {
+    state = state.copyWith(mainPhoto: mainPhoto);
   }
 
-  void _updateUserInfo(
-    UserRegistrationModel Function(UserRegistrationModel data) updater,
-  ) {
-    final current = state.data;
-    if (current == null) return;
+  Future<void> submit() async {
+    final logger = ref.watch(appLoggerProvider);
+    final s = state;
+    logger.debug('submitおされているstate 1: $s');
+
+    if (s.name == null ||
+        s.email == null ||
+        s.gender == null ||
+        s.birthDate == null ||
+        s.address == null ||
+        s.introduction == null ||
+        s.mainPhoto == null) {
+      state = state.copyWith(
+        status: UserRegistrationStatus.failure,
+        errorMessage: '入力内容に不備があります',
+      );
+      logger.debug('submitおされている2');
+      return;
+    }
 
     state = state.copyWith(
-      data: updater(current),
+      status: UserRegistrationStatus.submitting,
+      errorMessage: null,
     );
-  }
 
-  Future<bool> submit() async {
-    final user = state.data;
-    if (user == null) return false;
-    final result = await ref.read(registerUserUseCaseProvider).call(user);
-    return result;
+    try {
+      final params = CreateUserParams(
+        name: s.name!,
+        email: s.email!,
+        gender: s.gender!,
+        birthDate: s.birthDate!,
+        address: s.address!,
+        introduction: s.introduction!,
+        mainPhoto: s.mainPhoto!,
+      );
+      logger.debug('submitおされている3');
+      await ref.read(registerUserUseCaseProvider).call(params);
+
+      state = state.copyWith(
+        status: UserRegistrationStatus.success,
+      );
+    } on ApiException catch (e) {
+      logger.debug('submitおされている4: $e');
+      state = state.copyWith(
+        status: UserRegistrationStatus.failure,
+        errorMessage: e.message,
+      );
+    } catch (_) {
+      logger.debug('submitおされている5');
+      state = state.copyWith(
+        status: UserRegistrationStatus.failure,
+        errorMessage: '登録に失敗しました',
+      );
+    }
   }
 }

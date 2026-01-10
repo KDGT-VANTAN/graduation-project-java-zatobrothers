@@ -1,13 +1,7 @@
-import 'package:reimi_app/data/models/chat_message_model.dart';
-import 'package:reimi_app/domain/value_objects/message_type.dart';
+import 'package:reimi_app/domain/params/send_message_params.dart';
+import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 
 abstract class MessageRepository {
-  Stream<List<ChatMessageModel>> watchMessages(String chatRoomId);
-  Future<void> sendMessage({
-    required String chatRoomId,
-    required String senderId,
-    required MessageType messageType,
-    required String content,
-    required DateTime sentAt,
-  });
+  Stream<List<ChatMessageReadModel>> watchMessages(String chatRoomId);
+  Future<void> sendMessage(SendMessageParams params);
 }

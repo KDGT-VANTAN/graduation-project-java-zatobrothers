@@ -14,8 +14,14 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportPostState {
-  WeatherReportPostModel? get data;
-  bool get canSubmit;
+  String? get comment;
+  WeatherType? get weatherType;
+  FeelingType? get feelingType;
+  ForecastType? get forecastType;
+  MediaType? get mediaType;
+  String? get url;
+  double? get latitude;
+  double? get longitude;
   bool get isSubmitting;
   bool get isChanged;
 
@@ -32,9 +38,20 @@ mixin _$WeatherReportPostState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WeatherReportPostState &&
-            (identical(other.data, data) || other.data == data) &&
-            (identical(other.canSubmit, canSubmit) ||
-                other.canSubmit == canSubmit) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.weatherType, weatherType) ||
+                other.weatherType == weatherType) &&
+            (identical(other.feelingType, feelingType) ||
+                other.feelingType == feelingType) &&
+            (identical(other.forecastType, forecastType) ||
+                other.forecastType == forecastType) &&
+            (identical(other.mediaType, mediaType) ||
+                other.mediaType == mediaType) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isChanged, isChanged) ||
@@ -42,12 +59,22 @@ mixin _$WeatherReportPostState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, canSubmit, isSubmitting, isChanged);
+  int get hashCode => Object.hash(
+      runtimeType,
+      comment,
+      weatherType,
+      feelingType,
+      forecastType,
+      mediaType,
+      url,
+      latitude,
+      longitude,
+      isSubmitting,
+      isChanged);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(data: $data, canSubmit: $canSubmit, isSubmitting: $isSubmitting, isChanged: $isChanged)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isSubmitting: $isSubmitting, isChanged: $isChanged)';
   }
 }
 
@@ -58,12 +85,16 @@ abstract mixin class $WeatherReportPostStateCopyWith<$Res> {
       _$WeatherReportPostStateCopyWithImpl;
   @useResult
   $Res call(
-      {WeatherReportPostModel? data,
-      bool canSubmit,
+      {String? comment,
+      WeatherType? weatherType,
+      FeelingType? feelingType,
+      ForecastType? forecastType,
+      MediaType? mediaType,
+      String? url,
+      double? latitude,
+      double? longitude,
       bool isSubmitting,
       bool isChanged});
-
-  $WeatherReportPostModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -79,20 +110,50 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
-    Object? canSubmit = null,
+    Object? comment = freezed,
+    Object? weatherType = freezed,
+    Object? feelingType = freezed,
+    Object? forecastType = freezed,
+    Object? mediaType = freezed,
+    Object? url = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
     Object? isSubmitting = null,
     Object? isChanged = null,
   }) {
     return _then(_self.copyWith(
-      data: freezed == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as WeatherReportPostModel?,
-      canSubmit: null == canSubmit
-          ? _self.canSubmit
-          : canSubmit // ignore: cast_nullable_to_non_nullable
-              as bool,
+      comment: freezed == comment
+          ? _self.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weatherType: freezed == weatherType
+          ? _self.weatherType
+          : weatherType // ignore: cast_nullable_to_non_nullable
+              as WeatherType?,
+      feelingType: freezed == feelingType
+          ? _self.feelingType
+          : feelingType // ignore: cast_nullable_to_non_nullable
+              as FeelingType?,
+      forecastType: freezed == forecastType
+          ? _self.forecastType
+          : forecastType // ignore: cast_nullable_to_non_nullable
+              as ForecastType?,
+      mediaType: freezed == mediaType
+          ? _self.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as MediaType?,
+      url: freezed == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitude: freezed == latitude
+          ? _self.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _self.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -102,20 +163,6 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
-  }
-
-  /// Create a copy of WeatherReportPostState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WeatherReportPostModelCopyWith<$Res>? get data {
-    if (_self.data == null) {
-      return null;
-    }
-
-    return $WeatherReportPostModelCopyWith<$Res>(_self.data!, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }
 
@@ -212,8 +259,17 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(WeatherReportPostModel? data, bool canSubmit,
-            bool isSubmitting, bool isChanged)?
+    TResult Function(
+            String? comment,
+            WeatherType? weatherType,
+            FeelingType? feelingType,
+            ForecastType? forecastType,
+            MediaType? mediaType,
+            String? url,
+            double? latitude,
+            double? longitude,
+            bool isSubmitting,
+            bool isChanged)?
         $default, {
     required TResult orElse(),
   }) {
@@ -221,7 +277,16 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
     switch (_that) {
       case _WeatherReportPostState() when $default != null:
         return $default(
-            _that.data, _that.canSubmit, _that.isSubmitting, _that.isChanged);
+            _that.comment,
+            _that.weatherType,
+            _that.feelingType,
+            _that.forecastType,
+            _that.mediaType,
+            _that.url,
+            _that.latitude,
+            _that.longitude,
+            _that.isSubmitting,
+            _that.isChanged);
       case _:
         return orElse();
     }
@@ -242,15 +307,33 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(WeatherReportPostModel? data, bool canSubmit,
-            bool isSubmitting, bool isChanged)
+    TResult Function(
+            String? comment,
+            WeatherType? weatherType,
+            FeelingType? feelingType,
+            ForecastType? forecastType,
+            MediaType? mediaType,
+            String? url,
+            double? latitude,
+            double? longitude,
+            bool isSubmitting,
+            bool isChanged)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportPostState():
         return $default(
-            _that.data, _that.canSubmit, _that.isSubmitting, _that.isChanged);
+            _that.comment,
+            _that.weatherType,
+            _that.feelingType,
+            _that.forecastType,
+            _that.mediaType,
+            _that.url,
+            _that.latitude,
+            _that.longitude,
+            _that.isSubmitting,
+            _that.isChanged);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -270,15 +353,33 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(WeatherReportPostModel? data, bool canSubmit,
-            bool isSubmitting, bool isChanged)?
+    TResult? Function(
+            String? comment,
+            WeatherType? weatherType,
+            FeelingType? feelingType,
+            ForecastType? forecastType,
+            MediaType? mediaType,
+            String? url,
+            double? latitude,
+            double? longitude,
+            bool isSubmitting,
+            bool isChanged)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportPostState() when $default != null:
         return $default(
-            _that.data, _that.canSubmit, _that.isSubmitting, _that.isChanged);
+            _that.comment,
+            _that.weatherType,
+            _that.feelingType,
+            _that.forecastType,
+            _that.mediaType,
+            _that.url,
+            _that.latitude,
+            _that.longitude,
+            _that.isSubmitting,
+            _that.isChanged);
       case _:
         return null;
     }
@@ -287,18 +388,36 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
 
 /// @nodoc
 
-class _WeatherReportPostState implements WeatherReportPostState {
+class _WeatherReportPostState extends WeatherReportPostState {
   const _WeatherReportPostState(
-      {this.data,
-      this.canSubmit = false,
+      {this.comment,
+      this.weatherType,
+      this.feelingType,
+      this.forecastType,
+      this.mediaType,
+      this.url,
+      this.latitude,
+      this.longitude,
       this.isSubmitting = false,
-      this.isChanged = false});
+      this.isChanged = false})
+      : super._();
 
   @override
-  final WeatherReportPostModel? data;
+  final String? comment;
   @override
-  @JsonKey()
-  final bool canSubmit;
+  final WeatherType? weatherType;
+  @override
+  final FeelingType? feelingType;
+  @override
+  final ForecastType? forecastType;
+  @override
+  final MediaType? mediaType;
+  @override
+  final String? url;
+  @override
+  final double? latitude;
+  @override
+  final double? longitude;
   @override
   @JsonKey()
   final bool isSubmitting;
@@ -320,9 +439,20 @@ class _WeatherReportPostState implements WeatherReportPostState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WeatherReportPostState &&
-            (identical(other.data, data) || other.data == data) &&
-            (identical(other.canSubmit, canSubmit) ||
-                other.canSubmit == canSubmit) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.weatherType, weatherType) ||
+                other.weatherType == weatherType) &&
+            (identical(other.feelingType, feelingType) ||
+                other.feelingType == feelingType) &&
+            (identical(other.forecastType, forecastType) ||
+                other.forecastType == forecastType) &&
+            (identical(other.mediaType, mediaType) ||
+                other.mediaType == mediaType) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isChanged, isChanged) ||
@@ -330,12 +460,22 @@ class _WeatherReportPostState implements WeatherReportPostState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, canSubmit, isSubmitting, isChanged);
+  int get hashCode => Object.hash(
+      runtimeType,
+      comment,
+      weatherType,
+      feelingType,
+      forecastType,
+      mediaType,
+      url,
+      latitude,
+      longitude,
+      isSubmitting,
+      isChanged);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(data: $data, canSubmit: $canSubmit, isSubmitting: $isSubmitting, isChanged: $isChanged)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isSubmitting: $isSubmitting, isChanged: $isChanged)';
   }
 }
 
@@ -348,13 +488,16 @@ abstract mixin class _$WeatherReportPostStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {WeatherReportPostModel? data,
-      bool canSubmit,
+      {String? comment,
+      WeatherType? weatherType,
+      FeelingType? feelingType,
+      ForecastType? forecastType,
+      MediaType? mediaType,
+      String? url,
+      double? latitude,
+      double? longitude,
       bool isSubmitting,
       bool isChanged});
-
-  @override
-  $WeatherReportPostModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -370,20 +513,50 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? data = freezed,
-    Object? canSubmit = null,
+    Object? comment = freezed,
+    Object? weatherType = freezed,
+    Object? feelingType = freezed,
+    Object? forecastType = freezed,
+    Object? mediaType = freezed,
+    Object? url = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
     Object? isSubmitting = null,
     Object? isChanged = null,
   }) {
     return _then(_WeatherReportPostState(
-      data: freezed == data
-          ? _self.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as WeatherReportPostModel?,
-      canSubmit: null == canSubmit
-          ? _self.canSubmit
-          : canSubmit // ignore: cast_nullable_to_non_nullable
-              as bool,
+      comment: freezed == comment
+          ? _self.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weatherType: freezed == weatherType
+          ? _self.weatherType
+          : weatherType // ignore: cast_nullable_to_non_nullable
+              as WeatherType?,
+      feelingType: freezed == feelingType
+          ? _self.feelingType
+          : feelingType // ignore: cast_nullable_to_non_nullable
+              as FeelingType?,
+      forecastType: freezed == forecastType
+          ? _self.forecastType
+          : forecastType // ignore: cast_nullable_to_non_nullable
+              as ForecastType?,
+      mediaType: freezed == mediaType
+          ? _self.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as MediaType?,
+      url: freezed == url
+          ? _self.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      latitude: freezed == latitude
+          ? _self.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _self.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
       isSubmitting: null == isSubmitting
           ? _self.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -393,20 +566,6 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
-  }
-
-  /// Create a copy of WeatherReportPostState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WeatherReportPostModelCopyWith<$Res>? get data {
-    if (_self.data == null) {
-      return null;
-    }
-
-    return $WeatherReportPostModelCopyWith<$Res>(_self.data!, (value) {
-      return _then(_self.copyWith(data: value));
-    });
   }
 }
 

@@ -7,7 +7,7 @@ part of 'profile_edit_notifier.dart';
 // **************************************************************************
 
 String _$profileEditNotifierHash() =>
-    r'e7ce72fefa3fd7a3fecb4c5bb6768d611b62787a';
+    r'8e1cab1a2cb224b48dc41adc296827face464fab';
 
 /// Copied from Dart SDK
 class _SystemHash {

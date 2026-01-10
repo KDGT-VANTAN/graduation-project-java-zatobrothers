@@ -1,9 +1,9 @@
-import 'package:reimi_app/data/models/app_user_model.dart';
-import 'package:reimi_app/data/models/home_user_model.dart';
-import 'package:reimi_app/data/models/user_registration_model.dart';
+import 'package:reimi_app/domain/params/create_user_params.dart';
+import 'package:reimi_app/domain/read_models/app_user_read_model.dart';
+import 'package:reimi_app/domain/read_models/home_user_read_model.dart';
 
 abstract class UserRepository {
-  Future<List<HomeUserModel>?> fetchUsers();
-  Future<AppUserModel?> fetchCurrentUser();
-  Future<bool> createUser(UserRegistrationModel user);
+  Future<List<HomeUserReadModel>> fetchHomeUsers();
+  Future<AppUserReadModel> fetchCurrentUser();
+  Future<void> createUser(CreateUserParams params);
 }

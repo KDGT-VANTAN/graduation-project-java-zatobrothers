@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:reimi_app/core/di/domain_providers.dart';
-import 'package:reimi_app/data/models/chat_message_model.dart';
+import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/domain/params/send_message_params.dart';
+import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 import 'package:reimi_app/domain/value_objects/message_type.dart';
 import 'package:reimi_app/presentation/features/chat/chat_detail_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -10,7 +11,7 @@ part 'chat_detail_notifier.g.dart';
 
 @riverpod
 class ChatDetailNotifier extends _$ChatDetailNotifier {
-  StreamSubscription<List<ChatMessageModel>>? _chatMessagesSub;
+  StreamSubscription<List<ChatMessageReadModel>>? _chatMessagesSub;
   late final String _chatRoomId;
   late final String _otherUserId;
   late final String _currentUserId;
@@ -84,13 +85,14 @@ class ChatDetailNotifier extends _$ChatDetailNotifier {
 
     try {
       final sendMessage = ref.read(sendMessageUseCaseProvider);
-      await sendMessage.call(
+      final params = SendMessageParams(
         chatRoomId: _chatRoomId,
         senderId: _currentUserId,
         messageType: MessageType.text,
         content: text,
         sentAt: DateTime.now(),
       );
+      await sendMessage.call(params);
 
       state = state.copyWith(inputText: '');
     } catch (e) {

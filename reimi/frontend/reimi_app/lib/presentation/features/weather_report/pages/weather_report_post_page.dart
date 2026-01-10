@@ -28,16 +28,16 @@ class WeatherReportPostPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context);
     final theme = Theme.of(context);
-    final url = ref.watch(
-        weatherReportPostNotifierProvider.select((state) => state.data!.url));
-    final comment = ref.watch(weatherReportPostNotifierProvider
-        .select((state) => state.data!.comment));
-    final weatherType = ref.watch(weatherReportPostNotifierProvider
-        .select((state) => state.data!.weatherType));
-    final feelingType = ref.watch(weatherReportPostNotifierProvider
-        .select((state) => state.data!.feelingType));
+    final url = ref
+        .watch(weatherReportPostNotifierProvider.select((state) => state.url));
+    final comment = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.comment));
+    final weatherType = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.weatherType));
+    final feelingType = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.feelingType));
     final forecastType = ref.watch(weatherReportPostNotifierProvider
-        .select((state) => state.data!.forecastType));
+        .select((state) => state.forecastType));
     final isAllTypeSelected =
         weatherType != null && feelingType != null && forecastType != null;
     final canSubmit = ref.watch(
@@ -165,13 +165,15 @@ class WeatherReportPostPage extends HookConsumerWidget {
                   onTap: !canSubmit
                       ? null
                       : () async {
-                          notifier.submit();
-                          await weatherReportCompleteDialog(
-                            context: context,
-                            onConfirm: () {
-                              context.go(WeatherReportPage.routeLocation);
-                            },
-                          );
+                          final result = await notifier.submit();
+                          if (result && context.mounted) {
+                            await weatherReportCompleteDialog(
+                              context: context,
+                              onConfirm: () {
+                                context.go(WeatherReportPage.routeLocation);
+                              },
+                            );
+                          }
                         },
                 ),
               ],

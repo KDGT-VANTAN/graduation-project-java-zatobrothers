@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/user_registration/user_registration_notifier.dart';
@@ -13,11 +14,7 @@ import 'package:reimi_app/core/extensions/value_objects/gender_extension.dart';
 class UserGenderPage extends ConsumerWidget {
   static String get routeName => 'user_gender';
   static String get routeLocation => '/$routeName';
-  const UserGenderPage({
-    super.key,
-    required this.email,
-  });
-  final String email;
+  const UserGenderPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,8 +22,8 @@ class UserGenderPage extends ConsumerWidget {
     final theme = Theme.of(context);
     final notifier = ref.read(userRegistrationNotifierProvider.notifier);
     final gender = ref.watch(
-      userRegistrationNotifierProvider.select((state) => state.data!.gender),
-    );
+        userRegistrationNotifierProvider.select((state) => state.gender));
+    final user = ref.watch(currentUserProvider);
     return UserRegistrationPage(
       question: t.userRegistrationPage.gender.question,
       theme: theme,
@@ -64,7 +61,9 @@ class UserGenderPage extends ConsumerWidget {
           context: context,
           value: gender!.displayName(context),
           onConfirm: () {
-            notifier.updateEmail(email);
+            if (user != null) {
+              notifier.updateEmail(user.email!);
+            }
             notifier.nextPage();
             context.push(UserBirthdatePage.routeLocation);
           },
