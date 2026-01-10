@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -35,19 +37,27 @@ class SplashPage extends HookConsumerWidget {
     );
 
     useEffect(() {
-      Future<void> start() async {
-        await Future.delayed(const Duration(seconds: 3));
+      Timer? splashTimer;
+      Timer? navigationTimer;
+
+      splashTimer = Timer(const Duration(seconds: 3), () {
         isLoading.value = false;
         fadeOutController.forward();
-        await Future.delayed(const Duration(milliseconds: 500));
 
-        if (context.mounted) {
-          context.go(AuthGate.routeLocation);
-        }
-      }
+        navigationTimer = Timer(
+          const Duration(milliseconds: 500),
+          () {
+            if (context.mounted) {
+              context.go(AuthGate.routeLocation);
+            }
+          },
+        );
+      });
 
-      start();
-      return null;
+      return () {
+        splashTimer?.cancel();
+        navigationTimer?.cancel();
+      };
     }, []);
 
     return Scaffold(
