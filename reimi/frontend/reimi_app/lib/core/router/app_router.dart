@@ -108,9 +108,7 @@ GoRouter goRouter(Ref ref) {
         path: UserGenderPage.routeLocation,
         name: UserGenderPage.routeName,
         builder: (context, state) {
-          final extra = state.extra! as Map<String, Object?>;
-          final email = extra['email'] as String;
-          return UserGenderPage(email: email);
+          return const UserGenderPage();
         },
       ),
       GoRoute(

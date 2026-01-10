@@ -9,7 +9,6 @@ part 'dio_client.g.dart';
 
 @Riverpod(keepAlive: true)
 Dio dioClient(Ref ref) {
-
   final logger = ref.watch(appLoggerProvider);
 
   final dio = Dio(
@@ -44,9 +43,8 @@ Dio dioClient(Ref ref) {
     LogInterceptor(
       requestBody: true,
       responseBody: true,
+      logPrint: (obj) => logger.debug('[Dio]: $dio'),
     ),
   );
-
-  logger.debug('dioClient_dio: $dio');
   return dio;
 }

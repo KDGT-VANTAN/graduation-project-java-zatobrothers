@@ -50,7 +50,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -59,8 +58,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
       case _Authenticated() when authenticated != null:
@@ -89,7 +86,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -97,8 +93,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial():
-        return initial(_that);
       case _Loading():
         return loading(_that);
       case _Authenticated():
@@ -126,7 +120,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -134,8 +127,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial(_that);
       case _Loading() when loading != null:
         return loading(_that);
       case _Authenticated() when authenticated != null:
@@ -163,7 +154,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User firebaseUser)? authenticated,
     TResult Function()? unauthenticated,
@@ -172,8 +162,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial();
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
@@ -202,7 +190,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User firebaseUser) authenticated,
     required TResult Function() unauthenticated,
@@ -210,8 +197,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial():
-        return initial();
       case _Loading():
         return loading();
       case _Authenticated():
@@ -239,7 +224,6 @@ extension AuthStatePatterns on AuthState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User firebaseUser)? authenticated,
     TResult? Function()? unauthenticated,
@@ -247,8 +231,6 @@ extension AuthStatePatterns on AuthState {
   }) {
     final _that = this;
     switch (_that) {
-      case _Initial() when initial != null:
-        return initial();
       case _Loading() when loading != null:
         return loading();
       case _Authenticated() when authenticated != null:
@@ -260,26 +242,6 @@ extension AuthStatePatterns on AuthState {
       case _:
         return null;
     }
-  }
-}
-
-/// @nodoc
-
-class _Initial implements AuthState {
-  const _Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AuthState.initial()';
   }
 }
 

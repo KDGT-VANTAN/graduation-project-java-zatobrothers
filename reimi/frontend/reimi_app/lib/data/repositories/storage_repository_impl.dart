@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:reimi_app/data/datasources/storage_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/remote/storage_remote_datasource.dart';
 import 'package:reimi_app/domain/repositories/storage_repository.dart';
 
 class StorageRepositoryImpl implements StorageRepository {

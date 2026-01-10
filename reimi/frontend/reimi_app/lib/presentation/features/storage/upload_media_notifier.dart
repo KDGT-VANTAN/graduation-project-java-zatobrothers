@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:reimi_app/core/di/domain_providers.dart';
+import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/domain/value_objects/media_purpose.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
 import 'package:reimi_app/presentation/features/storage/upload_media_state.dart';

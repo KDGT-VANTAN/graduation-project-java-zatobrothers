@@ -30,9 +30,7 @@ class LikePage extends ConsumerWidget {
                 const SizedBox(height: 16),
                 usersAsync.when(
                   data: (users) {
-                    if (users == null) {
-                      return const Text('現在、表示できるユーザーがいません。');
-                    } else if (users.isEmpty) {
+                    if (users.isEmpty) {
                       return const Text('新しい出会いをみつけましょう！');
                     }
                     return Expanded(
