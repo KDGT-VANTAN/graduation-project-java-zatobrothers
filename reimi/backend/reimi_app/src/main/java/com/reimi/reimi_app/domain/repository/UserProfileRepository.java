@@ -12,7 +12,7 @@ public interface UserProfileRepository {
 
     Optional<Profile> findProfileByUserId(UserId userId);
 
-    void save(User user);
+    void saveUser(User user);
 
-    void save(Profile profile);
+    void saveProfile(Profile profile);
 }
