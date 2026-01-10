@@ -7,7 +7,7 @@ part of 'weather_report_detail_notifier.dart';
 // **************************************************************************
 
 String _$weatherReportDetailNotifierHash() =>
-    r'f593b26434b3936becc55257278b26711e39a362';
+    r'63a7d091899afaa072548aaee9a364b1fe4ca624';
 
 /// Copied from Dart SDK
 class _SystemHash {

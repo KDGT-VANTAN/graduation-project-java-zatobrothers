@@ -1,37 +1,45 @@
-import 'package:reimi_app/data/datasources/user_remote_datasource.dart';
-import 'package:reimi_app/data/models/app_user_model.dart';
-import 'package:reimi_app/data/models/home_user_model.dart';
-import 'package:reimi_app/data/models/user_registration_model.dart';
+import 'package:reimi_app/data/datasources/remote/user_remote_datasource.dart';
+import 'package:reimi_app/data/dtos/create_user_dto.dart';
+import 'package:reimi_app/domain/read_models/app_user_read_model.dart';
+import 'package:reimi_app/domain/read_models/home_user_read_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
+import 'package:reimi_app/domain/value_objects/gender.dart';
+import 'package:reimi_app/domain/value_objects/user_status.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
 class UserMockDataSource implements UserRemoteDataSource {
   const UserMockDataSource();
 
   @override
-  Future<List<HomeUserModel>> fetchUsers() async {
+  Future<List<HomeUserReadModel>> fetchHomeUsers() async {
     return mockHomeUsers;
   }
 
   @override
-  Future<AppUserModel?> fetchCurrentUser() async {
-    // null → 初回ユーザー
-    // return null;
+  Future<AppUserReadModel> fetchCurrentUser() async {
     return mockUser;
   }
 
   @override
-  Future<bool> createUser(UserRegistrationModel user) {
+  Future<bool> createUser(CreateUserDto dto) {
     throw UnimplementedError();
   }
 }
 
 // モックデータ
-const mockUser = AppUserModel(id: 'user_000', name: 'メンダコ');
+final mockUser = AppUserReadModel(
+  id: 'user_000',
+  name: 'メンダコ',
+  gender: Gender.man,
+  birthDate: DateTime(2004, 5, 21),
+  address: Address.tokyo,
+  email: 'mendako@gmail.com',
+  status: UserStatus.active,
+);
 
-final List<HomeUserModel> mockHomeUsers = [
+final List<HomeUserReadModel> mockHomeUsers = [
   // user_001: 佐藤 葵
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_001',
     name: '佐藤 葵',
     birthDate: DateTime(1995, 5, 15),
@@ -42,7 +50,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_002: 田中 健
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_002',
     name: '田中 健',
     birthDate: DateTime(1978, 11, 3),
@@ -53,7 +61,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_003: 鈴木 翔太
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_003',
     name: '鈴木 翔太',
     birthDate: DateTime(2001, 3, 22),
@@ -64,7 +72,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_004: 高橋 美咲
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_004',
     name: '高橋 美咲',
     birthDate: DateTime(1988, 7, 12),
@@ -75,7 +83,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_005: 伊藤 健太
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_005',
     name: '伊藤 健太',
     birthDate: DateTime(1996, 9, 5),
@@ -86,7 +94,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_006: 渡辺 由美子
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_006',
     name: '渡辺 由美子',
     birthDate: DateTime(1965, 2, 28),
@@ -97,7 +105,7 @@ final List<HomeUserModel> mockHomeUsers = [
   ),
 
   // user_000: 山田 涼介
-  HomeUserModel(
+  HomeUserReadModel(
     id: 'user_000',
     name: '山田 涼介',
     birthDate: DateTime(1993, 5, 9),

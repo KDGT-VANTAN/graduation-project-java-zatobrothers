@@ -1,5 +1,6 @@
-import 'package:reimi_app/data/datasources/profile_remote_datasource.dart';
-import 'package:reimi_app/data/models/user_with_profile_model.dart';
+import 'package:reimi_app/data/datasources/remote/profile_remote_datasource.dart';
+import 'package:reimi_app/data/dtos/update_profile_dto.dart';
+import 'package:reimi_app/domain/read_models/user_with_profile_read_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
 import 'package:reimi_app/domain/value_objects/annual_income.dart';
@@ -18,21 +19,24 @@ class ProfileMockDataSource implements ProfileRemoteDataSource {
   const ProfileMockDataSource();
 
   @override
-  Future<UserWithProfileModel?> fetchUserProfile(String userId) async {
+  Future<UserWithProfileReadModel?> fetchUserProfile(String userId) async {
     // 仮実装
     for (var userProfile in mockUserProfiles) {
-      if (userProfile.userId == userId) {
+      if (userProfile.id == userId) {
         return userProfile;
       }
     }
     return null;
   }
+
+  @override
+  Future<void> updateUserProfile(UpdateProfileDto dto) async {}
 }
 
-final List<UserWithProfileModel> mockUserProfiles = [
+final List<UserWithProfileReadModel> mockUserProfiles = [
   // user_001: 佐藤 葵
-  UserWithProfileModel(
-    userId: 'user_001',
+  UserWithProfileReadModel(
+    id: 'user_001',
     name: '佐藤 葵',
     gender: Gender.woman,
     birthDate: DateTime(1995, 5, 15),
@@ -57,8 +61,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_002: 田中 健
-  UserWithProfileModel(
-    userId: 'user_002',
+  UserWithProfileReadModel(
+    id: 'user_002',
     name: '田中 健',
     gender: Gender.man,
     birthDate: DateTime(1978, 11, 3),
@@ -83,8 +87,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_003: 鈴木 翔太
-  UserWithProfileModel(
-    userId: 'user_003',
+  UserWithProfileReadModel(
+    id: 'user_003',
     name: '鈴木 翔太',
     gender: Gender.man,
     birthDate: DateTime(2001, 3, 22),
@@ -109,8 +113,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_004: 高橋 美咲
-  UserWithProfileModel(
-    userId: 'user_004',
+  UserWithProfileReadModel(
+    id: 'user_004',
     name: '高橋 美咲',
     gender: Gender.woman,
     birthDate: DateTime(1988, 7, 12),
@@ -135,8 +139,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_005: 伊藤 健太
-  UserWithProfileModel(
-    userId: 'user_005',
+  UserWithProfileReadModel(
+    id: 'user_005',
     name: '伊藤 健太',
     gender: Gender.man,
     birthDate: DateTime(1996, 9, 5),
@@ -161,8 +165,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_006: 渡辺 由美子
-  UserWithProfileModel(
-    userId: 'user_006',
+  UserWithProfileReadModel(
+    id: 'user_006',
     name: '渡辺 由美子',
     gender: Gender.woman,
     birthDate: DateTime(1965, 2, 28),
@@ -187,8 +191,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // user_000: 山田 涼介
-  UserWithProfileModel(
-    userId: 'user_000',
+  UserWithProfileReadModel(
+    id: 'user_000',
     name: '山田 涼介',
     gender: Gender.man,
     birthDate: DateTime(1993, 5, 9),
@@ -214,8 +218,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // chat_user_001: さくら
-  UserWithProfileModel(
-    userId: 'chat_user_001',
+  UserWithProfileReadModel(
+    id: 'chat_user_001',
     name: 'さくら',
     gender: Gender.woman,
     birthDate: DateTime(2000, 4, 15),
@@ -240,8 +244,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // chat_user_002: ゆうき
-  UserWithProfileModel(
-    userId: 'chat_user_002',
+  UserWithProfileReadModel(
+    id: 'chat_user_002',
     name: 'ゆうき',
     gender: Gender.man,
     birthDate: DateTime(1997, 8, 20),
@@ -266,8 +270,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // chat_user_003: あおい
-  UserWithProfileModel(
-    userId: 'chat_user_003',
+  UserWithProfileReadModel(
+    id: 'chat_user_003',
     name: 'あおい',
     gender: Gender.woman,
     birthDate: DateTime(2002, 11, 10),
@@ -292,8 +296,8 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // chat_user_004: りく
-  UserWithProfileModel(
-    userId: 'chat_user_004',
+  UserWithProfileReadModel(
+    id: 'chat_user_004',
     name: 'りく',
     gender: Gender.man,
     birthDate: DateTime(1995, 2, 5),
@@ -318,14 +322,13 @@ final List<UserWithProfileModel> mockUserProfiles = [
   ),
 
   // chat_user_005: みお
-  UserWithProfileModel(
-    userId: 'chat_user_005',
+  UserWithProfileReadModel(
+    id: 'chat_user_005',
     name: 'みお',
     gender: Gender.woman,
     birthDate: DateTime(1999, 6, 25),
     address: Address.chiba,
-    mainPhotoUrl:
-        'https://images.unsplash.com/photo-1489440543286-a69330151c0b?w=500&q=80',
+    mainPhotoUrl: Assets.images.sample.chatUser005SampleImage.path,
     introduction: '看護師をしています💉 忙しい毎日ですが、休日はディズニーランドに行ってリフレッシュしています！',
     height: Height.just155cm,
     bodyShape: BodyShape.normal,

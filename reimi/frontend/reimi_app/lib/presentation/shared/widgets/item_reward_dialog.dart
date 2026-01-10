@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/data/models/reward_item.dart';
+import 'package:reimi_app/domain/read_models/reward_item.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 
 class ItemRewardDialog extends HookConsumerWidget {

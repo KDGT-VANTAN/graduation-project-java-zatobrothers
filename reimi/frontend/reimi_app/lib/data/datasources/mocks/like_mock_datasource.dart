@@ -1,6 +1,6 @@
-import 'package:reimi_app/data/datasources/like_remote_datasource.dart';
-import 'package:reimi_app/data/models/like_user_model.dart';
+import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
 import 'package:reimi_app/domain/entities/like_entity.dart';
+import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
@@ -8,12 +8,12 @@ class LikeMockDataSource implements LikeRemoteDataSource {
   const LikeMockDataSource();
 
   @override
-  Future<List<LikeUserModel>?> getLikeUsersFromUser(String userId) async {
+  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
     return mockLikeUsersFromUser;
   }
 
   @override
-  Future<List<LikeUserModel>?> getLikeUsersToUser(String userId) async {
+  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
     return mockLikeUsersToUser;
   }
 
@@ -31,9 +31,9 @@ class LikeMockDataSource implements LikeRemoteDataSource {
   }
 }
 
-final List<LikeUserModel> mockLikeUsersFromUser = [
+final List<LikeUserReadModel> mockLikeUsersFromUser = [
   // 佐藤 葵 (001) - あなたに「いいね」してくれたユーザー
-  LikeUserModel(
+  LikeUserReadModel(
     id: 'user_001',
     name: '佐藤 葵',
     birthDate: DateTime(1995, 5, 15),
@@ -41,7 +41,7 @@ final List<LikeUserModel> mockLikeUsersFromUser = [
     mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
   ),
   // 高橋 美咲 (004) - あなたに「いいね」してくれたユーザー
-  LikeUserModel(
+  LikeUserReadModel(
     id: 'user_004',
     name: '高橋 美咲',
     birthDate: DateTime(1988, 7, 12),
@@ -50,9 +50,9 @@ final List<LikeUserModel> mockLikeUsersFromUser = [
   ),
 ];
 
-final List<LikeUserModel> mockLikeUsersToUser = [
+final List<LikeUserReadModel> mockLikeUsersToUser = [
   // 田中 健 (002) - あなたが「いいね」を送ったユーザー
-  LikeUserModel(
+  LikeUserReadModel(
     id: 'user_002',
     name: '田中 健',
     birthDate: DateTime(1978, 11, 3),
@@ -60,7 +60,7 @@ final List<LikeUserModel> mockLikeUsersToUser = [
     mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
   ),
   // 渡辺 由美子 (006) - ログインが少し前のユーザー
-  LikeUserModel(
+  LikeUserReadModel(
     id: 'user_006',
     name: '渡辺 由美子',
     birthDate: DateTime(1965, 2, 28),

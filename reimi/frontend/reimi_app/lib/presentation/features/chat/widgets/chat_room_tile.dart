@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
-import 'package:reimi_app/data/models/chat_room_summary_model.dart';
+import 'package:reimi_app/domain/read_models/chat_room_summary_read_model.dart';
 
 class ChatRoomTile extends StatelessWidget {
   const ChatRoomTile({
@@ -11,7 +11,7 @@ class ChatRoomTile extends StatelessWidget {
     required this.onTap,
   });
 
-  final ChatRoomSummaryModel chatRoomSummary;
+  final ChatRoomSummaryReadModel chatRoomSummary;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {

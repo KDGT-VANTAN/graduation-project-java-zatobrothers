@@ -6,12 +6,12 @@ part of 'like_users_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$likeUsersNotifierHash() => r'a6054f9ef54b4da568f4f452e0628526ab4832f8';
+String _$likeUsersNotifierHash() => r'7f2ed7e3aad5878075a4319fb9dfaf9421b5a43b';
 
 /// See also [LikeUsersNotifier].
 @ProviderFor(LikeUsersNotifier)
 final likeUsersNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    LikeUsersNotifier, List<LikeUserModel>?>.internal(
+    LikeUsersNotifier, List<LikeUserReadModel>>.internal(
   LikeUsersNotifier.new,
   name: r'likeUsersNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final likeUsersNotifierProvider = AutoDisposeAsyncNotifierProvider<
   allTransitiveDependencies: null,
 );
 
-typedef _$LikeUsersNotifier = AutoDisposeAsyncNotifier<List<LikeUserModel>?>;
+typedef _$LikeUsersNotifier = AutoDisposeAsyncNotifier<List<LikeUserReadModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,6 +1,7 @@
-import 'package:reimi_app/data/datasources/weather_report_remote_datasource.dart';
-import 'package:reimi_app/data/models/weather_report_model.dart';
-import 'package:reimi_app/data/models/weather_report_simple_model.dart';
+import 'package:reimi_app/data/datasources/remote/weather_report_remote_datasource.dart';
+import 'package:reimi_app/data/dtos/post_weather_report_dto.dart';
+import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
+import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
 import 'package:reimi_app/domain/value_objects/feeling_type.dart';
 import 'package:reimi_app/domain/value_objects/forecast_type.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
@@ -11,12 +12,12 @@ class WeatherReportMockDataSource implements WeatherReportRemoteDataSource {
   const WeatherReportMockDataSource();
 
   @override
-  Future<List<WeatherReportSimpleModel>> fetchWeatherReports() async {
+  Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports() async {
     return mockSimpleWeatherReports;
   }
 
   @override
-  Future<WeatherReportModel?> fetchWeatherReport(String reportId) async {
+  Future<WeatherReportReadModel?> fetchWeatherReport(String reportId) async {
     for (final weatherReport in mockWeatherReports) {
       if (weatherReport.reportId == reportId) {
         return weatherReport;
@@ -24,10 +25,16 @@ class WeatherReportMockDataSource implements WeatherReportRemoteDataSource {
     }
     return null;
   }
+
+  @override
+  Future<void> postWeatherReport(PostWeatherReportDto dto) {
+    // TODO: implement postWeatherReport
+    throw UnimplementedError();
+  }
 }
 
-final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
-  WeatherReportSimpleModel(
+final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
+  WeatherReportSimpleReadModel(
     reportId: 'report_001',
     userId: 'chat_user_001',
     comment: '今日は雲一つない快晴！とても気持ちが良いです。',
@@ -36,7 +43,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(hours: 1)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_002',
     userId: 'user_e345',
     comment: '早朝の澄んだ空気とグラデーションが最高です。',
@@ -45,7 +52,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_003',
     userId: 'user_c789',
     comment: '入道雲が出てきました。夏本番という感じですね。',
@@ -54,7 +61,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_004',
     userId: 'user_d012',
     comment: '雨上がりの空に虹が見えるかと思ったけど、残念。',
@@ -63,7 +70,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(hours: 8)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_005',
     userId: 'user_b456',
     comment: '夕焼けが燃えるように綺麗でした。明日は晴れるかな？',
@@ -72,7 +79,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1470252649358-96962407e9d9?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(hours: 3)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_006',
     userId: 'user_f678',
     comment: '夜空が澄んでいて星が少しだけ見えます。',
@@ -81,7 +88,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_007',
     userId: 'user_g901',
     comment: 'ふわふわした羊雲。秋の気配を感じます。',
@@ -90,7 +97,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 5)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_008',
     userId: 'user_h234',
     comment: '幻想的な紫色の空。加工なしでこの美しさ！',
@@ -99,7 +106,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1525920980995-f8a382bf42c5?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(days: 2)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_009',
     userId: 'user_i567',
     comment: '雲の間から差し込む光が神々しいです。',
@@ -108,7 +115,7 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
         'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&q=80&w=1000',
     createdAt: DateTime.now().subtract(const Duration(days: 2, hours: 4)),
   ),
-  WeatherReportSimpleModel(
+  WeatherReportSimpleReadModel(
     reportId: 'report_010',
     userId: 'user_j890',
     comment: 'どこまでも続く青空。散歩日和ですね。',
@@ -119,8 +126,8 @@ final List<WeatherReportSimpleModel> mockSimpleWeatherReports = [
   ),
 ];
 
-final List<WeatherReportModel> mockWeatherReports = [
-  WeatherReportModel(
+final List<WeatherReportReadModel> mockWeatherReports = [
+  WeatherReportReadModel(
     reportId: 'report_001',
     userId: 'chat_user_001',
     userName: 'さくら',
@@ -139,7 +146,7 @@ final List<WeatherReportModel> mockWeatherReports = [
     latitude: 35.6895,
     longitude: 139.6917,
   ),
-  WeatherReportModel(
+  WeatherReportReadModel(
     reportId: 'report_002',
     userId: 'chat_user_002',
     userName: 'ゆうき',

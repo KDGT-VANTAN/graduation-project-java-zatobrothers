@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ProfileDetailState {
-  UserWithProfileModel? get data;
+  UserWithProfileReadModel? get data;
   bool get isLiked;
   bool get isRainbowLiked;
   bool get isSkipped;
@@ -57,12 +57,12 @@ abstract mixin class $ProfileDetailStateCopyWith<$Res> {
       _$ProfileDetailStateCopyWithImpl;
   @useResult
   $Res call(
-      {UserWithProfileModel? data,
+      {UserWithProfileReadModel? data,
       bool isLiked,
       bool isRainbowLiked,
       bool isSkipped});
 
-  $UserWithProfileModelCopyWith<$Res>? get data;
+  $UserWithProfileReadModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class _$ProfileDetailStateCopyWithImpl<$Res>
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+              as UserWithProfileReadModel?,
       isLiked: null == isLiked
           ? _self.isLiked
           : isLiked // ignore: cast_nullable_to_non_nullable
@@ -107,12 +107,12 @@ class _$ProfileDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get data {
+  $UserWithProfileReadModelCopyWith<$Res>? get data {
     if (_self.data == null) {
       return null;
     }
 
-    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
+    return $UserWithProfileReadModelCopyWith<$Res>(_self.data!, (value) {
       return _then(_self.copyWith(data: value));
     });
   }
@@ -211,7 +211,7 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(UserWithProfileModel? data, bool isLiked,
+    TResult Function(UserWithProfileReadModel? data, bool isLiked,
             bool isRainbowLiked, bool isSkipped)?
         $default, {
     required TResult orElse(),
@@ -241,7 +241,7 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(UserWithProfileModel? data, bool isLiked,
+    TResult Function(UserWithProfileReadModel? data, bool isLiked,
             bool isRainbowLiked, bool isSkipped)
         $default,
   ) {
@@ -269,7 +269,7 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(UserWithProfileModel? data, bool isLiked,
+    TResult? Function(UserWithProfileReadModel? data, bool isLiked,
             bool isRainbowLiked, bool isSkipped)?
         $default,
   ) {
@@ -294,7 +294,7 @@ class _ProfileDetailState implements ProfileDetailState {
       this.isSkipped = false});
 
   @override
-  final UserWithProfileModel? data;
+  final UserWithProfileReadModel? data;
   @override
   @JsonKey()
   final bool isLiked;
@@ -345,13 +345,13 @@ abstract mixin class _$ProfileDetailStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {UserWithProfileModel? data,
+      {UserWithProfileReadModel? data,
       bool isLiked,
       bool isRainbowLiked,
       bool isSkipped});
 
   @override
-  $UserWithProfileModelCopyWith<$Res>? get data;
+  $UserWithProfileReadModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -376,7 +376,7 @@ class __$ProfileDetailStateCopyWithImpl<$Res>
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
-              as UserWithProfileModel?,
+              as UserWithProfileReadModel?,
       isLiked: null == isLiked
           ? _self.isLiked
           : isLiked // ignore: cast_nullable_to_non_nullable
@@ -396,12 +396,12 @@ class __$ProfileDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserWithProfileModelCopyWith<$Res>? get data {
+  $UserWithProfileReadModelCopyWith<$Res>? get data {
     if (_self.data == null) {
       return null;
     }
 
-    return $UserWithProfileModelCopyWith<$Res>(_self.data!, (value) {
+    return $UserWithProfileReadModelCopyWith<$Res>(_self.data!, (value) {
       return _then(_self.copyWith(data: value));
     });
   }

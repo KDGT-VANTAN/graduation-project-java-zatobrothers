@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportState {
-  List<WeatherReportSimpleModel> get weatherReports;
+  List<WeatherReportSimpleReadModel> get weatherReports;
 
   /// Create a copy of WeatherReportState
   /// with the given fields replaced by the non-null parameter values.
@@ -49,7 +49,7 @@ abstract mixin class $WeatherReportStateCopyWith<$Res> {
           WeatherReportState value, $Res Function(WeatherReportState) _then) =
       _$WeatherReportStateCopyWithImpl;
   @useResult
-  $Res call({List<WeatherReportSimpleModel> weatherReports});
+  $Res call({List<WeatherReportSimpleReadModel> weatherReports});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$WeatherReportStateCopyWithImpl<$Res>
       weatherReports: null == weatherReports
           ? _self.weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
-              as List<WeatherReportSimpleModel>,
+              as List<WeatherReportSimpleReadModel>,
     ));
   }
 }
@@ -169,7 +169,8 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleModel> weatherReports)? $default, {
+    TResult Function(List<WeatherReportSimpleReadModel> weatherReports)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -196,7 +197,8 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleModel> weatherReports) $default,
+    TResult Function(List<WeatherReportSimpleReadModel> weatherReports)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -221,7 +223,8 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<WeatherReportSimpleModel> weatherReports)? $default,
+    TResult? Function(List<WeatherReportSimpleReadModel> weatherReports)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -237,14 +240,14 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
 class _WeatherReportState implements WeatherReportState {
   const _WeatherReportState(
-      {final List<WeatherReportSimpleModel> weatherReports =
-          const <WeatherReportSimpleModel>[]})
+      {final List<WeatherReportSimpleReadModel> weatherReports =
+          const <WeatherReportSimpleReadModel>[]})
       : _weatherReports = weatherReports;
 
-  final List<WeatherReportSimpleModel> _weatherReports;
+  final List<WeatherReportSimpleReadModel> _weatherReports;
   @override
   @JsonKey()
-  List<WeatherReportSimpleModel> get weatherReports {
+  List<WeatherReportSimpleReadModel> get weatherReports {
     if (_weatherReports is EqualUnmodifiableListView) return _weatherReports;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_weatherReports);
@@ -285,7 +288,7 @@ abstract mixin class _$WeatherReportStateCopyWith<$Res>
       __$WeatherReportStateCopyWithImpl;
   @override
   @useResult
-  $Res call({List<WeatherReportSimpleModel> weatherReports});
+  $Res call({List<WeatherReportSimpleReadModel> weatherReports});
 }
 
 /// @nodoc
@@ -307,7 +310,7 @@ class __$WeatherReportStateCopyWithImpl<$Res>
       weatherReports: null == weatherReports
           ? _self._weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
-              as List<WeatherReportSimpleModel>,
+              as List<WeatherReportSimpleReadModel>,
     ));
   }
 }

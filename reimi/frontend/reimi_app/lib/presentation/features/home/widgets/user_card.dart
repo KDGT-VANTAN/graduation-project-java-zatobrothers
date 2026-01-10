@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
-import 'package:reimi_app/data/models/home_user_model.dart';
+import 'package:reimi_app/domain/read_models/home_user_read_model.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/presentation/features/home/widgets/circle_badge.dart';
 
@@ -13,7 +13,7 @@ class UserCard extends StatelessWidget {
     required this.onTap,
   });
 
-  final HomeUserModel user;
+  final HomeUserReadModel user;
   final void Function()? onTap;
 
   @override

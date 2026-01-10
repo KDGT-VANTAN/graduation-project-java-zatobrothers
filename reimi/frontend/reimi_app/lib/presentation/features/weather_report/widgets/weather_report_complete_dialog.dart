@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:reimi_app/data/models/reward_item.dart';
+import 'package:reimi_app/domain/read_models/reward_item.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/shared/widgets/item_reward_dialog.dart';

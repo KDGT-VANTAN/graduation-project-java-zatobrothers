@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$HomeState {
-  List<HomeUserModel>? get users;
+  List<HomeUserReadModel> get users;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +46,7 @@ abstract mixin class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) =
       _$HomeStateCopyWithImpl;
   @useResult
-  $Res call({List<HomeUserModel>? users});
+  $Res call({List<HomeUserReadModel> users});
 }
 
 /// @nodoc
@@ -61,13 +61,13 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? users = freezed,
+    Object? users = null,
   }) {
     return _then(_self.copyWith(
-      users: freezed == users
+      users: null == users
           ? _self.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<HomeUserModel>?,
+              as List<HomeUserReadModel>,
     ));
   }
 }
@@ -165,7 +165,7 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<HomeUserModel>? users)? $default, {
+    TResult Function(List<HomeUserReadModel> users)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -192,7 +192,7 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<HomeUserModel>? users) $default,
+    TResult Function(List<HomeUserReadModel> users) $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -217,7 +217,7 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<HomeUserModel>? users)? $default,
+    TResult? Function(List<HomeUserReadModel> users)? $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -232,16 +232,17 @@ extension HomeStatePatterns on HomeState {
 /// @nodoc
 
 class _HomeState implements HomeState {
-  const _HomeState({final List<HomeUserModel>? users}) : _users = users;
+  const _HomeState(
+      {final List<HomeUserReadModel> users = const <HomeUserReadModel>[]})
+      : _users = users;
 
-  final List<HomeUserModel>? _users;
+  final List<HomeUserReadModel> _users;
   @override
-  List<HomeUserModel>? get users {
-    final value = _users;
-    if (value == null) return null;
+  @JsonKey()
+  List<HomeUserReadModel> get users {
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_users);
   }
 
   /// Create a copy of HomeState
@@ -278,7 +279,7 @@ abstract mixin class _$HomeStateCopyWith<$Res>
       __$HomeStateCopyWithImpl;
   @override
   @useResult
-  $Res call({List<HomeUserModel>? users});
+  $Res call({List<HomeUserReadModel> users});
 }
 
 /// @nodoc
@@ -293,13 +294,13 @@ class __$HomeStateCopyWithImpl<$Res> implements _$HomeStateCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? users = freezed,
+    Object? users = null,
   }) {
     return _then(_HomeState(
-      users: freezed == users
+      users: null == users
           ? _self._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<HomeUserModel>?,
+              as List<HomeUserReadModel>,
     ));
   }
 }

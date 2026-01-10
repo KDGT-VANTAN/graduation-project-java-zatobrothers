@@ -1,6 +1,6 @@
-import 'package:reimi_app/data/datasources/chat_room_remote_datasource.dart';
-import 'package:reimi_app/data/models/chat_room_summary_model.dart';
-import 'package:reimi_app/data/models/unmessaged_match_user_model.dart';
+import 'package:reimi_app/data/datasources/remote/chat_room_remote_datasource.dart';
+import 'package:reimi_app/domain/read_models/chat_room_summary_read_model.dart';
+import 'package:reimi_app/domain/read_models/unmessaged_match_user_read_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
@@ -8,42 +8,38 @@ class ChatRoomMockDataSource implements ChatRoomRemoteDataSource {
   const ChatRoomMockDataSource();
 
   @override
-  Future<List<UnmessagedMatchUserModel>?> fetchUnmessagedMatchUsers(
-    String userId,
-  ) async {
+  Future<List<UnmessagedMatchUserReadModel>> fetchUnmessagedMatchUsers() async {
     return mockUnmessagedMatchUsers;
   }
 
   @override
-  Future<List<ChatRoomSummaryModel>?> fetchChatRoomSummaries(
-    String userId,
-  ) async {
+  Future<List<ChatRoomSummaryReadModel>> fetchChatRoomSummaries() async {
     return mockChatRoomSummaries;
   }
 }
 
 final mockUnmessagedMatchUsers = [
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_001',
     mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
   ),
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_002',
     mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
   ),
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_003',
     mainPhotoUrl: Assets.images.sample.user003SampleImage.path,
   ),
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_004',
     mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
   ),
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_005',
     mainPhotoUrl: Assets.images.sample.user005SampleImage.path,
   ),
-  UnmessagedMatchUserModel(
+  UnmessagedMatchUserReadModel(
     id: 'user_006',
     mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
   ),
@@ -51,7 +47,7 @@ final mockUnmessagedMatchUsers = [
 
 final mockChatRoomSummaries = [
   // ユーザー1
-  ChatRoomSummaryModel(
+  ChatRoomSummaryReadModel(
     chatRoomId: 'room_001',
     userId: 'chat_user_001',
     name: 'さくら',
@@ -63,7 +59,7 @@ final mockChatRoomSummaries = [
     unreadCount: 2,
   ),
   // ユーザー2
-  ChatRoomSummaryModel(
+  ChatRoomSummaryReadModel(
     chatRoomId: 'room_002',
     userId: 'chat_user_002',
     name: 'ゆうき',
@@ -75,7 +71,7 @@ final mockChatRoomSummaries = [
     unreadCount: 0,
   ),
   // ユーザー3
-  ChatRoomSummaryModel(
+  ChatRoomSummaryReadModel(
     chatRoomId: 'room_003',
     userId: 'chat_user_003',
     name: 'あおい',
@@ -87,7 +83,7 @@ final mockChatRoomSummaries = [
     unreadCount: 1,
   ),
   // ユーザー4
-  ChatRoomSummaryModel(
+  ChatRoomSummaryReadModel(
     chatRoomId: 'room_004',
     userId: 'chat_user_004',
     name: 'りく',
@@ -99,7 +95,7 @@ final mockChatRoomSummaries = [
     unreadCount: 0,
   ),
   // ユーザー5
-  ChatRoomSummaryModel(
+  ChatRoomSummaryReadModel(
     chatRoomId: 'room_005',
     userId: 'chat_user_005',
     name: 'みお',

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
-import 'package:reimi_app/data/models/chat_message_model.dart';
+import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/received_message.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/sent_message.dart';
 
 List<Widget> chatMessageList({
   required BuildContext context,
-  required List<ChatMessageModel> chatMessages,
+  required List<ChatMessageReadModel> chatMessages,
   required String currentUserId,
   required String mainPhotoUrl,
 }) {
