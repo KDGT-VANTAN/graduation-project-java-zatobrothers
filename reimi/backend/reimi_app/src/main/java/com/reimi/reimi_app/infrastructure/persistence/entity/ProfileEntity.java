@@ -15,7 +15,6 @@ import com.reimi.reimi_app.domain.model.profile.Holiday;
 import com.reimi.reimi_app.domain.model.profile.Hometown;
 import com.reimi.reimi_app.domain.model.profile.Occupation;
 import com.reimi.reimi_app.domain.model.profile.Smoking;
-import com.reimi.reimi_app.domain.model.user.UserId;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -127,10 +126,6 @@ public class ProfileEntity {
     @PreUpdate
     protected void preUpdate() {
         this.updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
-    }
-
-    public UserId getUserId() {
-        return new UserId(userId);
     }
 
     public ProfileEntity() {}

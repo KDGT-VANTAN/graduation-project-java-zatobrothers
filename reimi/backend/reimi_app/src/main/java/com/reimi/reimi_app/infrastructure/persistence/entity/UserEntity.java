@@ -8,7 +8,6 @@ import java.util.UUID;
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.domain.model.user.Status;
-import com.reimi.reimi_app.domain.model.user.UserId;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -97,10 +96,6 @@ public class UserEntity {
     @PreUpdate
     protected void preUpdate() {
         this.updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
-    }
-
-    public UserId getId() {
-        return new UserId(id);
     }
 
     public UserEntity() {}
