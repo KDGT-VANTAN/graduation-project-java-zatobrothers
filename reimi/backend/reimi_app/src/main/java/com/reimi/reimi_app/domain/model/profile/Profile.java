@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.domain.model.profile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.reimi.reimi_app.domain.model.user.UserId;
@@ -159,8 +160,59 @@ public class Profile {
         if (smoking != null) this.smoking = smoking;
         if (alcohol != null) this.alcohol = alcohol;
         if (holiday != null) this.holiday = holiday;
-        if (sunnyDayHobbies != null) this.sunnyDayHobbies = sunnyDayHobbies;
-        if (rainyDayHobbies != null) this.rainyDayHobbies = rainyDayHobbies;
+        updateSunnyDayHobbies(sunnyDayHobbies);
+        updateRainyDayHobbies(rainyDayHobbies);
+    }
+
+    public void updateSunnyDayHobbies(List<String> newHobbies) {
+        if (newHobbies == null || newHobbies.isEmpty()) {
+            return;
+        }
+
+        List<String> merged = new ArrayList<>();
+        if (this.sunnyDayHobbies != null) {
+            merged.addAll(this.sunnyDayHobbies);
+        }
+
+        merged.addAll(newHobbies);
+
+        List<String> deduplicated = new ArrayList<>(
+            merged.stream()
+                .distinct()
+                .toList()
+        );
+
+        int size = deduplicated.size();
+        this.sunnyDayHobbies = deduplicated.subList(
+            Math.max(0, size - 3),
+            size
+        );
+    }
+
+    public void updateRainyDayHobbies(List<String> newHobbies) {
+        if (newHobbies == null || newHobbies.isEmpty()) {
+            return;
+        }
+
+        List<String> merged = new ArrayList<>();
+
+        if (this.rainyDayHobbies != null) {
+            merged.addAll(this.rainyDayHobbies);
+        }
+
+        merged.addAll(newHobbies);
+
+        List<String> deduplicated = new ArrayList<>(
+            merged.stream()
+                .distinct()
+                .toList()
+        );
+
+        int size = deduplicated.size();
+        this.rainyDayHobbies = deduplicated.subList(
+            Math.max(0, size - 3),
+            size
+        );
     }
 
     public UserId getUserId() { return userId; }
