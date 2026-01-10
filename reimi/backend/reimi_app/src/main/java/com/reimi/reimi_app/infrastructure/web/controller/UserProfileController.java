@@ -16,6 +16,7 @@ import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.request.UpdateUserProfileRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.UserWithProfileResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.profile.GetUserProfileApi;
+import com.reimi.reimi_app.infrastructure.web.openapi.profile.UpdateUserProfileApi;
 
 import jakarta.validation.Valid;
 
@@ -39,6 +40,7 @@ public class UserProfileController {
     }
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @UpdateUserProfileApi
     public ResponseEntity<Void> editProfile(
         @PathVariable UserId userId,
         @ModelAttribute @Valid UpdateUserProfileRequest request
