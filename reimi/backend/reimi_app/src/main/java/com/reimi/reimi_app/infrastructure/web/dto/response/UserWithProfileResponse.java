@@ -2,7 +2,20 @@ package com.reimi.reimi_app.infrastructure.web.dto.response;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
+
+import com.reimi.reimi_app.domain.model.user.Address;
+import com.reimi.reimi_app.domain.model.user.Gender;
+import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.model.profile.BodyShape;
+import com.reimi.reimi_app.domain.model.profile.AnnualIncome;
+import com.reimi.reimi_app.domain.model.profile.BloodType;
+import com.reimi.reimi_app.domain.model.profile.Hometown;
+import com.reimi.reimi_app.domain.model.profile.CommunicationStyle;
+import com.reimi.reimi_app.domain.model.profile.Occupation;
+import com.reimi.reimi_app.domain.model.profile.Education;
+import com.reimi.reimi_app.domain.model.profile.Smoking;
+import com.reimi.reimi_app.domain.model.profile.Alcohol;
+import com.reimi.reimi_app.domain.model.profile.Holiday;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -10,19 +23,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public record UserWithProfileResponse(
 
     @Schema(description = "ユーザーID", example = "5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93")
-    UUID id,
+    UserId id,
 
     @Schema(description = "名前", example = "山田 太郎")
     String name,
 
     @Schema(description = "性別", example = "MAN")
-    String gender,
+    Gender gender,
 
     @Schema(description = "生年月日", example = "1996-04-18")
     LocalDate birthDate,
 
-    @Schema(description = "居住地", example = "東京都")
-    String address,
+    @Schema(description = "居住地", example = "TOKYO")
+    Address address,
 
     @Schema(description = "メイン写真URL")
     String mainPhotoUrl,
@@ -34,34 +47,34 @@ public record UserWithProfileResponse(
     Integer height,
 
     @Schema(description = "体型", example = "NORMAL")
-    String bodyShape,
+    BodyShape bodyShape,
 
     @Schema(description = "平均", example = "BETWEEN_2M_TO_4M")
-    String annualIncome,
+    AnnualIncome annualIncome,
 
     @Schema(description = "血液型", example = "A")
-    String bloodType,
+    BloodType bloodType,
 
     @Schema(description = "出身地", example = "IWATE")
-    String hometown,
+    Hometown hometown,
 
     @Schema(description = "コミュニケーション方法", example = "CALL")
-    String communicationStyle,
+    CommunicationStyle communicationStyle,
 
     @Schema(description = "職業", example = "COMPANY_EMPLOYEE")
-    String occupation,
+    Occupation occupation,
 
     @Schema(description = "学歴", example = "UNIVERSITY_GRADUATE")
-    String education,
+    Education education,
 
     @Schema(description = "タバコ", example = "NO")
-    String smoking,
+    Smoking smoking,
 
     @Schema(description = "お酒", example = "YES")
-    String alcohol,
+    Alcohol alcohol,
 
     @Schema(description = "休日", example = "WEEKEND")
-    String holiday,
+    Holiday holiday,
 
     @Schema(description = "晴れの日にやりたいこと(3つ)", example = "公園でピクニック")
     List<String> sunnyDayHobbies,
