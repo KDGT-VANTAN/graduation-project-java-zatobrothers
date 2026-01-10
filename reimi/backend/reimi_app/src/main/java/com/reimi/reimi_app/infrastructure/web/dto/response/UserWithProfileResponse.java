@@ -76,9 +76,15 @@ public record UserWithProfileResponse(
     @Schema(description = "休日", example = "WEEKEND")
     Holiday holiday,
 
-    @Schema(description = "晴れの日にやりたいこと(3つ)", example = "公園でピクニック")
+    @Schema(
+        description = "晴れの日にやりたいこと（3つ）",
+        example = "[\"公園でピクニック\", \"カフェ巡り\", \"ランニング\"]"
+    )
     List<String> sunnyDayHobbies,
 
-    @Schema(description = "雨の日にやりたいこと(3つ)", example = "家で映画・ドラマを一気見")
+    @Schema(
+        description = "雨の日にやりたいこと（3つ）",
+        example = "[\"家で映画\", \"読書\", \"料理\"]"
+    )
     List<String> rainyDayHobbies
 ) {}
