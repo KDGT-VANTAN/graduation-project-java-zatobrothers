@@ -49,6 +49,7 @@ dependencies:
   json_annotation: ^4.9.0
   line_icons: ^2.0.3
   logger: ^2.6.2
+  path: ^1.9.1
   riverpod_annotation: ^2.6.1
   sign_in_with_apple: ^7.0.1
   slang: ^4.11.0
