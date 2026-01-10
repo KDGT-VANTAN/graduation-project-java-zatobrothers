@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.reimi.reimi_app.application.command.UpdateUserProfileCommand;
+import com.reimi.reimi_app.application.exception.client.AccessDeniedException;
 import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.UserProfileUseCase;
@@ -14,20 +15,24 @@ import com.reimi.reimi_app.domain.repository.UserProfileRepository;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStoragePath;
 import com.reimi.reimi_app.infrastructure.web.dto.response.UserWithProfileResponse;
+import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 @Service
 public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
     private final UserProfileRepository userProfileRepository;
+    private final AuthenticatedUserProvider authenticatedUserProvider;
     private final ImageStorageComponent imageStorage;
     private final ImageStoragePath imageStoragePath;
 
     public UserProfileUseCaseImpl(
         UserProfileRepository userProfileRepository,
+        AuthenticatedUserProvider authenticatedUserProvider,
         ImageStorageComponent imageStorage,
         ImageStoragePath imageStoragePath
     ) {
         this.userProfileRepository = userProfileRepository;
+        this.authenticatedUserProvider = authenticatedUserProvider;
         this.imageStorage = imageStorage;
         this.imageStoragePath = imageStoragePath;
     }
@@ -78,6 +83,13 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
         User user = userProfileRepository.findUserByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        String firebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        // ログインユーザーとUIDが一致しなければ権限エラーを返す
+        if (!firebaseUid.equals(user.getFirebaseUid())) {
+            throw new AccessDeniedException();
+        }
 
         // メイン写真のベースパスを取得
         String basePath = imageStoragePath.userMainPhotoPath();
