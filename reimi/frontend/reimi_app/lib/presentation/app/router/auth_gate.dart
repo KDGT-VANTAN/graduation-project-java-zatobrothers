@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
+import 'package:reimi_app/presentation/app/session/app_user_state.dart';
 import 'package:reimi_app/presentation/app/auth/states/auth_state.dart';
+import 'package:reimi_app/presentation/app/session/app_user_state_notifier.dart';
 import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/splash/splash_page.dart';
@@ -21,52 +22,66 @@ class AuthGate extends ConsumerWidget {
     final authState = ref.watch(authNotifierProvider);
 
     return authState.when(
-      initial: () => const SplashPage(),
       loading: () => const LoadingPage(),
-      authenticated: (user) {
-        final appUserAsync = ref.watch(appUserNotifierProvider);
-        appUserAsync.when(
-          data: (appUser) {
-            if (appUser == null) {
-              // ユーザー情報がDBに保存されていないので、新規ユーザー扱いになりユーザー初期登録画面に遷移する
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                context.go(UserGenderPage.routeLocation);
-              });
-            } else {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                context.go(HomePage.routeLocation);
-              });
-            }
-          },
-          error: (e, _) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.go(
-                ErrorPage.routeLocation,
-                extra: {
-                  'message': e.toString(),
-                  'onRetry': null,
-                },
-              );
-            });
-          },
-          loading: () {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.go(LoadingPage.routeLocation);
-            });
+      unauthenticated: () {
+        _goAfterFrame(context, SignInPage.routeLocation);
+        return const SplashPage();
+      },
+      authenticated: (_) {
+        ref.listen<AsyncValue<AppUserState>>(
+          appUserStateNotifierProvider,
+          (_, next) {
+            next.whenOrNull(
+              data: (state) {
+                _handleAppUserState(context, state);
+              },
+              error: (e, _) {
+                context.go(
+                  ErrorPage.routeLocation,
+                  extra: {
+                    'message': e.toString(),
+                    'onRetry': () {
+                      ref.invalidate(appUserStateNotifierProvider);
+                    },
+                  },
+                );
+              },
+            );
           },
         );
+
         return const LoadingPage();
       },
-      unauthenticated: () {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.go(SignInPage.routeLocation);
-        });
-        return const LoadingPage();
+      failure: (failure) {
+        return ErrorPage(
+          message: failure.toString(),
+          onRetry: () {
+            ref.invalidate(authNotifierProvider);
+          },
+        );
       },
-      failure: (e) => ErrorPage(
-        message: e.toString(),
-        onRetry: null,
+    );
+  }
+
+  void _handleAppUserState(BuildContext context, AppUserState state) {
+    state.when(
+      existingUser: (_) => _goAfterFrame(context, HomePage.routeLocation),
+      newUser: () => _goAfterFrame(context, UserGenderPage.routeLocation),
+      currentUserError: (message) => _goAfterFrame(
+        context,
+        ErrorPage.routeLocation,
+        extra: {'message': message},
       ),
     );
+  }
+
+  void _goAfterFrame(
+    BuildContext context,
+    String location, {
+    Object? extra,
+  }) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.go(location, extra: extra);
+    });
   }
 }
