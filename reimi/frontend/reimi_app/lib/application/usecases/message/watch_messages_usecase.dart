@@ -1,4 +1,4 @@
-import 'package:reimi_app/data/models/chat_message_model.dart';
+import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 import 'package:reimi_app/domain/repositories/message_repository.dart';
 
 class WatchMessagesUseCase {
@@ -6,7 +6,7 @@ class WatchMessagesUseCase {
 
   final MessageRepository _repository;
 
-  Stream<List<ChatMessageModel>> call(String chatRoomId) {
+  Stream<List<ChatMessageReadModel>> call(String chatRoomId) {
     return _repository.watchMessages(chatRoomId);
   }
 }

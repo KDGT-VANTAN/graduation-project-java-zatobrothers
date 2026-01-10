@@ -1,4 +1,4 @@
-import 'package:reimi_app/data/models/weather_report_simple_model.dart';
+import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
 import 'package:reimi_app/domain/repositories/weather_report_repository.dart';
 
 class GetWeatherReportsUseCase {
@@ -6,7 +6,7 @@ class GetWeatherReportsUseCase {
 
   final WeatherReportRepository _repository;
 
-  Future<List<WeatherReportSimpleModel>> call() {
+  Future<List<WeatherReportSimpleReadModel>> call() {
     return _repository.fetchWeatherReports();
   }
 }
