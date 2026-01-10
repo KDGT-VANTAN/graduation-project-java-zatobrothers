@@ -1,7 +1,6 @@
 package com.reimi.reimi_app.infrastructure.web.dto.request;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +21,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "ユーザープロフィール編集用リクエスト")
 public record UpdateUserProfileRequest (
 
-    UUID id,
     String name,
     Address address,
     MultipartFile mainPhoto,

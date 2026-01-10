@@ -1,7 +1,6 @@
 package com.reimi.reimi_app.application.command;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +18,6 @@ import com.reimi.reimi_app.domain.model.user.Address;
 
 public record UpdateUserProfileCommand (
 
-    UUID id,
     String name,
     Address address,
     MultipartFile mainPhoto,
