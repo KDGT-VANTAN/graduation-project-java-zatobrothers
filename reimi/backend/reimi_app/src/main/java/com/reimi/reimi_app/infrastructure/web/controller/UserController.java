@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.UserUseCase;
-import com.reimi.reimi_app.domain.model.user.Address;
-import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.infrastructure.web.dto.request.RegisterUserRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetMeResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
@@ -88,9 +86,9 @@ public class UserController {
         userUseCase.registerUser(
             new RegisterUserCommand(
                 request.name(),
-                Gender.valueOf(request.gender()),
+                request.gender(),
                 request.birthDate(),
-                Address.valueOf(request.address()),
+                request.address(),
                 request.mainPhoto(),
                 request.email(),
                 request.introduction()
