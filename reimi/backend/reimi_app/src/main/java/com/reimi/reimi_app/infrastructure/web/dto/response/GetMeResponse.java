@@ -1,11 +1,11 @@
 package com.reimi.reimi_app.infrastructure.web.dto.response;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import com.reimi.reimi_app.domain.model.user.Address;
 import com.reimi.reimi_app.domain.model.user.Gender;
 import com.reimi.reimi_app.domain.model.user.Status;
-import com.reimi.reimi_app.domain.model.user.UserId;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public record GetMeResponse (
 
         @Schema(description = "ユーザーID", example = "5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93")
-        UserId id,
+        UUID id,
 
         @Schema(description = "名前", example = "山田 太郎")
         String name,

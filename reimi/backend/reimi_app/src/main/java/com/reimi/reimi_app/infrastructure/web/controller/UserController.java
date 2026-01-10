@@ -47,7 +47,7 @@ public class UserController {
         String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
         GetMeResponse getMeResponse = userUseCase.getUser(myFirebaseUid)
             .map(user -> new GetMeResponse(
-                user.getId(),
+                user.getId().value(),
                 user.getName(),
                 user.getGender(),
                 user.getBirthDate(),
@@ -68,7 +68,7 @@ public class UserController {
         List<GetUserListResponse> response = userUseCase.getUsersExcludingMe(myFirebaseUid)
                 .stream()
                 .map(user -> new GetUserListResponse(
-                    user.getId(),
+                    user.getId().value(),
                     user.getName(),
                     user.getBirthDate(),
                     user.getAddress(),

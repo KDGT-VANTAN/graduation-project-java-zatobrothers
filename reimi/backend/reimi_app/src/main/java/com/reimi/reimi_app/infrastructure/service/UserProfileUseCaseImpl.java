@@ -38,7 +38,7 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
 
         return new UserWithProfileResponse(
-            user.getId(),
+            user.getId().value(),
             user.getName(),
             user.getGender(),
             user.getBirthDate(),

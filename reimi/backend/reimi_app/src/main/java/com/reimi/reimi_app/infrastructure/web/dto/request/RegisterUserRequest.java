@@ -21,7 +21,7 @@ public record RegisterUserRequest (
         @Schema(description = "名前", example = "山田 太郎")
         String name,
 
-        @NotBlank(message = "性別は必須です")
+        @NotNull(message = "性別は必須です")
         @Schema(description = "性別", example = "MAN")
         Gender gender,
 
@@ -29,7 +29,7 @@ public record RegisterUserRequest (
         @Schema(description = "生年月日", example = "1996-04-18")
         LocalDate birthDate,
 
-        @NotBlank(message = "居住地は必須です")
+        @NotNull(message = "居住地は必須です")
         @Schema(description = "居住地", example = "TOKYO")
         Address address,
 
