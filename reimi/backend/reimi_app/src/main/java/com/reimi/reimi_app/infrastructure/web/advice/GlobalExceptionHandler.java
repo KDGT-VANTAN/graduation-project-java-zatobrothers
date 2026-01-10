@@ -10,6 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.reimi.reimi_app.application.exception.ClientErrorException;
@@ -51,6 +52,19 @@ public class GlobalExceptionHandler {
             .body(new ApiErrorResponse(
                 "INVALID_REQUEST",
                 "入力値が不正です",
+                null
+            )
+        );
+    }
+
+    // 予期される型がないことを示すエラー処理
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ApiErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        return ResponseEntity
+            .badRequest()
+            .body(new ApiErrorResponse(
+                "INVALID_REQUEST",
+                "リクエストパラメータの形式が不正です",
                 null
             )
         );
