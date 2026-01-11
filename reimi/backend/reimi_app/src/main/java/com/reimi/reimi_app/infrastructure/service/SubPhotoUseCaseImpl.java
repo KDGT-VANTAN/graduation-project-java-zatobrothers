@@ -52,7 +52,7 @@ public class SubPhotoUseCaseImpl implements SubPhotoUseCase {
         }
 
         // サブ写真のベースパスを取得
-        String subPhotoBasePath = imageStoragePath.userProfileSubPhotoPath(profile.getId());
+        String subPhotoBasePath = imageStoragePath.userProfileSubPhotoPath(profile.getId().value());
         int sortOrder = existing.isEmpty() ? 1 : existing.get(existing.size() - 1).getSortOrder() + 1;
 
         for (MultipartFile file : subPhotoFiles) {

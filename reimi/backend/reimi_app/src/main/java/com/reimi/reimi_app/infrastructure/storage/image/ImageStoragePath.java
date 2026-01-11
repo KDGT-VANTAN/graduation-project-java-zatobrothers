@@ -1,8 +1,8 @@
 package com.reimi.reimi_app.infrastructure.storage.image;
 
-import org.springframework.stereotype.Component;
+import java.util.UUID;
 
-import com.reimi.reimi_app.domain.model.profile.ProfileId;
+import org.springframework.stereotype.Component;
 
 @Component
 public class ImageStoragePath {
@@ -12,7 +12,7 @@ public class ImageStoragePath {
     }
 
     // ユーザープロフィールのサブ写真のパス
-    public String userProfileSubPhotoPath(ProfileId profileId) {
+    public String userProfileSubPhotoPath(UUID profileId) {
         return "images/users/profiles/" + profileId + "/subPhotos";
     }
 }
