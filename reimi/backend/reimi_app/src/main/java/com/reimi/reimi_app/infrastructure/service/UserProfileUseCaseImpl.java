@@ -91,10 +91,21 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             throw new AccessDeniedException();
         }
 
-        // メイン写真のベースパスを取得
-        String basePath = imageStoragePath.userMainPhotoPath();
-        // メイン写真の画像アップロード
-        String mainPhotoPath = imageStorage.imageUpload(command.mainPhoto(), basePath);
+        String currentFilePath = user.getMainPhotoUrl();
+        String currentFileName = imageStorage.removeUuidPrefix(imageStorage.extractFileName(currentFilePath));
+        String uploadedFileName = command.mainPhoto().getOriginalFilename();
+
+        String mainPhotoPath = currentFilePath;
+        if (!uploadedFileName.equals(currentFileName)) {
+            // メイン写真のベースパスを取得
+            String basePath = imageStoragePath.userMainPhotoPath();
+            // メイン写真の画像アップロード
+            mainPhotoPath = imageStorage.imageUpload(command.mainPhoto(), basePath);
+            //古いファイルは削除
+            if (currentFilePath != null) {
+                imageStorage.deleteImage(currentFilePath);
+            }
+        }
 
         Profile profile = userProfileRepository.findProfileByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
