@@ -7,6 +7,7 @@ import com.reimi.reimi_app.domain.model.user.UserId;
 
 public class Profile {
 
+    private final ProfileId id;
     private final UserId userId;
     private String introduction;
     private Integer height;
@@ -25,6 +26,7 @@ public class Profile {
 
 
     private Profile(
+        ProfileId id,
         UserId userId,
         String introduction,
         Integer height,
@@ -52,6 +54,7 @@ public class Profile {
         if (rainyDayHobbies != null && rainyDayHobbies.size() > 3) {
             throw new IllegalArgumentException("雨の日にやりたいことは最大3つまでです");
         }
+        this.id = id;
         this.userId = userId;
         this.introduction = introduction;
         this.height = height;
@@ -73,7 +76,9 @@ public class Profile {
         UserId userId,
         String introduction
     ) {
+        ProfileId profileId = ProfileId.generate();
         return new Profile(
+            profileId,
             userId,
             introduction,
             null,
@@ -93,6 +98,7 @@ public class Profile {
     }
 
     public static Profile reconstruct(
+        ProfileId id,
         UserId userId,
         String introduction,
         Integer height,
@@ -110,6 +116,7 @@ public class Profile {
         List<String> rainyDayHobbies
     ) {
         return new Profile(
+                id,
                 userId,
                 introduction,
                 height,
@@ -215,6 +222,7 @@ public class Profile {
         );
     }
 
+    public ProfileId getId() { return id; }
     public UserId getUserId() { return userId; }
     public String getIntroduction() { return introduction; }
     public Integer getHeight() { return height; }
