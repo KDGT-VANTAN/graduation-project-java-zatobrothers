@@ -27,7 +27,7 @@ public class SubPhotoEntity {
     private UUID id;
 
 
-    @Column(name = "profile_id", nullable = false, unique = true)
+    @Column(name = "profile_id", nullable = false)
     private UUID profileId;
 
     @ManyToOne(fetch = FetchType.LAZY)
