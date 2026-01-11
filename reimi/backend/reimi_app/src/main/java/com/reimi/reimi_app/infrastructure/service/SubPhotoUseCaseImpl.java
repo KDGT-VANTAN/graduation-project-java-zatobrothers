@@ -2,6 +2,7 @@ package com.reimi.reimi_app.infrastructure.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +14,7 @@ import com.reimi.reimi_app.domain.repository.SubPhotoRepository;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStoragePath;
 
+@Service
 public class SubPhotoUseCaseImpl implements SubPhotoUseCase {
 
     private final ImageStorageComponent imageStorage;
