@@ -28,7 +28,7 @@ public class SubPhotoRepositoryImpl implements SubPhotoRepository {
 
     @Override
     public List<SubPhoto> findAllSubPhotos(ProfileId profileId) {
-        return jpaSubPhotoRepository.findProfileIdOrderBySortOrderAsc(profileId.value())
+        return jpaSubPhotoRepository.findByProfileIdOrderBySortOrderAsc(profileId.value())
             .stream()
             .map(SubPhotoMapper::toDomain)
             .toList();

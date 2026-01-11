@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.reimi.reimi_app.infrastructure.persistence.entity.SubPhotoEntity;
 
 public interface JpaSubPhotoRepository extends JpaRepository<SubPhotoEntity, UUID> {
-    List<SubPhotoEntity> findProfileIdOrderBySortOrderAsc(UUID profileId);
+    List<SubPhotoEntity> findByProfileIdOrderBySortOrderAsc(UUID profileId);
 }
