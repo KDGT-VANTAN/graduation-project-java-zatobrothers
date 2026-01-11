@@ -89,5 +89,12 @@ public record UpdateUserProfileRequest (
         description = "雨の日にやりたいこと（3つ）",
         example = "[\"家で映画\", \"読書\", \"料理\"]"
     )
-    List<String> rainyDayHobbies
+    List<String> rainyDayHobbies,
+
+    @Schema(
+        description = "ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）",
+        type = "array",
+        format = "binary"
+    )
+    List<MultipartFile> subPhotos
 ) {}

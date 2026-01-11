@@ -14,6 +14,7 @@ import com.reimi.reimi_app.domain.model.profile.CommunicationStyle;
 import com.reimi.reimi_app.domain.model.profile.Occupation;
 import com.reimi.reimi_app.domain.model.profile.Education;
 import com.reimi.reimi_app.domain.model.profile.Smoking;
+import com.reimi.reimi_app.domain.model.subphoto.SubPhoto;
 import com.reimi.reimi_app.domain.model.profile.Alcohol;
 import com.reimi.reimi_app.domain.model.profile.Holiday;
 
@@ -86,5 +87,13 @@ public record UserWithProfileResponse(
         description = "雨の日にやりたいこと（3つ）",
         example = "[\"家で映画\", \"読書\", \"料理\"]"
     )
-    List<String> rainyDayHobbies
+    List<String> rainyDayHobbies,
+
+    @Schema(
+        description = "ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）",
+        type = "array",
+        format = "binary"
+    )
+    List<SubPhoto> subPhotos
+
 ) {}

@@ -39,7 +39,7 @@ public class UserProfileRepositoryImpl implements UserProfileRepository {
     @Override
     public Optional<Profile> findProfileByUserId(UserId userId) {
         return jpaProfileRepository
-            .findById(userId.value())
+            .findByUserId(userId.value())
             .map(ProfileMapper::toDomain);
     }
 
@@ -55,7 +55,7 @@ public class UserProfileRepositoryImpl implements UserProfileRepository {
     public void saveProfile(Profile profile) {
 
         ProfileEntity entity = jpaProfileRepository
-            .findById(profile.getUserId().value())
+            .findById(profile.getId().value())
             .orElseThrow(() -> new ResourceNotFoundException("プロフィール"));
 
         jpaProfileRepository.save(ProfileMapper.toUpdateEntity(profile, entity));
