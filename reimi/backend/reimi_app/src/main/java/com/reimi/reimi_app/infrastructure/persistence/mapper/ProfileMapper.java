@@ -46,4 +46,23 @@ public class ProfileMapper {
 
         return entity;
     }
+
+    public static ProfileEntity toUpdateEntity(Profile profile,ProfileEntity entity) {
+        entity.setIntroduction(profile.getIntroduction());
+        if (profile.getHeight() != null) entity.setHeight(profile.getHeight());
+        if (profile.getBodyShape() != null) entity.setBodyShape(profile.getBodyShape());
+        if (profile.getAnnualIncome() != null) entity.setAnnualIncome(profile.getAnnualIncome());
+        if (profile.getBloodType() != null) entity.setBloodType(profile.getBloodType());
+        if (profile.getHometown() != null) entity.setHometown(profile.getHometown());
+        if (profile.getCommunicationStyle() != null) entity.setCommunicationStyle(profile.getCommunicationStyle());
+        if (profile.getOccupation() != null) entity.setOccupation(profile.getOccupation());
+        if (profile.getEducation() != null) entity.setEducation(profile.getEducation());
+        if (profile.getSmoking() != null) entity.setSmoking(profile.getSmoking());
+        if (profile.getAlcohol() != null) entity.setAlcohol(profile.getAlcohol());
+        if (profile.getHoliday() != null) entity.setHoliday(profile.getHoliday());
+        if (profile.getSunnyDayHobbies() != null) entity.setSunnyDayHobbies(profile.getSunnyDayHobbies());
+        if (profile.getRainyDayHobbies() != null) entity.setRainyDayHobbies(profile.getRainyDayHobbies());
+
+        return entity;
+    }
 }

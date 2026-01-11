@@ -11,4 +11,8 @@ public interface UserProfileRepository {
     Optional<User> findUserByUserId(UserId userId);
 
     Optional<Profile> findProfileByUserId(UserId userId);
+
+    void saveUser(User user);
+
+    void saveProfile(Profile profile);
 }

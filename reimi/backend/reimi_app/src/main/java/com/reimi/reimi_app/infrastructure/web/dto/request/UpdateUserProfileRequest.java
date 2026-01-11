@@ -1,48 +1,51 @@
-package com.reimi.reimi_app.infrastructure.web.dto.response;
+package com.reimi.reimi_app.infrastructure.web.dto.request;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
-import com.reimi.reimi_app.domain.model.user.Address;
-import com.reimi.reimi_app.domain.model.user.Gender;
-import com.reimi.reimi_app.domain.model.profile.BodyShape;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.reimi.reimi_app.domain.model.profile.Alcohol;
 import com.reimi.reimi_app.domain.model.profile.AnnualIncome;
 import com.reimi.reimi_app.domain.model.profile.BloodType;
-import com.reimi.reimi_app.domain.model.profile.Hometown;
+import com.reimi.reimi_app.domain.model.profile.BodyShape;
 import com.reimi.reimi_app.domain.model.profile.CommunicationStyle;
-import com.reimi.reimi_app.domain.model.profile.Occupation;
 import com.reimi.reimi_app.domain.model.profile.Education;
-import com.reimi.reimi_app.domain.model.profile.Smoking;
-import com.reimi.reimi_app.domain.model.profile.Alcohol;
 import com.reimi.reimi_app.domain.model.profile.Holiday;
+import com.reimi.reimi_app.domain.model.profile.Hometown;
+import com.reimi.reimi_app.domain.model.profile.Occupation;
+import com.reimi.reimi_app.domain.model.profile.Smoking;
+import com.reimi.reimi_app.domain.model.user.Address;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Schema(description = "ユーザープロフィール取得用レスポンス")
-public record UserWithProfileResponse(
+@Schema(description = "ユーザープロフィール編集用リクエスト")
+public record UpdateUserProfileRequest (
 
-    @Schema(description = "ユーザーID", example = "5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93")
-    UUID id,
-
+    @NotBlank(message = "名前は必須です")
+    @Size(max = 16, message = "名前は16文字以内で入力してください")
     @Schema(description = "名前", example = "山田 太郎")
     String name,
 
-    @Schema(description = "性別", example = "MAN")
-    Gender gender,
-
-    @Schema(description = "生年月日", example = "1996-04-18")
-    LocalDate birthDate,
-
+    @NotNull(message = "居住地は必須です")
     @Schema(description = "居住地", example = "TOKYO")
     Address address,
 
-    @Schema(description = "メイン写真URL")
-    String mainPhotoUrl,
+    @NotNull(message = "メイン写真URLは必須です")
+    @Schema(description = "メイン写真", format = "binary")
+    MultipartFile mainPhoto,
 
-    @Schema(description = "自己紹介文")
+    @NotNull(message = "自己紹介文は必須です")
+    @Size(min = 20, max = 500, message = "自己紹介文は20文字以上500文字以下で入力してください")
+    @Schema(description = "自己紹介文", example = "都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。")
     String introduction,
 
+    @Min(130)
+    @Max(200)
     @Schema(description = "身長", example = "160")
     Integer height,
 

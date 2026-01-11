@@ -8,11 +8,11 @@ public class User {
 
     private final UserId id;
     private final String firebaseUid;
-    private final String name;
+    private String name;
     private final Gender gender;
     private final LocalDate birthDate;
-    private final Address address;
-    private final String mainPhotoUrl;
+    private Address address;
+    private String mainPhotoUrl;
     private final String email;
     private final Status status;
     private final Profile profile;
@@ -93,6 +93,24 @@ public class User {
         );
     }
 
+    public void update(
+        String name,
+        Address address,
+        String mainPhotoUrl
+    ) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("名前は必須です");
+        }
+        if (address == null) {
+            throw new IllegalArgumentException("居住地は必須です");
+        }
+        if (mainPhotoUrl == null || mainPhotoUrl.isBlank()) {
+            throw new IllegalArgumentException("メイン写真は必須です");
+        }
+        this.name = name;
+        this.address = address;
+        this.mainPhotoUrl = mainPhotoUrl;
+    }
 
     public UserId getId() { return id; }
     public String getFirebaseUid() { return firebaseUid; }
