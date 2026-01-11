@@ -34,6 +34,6 @@ public record UpdateUserProfileCommand (
     Alcohol alcohol,
     Holiday holiday,
     List<String> sunnyDayHobbies,
-    List<String> rainyDayHobbies
-
+    List<String> rainyDayHobbies,
+    List<MultipartFile> subPhotos
 ) {}
