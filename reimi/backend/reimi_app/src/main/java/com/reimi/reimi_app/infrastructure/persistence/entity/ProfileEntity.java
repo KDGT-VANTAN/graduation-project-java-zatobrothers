@@ -25,27 +25,33 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "profiles")
+@Table(name = "profiles",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "uk_profiles_user_id", columnNames = "user_id")
+    }
+)
 public class ProfileEntity {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id", nullable = false, updatable = false)
+    private UUID id;
+
+    @Column(name = "user_id", nullable = false, unique = true)
     private UUID userId;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
     private UserEntity user;
 
     @Column(name = "introduction", nullable = false, length = 500)
@@ -97,7 +103,7 @@ public class ProfileEntity {
     @ElementCollection
     @CollectionTable(
         name = "sunny_day_hobbies",
-        joinColumns = @JoinColumn(name = "user_id")
+        joinColumns = @JoinColumn(name = "profile_id")
     )
     @Column(name = "hobby")
     private List<String> sunnyDayHobbies;
@@ -105,7 +111,7 @@ public class ProfileEntity {
     @ElementCollection
     @CollectionTable(
         name = "rainy_day_hobbies",
-        joinColumns = @JoinColumn(name = "user_id")
+        joinColumns = @JoinColumn(name = "profile_id")
     )
     @Column(name = "hobby")
     private List<String> rainyDayHobbies;
