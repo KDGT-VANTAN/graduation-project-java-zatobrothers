@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +13,9 @@ import com.reimi.reimi_app.application.usecase.SubPhotoUseCase;
 import com.reimi.reimi_app.application.usecase.UserProfileUseCase;
 import com.reimi.reimi_app.domain.model.profile.Profile;
 import com.reimi.reimi_app.domain.model.user.User;
+import com.reimi.reimi_app.domain.model.subphoto.SubPhoto;
 import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.repository.SubPhotoRepository;
 import com.reimi.reimi_app.domain.repository.UserProfileRepository;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStoragePath;
@@ -22,6 +26,7 @@ import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
     private final UserProfileRepository userProfileRepository;
+    private final SubPhotoRepository subPhotoRepository;
     private final AuthenticatedUserProvider authenticatedUserProvider;
     private final ImageStorageComponent imageStorage;
     private final ImageStoragePath imageStoragePath;
@@ -29,12 +34,14 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
     public UserProfileUseCaseImpl(
         UserProfileRepository userProfileRepository,
+        SubPhotoRepository subPhotoRepository,
         AuthenticatedUserProvider authenticatedUserProvider,
         ImageStorageComponent imageStorage,
         ImageStoragePath imageStoragePath,
         SubPhotoUseCase subPhotoUseCase
     ) {
         this.userProfileRepository = userProfileRepository;
+        this.subPhotoRepository = subPhotoRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
         this.imageStorage = imageStorage;
         this.imageStoragePath = imageStoragePath;
@@ -52,6 +59,8 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
         Profile profile = userProfileRepository.findProfileByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
+
+        List<SubPhoto> subPhotos = subPhotoRepository.findAllSubPhotos(profile.getId());
 
         return new UserWithProfileResponse(
             user.getId().value(),
@@ -73,7 +82,8 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             profile.getAlcohol() != null ? profile.getAlcohol() : null,
             profile.getHoliday() != null ? profile.getHoliday() : null,
             profile.getSunnyDayHobbies() != null ? profile.getSunnyDayHobbies() : null,
-            profile.getRainyDayHobbies() != null ? profile.getRainyDayHobbies() : null
+            profile.getRainyDayHobbies() != null ? profile.getRainyDayHobbies() : null,
+            subPhotos.isEmpty() ? null : subPhotos
         );
     }
 
