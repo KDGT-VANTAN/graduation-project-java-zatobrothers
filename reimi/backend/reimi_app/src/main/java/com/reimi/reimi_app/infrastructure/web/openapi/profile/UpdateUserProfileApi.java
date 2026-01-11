@@ -89,6 +89,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     ),
     @ApiResponse(
+        responseCode = "403",
+        description = "権限エラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "ACCESS_DENIED",
+                    "message": "この操作を行う権限がありません"
+                }
+                """
+            )
+        )
+    ),
+    @ApiResponse(
         responseCode = "413",
         description = "ファイルアップロードサイズ超過エラー",
         content = @Content(
