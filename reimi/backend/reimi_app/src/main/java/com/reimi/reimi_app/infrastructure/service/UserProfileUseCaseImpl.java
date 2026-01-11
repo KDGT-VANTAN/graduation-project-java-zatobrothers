@@ -7,6 +7,7 @@ import com.reimi.reimi_app.application.command.UpdateUserProfileCommand;
 import com.reimi.reimi_app.application.exception.client.AccessDeniedException;
 import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
+import com.reimi.reimi_app.application.usecase.SubPhotoUseCase;
 import com.reimi.reimi_app.application.usecase.UserProfileUseCase;
 import com.reimi.reimi_app.domain.model.profile.Profile;
 import com.reimi.reimi_app.domain.model.user.User;
@@ -24,17 +25,20 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
     private final AuthenticatedUserProvider authenticatedUserProvider;
     private final ImageStorageComponent imageStorage;
     private final ImageStoragePath imageStoragePath;
+    private final SubPhotoUseCase subPhotoUseCase;
 
     public UserProfileUseCaseImpl(
         UserProfileRepository userProfileRepository,
         AuthenticatedUserProvider authenticatedUserProvider,
         ImageStorageComponent imageStorage,
-        ImageStoragePath imageStoragePath
+        ImageStoragePath imageStoragePath,
+        SubPhotoUseCase subPhotoUseCase
     ) {
         this.userProfileRepository = userProfileRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
         this.imageStorage = imageStorage;
         this.imageStoragePath = imageStoragePath;
+        this.subPhotoUseCase = subPhotoUseCase;
     }
 
     @Override
@@ -109,6 +113,11 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
 
         Profile profile = userProfileRepository.findProfileByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
+
+        // nullでない場合、サブ写真の登録処理（アップロード）
+        if (command.subPhotos() != null || !command.subPhotos().isEmpty()) {
+            subPhotoUseCase.registerSubPhoto(profile, command.subPhotos());
+        }
 
         user.update(
             command.name(),
