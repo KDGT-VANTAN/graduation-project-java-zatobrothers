@@ -69,6 +69,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     ),
     @ApiResponse(
+        responseCode = "404",
+        description = "リソース不存在エラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "RESOURCE_NOT_FOUND",
+                    "message": "ユーザーが見つかりません"
+                }
+                """
+            )
+        )
+    ),
+    @ApiResponse(
         responseCode = "409",
         description = "重複エラー",
         content = @Content(
