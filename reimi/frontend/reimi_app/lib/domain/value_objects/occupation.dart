@@ -58,8 +58,8 @@ enum Occupation {
   consulting,
 
   // メディア
-  @JsonValue('MEDIA')
-  media,
+  @JsonValue('MASS_MEDIA')
+  massMedia,
   @JsonValue('ADVERTISING')
   advertising,
   @JsonValue('PUBLISHING')
