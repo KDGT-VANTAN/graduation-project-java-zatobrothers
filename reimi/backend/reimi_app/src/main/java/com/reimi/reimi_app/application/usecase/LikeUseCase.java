@@ -1,6 +1,6 @@
 package com.reimi.reimi_app.application.usecase;
 
-import com.reimi.reimi_app.application.command.LikeUserCommand;
+import com.reimi.reimi_app.domain.model.user.UserId;
 public interface LikeUseCase {
-    void likeUser(LikeUserCommand command);
+    void likeUser(UserId toUserId);
 }
