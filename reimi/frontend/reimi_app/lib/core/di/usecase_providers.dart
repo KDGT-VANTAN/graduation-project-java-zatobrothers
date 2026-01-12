@@ -2,6 +2,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
 import 'package:reimi_app/application/usecases/user/get_like_users_to_user_usecase.dart';
+import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_result_usecase.dart';
+import 'package:reimi_app/application/usecases/weather_personality/test_weather_personality_usecase.dart';
 import 'package:reimi_app/core/di/data_providers.dart';
 import 'package:reimi_app/application/usecases/chat_room/get_chat_room_summaries_usecase.dart';
 import 'package:reimi_app/application/usecases/chat_room/get_unmessaged_match_users_usecase.dart';
@@ -106,4 +108,17 @@ GetWeatherReportUseCase getWeatherReportUseCase(Ref ref) {
 @riverpod
 UploadMediaUseCase uploadMediaUseCase(Ref ref) {
   return UploadMediaUseCase(ref.watch(storageRepositoryProvider));
+}
+
+// weather_personality関連
+@riverpod
+TestWeatherPersonalityUseCase testWeatherPersonalityUseCase(Ref ref) {
+  return TestWeatherPersonalityUseCase(
+      ref.watch(weatherPersonalityRepositoryProvider));
+}
+
+@riverpod
+GetWeatherPersonalityResultUseCase getWeatherPersonalityResultUseCase(Ref ref) {
+  return GetWeatherPersonalityResultUseCase(
+      ref.watch(weatherPersonalityRepositoryProvider));
 }
