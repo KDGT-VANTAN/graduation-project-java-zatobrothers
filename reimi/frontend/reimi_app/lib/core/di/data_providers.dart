@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/core/firebase/firebase_storage_provider.dart';
+import 'package:reimi_app/data/datasources/mocks/weather_personality_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/chat_room_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
@@ -14,6 +15,7 @@ import 'package:reimi_app/data/datasources/mocks/weather_report_mock_datasource.
 import 'package:reimi_app/data/datasources/remote/profile_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/storage_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/user_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/remote/weather_personality_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/weather_report_remote_datasource.dart';
 import 'package:reimi_app/data/http/dio_client.dart';
 import 'package:reimi_app/data/repositories/auth_repository_impl.dart';
@@ -23,6 +25,7 @@ import 'package:reimi_app/data/repositories/message_repository_Impl.dart';
 import 'package:reimi_app/data/repositories/profile_repository_impl.dart';
 import 'package:reimi_app/data/repositories/storage_repository_impl.dart';
 import 'package:reimi_app/data/repositories/user_repository_impl.dart';
+import 'package:reimi_app/data/repositories/weather_personality_repository_impl.dart';
 import 'package:reimi_app/data/repositories/weather_report_repository_impl.dart';
 import 'package:reimi_app/domain/repositories/auth_repository.dart';
 import 'package:reimi_app/domain/repositories/chat_room_repository.dart';
@@ -31,6 +34,7 @@ import 'package:reimi_app/domain/repositories/message_repository.dart';
 import 'package:reimi_app/domain/repositories/profile_repository.dart';
 import 'package:reimi_app/domain/repositories/storage_repository.dart';
 import 'package:reimi_app/domain/repositories/user_repository.dart';
+import 'package:reimi_app/domain/repositories/weather_personality_repository.dart';
 import 'package:reimi_app/domain/repositories/weather_report_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -131,4 +135,17 @@ StorageRemoteDataSource storageRemoteDataSource(Ref ref) {
 @riverpod
 StorageRepository storageRepository(Ref ref) {
   return StorageRepositoryImpl(ref.watch(storageRemoteDataSourceProvider));
+}
+
+// weather_personality関連
+@riverpod
+WeatherPersonalityRemoteDataSource weatherPersonalityRemoteDataSource(Ref ref) {
+  if (useMock) return const WeatherPersonalityMockDataSource();
+  return const WeatherPersonalityRemoteDataSourceImpl();
+}
+
+@riverpod
+WeatherPersonalityRepository weatherPersonalityRepository(Ref ref) {
+  return WeatherPersonalityRepositoryImpl(
+      ref.watch(weatherPersonalityRemoteDataSourceProvider));
 }
