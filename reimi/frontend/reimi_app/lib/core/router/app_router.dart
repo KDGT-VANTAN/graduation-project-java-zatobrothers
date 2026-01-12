@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
 import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/features/auth/sign_up_page.dart';
-import 'package:reimi_app/presentation/features/chat/chat_detail_page.dart';
-import 'package:reimi_app/presentation/features/chat/chat_page.dart';
+import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart';
+import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/like/like_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_page.dart';
@@ -19,6 +19,25 @@ import 'package:reimi_app/presentation/features/user_registration/pages/user_gen
 import 'package:reimi_app/presentation/features/user_registration/pages/user_introduction_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_main_photo_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_name_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_judging_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q10_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q11_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q12_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q13_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q14_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q15_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q16_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q1_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q2_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q3_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q4_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q5_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q6_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q7_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q8_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q9_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_result_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/feeling_select_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/forecast_select_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_detail_page.dart';
@@ -242,6 +261,142 @@ GoRouter goRouter(Ref ref) {
             onSave: onSave,
             isMultiline: isMultiline,
           );
+        },
+      ),
+      // ----- weather_personality -----
+      GoRoute(
+        path: WeatherPersonalityConceptPage.routeLocation,
+        name: WeatherPersonalityConceptPage.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityConceptPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ1Page.routeLocation,
+        name: WeatherPersonalityTestQ1Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ1Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ2Page.routeLocation,
+        name: WeatherPersonalityTestQ2Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ2Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ3Page.routeLocation,
+        name: WeatherPersonalityTestQ3Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ3Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ4Page.routeLocation,
+        name: WeatherPersonalityTestQ4Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ4Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ5Page.routeLocation,
+        name: WeatherPersonalityTestQ5Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ5Page();
+        },
+      ),
+
+      GoRoute(
+        path: WeatherPersonalityTestQ6Page.routeLocation,
+        name: WeatherPersonalityTestQ6Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ6Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ7Page.routeLocation,
+        name: WeatherPersonalityTestQ7Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ7Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ8Page.routeLocation,
+        name: WeatherPersonalityTestQ8Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ8Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ9Page.routeLocation,
+        name: WeatherPersonalityTestQ9Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ9Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ10Page.routeLocation,
+        name: WeatherPersonalityTestQ10Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ10Page();
+        },
+      ),
+
+      GoRoute(
+        path: WeatherPersonalityTestQ11Page.routeLocation,
+        name: WeatherPersonalityTestQ11Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ11Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ12Page.routeLocation,
+        name: WeatherPersonalityTestQ12Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ12Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ13Page.routeLocation,
+        name: WeatherPersonalityTestQ13Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ13Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ14Page.routeLocation,
+        name: WeatherPersonalityTestQ14Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ14Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ15Page.routeLocation,
+        name: WeatherPersonalityTestQ15Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ15Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestQ16Page.routeLocation,
+        name: WeatherPersonalityTestQ16Page.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestQ16Page();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestJudgingPage.routeLocation,
+        name: WeatherPersonalityTestJudgingPage.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestJudgingPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityTestResultPage.routeLocation,
+        name: WeatherPersonalityTestResultPage.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityTestResultPage();
         },
       ),
       // ----- bottom_navigation -----
