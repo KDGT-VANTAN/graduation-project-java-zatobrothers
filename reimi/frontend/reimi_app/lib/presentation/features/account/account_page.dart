@@ -4,11 +4,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/features/account/widgets/info_card.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_page.dart';
 import 'package:reimi_app/presentation/features/setting/setting_page.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 
 class AccountPage extends ConsumerWidget {
   const AccountPage({super.key});
@@ -44,7 +46,7 @@ class AccountPage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -139,6 +141,14 @@ class AccountPage extends ConsumerWidget {
                     ),
                   ],
                 ),
+                const Spacer(),
+                WeatherPersonalityButton(
+                  label: 'ウェザーパーソナリティ診断',
+                  onPressed: () {
+                    context.push(WeatherPersonalityConceptPage.routeLocation);
+                  },
+                ),
+                const Spacer(),
               ],
             ),
           ),
