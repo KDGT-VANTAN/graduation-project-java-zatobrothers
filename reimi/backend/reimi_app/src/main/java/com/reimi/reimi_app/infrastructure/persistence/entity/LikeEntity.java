@@ -5,9 +5,25 @@ import java.time.ZoneOffset;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Entity
+@Table(name = "likes",
+        uniqueConstraints = {
+        @UniqueConstraint(
+            name = "uk_likes_from_to",
+            columnNames = { "from_user_id", "to_user_id" }
+        )
+    }
+)
 public class LikeEntity {
 
     @Id
