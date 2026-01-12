@@ -1,4 +1,4 @@
-import 'package:reimi_app/domain/value_objects/chat_segment.dart';
+import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'chat_segment_notifier.g.dart';

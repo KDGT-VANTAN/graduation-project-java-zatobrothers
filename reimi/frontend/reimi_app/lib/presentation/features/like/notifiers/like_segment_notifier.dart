@@ -1,4 +1,4 @@
-import 'package:reimi_app/domain/value_objects/like_segment.dart';
+import 'package:reimi_app/presentation/features/like/enum/like_segment.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'like_segment_notifier.g.dart';
