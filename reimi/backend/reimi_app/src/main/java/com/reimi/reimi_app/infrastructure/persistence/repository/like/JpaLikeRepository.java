@@ -1,0 +1,11 @@
+package com.reimi.reimi_app.infrastructure.persistence.repository.like;
+
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.reimi.reimi_app.infrastructure.persistence.entity.LikeEntity;
+
+public interface JpaLikeRepository extends JpaRepository<LikeEntity, UUID> {
+    boolean existsByFromUserIdAndToUserId(UUID fromUserId, UUID toUserId);
+}
