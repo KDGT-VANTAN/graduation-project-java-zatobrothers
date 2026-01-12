@@ -32,14 +32,18 @@ public class LikeUseCaseImpl implements LikeUseCase {
     }
 
     @Override
-    public void likeUser(UserId toUserId) {
+    public void likeUser(UserId UserId) {
+
+        User toUser = likeRepository.findUserByUserId(UserId)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+        UserId toUserId = toUser.getId();
 
         String firebaseUid = authenticatedUserProvider.getFirebaseUid();
 
-        User user = userRepository.findMeByFirebaseUid(firebaseUid)
+        User fromUser = userRepository.findMeByFirebaseUid(firebaseUid)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
-        UserId fromUserId = user.getId();
+        UserId fromUserId = fromUser.getId();
 
         if (likeRepository.exists(fromUserId, toUserId)) {
             throw new LikeAlreadyExistsException();
