@@ -4,7 +4,7 @@ import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/domain/params/send_message_params.dart';
 import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 import 'package:reimi_app/domain/value_objects/message_type.dart';
-import 'package:reimi_app/presentation/features/chat/chat_detail_state.dart';
+import 'package:reimi_app/presentation/features/chat/states/chat_detail_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'chat_detail_notifier.g.dart';
