@@ -11,7 +11,7 @@ import 'package:reimi_app/presentation/features/weather_report/notifiers/weather
 import 'package:reimi_app/presentation/features/weather_report/widgets/show_comment_modal_sheet.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
 class WeatherReportDetailPage extends ConsumerWidget {
@@ -36,7 +36,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
           );
         }
         return Scaffold(
-          body: BackgroundContainer(
+          body: BackgroundContainerNoon(
             child: SafeArea(
               child: CustomScrollView(
                 slivers: [

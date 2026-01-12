@@ -5,7 +5,7 @@ import 'package:reimi_app/presentation/features/like/notifiers/like_users_notifi
 import 'package:reimi_app/presentation/features/like/widgets/like_segment_switch.dart';
 import 'package:reimi_app/presentation/features/like/widgets/small_user_card.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 
 class LikePage extends ConsumerWidget {
   const LikePage({super.key});
@@ -16,7 +16,7 @@ class LikePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usersAsync = ref.watch(likeUsersNotifierProvider);
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),

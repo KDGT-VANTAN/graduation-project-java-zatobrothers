@@ -38,7 +38,7 @@ import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
@@ -72,7 +72,7 @@ class ProfilePage extends HookConsumerWidget {
         ref.watch(profileEditNotifierProvider(userId).select((state) => state));
 
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(

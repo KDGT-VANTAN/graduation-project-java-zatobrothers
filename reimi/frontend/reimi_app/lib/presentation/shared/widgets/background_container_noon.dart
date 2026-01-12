@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BackgroundContainer extends StatelessWidget {
-  const BackgroundContainer({super.key, required this.child});
+class BackgroundContainerNoon extends StatelessWidget {
+  const BackgroundContainerNoon({super.key, required this.child});
   final Widget? child;
 
   @override

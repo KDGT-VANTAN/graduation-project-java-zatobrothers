@@ -23,7 +23,7 @@ import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/bottom_action_buttons_bar.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
@@ -54,7 +54,7 @@ class ProfileDetailPage extends HookConsumerWidget {
     );
 
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: CustomScrollView(
             slivers: [

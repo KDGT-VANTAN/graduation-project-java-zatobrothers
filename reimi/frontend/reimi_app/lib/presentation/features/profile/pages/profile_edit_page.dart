@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 
 class ProfileEditPage extends HookConsumerWidget {
   static String get routeName => 'profile_edit';
@@ -50,7 +50,7 @@ class ProfileEditPage extends HookConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
