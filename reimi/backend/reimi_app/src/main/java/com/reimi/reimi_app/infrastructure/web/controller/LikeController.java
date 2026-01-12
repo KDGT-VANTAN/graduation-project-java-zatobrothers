@@ -11,6 +11,8 @@ import com.reimi.reimi_app.application.usecase.LikeUseCase;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.openapi.like.LikeUserApi;
 
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 @RestController
 @RequestMapping("/likes/{userId}")
 public class LikeController {
@@ -25,7 +27,9 @@ public class LikeController {
 
     @PostMapping
     @LikeUserApi
-    public ResponseEntity<Void> like(@PathVariable("userId") UserId toUserId) {
+    public ResponseEntity<Void> like(
+        @PathVariable("userId") UserId toUserId,
+        @RequestBody(required = false) Object ignored) {
         likeUseCase.likeUser(toUserId);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
