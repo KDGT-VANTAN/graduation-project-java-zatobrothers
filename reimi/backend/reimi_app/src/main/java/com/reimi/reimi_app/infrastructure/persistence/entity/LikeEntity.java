@@ -9,7 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 
 public class LikeEntity {
+
     @Id
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
     @Column(name = "from_user_id", nullable = false)
