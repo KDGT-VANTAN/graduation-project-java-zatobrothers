@@ -199,6 +199,165 @@
   "profileDetailPage": {
     "title": "プロフィール詳細"
   },
+  "weatherPersonalityConceptPage": {
+    "title": "ウェザーパーソナリティ診断",
+    "contentText": {
+      "contentTitle": "診断について",
+      "contentText1": "あなたが動物に生まれ変わるとして、\n\n",
+      "contentText2": "前世の天気に対する行動や性格から\n",
+      "contentText3": "神様が客観的に判断し、\n\n",
+      "contentText4": "16タイプのキャラ",
+      "contentText5": "に分類されます\n\n",
+      "contentText6": "16の質問に答えて、\nあなたのウェザーパーソナルタイプを\n診断しましょう"
+    }
+  },
+  "weatherPersonalityTestJudgingPage": {
+    "loading": "診断中",
+    "contentText": {
+      "contentTitle": "診断完了",
+      "contentText1": "神様は、前世の行動記録を\nすべて見終えました。"
+    }
+  },
+  "weatherPersonalityTestPage": {
+    "q1": {
+      "title": "Q1",
+      "question": "神様は、前世のあなたが天気が良い日の様子を見ていました。",
+      "answerA": "外に出て、どこかへ行こうとすることが多かった",
+      "answerB": "家の中で過ごすことが多かった"
+    },
+    "q2": {
+      "title": "Q2",
+      "question": "神様は、天気が悪い日のあなたの選択を覚えています。",
+      "answerA": "それでも外に出る理由を探していた",
+      "answerB": "外出を控え、屋内で過ごしていた"
+    },
+    "q3": {
+      "title": "Q3",
+      "question": "神様は、前世のあなたが天候が不安定な日の過ごし方を観測していました。",
+      "answerA": "屋内外を行き来しながらも、外での行動を続けていた",
+      "answerB": "外出は最小限にし、屋内中心で過ごしていた"
+    },
+    "q4": {
+      "title": "Q4",
+      "question": "神様は、前世のあなたが特に用事のない休日をどう過ごしていたかを見ていました。",
+      "answerA": "気分転換に外の空気を吸いに出ていた",
+      "answerB": "自分の空間で静かに過ごしていた"
+    },
+    "q5": {
+      "title": "Q5",
+      "question": "神様は、外出前日のあなたを見ていました。",
+      "answerA": "天気予報を確認し、服装や持ち物を決めていた",
+      "answerB": "当日の様子を見てから考えていた"
+    },
+    "q6": {
+      "title": "Q6",
+      "question": "神様は、雨が降るか微妙な日の行動を覚えています。",
+      "answerA": "降る前提で準備し、濡れないように行動していた",
+      "answerB": "降ったらその時考えようと思っていた"
+    },
+    "q7": {
+      "title": "Q7",
+      "question": "神様は、予定が天気で崩れそうな時のあなたを見ていました。",
+      "answerA": "事前に代替案を考えて安心していた",
+      "answerB": "状況次第で決めればいいと思っていた'"
+    },
+    "q8": {
+      "title": "Q8",
+      "question": "神様は、前世のあなたが「想定外」が起きた瞬間を観測しています。",
+      "answerA": "予測していなかったことに少しストレスを感じていた",
+      "answerB": "変化そのものを楽しむ余裕があった"
+    },
+    "q9": {
+      "title": "Q9",
+      "question": "神様は、前世のあなたが朝起きて空模様を見た瞬間の様子を見ていました。",
+      "answerA": "天気によって、その日の気分ややる気がはっきり変わっていた",
+      "answerB": "天気は天気として受け止め、気分はあまり左右されなかった'"
+    },
+    "q10": {
+      "title": "Q10",
+      "question": "神様は、低気圧や雨の日のあなたの様子を覚えています。",
+      "answerA": "なんとなく気分が沈んだり、身体が重く感じることが多かった",
+      "answerB": "特に変化はなく、いつも通り過ごしていた"
+    },
+    "q11": {
+      "title": "Q11",
+      "question": "神様は、前世のあなたが季節の変わり目にどう反応していたかを見ていました。",
+      "answerA": "空気や匂いの変化に気づき、感情が動くことが多かった",
+      "answerB": "季節が変わっても、あまり意識せずに過ごしていた"
+    },
+    "q12": {
+      "title": "Q12",
+      "question": "神様は、強い日差しや自然の音（雨や雷など）、湿度に対するあなたの反応を記録しています。",
+      "answerA": "刺激が強いと疲れやすく、影響を受けやすかった",
+      "answerB": "多少の刺激では、特に気にならなかった"
+    },
+    "q13": {
+      "title": "Q13",
+      "question": "神様は、前世のあなたが外出するか迷った場面で何を基準にしていたかを見ています。",
+      "answerA": "その日の気分や雰囲気を大切にして決めていた",
+      "answerB": "目的や必要性を考えて決めていた"
+    },
+    "q14": {
+      "title": "Q14",
+      "question": "神様は、前世のあなたが一日の行動を終えた後に何を残していたかを観測しました。",
+      "answerA": "その日の気分や余韻が、強く印象に残っていた",
+      "answerB": "何を達成できたかが、はっきり残っていた"
+    },
+    "q15": {
+      "title": "Q15",
+      "question": "神様は、前世のあなたが天気に左右される予定において何を優先して行動していたかを知っています。",
+      "answerA": "その時の気分や納得感を優先して選んでいた",
+      "answerB": "天気の状況から効率や合理性を優先して選んでいた"
+    },
+    "q16": {
+      "title": "Q16",
+      "question": "神様は、前世のあなたが急ぐ必要のない帰り道で、どの道を選んでいたかを見ていました。",
+      "answerA": "少し遠回りでも、景色や雰囲気が心地よい道を選んでいた",
+      "answerB": "特に理由がなくても、自然と一番早く着く道を選んでいた"
+    }
+  },
+  "weatherPersonalityTestResultPage": {
+    "section": {
+      "title": "神様からの裁定",
+      "mainResult": {
+        "typeCode": " 診断タイプコード",
+        "you": "あなたは"
+      },
+      "godsRuling": {
+        "title": "神様の裁定文"
+      },
+      "behaviorTendency": {
+        "title": "行動傾向"
+      },
+      "axisFeature":{
+        "title": "4軸の特徴"
+      },
+      "axisScore":{
+        "title": "4軸スコア",
+        "axis": {
+          "sensitivity": {
+            "sensitive": "S（高感受）",
+            "neutral": "N（低感受）"
+          },
+          "preparedness": {
+            "planned": "P（計画）",
+            "flexible": "F（柔軟）"
+          },
+          "activity": {
+            "outdoor": "O（外向）",
+            "indoor": "I（内向）"
+          },
+          "motivation": {
+            "emotional": "E（情緒）",
+            "rational": "R（実用）"
+          }
+        }
+      },
+      "godsMessage": {
+        "title": "神様からの一言"
+      }
+    }
+  },
   "settingPage": {
     "title": "設定",
     "section": {
@@ -293,6 +452,14 @@
     "destructionChanges": {
       "title": "変更破棄の確認",
       "contentText": "変更した内容を破棄しますか？"
+    },
+    "interruptTest": {
+      "title": "診断中断の確認",
+      "contentText": "回答内容は保存されません。\n本当に診断を中断しますか？"
+    },
+    "completeTest":{
+      "title": "診断完了の確認",
+      "contentText": "回答した内容を送信し、診断を完了しますか？"
     }
   },
   "modalSheet": {
@@ -331,11 +498,17 @@
     "tryLater": "あとで試す",
     "save": "保存",
     "delete": "削除",
-    "apply": "適用する",
+    "apply": "適用",
     "clear": "クリア",
     "send": "送信",
     "close": "閉じる",
-    "destruction": "破棄"
+    "destruction": "破棄",
+    "interrupt": "中断",
+    "startTest": "診断を始める",
+    "seeResults": "結果を見る",
+    "shareResults": "結果をシェアする",
+    "returnToAccountPage": "アカウント画面に戻る",
+    "completion": "完了"
   },
   "segmentedSwitch": {
     "like": {
@@ -564,7 +737,7 @@
       "finance": "金融",
       "insurance": "保険",
       "consulting": "コンサル",
-      "media": "マスコミ",
+      "massMedia": "マスコミ",
       "advertising": "広告",
       "publishing": "出版",
       "education": "教育関係",

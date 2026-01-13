@@ -199,6 +199,165 @@
   "profileDetailPage": {
     "title": "Profile Details"
   },
+  "weatherPersonalityConceptPage": {
+    "title": "Weather Personality Assessment",
+    "contentText": {
+      "contentTitle": "About the Assessment",
+      "contentText1": "If you were to be reborn as an animal,\n\n",
+      "contentText2": "based on your behavior and personality\ntoward weather in your past life,\n",
+      "contentText3": "the gods will objectively judge you\n\n",
+      "contentText4": "and classify you into one of 16 character types\n\n",
+      "contentText5": "",
+      "contentText6": "Answer 16 questions to discover\nyour Weather Personality type"
+    }
+  },
+  "weatherPersonalityTestJudgingPage": {
+    "loading": "Assessing",
+    "contentText": {
+      "contentTitle": "Assessment Complete",
+      "contentText1": "The gods have finished reviewing\nall records of your past life's actions."
+    }
+  },
+  "weatherPersonalityTestPage": {
+    "q1": {
+      "title": "Q1",
+      "question": "The gods observed how you spent nice weather days in your past life.",
+      "answerA": "You often went outside and headed somewhere",
+      "answerB": "You mostly stayed indoors"
+    },
+    "q2": {
+      "title": "Q2",
+      "question": "The gods remember your choices on bad weather days.",
+      "answerA": "You looked for reasons to go outside anyway",
+      "answerB": "You avoided going out and stayed indoors"
+    },
+    "q3": {
+      "title": "Q3",
+      "question": "The gods observed how you spent days with unstable weather in your past life.",
+      "answerA": "You continued outdoor activities while going back and forth between indoors and outdoors",
+      "answerB": "You minimized going out and stayed mostly indoors"
+    },
+    "q4": {
+      "title": "Q4",
+      "question": "The gods saw how you spent holidays with no particular plans in your past life.",
+      "answerA": "You went outside for fresh air and a change of pace",
+      "answerB": "You spent time quietly in your own space"
+    },
+    "q5": {
+      "title": "Q5",
+      "question": "The gods watched you the day before going out.",
+      "answerA": "You checked the weather forecast and decided on your outfit and belongings",
+      "answerB": "You decided to think about it on the day itself"
+    },
+    "q6": {
+      "title": "Q6",
+      "question": "The gods remember your actions on days when rain was uncertain.",
+      "answerA": "You prepared assuming it would rain and acted to avoid getting wet",
+      "answerB": "You thought you'd figure it out if it rained"
+    },
+    "q7": {
+      "title": "Q7",
+      "question": "The gods saw you when your plans were about to be disrupted by weather.",
+      "answerA": "You felt reassured by thinking of backup plans in advance",
+      "answerB": "You thought you'd decide depending on the situation"
+    },
+    "q8": {
+      "title": "Q8",
+      "question": "The gods observed the moment when something 'unexpected' happened in your past life.",
+      "answerA": "You felt a bit stressed by things you hadn't predicted",
+      "answerB": "You had room to enjoy the change itself"
+    },
+    "q9": {
+      "title": "Q9",
+      "question": "The gods saw the moment you woke up and looked at the sky in your past life.",
+      "answerA": "Your mood and motivation for the day clearly changed depending on the weather",
+      "answerB": "You accepted the weather as it was, and your mood wasn't much affected"
+    },
+    "q10": {
+      "title": "Q10",
+      "question": "The gods remember how you were on low-pressure or rainy days.",
+      "answerA": "You often felt somewhat down or your body felt heavy",
+      "answerB": "There was no particular change, and you spent it as usual"
+    },
+    "q11": {
+      "title": "Q11",
+      "question": "The gods saw how you reacted to seasonal transitions in your past life.",
+      "answerA": "You noticed changes in the air and scents, and your emotions were often moved",
+      "answerB": "Even when seasons changed, you spent time without much awareness"
+    },
+    "q12": {
+      "title": "Q12",
+      "question": "The gods recorded your reactions to strong sunlight, natural sounds (rain, thunder, etc.), and humidity.",
+      "answerA": "Strong stimuli tired you easily, and you were easily affected",
+      "answerB": "Moderate stimuli didn't particularly bother you"
+    },
+    "q13": {
+      "title": "Q13",
+      "question": "The gods see what criteria you used when deciding whether to go out in your past life.",
+      "answerA": "You valued your mood and atmosphere of the day to decide",
+      "answerB": "You considered purpose and necessity to decide"
+    },
+    "q14": {
+      "title": "Q14",
+      "question": "The gods observed what remained after you finished your day's activities in your past life.",
+      "answerA": "The day's mood and lingering feelings left a strong impression",
+      "answerB": "What you accomplished remained clearly"
+    },
+    "q15": {
+      "title": "Q15",
+      "question": "The gods know what you prioritized in weather-dependent plans in your past life.",
+      "answerA": "You prioritized your mood and sense of satisfaction at the time",
+      "answerB": "You prioritized efficiency and rationality based on weather conditions"
+    },
+    "q16": {
+      "title": "Q16",
+      "question": "The gods saw which path you chose on unhurried walks home in your past life.",
+      "answerA": "Even if it was a bit longer, you chose paths with pleasant scenery and atmosphere",
+      "answerB": "Even without particular reason, you naturally chose the fastest route"
+    }
+  },
+  "weatherPersonalityTestResultPage": {
+    "section": {
+      "title": "The Gods' Ruling",
+      "mainResult": {
+        "typeCode": "Assessment Type Code",
+        "you": "You are"
+      },
+      "godsRuling": {
+        "title": "The Gods' Ruling Statement"
+      },
+      "behaviorTendency": {
+        "title": "Behavioral Tendencies"
+      },
+      "axisFeature":{
+        "title": "4-Axis Characteristics"
+      },
+      "axisScore":{
+        "title": "4-Axis Score",
+        "axis": {
+          "sensitivity": {
+            "sensitive": "S (High Sensitivity)",
+            "neutral": "N (Low Sensitivity)"
+          },
+          "preparedness": {
+            "planned": "P (Planned)",
+            "flexible": "F (Flexible)"
+          },
+          "activity": {
+            "outdoor": "O (Outdoor)",
+            "indoor": "I (Indoor)"
+          },
+          "motivation": {
+            "emotional": "E (Emotional)",
+            "rational": "R (Rational)"
+          }
+        }
+      },
+      "godsMessage": {
+        "title": "A Word from the Gods"
+      }
+    }
+  },
   "settingPage": {
     "title": "Settings",
     "section": {
@@ -293,6 +452,14 @@
     "destructionChanges": {
       "title": "Confirmation Of Discarding Changes",
       "contentText": "Do you want to discard your changes?"
+    },
+    "interruptTest": {
+      "title": "Confirmation Of Test Interruption",
+      "contentText": "Your answers will not be saved.\nDo you really want to stop the test?"
+    },
+    "completeTest":{
+      "title": "Confirmation of completion of Test",
+      "contentText": "Would you like to submit your answers and complete the test?"
     }
   },
   "modalSheet": {
@@ -335,7 +502,13 @@
     "clear": "Clear",
     "send": "Send",
     "close": "Close",
-    "destruction": "Destruction"
+    "destruction": "Destruction",
+    "interrupt": "Interrupt",
+    "startTest": "Start Test",
+    "seeResults": "See Results",
+    "shareResults": "Share Results",
+    "returnToAccountPage": "Return To Account Page",
+    "completion": "Complete"
   },
   "segmentedSwitch": {
     "like": {
@@ -564,7 +737,7 @@
       "finance": "Finance",
       "insurance": "Insurance",
       "consulting": "Consulting",
-      "media": "Media",
+      "massMedia": "Media",
       "advertising": "Advertising",
       "publishing": "Publishing",
       "education": "Education",
