@@ -14,6 +14,7 @@ import com.reimi.reimi_app.application.usecase.LikeUseCase;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetLikedUserListResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.like.GetLikeGivenUsersApi;
+import com.reimi.reimi_app.infrastructure.web.openapi.like.GetLikeReceivedUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.like.LikeUserApi;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -45,6 +46,24 @@ public class LikeController {
     public ResponseEntity<List<GetLikedUserListResponse>> getLikeGivenUsers() {
 
         List<GetLikedUserListResponse> response = likeUseCase.getLikeGivenUserList()
+                .stream()
+                .map(user -> new GetLikedUserListResponse(
+                    user.getId().value(),
+                    user.getName(),
+                    user.getBirthDate(),
+                    user.getAddress(),
+                    user.getSignedMainPhotoUrl()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/users/received")
+    @GetLikeReceivedUsersApi
+    public ResponseEntity<List<GetLikedUserListResponse>> getLikeReceivedUsers() {
+
+        List<GetLikedUserListResponse> response = likeUseCase.getLikeReceivedUserList()
                 .stream()
                 .map(user -> new GetLikedUserListResponse(
                     user.getId().value(),

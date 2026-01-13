@@ -55,4 +55,13 @@ public class LikeRepositoryImpl implements LikeRepository {
             .map(UserId::new)
             .toList();
     }
+
+    @Override
+    public List<UserId> findLikeReceivedUserIdsByToUserId(UserId toUserId) {
+        return jpaLikeRepository
+            .findFromUserIdsByToUserId(toUserId.value())
+            .stream()
+            .map(UserId::new)
+            .toList();
+    }
 }

@@ -17,4 +17,11 @@ public interface JpaLikeRepository extends JpaRepository<LikeEntity, UUID> {
         where l.fromUserId = :fromUserId
     """)
     List<UUID> findToUserIdsByFromUserId(UUID fromUserId);
+
+    @Query("""
+        select l.fromUserId
+        from LikeEntity l
+        where l.toUserId = :toUserId
+    """)
+    List<UUID> findFromUserIdsByToUserId(UUID toUserId);
 }
