@@ -64,8 +64,8 @@ extension OccupationExtension on Occupation {
         return t.consulting;
 
       // メディア
-      case Occupation.media:
-        return t.media;
+      case Occupation.massMedia:
+        return t.massMedia;
       case Occupation.advertising:
         return t.advertising;
       case Occupation.publishing:

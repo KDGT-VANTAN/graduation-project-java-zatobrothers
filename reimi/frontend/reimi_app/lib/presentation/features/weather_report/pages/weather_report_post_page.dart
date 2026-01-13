@@ -18,6 +18,7 @@ import 'package:reimi_app/presentation/features/weather_report/widgets/weather_r
 import 'package:reimi_app/presentation/features/weather_report/widgets/info_tile.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_night.dart';
 
 class WeatherReportPostPage extends HookConsumerWidget {
   const WeatherReportPostPage({super.key});
@@ -89,17 +90,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
         elevation: 0,
       ),
       backgroundColor: Colors.transparent,
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF2E4154),
-              Color(0xFF3F566B),
-            ],
-          ),
-        ),
+      body: BackgroundContainerNight(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

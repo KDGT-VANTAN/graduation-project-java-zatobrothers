@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/domain/value_objects/sort_type.dart';
+import 'package:reimi_app/presentation/features/home/enum/sort_type.dart';
 import 'package:reimi_app/presentation/features/home/notifiers/home_users_notifier.dart';
 import 'package:reimi_app/presentation/features/home/widgets/show_refine_search_user_modal_sheet.dart';
 import 'package:reimi_app/presentation/features/home/widgets/show_sort_user_modal_sheet.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/features/home/widgets/user_card.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
 class HomePage extends ConsumerWidget {
@@ -21,7 +21,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usersAsync = ref.watch(homeUsersNotifierProvider);
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),

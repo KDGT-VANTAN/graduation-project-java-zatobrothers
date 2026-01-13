@@ -1,6 +1,5 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
-import 'package:reimi_app/core/logger/logger_provider.dart';
 import 'package:reimi_app/domain/params/create_user_params.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
@@ -57,9 +56,7 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
   }
 
   Future<void> submit() async {
-    final logger = ref.watch(appLoggerProvider);
     final s = state;
-    logger.debug('submitおされているstate 1: $s');
 
     if (s.name == null ||
         s.email == null ||
@@ -72,7 +69,6 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
         status: UserRegistrationStatus.failure,
         errorMessage: '入力内容に不備があります',
       );
-      logger.debug('submitおされている2');
       return;
     }
 
@@ -91,20 +87,17 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
         introduction: s.introduction!,
         mainPhoto: s.mainPhoto!,
       );
-      logger.debug('submitおされている3');
       await ref.read(registerUserUseCaseProvider).call(params);
 
       state = state.copyWith(
         status: UserRegistrationStatus.success,
       );
     } on ApiException catch (e) {
-      logger.debug('submitおされている4: $e');
       state = state.copyWith(
         status: UserRegistrationStatus.failure,
         errorMessage: e.message,
       );
     } catch (_) {
-      logger.debug('submitおされている5');
       state = state.copyWith(
         status: UserRegistrationStatus.failure,
         errorMessage: '登録に失敗しました',

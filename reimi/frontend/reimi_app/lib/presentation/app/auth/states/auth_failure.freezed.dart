@@ -139,8 +139,6 @@ extension AuthFailurePatterns on AuthFailure {
         return network(_that);
       case _Unknown():
         return unknown(_that);
-      case _:
-        throw StateError('Unexpected subclass');
     }
   }
 
@@ -243,8 +241,6 @@ extension AuthFailurePatterns on AuthFailure {
         return network(_that.message);
       case _Unknown():
         return unknown(_that.message);
-      case _:
-        throw StateError('Unexpected subclass');
     }
   }
 

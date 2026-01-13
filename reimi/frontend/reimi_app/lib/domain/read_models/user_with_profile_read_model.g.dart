@@ -211,13 +211,13 @@ const _$BodyShapeEnumMap = {
 
 const _$AnnualIncomeEnumMap = {
   AnnualIncome.under2M: 'UNDER_2M',
-  AnnualIncome.between2And4M: '2M_TO_4M',
-  AnnualIncome.between4And6M: '4M_TO_6M',
-  AnnualIncome.between6And8M: '6M_TO_8M',
-  AnnualIncome.between8And10M: '8M_TO_10M',
-  AnnualIncome.between10And15M: '10M_TO_15M',
-  AnnualIncome.between15And20M: '15M_TO_20M',
-  AnnualIncome.between20And30M: '20M_TO_30M',
+  AnnualIncome.between2And4M: 'BETWEEN_2M_TO_4M',
+  AnnualIncome.between4And6M: 'BETWEEN_4M_TO_6M',
+  AnnualIncome.between6And8M: 'BETWEEN_6M_TO_8M',
+  AnnualIncome.between8And10M: 'BETWEEN_8M_TO_10M',
+  AnnualIncome.between10And15M: 'BETWEEN_10M_TO_15M',
+  AnnualIncome.between15And20M: 'BETWEEN_15M_TO_20M',
+  AnnualIncome.between20And30M: 'BETWEEN_20M_TO_30M',
   AnnualIncome.over30M: 'OVER_30M',
 };
 
@@ -259,7 +259,7 @@ const _$OccupationEnumMap = {
   Occupation.finance: 'FINANCE',
   Occupation.insurance: 'INSURANCE',
   Occupation.consulting: 'CONSULTING',
-  Occupation.media: 'MEDIA',
+  Occupation.massMedia: 'MASS_MEDIA',
   Occupation.advertising: 'ADVERTISING',
   Occupation.publishing: 'PUBLISHING',
   Occupation.education: 'EDUCATION',

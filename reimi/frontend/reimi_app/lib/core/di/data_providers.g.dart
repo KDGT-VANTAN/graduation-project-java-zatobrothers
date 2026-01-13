@@ -43,7 +43,7 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$userRemoteDataSourceHash() =>
-    r'8a6addba74c5449a37ebe52781a91dff175a4de5';
+    r'53583518c65e61fdb1c2128893f5a9b08d4a798c';
 
 /// See also [userRemoteDataSource].
 @ProviderFor(userRemoteDataSource)
@@ -307,5 +307,45 @@ final storageRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef StorageRepositoryRef = AutoDisposeProviderRef<StorageRepository>;
+String _$weatherPersonalityRemoteDataSourceHash() =>
+    r'946b434db58824d5bddad92baf0cf54f5815f546';
+
+/// See also [weatherPersonalityRemoteDataSource].
+@ProviderFor(weatherPersonalityRemoteDataSource)
+final weatherPersonalityRemoteDataSourceProvider =
+    AutoDisposeProvider<WeatherPersonalityRemoteDataSource>.internal(
+  weatherPersonalityRemoteDataSource,
+  name: r'weatherPersonalityRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$weatherPersonalityRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WeatherPersonalityRemoteDataSourceRef
+    = AutoDisposeProviderRef<WeatherPersonalityRemoteDataSource>;
+String _$weatherPersonalityRepositoryHash() =>
+    r'f782e0b057e84c17e65e3e3760a938d8f8b0b3e3';
+
+/// See also [weatherPersonalityRepository].
+@ProviderFor(weatherPersonalityRepository)
+final weatherPersonalityRepositoryProvider =
+    AutoDisposeProvider<WeatherPersonalityRepository>.internal(
+  weatherPersonalityRepository,
+  name: r'weatherPersonalityRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$weatherPersonalityRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WeatherPersonalityRepositoryRef
+    = AutoDisposeProviderRef<WeatherPersonalityRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

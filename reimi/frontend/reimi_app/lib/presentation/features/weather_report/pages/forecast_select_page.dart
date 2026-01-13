@@ -6,7 +6,7 @@ import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_post_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_post_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/option_tile.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 
 class ForecastSelectPage extends ConsumerWidget {
@@ -33,7 +33,7 @@ class ForecastSelectPage extends ConsumerWidget {
         elevation: 0,
       ),
       backgroundColor: Colors.transparent,
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),

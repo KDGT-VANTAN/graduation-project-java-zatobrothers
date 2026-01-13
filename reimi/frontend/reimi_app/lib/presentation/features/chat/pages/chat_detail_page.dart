@@ -3,16 +3,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/domain/value_objects/chat_segment.dart';
+import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
-import 'package:reimi_app/presentation/features/chat/chat_page.dart';
+import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_segment_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_message_list.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_segment_switch.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_user_profile.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
@@ -56,7 +56,7 @@ class ChatDetailPage extends HookConsumerWidget {
         chatDetailNotifierProvider.select((state) => state.chatMessages));
 
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: CustomScrollView(
             slivers: [

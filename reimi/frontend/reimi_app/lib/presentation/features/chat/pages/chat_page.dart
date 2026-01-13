@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/chat/chat_detail_page.dart';
+import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_room_summaries_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/unmessaged_match_users_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_room_tile.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/unmessaged_match_user_list.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
@@ -25,7 +25,7 @@ class ChatPage extends ConsumerWidget {
     final chatRoomSummaries =
         ref.watch(chatRoomSummariesNotifierProvider).value ?? [];
     return Scaffold(
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: CustomScrollView(
             slivers: [

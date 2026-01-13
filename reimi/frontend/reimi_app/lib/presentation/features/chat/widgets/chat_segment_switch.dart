@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/domain/value_objects/chat_segment.dart';
+import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_segment_notifier.dart';
 import 'package:reimi_app/presentation/shared/widgets/segmented_switch.dart';

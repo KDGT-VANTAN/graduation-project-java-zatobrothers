@@ -321,5 +321,45 @@ final uploadMediaUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef UploadMediaUseCaseRef = AutoDisposeProviderRef<UploadMediaUseCase>;
+String _$testWeatherPersonalityUseCaseHash() =>
+    r'7d84235c755a25e70200afff05a012f73e6cbaa3';
+
+/// See also [testWeatherPersonalityUseCase].
+@ProviderFor(testWeatherPersonalityUseCase)
+final testWeatherPersonalityUseCaseProvider =
+    AutoDisposeProvider<TestWeatherPersonalityUseCase>.internal(
+  testWeatherPersonalityUseCase,
+  name: r'testWeatherPersonalityUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$testWeatherPersonalityUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TestWeatherPersonalityUseCaseRef
+    = AutoDisposeProviderRef<TestWeatherPersonalityUseCase>;
+String _$getWeatherPersonalityResultUseCaseHash() =>
+    r'0494ee6a516bb30c3495ec9c703cebf65fb1186d';
+
+/// See also [getWeatherPersonalityResultUseCase].
+@ProviderFor(getWeatherPersonalityResultUseCase)
+final getWeatherPersonalityResultUseCaseProvider =
+    AutoDisposeProvider<GetWeatherPersonalityResultUseCase>.internal(
+  getWeatherPersonalityResultUseCase,
+  name: r'getWeatherPersonalityResultUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherPersonalityResultUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherPersonalityResultUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherPersonalityResultUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reimi_app/domain/value_objects/sort_type.dart';
+import 'package:reimi_app/presentation/features/home/enum/sort_type.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/shared/utils/show_app_modal_bottom_sheet.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_modal_sheet.dart';

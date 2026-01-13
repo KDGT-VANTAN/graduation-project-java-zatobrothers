@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class BackgroundContainer extends StatelessWidget {
-  const BackgroundContainer({super.key, required this.child});
+class BackgroundContainerNight extends StatelessWidget {
+  const BackgroundContainerNight({super.key, required this.child});
   final Widget? child;
 
   @override
@@ -12,9 +12,8 @@ class BackgroundContainer extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xFF8DC9DD),
-            Color(0xFFDDEFF6),
-            // Color(0xFFF9FAFB),
+            Color(0xFF2E4154),
+            Color(0xFF3F566B),
           ],
         ),
       ),

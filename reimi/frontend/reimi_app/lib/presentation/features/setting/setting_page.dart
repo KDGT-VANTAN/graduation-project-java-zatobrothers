@@ -7,7 +7,7 @@ import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.d
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/features/setting/widgets/settings_tile.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -31,7 +31,7 @@ class SettingPage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: BackgroundContainer(
+      body: BackgroundContainerNoon(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),

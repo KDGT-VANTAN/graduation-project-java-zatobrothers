@@ -9,7 +9,7 @@ import 'package:reimi_app/presentation/features/weather_report/pages/weather_rep
 import 'package:reimi_app/presentation/features/weather_report/widgets/weather_report_card.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
-import 'package:reimi_app/presentation/shared/widgets/background_container.dart';
+import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
 class WeatherReportPage extends ConsumerWidget {
@@ -25,7 +25,7 @@ class WeatherReportPage extends ConsumerWidget {
     return state.when(
       data: (value) {
         return Scaffold(
-          body: BackgroundContainer(
+          body: BackgroundContainerNoon(
             child: SafeArea(
               child: CustomScrollView(
                 slivers: [

@@ -1,6 +1,6 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
-import 'package:reimi_app/domain/value_objects/like_segment.dart';
+import 'package:reimi_app/presentation/features/like/enum/like_segment.dart';
 import 'package:reimi_app/presentation/features/like/notifiers/like_segment_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

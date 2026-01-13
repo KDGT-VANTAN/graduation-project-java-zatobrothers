@@ -55,6 +55,10 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsWeatherReportDetailPageEn weatherReportDetailPage = TranslationsWeatherReportDetailPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
+	late final TranslationsWeatherPersonalityConceptPageEn weatherPersonalityConceptPage = TranslationsWeatherPersonalityConceptPageEn._(_root);
+	late final TranslationsWeatherPersonalityTestJudgingPageEn weatherPersonalityTestJudgingPage = TranslationsWeatherPersonalityTestJudgingPageEn._(_root);
+	late final TranslationsWeatherPersonalityTestPageEn weatherPersonalityTestPage = TranslationsWeatherPersonalityTestPageEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageEn weatherPersonalityTestResultPage = TranslationsWeatherPersonalityTestResultPageEn._(_root);
 	late final TranslationsSettingPageEn settingPage = TranslationsSettingPageEn._(_root);
 	late final TranslationsNavigationBarEn navigationBar = TranslationsNavigationBarEn._(_root);
 	late final TranslationsDialogEn dialog = TranslationsDialogEn._(_root);
@@ -292,6 +296,69 @@ class TranslationsProfileDetailPageEn {
 	String get title => 'Profile Details';
 }
 
+// Path: weatherPersonalityConceptPage
+class TranslationsWeatherPersonalityConceptPageEn {
+	TranslationsWeatherPersonalityConceptPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Weather Personality Assessment'
+	String get title => 'Weather Personality Assessment';
+
+	late final TranslationsWeatherPersonalityConceptPageContentTextEn contentText = TranslationsWeatherPersonalityConceptPageContentTextEn._(_root);
+}
+
+// Path: weatherPersonalityTestJudgingPage
+class TranslationsWeatherPersonalityTestJudgingPageEn {
+	TranslationsWeatherPersonalityTestJudgingPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Assessing'
+	String get loading => 'Assessing';
+
+	late final TranslationsWeatherPersonalityTestJudgingPageContentTextEn contentText = TranslationsWeatherPersonalityTestJudgingPageContentTextEn._(_root);
+}
+
+// Path: weatherPersonalityTestPage
+class TranslationsWeatherPersonalityTestPageEn {
+	TranslationsWeatherPersonalityTestPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsWeatherPersonalityTestPageQ1En q1 = TranslationsWeatherPersonalityTestPageQ1En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ2En q2 = TranslationsWeatherPersonalityTestPageQ2En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ3En q3 = TranslationsWeatherPersonalityTestPageQ3En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ4En q4 = TranslationsWeatherPersonalityTestPageQ4En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ5En q5 = TranslationsWeatherPersonalityTestPageQ5En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ6En q6 = TranslationsWeatherPersonalityTestPageQ6En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ7En q7 = TranslationsWeatherPersonalityTestPageQ7En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ8En q8 = TranslationsWeatherPersonalityTestPageQ8En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ9En q9 = TranslationsWeatherPersonalityTestPageQ9En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ10En q10 = TranslationsWeatherPersonalityTestPageQ10En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ11En q11 = TranslationsWeatherPersonalityTestPageQ11En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ12En q12 = TranslationsWeatherPersonalityTestPageQ12En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ13En q13 = TranslationsWeatherPersonalityTestPageQ13En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ14En q14 = TranslationsWeatherPersonalityTestPageQ14En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ15En q15 = TranslationsWeatherPersonalityTestPageQ15En._(_root);
+	late final TranslationsWeatherPersonalityTestPageQ16En q16 = TranslationsWeatherPersonalityTestPageQ16En._(_root);
+}
+
+// Path: weatherPersonalityTestResultPage
+class TranslationsWeatherPersonalityTestResultPageEn {
+	TranslationsWeatherPersonalityTestResultPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsWeatherPersonalityTestResultPageSectionEn section = TranslationsWeatherPersonalityTestResultPageSectionEn._(_root);
+}
+
 // Path: settingPage
 class TranslationsSettingPageEn {
 	TranslationsSettingPageEn._(this._root);
@@ -338,6 +405,8 @@ class TranslationsDialogEn {
 	late final TranslationsDialogSaveChangesEn saveChanges = TranslationsDialogSaveChangesEn._(_root);
 	late final TranslationsDialogWeatherReportCompleteEn weatherReportComplete = TranslationsDialogWeatherReportCompleteEn._(_root);
 	late final TranslationsDialogDestructionChangesEn destructionChanges = TranslationsDialogDestructionChangesEn._(_root);
+	late final TranslationsDialogInterruptTestEn interruptTest = TranslationsDialogInterruptTestEn._(_root);
+	late final TranslationsDialogCompleteTestEn completeTest = TranslationsDialogCompleteTestEn._(_root);
 }
 
 // Path: modalSheet
@@ -402,6 +471,24 @@ class TranslationsButtonEn {
 
 	/// en: 'Destruction'
 	String get destruction => 'Destruction';
+
+	/// en: 'Interrupt'
+	String get interrupt => 'Interrupt';
+
+	/// en: 'Start Test'
+	String get startTest => 'Start Test';
+
+	/// en: 'See Results'
+	String get seeResults => 'See Results';
+
+	/// en: 'Share Results'
+	String get shareResults => 'Share Results';
+
+	/// en: 'Return To Account Page'
+	String get returnToAccountPage => 'Return To Account Page';
+
+	/// en: 'Complete'
+	String get completion => 'Complete';
 }
 
 // Path: segmentedSwitch
@@ -747,6 +834,406 @@ class TranslationsProfilePagePlaceholderEn {
 	String get basicInformation => 'Not set';
 }
 
+// Path: weatherPersonalityConceptPage.contentText
+class TranslationsWeatherPersonalityConceptPageContentTextEn {
+	TranslationsWeatherPersonalityConceptPageContentTextEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'About the Assessment'
+	String get contentTitle => 'About the Assessment';
+
+	/// en: 'If you were to be reborn as an animal, '
+	String get contentText1 => 'If you were to be reborn as an animal,\n\n';
+
+	/// en: 'based on your behavior and personality toward weather in your past life, '
+	String get contentText2 => 'based on your behavior and personality\ntoward weather in your past life,\n';
+
+	/// en: 'the gods will objectively judge you '
+	String get contentText3 => 'the gods will objectively judge you\n\n';
+
+	/// en: 'and classify you into one of 16 character types '
+	String get contentText4 => 'and classify you into one of 16 character types\n\n';
+
+	/// en: ''
+	String get contentText5 => '';
+
+	/// en: 'Answer 16 questions to discover your Weather Personality type'
+	String get contentText6 => 'Answer 16 questions to discover\nyour Weather Personality type';
+}
+
+// Path: weatherPersonalityTestJudgingPage.contentText
+class TranslationsWeatherPersonalityTestJudgingPageContentTextEn {
+	TranslationsWeatherPersonalityTestJudgingPageContentTextEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Assessment Complete'
+	String get contentTitle => 'Assessment Complete';
+
+	/// en: 'The gods have finished reviewing all records of your past life's actions.'
+	String get contentText1 => 'The gods have finished reviewing\nall records of your past life\'s actions.';
+}
+
+// Path: weatherPersonalityTestPage.q1
+class TranslationsWeatherPersonalityTestPageQ1En {
+	TranslationsWeatherPersonalityTestPageQ1En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q1'
+	String get title => 'Q1';
+
+	/// en: 'The gods observed how you spent nice weather days in your past life.'
+	String get question => 'The gods observed how you spent nice weather days in your past life.';
+
+	/// en: 'You often went outside and headed somewhere'
+	String get answerA => 'You often went outside and headed somewhere';
+
+	/// en: 'You mostly stayed indoors'
+	String get answerB => 'You mostly stayed indoors';
+}
+
+// Path: weatherPersonalityTestPage.q2
+class TranslationsWeatherPersonalityTestPageQ2En {
+	TranslationsWeatherPersonalityTestPageQ2En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q2'
+	String get title => 'Q2';
+
+	/// en: 'The gods remember your choices on bad weather days.'
+	String get question => 'The gods remember your choices on bad weather days.';
+
+	/// en: 'You looked for reasons to go outside anyway'
+	String get answerA => 'You looked for reasons to go outside anyway';
+
+	/// en: 'You avoided going out and stayed indoors'
+	String get answerB => 'You avoided going out and stayed indoors';
+}
+
+// Path: weatherPersonalityTestPage.q3
+class TranslationsWeatherPersonalityTestPageQ3En {
+	TranslationsWeatherPersonalityTestPageQ3En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q3'
+	String get title => 'Q3';
+
+	/// en: 'The gods observed how you spent days with unstable weather in your past life.'
+	String get question => 'The gods observed how you spent days with unstable weather in your past life.';
+
+	/// en: 'You continued outdoor activities while going back and forth between indoors and outdoors'
+	String get answerA => 'You continued outdoor activities while going back and forth between indoors and outdoors';
+
+	/// en: 'You minimized going out and stayed mostly indoors'
+	String get answerB => 'You minimized going out and stayed mostly indoors';
+}
+
+// Path: weatherPersonalityTestPage.q4
+class TranslationsWeatherPersonalityTestPageQ4En {
+	TranslationsWeatherPersonalityTestPageQ4En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q4'
+	String get title => 'Q4';
+
+	/// en: 'The gods saw how you spent holidays with no particular plans in your past life.'
+	String get question => 'The gods saw how you spent holidays with no particular plans in your past life.';
+
+	/// en: 'You went outside for fresh air and a change of pace'
+	String get answerA => 'You went outside for fresh air and a change of pace';
+
+	/// en: 'You spent time quietly in your own space'
+	String get answerB => 'You spent time quietly in your own space';
+}
+
+// Path: weatherPersonalityTestPage.q5
+class TranslationsWeatherPersonalityTestPageQ5En {
+	TranslationsWeatherPersonalityTestPageQ5En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q5'
+	String get title => 'Q5';
+
+	/// en: 'The gods watched you the day before going out.'
+	String get question => 'The gods watched you the day before going out.';
+
+	/// en: 'You checked the weather forecast and decided on your outfit and belongings'
+	String get answerA => 'You checked the weather forecast and decided on your outfit and belongings';
+
+	/// en: 'You decided to think about it on the day itself'
+	String get answerB => 'You decided to think about it on the day itself';
+}
+
+// Path: weatherPersonalityTestPage.q6
+class TranslationsWeatherPersonalityTestPageQ6En {
+	TranslationsWeatherPersonalityTestPageQ6En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q6'
+	String get title => 'Q6';
+
+	/// en: 'The gods remember your actions on days when rain was uncertain.'
+	String get question => 'The gods remember your actions on days when rain was uncertain.';
+
+	/// en: 'You prepared assuming it would rain and acted to avoid getting wet'
+	String get answerA => 'You prepared assuming it would rain and acted to avoid getting wet';
+
+	/// en: 'You thought you'd figure it out if it rained'
+	String get answerB => 'You thought you\'d figure it out if it rained';
+}
+
+// Path: weatherPersonalityTestPage.q7
+class TranslationsWeatherPersonalityTestPageQ7En {
+	TranslationsWeatherPersonalityTestPageQ7En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q7'
+	String get title => 'Q7';
+
+	/// en: 'The gods saw you when your plans were about to be disrupted by weather.'
+	String get question => 'The gods saw you when your plans were about to be disrupted by weather.';
+
+	/// en: 'You felt reassured by thinking of backup plans in advance'
+	String get answerA => 'You felt reassured by thinking of backup plans in advance';
+
+	/// en: 'You thought you'd decide depending on the situation'
+	String get answerB => 'You thought you\'d decide depending on the situation';
+}
+
+// Path: weatherPersonalityTestPage.q8
+class TranslationsWeatherPersonalityTestPageQ8En {
+	TranslationsWeatherPersonalityTestPageQ8En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q8'
+	String get title => 'Q8';
+
+	/// en: 'The gods observed the moment when something 'unexpected' happened in your past life.'
+	String get question => 'The gods observed the moment when something \'unexpected\' happened in your past life.';
+
+	/// en: 'You felt a bit stressed by things you hadn't predicted'
+	String get answerA => 'You felt a bit stressed by things you hadn\'t predicted';
+
+	/// en: 'You had room to enjoy the change itself'
+	String get answerB => 'You had room to enjoy the change itself';
+}
+
+// Path: weatherPersonalityTestPage.q9
+class TranslationsWeatherPersonalityTestPageQ9En {
+	TranslationsWeatherPersonalityTestPageQ9En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q9'
+	String get title => 'Q9';
+
+	/// en: 'The gods saw the moment you woke up and looked at the sky in your past life.'
+	String get question => 'The gods saw the moment you woke up and looked at the sky in your past life.';
+
+	/// en: 'Your mood and motivation for the day clearly changed depending on the weather'
+	String get answerA => 'Your mood and motivation for the day clearly changed depending on the weather';
+
+	/// en: 'You accepted the weather as it was, and your mood wasn't much affected'
+	String get answerB => 'You accepted the weather as it was, and your mood wasn\'t much affected';
+}
+
+// Path: weatherPersonalityTestPage.q10
+class TranslationsWeatherPersonalityTestPageQ10En {
+	TranslationsWeatherPersonalityTestPageQ10En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q10'
+	String get title => 'Q10';
+
+	/// en: 'The gods remember how you were on low-pressure or rainy days.'
+	String get question => 'The gods remember how you were on low-pressure or rainy days.';
+
+	/// en: 'You often felt somewhat down or your body felt heavy'
+	String get answerA => 'You often felt somewhat down or your body felt heavy';
+
+	/// en: 'There was no particular change, and you spent it as usual'
+	String get answerB => 'There was no particular change, and you spent it as usual';
+}
+
+// Path: weatherPersonalityTestPage.q11
+class TranslationsWeatherPersonalityTestPageQ11En {
+	TranslationsWeatherPersonalityTestPageQ11En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q11'
+	String get title => 'Q11';
+
+	/// en: 'The gods saw how you reacted to seasonal transitions in your past life.'
+	String get question => 'The gods saw how you reacted to seasonal transitions in your past life.';
+
+	/// en: 'You noticed changes in the air and scents, and your emotions were often moved'
+	String get answerA => 'You noticed changes in the air and scents, and your emotions were often moved';
+
+	/// en: 'Even when seasons changed, you spent time without much awareness'
+	String get answerB => 'Even when seasons changed, you spent time without much awareness';
+}
+
+// Path: weatherPersonalityTestPage.q12
+class TranslationsWeatherPersonalityTestPageQ12En {
+	TranslationsWeatherPersonalityTestPageQ12En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q12'
+	String get title => 'Q12';
+
+	/// en: 'The gods recorded your reactions to strong sunlight, natural sounds (rain, thunder, etc.), and humidity.'
+	String get question => 'The gods recorded your reactions to strong sunlight, natural sounds (rain, thunder, etc.), and humidity.';
+
+	/// en: 'Strong stimuli tired you easily, and you were easily affected'
+	String get answerA => 'Strong stimuli tired you easily, and you were easily affected';
+
+	/// en: 'Moderate stimuli didn't particularly bother you'
+	String get answerB => 'Moderate stimuli didn\'t particularly bother you';
+}
+
+// Path: weatherPersonalityTestPage.q13
+class TranslationsWeatherPersonalityTestPageQ13En {
+	TranslationsWeatherPersonalityTestPageQ13En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q13'
+	String get title => 'Q13';
+
+	/// en: 'The gods see what criteria you used when deciding whether to go out in your past life.'
+	String get question => 'The gods see what criteria you used when deciding whether to go out in your past life.';
+
+	/// en: 'You valued your mood and atmosphere of the day to decide'
+	String get answerA => 'You valued your mood and atmosphere of the day to decide';
+
+	/// en: 'You considered purpose and necessity to decide'
+	String get answerB => 'You considered purpose and necessity to decide';
+}
+
+// Path: weatherPersonalityTestPage.q14
+class TranslationsWeatherPersonalityTestPageQ14En {
+	TranslationsWeatherPersonalityTestPageQ14En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q14'
+	String get title => 'Q14';
+
+	/// en: 'The gods observed what remained after you finished your day's activities in your past life.'
+	String get question => 'The gods observed what remained after you finished your day\'s activities in your past life.';
+
+	/// en: 'The day's mood and lingering feelings left a strong impression'
+	String get answerA => 'The day\'s mood and lingering feelings left a strong impression';
+
+	/// en: 'What you accomplished remained clearly'
+	String get answerB => 'What you accomplished remained clearly';
+}
+
+// Path: weatherPersonalityTestPage.q15
+class TranslationsWeatherPersonalityTestPageQ15En {
+	TranslationsWeatherPersonalityTestPageQ15En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q15'
+	String get title => 'Q15';
+
+	/// en: 'The gods know what you prioritized in weather-dependent plans in your past life.'
+	String get question => 'The gods know what you prioritized in weather-dependent plans in your past life.';
+
+	/// en: 'You prioritized your mood and sense of satisfaction at the time'
+	String get answerA => 'You prioritized your mood and sense of satisfaction at the time';
+
+	/// en: 'You prioritized efficiency and rationality based on weather conditions'
+	String get answerB => 'You prioritized efficiency and rationality based on weather conditions';
+}
+
+// Path: weatherPersonalityTestPage.q16
+class TranslationsWeatherPersonalityTestPageQ16En {
+	TranslationsWeatherPersonalityTestPageQ16En._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Q16'
+	String get title => 'Q16';
+
+	/// en: 'The gods saw which path you chose on unhurried walks home in your past life.'
+	String get question => 'The gods saw which path you chose on unhurried walks home in your past life.';
+
+	/// en: 'Even if it was a bit longer, you chose paths with pleasant scenery and atmosphere'
+	String get answerA => 'Even if it was a bit longer, you chose paths with pleasant scenery and atmosphere';
+
+	/// en: 'Even without particular reason, you naturally chose the fastest route'
+	String get answerB => 'Even without particular reason, you naturally chose the fastest route';
+}
+
+// Path: weatherPersonalityTestResultPage.section
+class TranslationsWeatherPersonalityTestResultPageSectionEn {
+	TranslationsWeatherPersonalityTestResultPageSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'The Gods' Ruling'
+	String get title => 'The Gods\' Ruling';
+
+	late final TranslationsWeatherPersonalityTestResultPageSectionMainResultEn mainResult = TranslationsWeatherPersonalityTestResultPageSectionMainResultEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionGodsRulingEn godsRuling = TranslationsWeatherPersonalityTestResultPageSectionGodsRulingEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionBehaviorTendencyEn behaviorTendency = TranslationsWeatherPersonalityTestResultPageSectionBehaviorTendencyEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisFeatureEn axisFeature = TranslationsWeatherPersonalityTestResultPageSectionAxisFeatureEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreEn axisScore = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionGodsMessageEn godsMessage = TranslationsWeatherPersonalityTestResultPageSectionGodsMessageEn._(_root);
+}
+
 // Path: settingPage.section
 class TranslationsSettingPageSectionEn {
 	TranslationsSettingPageSectionEn._(this._root);
@@ -998,6 +1485,36 @@ class TranslationsDialogDestructionChangesEn {
 
 	/// en: 'Do you want to discard your changes?'
 	String get contentText => 'Do you want to discard your changes?';
+}
+
+// Path: dialog.interruptTest
+class TranslationsDialogInterruptTestEn {
+	TranslationsDialogInterruptTestEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Confirmation Of Test Interruption'
+	String get title => 'Confirmation Of Test Interruption';
+
+	/// en: 'Your answers will not be saved. Do you really want to stop the test?'
+	String get contentText => 'Your answers will not be saved.\nDo you really want to stop the test?';
+}
+
+// Path: dialog.completeTest
+class TranslationsDialogCompleteTestEn {
+	TranslationsDialogCompleteTestEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Confirmation of completion of Test'
+	String get title => 'Confirmation of completion of Test';
+
+	/// en: 'Would you like to submit your answers and complete the test?'
+	String get contentText => 'Would you like to submit your answers and complete the test?';
 }
 
 // Path: modalSheet.sortUser
@@ -1625,7 +2142,7 @@ class TranslationsKEnumOccupationEn {
 	String get consulting => 'Consulting';
 
 	/// en: 'Media'
-	String get media => 'Media';
+	String get massMedia => 'Media';
 
 	/// en: 'Advertising'
 	String get advertising => 'Advertising';
@@ -2033,6 +2550,83 @@ class TranslationsProfilePagePlaceholderRainyDayHobbiesEn {
 	String get top3 => 'Enter rainy day top 3';
 }
 
+// Path: weatherPersonalityTestResultPage.section.mainResult
+class TranslationsWeatherPersonalityTestResultPageSectionMainResultEn {
+	TranslationsWeatherPersonalityTestResultPageSectionMainResultEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Assessment Type Code'
+	String get typeCode => 'Assessment Type Code';
+
+	/// en: 'You are'
+	String get you => 'You are';
+}
+
+// Path: weatherPersonalityTestResultPage.section.godsRuling
+class TranslationsWeatherPersonalityTestResultPageSectionGodsRulingEn {
+	TranslationsWeatherPersonalityTestResultPageSectionGodsRulingEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'The Gods' Ruling Statement'
+	String get title => 'The Gods\' Ruling Statement';
+}
+
+// Path: weatherPersonalityTestResultPage.section.behaviorTendency
+class TranslationsWeatherPersonalityTestResultPageSectionBehaviorTendencyEn {
+	TranslationsWeatherPersonalityTestResultPageSectionBehaviorTendencyEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Behavioral Tendencies'
+	String get title => 'Behavioral Tendencies';
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisFeature
+class TranslationsWeatherPersonalityTestResultPageSectionAxisFeatureEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisFeatureEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '4-Axis Characteristics'
+	String get title => '4-Axis Characteristics';
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisScore
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '4-Axis Score'
+	String get title => '4-Axis Score';
+
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn axis = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn._(_root);
+}
+
+// Path: weatherPersonalityTestResultPage.section.godsMessage
+class TranslationsWeatherPersonalityTestResultPageSectionGodsMessageEn {
+	TranslationsWeatherPersonalityTestResultPageSectionGodsMessageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'A Word from the Gods'
+	String get title => 'A Word from the Gods';
+}
+
 // Path: settingPage.section.accountSetting
 class TranslationsSettingPageSectionAccountSettingEn {
 	TranslationsSettingPageSectionAccountSettingEn._(this._root);
@@ -2387,6 +2981,79 @@ class TranslationsProfilePagePlaceholderSubPhotoLabelsEn {
 	String get holiday => 'Day Off';
 }
 
+// Path: weatherPersonalityTestResultPage.section.axisScore.axis
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn sensitivity = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn preparedness = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn activity = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn._(_root);
+	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn motivation = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn._(_root);
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'S (High Sensitivity)'
+	String get sensitive => 'S (High Sensitivity)';
+
+	/// en: 'N (Low Sensitivity)'
+	String get neutral => 'N (Low Sensitivity)';
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisScore.axis.preparedness
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'P (Planned)'
+	String get planned => 'P (Planned)';
+
+	/// en: 'F (Flexible)'
+	String get flexible => 'F (Flexible)';
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisScore.axis.activity
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'O (Outdoor)'
+	String get outdoor => 'O (Outdoor)';
+
+	/// en: 'I (Indoor)'
+	String get indoor => 'I (Indoor)';
+}
+
+// Path: weatherPersonalityTestResultPage.section.axisScore.axis.motivation
+class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn {
+	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'E (Emotional)'
+	String get emotional => 'E (Emotional)';
+
+	/// en: 'R (Rational)'
+	String get rational => 'R (Rational)';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -2501,6 +3168,97 @@ extension on Translations {
 			'profilePage.placeholder.rainyDayHobbies.top3' => 'Enter rainy day top 3',
 			'profilePage.placeholder.basicInformation' => 'Not set',
 			'profileDetailPage.title' => 'Profile Details',
+			'weatherPersonalityConceptPage.title' => 'Weather Personality Assessment',
+			'weatherPersonalityConceptPage.contentText.contentTitle' => 'About the Assessment',
+			'weatherPersonalityConceptPage.contentText.contentText1' => 'If you were to be reborn as an animal,\n\n',
+			'weatherPersonalityConceptPage.contentText.contentText2' => 'based on your behavior and personality\ntoward weather in your past life,\n',
+			'weatherPersonalityConceptPage.contentText.contentText3' => 'the gods will objectively judge you\n\n',
+			'weatherPersonalityConceptPage.contentText.contentText4' => 'and classify you into one of 16 character types\n\n',
+			'weatherPersonalityConceptPage.contentText.contentText5' => '',
+			'weatherPersonalityConceptPage.contentText.contentText6' => 'Answer 16 questions to discover\nyour Weather Personality type',
+			'weatherPersonalityTestJudgingPage.loading' => 'Assessing',
+			'weatherPersonalityTestJudgingPage.contentText.contentTitle' => 'Assessment Complete',
+			'weatherPersonalityTestJudgingPage.contentText.contentText1' => 'The gods have finished reviewing\nall records of your past life\'s actions.',
+			'weatherPersonalityTestPage.q1.title' => 'Q1',
+			'weatherPersonalityTestPage.q1.question' => 'The gods observed how you spent nice weather days in your past life.',
+			'weatherPersonalityTestPage.q1.answerA' => 'You often went outside and headed somewhere',
+			'weatherPersonalityTestPage.q1.answerB' => 'You mostly stayed indoors',
+			'weatherPersonalityTestPage.q2.title' => 'Q2',
+			'weatherPersonalityTestPage.q2.question' => 'The gods remember your choices on bad weather days.',
+			'weatherPersonalityTestPage.q2.answerA' => 'You looked for reasons to go outside anyway',
+			'weatherPersonalityTestPage.q2.answerB' => 'You avoided going out and stayed indoors',
+			'weatherPersonalityTestPage.q3.title' => 'Q3',
+			'weatherPersonalityTestPage.q3.question' => 'The gods observed how you spent days with unstable weather in your past life.',
+			'weatherPersonalityTestPage.q3.answerA' => 'You continued outdoor activities while going back and forth between indoors and outdoors',
+			'weatherPersonalityTestPage.q3.answerB' => 'You minimized going out and stayed mostly indoors',
+			'weatherPersonalityTestPage.q4.title' => 'Q4',
+			'weatherPersonalityTestPage.q4.question' => 'The gods saw how you spent holidays with no particular plans in your past life.',
+			'weatherPersonalityTestPage.q4.answerA' => 'You went outside for fresh air and a change of pace',
+			'weatherPersonalityTestPage.q4.answerB' => 'You spent time quietly in your own space',
+			'weatherPersonalityTestPage.q5.title' => 'Q5',
+			'weatherPersonalityTestPage.q5.question' => 'The gods watched you the day before going out.',
+			'weatherPersonalityTestPage.q5.answerA' => 'You checked the weather forecast and decided on your outfit and belongings',
+			'weatherPersonalityTestPage.q5.answerB' => 'You decided to think about it on the day itself',
+			'weatherPersonalityTestPage.q6.title' => 'Q6',
+			'weatherPersonalityTestPage.q6.question' => 'The gods remember your actions on days when rain was uncertain.',
+			'weatherPersonalityTestPage.q6.answerA' => 'You prepared assuming it would rain and acted to avoid getting wet',
+			'weatherPersonalityTestPage.q6.answerB' => 'You thought you\'d figure it out if it rained',
+			'weatherPersonalityTestPage.q7.title' => 'Q7',
+			'weatherPersonalityTestPage.q7.question' => 'The gods saw you when your plans were about to be disrupted by weather.',
+			'weatherPersonalityTestPage.q7.answerA' => 'You felt reassured by thinking of backup plans in advance',
+			'weatherPersonalityTestPage.q7.answerB' => 'You thought you\'d decide depending on the situation',
+			'weatherPersonalityTestPage.q8.title' => 'Q8',
+			'weatherPersonalityTestPage.q8.question' => 'The gods observed the moment when something \'unexpected\' happened in your past life.',
+			'weatherPersonalityTestPage.q8.answerA' => 'You felt a bit stressed by things you hadn\'t predicted',
+			'weatherPersonalityTestPage.q8.answerB' => 'You had room to enjoy the change itself',
+			'weatherPersonalityTestPage.q9.title' => 'Q9',
+			'weatherPersonalityTestPage.q9.question' => 'The gods saw the moment you woke up and looked at the sky in your past life.',
+			'weatherPersonalityTestPage.q9.answerA' => 'Your mood and motivation for the day clearly changed depending on the weather',
+			'weatherPersonalityTestPage.q9.answerB' => 'You accepted the weather as it was, and your mood wasn\'t much affected',
+			'weatherPersonalityTestPage.q10.title' => 'Q10',
+			'weatherPersonalityTestPage.q10.question' => 'The gods remember how you were on low-pressure or rainy days.',
+			'weatherPersonalityTestPage.q10.answerA' => 'You often felt somewhat down or your body felt heavy',
+			'weatherPersonalityTestPage.q10.answerB' => 'There was no particular change, and you spent it as usual',
+			'weatherPersonalityTestPage.q11.title' => 'Q11',
+			'weatherPersonalityTestPage.q11.question' => 'The gods saw how you reacted to seasonal transitions in your past life.',
+			'weatherPersonalityTestPage.q11.answerA' => 'You noticed changes in the air and scents, and your emotions were often moved',
+			'weatherPersonalityTestPage.q11.answerB' => 'Even when seasons changed, you spent time without much awareness',
+			'weatherPersonalityTestPage.q12.title' => 'Q12',
+			'weatherPersonalityTestPage.q12.question' => 'The gods recorded your reactions to strong sunlight, natural sounds (rain, thunder, etc.), and humidity.',
+			'weatherPersonalityTestPage.q12.answerA' => 'Strong stimuli tired you easily, and you were easily affected',
+			'weatherPersonalityTestPage.q12.answerB' => 'Moderate stimuli didn\'t particularly bother you',
+			'weatherPersonalityTestPage.q13.title' => 'Q13',
+			'weatherPersonalityTestPage.q13.question' => 'The gods see what criteria you used when deciding whether to go out in your past life.',
+			'weatherPersonalityTestPage.q13.answerA' => 'You valued your mood and atmosphere of the day to decide',
+			'weatherPersonalityTestPage.q13.answerB' => 'You considered purpose and necessity to decide',
+			'weatherPersonalityTestPage.q14.title' => 'Q14',
+			'weatherPersonalityTestPage.q14.question' => 'The gods observed what remained after you finished your day\'s activities in your past life.',
+			'weatherPersonalityTestPage.q14.answerA' => 'The day\'s mood and lingering feelings left a strong impression',
+			'weatherPersonalityTestPage.q14.answerB' => 'What you accomplished remained clearly',
+			'weatherPersonalityTestPage.q15.title' => 'Q15',
+			'weatherPersonalityTestPage.q15.question' => 'The gods know what you prioritized in weather-dependent plans in your past life.',
+			'weatherPersonalityTestPage.q15.answerA' => 'You prioritized your mood and sense of satisfaction at the time',
+			'weatherPersonalityTestPage.q15.answerB' => 'You prioritized efficiency and rationality based on weather conditions',
+			'weatherPersonalityTestPage.q16.title' => 'Q16',
+			'weatherPersonalityTestPage.q16.question' => 'The gods saw which path you chose on unhurried walks home in your past life.',
+			'weatherPersonalityTestPage.q16.answerA' => 'Even if it was a bit longer, you chose paths with pleasant scenery and atmosphere',
+			'weatherPersonalityTestPage.q16.answerB' => 'Even without particular reason, you naturally chose the fastest route',
+			'weatherPersonalityTestResultPage.section.title' => 'The Gods\' Ruling',
+			'weatherPersonalityTestResultPage.section.mainResult.typeCode' => 'Assessment Type Code',
+			'weatherPersonalityTestResultPage.section.mainResult.you' => 'You are',
+			'weatherPersonalityTestResultPage.section.godsRuling.title' => 'The Gods\' Ruling Statement',
+			'weatherPersonalityTestResultPage.section.behaviorTendency.title' => 'Behavioral Tendencies',
+			'weatherPersonalityTestResultPage.section.axisFeature.title' => '4-Axis Characteristics',
+			'weatherPersonalityTestResultPage.section.axisScore.title' => '4-Axis Score',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.sensitive' => 'S (High Sensitivity)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.neutral' => 'N (Low Sensitivity)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.planned' => 'P (Planned)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.flexible' => 'F (Flexible)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.outdoor' => 'O (Outdoor)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.indoor' => 'I (Indoor)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.emotional' => 'E (Emotional)',
+			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.rational' => 'R (Rational)',
+			'weatherPersonalityTestResultPage.section.godsMessage.title' => 'A Word from the Gods',
 			'settingPage.title' => 'Settings',
 			'settingPage.section.accountSetting.title' => 'Account Settings',
 			'settingPage.section.accountSetting.identityVerification' => 'Identity Verification',
@@ -2549,6 +3307,10 @@ extension on Translations {
 			'dialog.weatherReportComplete.title' => 'Weather Report Complete',
 			'dialog.destructionChanges.title' => 'Confirmation Of Discarding Changes',
 			'dialog.destructionChanges.contentText' => 'Do you want to discard your changes?',
+			'dialog.interruptTest.title' => 'Confirmation Of Test Interruption',
+			'dialog.interruptTest.contentText' => 'Your answers will not be saved.\nDo you really want to stop the test?',
+			'dialog.completeTest.title' => 'Confirmation of completion of Test',
+			'dialog.completeTest.contentText' => 'Would you like to submit your answers and complete the test?',
 			'modalSheet.sortUser.title' => 'Sort',
 			'modalSheet.refineSearchUser.title' => 'Filter',
 			'modalSheet.refineSearchUser.section.age' => 'Age',
@@ -2575,6 +3337,12 @@ extension on Translations {
 			'button.send' => 'Send',
 			'button.close' => 'Close',
 			'button.destruction' => 'Destruction',
+			'button.interrupt' => 'Interrupt',
+			'button.startTest' => 'Start Test',
+			'button.seeResults' => 'See Results',
+			'button.shareResults' => 'Share Results',
+			'button.returnToAccountPage' => 'Return To Account Page',
+			'button.completion' => 'Complete',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
@@ -2768,7 +3536,7 @@ extension on Translations {
 			'kEnum.occupation.finance' => 'Finance',
 			'kEnum.occupation.insurance' => 'Insurance',
 			'kEnum.occupation.consulting' => 'Consulting',
-			'kEnum.occupation.media' => 'Media',
+			'kEnum.occupation.massMedia' => 'Media',
 			'kEnum.occupation.advertising' => 'Advertising',
 			'kEnum.occupation.publishing' => 'Publishing',
 			'kEnum.occupation.education' => 'Education',
@@ -2806,6 +3574,8 @@ extension on Translations {
 			'kEnum.occupation.secretary' => 'Secretary',
 			'kEnum.occupation.announcer' => 'Announcer',
 			'kEnum.occupation.receptionist' => 'Receptionist',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.entertainerModel' => 'Entertainer/Model',
 			'kEnum.occupation.influencer' => 'Influencer',
 			'kEnum.occupation.youtuber' => 'YouTuber',
