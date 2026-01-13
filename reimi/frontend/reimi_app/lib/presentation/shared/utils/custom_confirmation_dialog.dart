@@ -43,16 +43,13 @@ Future<void> customConfirmationDialog({
                   ),
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      contentText,
-                      style: theme.textTheme.bodyMedium!.copyWith(
-                        color: const Color(0xFF1A2F34),
-                      ),
+                Flexible(
+                  child: Text(
+                    contentText,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: const Color(0xFF1A2F34),
                     ),
-                  ],
+                  ),
                 ),
                 const SizedBox(height: 28),
                 Row(

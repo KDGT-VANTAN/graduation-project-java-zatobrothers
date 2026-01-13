@@ -22,7 +22,7 @@ final mockWeatherPersonalityResult = WeatherPersonalityResultReadModel(
   typeName: 'トレーニーラッコ',
   typeCatchphrase: '感情で揺れ、計画で浮かぶ。天気予報を信じすぎるラッコ。',
   typeCharacterImageUrl:
-      Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
+      Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
   rulingStatement: '神様は、前世のあなたが\n'
       '空模様を確認してから一日を始める姿を、何度も見ていました。\n\n'
       '雨が降りそうな日は少し不安そうに、\n'

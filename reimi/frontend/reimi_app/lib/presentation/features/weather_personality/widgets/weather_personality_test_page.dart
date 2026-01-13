@@ -272,7 +272,7 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: onPressedNext,
+                      onPressed: isSelected ? onPressedNext : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF4A5F72),
                         padding: const EdgeInsets.symmetric(vertical: 18),
@@ -290,7 +290,9 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
                         t.button.next,
                         style: theme.textTheme.labelLarge!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: isSelected
+                              ? Colors.white
+                              : Colors.white.withValues(alpha: 0.4),
                         ),
                       ),
                     ),
