@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,5 +57,24 @@ public class LikeUseCaseImpl implements LikeUseCase {
         );
 
         likeRepository.save(like);
+    }
+
+    @Override
+    public List<User> getLikeGivenUserList() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        User fromUser = userRepository.findMeByFirebaseUid(myFirebaseUid)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        UserId fromUserId = fromUser.getId();
+
+        List<UserId> likedUserIds = likeRepository.findLikeGivenUserIdsByFromUserId(fromUserId);
+
+        if (likedUserIds.isEmpty()) {
+            return List.of();
+        }
+
+        return userRepository.findByIds(likedUserIds);
     }
 }
