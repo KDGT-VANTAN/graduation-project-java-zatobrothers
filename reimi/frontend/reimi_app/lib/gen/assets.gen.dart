@@ -166,9 +166,13 @@ class $AssetsImagesWeatherPersonalityGen {
   AssetGenImage get reimiGodIcon => const AssetGenImage(
       'assets/images/weather_personality/reimi_god_icon.png');
 
+  /// File path: assets/images/weather_personality/spoe_trainee_sea_otter_image.png
+  AssetGenImage get spoeTraineeSeaOtterImage => const AssetGenImage(
+      'assets/images/weather_personality/spoe_trainee_sea_otter_image.png');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [nfieSoftOctopusImage, reimiGod, reimiGodIcon];
+      [nfieSoftOctopusImage, reimiGod, reimiGodIcon, spoeTraineeSeaOtterImage];
 }
 
 class Assets {
