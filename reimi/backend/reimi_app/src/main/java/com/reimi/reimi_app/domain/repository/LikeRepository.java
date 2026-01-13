@@ -16,4 +16,6 @@ public interface LikeRepository {
     void save(Like like);
 
     List<UserId> findLikeGivenUserIdsByFromUserId(UserId fromUserId);
+
+    List<UserId> findLikeReceivedUserIdsByToUserId(UserId toUserId);
 }
