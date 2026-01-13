@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.domain.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.reimi.reimi_app.domain.model.like.Like;
@@ -13,4 +14,6 @@ public interface LikeRepository {
     boolean exists(UserId fromUserId, UserId toUserId);
 
     void save(Like like);
+
+    List<UserId> findLikeGivenUserIdsByFromUserId(UserId fromUserId);
 }
