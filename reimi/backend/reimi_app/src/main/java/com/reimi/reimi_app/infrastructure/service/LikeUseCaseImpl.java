@@ -87,4 +87,29 @@ public class LikeUseCaseImpl implements LikeUseCase {
 
         return users;
     }
+
+    @Override
+    public List<User> getLikeReceivedUserList() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        User toUser = userRepository.findMeByFirebaseUid(myFirebaseUid)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        UserId toUserId = toUser.getId();
+
+        List<UserId> likedUserIds = likeRepository.findLikeReceivedUserIdsByToUserId(toUserId);
+
+        if (likedUserIds.isEmpty()) {
+            return List.of();
+        }
+
+        List<User> users = userRepository.findByIds(likedUserIds);
+
+        for (User user : users) {
+            user.setSignedMainPhotoUrl(imageStorage.getSignedUrl(user.getMainPhotoUrl()));
+        }
+
+        return users;
+    }
 }
