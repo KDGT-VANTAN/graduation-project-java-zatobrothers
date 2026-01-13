@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.like;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -44,5 +45,14 @@ public class LikeRepositoryImpl implements LikeRepository {
     @Override
     public void save(Like like) {
         jpaLikeRepository.save(LikeMapper.toEntity(like));
+    }
+
+    @Override
+    public List<UserId> findLikeGivenUserIdsByFromUserId(UserId fromUserId) {
+        return jpaLikeRepository
+            .findToUserIdsByFromUserId(fromUserId.value())
+            .stream()
+            .map(UserId::new)
+            .toList();
     }
 }
