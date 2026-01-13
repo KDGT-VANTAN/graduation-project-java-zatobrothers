@@ -9,4 +9,6 @@ public interface LikeUseCase {
     void likeUser(UserId toUserId);
 
     List<User> getLikeGivenUserList();
+
+    List<User> getLikeReceivedUserList();
 }
