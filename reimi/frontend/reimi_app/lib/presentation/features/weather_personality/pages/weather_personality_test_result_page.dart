@@ -5,6 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
+import 'package:reimi_app/core/share/share_payload.dart';
+import 'package:reimi_app/core/share/share_providers.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
@@ -13,13 +15,14 @@ import 'package:reimi_app/presentation/features/weather_personality/widgets/acti
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_feature_card.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_score_bar.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/text_card.dart';
+import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_share_card.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
+import 'package:screenshot/screenshot.dart';
 
 class WeatherPersonalityTestResultPage extends HookConsumerWidget {
   const WeatherPersonalityTestResultPage({super.key});
-
   static String get routeName => 'weather_personality_test_result';
   static String get routeLocation => '/$routeName';
   @override
@@ -39,6 +42,32 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
     final subController = useAnimationController(
       duration: const Duration(milliseconds: 500),
     );
+
+    final screenshotController = useMemoized(() => ScreenshotController());
+
+    Future<void> onShareTestResult() async {
+      if (weatherPersonality == null) return;
+
+      final bytes = await screenshotController.captureFromWidget(
+        WeatherPersonalityShareCard(
+          typeCode: weatherPersonality.typeCode,
+          typeName: weatherPersonality.typeName,
+          catchphrase: weatherPersonality.typeCatchphrase,
+          characterImageUrl: weatherPersonality.typeCharacterImageUrl,
+        ),
+        delay: const Duration(milliseconds: 100),
+      );
+
+      final shareService = ref.read(shareServiceProvider);
+
+      await shareService.share(
+        ImageSharePayload(
+          bytes: bytes,
+          fileName: 'test_result.png',
+          text: 'あなたの診断結果はこちら✨',
+        ),
+      );
+    }
 
     useEffect(() {
       Future.microtask(() {
@@ -157,24 +186,28 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
                           title: '感受性',
                           code: 'S（高）',
                           description: weatherPersonality.axisFeatures[0],
                         ),
                         const SizedBox(height: 12),
                         AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
                           title: '準備性',
                           code: 'P（計画型）',
                           description: weatherPersonality.axisFeatures[1],
                         ),
                         const SizedBox(height: 12),
                         AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
                           title: '外行動性',
                           code: 'O（Outdoor）',
                           description: weatherPersonality.axisFeatures[2],
                         ),
                         const SizedBox(height: 12),
                         AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
                           title: '動機特性',
                           code: 'E（情緒）',
                           description: weatherPersonality.axisFeatures[3],
@@ -194,34 +227,34 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         AxisScoreBar(
-                          leftLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.sensitivity.sensitive,
-                          rightLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.sensitivity.neutral,
+                          leftLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.sensitivity.sensitive,
+                          rightLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.sensitivity.neutral,
                           score: weatherPersonality.axisScore[0],
                         ),
                         const SizedBox(height: 20),
                         AxisScoreBar(
-                          leftLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.preparedness.planned,
-                          rightLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.preparedness.flexible,
+                          leftLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.preparedness.planned,
+                          rightLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.preparedness.flexible,
                           score: weatherPersonality.axisScore[1],
                         ),
                         const SizedBox(height: 20),
                         AxisScoreBar(
-                          leftLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.activity.outdoor,
-                          rightLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.activity.indoor,
+                          leftLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.activity.outdoor,
+                          rightLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.activity.indoor,
                           score: weatherPersonality.axisScore[2],
                         ),
                         const SizedBox(height: 20),
                         AxisScoreBar(
-                          leftLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.motivation.emotional,
-                          rightLabel: t.weatherPersonalityTestResultPage.section
-                              .axisScore.axis.motivation.rational,
+                          leftLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.motivation.emotional,
+                          rightLabel: t.weatherPersonalityTestResultPage
+                              .section.axisScore.axis.motivation.rational,
                           score: weatherPersonality.axisScore[3],
                         ),
                       ],
@@ -246,18 +279,19 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: ActionButton(
-                      icon: const Icon(Icons.share),
-                      label: Text(
-                        t.button.shareResults,
-                        style: theme.textTheme.labelLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                        icon: const Icon(Icons.share),
+                        label: Text(
+                          t.button.shareResults,
+                          style: theme.textTheme.labelLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      foregroundColor: Colors.white,
-                      backgroundColor: theme.colorScheme.primary,
-                      onPressed: () {},
-                    ),
+                        foregroundColor: Colors.white,
+                        backgroundColor: theme.colorScheme.primary,
+                        onPressed: () async {
+                          await onShareTestResult();
+                        }),
                   ),
                 ),
                 const Gap(height: 16),
