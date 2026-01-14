@@ -6,6 +6,6 @@ import com.reimi.reimi_app.domain.model.user.User;
 
 public interface MatchUseCase {
 
-    List<User> getMatchedUsers();
+    List<User> getMatchedUserList();
 
 }
