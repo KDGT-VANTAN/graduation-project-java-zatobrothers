@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザーいいね",
-    description = "ユーザーにいいねを送れるAPI",
+    description = "ユーザーにいいねを送れるAPI。ユーザー双方がいいねを送信した場合のみマッチングが成立する。",
     tags = { "Like" },
     requestBody = @RequestBody(
         required = true,
@@ -90,14 +90,28 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         content = @Content(
             mediaType = "application/json",
             schema = @Schema(implementation = ApiErrorResponse.class),
-            examples = @ExampleObject(
-                value = """
-                {
-                    "code": "LIKE_ALREADY_SENT",
-                    "message": "既にいいねが送られています"
-                }
-                """
-            )
+            examples = {
+                @ExampleObject(
+                    name = "いいね重複",
+                    description = "既にいいねが送られてる場合",
+                    value = """
+                    {
+                        "code": "LIKE_ALREADY_SENT",
+                        "message": "既にいいねが送られています"
+                    }
+                    """
+                ),
+                @ExampleObject(
+                    name = "マッチング重複",
+                    description = "既にマッチングが成立している場合",
+                    value = """
+                    {
+                        "code": "MATCH_ALREADY_EXISTS",
+                        "message": "既にマッチングが成立しています"
+                    }
+                    """
+                )
+            }
         )
     ),
     @ApiResponse(
