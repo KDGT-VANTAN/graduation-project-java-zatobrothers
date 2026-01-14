@@ -16,8 +16,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "likes",
-        uniqueConstraints = {
+@Table(
+    name = "likes",
+    uniqueConstraints = {
         @UniqueConstraint(
             name = "uk_likes_from_to",
             columnNames = { "from_user_id", "to_user_id" }
