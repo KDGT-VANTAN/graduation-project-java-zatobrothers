@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.match;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.domain.model.match.Match;
@@ -29,5 +31,13 @@ public class MatchRepositoryImpl implements MatchRepository {
     @Override
     public void save(Match match) {
         jpaMatchRepository.save(MatchMapper.toEntity(match));
+    }
+
+    @Override
+    public List<UserId> findMatchedUserIdsByUserId(UserId userId) {
+        return jpaMatchRepository.findMatchedUserIds(userId.value())
+            .stream()
+            .map(UserId::new)
+            .toList();
     }
 }
