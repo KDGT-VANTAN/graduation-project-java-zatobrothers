@@ -1,0 +1,33 @@
+package com.reimi.reimi_app.infrastructure.persistence.repository.match;
+
+import org.springframework.stereotype.Repository;
+
+import com.reimi.reimi_app.domain.model.match.Match;
+import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.repository.MatchRepository;
+import com.reimi.reimi_app.infrastructure.persistence.mapper.MatchMapper;
+
+@Repository
+public class MatchRepositoryImpl implements MatchRepository {
+
+    private final JpaMatchRepository jpaMatchRepository;
+
+    public MatchRepositoryImpl(
+        JpaMatchRepository jpaMatchRepository
+    ) {
+        this.jpaMatchRepository = jpaMatchRepository;
+    }
+
+    @Override
+    public boolean exists(UserId userAId, UserId userBId) {
+        return jpaMatchRepository.existsByUserAIdAndUserBId(
+            userAId.value(),
+            userBId.value()
+        );
+    }
+
+    @Override
+    public void save(Match match) {
+        jpaMatchRepository.save(MatchMapper.toEntity(match));
+    }
+}

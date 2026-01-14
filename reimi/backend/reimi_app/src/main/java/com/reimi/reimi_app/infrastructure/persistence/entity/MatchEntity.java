@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
@@ -17,34 +18,46 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(
-    name = "likes",
+    name = "matches",
     uniqueConstraints = {
         @UniqueConstraint(
-            name = "uk_likes_from_to",
-            columnNames = { "from_user_id", "to_user_id" }
+            name = "uk_matches_a_b",
+            columnNames = { "user_a_id", "user_b_id" }
         )
     }
 )
-public class LikeEntity {
+public class MatchEntity {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "from_user_id", nullable = false)
-    private UUID fromUserId;
+    @Column(name = "user_a_id", nullable = false)
+    private UUID userAId;
 
-    @Column(name = "to_user_id", nullable = false)
-    private UUID toUserId;
+    @Column(name = "user_b_id", nullable = false)
+    private UUID userBId;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private OffsetDateTime updatedAt;
 
     @PrePersist
     protected void prePersist() {
         OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
         this.createdAt = now;
+        this.updatedAt = now;
     }
 
-    public LikeEntity() {}
+    @PreUpdate
+    protected void preUpdate() {
+        this.updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
+    }
+
+    public MatchEntity() {}
 }

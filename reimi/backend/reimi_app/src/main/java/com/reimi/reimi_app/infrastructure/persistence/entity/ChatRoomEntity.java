@@ -7,35 +7,29 @@ import java.util.UUID;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(
-    name = "likes",
-    uniqueConstraints = {
-        @UniqueConstraint(
-            name = "uk_likes_from_to",
-            columnNames = { "from_user_id", "to_user_id" }
-        )
-    }
-)
-public class LikeEntity {
+@Table(name = "chat_rooms")
+public class ChatRoomEntity {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "from_user_id", nullable = false)
-    private UUID fromUserId;
+    @Column(name = "match_id", nullable = false, unique = true)
+    private UUID matchId;
 
-    @Column(name = "to_user_id", nullable = false)
-    private UUID toUserId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "match_id", nullable = false, updatable = false, insertable = false)
+    private MatchEntity match;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
@@ -46,5 +40,5 @@ public class LikeEntity {
         this.createdAt = now;
     }
 
-    public LikeEntity() {}
+    public ChatRoomEntity() {}
 }
