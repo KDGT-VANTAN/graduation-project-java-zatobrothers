@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.usecase.MatchUseCase;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetMatchedUserListResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.match.GetMatchedUsersApi;
 
+@RestController
+@RequestMapping("/matches")
 public class MatchController {
 
     private final MatchUseCase matchUseCase;
@@ -19,7 +23,7 @@ public class MatchController {
         this.matchUseCase = matchUseCase;
     }
 
-    @GetMapping("/matches")
+    @GetMapping()
     @GetMatchedUsersApi
     public ResponseEntity<List<GetMatchedUserListResponse>> getMatchedUsers() {
 
