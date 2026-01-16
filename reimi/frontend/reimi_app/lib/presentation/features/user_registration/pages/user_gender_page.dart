@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_notifier.dart';
+import 'package:reimi_app/presentation/features/user_registration/notifiers/user_registration_notifier.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/confirmation_dialog.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/gender_button.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/user_registration_page.dart';

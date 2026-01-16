@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_notifier.dart';
+import 'package:reimi_app/presentation/features/user_registration/notifiers/user_registration_notifier.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/confirmation_dialog.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/custom_date_picker.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/date_item_container.dart';
