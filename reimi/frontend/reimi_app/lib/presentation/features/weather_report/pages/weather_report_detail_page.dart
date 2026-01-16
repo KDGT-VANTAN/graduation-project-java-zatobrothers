@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
@@ -8,13 +9,13 @@ import 'package:reimi_app/core/extensions/value_objects/forecast_type_extension.
 import 'package:reimi_app/core/extensions/value_objects/weather_type_extension.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_detail_notifier.dart';
+import 'package:reimi_app/presentation/features/weather_report/states/weather_report_detail_state.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/show_comment_modal_sheet.dart';
-import 'package:reimi_app/presentation/shared/pages/error_page.dart';
-import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
+import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
-class WeatherReportDetailPage extends ConsumerWidget {
+class WeatherReportDetailPage extends HookConsumerWidget {
   static String get routeName => 'weather_report_detail';
   static String get routeLocation => '/$routeName';
   const WeatherReportDetailPage({
@@ -27,32 +28,72 @@ class WeatherReportDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final t = Translations.of(context);
-    final state = ref.watch(weatherReportDetailNotifierProvider(reportId));
-    return state.when(
-      data: (value) {
-        if (value.weatherReport == null) {
-          return const Center(
-            child: Text('表示できる投稿が見つかりません。'),
-          );
-        }
-        return Scaffold(
-          body: BackgroundContainerNoon(
-            child: SafeArea(
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    pinned: true,
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    title: Text(
-                      t.weatherReportDetailPage.title,
-                      style: theme.textTheme.titleMedium!.copyWith(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+    final notifier = ref.read(weatherReportDetailNotifierProvider.notifier);
+    final weatherReport = ref.watch(weatherReportDetailNotifierProvider
+        .select((state) => state.weatherReport));
+    final isLoading = ref.watch(
+        weatherReportDetailNotifierProvider.select((state) => state.isLoading));
+
+    useEffect(() {
+      Future.microtask(() {
+        notifier.init(reportId);
+      });
+
+      final subscription = ref.listenManual<WeatherReportDetailState>(
+        weatherReportDetailNotifierProvider,
+        (prev, next) {
+          if (next.errorMessage == null) return;
+          AppSnackBar.error(context, next.errorMessage!);
+        },
+      );
+
+      return subscription.close;
+    }, []);
+
+    return Scaffold(
+      body: BackgroundContainerNoon(
+        child: SafeArea(
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await notifier.refresh(reportId);
+            },
+            child: CustomScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  title: Text(
+                    t.weatherReportDetailPage.title,
+                    style: theme.textTheme.titleMedium!.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                if (isLoading) ...[
+                  const SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                ] else if (weatherReport == null) ...[
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    sliver: SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: Text(
+                          t.weatherReportDetailPage.nullCase,
+                          style: theme.textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                   ),
+                ] else ...[
                   SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverToBoxAdapter(
@@ -62,13 +103,13 @@ class WeatherReportDetailPage extends ConsumerWidget {
                           CircleAvatar(
                             radius: 22,
                             backgroundColor: const Color(0xFF7FBEC6),
-                            backgroundImage: value.weatherReport!.mainPhotoUrl
-                                .toImageProvider(),
+                            backgroundImage:
+                                weatherReport.mainPhotoUrl.toImageProvider(),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
-                              value.weatherReport!.userName,
+                              weatherReport.userName,
                               style: theme.textTheme.bodyLarge!.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF1F2937),
@@ -79,9 +120,9 @@ class WeatherReportDetailPage extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                '${value.weatherReport!.createdAt.toSlashDate} ${value.weatherReport!.createdAt.toHHmmTimeDisplay()}',
+                                '${weatherReport.createdAt.toSlashDate} ${weatherReport.createdAt.toHHmmTimeDisplay()}',
                                 style: theme.textTheme.bodySmall!.copyWith(
-                                  color: const Color(0xFF6B7280),
+                                  color: const Color(0xFF1F2937),
                                 ),
                               ),
                               const SizedBox(height: 2),
@@ -89,7 +130,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                                 // TODO: 仮実装
                                 '東京都渋谷区',
                                 style: theme.textTheme.bodySmall!.copyWith(
-                                  color: const Color(0xFF6B7280),
+                                  color: const Color(0xFF1F2937),
                                 ),
                               ),
                             ],
@@ -111,7 +152,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image(
-                            image: value.weatherReport!.url.toImageProvider(),
+                            image: weatherReport.url.toImageProvider(),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -129,15 +170,14 @@ class WeatherReportDetailPage extends ConsumerWidget {
                           children: [
                             _ReactionItem(
                               icon: LineIcons.heart,
-                              count: value.weatherReport!.likeCount.toString(),
+                              count: weatherReport.likeCount.toString(),
                               color: const Color(0xFFF28B82),
                               onTap: () {},
                             ),
                             const SizedBox(width: 10),
                             _ReactionItem(
                               icon: LineIcons.comment,
-                              count:
-                                  value.weatherReport!.commentCount.toString(),
+                              count: weatherReport.commentCount.toString(),
                               color: const Color(0xFF7FBEC6),
                               onTap: () {
                                 // TODO: 投稿コメントの仕様を決める
@@ -160,7 +200,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
-                          value.weatherReport!.comment,
+                          weatherReport.comment,
                           style: theme.textTheme.bodyMedium!.copyWith(
                             height: 1.6,
                             color: const Color(0xFF1F2937),
@@ -186,7 +226,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                           children: [
                             _InfoRow(
                               label: t.weatherReportDetailPage.label.weather,
-                              value: value.weatherReport!.weatherType
+                              value: weatherReport.weatherType
                                   .displayName(context),
                             ),
                             const Divider(
@@ -195,7 +235,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                             ),
                             _InfoRow(
                               label: t.weatherReportDetailPage.label.feeling,
-                              value: value.weatherReport!.feelingType
+                              value: weatherReport.feelingType
                                   .displayName(context),
                             ),
                             const Divider(
@@ -204,7 +244,7 @@ class WeatherReportDetailPage extends ConsumerWidget {
                             ),
                             _InfoRow(
                               label: t.weatherReportDetailPage.label.forecast,
-                              value: value.weatherReport!.forecastType
+                              value: weatherReport.forecastType
                                   .displayName(context),
                             ),
                           ],
@@ -213,17 +253,11 @@ class WeatherReportDetailPage extends ConsumerWidget {
                     ),
                   ),
                 ],
-              ),
+              ],
             ),
           ),
-        );
-      },
-      error: (e, s) {
-        return ErrorPage(message: e.toString(), onRetry: null);
-      },
-      loading: () {
-        return const LoadingPage();
-      },
+        ),
+      ),
     );
   }
 }
