@@ -65,7 +65,7 @@ public class UserProfileController {
                 request.holiday(),
                 request.sunnyDayHobbies(),
                 request.rainyDayHobbies(),
-                request.subPhotos()
+                request.subPhoto()
             )
         );
 

@@ -2,6 +2,7 @@ package com.reimi.reimi_app.infrastructure.web.dto.request;
 
 import java.util.List;
 
+import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.reimi.reimi_app.domain.model.profile.Alcohol;
@@ -19,27 +20,21 @@ import com.reimi.reimi_app.domain.model.user.Address;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "ユーザープロフィール編集用リクエスト")
 public record UpdateUserProfileRequest (
 
-    @NotBlank(message = "名前は必須です")
     @Size(max = 16, message = "名前は16文字以内で入力してください")
     @Schema(description = "名前", example = "山田 太郎")
     String name,
 
-    @NotNull(message = "居住地は必須です")
     @Schema(description = "居住地", example = "TOKYO")
     Address address,
 
-    @NotNull(message = "メイン写真URLは必須です")
     @Schema(description = "メイン写真", format = "binary")
-    MultipartFile mainPhoto,
+    @Nullable MultipartFile mainPhoto,
 
-    @NotNull(message = "自己紹介文は必須です")
     @Size(min = 20, max = 500, message = "自己紹介文は20文字以上500文字以下で入力してください")
     @Schema(description = "自己紹介文", example = "都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。")
     String introduction,
@@ -91,10 +86,6 @@ public record UpdateUserProfileRequest (
     )
     List<String> rainyDayHobbies,
 
-    @Schema(
-        description = "ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）",
-        type = "array",
-        format = "binary"
-    )
-    List<MultipartFile> subPhotos
+    @Schema(description = "ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）", format = "binary")
+    @Nullable MultipartFile subPhoto
 ) {}

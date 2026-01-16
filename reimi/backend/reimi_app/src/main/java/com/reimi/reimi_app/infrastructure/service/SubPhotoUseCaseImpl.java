@@ -33,7 +33,7 @@ public class SubPhotoUseCaseImpl implements SubPhotoUseCase {
     }
     @Override
     @Transactional
-    public void registerSubPhoto(Profile profile, List<MultipartFile> subPhotoFiles) {
+    public void registerSubPhoto(Profile profile, MultipartFile subPhotoFile) {
 
         // 最大6枚までサブ写真を登録できる
         int limit = 6;
@@ -45,24 +45,16 @@ public class SubPhotoUseCaseImpl implements SubPhotoUseCase {
             throw new InvalidRequestException("サブ写真は最大6枚までです");
         }
 
-        if (subPhotoFiles.size() > remaining) {
-            throw new InvalidRequestException(
-                "追加できるのは残り " + remaining + " 枚までです"
-            );
-        }
-
         // サブ写真のベースパスを取得
         String subPhotoBasePath = imageStoragePath.userProfileSubPhotoPath(profile.getId().value());
         int sortOrder = existing.isEmpty() ? 1 : existing.get(existing.size() - 1).getSortOrder() + 1;
 
-        for (MultipartFile file : subPhotoFiles) {
-            String photoUrl = imageStorage.imageUpload(file, subPhotoBasePath);
-            SubPhoto subPhoto = SubPhoto.create(
-                profile.getId(),
-                photoUrl,
-                sortOrder++
-            );
-            subPhotoRepository.save(subPhoto);
-        }
+        String photoUrl = imageStorage.imageUpload(subPhotoFile, subPhotoBasePath);
+        SubPhoto subPhoto = SubPhoto.create(
+            profile.getId(),
+            photoUrl,
+            sortOrder++
+        );
+        subPhotoRepository.save(subPhoto);
     }
 }
