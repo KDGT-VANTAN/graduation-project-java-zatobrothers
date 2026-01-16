@@ -6,7 +6,9 @@ part 'profile_detail_state.freezed.dart';
 @freezed
 abstract class ProfileDetailState with _$ProfileDetailState {
   const factory ProfileDetailState({
-    UserWithProfileReadModel? data,
+    UserWithProfileReadModel? profile,
+    @Default(false) bool isLoading,
+    String? errorMessage,
     @Default(false) bool isLiked,
     @Default(false) bool isRainbowLiked,
     @Default(false) bool isSkipped,

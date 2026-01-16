@@ -15,6 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeState {
   List<HomeUserReadModel> get users;
+  bool get isLoading;
+  String? get errorMessage;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -28,16 +30,20 @@ mixin _$HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HomeState &&
-            const DeepCollectionEquality().equals(other.users, users));
+            const DeepCollectionEquality().equals(other.users, users) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(users));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(users), isLoading, errorMessage);
 
   @override
   String toString() {
-    return 'HomeState(users: $users)';
+    return 'HomeState(users: $users, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -46,7 +52,8 @@ abstract mixin class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) =
       _$HomeStateCopyWithImpl;
   @useResult
-  $Res call({List<HomeUserReadModel> users});
+  $Res call(
+      {List<HomeUserReadModel> users, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -62,12 +69,22 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call({
     Object? users = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_self.copyWith(
       users: null == users
           ? _self.users
           : users // ignore: cast_nullable_to_non_nullable
               as List<HomeUserReadModel>,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -165,13 +182,15 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<HomeUserReadModel> users)? $default, {
+    TResult Function(List<HomeUserReadModel> users, bool isLoading,
+            String? errorMessage)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _HomeState() when $default != null:
-        return $default(_that.users);
+        return $default(_that.users, _that.isLoading, _that.errorMessage);
       case _:
         return orElse();
     }
@@ -192,12 +211,14 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<HomeUserReadModel> users) $default,
+    TResult Function(
+            List<HomeUserReadModel> users, bool isLoading, String? errorMessage)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeState():
-        return $default(_that.users);
+        return $default(_that.users, _that.isLoading, _that.errorMessage);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -217,12 +238,14 @@ extension HomeStatePatterns on HomeState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<HomeUserReadModel> users)? $default,
+    TResult? Function(List<HomeUserReadModel> users, bool isLoading,
+            String? errorMessage)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeState() when $default != null:
-        return $default(_that.users);
+        return $default(_that.users, _that.isLoading, _that.errorMessage);
       case _:
         return null;
     }
@@ -233,7 +256,9 @@ extension HomeStatePatterns on HomeState {
 
 class _HomeState implements HomeState {
   const _HomeState(
-      {final List<HomeUserReadModel> users = const <HomeUserReadModel>[]})
+      {final List<HomeUserReadModel> users = const <HomeUserReadModel>[],
+      this.isLoading = false,
+      this.errorMessage})
       : _users = users;
 
   final List<HomeUserReadModel> _users;
@@ -244,6 +269,12 @@ class _HomeState implements HomeState {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_users);
   }
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  final String? errorMessage;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -258,16 +289,20 @@ class _HomeState implements HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HomeState &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_users), isLoading, errorMessage);
 
   @override
   String toString() {
-    return 'HomeState(users: $users)';
+    return 'HomeState(users: $users, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -279,7 +314,8 @@ abstract mixin class _$HomeStateCopyWith<$Res>
       __$HomeStateCopyWithImpl;
   @override
   @useResult
-  $Res call({List<HomeUserReadModel> users});
+  $Res call(
+      {List<HomeUserReadModel> users, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -295,12 +331,22 @@ class __$HomeStateCopyWithImpl<$Res> implements _$HomeStateCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? users = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_HomeState(
       users: null == users
           ? _self._users
           : users // ignore: cast_nullable_to_non_nullable
               as List<HomeUserReadModel>,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

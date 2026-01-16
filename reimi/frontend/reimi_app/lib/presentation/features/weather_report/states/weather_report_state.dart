@@ -8,5 +8,7 @@ abstract class WeatherReportState with _$WeatherReportState {
   const factory WeatherReportState({
     @Default(<WeatherReportSimpleReadModel>[])
     List<WeatherReportSimpleReadModel> weatherReports,
+    @Default(false) bool isLoading,
+    String? errorMessage,
   }) = _WeatherReportState;
 }
