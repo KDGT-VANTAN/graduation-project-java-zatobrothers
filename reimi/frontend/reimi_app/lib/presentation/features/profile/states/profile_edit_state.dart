@@ -18,12 +18,13 @@ part 'profile_edit_state.freezed.dart';
 @freezed
 abstract class ProfileEditState with _$ProfileEditState {
   const factory ProfileEditState({
-    required String name,
-    required Gender gender,
-    @YyyyMmDdDateConverter() required DateTime birthDate,
-    required Address address,
-    required String mainPhotoUrl,
-    required String introduction,
+    String? id,
+    String? name,
+    Gender? gender,
+    @YyyyMmDdDateConverter() DateTime? birthDate,
+    Address? address,
+    String? mainPhotoUrl,
+    String? introduction,
     Height? height,
     BodyShape? bodyShape,
     AnnualIncome? annualIncome,
@@ -37,7 +38,29 @@ abstract class ProfileEditState with _$ProfileEditState {
     Holiday? holiday,
     List<String>? sunnyDayHobbies,
     List<String>? rainyDayHobbies,
-    List<String>? subPhotoUrls,
+    List<String>? subPhotos,
     @Default(false) bool isChanged,
+    @Default(false) bool isLoading,
+    @Default(false) bool isInitialized,
+    String? errorMessage,
+    @Default(ProfileEditStatus.idle) ProfileEditStatus status,
   }) = _ProfileEditState;
+
+  const ProfileEditState._();
+
+  bool get canSubmit =>
+      id?.isNotEmpty == true &&
+      name?.isNotEmpty == true &&
+      gender != null &&
+      birthDate != null &&
+      address != null &&
+      mainPhotoUrl?.isNotEmpty == true &&
+      introduction?.isNotEmpty == true;
+}
+
+enum ProfileEditStatus {
+  idle,
+  submitting,
+  success,
+  failure,
 }
