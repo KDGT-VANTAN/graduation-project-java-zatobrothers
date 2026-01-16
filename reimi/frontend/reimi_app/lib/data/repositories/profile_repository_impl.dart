@@ -9,13 +9,19 @@ class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDataSource _remote;
 
   @override
-  Future<UserWithProfileReadModel?> fetchUserProfile(String userId) {
-    return _remote.fetchUserProfile(userId);
+  Future<UserWithProfileReadModel> fetchUserProfile(String userId) async {
+    return await _remote.fetchUserProfile(userId);
   }
 
   @override
-  Future<void> updateUserProfile(UpdateProfileParams params) {
+  Future<void> updateUserProfile({
+    required UpdateProfileParams params,
+    required String userId,
+  }) async {
     final dto = params.toDto();
-    return _remote.updateUserProfile(dto);
+    return await _remote.updateUserProfile(
+      dto: dto,
+      userId: userId,
+    );
   }
 }
