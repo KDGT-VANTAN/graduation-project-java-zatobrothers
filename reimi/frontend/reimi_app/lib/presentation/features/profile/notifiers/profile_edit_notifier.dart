@@ -1,4 +1,5 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/domain/params/update_profile_params.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
@@ -7,11 +8,11 @@ import 'package:reimi_app/domain/value_objects/blood_type.dart';
 import 'package:reimi_app/domain/value_objects/body_shape.dart';
 import 'package:reimi_app/domain/value_objects/communication_style.dart';
 import 'package:reimi_app/domain/value_objects/education.dart';
+import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
-import 'package:reimi_app/presentation/features/profile/notifiers/user_with_profile_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/states/profile_edit_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -20,36 +21,61 @@ part 'profile_edit_notifier.g.dart';
 @riverpod
 class ProfileEditNotifier extends _$ProfileEditNotifier {
   @override
-  ProfileEditState build(String userId) {
-    final user = ref.watch(userWithProfileNotifierProvider(userId)).value!;
+  ProfileEditState build() {
+    return const ProfileEditState();
+  }
 
-    return ProfileEditState(
-      name: user.name,
-      gender: user.gender,
-      birthDate: user.birthDate,
-      address: user.address,
-      mainPhotoUrl: user.mainPhotoUrl,
-      introduction: user.introduction,
-      height: user.height,
-      bodyShape: user.bodyShape,
-      annualIncome: user.annualIncome,
-      bloodType: user.bloodType,
-      hometown: user.hometown,
-      communicationStyle: user.communicationStyle,
-      occupation: user.occupation,
-      education: user.education,
-      smoking: user.smoking,
-      alcohol: user.alcohol,
-      holiday: user.holiday,
-      sunnyDayHobbies: _normalize(list: user.sunnyDayHobbies, length: 3),
-      rainyDayHobbies: _normalize(list: user.rainyDayHobbies, length: 3),
-      subPhotoUrls: _normalize(list: user.subPhotoUrls, length: 6),
-    );
+  Future<void> init() async {
+    if (state.isInitialized) return;
+    await loadUserProfile();
+  }
+
+  Future<void> loadUserProfile() async {
+    state = state.copyWith(isLoading: true, errorMessage: null);
+    try {
+      final user = await ref.read(getCurrentUserUseCaseProvider).call();
+      final profile =
+          await ref.read(getUserProfileUseCaseProvider).call(user.id);
+      state = state.copyWith(
+        id: profile.id,
+        name: profile.name,
+        gender: profile.gender,
+        birthDate: profile.birthDate,
+        address: profile.address,
+        mainPhotoUrl: profile.mainPhotoUrl,
+        introduction: profile.introduction,
+        height: profile.height,
+        bodyShape: profile.bodyShape,
+        annualIncome: profile.annualIncome,
+        bloodType: profile.bloodType,
+        hometown: profile.hometown,
+        communicationStyle: profile.communicationStyle,
+        occupation: profile.occupation,
+        education: profile.education,
+        smoking: profile.smoking,
+        alcohol: profile.alcohol,
+        holiday: profile.holiday,
+        sunnyDayHobbies: _normalize(list: profile.sunnyDayHobbies, length: 3),
+        rainyDayHobbies: _normalize(list: profile.rainyDayHobbies, length: 3),
+        subPhotos: _normalize(list: profile.subPhotos, length: 6),
+        isLoading: false,
+        isInitialized: true,
+      );
+    } catch (e) {
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      );
+    }
   }
 
   // 必須項目
   void updateName(String name) {
     _update((s) => s.copyWith(name: name));
+  }
+
+  void updateGender(Gender gender) {
+    _update((s) => s.copyWith(gender: gender));
   }
 
   void updateAddress(Address address) {
@@ -82,17 +108,17 @@ class ProfileEditNotifier extends _$ProfileEditNotifier {
     required String url,
   }) {
     _update((s) {
-      final current = _normalize(list: s.subPhotoUrls, length: 6);
+      final current = _normalize(list: s.subPhotos, length: 6);
       current[index] = url;
-      return s.copyWith(subPhotoUrls: current);
+      return s.copyWith(subPhotos: current);
     });
   }
 
   void removeSubPhoto(int index) {
     _update((s) {
-      final current = _normalize(list: s.subPhotoUrls, length: 6);
+      final current = _normalize(list: s.subPhotos, length: 6);
       current[index] = '';
-      return s.copyWith(subPhotoUrls: current);
+      return s.copyWith(subPhotos: current);
     });
   }
 
@@ -190,30 +216,61 @@ class ProfileEditNotifier extends _$ProfileEditNotifier {
   }
 
   Future<void> submit() async {
-    if (!state.isChanged) return;
-    final params = UpdateProfileParams(
-      name: state.name,
-      gender: state.gender,
-      address: state.address,
-      mainPhoto: state.mainPhotoUrl,
-      introduction: state.introduction,
-      height: state.height,
-      bodyShape: state.bodyShape,
-      annualIncome: state.annualIncome,
-      bloodType: state.bloodType,
-      hometown: state.hometown,
-      communicationStyle: state.communicationStyle,
-      occupation: state.occupation,
-      education: state.education,
-      smoking: state.smoking,
-      alcohol: state.alcohol,
-      holiday: state.holiday,
-      sunnyDayHobbies: state.sunnyDayHobbies,
-      rainyDayHobbies: state.rainyDayHobbies,
-      subPhotos: state.subPhotoUrls,
-    );
+    final s = state;
+    if (!s.canSubmit) {
+      state = state.copyWith(
+        status: ProfileEditStatus.failure,
+        errorMessage: '入力内容に不備があります',
+      );
+      return;
+    }
 
-    await ref.read(updateUserProfileUseCaseProvider).call(params);
-    state = state.copyWith(isChanged: false);
+    try {
+      final params = UpdateProfileParams(
+        name: s.name!,
+        gender: s.gender!,
+        address: s.address!,
+        mainPhoto: s.mainPhotoUrl!,
+        introduction: s.introduction!,
+        height: s.height,
+        bodyShape: s.bodyShape,
+        annualIncome: s.annualIncome,
+        bloodType: s.bloodType,
+        hometown: s.hometown,
+        communicationStyle: s.communicationStyle,
+        occupation: s.occupation,
+        education: s.education,
+        smoking: s.smoking,
+        alcohol: s.alcohol,
+        holiday: s.holiday,
+        sunnyDayHobbies: s.sunnyDayHobbies,
+        rainyDayHobbies: s.rainyDayHobbies,
+        subPhotos: s.subPhotos,
+      );
+
+      state = state.copyWith(
+        status: ProfileEditStatus.submitting,
+        errorMessage: null,
+      );
+
+      await ref
+          .read(updateUserProfileUseCaseProvider)
+          .call(params: params, userId: state.id!);
+
+      state = state.copyWith(
+        status: ProfileEditStatus.success,
+        isChanged: false,
+      );
+    } on ApiException catch (e) {
+      state = state.copyWith(
+        status: ProfileEditStatus.failure,
+        errorMessage: e.message,
+      );
+    } catch (_) {
+      state = state.copyWith(
+        status: ProfileEditStatus.failure,
+        errorMessage: 'プロフィール更新に失敗しました',
+      );
+    }
   }
 }
