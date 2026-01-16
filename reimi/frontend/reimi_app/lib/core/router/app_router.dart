@@ -241,9 +241,7 @@ GoRouter goRouter(Ref ref) {
         path: ProfilePage.routeLocation,
         name: ProfilePage.routeName,
         builder: (context, state) {
-          final extra = state.extra! as Map<String, Object?>;
-          final userId = extra['userId'] as String;
-          return ProfilePage(userId: userId);
+          return const ProfilePage();
         },
       ),
       GoRoute(
