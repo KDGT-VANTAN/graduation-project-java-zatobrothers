@@ -24,12 +24,10 @@ class WeatherPersonalityTestJudgingPage extends HookConsumerWidget {
     final showResultButton = useState(false);
     final showTestingText = useState(true);
 
-    // 進捗用
     final progressController = useAnimationController(
       duration: const Duration(seconds: 3),
     );
 
-    // 中央アイコン演出
     final breatheController = useAnimationController(
       duration: const Duration(milliseconds: 1600),
     );

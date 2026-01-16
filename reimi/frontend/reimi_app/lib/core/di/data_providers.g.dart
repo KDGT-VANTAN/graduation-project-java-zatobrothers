@@ -43,7 +43,7 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$userRemoteDataSourceHash() =>
-    r'8a6addba74c5449a37ebe52781a91dff175a4de5';
+    r'53583518c65e61fdb1c2128893f5a9b08d4a798c';
 
 /// See also [userRemoteDataSource].
 @ProviderFor(userRemoteDataSource)
@@ -79,7 +79,7 @@ final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
 // ignore: unused_element
 typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
 String _$profileRemoteDataSourceHash() =>
-    r'dbc633d7f511f8066b155a71771239a63835ba8b';
+    r'aff11280c6dd4a9d8ff91050356b514fdc9c1e9a';
 
 /// See also [profileRemoteDataSource].
 @ProviderFor(profileRemoteDataSource)

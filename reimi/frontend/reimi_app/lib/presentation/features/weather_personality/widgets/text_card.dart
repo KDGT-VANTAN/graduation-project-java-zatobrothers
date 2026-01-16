@@ -13,21 +13,18 @@ class TextCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          color: color ?? const Color(0xFFE9F7FB),
-          borderRadius: BorderRadius.circular(24),
-          gradient: colors != null
-              ? LinearGradient(
-                  colors: colors!,
-                )
-              : null,
-        ),
-        child: child,
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: color ?? const Color(0xFFE9F7FB),
+        borderRadius: BorderRadius.circular(24),
+        gradient: colors != null
+            ? LinearGradient(
+                colors: colors!,
+              )
+            : null,
       ),
+      child: child,
     );
   }
 }
