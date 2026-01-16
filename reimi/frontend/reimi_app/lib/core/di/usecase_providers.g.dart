@@ -302,6 +302,26 @@ final getWeatherReportUseCaseProvider =
 // ignore: unused_element
 typedef GetWeatherReportUseCaseRef
     = AutoDisposeProviderRef<GetWeatherReportUseCase>;
+String _$postWeatherReportUseCaseHash() =>
+    r'd7249fcf9bf73d14f32a7fd2e7997f83a1a6cdb8';
+
+/// See also [postWeatherReportUseCase].
+@ProviderFor(postWeatherReportUseCase)
+final postWeatherReportUseCaseProvider =
+    AutoDisposeProvider<PostWeatherReportUseCase>.internal(
+  postWeatherReportUseCase,
+  name: r'postWeatherReportUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$postWeatherReportUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PostWeatherReportUseCaseRef
+    = AutoDisposeProviderRef<PostWeatherReportUseCase>;
 String _$uploadMediaUseCaseHash() =>
     r'd18fbee6f56f6a2cfe97d82fccae199d274b7cdc';
 
