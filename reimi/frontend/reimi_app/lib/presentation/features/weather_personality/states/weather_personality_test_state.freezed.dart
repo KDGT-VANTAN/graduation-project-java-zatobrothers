@@ -552,7 +552,7 @@ extension WeatherPersonalityTestStatePatterns on WeatherPersonalityTestState {
 
 /// @nodoc
 
-class _WeatherPersonalityTestState implements WeatherPersonalityTestState {
+class _WeatherPersonalityTestState extends WeatherPersonalityTestState {
   const _WeatherPersonalityTestState(
       {this.q1Answer,
       this.q2Answer,
@@ -573,7 +573,8 @@ class _WeatherPersonalityTestState implements WeatherPersonalityTestState {
       this.currentPage = 1,
       this.totalPages = 16,
       this.status = WeatherPersonalityTestStatus.idle,
-      this.errorMessage});
+      this.errorMessage})
+      : super._();
 
   @override
   final int? q1Answer;

@@ -1,6 +1,5 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
-import 'package:reimi_app/core/logger/logger_provider.dart';
 import 'package:reimi_app/domain/params/test_weather_personality_params.dart';
 import 'package:reimi_app/presentation/features/weather_personality/states/weather_personality_test_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -95,31 +94,13 @@ class WeatherPersonalityTestNotifier extends _$WeatherPersonalityTestNotifier {
   }
 
   Future<void> submit() async {
-    final logger = ref.watch(appLoggerProvider);
     final s = state;
-    logger.debug('submitおされているstate 1: $s');
 
-    if (s.q1Answer == null ||
-        s.q2Answer == null ||
-        s.q3Answer == null ||
-        s.q4Answer == null ||
-        s.q5Answer == null ||
-        s.q6Answer == null ||
-        s.q7Answer == null ||
-        s.q8Answer == null ||
-        s.q9Answer == null ||
-        s.q10Answer == null ||
-        s.q11Answer == null ||
-        s.q12Answer == null ||
-        s.q13Answer == null ||
-        s.q14Answer == null ||
-        s.q15Answer == null ||
-        s.q16Answer == null) {
+    if (!s.canSubmit) {
       state = state.copyWith(
         status: WeatherPersonalityTestStatus.failure,
         errorMessage: '入力内容に不備があります',
       );
-      logger.debug('submitおされている2');
       return;
     }
 
@@ -147,20 +128,18 @@ class WeatherPersonalityTestNotifier extends _$WeatherPersonalityTestNotifier {
         q15Answer: s.q15Answer!,
         q16Answer: s.q16Answer!,
       );
-      logger.debug('submitおされている3');
+
       await ref.read(testWeatherPersonalityUseCaseProvider).call(params);
 
       state = state.copyWith(
         status: WeatherPersonalityTestStatus.success,
       );
     } on ApiException catch (e) {
-      logger.debug('submitおされている4: $e');
       state = state.copyWith(
         status: WeatherPersonalityTestStatus.failure,
         errorMessage: e.message,
       );
     } catch (_) {
-      logger.debug('submitおされている5');
       state = state.copyWith(
         status: WeatherPersonalityTestStatus.failure,
         errorMessage: '診断が失敗しました',
