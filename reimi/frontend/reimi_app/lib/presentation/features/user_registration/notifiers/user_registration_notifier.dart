@@ -3,7 +3,7 @@ import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/domain/params/create_user_params.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_state.dart';
+import 'package:reimi_app/presentation/features/user_registration/states/user_registration_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_registration_notifier.g.dart';
@@ -58,13 +58,7 @@ class UserRegistrationNotifier extends _$UserRegistrationNotifier {
   Future<void> submit() async {
     final s = state;
 
-    if (s.name == null ||
-        s.email == null ||
-        s.gender == null ||
-        s.birthDate == null ||
-        s.address == null ||
-        s.introduction == null ||
-        s.mainPhoto == null) {
+    if (!s.canSubmit) {
       state = state.copyWith(
         status: UserRegistrationStatus.failure,
         errorMessage: '入力内容に不備があります',

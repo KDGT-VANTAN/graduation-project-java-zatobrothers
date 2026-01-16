@@ -19,6 +19,17 @@ abstract class UserRegistrationState with _$UserRegistrationState {
     @Default(UserRegistrationStatus.idle) UserRegistrationStatus status,
     String? errorMessage,
   }) = _UserRegistrationState;
+
+  const UserRegistrationState._();
+
+  bool get canSubmit =>
+      gender != null &&
+      birthDate != null &&
+      address != null &&
+      name?.isNotEmpty == true &&
+      introduction?.isNotEmpty == true &&
+      mainPhoto?.isNotEmpty == true &&
+      email?.isNotEmpty == true;
 }
 
 enum UserRegistrationStatus {
