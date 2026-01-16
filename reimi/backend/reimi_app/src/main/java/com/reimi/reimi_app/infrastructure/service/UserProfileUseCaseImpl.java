@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.reimi.reimi_app.application.command.UpdateUserProfileCommand;
 import com.reimi.reimi_app.application.exception.client.AccessDeniedException;
-import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.SubPhotoUseCase;
 import com.reimi.reimi_app.application.usecase.UserProfileUseCase;
@@ -91,10 +90,6 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
     @Transactional
     public void updateUserProfile(UserId userId, UpdateUserProfileCommand command) {
 
-        if (command.mainPhoto() == null || command.mainPhoto().isEmpty()) {
-            throw new InvalidRequestException("メイン写真は必須です");
-        }
-
         User user = userProfileRepository.findUserByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
@@ -105,19 +100,25 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             throw new AccessDeniedException();
         }
 
-        String currentFilePath = user.getMainPhotoUrl();
-        String currentFileName = imageStorage.removeUuidPrefix(imageStorage.extractFileName(currentFilePath));
-        String uploadedFileName = command.mainPhoto().getOriginalFilename();
+        // 初期値ではnull
+        String mainPhotoPath = null;
 
-        String mainPhotoPath = currentFilePath;
-        if (!uploadedFileName.equals(currentFileName)) {
-            // メイン写真のベースパスを取得
-            String basePath = imageStoragePath.userMainPhotoPath();
-            // メイン写真の画像アップロード
-            mainPhotoPath = imageStorage.imageUpload(command.mainPhoto(), basePath);
-            //古いファイルは削除
-            if (currentFilePath != null) {
-                imageStorage.deleteImage(currentFilePath);
+        if (command.mainPhoto() != null && !command.mainPhoto().isEmpty()) {
+            // 画像アップロード処理
+            String currentFilePath = user.getMainPhotoUrl();
+            String currentFileName = imageStorage.removeUuidPrefix(imageStorage.extractFileName(currentFilePath));
+            String uploadedFileName = command.mainPhoto().getOriginalFilename();
+
+            mainPhotoPath = currentFilePath;
+            if (!uploadedFileName.equals(currentFileName)) {
+                // メイン写真のベースパスを取得
+                String basePath = imageStoragePath.userMainPhotoPath();
+                // メイン写真の画像アップロード
+                mainPhotoPath = imageStorage.imageUpload(command.mainPhoto(), basePath);
+                //古いファイルは削除
+                if (currentFilePath != null) {
+                    imageStorage.deleteImage(currentFilePath);
+                }
             }
         }
 
@@ -125,8 +126,8 @@ public class UserProfileUseCaseImpl implements UserProfileUseCase {
             .orElseThrow(() -> new ResourceNotFoundException("ユーザーのプロフィール"));
 
         // nullでない場合、サブ写真の登録処理（アップロード）
-        if (command.subPhotos() != null || !command.subPhotos().isEmpty()) {
-            subPhotoUseCase.registerSubPhoto(profile, command.subPhotos());
+        if (command.subPhoto() != null && !command.subPhoto().isEmpty()) {
+            subPhotoUseCase.registerSubPhoto(profile, command.subPhoto());
         }
 
         user.update(
