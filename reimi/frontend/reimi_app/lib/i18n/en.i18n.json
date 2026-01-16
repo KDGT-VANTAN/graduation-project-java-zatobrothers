@@ -81,7 +81,14 @@
       }
     }
   },
+  "homePage": {
+    "isEmptyCase": "There are currently no users to view."
+  },
+  "likePage": {
+    "isEmptyCase": "Let's find new encounters!"
+  },
   "chatPage": {
+    "isEmptyCase": "Let's find new encounters!",
     "sectionTitle": {
       "matching": "Matches",
       "messages": "Messages"
@@ -91,10 +98,12 @@
     }
   },
   "chatDetailPage": {
+    "nullCase": "Profile information could not be retrieved.",
     "placeHolder": "Enter message"
   },
   "weatherReportPage": {
-    "sectionTitle": "Weather Report"
+    "sectionTitle": "Weather Report",
+    "isEmptyCase": "There are currently no reports to display."
   },
   "weatherReportPostPage": {
     "title": "Send Weather Report",
@@ -123,11 +132,15 @@
   },
   "weatherReportDetailPage": {
     "title": "Post Details",
+    "nullCase": "Report information could not be obtained.",
     "label": {
       "weather": "Weather",
       "feeling": "Feeling",
       "forecast": "Sensory Forecast"
     }
+  },
+  "accountPage": {
+    "nullCase": "User information could not be obtained."
   },
   "profilePage": {
     "title": "Edit Profile",
@@ -193,11 +206,15 @@
         "top2": "Enter rainy day top 2",
         "top3": "Enter rainy day top 3"
       },
-      "basicInformation": "Not set"
+      "basicInformation": {
+        "notSet": "Not set",
+        "toolTip": "This field cannot be changed."
+      }
     }
   },
   "profileDetailPage": {
-    "title": "Profile Details"
+    "title": "Profile Details",
+    "nullCase": "Profile information could not be retrieved."
   },
   "weatherPersonalityConceptPage": {
     "title": "Weather Personality Assessment",
@@ -317,6 +334,7 @@
     }
   },
   "weatherPersonalityTestResultPage": {
+    "nullCase": "Failed to get test results.",
     "section": {
       "title": "The Gods' Ruling",
       "mainResult": {
@@ -508,7 +526,8 @@
     "seeResults": "See Results",
     "shareResults": "Share Results",
     "returnToAccountPage": "Return To Account Page",
-    "completion": "Complete"
+    "completion": "Complete",
+    "weatherPersonalityTest": "Weather Personality Test"
   },
   "segmentedSwitch": {
     "like": {
@@ -518,6 +537,11 @@
     "chat": {
       "message": "Message",
       "profile": "Profile"
+    }
+  },
+  "snackBar": {
+    "profile": {
+      "success": "Your profile has been updated!"
     }
   },
   "enum": {

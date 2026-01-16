@@ -23,9 +23,30 @@ abstract class WeatherPersonalityTestState with _$WeatherPersonalityTestState {
     int? q16Answer,
     @Default(1) int currentPage,
     @Default(16) int totalPages,
-    @Default(WeatherPersonalityTestStatus.idle) WeatherPersonalityTestStatus status,
+    @Default(WeatherPersonalityTestStatus.idle)
+    WeatherPersonalityTestStatus status,
     String? errorMessage,
   }) = _WeatherPersonalityTestState;
+
+  const WeatherPersonalityTestState._();
+
+  bool get canSubmit =>
+      q1Answer != null &&
+      q2Answer != null &&
+      q3Answer != null &&
+      q4Answer != null &&
+      q5Answer != null &&
+      q6Answer != null &&
+      q7Answer != null &&
+      q8Answer != null &&
+      q9Answer != null &&
+      q10Answer != null &&
+      q11Answer != null &&
+      q12Answer != null &&
+      q13Answer != null &&
+      q14Answer != null &&
+      q15Answer != null &&
+      q16Answer != null;
 }
 
 enum WeatherPersonalityTestStatus {

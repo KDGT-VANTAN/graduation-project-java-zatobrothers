@@ -19,18 +19,21 @@ class ProfileMockDataSource implements ProfileRemoteDataSource {
   const ProfileMockDataSource();
 
   @override
-  Future<UserWithProfileReadModel?> fetchUserProfile(String userId) async {
+  Future<UserWithProfileReadModel> fetchUserProfile(String userId) async {
     // 仮実装
     for (var userProfile in mockUserProfiles) {
       if (userProfile.id == userId) {
         return userProfile;
       }
     }
-    return null;
+    return mockUserProfiles[0];
   }
 
   @override
-  Future<void> updateUserProfile(UpdateProfileDto dto) async {}
+  Future<void> updateUserProfile({
+    required UpdateProfileDto dto,
+    required String userId,
+  }) async {}
 }
 
 final List<UserWithProfileReadModel> mockUserProfiles = [
@@ -56,8 +59,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['カフェ巡り', 'カメラ', 'ヨガ'],
     rainyDayHobbies: ['映画鑑賞', '料理', '読書'],
-    subPhotoUrls: [],
-    isTodayReported: true,
+    subPhotos: [],
+    isTodayReported: false,
   ),
 
   // user_002: 田中 健
@@ -82,8 +85,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.irregular,
     sunnyDayHobbies: ['ゴルフ', 'ドライブ', ''],
     rainyDayHobbies: ['ワイン', 'ジャズ鑑賞', ''],
-    subPhotoUrls: [],
-    isTodayReported: false,
+    subPhotos: [],
+    isTodayReported: true,
   ),
 
   // user_003: 鈴木 翔太
@@ -108,8 +111,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['キャンプ', 'サウナ', 'スケボー'],
     rainyDayHobbies: ['ゲーム', 'アニメ', 'プログラミング'],
-    subPhotoUrls: [],
-    isTodayReported: true,
+    subPhotos: [],
+    isTodayReported: false,
   ),
 
   // user_004: 高橋 美咲
@@ -134,8 +137,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['食べ歩き', '旅行', ''],
     rainyDayHobbies: ['イラスト', '猫と遊ぶ', 'ネットフリックス'],
-    subPhotoUrls: [],
-    isTodayReported: true,
+    subPhotos: [],
+    isTodayReported: false,
   ),
 
   // user_005: 伊藤 健太
@@ -160,8 +163,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['スキー', '登山', '釣り'],
     rainyDayHobbies: ['筋トレ', '読書', ''],
-    subPhotoUrls: [],
-    isTodayReported: false,
+    subPhotos: [],
+    isTodayReported: true,
   ),
 
   // user_006: 渡辺 由美子
@@ -186,8 +189,8 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['ガーデニング', '散歩', ''],
     rainyDayHobbies: ['ピアノ', '刺繍', ''],
-    subPhotoUrls: [],
-    isTodayReported: true,
+    subPhotos: [],
+    isTodayReported: false,
   ),
 
   // user_000: 山田 涼介
@@ -213,7 +216,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['ドライブ', '食べ歩き', 'フットサル'],
     rainyDayHobbies: ['映画鑑賞', '料理', 'YouTube視聴'],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: true,
   ),
 
@@ -239,7 +242,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['ショッピング', 'カフェ巡り', ''],
     rainyDayHobbies: ['雑誌を読む', 'SNSチェック', ''],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: true,
   ),
 
@@ -265,7 +268,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['フットサル', 'ランニング', ''],
     rainyDayHobbies: ['筋トレ', '映画鑑賞', ''],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: true,
   ),
 
@@ -291,7 +294,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.irregular,
     sunnyDayHobbies: ['美術館巡り', '食べ歩き', ''],
     rainyDayHobbies: ['イラスト', '自炊', ''],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: false,
   ),
 
@@ -317,7 +320,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekend,
     sunnyDayHobbies: ['キャンプ', 'ドライブ', ''],
     rainyDayHobbies: ['ガジェット収集', 'プログラミング', ''],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: false,
   ),
 
@@ -343,7 +346,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.irregular,
     sunnyDayHobbies: ['ディズニー', '散歩', ''],
     rainyDayHobbies: ['ヨガ', 'ドラマ鑑賞', ''],
-    subPhotoUrls: [],
+    subPhotos: [],
     isTodayReported: false,
   ),
 ];

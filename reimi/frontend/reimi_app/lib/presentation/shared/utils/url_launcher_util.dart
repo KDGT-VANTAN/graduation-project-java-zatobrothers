@@ -11,7 +11,6 @@ Future<void> launchURL({
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
-      // TODO: エラーダイアログ作成予定
       // _showError(context, 'このURLを開けません');
     }
   } catch (e) {

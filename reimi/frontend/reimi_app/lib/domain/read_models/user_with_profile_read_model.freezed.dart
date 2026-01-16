@@ -22,7 +22,7 @@ mixin _$UserWithProfileReadModel {
   Address get address;
   String get mainPhotoUrl;
   String get introduction;
-  bool get isTodayReported;
+  bool? get isTodayReported;
   Height? get height;
   BodyShape? get bodyShape;
   AnnualIncome? get annualIncome;
@@ -36,7 +36,7 @@ mixin _$UserWithProfileReadModel {
   Holiday? get holiday;
   List<String>? get sunnyDayHobbies;
   List<String>? get rainyDayHobbies;
-  List<String>? get subPhotoUrls;
+  List<String>? get subPhotos;
 
   /// Create a copy of UserWithProfileReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -88,8 +88,7 @@ mixin _$UserWithProfileReadModel {
                 .equals(other.sunnyDayHobbies, sunnyDayHobbies) &&
             const DeepCollectionEquality()
                 .equals(other.rainyDayHobbies, rainyDayHobbies) &&
-            const DeepCollectionEquality()
-                .equals(other.subPhotoUrls, subPhotoUrls));
+            const DeepCollectionEquality().equals(other.subPhotos, subPhotos));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -117,12 +116,12 @@ mixin _$UserWithProfileReadModel {
         holiday,
         const DeepCollectionEquality().hash(sunnyDayHobbies),
         const DeepCollectionEquality().hash(rainyDayHobbies),
-        const DeepCollectionEquality().hash(subPhotoUrls)
+        const DeepCollectionEquality().hash(subPhotos)
       ]);
 
   @override
   String toString() {
-    return 'UserWithProfileReadModel(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
+    return 'UserWithProfileReadModel(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotos: $subPhotos)';
   }
 }
 
@@ -140,7 +139,7 @@ abstract mixin class $UserWithProfileReadModelCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool isTodayReported,
+      bool? isTodayReported,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -154,7 +153,7 @@ abstract mixin class $UserWithProfileReadModelCopyWith<$Res> {
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
       List<String>? rainyDayHobbies,
-      List<String>? subPhotoUrls});
+      List<String>? subPhotos});
 }
 
 /// @nodoc
@@ -177,7 +176,7 @@ class _$UserWithProfileReadModelCopyWithImpl<$Res>
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? introduction = null,
-    Object? isTodayReported = null,
+    Object? isTodayReported = freezed,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -191,7 +190,7 @@ class _$UserWithProfileReadModelCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? subPhotoUrls = freezed,
+    Object? subPhotos = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -222,10 +221,10 @@ class _$UserWithProfileReadModelCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
-      isTodayReported: null == isTodayReported
+      isTodayReported: freezed == isTodayReported
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -278,9 +277,9 @@ class _$UserWithProfileReadModelCopyWithImpl<$Res>
           ? _self.rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      subPhotoUrls: freezed == subPhotoUrls
-          ? _self.subPhotoUrls
-          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+      subPhotos: freezed == subPhotos
+          ? _self.subPhotos
+          : subPhotos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -387,7 +386,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported,
+            bool? isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -401,7 +400,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls)?
+            List<String>? subPhotos)?
         $default, {
     required TResult orElse(),
   }) {
@@ -430,7 +429,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls);
+            _that.subPhotos);
       case _:
         return orElse();
     }
@@ -459,7 +458,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported,
+            bool? isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -473,7 +472,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls)
+            List<String>? subPhotos)
         $default,
   ) {
     final _that = this;
@@ -501,7 +500,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls);
+            _that.subPhotos);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -529,7 +528,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported,
+            bool? isTodayReported,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -543,7 +542,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls)?
+            List<String>? subPhotos)?
         $default,
   ) {
     final _that = this;
@@ -571,7 +570,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls);
+            _that.subPhotos);
       case _:
         return null;
     }
@@ -589,7 +588,7 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
       required this.address,
       required this.mainPhotoUrl,
       required this.introduction,
-      required this.isTodayReported,
+      this.isTodayReported,
       this.height,
       this.bodyShape,
       this.annualIncome,
@@ -603,10 +602,10 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
       this.holiday,
       final List<String>? sunnyDayHobbies,
       final List<String>? rainyDayHobbies,
-      final List<String>? subPhotoUrls})
+      final List<String>? subPhotos})
       : _sunnyDayHobbies = sunnyDayHobbies,
         _rainyDayHobbies = rainyDayHobbies,
-        _subPhotoUrls = subPhotoUrls;
+        _subPhotos = subPhotos;
   factory _UserWithProfileReadModel.fromJson(Map<String, dynamic> json) =>
       _$UserWithProfileReadModelFromJson(json);
 
@@ -626,7 +625,7 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
   @override
   final String introduction;
   @override
-  final bool isTodayReported;
+  final bool? isTodayReported;
   @override
   final Height? height;
   @override
@@ -669,12 +668,12 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _subPhotoUrls;
+  final List<String>? _subPhotos;
   @override
-  List<String>? get subPhotoUrls {
-    final value = _subPhotoUrls;
+  List<String>? get subPhotos {
+    final value = _subPhotos;
     if (value == null) return null;
-    if (_subPhotoUrls is EqualUnmodifiableListView) return _subPhotoUrls;
+    if (_subPhotos is EqualUnmodifiableListView) return _subPhotos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -735,7 +734,7 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
             const DeepCollectionEquality()
                 .equals(other._rainyDayHobbies, _rainyDayHobbies) &&
             const DeepCollectionEquality()
-                .equals(other._subPhotoUrls, _subPhotoUrls));
+                .equals(other._subPhotos, _subPhotos));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -763,12 +762,12 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
         holiday,
         const DeepCollectionEquality().hash(_sunnyDayHobbies),
         const DeepCollectionEquality().hash(_rainyDayHobbies),
-        const DeepCollectionEquality().hash(_subPhotoUrls)
+        const DeepCollectionEquality().hash(_subPhotos)
       ]);
 
   @override
   String toString() {
-    return 'UserWithProfileReadModel(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls)';
+    return 'UserWithProfileReadModel(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotos: $subPhotos)';
   }
 }
 
@@ -788,7 +787,7 @@ abstract mixin class _$UserWithProfileReadModelCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool isTodayReported,
+      bool? isTodayReported,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -802,7 +801,7 @@ abstract mixin class _$UserWithProfileReadModelCopyWith<$Res>
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
       List<String>? rainyDayHobbies,
-      List<String>? subPhotoUrls});
+      List<String>? subPhotos});
 }
 
 /// @nodoc
@@ -825,7 +824,7 @@ class __$UserWithProfileReadModelCopyWithImpl<$Res>
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? introduction = null,
-    Object? isTodayReported = null,
+    Object? isTodayReported = freezed,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -839,7 +838,7 @@ class __$UserWithProfileReadModelCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? subPhotoUrls = freezed,
+    Object? subPhotos = freezed,
   }) {
     return _then(_UserWithProfileReadModel(
       id: null == id
@@ -870,10 +869,10 @@ class __$UserWithProfileReadModelCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
-      isTodayReported: null == isTodayReported
+      isTodayReported: freezed == isTodayReported
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -926,9 +925,9 @@ class __$UserWithProfileReadModelCopyWithImpl<$Res>
           ? _self._rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      subPhotoUrls: freezed == subPhotoUrls
-          ? _self._subPhotoUrls
-          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+      subPhotos: freezed == subPhotos
+          ? _self._subPhotos
+          : subPhotos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }

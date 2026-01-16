@@ -22,8 +22,9 @@ mixin _$WeatherReportPostState {
   String? get url;
   double? get latitude;
   double? get longitude;
-  bool get isSubmitting;
   bool get isChanged;
+  WeatherReportPostStatus get status;
+  String? get errorMessage;
 
   /// Create a copy of WeatherReportPostState
   /// with the given fields replaced by the non-null parameter values.
@@ -52,10 +53,11 @@ mixin _$WeatherReportPostState {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
-            (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting) &&
             (identical(other.isChanged, isChanged) ||
-                other.isChanged == isChanged));
+                other.isChanged == isChanged) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -69,12 +71,13 @@ mixin _$WeatherReportPostState {
       url,
       latitude,
       longitude,
-      isSubmitting,
-      isChanged);
+      isChanged,
+      status,
+      errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isSubmitting: $isSubmitting, isChanged: $isChanged)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -93,8 +96,9 @@ abstract mixin class $WeatherReportPostStateCopyWith<$Res> {
       String? url,
       double? latitude,
       double? longitude,
-      bool isSubmitting,
-      bool isChanged});
+      bool isChanged,
+      WeatherReportPostStatus status,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -118,8 +122,9 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
-    Object? isSubmitting = null,
     Object? isChanged = null,
+    Object? status = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_self.copyWith(
       comment: freezed == comment
@@ -154,14 +159,18 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      isSubmitting: null == isSubmitting
-          ? _self.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WeatherReportPostStatus,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -268,8 +277,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
-            bool isSubmitting,
-            bool isChanged)?
+            bool isChanged,
+            WeatherReportPostStatus status,
+            String? errorMessage)?
         $default, {
     required TResult orElse(),
   }) {
@@ -285,8 +295,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
-            _that.isSubmitting,
-            _that.isChanged);
+            _that.isChanged,
+            _that.status,
+            _that.errorMessage);
       case _:
         return orElse();
     }
@@ -316,8 +327,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
-            bool isSubmitting,
-            bool isChanged)
+            bool isChanged,
+            WeatherReportPostStatus status,
+            String? errorMessage)
         $default,
   ) {
     final _that = this;
@@ -332,8 +344,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
-            _that.isSubmitting,
-            _that.isChanged);
+            _that.isChanged,
+            _that.status,
+            _that.errorMessage);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -362,8 +375,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
-            bool isSubmitting,
-            bool isChanged)?
+            bool isChanged,
+            WeatherReportPostStatus status,
+            String? errorMessage)?
         $default,
   ) {
     final _that = this;
@@ -378,8 +392,9 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
-            _that.isSubmitting,
-            _that.isChanged);
+            _that.isChanged,
+            _that.status,
+            _that.errorMessage);
       case _:
         return null;
     }
@@ -398,8 +413,9 @@ class _WeatherReportPostState extends WeatherReportPostState {
       this.url,
       this.latitude,
       this.longitude,
-      this.isSubmitting = false,
-      this.isChanged = false})
+      this.isChanged = false,
+      this.status = WeatherReportPostStatus.idle,
+      this.errorMessage})
       : super._();
 
   @override
@@ -420,10 +436,12 @@ class _WeatherReportPostState extends WeatherReportPostState {
   final double? longitude;
   @override
   @JsonKey()
-  final bool isSubmitting;
+  final bool isChanged;
   @override
   @JsonKey()
-  final bool isChanged;
+  final WeatherReportPostStatus status;
+  @override
+  final String? errorMessage;
 
   /// Create a copy of WeatherReportPostState
   /// with the given fields replaced by the non-null parameter values.
@@ -453,10 +471,11 @@ class _WeatherReportPostState extends WeatherReportPostState {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
-            (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting) &&
             (identical(other.isChanged, isChanged) ||
-                other.isChanged == isChanged));
+                other.isChanged == isChanged) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -470,12 +489,13 @@ class _WeatherReportPostState extends WeatherReportPostState {
       url,
       latitude,
       longitude,
-      isSubmitting,
-      isChanged);
+      isChanged,
+      status,
+      errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isSubmitting: $isSubmitting, isChanged: $isChanged)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -496,8 +516,9 @@ abstract mixin class _$WeatherReportPostStateCopyWith<$Res>
       String? url,
       double? latitude,
       double? longitude,
-      bool isSubmitting,
-      bool isChanged});
+      bool isChanged,
+      WeatherReportPostStatus status,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -521,8 +542,9 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
-    Object? isSubmitting = null,
     Object? isChanged = null,
+    Object? status = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_WeatherReportPostState(
       comment: freezed == comment
@@ -557,14 +579,18 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      isSubmitting: null == isSubmitting
-          ? _self.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WeatherReportPostStatus,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

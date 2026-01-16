@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
@@ -22,6 +24,7 @@ import 'package:reimi_app/domain/value_objects/blood_type.dart';
 import 'package:reimi_app/domain/value_objects/body_shape.dart';
 import 'package:reimi_app/domain/value_objects/communication_style.dart';
 import 'package:reimi_app/domain/value_objects/education.dart';
+import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/media_purpose.dart';
@@ -29,6 +32,7 @@ import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_edit_notifier.dart';
+import 'package:reimi_app/presentation/features/profile/states/profile_edit_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_edit_page.dart';
 import 'package:reimi_app/presentation/features/storage/upload_media_notifier.dart';
@@ -38,6 +42,8 @@ import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
+import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
+import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
@@ -45,12 +51,7 @@ import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 class ProfilePage extends HookConsumerWidget {
   static String get routeName => 'profile';
   static String get routeLocation => '/$routeName';
-  const ProfilePage({
-    super.key,
-    required this.userId,
-  });
-
-  final String userId;
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -64,22 +65,87 @@ class ProfilePage extends HookConsumerWidget {
       t.profilePage.placeholder.subPhoto.labels.travel,
       t.profilePage.placeholder.subPhoto.labels.holiday,
     ];
-    final notifier = ref.read(profileEditNotifierProvider(userId).notifier);
+    final notifier = ref.read(profileEditNotifierProvider.notifier);
     final isChanged = ref.watch(
-      profileEditNotifierProvider(userId).select((state) => state.isChanged),
+      profileEditNotifierProvider.select((state) => state.isChanged),
     );
-    final state =
-        ref.watch(profileEditNotifierProvider(userId).select((state) => state));
+    final mainPhotoUrl = ref.watch(
+        profileEditNotifierProvider.select((state) => state.mainPhotoUrl));
+    final subPhotos = ref
+        .watch(profileEditNotifierProvider.select((state) => state.subPhotos));
+    final introduction = ref.watch(
+        profileEditNotifierProvider.select((state) => state.introduction));
+    final sunnyDayHobbies = ref.watch(
+        profileEditNotifierProvider.select((state) => state.sunnyDayHobbies));
+    final rainyDayHobbies = ref.watch(
+        profileEditNotifierProvider.select((state) => state.rainyDayHobbies));
+    final name =
+        ref.watch(profileEditNotifierProvider.select((state) => state.name));
+    final gender =
+        ref.watch(profileEditNotifierProvider.select((state) => state.gender));
+    final birthDate = ref
+        .watch(profileEditNotifierProvider.select((state) => state.birthDate));
+    final address =
+        ref.watch(profileEditNotifierProvider.select((state) => state.address));
+    final hometown = ref
+        .watch(profileEditNotifierProvider.select((state) => state.hometown));
+    final bloodType = ref
+        .watch(profileEditNotifierProvider.select((state) => state.bloodType));
+    final height =
+        ref.watch(profileEditNotifierProvider.select((state) => state.height));
+    final bodyShape = ref
+        .watch(profileEditNotifierProvider.select((state) => state.bodyShape));
+    final education = ref
+        .watch(profileEditNotifierProvider.select((state) => state.education));
+    final occupation = ref
+        .watch(profileEditNotifierProvider.select((state) => state.occupation));
+    final annualIncome = ref.watch(
+        profileEditNotifierProvider.select((state) => state.annualIncome));
+    final smoking =
+        ref.watch(profileEditNotifierProvider.select((state) => state.smoking));
+    final alcohol =
+        ref.watch(profileEditNotifierProvider.select((state) => state.alcohol));
+    final holiday =
+        ref.watch(profileEditNotifierProvider.select((state) => state.holiday));
+    final communicationStyle = ref.watch(profileEditNotifierProvider
+        .select((state) => state.communicationStyle));
+    final status =
+        ref.watch(profileEditNotifierProvider.select((state) => state.status));
+
+    useEffect(() {
+      Future.microtask(() {
+        notifier.init();
+      });
+      final subscription = ref.listenManual<ProfileEditState>(
+        profileEditNotifierProvider,
+        (prev, next) {
+          if (!context.mounted) return;
+
+          if (next.status == ProfileEditStatus.success) {
+            AppSnackBar.success(context, t.snackBar.profile.success);
+          }
+
+          if (next.status == ProfileEditStatus.failure &&
+              next.errorMessage != null) {
+            AppSnackBar.error(context, next.errorMessage!);
+          }
+        },
+      );
+
+      return subscription.close;
+    }, const []);
 
     return Scaffold(
       body: BackgroundContainerNoon(
         child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
             SliverAppBar(
               pinned: true,
               backgroundColor: Colors.transparent,
               elevation: 0,
               automaticallyImplyLeading: false,
+              centerTitle: true,
               leading: GestureDetector(
                 onTap: () async {
                   if (isChanged) {
@@ -96,9 +162,9 @@ class ProfilePage extends HookConsumerWidget {
                         await notifier.discardChangesAndClose();
                       },
                     );
+                  } else {
+                    context.pop();
                   }
-                  // ignore: use_build_context_synchronously
-                  context.pop();
                 },
                 child: const Icon(Icons.arrow_back_ios_new),
               ),
@@ -110,6 +176,17 @@ class ProfilePage extends HookConsumerWidget {
                   color: Colors.black87,
                 ),
               ),
+              actions: [
+                GestureDetector(
+                  onTap: !isChanged || status == ProfileEditStatus.submitting
+                      ? null
+                      : () async {
+                          await notifier.submit();
+                        },
+                  child: const Icon(LineIcons.save),
+                ),
+                const SizedBox(width: 24),
+              ],
             ),
             const Gap(height: 16),
             SliverSectionTitle(
@@ -121,15 +198,10 @@ class ProfilePage extends HookConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               sliver: SliverToBoxAdapter(
                 child: MainPhotoCard(
-                  image: state.mainPhotoUrl.toImageProvider(),
+                  image: mainPhotoUrl.toImageProvider(),
                   onTap: () async {
-                    final uploadMediaNotifier =
-                        ref.read(uploadMediaNotifierProvider.notifier);
-                    final file = await uploadMediaNotifier.pickImage(
-                      mediaPurpose: MediaPurpose.mainPhoto,
-                    );
+                    final file = await pickImageFromGallery();
                     if (file != null) {
-                      await uploadMediaNotifier.upload(userId: userId);
                       notifier.updateMainPhotoUrl(file.path);
                     }
                   },
@@ -153,13 +225,13 @@ class ProfilePage extends HookConsumerWidget {
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    final subPhotoUrl = (state.subPhotoUrls != null &&
-                            index < state.subPhotoUrls!.length)
-                        ? state.subPhotoUrls![index]
-                        : null;
+                    final subPhoto =
+                        (subPhotos != null && index < subPhotos.length)
+                            ? subPhotos[index]
+                            : null;
                     return SubPhotoCard(
                       label: labels[index],
-                      subPhotoUrl: subPhotoUrl,
+                      subPhotoUrl: subPhoto,
                       onTap: () async {
                         final uploadMediaNotifier =
                             ref.read(uploadMediaNotifierProvider.notifier);
@@ -235,14 +307,14 @@ class ProfilePage extends HookConsumerWidget {
                         'title': t.profilePage.edit.title(
                           item: t.profilePage.section.introduction,
                         ),
-                        'initValue': state.introduction,
+                        'initValue': introduction,
                         'onSave': notifier.updateIntroduction,
                         'isMultiline': true,
                       },
                     );
                   },
                   child: Text(
-                    state.introduction,
+                    introduction ?? '',
                     style: theme.textTheme.bodyMedium!.copyWith(
                       height: 1.6,
                     ),
@@ -262,13 +334,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 1,
                   hint: t.profilePage.placeholder.sunnyDayHobbies.top1,
-                  value: state.sunnyDayHobbies?[0],
+                  value: sunnyDayHobbies?[0],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.sunnyDayHobbies.top1,
-                        'initValue': state.sunnyDayHobbies?[0],
+                        'initValue': sunnyDayHobbies?[0],
                         'onSave': (hobby) {
                           notifier.setSunnyDayHobby(hobby: hobby, index: 0);
                         },
@@ -289,13 +361,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 2,
                   hint: t.profilePage.placeholder.sunnyDayHobbies.top2,
-                  value: state.sunnyDayHobbies?[1],
+                  value: sunnyDayHobbies?[1],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.sunnyDayHobbies.top2,
-                        'initValue': state.sunnyDayHobbies?[1],
+                        'initValue': sunnyDayHobbies?[1],
                         'onSave': (hobby) {
                           notifier.setSunnyDayHobby(hobby: hobby, index: 1);
                         },
@@ -316,13 +388,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 3,
                   hint: t.profilePage.placeholder.sunnyDayHobbies.top3,
-                  value: state.sunnyDayHobbies?[2],
+                  value: sunnyDayHobbies?[2],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.sunnyDayHobbies.top3,
-                        'initValue': state.sunnyDayHobbies?[2],
+                        'initValue': sunnyDayHobbies?[2],
                         'onSave': (hobby) {
                           notifier.setSunnyDayHobby(hobby: hobby, index: 2);
                         },
@@ -348,13 +420,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 1,
                   hint: t.profilePage.placeholder.rainyDayHobbies.top1,
-                  value: state.rainyDayHobbies?[0],
+                  value: rainyDayHobbies?[0],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.rainyDayHobbies.top1,
-                        'initValue': state.rainyDayHobbies?[0],
+                        'initValue': rainyDayHobbies?[0],
                         'onSave': (hobby) {
                           notifier.setRainyDayHobby(hobby: hobby, index: 0);
                         },
@@ -375,13 +447,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 2,
                   hint: t.profilePage.placeholder.rainyDayHobbies.top2,
-                  value: state.rainyDayHobbies?[1],
+                  value: rainyDayHobbies?[1],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.rainyDayHobbies.top2,
-                        'initValue': state.rainyDayHobbies?[1],
+                        'initValue': rainyDayHobbies?[1],
                         'onSave': (hobby) {
                           notifier.setRainyDayHobby(hobby: hobby, index: 1);
                         },
@@ -402,13 +474,13 @@ class ProfilePage extends HookConsumerWidget {
                 child: RankInputTile(
                   rank: 3,
                   hint: t.profilePage.placeholder.rainyDayHobbies.top3,
-                  value: state.rainyDayHobbies?[2],
+                  value: rainyDayHobbies?[2],
                   onTap: () {
                     context.push(
                       ProfileEditPage.routeLocation,
                       extra: {
                         'title': t.profilePage.edit.rainyDayHobbies.top3,
-                        'initValue': state.rainyDayHobbies?[2],
+                        'initValue': rainyDayHobbies?[2],
                         'onSave': (hobby) {
                           notifier.setRainyDayHobby(hobby: hobby, index: 2);
                         },
@@ -441,7 +513,7 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title:
                             t.profilePage.section.basicInformation.items.name,
-                        value: state.name,
+                        value: name,
                         onTap: () {
                           context.push(
                             ProfileEditPage.routeLocation,
@@ -450,7 +522,7 @@ class ProfilePage extends HookConsumerWidget {
                                 item: t.profilePage.section.basicInformation
                                     .items.name,
                               ),
-                              'initValue': state.name,
+                              'initValue': name,
                               'onSave': notifier.updateName,
                               'isMultiline': false,
                             },
@@ -461,27 +533,39 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title:
                             t.profilePage.section.basicInformation.items.gender,
-                        value: state.gender.displayName(context),
-                        // TODO: 変更できない項目はダイアログを表示させた方がわかりやすそう
-                        onTap: null,
+                        value: gender?.displayName(context),
+                        onTap: () {
+                          enumPicker<Gender>(
+                            context: context,
+                            items: Gender.values,
+                            initialValue: gender,
+                            displayBuilder: (gender, context) {
+                              return gender.displayName(context);
+                            },
+                            onSelected: (gender) {
+                              notifier.updateGender(gender);
+                            },
+                          );
+                        },
                       ),
                       const CustomDivider(),
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .birthDate,
-                        value: state.birthDate.toJapaneseDate,
+                        value: birthDate?.toJapaneseDate,
                         onTap: null,
+                        isReadOnly: true,
                       ),
                       const CustomDivider(),
                       BasicInfoTile(
                         title: t
                             .profilePage.section.basicInformation.items.address,
-                        value: state.address.displayName(context),
+                        value: address?.displayName(context),
                         onTap: () {
                           enumPicker<Address>(
                             context: context,
                             items: Address.values,
-                            initialValue: state.address,
+                            initialValue: address,
                             displayBuilder: (address, context) {
                               return address.displayName(context);
                             },
@@ -495,12 +579,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .hometown,
-                        value: state.hometown?.displayName(context),
+                        value: hometown?.displayName(context),
                         onTap: () {
                           enumPicker<Address>(
                             context: context,
                             items: Address.values,
-                            initialValue: state.hometown,
+                            initialValue: hometown,
                             displayBuilder: (hometown, context) {
                               return hometown.displayName(context);
                             },
@@ -514,12 +598,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .bloodType,
-                        value: state.bloodType?.displayName(context),
+                        value: bloodType?.displayName(context),
                         onTap: () {
                           enumPicker<BloodType>(
                             context: context,
                             items: BloodType.values,
-                            initialValue: state.bloodType,
+                            initialValue: bloodType,
                             displayBuilder: (bloodType, context) {
                               return bloodType.displayName(context);
                             },
@@ -533,12 +617,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title:
                             t.profilePage.section.basicInformation.items.height,
-                        value: state.height?.displayName(context),
+                        value: height?.displayName(context),
                         onTap: () {
                           enumPicker<Height>(
                             context: context,
                             items: Height.values,
-                            initialValue: state.height,
+                            initialValue: height,
                             displayBuilder: (height, context) {
                               return height.displayName(context);
                             },
@@ -552,12 +636,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .bodyShape,
-                        value: state.bodyShape?.displayName(context),
+                        value: bodyShape?.displayName(context),
                         onTap: () {
                           enumPicker<BodyShape>(
                             context: context,
                             items: BodyShape.values,
-                            initialValue: state.bodyShape,
+                            initialValue: bodyShape,
                             displayBuilder: (bodyShape, context) {
                               return bodyShape.displayName(context);
                             },
@@ -571,12 +655,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .education,
-                        value: state.education?.displayName(context),
+                        value: education?.displayName(context),
                         onTap: () {
                           enumPicker<Education>(
                             context: context,
                             items: Education.values,
-                            initialValue: state.education,
+                            initialValue: education,
                             displayBuilder: (education, context) {
                               return education.displayName(context);
                             },
@@ -590,12 +674,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .occupation,
-                        value: state.occupation?.displayName(context),
+                        value: occupation?.displayName(context),
                         onTap: () {
                           enumPicker<Occupation>(
                             context: context,
                             items: Occupation.values,
-                            initialValue: state.occupation,
+                            initialValue: occupation,
                             displayBuilder: (occupation, context) {
                               return occupation.displayName(context);
                             },
@@ -609,12 +693,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .annualIncome,
-                        value: state.annualIncome?.displayName(context),
+                        value: annualIncome?.displayName(context),
                         onTap: () {
                           enumPicker<AnnualIncome>(
                             context: context,
                             items: AnnualIncome.values,
-                            initialValue: state.annualIncome,
+                            initialValue: annualIncome,
                             displayBuilder: (annualIncome, context) {
                               return annualIncome.displayName(context);
                             },
@@ -628,12 +712,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t
                             .profilePage.section.basicInformation.items.smoking,
-                        value: state.smoking?.displayName(context),
+                        value: smoking?.displayName(context),
                         onTap: () {
                           enumPicker<Smoking>(
                             context: context,
                             items: Smoking.values,
-                            initialValue: state.smoking,
+                            initialValue: smoking,
                             displayBuilder: (smoking, context) {
                               return smoking.displayName(context);
                             },
@@ -647,12 +731,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t
                             .profilePage.section.basicInformation.items.alcohol,
-                        value: state.alcohol?.displayName(context),
+                        value: alcohol?.displayName(context),
                         onTap: () {
                           enumPicker<Alcohol>(
                             context: context,
                             items: Alcohol.values,
-                            initialValue: state.alcohol,
+                            initialValue: alcohol,
                             displayBuilder: (alcohol, context) {
                               return alcohol.displayName(context);
                             },
@@ -666,12 +750,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t
                             .profilePage.section.basicInformation.items.holiday,
-                        value: state.holiday?.displayName(context),
+                        value: holiday?.displayName(context),
                         onTap: () {
                           enumPicker<Holiday>(
                             context: context,
                             items: Holiday.values,
-                            initialValue: state.holiday,
+                            initialValue: holiday,
                             displayBuilder: (holiday, context) {
                               return holiday.displayName(context);
                             },
@@ -685,12 +769,12 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .communicationStyle,
-                        value: state.communicationStyle?.displayName(context),
+                        value: communicationStyle?.displayName(context),
                         onTap: () {
                           enumPicker<CommunicationStyle>(
                             context: context,
                             items: CommunicationStyle.values,
-                            initialValue: state.communicationStyle,
+                            initialValue: communicationStyle,
                             displayBuilder: (communicationStyle, context) {
                               return communicationStyle.displayName(context);
                             },
@@ -706,7 +790,7 @@ class ProfilePage extends HookConsumerWidget {
                 ),
               ),
             ),
-            const Gap(height: 80),
+            const Gap(height: 40),
           ],
         ),
       ),

@@ -6,9 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_notifier.dart';
-import 'package:reimi_app/presentation/features/home/home_page.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_state.dart';
+import 'package:reimi_app/presentation/app/router/auth_gate.dart';
+import 'package:reimi_app/presentation/features/user_registration/notifiers/user_registration_notifier.dart';
+import 'package:reimi_app/presentation/features/user_registration/states/user_registration_state.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/confirmation_dialog.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/user_registration_page.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
@@ -40,7 +40,7 @@ class UserMainPhotoPage extends HookConsumerWidget {
           if (!context.mounted) return;
 
           if (next.status == UserRegistrationStatus.success) {
-            context.go(HomePage.routeLocation);
+            context.go(AuthGate.routeLocation);
           }
 
           if (next.status == UserRegistrationStatus.failure &&

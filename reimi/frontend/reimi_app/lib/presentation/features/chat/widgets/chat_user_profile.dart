@@ -90,8 +90,8 @@ List<Widget> chatUserProfile({
       ),
     ),
     const Gap(height: 32),
-    if (userProfile.subPhotoUrls == null ||
-        userProfile.subPhotoUrls!.isEmpty) ...[
+    if (userProfile.subPhotos == null ||
+        userProfile.subPhotos!.isEmpty) ...[
       const SliverToBoxAdapter(
         child: SizedBox.shrink(),
       ),
@@ -106,12 +106,12 @@ List<Widget> chatUserProfile({
         sliver: SliverGrid(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              if (userProfile.subPhotoUrls?[index] == null) {
+              if (userProfile.subPhotos?[index] == null) {
                 return const SizedBox.shrink();
               } else {
                 return SubPhotoCard(
                   label: labels[index],
-                  subPhotoUrl: userProfile.subPhotoUrls?[index],
+                  subPhotoUrl: userProfile.subPhotos?[index],
                   onTap: null,
                   onDelete: null,
                 );

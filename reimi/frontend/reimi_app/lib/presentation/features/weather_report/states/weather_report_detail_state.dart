@@ -6,5 +6,7 @@ part 'weather_report_detail_state.freezed.dart';
 abstract class WeatherReportDetailState with _$WeatherReportDetailState {
   const factory WeatherReportDetailState({
     WeatherReportReadModel? weatherReport,
+    @Default(false) bool isLoading,
+    String? errorMessage,
   }) = _WeatherReportDetailState;
 }

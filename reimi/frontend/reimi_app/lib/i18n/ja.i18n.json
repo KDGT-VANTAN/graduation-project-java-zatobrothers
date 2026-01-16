@@ -81,7 +81,14 @@
       }
     }
   },
+  "homePage": {
+    "isEmptyCase": "現在、表示できるユーザーがいません。"
+  },
+  "likePage": {
+    "isEmptyCase": "新しい出会いをみつけましょう！"
+  },
   "chatPage": {
+    "isEmptyCase": "新しい出会いをみつけましょう！",
     "sectionTitle": {
       "matching": "マッチング",
       "messages": "メッセージ"
@@ -91,10 +98,12 @@
     }
   },
   "chatDetailPage": {
+    "nullCase": "プロフィール情報が取得できませんでした。",
     "placeHolder": "メッセージを入力"
   },
   "weatherReportPage": {
-    "sectionTitle": "ウェザーリポート"
+    "sectionTitle": "ウェザーリポート",
+    "isEmptyCase": "現在、表示できるリポートがありません。"
   },
   "weatherReportPostPage": {
     "title": "ウェザーリポート送信",
@@ -123,11 +132,15 @@
   },
   "weatherReportDetailPage": {
     "title": "投稿詳細",
+    "nullCase": "リポート情報が取得できませんでした。",
     "label": {
       "weather": "天気",
       "feeling": "体感",
       "forecast": "五感予想"
     }
+  },
+  "accountPage": {
+    "nullCase": "ユーザー情報が取得できませんでした。"
   },
   "profilePage": {
     "title": "プロフィール編集",
@@ -193,11 +206,15 @@
         "top2": "雨の日ベスト2を入力",
         "top3": "雨の日ベスト3を入力"
       },
-      "basicInformation": "未設定"
+      "basicInformation": {
+        "notSet": "未設定",
+        "toolTip": "この項目は変更できません。"
+      }
     }
   },
   "profileDetailPage": {
-    "title": "プロフィール詳細"
+    "title": "プロフィール詳細",
+    "nullCase": "プロフィール情報が取得できませんでした。"
   },
   "weatherPersonalityConceptPage": {
     "title": "ウェザーパーソナリティ診断",
@@ -317,6 +334,7 @@
     }
   },
   "weatherPersonalityTestResultPage": {
+    "nullCase": "診断結果の取得に失敗しました。",
     "section": {
       "title": "神様からの裁定",
       "mainResult": {
@@ -508,7 +526,8 @@
     "seeResults": "結果を見る",
     "shareResults": "結果をシェアする",
     "returnToAccountPage": "アカウント画面に戻る",
-    "completion": "完了"
+    "completion": "完了",
+    "weatherPersonalityTest": "ウェザーパーソナリティ診断"
   },
   "segmentedSwitch": {
     "like": {
@@ -518,6 +537,11 @@
     "chat": {
       "message": "メッセージ",
       "profile": "プロフィール"
+    }
+  },
+  "snackBar": {
+    "profile": {
+      "success": "プロフィール更新が完了しました！"
     }
   },
   "enum": {

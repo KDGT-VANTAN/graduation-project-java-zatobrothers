@@ -26,7 +26,7 @@ abstract class UserWithProfileReadModel with _$UserWithProfileReadModel {
     required Address address,
     required String mainPhotoUrl,
     required String introduction,
-    required bool isTodayReported,
+    bool? isTodayReported,
     Height? height,
     BodyShape? bodyShape,
     AnnualIncome? annualIncome,
@@ -40,7 +40,7 @@ abstract class UserWithProfileReadModel with _$UserWithProfileReadModel {
     Holiday? holiday,
     List<String>? sunnyDayHobbies,
     List<String>? rainyDayHobbies,
-    List<String>? subPhotoUrls,
+    List<String>? subPhotos,
   }) = _UserWithProfileReadModel;
 
   factory UserWithProfileReadModel.fromJson(Map<String, dynamic> json) =>

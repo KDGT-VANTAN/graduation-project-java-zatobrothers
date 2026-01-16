@@ -62,7 +62,11 @@ abstract class ApiException implements Exception {
       // 401
       case 'UNAUTHENTICATED':
         return UnauthenticatedException(message);
-      
+
+      // 403
+      case 'ACCESS_DENIED':
+        return AccessDeniedException(message);
+
       // 404
       case 'RESOURCE_NOT_FOUND':
         return ResourceNotFoundException(message);
@@ -95,6 +99,12 @@ class InvalidRequestException extends ApiException {
 class UnauthenticatedException extends ApiException {
   const UnauthenticatedException(String message)
       : super(code: 'UNAUTHENTICATED', message: message);
+}
+
+// 403: 権限エラー
+class AccessDeniedException extends ApiException {
+  const AccessDeniedException(String message)
+      : super(code: 'ACCESS_DENIED', message: message);
 }
 
 // 404: リソース不存在エラー

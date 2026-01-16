@@ -69,7 +69,7 @@ UserRepository userRepository(Ref ref) {
 @riverpod
 ProfileRemoteDataSource profileRemoteDataSource(Ref ref) {
   if (useMock) return const ProfileMockDataSource();
-  return const ProfileRemoteDataSourceImpl();
+  return ProfileRemoteDataSourceImpl(ref.watch(dioClientProvider));
 }
 
 @riverpod

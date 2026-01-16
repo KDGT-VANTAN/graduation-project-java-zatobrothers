@@ -17,8 +17,9 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
     String? url,
     double? latitude,
     double? longitude,
-    @Default(false) bool isSubmitting,
     @Default(false) bool isChanged,
+    @Default(WeatherReportPostStatus.idle) WeatherReportPostStatus status,
+    String? errorMessage,
   }) = _WeatherReportPostState;
 
   const WeatherReportPostState._();
@@ -29,6 +30,12 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
       feelingType != null &&
       forecastType != null &&
       mediaType != null &&
-      url?.isNotEmpty == true &&
-      !isSubmitting;
+      url?.isNotEmpty == true;
+}
+
+enum WeatherReportPostStatus {
+  idle,
+  submitting,
+  success,
+  failure,
 }

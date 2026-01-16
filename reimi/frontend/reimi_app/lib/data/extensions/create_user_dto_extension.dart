@@ -18,7 +18,7 @@ extension CreateUserDtoMapper on CreateUserParams {
   }
 }
 
-extension CreateUserDtoFormData on CreateUserDto {
+extension CreateUserFormData on CreateUserDto {
   Future<FormData> toFormData() async {
     final json = toJson();
     return FormData.fromMap({

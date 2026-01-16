@@ -14,13 +14,14 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ProfileEditState {
-  String get name;
-  Gender get gender;
+  String? get id;
+  String? get name;
+  Gender? get gender;
   @YyyyMmDdDateConverter()
-  DateTime get birthDate;
-  Address get address;
-  String get mainPhotoUrl;
-  String get introduction;
+  DateTime? get birthDate;
+  Address? get address;
+  String? get mainPhotoUrl;
+  String? get introduction;
   Height? get height;
   BodyShape? get bodyShape;
   AnnualIncome? get annualIncome;
@@ -34,8 +35,12 @@ mixin _$ProfileEditState {
   Holiday? get holiday;
   List<String>? get sunnyDayHobbies;
   List<String>? get rainyDayHobbies;
-  List<String>? get subPhotoUrls;
+  List<String>? get subPhotos;
   bool get isChanged;
+  bool get isLoading;
+  bool get isInitialized;
+  String? get errorMessage;
+  ProfileEditStatus get status;
 
   /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
@@ -50,6 +55,7 @@ mixin _$ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ProfileEditState &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.birthDate, birthDate) ||
@@ -81,15 +87,22 @@ mixin _$ProfileEditState {
                 .equals(other.sunnyDayHobbies, sunnyDayHobbies) &&
             const DeepCollectionEquality()
                 .equals(other.rainyDayHobbies, rainyDayHobbies) &&
-            const DeepCollectionEquality()
-                .equals(other.subPhotoUrls, subPhotoUrls) &&
+            const DeepCollectionEquality().equals(other.subPhotos, subPhotos) &&
             (identical(other.isChanged, isChanged) ||
-                other.isChanged == isChanged));
+                other.isChanged == isChanged) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isInitialized, isInitialized) ||
+                other.isInitialized == isInitialized) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        id,
         name,
         gender,
         birthDate,
@@ -109,13 +122,17 @@ mixin _$ProfileEditState {
         holiday,
         const DeepCollectionEquality().hash(sunnyDayHobbies),
         const DeepCollectionEquality().hash(rainyDayHobbies),
-        const DeepCollectionEquality().hash(subPhotoUrls),
-        isChanged
+        const DeepCollectionEquality().hash(subPhotos),
+        isChanged,
+        isLoading,
+        isInitialized,
+        errorMessage,
+        status
       ]);
 
   @override
   String toString() {
-    return 'ProfileEditState(name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls, isChanged: $isChanged)';
+    return 'ProfileEditState(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotos: $subPhotos, isChanged: $isChanged, isLoading: $isLoading, isInitialized: $isInitialized, errorMessage: $errorMessage, status: $status)';
   }
 }
 
@@ -126,12 +143,13 @@ abstract mixin class $ProfileEditStateCopyWith<$Res> {
       _$ProfileEditStateCopyWithImpl;
   @useResult
   $Res call(
-      {String name,
-      Gender gender,
-      @YyyyMmDdDateConverter() DateTime birthDate,
-      Address address,
-      String mainPhotoUrl,
-      String introduction,
+      {String? id,
+      String? name,
+      Gender? gender,
+      @YyyyMmDdDateConverter() DateTime? birthDate,
+      Address? address,
+      String? mainPhotoUrl,
+      String? introduction,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -145,8 +163,12 @@ abstract mixin class $ProfileEditStateCopyWith<$Res> {
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
       List<String>? rainyDayHobbies,
-      List<String>? subPhotoUrls,
-      bool isChanged});
+      List<String>? subPhotos,
+      bool isChanged,
+      bool isLoading,
+      bool isInitialized,
+      String? errorMessage,
+      ProfileEditStatus status});
 }
 
 /// @nodoc
@@ -162,12 +184,13 @@ class _$ProfileEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? gender = null,
-    Object? birthDate = null,
-    Object? address = null,
-    Object? mainPhotoUrl = null,
-    Object? introduction = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? gender = freezed,
+    Object? birthDate = freezed,
+    Object? address = freezed,
+    Object? mainPhotoUrl = freezed,
+    Object? introduction = freezed,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -181,34 +204,42 @@ class _$ProfileEditStateCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? subPhotoUrls = freezed,
+    Object? subPhotos = freezed,
     Object? isChanged = null,
+    Object? isLoading = null,
+    Object? isInitialized = null,
+    Object? errorMessage = freezed,
+    Object? status = null,
   }) {
     return _then(_self.copyWith(
-      name: null == name
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
+              as String?,
+      gender: freezed == gender
           ? _self.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
-      birthDate: null == birthDate
+              as Gender?,
+      birthDate: freezed == birthDate
           ? _self.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      address: null == address
+              as DateTime?,
+      address: freezed == address
           ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address,
-      mainPhotoUrl: null == mainPhotoUrl
+              as Address?,
+      mainPhotoUrl: freezed == mainPhotoUrl
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      introduction: null == introduction
+              as String?,
+      introduction: freezed == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -261,14 +292,30 @@ class _$ProfileEditStateCopyWithImpl<$Res>
           ? _self.rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      subPhotoUrls: freezed == subPhotoUrls
-          ? _self.subPhotoUrls
-          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+      subPhotos: freezed == subPhotos
+          ? _self.subPhotos
+          : subPhotos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInitialized: null == isInitialized
+          ? _self.isInitialized
+          : isInitialized // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProfileEditStatus,
     ));
   }
 }
@@ -367,12 +414,13 @@ extension ProfileEditStatePatterns on ProfileEditState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String name,
-            Gender gender,
-            @YyyyMmDdDateConverter() DateTime birthDate,
-            Address address,
-            String mainPhotoUrl,
-            String introduction,
+            String? id,
+            String? name,
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? mainPhotoUrl,
+            String? introduction,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -386,8 +434,12 @@ extension ProfileEditStatePatterns on ProfileEditState {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls,
-            bool isChanged)?
+            List<String>? subPhotos,
+            bool isChanged,
+            bool isLoading,
+            bool isInitialized,
+            String? errorMessage,
+            ProfileEditStatus status)?
         $default, {
     required TResult orElse(),
   }) {
@@ -395,6 +447,7 @@ extension ProfileEditStatePatterns on ProfileEditState {
     switch (_that) {
       case _ProfileEditState() when $default != null:
         return $default(
+            _that.id,
             _that.name,
             _that.gender,
             _that.birthDate,
@@ -414,8 +467,12 @@ extension ProfileEditStatePatterns on ProfileEditState {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls,
-            _that.isChanged);
+            _that.subPhotos,
+            _that.isChanged,
+            _that.isLoading,
+            _that.isInitialized,
+            _that.errorMessage,
+            _that.status);
       case _:
         return orElse();
     }
@@ -437,12 +494,13 @@ extension ProfileEditStatePatterns on ProfileEditState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String name,
-            Gender gender,
-            @YyyyMmDdDateConverter() DateTime birthDate,
-            Address address,
-            String mainPhotoUrl,
-            String introduction,
+            String? id,
+            String? name,
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? mainPhotoUrl,
+            String? introduction,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -456,14 +514,19 @@ extension ProfileEditStatePatterns on ProfileEditState {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls,
-            bool isChanged)
+            List<String>? subPhotos,
+            bool isChanged,
+            bool isLoading,
+            bool isInitialized,
+            String? errorMessage,
+            ProfileEditStatus status)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileEditState():
         return $default(
+            _that.id,
             _that.name,
             _that.gender,
             _that.birthDate,
@@ -483,8 +546,12 @@ extension ProfileEditStatePatterns on ProfileEditState {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls,
-            _that.isChanged);
+            _that.subPhotos,
+            _that.isChanged,
+            _that.isLoading,
+            _that.isInitialized,
+            _that.errorMessage,
+            _that.status);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -505,12 +572,13 @@ extension ProfileEditStatePatterns on ProfileEditState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String name,
-            Gender gender,
-            @YyyyMmDdDateConverter() DateTime birthDate,
-            Address address,
-            String mainPhotoUrl,
-            String introduction,
+            String? id,
+            String? name,
+            Gender? gender,
+            @YyyyMmDdDateConverter() DateTime? birthDate,
+            Address? address,
+            String? mainPhotoUrl,
+            String? introduction,
             Height? height,
             BodyShape? bodyShape,
             AnnualIncome? annualIncome,
@@ -524,14 +592,19 @@ extension ProfileEditStatePatterns on ProfileEditState {
             Holiday? holiday,
             List<String>? sunnyDayHobbies,
             List<String>? rainyDayHobbies,
-            List<String>? subPhotoUrls,
-            bool isChanged)?
+            List<String>? subPhotos,
+            bool isChanged,
+            bool isLoading,
+            bool isInitialized,
+            String? errorMessage,
+            ProfileEditStatus status)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileEditState() when $default != null:
         return $default(
+            _that.id,
             _that.name,
             _that.gender,
             _that.birthDate,
@@ -551,8 +624,12 @@ extension ProfileEditStatePatterns on ProfileEditState {
             _that.holiday,
             _that.sunnyDayHobbies,
             _that.rainyDayHobbies,
-            _that.subPhotoUrls,
-            _that.isChanged);
+            _that.subPhotos,
+            _that.isChanged,
+            _that.isLoading,
+            _that.isInitialized,
+            _that.errorMessage,
+            _that.status);
       case _:
         return null;
     }
@@ -561,14 +638,15 @@ extension ProfileEditStatePatterns on ProfileEditState {
 
 /// @nodoc
 
-class _ProfileEditState implements ProfileEditState {
+class _ProfileEditState extends ProfileEditState {
   const _ProfileEditState(
-      {required this.name,
-      required this.gender,
-      @YyyyMmDdDateConverter() required this.birthDate,
-      required this.address,
-      required this.mainPhotoUrl,
-      required this.introduction,
+      {this.id,
+      this.name,
+      this.gender,
+      @YyyyMmDdDateConverter() this.birthDate,
+      this.address,
+      this.mainPhotoUrl,
+      this.introduction,
       this.height,
       this.bodyShape,
       this.annualIncome,
@@ -582,25 +660,32 @@ class _ProfileEditState implements ProfileEditState {
       this.holiday,
       final List<String>? sunnyDayHobbies,
       final List<String>? rainyDayHobbies,
-      final List<String>? subPhotoUrls,
-      this.isChanged = false})
+      final List<String>? subPhotos,
+      this.isChanged = false,
+      this.isLoading = false,
+      this.isInitialized = false,
+      this.errorMessage,
+      this.status = ProfileEditStatus.idle})
       : _sunnyDayHobbies = sunnyDayHobbies,
         _rainyDayHobbies = rainyDayHobbies,
-        _subPhotoUrls = subPhotoUrls;
+        _subPhotos = subPhotos,
+        super._();
 
   @override
-  final String name;
+  final String? id;
   @override
-  final Gender gender;
+  final String? name;
+  @override
+  final Gender? gender;
   @override
   @YyyyMmDdDateConverter()
-  final DateTime birthDate;
+  final DateTime? birthDate;
   @override
-  final Address address;
+  final Address? address;
   @override
-  final String mainPhotoUrl;
+  final String? mainPhotoUrl;
   @override
-  final String introduction;
+  final String? introduction;
   @override
   final Height? height;
   @override
@@ -643,12 +728,12 @@ class _ProfileEditState implements ProfileEditState {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _subPhotoUrls;
+  final List<String>? _subPhotos;
   @override
-  List<String>? get subPhotoUrls {
-    final value = _subPhotoUrls;
+  List<String>? get subPhotos {
+    final value = _subPhotos;
     if (value == null) return null;
-    if (_subPhotoUrls is EqualUnmodifiableListView) return _subPhotoUrls;
+    if (_subPhotos is EqualUnmodifiableListView) return _subPhotos;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -656,6 +741,17 @@ class _ProfileEditState implements ProfileEditState {
   @override
   @JsonKey()
   final bool isChanged;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isInitialized;
+  @override
+  final String? errorMessage;
+  @override
+  @JsonKey()
+  final ProfileEditStatus status;
 
   /// Create a copy of ProfileEditState
   /// with the given fields replaced by the non-null parameter values.
@@ -670,6 +766,7 @@ class _ProfileEditState implements ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ProfileEditState &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.birthDate, birthDate) ||
@@ -702,14 +799,22 @@ class _ProfileEditState implements ProfileEditState {
             const DeepCollectionEquality()
                 .equals(other._rainyDayHobbies, _rainyDayHobbies) &&
             const DeepCollectionEquality()
-                .equals(other._subPhotoUrls, _subPhotoUrls) &&
+                .equals(other._subPhotos, _subPhotos) &&
             (identical(other.isChanged, isChanged) ||
-                other.isChanged == isChanged));
+                other.isChanged == isChanged) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isInitialized, isInitialized) ||
+                other.isInitialized == isInitialized) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        id,
         name,
         gender,
         birthDate,
@@ -729,13 +834,17 @@ class _ProfileEditState implements ProfileEditState {
         holiday,
         const DeepCollectionEquality().hash(_sunnyDayHobbies),
         const DeepCollectionEquality().hash(_rainyDayHobbies),
-        const DeepCollectionEquality().hash(_subPhotoUrls),
-        isChanged
+        const DeepCollectionEquality().hash(_subPhotos),
+        isChanged,
+        isLoading,
+        isInitialized,
+        errorMessage,
+        status
       ]);
 
   @override
   String toString() {
-    return 'ProfileEditState(name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotoUrls: $subPhotoUrls, isChanged: $isChanged)';
+    return 'ProfileEditState(id: $id, name: $name, gender: $gender, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, height: $height, bodyShape: $bodyShape, annualIncome: $annualIncome, bloodType: $bloodType, hometown: $hometown, communicationStyle: $communicationStyle, occupation: $occupation, education: $education, smoking: $smoking, alcohol: $alcohol, holiday: $holiday, sunnyDayHobbies: $sunnyDayHobbies, rainyDayHobbies: $rainyDayHobbies, subPhotos: $subPhotos, isChanged: $isChanged, isLoading: $isLoading, isInitialized: $isInitialized, errorMessage: $errorMessage, status: $status)';
   }
 }
 
@@ -748,12 +857,13 @@ abstract mixin class _$ProfileEditStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
-      Gender gender,
-      @YyyyMmDdDateConverter() DateTime birthDate,
-      Address address,
-      String mainPhotoUrl,
-      String introduction,
+      {String? id,
+      String? name,
+      Gender? gender,
+      @YyyyMmDdDateConverter() DateTime? birthDate,
+      Address? address,
+      String? mainPhotoUrl,
+      String? introduction,
       Height? height,
       BodyShape? bodyShape,
       AnnualIncome? annualIncome,
@@ -767,8 +877,12 @@ abstract mixin class _$ProfileEditStateCopyWith<$Res>
       Holiday? holiday,
       List<String>? sunnyDayHobbies,
       List<String>? rainyDayHobbies,
-      List<String>? subPhotoUrls,
-      bool isChanged});
+      List<String>? subPhotos,
+      bool isChanged,
+      bool isLoading,
+      bool isInitialized,
+      String? errorMessage,
+      ProfileEditStatus status});
 }
 
 /// @nodoc
@@ -784,12 +898,13 @@ class __$ProfileEditStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? name = null,
-    Object? gender = null,
-    Object? birthDate = null,
-    Object? address = null,
-    Object? mainPhotoUrl = null,
-    Object? introduction = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? gender = freezed,
+    Object? birthDate = freezed,
+    Object? address = freezed,
+    Object? mainPhotoUrl = freezed,
+    Object? introduction = freezed,
     Object? height = freezed,
     Object? bodyShape = freezed,
     Object? annualIncome = freezed,
@@ -803,34 +918,42 @@ class __$ProfileEditStateCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? sunnyDayHobbies = freezed,
     Object? rainyDayHobbies = freezed,
-    Object? subPhotoUrls = freezed,
+    Object? subPhotos = freezed,
     Object? isChanged = null,
+    Object? isLoading = null,
+    Object? isInitialized = null,
+    Object? errorMessage = freezed,
+    Object? status = null,
   }) {
     return _then(_ProfileEditState(
-      name: null == name
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
+              as String?,
+      gender: freezed == gender
           ? _self.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as Gender,
-      birthDate: null == birthDate
+              as Gender?,
+      birthDate: freezed == birthDate
           ? _self.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      address: null == address
+              as DateTime?,
+      address: freezed == address
           ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address,
-      mainPhotoUrl: null == mainPhotoUrl
+              as Address?,
+      mainPhotoUrl: freezed == mainPhotoUrl
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      introduction: null == introduction
+              as String?,
+      introduction: freezed == introduction
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -883,14 +1006,30 @@ class __$ProfileEditStateCopyWithImpl<$Res>
           ? _self._rainyDayHobbies
           : rainyDayHobbies // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      subPhotoUrls: freezed == subPhotoUrls
-          ? _self._subPhotoUrls
-          : subPhotoUrls // ignore: cast_nullable_to_non_nullable
+      subPhotos: freezed == subPhotos
+          ? _self._subPhotos
+          : subPhotos // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInitialized: null == isInitialized
+          ? _self.isInitialized
+          : isInitialized // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ProfileEditStatus,
     ));
   }
 }

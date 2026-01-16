@@ -15,6 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WeatherReportState {
   List<WeatherReportSimpleReadModel> get weatherReports;
+  bool get isLoading;
+  String? get errorMessage;
 
   /// Create a copy of WeatherReportState
   /// with the given fields replaced by the non-null parameter values.
@@ -30,16 +32,23 @@ mixin _$WeatherReportState {
         (other.runtimeType == runtimeType &&
             other is WeatherReportState &&
             const DeepCollectionEquality()
-                .equals(other.weatherReports, weatherReports));
+                .equals(other.weatherReports, weatherReports) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(weatherReports));
+      runtimeType,
+      const DeepCollectionEquality().hash(weatherReports),
+      isLoading,
+      errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportState(weatherReports: $weatherReports)';
+    return 'WeatherReportState(weatherReports: $weatherReports, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -49,7 +58,10 @@ abstract mixin class $WeatherReportStateCopyWith<$Res> {
           WeatherReportState value, $Res Function(WeatherReportState) _then) =
       _$WeatherReportStateCopyWithImpl;
   @useResult
-  $Res call({List<WeatherReportSimpleReadModel> weatherReports});
+  $Res call(
+      {List<WeatherReportSimpleReadModel> weatherReports,
+      bool isLoading,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -66,12 +78,22 @@ class _$WeatherReportStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? weatherReports = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_self.copyWith(
       weatherReports: null == weatherReports
           ? _self.weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
               as List<WeatherReportSimpleReadModel>,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -169,14 +191,16 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleReadModel> weatherReports)?
+    TResult Function(List<WeatherReportSimpleReadModel> weatherReports,
+            bool isLoading, String? errorMessage)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _WeatherReportState() when $default != null:
-        return $default(_that.weatherReports);
+        return $default(
+            _that.weatherReports, _that.isLoading, _that.errorMessage);
       case _:
         return orElse();
     }
@@ -197,13 +221,15 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleReadModel> weatherReports)
+    TResult Function(List<WeatherReportSimpleReadModel> weatherReports,
+            bool isLoading, String? errorMessage)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportState():
-        return $default(_that.weatherReports);
+        return $default(
+            _that.weatherReports, _that.isLoading, _that.errorMessage);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -223,13 +249,15 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<WeatherReportSimpleReadModel> weatherReports)?
+    TResult? Function(List<WeatherReportSimpleReadModel> weatherReports,
+            bool isLoading, String? errorMessage)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportState() when $default != null:
-        return $default(_that.weatherReports);
+        return $default(
+            _that.weatherReports, _that.isLoading, _that.errorMessage);
       case _:
         return null;
     }
@@ -241,7 +269,9 @@ extension WeatherReportStatePatterns on WeatherReportState {
 class _WeatherReportState implements WeatherReportState {
   const _WeatherReportState(
       {final List<WeatherReportSimpleReadModel> weatherReports =
-          const <WeatherReportSimpleReadModel>[]})
+          const <WeatherReportSimpleReadModel>[],
+      this.isLoading = false,
+      this.errorMessage})
       : _weatherReports = weatherReports;
 
   final List<WeatherReportSimpleReadModel> _weatherReports;
@@ -252,6 +282,12 @@ class _WeatherReportState implements WeatherReportState {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_weatherReports);
   }
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  final String? errorMessage;
 
   /// Create a copy of WeatherReportState
   /// with the given fields replaced by the non-null parameter values.
@@ -267,16 +303,23 @@ class _WeatherReportState implements WeatherReportState {
         (other.runtimeType == runtimeType &&
             other is _WeatherReportState &&
             const DeepCollectionEquality()
-                .equals(other._weatherReports, _weatherReports));
+                .equals(other._weatherReports, _weatherReports) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_weatherReports));
+      runtimeType,
+      const DeepCollectionEquality().hash(_weatherReports),
+      isLoading,
+      errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportState(weatherReports: $weatherReports)';
+    return 'WeatherReportState(weatherReports: $weatherReports, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -288,7 +331,10 @@ abstract mixin class _$WeatherReportStateCopyWith<$Res>
       __$WeatherReportStateCopyWithImpl;
   @override
   @useResult
-  $Res call({List<WeatherReportSimpleReadModel> weatherReports});
+  $Res call(
+      {List<WeatherReportSimpleReadModel> weatherReports,
+      bool isLoading,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -305,12 +351,22 @@ class __$WeatherReportStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? weatherReports = null,
+    Object? isLoading = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_WeatherReportState(
       weatherReports: null == weatherReports
           ? _self._weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
               as List<WeatherReportSimpleReadModel>,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

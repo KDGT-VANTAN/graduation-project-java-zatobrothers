@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$ChatDetailState {
   List<ChatMessageReadModel> get chatMessages;
   UserWithProfileReadModel? get userProfile;
+  ChatSegment get segment;
   bool get isLoadingMessages;
   bool get isLoadingProfile;
   String? get errorMessage;
@@ -38,6 +39,7 @@ mixin _$ChatDetailState {
                 .equals(other.chatMessages, chatMessages) &&
             (identical(other.userProfile, userProfile) ||
                 other.userProfile == userProfile) &&
+            (identical(other.segment, segment) || other.segment == segment) &&
             (identical(other.isLoadingMessages, isLoadingMessages) ||
                 other.isLoadingMessages == isLoadingMessages) &&
             (identical(other.isLoadingProfile, isLoadingProfile) ||
@@ -53,6 +55,7 @@ mixin _$ChatDetailState {
       runtimeType,
       const DeepCollectionEquality().hash(chatMessages),
       userProfile,
+      segment,
       isLoadingMessages,
       isLoadingProfile,
       errorMessage,
@@ -60,7 +63,7 @@ mixin _$ChatDetailState {
 
   @override
   String toString() {
-    return 'ChatDetailState(chatMessages: $chatMessages, userProfile: $userProfile, isLoadingMessages: $isLoadingMessages, isLoadingProfile: $isLoadingProfile, errorMessage: $errorMessage, inputText: $inputText)';
+    return 'ChatDetailState(chatMessages: $chatMessages, userProfile: $userProfile, segment: $segment, isLoadingMessages: $isLoadingMessages, isLoadingProfile: $isLoadingProfile, errorMessage: $errorMessage, inputText: $inputText)';
   }
 }
 
@@ -73,6 +76,7 @@ abstract mixin class $ChatDetailStateCopyWith<$Res> {
   $Res call(
       {List<ChatMessageReadModel> chatMessages,
       UserWithProfileReadModel? userProfile,
+      ChatSegment segment,
       bool isLoadingMessages,
       bool isLoadingProfile,
       String? errorMessage,
@@ -96,6 +100,7 @@ class _$ChatDetailStateCopyWithImpl<$Res>
   $Res call({
     Object? chatMessages = null,
     Object? userProfile = freezed,
+    Object? segment = null,
     Object? isLoadingMessages = null,
     Object? isLoadingProfile = null,
     Object? errorMessage = freezed,
@@ -110,6 +115,10 @@ class _$ChatDetailStateCopyWithImpl<$Res>
           ? _self.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserWithProfileReadModel?,
+      segment: null == segment
+          ? _self.segment
+          : segment // ignore: cast_nullable_to_non_nullable
+              as ChatSegment,
       isLoadingMessages: null == isLoadingMessages
           ? _self.isLoadingMessages
           : isLoadingMessages // ignore: cast_nullable_to_non_nullable
@@ -240,6 +249,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
     TResult Function(
             List<ChatMessageReadModel> chatMessages,
             UserWithProfileReadModel? userProfile,
+            ChatSegment segment,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -253,6 +263,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
         return $default(
             _that.chatMessages,
             _that.userProfile,
+            _that.segment,
             _that.isLoadingMessages,
             _that.isLoadingProfile,
             _that.errorMessage,
@@ -280,6 +291,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
     TResult Function(
             List<ChatMessageReadModel> chatMessages,
             UserWithProfileReadModel? userProfile,
+            ChatSegment segment,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -292,6 +304,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
         return $default(
             _that.chatMessages,
             _that.userProfile,
+            _that.segment,
             _that.isLoadingMessages,
             _that.isLoadingProfile,
             _that.errorMessage,
@@ -318,6 +331,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
     TResult? Function(
             List<ChatMessageReadModel> chatMessages,
             UserWithProfileReadModel? userProfile,
+            ChatSegment segment,
             bool isLoadingMessages,
             bool isLoadingProfile,
             String? errorMessage,
@@ -330,6 +344,7 @@ extension ChatDetailStatePatterns on ChatDetailState {
         return $default(
             _that.chatMessages,
             _that.userProfile,
+            _that.segment,
             _that.isLoadingMessages,
             _that.isLoadingProfile,
             _that.errorMessage,
@@ -347,6 +362,7 @@ class _ChatDetailState implements ChatDetailState {
       {final List<ChatMessageReadModel> chatMessages =
           const <ChatMessageReadModel>[],
       this.userProfile,
+      this.segment = ChatSegment.message,
       this.isLoadingMessages = false,
       this.isLoadingProfile = false,
       this.errorMessage,
@@ -364,6 +380,9 @@ class _ChatDetailState implements ChatDetailState {
 
   @override
   final UserWithProfileReadModel? userProfile;
+  @override
+  @JsonKey()
+  final ChatSegment segment;
   @override
   @JsonKey()
   final bool isLoadingMessages;
@@ -393,6 +412,7 @@ class _ChatDetailState implements ChatDetailState {
                 .equals(other._chatMessages, _chatMessages) &&
             (identical(other.userProfile, userProfile) ||
                 other.userProfile == userProfile) &&
+            (identical(other.segment, segment) || other.segment == segment) &&
             (identical(other.isLoadingMessages, isLoadingMessages) ||
                 other.isLoadingMessages == isLoadingMessages) &&
             (identical(other.isLoadingProfile, isLoadingProfile) ||
@@ -408,6 +428,7 @@ class _ChatDetailState implements ChatDetailState {
       runtimeType,
       const DeepCollectionEquality().hash(_chatMessages),
       userProfile,
+      segment,
       isLoadingMessages,
       isLoadingProfile,
       errorMessage,
@@ -415,7 +436,7 @@ class _ChatDetailState implements ChatDetailState {
 
   @override
   String toString() {
-    return 'ChatDetailState(chatMessages: $chatMessages, userProfile: $userProfile, isLoadingMessages: $isLoadingMessages, isLoadingProfile: $isLoadingProfile, errorMessage: $errorMessage, inputText: $inputText)';
+    return 'ChatDetailState(chatMessages: $chatMessages, userProfile: $userProfile, segment: $segment, isLoadingMessages: $isLoadingMessages, isLoadingProfile: $isLoadingProfile, errorMessage: $errorMessage, inputText: $inputText)';
   }
 }
 
@@ -430,6 +451,7 @@ abstract mixin class _$ChatDetailStateCopyWith<$Res>
   $Res call(
       {List<ChatMessageReadModel> chatMessages,
       UserWithProfileReadModel? userProfile,
+      ChatSegment segment,
       bool isLoadingMessages,
       bool isLoadingProfile,
       String? errorMessage,
@@ -454,6 +476,7 @@ class __$ChatDetailStateCopyWithImpl<$Res>
   $Res call({
     Object? chatMessages = null,
     Object? userProfile = freezed,
+    Object? segment = null,
     Object? isLoadingMessages = null,
     Object? isLoadingProfile = null,
     Object? errorMessage = freezed,
@@ -468,6 +491,10 @@ class __$ChatDetailStateCopyWithImpl<$Res>
           ? _self.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserWithProfileReadModel?,
+      segment: null == segment
+          ? _self.segment
+          : segment // ignore: cast_nullable_to_non_nullable
+              as ChatSegment,
       isLoadingMessages: null == isLoadingMessages
           ? _self.isLoadingMessages
           : isLoadingMessages // ignore: cast_nullable_to_non_nullable

@@ -33,7 +33,21 @@ class AuthGate extends ConsumerWidget {
           (_, next) {
             next.whenOrNull(
               data: (state) {
-                _handleAppUserState(context, state);
+                state.when(
+                  existingUser: (_) {
+                    _goAfterFrame(context, HomePage.routeLocation);
+                  },
+                  newUser: () {
+                    _goAfterFrame(context, UserGenderPage.routeLocation);
+                  },
+                  currentUserError: (message) {
+                    _goAfterFrame(
+                      context,
+                      ErrorPage.routeLocation,
+                      extra: {'message': message},
+                    );
+                  },
+                );
               },
               error: (e, _) {
                 context.go(
@@ -60,18 +74,6 @@ class AuthGate extends ConsumerWidget {
           },
         );
       },
-    );
-  }
-
-  void _handleAppUserState(BuildContext context, AppUserState state) {
-    state.when(
-      existingUser: (_) => _goAfterFrame(context, HomePage.routeLocation),
-      newUser: () => _goAfterFrame(context, UserGenderPage.routeLocation),
-      currentUserError: (message) => _goAfterFrame(
-        context,
-        ErrorPage.routeLocation,
-        extra: {'message': message},
-      ),
     );
   }
 

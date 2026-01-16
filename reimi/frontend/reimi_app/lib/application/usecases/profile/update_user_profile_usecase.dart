@@ -5,8 +5,13 @@ class UpdateUserProfileUseCase {
   const UpdateUserProfileUseCase(this._repository);
   final ProfileRepository _repository;
 
-  Future<void> call(UpdateProfileParams params) async {
-    final userProfile = await _repository.updateUserProfile(params);
-    return userProfile;
+  Future<void> call({
+    required UpdateProfileParams params,
+    required String userId,
+  }) async {
+    return await _repository.updateUserProfile(
+      params: params,
+      userId: userId,
+    );
   }
 }

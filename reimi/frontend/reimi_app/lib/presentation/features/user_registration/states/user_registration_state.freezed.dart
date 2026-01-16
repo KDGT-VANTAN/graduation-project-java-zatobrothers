@@ -401,7 +401,7 @@ extension UserRegistrationStatePatterns on UserRegistrationState {
 
 /// @nodoc
 
-class _UserRegistrationState implements UserRegistrationState {
+class _UserRegistrationState extends UserRegistrationState {
   const _UserRegistrationState(
       {this.gender,
       this.birthDate,
@@ -413,7 +413,8 @@ class _UserRegistrationState implements UserRegistrationState {
       this.currentPage = 1,
       this.totalPages = 6,
       this.status = UserRegistrationStatus.idle,
-      this.errorMessage});
+      this.errorMessage})
+      : super._();
 
   @override
   final Gender? gender;

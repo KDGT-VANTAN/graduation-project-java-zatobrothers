@@ -7,5 +7,7 @@ part 'home_state.freezed.dart';
 abstract class HomeState with _$HomeState {
   const factory HomeState({
     @Default(<HomeUserReadModel>[]) List<HomeUserReadModel> users,
+    @Default(false) bool isLoading,
+    String? errorMessage,
   }) = _HomeState;
 }

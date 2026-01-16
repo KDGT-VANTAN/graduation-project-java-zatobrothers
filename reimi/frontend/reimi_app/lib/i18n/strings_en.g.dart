@@ -45,6 +45,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
 	late final TranslationsErrorPageEn errorPage = TranslationsErrorPageEn._(_root);
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
+	late final TranslationsHomePageEn homePage = TranslationsHomePageEn._(_root);
+	late final TranslationsLikePageEn likePage = TranslationsLikePageEn._(_root);
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
 	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
@@ -53,6 +55,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsFeelingSelectPageEn feelingSelectPage = TranslationsFeelingSelectPageEn._(_root);
 	late final TranslationsForecastSelectPageEn forecastSelectPage = TranslationsForecastSelectPageEn._(_root);
 	late final TranslationsWeatherReportDetailPageEn weatherReportDetailPage = TranslationsWeatherReportDetailPageEn._(_root);
+	late final TranslationsAccountPageEn accountPage = TranslationsAccountPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsWeatherPersonalityConceptPageEn weatherPersonalityConceptPage = TranslationsWeatherPersonalityConceptPageEn._(_root);
@@ -65,6 +68,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsModalSheetEn modalSheet = TranslationsModalSheetEn._(_root);
 	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
 	late final TranslationsSegmentedSwitchEn segmentedSwitch = TranslationsSegmentedSwitchEn._(_root);
+	late final TranslationsSnackBarEn snackBar = TranslationsSnackBarEn._(_root);
 	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
 
@@ -159,6 +163,30 @@ class TranslationsUserRegistrationPageEn {
 	late final TranslationsUserRegistrationPageMainPhotoEn mainPhoto = TranslationsUserRegistrationPageMainPhotoEn._(_root);
 }
 
+// Path: homePage
+class TranslationsHomePageEn {
+	TranslationsHomePageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'There are currently no users to view.'
+	String get isEmptyCase => 'There are currently no users to view.';
+}
+
+// Path: likePage
+class TranslationsLikePageEn {
+	TranslationsLikePageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Let's find new encounters!'
+	String get isEmptyCase => 'Let\'s find new encounters!';
+}
+
 // Path: chatPage
 class TranslationsChatPageEn {
 	TranslationsChatPageEn._(this._root);
@@ -166,6 +194,10 @@ class TranslationsChatPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Let's find new encounters!'
+	String get isEmptyCase => 'Let\'s find new encounters!';
+
 	late final TranslationsChatPageSectionTitleEn sectionTitle = TranslationsChatPageSectionTitleEn._(_root);
 	late final TranslationsChatPageSubSectionTitleEn subSectionTitle = TranslationsChatPageSubSectionTitleEn._(_root);
 }
@@ -177,6 +209,9 @@ class TranslationsChatDetailPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Profile information could not be retrieved.'
+	String get nullCase => 'Profile information could not be retrieved.';
 
 	/// en: 'Enter message'
 	String get placeHolder => 'Enter message';
@@ -192,6 +227,9 @@ class TranslationsWeatherReportPageEn {
 
 	/// en: 'Weather Report'
 	String get sectionTitle => 'Weather Report';
+
+	/// en: 'There are currently no reports to display.'
+	String get isEmptyCase => 'There are currently no reports to display.';
 }
 
 // Path: weatherReportPostPage
@@ -265,7 +303,22 @@ class TranslationsWeatherReportDetailPageEn {
 	/// en: 'Post Details'
 	String get title => 'Post Details';
 
+	/// en: 'Report information could not be obtained.'
+	String get nullCase => 'Report information could not be obtained.';
+
 	late final TranslationsWeatherReportDetailPageLabelEn label = TranslationsWeatherReportDetailPageLabelEn._(_root);
+}
+
+// Path: accountPage
+class TranslationsAccountPageEn {
+	TranslationsAccountPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'User information could not be obtained.'
+	String get nullCase => 'User information could not be obtained.';
 }
 
 // Path: profilePage
@@ -294,6 +347,9 @@ class TranslationsProfileDetailPageEn {
 
 	/// en: 'Profile Details'
 	String get title => 'Profile Details';
+
+	/// en: 'Profile information could not be retrieved.'
+	String get nullCase => 'Profile information could not be retrieved.';
 }
 
 // Path: weatherPersonalityConceptPage
@@ -356,6 +412,10 @@ class TranslationsWeatherPersonalityTestResultPageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Failed to get test results.'
+	String get nullCase => 'Failed to get test results.';
+
 	late final TranslationsWeatherPersonalityTestResultPageSectionEn section = TranslationsWeatherPersonalityTestResultPageSectionEn._(_root);
 }
 
@@ -489,6 +549,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Complete'
 	String get completion => 'Complete';
+
+	/// en: 'Weather Personality Test'
+	String get weatherPersonalityTest => 'Weather Personality Test';
 }
 
 // Path: segmentedSwitch
@@ -500,6 +563,16 @@ class TranslationsSegmentedSwitchEn {
 	// Translations
 	late final TranslationsSegmentedSwitchLikeEn like = TranslationsSegmentedSwitchLikeEn._(_root);
 	late final TranslationsSegmentedSwitchChatEn chat = TranslationsSegmentedSwitchChatEn._(_root);
+}
+
+// Path: snackBar
+class TranslationsSnackBarEn {
+	TranslationsSnackBarEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsSnackBarProfileEn profile = TranslationsSnackBarProfileEn._(_root);
 }
 
 // Path: kEnum
@@ -829,9 +902,7 @@ class TranslationsProfilePagePlaceholderEn {
 	late final TranslationsProfilePagePlaceholderSubPhotoEn subPhoto = TranslationsProfilePagePlaceholderSubPhotoEn._(_root);
 	late final TranslationsProfilePagePlaceholderSunnyDayHobbiesEn sunnyDayHobbies = TranslationsProfilePagePlaceholderSunnyDayHobbiesEn._(_root);
 	late final TranslationsProfilePagePlaceholderRainyDayHobbiesEn rainyDayHobbies = TranslationsProfilePagePlaceholderRainyDayHobbiesEn._(_root);
-
-	/// en: 'Not set'
-	String get basicInformation => 'Not set';
+	late final TranslationsProfilePagePlaceholderBasicInformationEn basicInformation = TranslationsProfilePagePlaceholderBasicInformationEn._(_root);
 }
 
 // Path: weatherPersonalityConceptPage.contentText
@@ -1596,6 +1667,18 @@ class TranslationsSegmentedSwitchChatEn {
 
 	/// en: 'Profile'
 	String get profile => 'Profile';
+}
+
+// Path: snackBar.profile
+class TranslationsSnackBarProfileEn {
+	TranslationsSnackBarProfileEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Your profile has been updated!'
+	String get success => 'Your profile has been updated!';
 }
 
 // Path: kEnum.address
@@ -2550,6 +2633,21 @@ class TranslationsProfilePagePlaceholderRainyDayHobbiesEn {
 	String get top3 => 'Enter rainy day top 3';
 }
 
+// Path: profilePage.placeholder.basicInformation
+class TranslationsProfilePagePlaceholderBasicInformationEn {
+	TranslationsProfilePagePlaceholderBasicInformationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Not set'
+	String get notSet => 'Not set';
+
+	/// en: 'This field cannot be changed.'
+	String get toolTip => 'This field cannot be changed.';
+}
+
 // Path: weatherPersonalityTestResultPage.section.mainResult
 class TranslationsWeatherPersonalityTestResultPageSectionMainResultEn {
 	TranslationsWeatherPersonalityTestResultPageSectionMainResultEn._(this._root);
@@ -3102,11 +3200,16 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.question' => 'Select your main photo',
 			'userRegistrationPage.mainPhoto.items.photoSelectInstructionText' => 'Click to select photo',
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
+			'homePage.isEmptyCase' => 'There are currently no users to view.',
+			'likePage.isEmptyCase' => 'Let\'s find new encounters!',
+			'chatPage.isEmptyCase' => 'Let\'s find new encounters!',
 			'chatPage.sectionTitle.matching' => 'Matches',
 			'chatPage.sectionTitle.messages' => 'Messages',
 			'chatPage.subSectionTitle.matching' => 'Send your first message!',
+			'chatDetailPage.nullCase' => 'Profile information could not be retrieved.',
 			'chatDetailPage.placeHolder' => 'Enter message',
 			'weatherReportPage.sectionTitle' => 'Weather Report',
+			'weatherReportPage.isEmptyCase' => 'There are currently no reports to display.',
 			'weatherReportPostPage.title' => 'Send Weather Report',
 			'weatherReportPostPage.placeHolder.media' => 'Add photo/video',
 			'weatherReportPostPage.placeHolder.comment1' => 'Enter comment',
@@ -3121,9 +3224,11 @@ extension on Translations {
 			'forecastSelectPage.title' => 'Select Forecast',
 			'forecastSelectPage.sectionTitle' => 'What about in a few hours?',
 			'weatherReportDetailPage.title' => 'Post Details',
+			'weatherReportDetailPage.nullCase' => 'Report information could not be obtained.',
 			'weatherReportDetailPage.label.weather' => 'Weather',
 			'weatherReportDetailPage.label.feeling' => 'Feeling',
 			'weatherReportDetailPage.label.forecast' => 'Sensory Forecast',
+			'accountPage.nullCase' => 'User information could not be obtained.',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.section.mainPhoto' => 'Main Photo',
 			'profilePage.section.subPhoto' => 'Sub Photos',
@@ -3166,8 +3271,10 @@ extension on Translations {
 			'profilePage.placeholder.rainyDayHobbies.top1' => 'Enter rainy day top 1',
 			'profilePage.placeholder.rainyDayHobbies.top2' => 'Enter rainy day top 2',
 			'profilePage.placeholder.rainyDayHobbies.top3' => 'Enter rainy day top 3',
-			'profilePage.placeholder.basicInformation' => 'Not set',
+			'profilePage.placeholder.basicInformation.notSet' => 'Not set',
+			'profilePage.placeholder.basicInformation.toolTip' => 'This field cannot be changed.',
 			'profileDetailPage.title' => 'Profile Details',
+			'profileDetailPage.nullCase' => 'Profile information could not be retrieved.',
 			'weatherPersonalityConceptPage.title' => 'Weather Personality Assessment',
 			'weatherPersonalityConceptPage.contentText.contentTitle' => 'About the Assessment',
 			'weatherPersonalityConceptPage.contentText.contentText1' => 'If you were to be reborn as an animal,\n\n',
@@ -3243,6 +3350,7 @@ extension on Translations {
 			'weatherPersonalityTestPage.q16.question' => 'The gods saw which path you chose on unhurried walks home in your past life.',
 			'weatherPersonalityTestPage.q16.answerA' => 'Even if it was a bit longer, you chose paths with pleasant scenery and atmosphere',
 			'weatherPersonalityTestPage.q16.answerB' => 'Even without particular reason, you naturally chose the fastest route',
+			'weatherPersonalityTestResultPage.nullCase' => 'Failed to get test results.',
 			'weatherPersonalityTestResultPage.section.title' => 'The Gods\' Ruling',
 			'weatherPersonalityTestResultPage.section.mainResult.typeCode' => 'Assessment Type Code',
 			'weatherPersonalityTestResultPage.section.mainResult.you' => 'You are',
@@ -3343,10 +3451,12 @@ extension on Translations {
 			'button.shareResults' => 'Share Results',
 			'button.returnToAccountPage' => 'Return To Account Page',
 			'button.completion' => 'Complete',
+			'button.weatherPersonalityTest' => 'Weather Personality Test',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
 			'segmentedSwitch.chat.profile' => 'Profile',
+			'snackBar.profile.success' => 'Your profile has been updated!',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
 			'kEnum.address.prefecture.aomori' => 'Aomori',
 			'kEnum.address.prefecture.iwate' => 'Iwate',
@@ -3562,6 +3672,8 @@ extension on Translations {
 			'kEnum.occupation.police' => 'Police Officer',
 			'kEnum.occupation.selfDefenseForce' => 'Self-Defense Force',
 			'kEnum.occupation.athlete' => 'Athlete',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.pilot' => 'Pilot',
 			'kEnum.occupation.investor' => 'Investor',
 			'kEnum.occupation.cabinAttendant' => 'Cabin Attendant',
@@ -3574,8 +3686,6 @@ extension on Translations {
 			'kEnum.occupation.secretary' => 'Secretary',
 			'kEnum.occupation.announcer' => 'Announcer',
 			'kEnum.occupation.receptionist' => 'Receptionist',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.entertainerModel' => 'Entertainer/Model',
 			'kEnum.occupation.influencer' => 'Influencer',
 			'kEnum.occupation.youtuber' => 'YouTuber',

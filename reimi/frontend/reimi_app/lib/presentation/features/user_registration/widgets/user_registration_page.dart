@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/user_registration/user_registration_notifier.dart';
+import 'package:reimi_app/presentation/features/user_registration/notifiers/user_registration_notifier.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/next_button.dart';
 import 'package:reimi_app/presentation/features/user_registration/widgets/user_registration_header.dart';
 import 'package:reimi_app/presentation/shared/widgets/arc_background.dart';

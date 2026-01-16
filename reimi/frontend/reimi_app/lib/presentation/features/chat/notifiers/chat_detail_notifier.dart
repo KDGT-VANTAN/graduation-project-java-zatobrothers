@@ -4,6 +4,7 @@ import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/domain/params/send_message_params.dart';
 import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 import 'package:reimi_app/domain/value_objects/message_type.dart';
+import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
 import 'package:reimi_app/presentation/features/chat/states/chat_detail_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -36,6 +37,21 @@ class ChatDetailNotifier extends _$ChatDetailNotifier {
       loadMessages(),
       loadUserProfile(),
     ]);
+  }
+
+  Future<void> changeSegment(ChatSegment segment) async {
+    if (state.segment == segment) return;
+
+    state = state.copyWith(
+      segment: segment,
+    );
+
+    switch (segment) {
+      case ChatSegment.message:
+        await loadMessages();
+      case ChatSegment.profile:
+        await loadUserProfile();
+    }
   }
 
   Future<void> loadMessages() async {
@@ -98,5 +114,12 @@ class ChatDetailNotifier extends _$ChatDetailNotifier {
     } catch (e) {
       state = state.copyWith(errorMessage: e.toString());
     }
+  }
+
+  Future<void> refresh() async {
+    await Future.wait([
+      loadMessages(),
+      loadUserProfile(),
+    ]);
   }
 }

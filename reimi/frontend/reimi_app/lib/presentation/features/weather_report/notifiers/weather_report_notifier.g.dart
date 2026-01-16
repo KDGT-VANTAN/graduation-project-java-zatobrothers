@@ -7,11 +7,11 @@ part of 'weather_report_notifier.dart';
 // **************************************************************************
 
 String _$weatherReportNotifierHash() =>
-    r'5126cba1f3db05df505ee8b582c18c33f82e4b2e';
+    r'0ffbe9366448175eefa314a8d207b394e8acff14';
 
 /// See also [WeatherReportNotifier].
 @ProviderFor(WeatherReportNotifier)
-final weatherReportNotifierProvider = AutoDisposeAsyncNotifierProvider<
+final weatherReportNotifierProvider = AutoDisposeNotifierProvider<
     WeatherReportNotifier, WeatherReportState>.internal(
   WeatherReportNotifier.new,
   name: r'weatherReportNotifierProvider',
@@ -22,6 +22,6 @@ final weatherReportNotifierProvider = AutoDisposeAsyncNotifierProvider<
   allTransitiveDependencies: null,
 );
 
-typedef _$WeatherReportNotifier = AutoDisposeAsyncNotifier<WeatherReportState>;
+typedef _$WeatherReportNotifier = AutoDisposeNotifier<WeatherReportState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

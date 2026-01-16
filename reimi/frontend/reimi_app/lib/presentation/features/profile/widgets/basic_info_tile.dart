@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 
 class BasicInfoTile extends StatelessWidget {
@@ -7,10 +8,12 @@ class BasicInfoTile extends StatelessWidget {
     required this.title,
     required this.value,
     required this.onTap,
+    this.isReadOnly = false,
   });
   final String title;
   final String? value;
   final void Function()? onTap;
+  final bool isReadOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class BasicInfoTile extends StatelessWidget {
             Expanded(
               flex: 4,
               child: Text(
-                value ?? t.basicInformation,
+                value ?? t.basicInformation.notSet,
                 textAlign: TextAlign.right,
                 style: theme.textTheme.bodyMedium!.copyWith(
                   color: value == null
@@ -45,13 +48,23 @@ class BasicInfoTile extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            onTap == null
-                ? const SizedBox(width: 20)
-                : Icon(
-                    Icons.chevron_right,
-                    size: 22,
-                    color: Colors.black87.withValues(alpha: 0.4),
-                  ),
+            isReadOnly
+                ? Tooltip(
+                    verticalOffset: -48,
+                    message: t.basicInformation.toolTip,
+                    child: Icon(
+                      LineIcons.infoCircle,
+                      size: 22,
+                      color: Colors.black87.withValues(alpha: 0.4),
+                    ),
+                  )
+                : onTap == null
+                    ? const SizedBox.shrink()
+                    : Icon(
+                        Icons.chevron_right,
+                        size: 22,
+                        color: Colors.black87.withValues(alpha: 0.4),
+                      ),
           ],
         ),
       ),

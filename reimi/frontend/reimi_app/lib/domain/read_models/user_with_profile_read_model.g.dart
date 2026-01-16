@@ -16,7 +16,7 @@ _UserWithProfileReadModel _$UserWithProfileReadModelFromJson(
       address: $enumDecode(_$AddressEnumMap, json['address']),
       mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String,
-      isTodayReported: json['isTodayReported'] as bool,
+      isTodayReported: json['isTodayReported'] as bool?,
       height: $enumDecodeNullable(_$HeightEnumMap, json['height']),
       bodyShape: $enumDecodeNullable(_$BodyShapeEnumMap, json['bodyShape']),
       annualIncome:
@@ -36,7 +36,7 @@ _UserWithProfileReadModel _$UserWithProfileReadModelFromJson(
       rainyDayHobbies: (json['rainyDayHobbies'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      subPhotoUrls: (json['subPhotoUrls'] as List<dynamic>?)
+      subPhotos: (json['subPhotos'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
@@ -66,7 +66,7 @@ Map<String, dynamic> _$UserWithProfileReadModelToJson(
       'holiday': _$HolidayEnumMap[instance.holiday],
       'sunnyDayHobbies': instance.sunnyDayHobbies,
       'rainyDayHobbies': instance.rainyDayHobbies,
-      'subPhotoUrls': instance.subPhotoUrls,
+      'subPhotos': instance.subPhotos,
     };
 
 const _$GenderEnumMap = {

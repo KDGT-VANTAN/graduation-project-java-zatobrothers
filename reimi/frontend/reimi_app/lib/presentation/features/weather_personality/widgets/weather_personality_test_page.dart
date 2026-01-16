@@ -45,6 +45,7 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
       body: BackgroundContainerNight(
         child: SafeArea(
           child: CustomScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

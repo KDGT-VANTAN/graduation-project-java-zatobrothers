@@ -10,6 +10,7 @@ import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_post_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_select_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/states/weather_report_post_state.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/add_media_box.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/comment_box.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/show_pick_media_modal_sheet.dart';
@@ -18,6 +19,7 @@ import 'package:reimi_app/presentation/features/weather_report/widgets/weather_r
 import 'package:reimi_app/presentation/features/weather_report/widgets/info_tile.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/utils/pick_image_from_gallery.dart';
+import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_night.dart';
 
 class WeatherReportPostPage extends HookConsumerWidget {
@@ -29,6 +31,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context);
     final theme = Theme.of(context);
+    final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
     final url = ref
         .watch(weatherReportPostNotifierProvider.select((state) => state.url));
     final comment = ref.watch(
@@ -45,8 +48,34 @@ class WeatherReportPostPage extends HookConsumerWidget {
         weatherReportPostNotifierProvider.select((state) => state.canSubmit));
     final isChanged = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.isChanged));
+    final status = ref.watch(
+        weatherReportPostNotifierProvider.select((state) => state.status));
     final controller = useTextEditingController(text: comment);
-    final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
+
+    useEffect(() {
+      final subscription = ref.listenManual<WeatherReportPostState>(
+        weatherReportPostNotifierProvider,
+        (prev, next) {
+          if (!context.mounted) return;
+
+          if (next.status == WeatherReportPostStatus.success) {
+            weatherReportCompleteDialog(
+              context: context,
+              onConfirm: () {
+                context.go(WeatherReportPage.routeLocation);
+              },
+            );
+          }
+
+          if (next.status == WeatherReportPostStatus.failure &&
+              next.errorMessage != null) {
+            AppSnackBar.error(context, next.errorMessage!);
+          }
+        },
+      );
+
+      return subscription.close;
+    }, const []);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -153,19 +182,12 @@ class WeatherReportPostPage extends HookConsumerWidget {
                 const SizedBox(height: 40),
                 SendButton(
                   canSubmit: canSubmit,
-                  onTap: !canSubmit
-                      ? null
-                      : () async {
-                          final result = await notifier.submit();
-                          if (result && context.mounted) {
-                            await weatherReportCompleteDialog(
-                              context: context,
-                              onConfirm: () {
-                                context.go(WeatherReportPage.routeLocation);
-                              },
-                            );
-                          }
-                        },
+                  onTap:
+                      !canSubmit || status == WeatherReportPostStatus.submitting
+                          ? null
+                          : () async {
+                              await notifier.submit();
+                            },
                 ),
               ],
             ),

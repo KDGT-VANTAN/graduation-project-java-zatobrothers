@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
 import 'package:reimi_app/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
-import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_detail_notifier.dart';
-import 'package:reimi_app/presentation/features/chat/notifiers/chat_segment_notifier.dart';
+import 'package:reimi_app/presentation/features/chat/states/chat_detail_state.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_message_list.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_segment_switch.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_user_profile.dart';
+import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
@@ -31,12 +30,21 @@ class ChatDetailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Translations.of(context);
     final theme = Theme.of(context);
-    final chatSegment = ref.watch(chatSegmentNotifierProvider);
+    final segment =
+        ref.watch(chatDetailNotifierProvider.select((state) => state.segment));
     final notifier = ref.read(chatDetailNotifierProvider.notifier);
     final inputText = ref
         .watch(chatDetailNotifierProvider.select((state) => state.inputText));
     final controller = useTextEditingController(text: inputText);
     final currentUserId = ref.watch(appUserNotifierProvider).value?.id ?? '';
+    final userProfile = ref
+        .watch(chatDetailNotifierProvider.select((state) => state.userProfile));
+    final chatMessages = ref.watch(
+        chatDetailNotifierProvider.select((state) => state.chatMessages));
+    final isLoadingMessages = ref.watch(
+        chatDetailNotifierProvider.select((state) => state.isLoadingMessages));
+    final isLoadingProfile = ref.watch(
+        chatDetailNotifierProvider.select((state) => state.isLoadingProfile));
 
     useEffect(() {
       // build 完了後に一度だけ実行
@@ -47,93 +55,111 @@ class ChatDetailPage extends HookConsumerWidget {
           currentUserId: currentUserId,
         );
       });
-      return null;
-    }, const []);
 
-    final userProfile = ref
-        .watch(chatDetailNotifierProvider.select((state) => state.userProfile));
-    final chatMessages = ref.watch(
-        chatDetailNotifierProvider.select((state) => state.chatMessages));
+      final subscription = ref.listenManual<ChatDetailState>(
+        chatDetailNotifierProvider,
+        (prev, next) {
+          if (next.errorMessage == null) return;
+          AppSnackBar.error(context, next.errorMessage!);
+        },
+      );
+
+      return subscription.close;
+    }, []);
 
     return Scaffold(
       body: BackgroundContainerNoon(
         child: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-              if (userProfile == null) ...[
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.4),
-                      Text(
-                        'ユーザーのプロフィールが取得できませんでした。',
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          context.go(ChatPage.routeLocation);
-                        },
-                        child: Text(
-                          'チャット画面に戻る',
-                          style: theme.textTheme.labelLarge!.copyWith(
-                            color: theme.colorScheme.primary,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ] else ...[
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await notifier.refresh();
+            },
+            child: CustomScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              slivers: [
                 SliverAppBar(
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   title: Text(
-                    userProfile.name,
+                    userProfile?.name ?? '',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                           color: Colors.black87,
                         ),
                   ),
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: CircleIconButton(
-                        icon: const Icon(
-                          LineIcons.phone,
-                          color: Colors.black54,
+                  actions: userProfile == null
+                      ? null
+                      : [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: CircleIconButton(
+                              icon: const Icon(
+                                LineIcons.phone,
+                                color: Colors.black54,
+                              ),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ],
+                ),
+                if (userProfile == null) ...[
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    sliver: SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: Text(
+                          t.chatDetailPage.nullCase,
+                          style: theme.textTheme.bodyMedium,
                         ),
-                        onPressed: () {},
                       ),
                     ),
+                  ),
+                ] else ...[
+                  const Gap(height: 8),
+                  const SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 18),
+                    sliver: SliverToBoxAdapter(
+                      child: ChatSegmentSwitch(),
+                    ),
+                  ),
+                  const Gap(height: 16),
+                  if (segment == ChatSegment.message) ...[
+                    if (isLoadingMessages) ...[
+                      const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ] else
+                      ...chatMessageList(
+                        context: context,
+                        chatMessages: chatMessages,
+                        currentUserId: currentUserId,
+                        mainPhotoUrl: userProfile.mainPhotoUrl,
+                      ),
                   ],
-                ),
-                const Gap(height: 8),
-                const SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  sliver: SliverToBoxAdapter(
-                    child: ChatSegmentSwitch(),
-                  ),
-                ),
-                const Gap(height: 16),
-                if (chatSegment == ChatSegment.message) ...[
-                  ...chatMessageList(
-                    context: context,
-                    chatMessages: chatMessages,
-                    currentUserId: currentUserId,
-                    mainPhotoUrl: userProfile.mainPhotoUrl,
-                  ),
+                  if (segment == ChatSegment.profile) ...[
+                    if (isLoadingProfile) ...[
+                      const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ] else
+                      ...chatUserProfile(
+                        context: context,
+                        userProfile: userProfile,
+                      ),
+                  ],
+                  const Gap(height: 24),
                 ],
-                if (chatSegment == ChatSegment.profile) ...[
-                  ...chatUserProfile(
-                    context: context,
-                    userProfile: userProfile,
-                  ),
-                ],
-              ]
-            ],
+              ],
+            ),
           ),
         ),
       ),

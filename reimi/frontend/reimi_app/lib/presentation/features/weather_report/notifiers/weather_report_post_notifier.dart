@@ -1,3 +1,6 @@
+import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/core/error/api_exception.dart';
+import 'package:reimi_app/domain/params/post_weather_report_params.dart';
 import 'package:reimi_app/domain/value_objects/feeling_type.dart';
 import 'package:reimi_app/domain/value_objects/forecast_type.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
@@ -51,17 +54,46 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
     ref.invalidateSelf();
   }
 
-  Future<bool> submit() async {
-    if (!state.canSubmit) return false;
+  Future<void> submit() async {
+    final s = state;
 
-    state = state.copyWith(isSubmitting: true);
+    if (!s.canSubmit) {
+      state = state.copyWith(
+        status: WeatherReportPostStatus.failure,
+        errorMessage: '入力内容に不備があります',
+      );
+      return;
+    }
+
+    state = state.copyWith(
+      status: WeatherReportPostStatus.submitting,
+      errorMessage: null,
+    );
 
     try {
-      // TODO: API送信
-      return true;
-    } finally {
-      state = state.copyWith(isSubmitting: false);
-      ref.invalidateSelf();
+      final params = PostWeatherReportParams(
+        comment: s.comment!,
+        weatherType: s.weatherType!,
+        feelingType: s.feelingType!,
+        forecastType: s.forecastType!,
+        mediaType: s.mediaType!,
+        url: s.url!,
+      );
+      await ref.read(postWeatherReportUseCaseProvider).call(params);
+
+      state = state.copyWith(
+        status: WeatherReportPostStatus.success,
+      );
+    } on ApiException catch (e) {
+      state = state.copyWith(
+        status: WeatherReportPostStatus.failure,
+        errorMessage: e.message,
+      );
+    } catch (_) {
+      state = state.copyWith(
+        status: WeatherReportPostStatus.failure,
+        errorMessage: 'リポートに失敗しました',
+      );
     }
   }
 }
