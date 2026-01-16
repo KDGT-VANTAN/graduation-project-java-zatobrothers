@@ -98,13 +98,13 @@ public class User {
         Address address,
         String mainPhotoUrl
     ) {
-        if (name != null) {
+        if (name != null && !name.isBlank()) {
             this.name = name;
         }
         if (address != null) {
             this.address = address;
         }
-        if (mainPhotoUrl != null) {
+        if (mainPhotoUrl != null && !mainPhotoUrl.isBlank()) {
             this.mainPhotoUrl = mainPhotoUrl;
         }
     }
