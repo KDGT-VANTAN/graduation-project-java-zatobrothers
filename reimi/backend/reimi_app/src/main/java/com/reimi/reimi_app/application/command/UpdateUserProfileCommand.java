@@ -35,5 +35,5 @@ public record UpdateUserProfileCommand (
     Holiday holiday,
     List<String> sunnyDayHobbies,
     List<String> rainyDayHobbies,
-    List<MultipartFile> subPhotos
+    MultipartFile subPhoto
 ) {}
