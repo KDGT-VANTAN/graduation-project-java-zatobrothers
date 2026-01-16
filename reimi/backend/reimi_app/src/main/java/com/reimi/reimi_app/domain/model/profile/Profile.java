@@ -151,11 +151,12 @@ public class Profile {
         List<String> sunnyDayHobbies,
         List<String> rainyDayHobbies
     ) {
-        if (introduction == null || introduction.isBlank() || introduction.length() < 20 || introduction.length() > 500) {
+        if (introduction != null && !introduction.isBlank()) {
+            if (introduction.length() < 20 || introduction.length() > 500) {
             throw new IllegalArgumentException("自己紹介文は20〜500文字である必要があります");
+            }
+            this.introduction = introduction;
         }
-        this.introduction = introduction;
-        if (introduction != null) this.introduction = introduction;
         if (height != null) this.height = height;
         if (bodyShape != null) this.bodyShape = bodyShape;
         if (annualIncome != null) this.annualIncome = annualIncome;
