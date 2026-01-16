@@ -17,19 +17,21 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Future<List<HomeUserReadModel>> fetchHomeUsers() async {
-    final response = await _dio.get('/users');
-    final List<HomeUserReadModel> users =
-        response.data.map((res) => HomeUserReadModel.fromJson(res)).toList();
-    return users;
+    try {
+      final response = await _dio.get('/users');
+      final List data = response.data as List;
+      return data
+          .map((e) => HomeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on DioException catch (e) {
+      throw ApiException.fromDioError(e);
+    }
   }
 
   @override
   Future<AppUserReadModel> fetchCurrentUser() async {
     try {
       final response = await _dio.get('/users/me');
-      if (response.statusCode != 200) {
-        throw ApiException.fromResponse(response);
-      }
       return AppUserReadModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
