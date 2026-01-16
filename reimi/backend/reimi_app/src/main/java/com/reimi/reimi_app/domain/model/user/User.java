@@ -98,18 +98,15 @@ public class User {
         Address address,
         String mainPhotoUrl
     ) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("名前は必須です");
+        if (name != null) {
+            this.name = name;
         }
-        if (address == null) {
-            throw new IllegalArgumentException("居住地は必須です");
+        if (address != null) {
+            this.address = address;
         }
-        if (mainPhotoUrl == null || mainPhotoUrl.isBlank()) {
-            throw new IllegalArgumentException("メイン写真は必須です");
+        if (mainPhotoUrl != null) {
+            this.mainPhotoUrl = mainPhotoUrl;
         }
-        this.name = name;
-        this.address = address;
-        this.mainPhotoUrl = mainPhotoUrl;
     }
 
     public UserId getId() { return id; }
