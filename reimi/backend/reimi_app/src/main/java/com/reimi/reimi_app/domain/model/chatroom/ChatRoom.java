@@ -1,6 +1,8 @@
 package com.reimi.reimi_app.domain.model.chatroom;
 
+import com.reimi.reimi_app.domain.model.match.Match;
 import com.reimi.reimi_app.domain.model.match.MatchId;
+import com.reimi.reimi_app.domain.model.user.UserId;
 
 public class ChatRoom {
 
@@ -22,6 +24,17 @@ public class ChatRoom {
             matchId
         );
     }
+
+    public static ChatRoom reconstruct(
+        ChatRoomId id,
+        MatchId matchId
+    ) {
+        return new ChatRoom(
+                id,
+                matchId
+        );
+    }
+
     public ChatRoomId getId() { return id; }
     public MatchId getMatchId() { return matchId; }
 }
