@@ -1,6 +1,6 @@
 package com.reimi.reimi_app.domain.model.message;
 
-public class MessageText {
+public class MessageText implements MessageContent {
 
     private final MessageId messageId;
     private final String text;
@@ -21,6 +21,11 @@ public class MessageText {
             messageId,
             text
         );
+    }
+
+    @Override
+    public MessageType getMessageType() {
+        return MessageType.TEXT;
     }
 
     public MessageId getMessageId() { return messageId; }
