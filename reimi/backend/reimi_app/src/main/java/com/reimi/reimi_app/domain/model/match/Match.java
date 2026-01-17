@@ -39,6 +39,24 @@ public class Match {
         );
     }
 
+    public static Match reconstruct(
+        MatchId id,
+        UserId userAId,
+        UserId userBId,
+        boolean isActive
+    ) {
+        return new Match(
+                id,
+                userAId,
+                userBId,
+                isActive
+        );
+    }
+
+    public boolean isParticipant(UserId userId) {
+        return userAId.equals(userId) || userBId.equals(userId);
+    }
+
     public MatchId getId() { return id; }
     public UserId getUserAId() { return userAId; }
     public UserId getUserBId() { return userBId; }
