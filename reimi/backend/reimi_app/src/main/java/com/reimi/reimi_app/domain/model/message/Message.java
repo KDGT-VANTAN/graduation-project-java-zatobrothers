@@ -8,21 +8,18 @@ public class Message {
     private final MessageId id;
     private final ChatRoomId chatRoomId;
     private final UserId senderId;
-    private final MessageType messageType;
-    private final MessageText messageText;
+    private final MessageContent content;
 
     private Message(
         MessageId id,
         ChatRoomId chatRoomId,
         UserId senderId,
-        MessageType messageType,
-        MessageText messageText
+        MessageContent content
     ) {
         this.id = id;
         this.chatRoomId = chatRoomId;
         this.senderId = senderId;
-        this.messageType = messageType;
-        this.messageText = messageText;
+        this.content = content;
     }
 
     public static Message createText(
@@ -31,20 +28,18 @@ public class Message {
         String text
     ) {
         MessageId messageId = MessageId.generate();
-        MessageText messageText = MessageText.create(messageId, text);
+        MessageText content = MessageText.create(messageId, text);
         return new Message(
             messageId,
             chatRoomId,
             senderId,
-            MessageType.TEXT,
-            messageText
+            content
         );
     }
 
     public MessageId getId() { return id; }
     public ChatRoomId getChatRoomId() { return chatRoomId; }
     public UserId getSenderId() { return senderId; }
-    public MessageType getMessageType() { return messageType; }
-    public MessageText getMessageText() { return messageText; }
+    public MessageType getMessageType() { return content.getMessageType(); }
 
 }
