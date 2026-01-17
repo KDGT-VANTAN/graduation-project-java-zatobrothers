@@ -14,6 +14,7 @@ import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoomId;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.infrastructure.web.dto.request.SendMessageRequest;
+import com.reimi.reimi_app.infrastructure.web.openapi.message.SendTextMessageApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -37,6 +38,7 @@ public class MessageController {
     }
 
     @PostMapping("/{chatRoomId}/messages")
+    @SendTextMessageApi
     public ResponseEntity<Void> sendTextMessage(
         @PathVariable("chatRoomId") ChatRoomId chatRoomId,
         @RequestBody SendMessageRequest request
