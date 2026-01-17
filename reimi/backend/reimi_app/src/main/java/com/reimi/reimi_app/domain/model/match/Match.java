@@ -53,6 +53,10 @@ public class Match {
         );
     }
 
+    public boolean isParticipant(UserId userId) {
+        return userAId.equals(userId) || userBId.equals(userId);
+    }
+
     public MatchId getId() { return id; }
     public UserId getUserAId() { return userAId; }
     public UserId getUserBId() { return userBId; }

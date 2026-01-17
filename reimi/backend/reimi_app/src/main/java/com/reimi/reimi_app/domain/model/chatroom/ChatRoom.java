@@ -35,6 +35,10 @@ public class ChatRoom {
         );
     }
 
+    public boolean canSend(UserId userId, Match match) {
+        return match.isParticipant(userId);
+    }
+
     public ChatRoomId getId() { return id; }
     public MatchId getMatchId() { return matchId; }
 }
