@@ -17,7 +17,8 @@ import com.reimi.reimi_app.infrastructure.web.dto.request.SendMessageRequest;
 import com.reimi.reimi_app.infrastructure.web.openapi.message.SendTextMessageApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/chatRooms")
