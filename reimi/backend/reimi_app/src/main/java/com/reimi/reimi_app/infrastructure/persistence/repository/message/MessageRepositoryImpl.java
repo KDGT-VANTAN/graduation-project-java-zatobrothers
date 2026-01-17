@@ -12,7 +12,7 @@ public class MessageRepositoryImpl implements MessageRepository {
 
     private final JpaMessageRepository jpaMessageRepository;
 
-    private MessageRepositoryImpl(
+    public MessageRepositoryImpl(
         JpaMessageRepository jpaMessageRepository
     ) {
         this.jpaMessageRepository = jpaMessageRepository;

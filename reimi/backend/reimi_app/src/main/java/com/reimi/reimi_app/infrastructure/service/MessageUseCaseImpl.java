@@ -24,7 +24,7 @@ public class MessageUseCaseImpl implements MessageUseCase {
     private final ChatRoomRepository chatRoomRepository;
     private final MatchRepository matchRepository;
 
-    private MessageUseCaseImpl(
+    public MessageUseCaseImpl(
         MessageRepository messageRepository,
         ChatRoomRepository chatRoomRepository,
         MatchRepository matchRepository
