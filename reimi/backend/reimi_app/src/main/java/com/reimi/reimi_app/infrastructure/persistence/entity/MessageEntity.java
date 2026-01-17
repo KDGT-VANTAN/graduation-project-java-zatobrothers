@@ -4,13 +4,11 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
 
-import com.reimi.reimi_app.domain.model.message.MessageType;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -32,10 +30,6 @@ public class MessageEntity {
     @Column(name = "sender_id", nullable = false)
     private UUID senderId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "message_type", nullable = false)
-    private MessageType messageType;
-
     @Column(name = "sent_at", nullable = false, updatable = false)
     private OffsetDateTime sentAt;
 
@@ -44,6 +38,14 @@ public class MessageEntity {
         OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
         this.sentAt = now;
     }
+
+    @OneToOne(
+        mappedBy = "message",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true,
+        optional = false
+    )
+    private MessageContentEntity messageContent;
 
     public MessageEntity() {}
 }
