@@ -1,9 +1,12 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.chatroom;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoom;
+import com.reimi.reimi_app.domain.model.chatroom.ChatRoomId;
 import com.reimi.reimi_app.domain.repository.ChatRoomRepository;
 import com.reimi.reimi_app.infrastructure.persistence.entity.MatchEntity;
 import com.reimi.reimi_app.infrastructure.persistence.mapper.ChatRoomMapper;
@@ -21,6 +24,12 @@ public class ChatRoomRepositoryImpl implements ChatRoomRepository {
     ) {
         this.jpaChatRoomRepository = jpaChatRoomRepository;
         this.jpaMatchRepository = jpaMatchRepository;
+    }
+    @Override
+    public Optional<ChatRoom> findByChatRoomId(ChatRoomId chatRoomId) {
+        return jpaChatRoomRepository
+            .findById(chatRoomId.value())
+            .map(ChatRoomMapper::toDomain);
     }
 
     @Override
