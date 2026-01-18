@@ -51,7 +51,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
     @Override
     public void likeUser(UserId UserId) {
 
-        User toUser = likeRepository.findUserByUserId(UserId)
+        User toUser = userRepository.findUserByUserId(UserId)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
         UserId toUserId = toUser.getId();
 
