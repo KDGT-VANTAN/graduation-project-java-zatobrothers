@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.infrastructure.web.dto.response;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import com.reimi.reimi_app.domain.model.message.Message;
@@ -22,7 +23,10 @@ public record GetMessageListResponse (
         String content,
 
         @Schema(description = "メッセージタイプ", example = "TEXT")
-        MessageType messageType
+        MessageType messageType,
+
+        @Schema(description = "送信日時", example = "2026-01-17T21:41:27.944723Z")
+        OffsetDateTime sentAt
 ) {
     public static GetMessageListResponse from(Message message) {
 
@@ -39,7 +43,8 @@ public record GetMessageListResponse (
             message.getId().value(),
             message.getSenderId().value(),
             content,
-            messageContent.getMessageType()
+            messageContent.getMessageType(),
+            message.getSentAt()
         );
     }
 }

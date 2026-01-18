@@ -21,7 +21,8 @@ public class MessageMapper {
                 messageId,
                 new ChatRoomId(entity.getChatRoomId()),
                 new UserId(entity.getSenderId()),
-                messageContent
+                messageContent,
+                entity.getSentAt()
         );
     }
 
