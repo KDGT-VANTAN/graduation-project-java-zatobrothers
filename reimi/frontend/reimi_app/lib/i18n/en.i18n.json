@@ -87,6 +87,12 @@
   "likePage": {
     "isEmptyCase": "Let's find new encounters!"
   },
+  "matchingCompletedPage": {
+    "title": "Matching completed!",
+    "subTitle": "Congratulations! \nYou've been matched with $name.",
+    "nullCase": "Matching information could not be obtained.",
+    "message": "Send us a message and start a conversation!"
+  },
   "chatPage": {
     "isEmptyCase": "Let's find new encounters!",
     "sectionTitle": {
@@ -527,7 +533,8 @@
     "shareResults": "Share Results",
     "returnToAccountPage": "Return To Account Page",
     "completion": "Complete",
-    "weatherPersonalityTest": "Weather Personality Test"
+    "weatherPersonalityTest": "Weather Personality Test",
+    "goTochatPage": "Go To Chat Screen"
   },
   "segmentedSwitch": {
     "like": {

@@ -47,6 +47,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsUserRegistrationPageEn userRegistrationPage = TranslationsUserRegistrationPageEn._(_root);
 	late final TranslationsHomePageEn homePage = TranslationsHomePageEn._(_root);
 	late final TranslationsLikePageEn likePage = TranslationsLikePageEn._(_root);
+	late final TranslationsMatchingCompletedPageEn matchingCompletedPage = TranslationsMatchingCompletedPageEn._(_root);
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
 	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
@@ -185,6 +186,27 @@ class TranslationsLikePageEn {
 
 	/// en: 'Let's find new encounters!'
 	String get isEmptyCase => 'Let\'s find new encounters!';
+}
+
+// Path: matchingCompletedPage
+class TranslationsMatchingCompletedPageEn {
+	TranslationsMatchingCompletedPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Matching completed!'
+	String get title => 'Matching completed!';
+
+	/// en: 'Congratulations! You've been matched with $name.'
+	String subTitle({required Object name}) => 'Congratulations! \nYou\'ve been matched with ${name}.';
+
+	/// en: 'Matching information could not be obtained.'
+	String get nullCase => 'Matching information could not be obtained.';
+
+	/// en: 'Send us a message and start a conversation!'
+	String get message => 'Send us a message and start a conversation!';
 }
 
 // Path: chatPage
@@ -552,6 +574,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Weather Personality Test'
 	String get weatherPersonalityTest => 'Weather Personality Test';
+
+	/// en: 'Go To Chat Screen'
+	String get goTochatPage => 'Go To Chat Screen';
 }
 
 // Path: segmentedSwitch
@@ -3202,6 +3227,10 @@ extension on Translations {
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => 'A smiling face photo is recommended',
 			'homePage.isEmptyCase' => 'There are currently no users to view.',
 			'likePage.isEmptyCase' => 'Let\'s find new encounters!',
+			'matchingCompletedPage.title' => 'Matching completed!',
+			'matchingCompletedPage.subTitle' => ({required Object name}) => 'Congratulations! \nYou\'ve been matched with ${name}.',
+			'matchingCompletedPage.nullCase' => 'Matching information could not be obtained.',
+			'matchingCompletedPage.message' => 'Send us a message and start a conversation!',
 			'chatPage.isEmptyCase' => 'Let\'s find new encounters!',
 			'chatPage.sectionTitle.matching' => 'Matches',
 			'chatPage.sectionTitle.messages' => 'Messages',
@@ -3452,6 +3481,7 @@ extension on Translations {
 			'button.returnToAccountPage' => 'Return To Account Page',
 			'button.completion' => 'Complete',
 			'button.weatherPersonalityTest' => 'Weather Personality Test',
+			'button.goTochatPage' => 'Go To Chat Screen',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
@@ -3667,13 +3697,13 @@ extension on Translations {
 			'kEnum.occupation.certifiedPublicAccountant' => 'CPA',
 			'kEnum.occupation.taxAccountant' => 'Tax Accountant',
 			'kEnum.occupation.freelance' => 'Freelance',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.publicServant' => 'Civil Servant',
 			'kEnum.occupation.firefighter' => 'Firefighter',
 			'kEnum.occupation.police' => 'Police Officer',
 			'kEnum.occupation.selfDefenseForce' => 'Self-Defense Force',
 			'kEnum.occupation.athlete' => 'Athlete',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.pilot' => 'Pilot',
 			'kEnum.occupation.investor' => 'Investor',
 			'kEnum.occupation.cabinAttendant' => 'Cabin Attendant',

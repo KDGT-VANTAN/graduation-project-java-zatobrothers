@@ -87,6 +87,12 @@
   "likePage": {
     "isEmptyCase": "新しい出会いをみつけましょう！"
   },
+  "matchingCompletedPage": {
+    "title": "マッチング成立！",
+    "subTitle": "おめでとうございます！\n$nameさんとマッチングしました",
+    "nullCase": "マッチング情報が取得できませんでした。",
+    "message": "メッセージを送って会話を始めましょう！"
+  },
   "chatPage": {
     "isEmptyCase": "新しい出会いをみつけましょう！",
     "sectionTitle": {
@@ -527,7 +533,8 @@
     "shareResults": "結果をシェアする",
     "returnToAccountPage": "アカウント画面に戻る",
     "completion": "完了",
-    "weatherPersonalityTest": "ウェザーパーソナリティ診断"
+    "weatherPersonalityTest": "ウェザーパーソナリティ診断",
+    "goTochatPage": "チャット画面へ"
   },
   "segmentedSwitch": {
     "like": {

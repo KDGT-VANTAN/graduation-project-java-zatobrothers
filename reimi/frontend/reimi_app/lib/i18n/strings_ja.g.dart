@@ -44,6 +44,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsUserRegistrationPageJa userRegistrationPage = _TranslationsUserRegistrationPageJa._(_root);
 	@override late final _TranslationsHomePageJa homePage = _TranslationsHomePageJa._(_root);
 	@override late final _TranslationsLikePageJa likePage = _TranslationsLikePageJa._(_root);
+	@override late final _TranslationsMatchingCompletedPageJa matchingCompletedPage = _TranslationsMatchingCompletedPageJa._(_root);
 	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
 	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
 	@override late final _TranslationsWeatherReportPageJa weatherReportPage = _TranslationsWeatherReportPageJa._(_root);
@@ -154,6 +155,19 @@ class _TranslationsLikePageJa implements TranslationsLikePageEn {
 
 	// Translations
 	@override String get isEmptyCase => '新しい出会いをみつけましょう！';
+}
+
+// Path: matchingCompletedPage
+class _TranslationsMatchingCompletedPageJa implements TranslationsMatchingCompletedPageEn {
+	_TranslationsMatchingCompletedPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'マッチング成立！';
+	@override String subTitle({required Object name}) => 'おめでとうございます！\n${name}さんとマッチングしました';
+	@override String get nullCase => 'マッチング情報が取得できませんでした。';
+	@override String get message => 'メッセージを送って会話を始めましょう！';
 }
 
 // Path: chatPage
@@ -427,6 +441,7 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get returnToAccountPage => 'アカウント画面に戻る';
 	@override String get completion => '完了';
 	@override String get weatherPersonalityTest => 'ウェザーパーソナリティ診断';
+	@override String get goTochatPage => 'チャット画面へ';
 }
 
 // Path: segmentedSwitch
@@ -2072,6 +2087,10 @@ extension on TranslationsJa {
 			'userRegistrationPage.mainPhoto.items.photoRecommendationHint' => '笑顔の顔写真がおすすめ',
 			'homePage.isEmptyCase' => '現在、表示できるユーザーがいません。',
 			'likePage.isEmptyCase' => '新しい出会いをみつけましょう！',
+			'matchingCompletedPage.title' => 'マッチング成立！',
+			'matchingCompletedPage.subTitle' => ({required Object name}) => 'おめでとうございます！\n${name}さんとマッチングしました',
+			'matchingCompletedPage.nullCase' => 'マッチング情報が取得できませんでした。',
+			'matchingCompletedPage.message' => 'メッセージを送って会話を始めましょう！',
 			'chatPage.isEmptyCase' => '新しい出会いをみつけましょう！',
 			'chatPage.sectionTitle.matching' => 'マッチング',
 			'chatPage.sectionTitle.messages' => 'メッセージ',
@@ -2322,6 +2341,7 @@ extension on TranslationsJa {
 			'button.returnToAccountPage' => 'アカウント画面に戻る',
 			'button.completion' => '完了',
 			'button.weatherPersonalityTest' => 'ウェザーパーソナリティ診断',
+			'button.goTochatPage' => 'チャット画面へ',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
@@ -2537,13 +2557,13 @@ extension on TranslationsJa {
 			'kEnum.occupation.certifiedPublicAccountant' => '公認会計士',
 			'kEnum.occupation.taxAccountant' => '税理士',
 			'kEnum.occupation.freelance' => '自由業',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.publicServant' => '公務員',
 			'kEnum.occupation.firefighter' => '消防士',
 			'kEnum.occupation.police' => '警察官',
 			'kEnum.occupation.selfDefenseForce' => '自衛隊',
 			'kEnum.occupation.athlete' => 'スポーツ選手',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.pilot' => 'パイロット',
 			'kEnum.occupation.investor' => '投資家',
 			'kEnum.occupation.cabinAttendant' => 'キャビンアテンダント',
