@@ -8,6 +8,7 @@ import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart
 import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/like/like_page.dart';
+import 'package:reimi_app/presentation/features/matching/matching_completed_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_edit_page.dart';
@@ -395,6 +396,33 @@ GoRouter goRouter(Ref ref) {
         name: WeatherPersonalityTestResultPage.routeName,
         builder: (context, state) {
           return const WeatherPersonalityTestResultPage();
+        },
+      ),
+      // ----- matching -----
+      GoRoute(
+        path: MatchingCompletedPage.routeLocation,
+        name: MatchingCompletedPage.routeName,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            transitionDuration: const Duration(milliseconds: 480),
+            child: const MatchingCompletedPage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              final curved = CurvedAnimation(
+                parent: animation,
+                curve: Curves.easeOutQuart,
+              );
+
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, 1.05),
+                  end: Offset.zero,
+                ).animate(curved),
+                child: child,
+              );
+            },
+          );
         },
       ),
       // ----- bottom_navigation -----
