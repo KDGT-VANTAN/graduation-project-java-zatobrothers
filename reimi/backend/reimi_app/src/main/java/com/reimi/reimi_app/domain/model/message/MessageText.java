@@ -23,6 +23,16 @@ public class MessageText implements MessageContent {
         );
     }
 
+    public static MessageText reconstruct(
+        MessageId messageId,
+        String text
+    ) {
+        return new MessageText(
+            messageId,
+            text
+        );
+    }
+
     @Override
     public MessageType getMessageType() {
         return MessageType.TEXT;

@@ -37,6 +37,20 @@ public class Message {
         );
     }
 
+    public static Message reconstruct(
+        MessageId id,
+        ChatRoomId chatRoomId,
+        UserId senderId,
+        MessageContent messageContent
+    ) {
+        return new Message(
+            id,
+            chatRoomId,
+            senderId,
+            messageContent
+        );
+    }
+
     public MessageId getId() { return id; }
     public ChatRoomId getChatRoomId() { return chatRoomId; }
     public UserId getSenderId() { return senderId; }
