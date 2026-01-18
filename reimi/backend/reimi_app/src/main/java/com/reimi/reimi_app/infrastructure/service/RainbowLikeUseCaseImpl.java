@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.reimi.reimi_app.application.command.SendRainbowLikeCommand;
 import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
+import com.reimi.reimi_app.application.exception.client.LikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.MatchAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.RainbowLikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
@@ -15,6 +16,7 @@ import com.reimi.reimi_app.domain.model.rainbowlike.RainbowLike;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.domain.repository.ChatRoomRepository;
+import com.reimi.reimi_app.domain.repository.LikeRepository;
 import com.reimi.reimi_app.domain.repository.MatchRepository;
 import com.reimi.reimi_app.domain.repository.RainbowLikeRepository;
 import com.reimi.reimi_app.domain.repository.UserRepository;
@@ -27,6 +29,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
     private final UserRepository userRepository;
     private final RainbowLikeRepository rainbowLikeRepository;
+    private final LikeRepository likeRepository;
     private final MatchRepository matchRepository;
     private final ChatRoomRepository chatRoomRepository;
     private final AuthenticatedUserProvider authenticatedUserProvider;
@@ -34,6 +37,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     public RainbowLikeUseCaseImpl(
         UserRepository userRepository,
         RainbowLikeRepository rainbowLikeRepository,
+        LikeRepository likeRepository,
         MatchRepository matchRepository,
         ChatRoomRepository chatRoomRepository,
         ImageStorageComponent imageStorage,
@@ -41,6 +45,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     ) {
         this.userRepository = userRepository;
         this.rainbowLikeRepository = rainbowLikeRepository;
+        this.likeRepository = likeRepository;
         this.matchRepository = matchRepository;
         this.chatRoomRepository = chatRoomRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
@@ -64,6 +69,17 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
         UserId fromUserId = fromUser.getId();
 
+        // いいねとレインボーいいねを両方送ることはできない
+        // 既にいいねが送信されている場合は重複エラーとする
+        if (likeRepository.exists(toUserId, fromUserId)) {
+            throw new LikeAlreadyExistsException();
+        }
+        // 既にいいねを受信している場合は無効なリクエストとする
+        if (likeRepository.exists(toUserId, fromUserId)) {
+            throw new InvalidRequestException("既にいいねを受信しています");
+        }
+
+        //二重送信の防止
         if (rainbowLikeRepository.exists(fromUserId, toUserId)) {
             throw new RainbowLikeAlreadyExistsException();
         }
