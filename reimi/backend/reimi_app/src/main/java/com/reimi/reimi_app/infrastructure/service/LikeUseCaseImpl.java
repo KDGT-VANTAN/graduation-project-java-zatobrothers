@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.reimi.reimi_app.application.exception.client.InvalidRequestException;
 import com.reimi.reimi_app.application.exception.client.LikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.MatchAlreadyExistsException;
+import com.reimi.reimi_app.application.exception.client.RainbowLikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.usecase.LikeUseCase;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoom;
@@ -16,6 +18,7 @@ import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.domain.repository.ChatRoomRepository;
 import com.reimi.reimi_app.domain.repository.LikeRepository;
+import com.reimi.reimi_app.domain.repository.RainbowLikeRepository;
 import com.reimi.reimi_app.domain.repository.MatchRepository;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
@@ -27,6 +30,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
 
     private final UserRepository userRepository;
     private final LikeRepository likeRepository;
+    private final RainbowLikeRepository rainbowLikeRepository;
     private final MatchRepository matchRepository;
     private final ChatRoomRepository chatRoomRepository;
     private final ImageStorageComponent imageStorage;
@@ -35,6 +39,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
     public LikeUseCaseImpl(
         UserRepository userRepository,
         LikeRepository likeRepository,
+        RainbowLikeRepository rainbowLikeRepository,
         MatchRepository matchRepository,
         ChatRoomRepository chatRoomRepository,
         ImageStorageComponent imageStorage,
@@ -42,6 +47,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
     ) {
         this.userRepository = userRepository;
         this.likeRepository = likeRepository;
+        this.rainbowLikeRepository = rainbowLikeRepository;
         this.matchRepository = matchRepository;
         this.chatRoomRepository = chatRoomRepository;
         this.imageStorage = imageStorage;
@@ -62,6 +68,17 @@ public class LikeUseCaseImpl implements LikeUseCase {
 
         UserId fromUserId = fromUser.getId();
 
+        // いいねとレインボーいいねを両方送ることはできない
+        // 既にレインボーいいねが送信されている場合は重複エラーとする
+        if (rainbowLikeRepository.exists(toUserId, fromUserId)) {
+            throw new RainbowLikeAlreadyExistsException();
+        }
+        // 既にレインボーいいねを受信している場合は無効なリクエストとする
+        if (rainbowLikeRepository.exists(toUserId, fromUserId)) {
+            throw new InvalidRequestException("既にレインボーいいねを受信しています");
+        }
+
+        //二重送信の防止
         if (likeRepository.exists(fromUserId, toUserId)) {
             throw new LikeAlreadyExistsException();
         }
