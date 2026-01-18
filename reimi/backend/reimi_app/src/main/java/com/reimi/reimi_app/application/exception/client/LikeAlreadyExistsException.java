@@ -8,7 +8,7 @@ public class LikeAlreadyExistsException extends ClientErrorException {
     public LikeAlreadyExistsException() {
         super(
             "LIKE_ALREADY_SENT",
-            "既にいいねが送られています",
+            "既にいいねを送信しています",
             HttpStatus.CONFLICT
         );
     }

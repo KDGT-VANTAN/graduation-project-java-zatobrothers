@@ -8,7 +8,7 @@ public class RainbowLikeAlreadyExistsException extends ClientErrorException {
     public RainbowLikeAlreadyExistsException() {
         super(
             "RAINBOW_LIKE_ALREADY_SENT",
-            "既にレインボーいいねが送られています",
+            "既にレインボーいいねを送信しています",
             HttpStatus.CONFLICT
         );
     }

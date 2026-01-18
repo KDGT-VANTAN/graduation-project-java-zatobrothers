@@ -93,11 +93,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
             examples = {
                 @ExampleObject(
                     name = "レインボーいいね重複",
-                    description = "既にレインボーいいねが送られてる場合",
+                    description = "既にレインボーいいねを送信している場合",
                     value = """
                     {
-                        "code": "LIKE_ALREADY_SENT",
-                        "message": "既にレインボーいいねが送られています"
+                        "code": "RAINBOW_LIKE_ALREADY_SENT",
+                        "message": "既にレインボーいいねを送信しています"
                     }
                     """
                 ),
