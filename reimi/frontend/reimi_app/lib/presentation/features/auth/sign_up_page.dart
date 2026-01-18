@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/domain/value_objects/user_auth_provider.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
 import 'package:reimi_app/presentation/app/auth/states/auth_state.dart';
 import 'package:reimi_app/presentation/features/auth/widgets/apple_button.dart';

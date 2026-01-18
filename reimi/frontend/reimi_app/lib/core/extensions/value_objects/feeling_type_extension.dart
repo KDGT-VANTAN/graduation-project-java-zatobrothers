@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/domain/value_objects/feeling_type.dart';
 
 extension FeelingTypeExtension on FeelingType {

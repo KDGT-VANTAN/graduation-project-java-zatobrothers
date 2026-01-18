@@ -15,7 +15,7 @@ import 'package:reimi_app/core/extensions/value_objects/occupation_extension.dar
 import 'package:reimi_app/core/extensions/value_objects/smoking_extension.dart';
 import 'package:reimi_app/domain/read_models/user_with_profile_read_model.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';

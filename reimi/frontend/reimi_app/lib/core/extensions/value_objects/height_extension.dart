@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 
 extension HeightExtension on Height {
   String displayName(BuildContext context) {

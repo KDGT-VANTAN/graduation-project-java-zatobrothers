@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/splash/widgets/loading_dots.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_icon.dart';

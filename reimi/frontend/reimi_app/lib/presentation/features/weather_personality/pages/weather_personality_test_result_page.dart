@@ -8,7 +8,7 @@ import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/share/share_payload.dart';
 import 'package:reimi_app/core/share/share_providers.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/notifiers/weather_personality_test_result_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_personality/states/weather_personality_test_result_state.dart';

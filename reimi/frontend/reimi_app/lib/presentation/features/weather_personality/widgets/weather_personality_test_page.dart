@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/notifiers/weather_personality_test_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/answer_option_card.dart';

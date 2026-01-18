@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart';
 import 'package:reimi_app/presentation/features/chat/states/chat_state.dart';
