@@ -71,7 +71,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
         // いいねとレインボーいいねを両方送ることはできない
         // 既にいいねが送信されている場合は重複エラーとする
-        if (likeRepository.exists(toUserId, fromUserId)) {
+        if (likeRepository.exists(fromUserId, toUserId)) {
             throw new LikeAlreadyExistsException();
         }
         // 既にいいねを受信している場合は無効なリクエストとする
