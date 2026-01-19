@@ -22,11 +22,14 @@ import com.reimi.reimi_app.infrastructure.web.openapi.message.GetChatRoomMessage
 import com.reimi.reimi_app.infrastructure.web.openapi.message.SendTextMessageApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
 @RequestMapping("/chat-rooms")
+@Tag(name = "ChatRoom", description = "チャットルーム関連のAPI")
 public class MessageController {
 
     private final MessageUseCase messageUseCase;
