@@ -12,12 +12,14 @@ import com.reimi.reimi_app.application.exception.client.ResourceNotFoundExceptio
 import com.reimi.reimi_app.application.usecase.RainbowLikeUseCase;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoom;
 import com.reimi.reimi_app.domain.model.match.Match;
+import com.reimi.reimi_app.domain.model.message.Message;
 import com.reimi.reimi_app.domain.model.rainbowlike.RainbowLike;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.domain.repository.ChatRoomRepository;
 import com.reimi.reimi_app.domain.repository.LikeRepository;
 import com.reimi.reimi_app.domain.repository.MatchRepository;
+import com.reimi.reimi_app.domain.repository.MessageRepository;
 import com.reimi.reimi_app.domain.repository.RainbowLikeRepository;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
@@ -32,6 +34,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     private final LikeRepository likeRepository;
     private final MatchRepository matchRepository;
     private final ChatRoomRepository chatRoomRepository;
+    private final MessageRepository messageRepository;
     private final AuthenticatedUserProvider authenticatedUserProvider;
 
     public RainbowLikeUseCaseImpl(
@@ -40,6 +43,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         LikeRepository likeRepository,
         MatchRepository matchRepository,
         ChatRoomRepository chatRoomRepository,
+        MessageRepository messageRepository,
         ImageStorageComponent imageStorage,
         AuthenticatedUserProvider authenticatedUserProvider
     ) {
@@ -48,6 +52,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         this.likeRepository = likeRepository;
         this.matchRepository = matchRepository;
         this.chatRoomRepository = chatRoomRepository;
+        this.messageRepository = messageRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
     }
 
@@ -57,6 +62,8 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         if (command.message() == null || command.message().isBlank()) {
             throw new InvalidRequestException("メッセージは必須です");
         }
+
+        String textMessage = command.message();
 
         User toUser = userRepository.findUserByUserId(command.toUserId())
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
@@ -87,15 +94,15 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         RainbowLike rainbowLike = RainbowLike.create(
             fromUserId,
             toUserId,
-            command.message()
+            textMessage
         );
 
         rainbowLikeRepository.save(rainbowLike);
 
-        handleMatching(fromUserId, toUserId);
+        handleMatching(fromUserId, toUserId, textMessage);
     }
 
-    private void handleMatching(UserId fromUserId, UserId toUserId) {
+    private void handleMatching(UserId fromUserId, UserId toUserId, String textMessage) {
 
         // 逆方向レインボーいいね確認
         // 存在していた場合、マッチングが成立する
@@ -114,5 +121,14 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
         ChatRoom chatRoom = ChatRoom.create(match.getId());
         chatRoomRepository.save(chatRoom);
+
+        // レインボーいいねを返した時に送ったメッセージは、そのままチャットルームに表示される
+        Message message = Message.createText(
+            chatRoom.getId(),
+            fromUserId,
+            textMessage
+        );
+
+        messageRepository.save(message);
     }
 }
