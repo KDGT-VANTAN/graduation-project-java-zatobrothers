@@ -4,11 +4,11 @@ import org.springframework.http.HttpStatus;
 
 import com.reimi.reimi_app.application.exception.ClientErrorException;
 
-public class LikeAlreadyExistsException extends ClientErrorException {
-    public LikeAlreadyExistsException() {
+public class RainbowLikeAlreadyExistsException extends ClientErrorException {
+    public RainbowLikeAlreadyExistsException() {
         super(
-            "LIKE_ALREADY_SENT",
-            "既にいいねを送信しています",
+            "RAINBOW_LIKE_ALREADY_SENT",
+            "既にレインボーいいねを送信しています",
             HttpStatus.CONFLICT
         );
     }

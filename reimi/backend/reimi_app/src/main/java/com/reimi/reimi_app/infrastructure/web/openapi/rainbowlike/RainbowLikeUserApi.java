@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.openapi.like;
+package com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -18,9 +18,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "ユーザーいいね",
-    description = "ユーザーにいいねを送れるAPI。ユーザー双方がいいねを送信した場合のみマッチングが成立する。",
-    tags = { "Like" },
+    summary = "ユーザーレインボーいいね",
+    description = "ユーザーにレインボーいいねを送れるAPI。ユーザー双方がレインボーいいねを送信した場合のみマッチングが成立する。",
+    tags = { "RainbowLike" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(
@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @ApiResponses({
     @ApiResponse(
         responseCode = "201",
-        description = "いいね送信が成功",
+        description = "レインボーいいね送信が成功",
         content = @Content(
             mediaType = "application/json"
         )
@@ -46,7 +46,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                 value = """
                 {
                     "code": "INVALID_REQUEST",
-                    "message": "ユーザー自身にはいいねできません"
+                    "message": "ユーザー自身にはレインボーいいねできません"
                 }
                 """
             )
@@ -92,12 +92,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
             schema = @Schema(implementation = ApiErrorResponse.class),
             examples = {
                 @ExampleObject(
-                    name = "いいね重複",
-                    description = "既にいいねを送信している場合",
+                    name = "レインボーいいね重複",
+                    description = "既にレインボーいいねを送信している場合",
                     value = """
                     {
-                        "code": "LIKE_ALREADY_SENT",
-                        "message": "既にいいねを送信しています"
+                        "code": "RAINBOW_LIKE_ALREADY_SENT",
+                        "message": "既にレインボーいいねを送信しています"
                     }
                     """
                 ),
@@ -131,5 +131,5 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 })
-public @interface LikeUserApi {
+public @interface RainbowLikeUserApi {
 }
