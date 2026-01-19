@@ -13,7 +13,9 @@ import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.request.SendRainbowLikeRequest;
 import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.RainbowLikeUserApi;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/rainbowLikes")
@@ -31,7 +33,8 @@ public class RainbowLikeController {
     @RainbowLikeUserApi
     public ResponseEntity<Void> RainbowLike(
         @PathVariable("userId") UserId toUserId,
-        @RequestBody SendRainbowLikeRequest request) {
+        @Valid @RequestBody SendRainbowLikeRequest request
+    ) {
         rainbowLikeUseCase.rainbowLikeUser(
             new SendRainbowLikeCommand(
                 toUserId,
