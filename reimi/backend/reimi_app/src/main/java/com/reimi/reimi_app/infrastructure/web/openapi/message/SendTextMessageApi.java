@@ -20,7 +20,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Operation(
     summary = "チャットルームにメッセージ送信",
     description = "マッチング成立後に作成されるチャットルームにメッセージを送信できるAPI",
-    tags = { "ChatRoom" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(

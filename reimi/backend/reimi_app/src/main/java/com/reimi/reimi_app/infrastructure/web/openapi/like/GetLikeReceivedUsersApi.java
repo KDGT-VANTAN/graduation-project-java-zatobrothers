@@ -20,8 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "自分がいいねされたユーザー一覧取得",
-    description = "自分がいいねされたユーザの一覧を取得できるAPI",
-    tags = { "Like" }
+    description = "自分がいいねされたユーザの一覧を取得できるAPI"
 )
 @ApiResponses({
     @ApiResponse(

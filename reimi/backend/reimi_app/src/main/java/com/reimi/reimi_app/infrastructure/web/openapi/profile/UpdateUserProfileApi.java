@@ -21,7 +21,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Operation(
     summary = "ユーザープロフィール編集",
     description = "ユーザーのプロフィール編集API",
-    tags = { "UserProfile" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(

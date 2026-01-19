@@ -18,10 +18,12 @@ import com.reimi.reimi_app.infrastructure.web.dto.response.UserWithProfileRespon
 import com.reimi.reimi_app.infrastructure.web.openapi.profile.GetUserProfileApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.profile.UpdateUserProfileApi;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/users/{userId}/profile")
+@Tag(name = "UserProfile", description = "プロフィール関連のAPI")
 public class UserProfileController {
     private final UserProfileUseCase userProfileUseCase;
 

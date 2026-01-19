@@ -20,8 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザー一覧取得",
-    description = "登録されているユーザーの一覧を取得できるAPI",
-    tags = { "User" }
+    description = "登録されているユーザーの一覧を取得できるAPI"
 )
 @ApiResponses({
     @ApiResponse(

@@ -18,9 +18,11 @@ import com.reimi.reimi_app.infrastructure.web.openapi.like.GetLikeReceivedUsersA
 import com.reimi.reimi_app.infrastructure.web.openapi.like.LikeUserApi;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/likes")
+@Tag(name = "Like", description = "いいね関連のAPI")
 public class LikeController {
 
     private final LikeUseCase likeUseCase;

@@ -20,7 +20,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Operation(
     summary = "ユーザーいいね",
     description = "ユーザーにいいねを送れるAPI。ユーザー双方がいいねを送信した場合のみマッチングが成立する。",
-    tags = { "Like" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(

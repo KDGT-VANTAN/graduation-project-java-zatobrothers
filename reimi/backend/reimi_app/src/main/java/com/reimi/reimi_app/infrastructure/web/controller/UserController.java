@@ -22,11 +22,13 @@ import com.reimi.reimi_app.infrastructure.web.openapi.user.GetUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.user.RegisterUserApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 
 @RestController
 @RequestMapping("/users")
+@Tag(name = "User", description = "ユーザー関連のAPI")
 public class UserController {
 
     private final AuthenticatedUserProvider authenticatedUserProvider;

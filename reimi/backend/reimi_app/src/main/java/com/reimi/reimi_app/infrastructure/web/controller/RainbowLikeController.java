@@ -13,12 +13,15 @@ import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.request.SendRainbowLikeRequest;
 import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.RainbowLikeUserApi;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/rainbowLikes")
+@RequestMapping("/rainbow-likes")
+@Tag(name = "RainbowLike", description = "レインボーいいね関連のAPI")
 public class RainbowLikeController {
 
     private final RainbowLikeUseCase rainbowLikeUseCase;

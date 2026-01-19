@@ -21,7 +21,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Operation(
     summary = "ユーザー新規登録",
     description = "ユーザーの新規登録実行時のAPI",
-    tags = { "User" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(

@@ -19,8 +19,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザープロフィール取得",
-    description = "ユーザーのプロフィール詳細を取得できるAPI",
-    tags = { "UserProfile" }
+    description = "ユーザーのプロフィール詳細を取得できるAPI"
 )
 @ApiResponses({
     @ApiResponse(
