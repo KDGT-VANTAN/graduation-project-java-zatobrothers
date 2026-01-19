@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.usecase.LikeUseCase;
@@ -21,9 +20,8 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/likes")
 @Tag(name = "Like", description = "いいね関連のAPI")
-public class LikeController {
+public class LikeController extends ApiV1Controller {
 
     private final LikeUseCase likeUseCase;
 
@@ -33,7 +31,7 @@ public class LikeController {
         this.likeUseCase = likeUseCase;
     }
 
-    @PostMapping("/{userId}")
+    @PostMapping(path = "/likes/{userId}")
     @LikeUserApi
     public ResponseEntity<Void> like(
         @PathVariable("userId") UserId toUserId,
@@ -43,7 +41,7 @@ public class LikeController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/users/given")
+    @GetMapping(path = "/likes/users/given")
     @GetLikeGivenUsersApi
     public ResponseEntity<List<GetLikedUserListResponse>> getLikeGivenUsers() {
 
@@ -61,7 +59,7 @@ public class LikeController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/users/received")
+    @GetMapping(path = "/likes/users/received")
     @GetLikeReceivedUsersApi
     public ResponseEntity<List<GetLikedUserListResponse>> getLikeReceivedUsers() {
 

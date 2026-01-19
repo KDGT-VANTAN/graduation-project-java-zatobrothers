@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.UpdateUserProfileCommand;
@@ -22,9 +21,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/users/{userId}/profile")
 @Tag(name = "UserProfile", description = "プロフィール関連のAPI")
-public class UserProfileController {
+public class UserProfileController extends ApiV1Controller {
     private final UserProfileUseCase userProfileUseCase;
 
     public UserProfileController(
@@ -33,7 +31,7 @@ public class UserProfileController {
         this.userProfileUseCase = userProfileUseCase;
     }
 
-    @GetMapping()
+    @GetMapping("/users/{userId}/profile")
     @GetUserProfileApi
     public ResponseEntity<UserWithProfileResponse> getProfile(@PathVariable UserId userId) {
         UserWithProfileResponse response = userProfileUseCase.getUserProfile(userId);
@@ -41,7 +39,10 @@ public class UserProfileController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(
+        path = "/users/{userId}/profile",
+        consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @UpdateUserProfileApi
     public ResponseEntity<Void> editProfile(
         @PathVariable UserId userId,

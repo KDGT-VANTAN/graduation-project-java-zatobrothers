@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.RegisterUserCommand;
@@ -27,9 +26,8 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/users")
 @Tag(name = "User", description = "ユーザー関連のAPI")
-public class UserController {
+public class UserController extends ApiV1Controller {
 
     private final AuthenticatedUserProvider authenticatedUserProvider;
     private final UserUseCase userUseCase;
@@ -42,7 +40,7 @@ public class UserController {
         this.userUseCase = userUseCase;
     }
 
-    @GetMapping("/me")
+    @GetMapping(path = "/users/me")
     @GetMeApi
     public ResponseEntity<GetMeResponse> getMe() {
 
@@ -61,7 +59,7 @@ public class UserController {
 
         return ResponseEntity.ok(getMeResponse);
     }
-    @GetMapping
+    @GetMapping(path = "/users")
     @GetUsersApi
     public ResponseEntity<List<GetUserListResponse>> getUsers() {
 
@@ -82,7 +80,10 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(
+        path = "/users",
+        consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @RegisterUserApi
     public ResponseEntity<Void> registerUser(@ModelAttribute @Valid RegisterUserRequest request) {
         userUseCase.registerUser(
