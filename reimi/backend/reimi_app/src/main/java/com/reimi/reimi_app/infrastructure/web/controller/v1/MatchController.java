@@ -1,10 +1,9 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.usecase.MatchUseCase;
@@ -14,9 +13,8 @@ import com.reimi.reimi_app.infrastructure.web.openapi.match.GetMatchedUsersApi;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/matches")
 @Tag(name = "Match", description = "マッチング関連のAPI")
-public class MatchController {
+public class MatchController extends ApiV1Controller {
 
     private final MatchUseCase matchUseCase;
 
@@ -26,7 +24,7 @@ public class MatchController {
         this.matchUseCase = matchUseCase;
     }
 
-    @GetMapping()
+    @GetMapping(path = "/matches")
     @GetMatchedUsersApi
     public ResponseEntity<List<GetMatchedUserListResponse>> getMatchedUsers() {
 

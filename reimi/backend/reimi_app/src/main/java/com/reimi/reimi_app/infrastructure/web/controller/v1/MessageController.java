@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.SendTextMessageCommand;
@@ -28,9 +27,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/chat-rooms")
 @Tag(name = "ChatRoom", description = "チャットルーム関連のAPI")
-public class MessageController {
+public class MessageController extends ApiV1Controller {
 
     private final MessageUseCase messageUseCase;
     private final UserUseCase userUseCase;
@@ -46,7 +44,7 @@ public class MessageController {
         this.authenticatedUserProvider = authenticatedUserProvider;
     }
 
-    @PostMapping("/{chatRoomId}/messages")
+    @PostMapping(path = "/chat-rooms/{chatRoomId}/messages")
     @SendTextMessageApi
     public ResponseEntity<Void> sendTextMessage(
         @PathVariable("chatRoomId") ChatRoomId chatRoomId,
@@ -67,7 +65,7 @@ public class MessageController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/{chatRoomId}/messages")
+    @GetMapping(path = "/chat-rooms/{chatRoomId}/messages")
     @GetChatRoomMessagesApi
     public ResponseEntity<List<GetMessageListResponse>> getChatRoomMessages(@PathVariable ChatRoomId chatRoomId) {
         List<GetMessageListResponse> response = messageUseCase.getChatRoomMessageList(chatRoomId)

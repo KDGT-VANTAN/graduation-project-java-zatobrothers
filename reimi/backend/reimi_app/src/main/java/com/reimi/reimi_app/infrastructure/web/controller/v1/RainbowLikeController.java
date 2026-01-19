@@ -1,10 +1,9 @@
-package com.reimi.reimi_app.infrastructure.web.controller;
+package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reimi.reimi_app.application.command.SendRainbowLikeCommand;
@@ -20,9 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/rainbow-likes")
 @Tag(name = "RainbowLike", description = "レインボーいいね関連のAPI")
-public class RainbowLikeController {
+public class RainbowLikeController extends ApiV1Controller {
 
     private final RainbowLikeUseCase rainbowLikeUseCase;
 
@@ -32,7 +30,7 @@ public class RainbowLikeController {
         this.rainbowLikeUseCase = rainbowLikeUseCase;
     }
 
-    @PostMapping("/{userId}")
+    @PostMapping(path = "/rainbow-likes/{userId}")
     @RainbowLikeUserApi
     public ResponseEntity<Void> RainbowLike(
         @PathVariable("userId") UserId toUserId,
