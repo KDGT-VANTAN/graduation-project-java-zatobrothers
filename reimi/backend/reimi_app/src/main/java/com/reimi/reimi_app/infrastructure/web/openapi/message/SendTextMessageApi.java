@@ -14,13 +14,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "チャットルームにメッセージ送信",
     description = "マッチング成立後に作成されるチャットルームにメッセージを送信できるAPI",
-    tags = { "ChatRoom" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(
@@ -28,6 +28,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 )
+@Tag(name = "ChatRoom", description = "チャットルーム関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "201",

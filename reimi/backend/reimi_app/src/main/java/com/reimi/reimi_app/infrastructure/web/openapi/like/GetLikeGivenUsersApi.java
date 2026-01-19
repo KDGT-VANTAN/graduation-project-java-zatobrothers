@@ -15,14 +15,15 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "自分がいいねしたユーザー一覧取得",
-    description = "自分がいいねしたユーザの一覧を取得できるAPI",
-    tags = { "Like" }
+    description = "自分がいいねしたユーザの一覧を取得できるAPI"
 )
+@Tag(name = "Like", description = "いいね関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",

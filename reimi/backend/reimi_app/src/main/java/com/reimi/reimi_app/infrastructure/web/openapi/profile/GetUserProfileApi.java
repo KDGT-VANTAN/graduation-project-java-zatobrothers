@@ -14,14 +14,15 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザープロフィール取得",
-    description = "ユーザーのプロフィール詳細を取得できるAPI",
-    tags = { "UserProfile" }
+    description = "ユーザーのプロフィール詳細を取得できるAPI"
 )
+@Tag(name = "UserProfile", description = "プロフィール関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",

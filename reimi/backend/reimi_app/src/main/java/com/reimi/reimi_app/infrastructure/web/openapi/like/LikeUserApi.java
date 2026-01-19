@@ -14,13 +14,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザーいいね",
     description = "ユーザーにいいねを送れるAPI。ユーザー双方がいいねを送信した場合のみマッチングが成立する。",
-    tags = { "Like" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(
@@ -28,6 +28,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 )
+@Tag(name = "Like", description = "いいね関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "201",

@@ -15,13 +15,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ユーザー新規登録",
     description = "ユーザーの新規登録実行時のAPI",
-    tags = { "User" },
     requestBody = @RequestBody(
         required = true,
         content = @Content(
@@ -30,6 +30,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 )
+@Tag(name = "User", description = "ユーザー関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "201",
