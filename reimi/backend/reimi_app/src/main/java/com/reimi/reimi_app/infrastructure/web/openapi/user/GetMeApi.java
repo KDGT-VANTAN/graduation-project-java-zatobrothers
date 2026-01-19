@@ -14,7 +14,6 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -22,7 +21,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     summary = "ユーザー取得",
     description = "ログインしているユーザー情報を取得できるAPI"
 )
-@Tag(name = "User", description = "ユーザー関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",

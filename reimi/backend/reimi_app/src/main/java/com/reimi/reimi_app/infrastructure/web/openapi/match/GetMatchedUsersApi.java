@@ -15,7 +15,6 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -23,7 +22,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     summary = "マッチング成立したユーザー一覧取得",
     description = "マッチングが成立したユーザーの一覧を取得できるAPI"
 )
-@Tag(name = "Match", description = "マッチング関連のAPI")
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",
