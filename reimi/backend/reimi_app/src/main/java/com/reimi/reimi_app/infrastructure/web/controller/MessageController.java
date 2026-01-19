@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/chatRooms")
+@RequestMapping("/chat-rooms")
 public class MessageController {
 
     private final MessageUseCase messageUseCase;

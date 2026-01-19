@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/rainbowLikes")
+@RequestMapping("/rainbow-likes")
 public class RainbowLikeController {
 
     private final RainbowLikeUseCase rainbowLikeUseCase;
