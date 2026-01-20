@@ -18,7 +18,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   @override
   Future<List<HomeUserReadModel>> fetchHomeUsers() async {
     try {
-      final response = await _dio.get('/users');
+      final response = await _dio.get('/api/v1/users');
       final List data = response.data as List;
       return data
           .map((e) => HomeUserReadModel.fromJson(e as Map<String, dynamic>))
@@ -31,7 +31,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   @override
   Future<AppUserReadModel> fetchCurrentUser() async {
     try {
-      final response = await _dio.get('/users/me');
+      final response = await _dio.get('/api/v1/users/me');
       return AppUserReadModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
@@ -43,7 +43,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     final formData = await dto.toFormData();
     try {
       final response = await _dio.post(
-        '/users',
+        '/api/v1/users',
         data: formData,
         options: Options(
           contentType: 'multipart/form-data',

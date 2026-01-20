@@ -19,7 +19,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   @override
   Future<UserWithProfileReadModel> fetchUserProfile(String userId) async {
     try {
-      final response = await _dio.get('/users/$userId/profile');
+      final response = await _dio.get('/api/v1/users/$userId/profile');
       return UserWithProfileReadModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
@@ -34,7 +34,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     final formData = await dto.toFormData();
     try {
       final response = await _dio.put(
-        '/users/$userId/profile',
+        '/api/v1/users/$userId/profile',
         data: formData,
         options: Options(
           contentType: 'multipart/form-data',
