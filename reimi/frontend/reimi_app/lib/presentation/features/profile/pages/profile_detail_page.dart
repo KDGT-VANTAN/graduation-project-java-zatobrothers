@@ -16,7 +16,7 @@ import 'package:reimi_app/core/extensions/value_objects/holiday_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/occupation_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/smoking_extension.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/states/profile_detail_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';

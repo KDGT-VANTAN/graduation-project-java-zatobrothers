@@ -3,11 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/config/crashlytics_config.dart';
 import 'package:reimi_app/core/config/firebase_options_dev.dart' as dev;
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/app/my_app.dart';
+import 'package:reimi_app/core/storage/shared_preferences_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
   LocaleSettings.useDeviceLocale(); // デバイスのロケール設定に基づいて初期言語を設定
   await Firebase.initializeApp(
     options: dev.DefaultFirebaseOptions.currentPlatform,
@@ -15,6 +18,9 @@ Future<void> main() async {
   setupCrashlytics();
   runApp(
     ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+      ],
       child: TranslationProvider(
         child: const MyApp(),
       ),

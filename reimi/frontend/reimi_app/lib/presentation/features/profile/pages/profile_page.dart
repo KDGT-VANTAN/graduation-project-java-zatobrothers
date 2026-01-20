@@ -30,7 +30,7 @@ import 'package:reimi_app/domain/value_objects/holiday.dart';
 import 'package:reimi_app/domain/value_objects/media_purpose.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_edit_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/states/profile_edit_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';

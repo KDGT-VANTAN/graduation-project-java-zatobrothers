@@ -7,7 +7,7 @@ import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/feeling_type_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/forecast_type_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/weather_type_extension.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/states/weather_report_detail_state.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/show_comment_modal_sheet.dart';

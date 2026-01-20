@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/notifiers/account_notifier.dart';
 import 'package:reimi_app/presentation/features/account/states/account_state.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';

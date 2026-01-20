@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/domain/value_objects/wind_direction.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 
 extension WindDirectionExtension on WindDirection {
   String displayName(BuildContext context) {

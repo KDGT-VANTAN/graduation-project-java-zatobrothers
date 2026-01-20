@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/domain/value_objects/communication_style.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 
 extension CommunicationStyleExtension on CommunicationStyle {
   String displayName(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/matching/notifiers/matching_notifier.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';

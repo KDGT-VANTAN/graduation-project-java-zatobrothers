@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/home/enum/sort_type.dart';
 import 'package:reimi_app/presentation/features/home/notifiers/home_notifier.dart';
 import 'package:reimi_app/presentation/features/home/states/home_state.dart';

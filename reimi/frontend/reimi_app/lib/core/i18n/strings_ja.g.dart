@@ -37,6 +37,10 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsJa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsJa(meta: meta ?? this.$meta);
 
 	// Translations
+	@override Map<String, String> get locales => {
+		'en': '英語',
+		'ja': '日本語',
+	};
 	@override late final _TranslationsSplashPageJa splashPage = _TranslationsSplashPageJa._(_root);
 	@override late final _TranslationsSignUpPageJa signUpPage = _TranslationsSignUpPageJa._(_root);
 	@override late final _TranslationsSignInPageJa signInPage = _TranslationsSignInPageJa._(_root);
@@ -1818,6 +1822,7 @@ class _TranslationsSettingPageSectionAccountSettingJa implements TranslationsSet
 	@override String get title => 'アカウント設定';
 	@override String get identityVerification => '本人確認';
 	@override String get pushNotification => 'プッシュ通知';
+	@override String get locale => '言語';
 	@override String get logout => 'ログアウト';
 	@override String get withdrawal => '退会';
 }
@@ -2045,6 +2050,8 @@ class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivatio
 extension on TranslationsJa {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
+			'locales.en' => '英語',
+			'locales.ja' => '日本語',
 			'splashPage.appName' => 'Reimi',
 			'splashPage.title' => '天気で繋がる、出会いのアプリ',
 			'splashPage.loading' => '読み込み中...',
@@ -2260,6 +2267,7 @@ extension on TranslationsJa {
 			'settingPage.section.accountSetting.title' => 'アカウント設定',
 			'settingPage.section.accountSetting.identityVerification' => '本人確認',
 			'settingPage.section.accountSetting.pushNotification' => 'プッシュ通知',
+			'settingPage.section.accountSetting.locale' => '言語',
 			'settingPage.section.accountSetting.logout' => 'ログアウト',
 			'settingPage.section.accountSetting.withdrawal' => '退会',
 			'settingPage.section.history.title' => '履歴',
@@ -2554,11 +2562,11 @@ extension on TranslationsJa {
 			'kEnum.occupation.executive' => '経営者・役員',
 			'kEnum.occupation.legal' => '法務関係',
 			'kEnum.occupation.lawyer' => '弁護士',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.certifiedPublicAccountant' => '公認会計士',
 			'kEnum.occupation.taxAccountant' => '税理士',
 			'kEnum.occupation.freelance' => '自由業',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.publicServant' => '公務員',
 			'kEnum.occupation.firefighter' => '消防士',
 			'kEnum.occupation.police' => '警察官',

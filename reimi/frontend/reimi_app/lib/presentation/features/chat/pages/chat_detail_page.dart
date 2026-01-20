@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/app_user_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/notifiers/chat_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/chat/states/chat_detail_state.dart';

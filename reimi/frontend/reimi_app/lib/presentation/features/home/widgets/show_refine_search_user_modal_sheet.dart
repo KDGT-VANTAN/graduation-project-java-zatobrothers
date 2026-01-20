@@ -3,7 +3,7 @@ import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/gender_extension.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/shared/utils/show_app_modal_bottom_sheet.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_modal_sheet.dart';
 

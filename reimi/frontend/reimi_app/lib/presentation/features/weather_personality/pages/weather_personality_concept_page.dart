@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q1_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';

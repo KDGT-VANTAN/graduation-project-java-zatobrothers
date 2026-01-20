@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/presentation/features/like/enum/like_segment.dart';
-import 'package:reimi_app/i18n/strings.g.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/like/notifiers/like_notifier.dart';
 import 'package:reimi_app/presentation/shared/widgets/segmented_switch.dart';
 
