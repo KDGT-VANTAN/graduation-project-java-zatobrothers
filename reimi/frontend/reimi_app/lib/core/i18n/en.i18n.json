@@ -1,4 +1,8 @@
 {
+  "locales(map)": {
+    "en": "English",
+    "ja": "Japanese"
+  },
   "splashPage": {
     "appName": "Reimi",
     "title": "Connect through weather, a dating app",
@@ -389,6 +393,7 @@
         "title": "Account Settings",
         "identityVerification": "Identity Verification",
         "pushNotification": "Push Notifications",
+        "locale": "Locale",
         "logout": "Logout",
         "withdrawal": "Delete Account"
       },

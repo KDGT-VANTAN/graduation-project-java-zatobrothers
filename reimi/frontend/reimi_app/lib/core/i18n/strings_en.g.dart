@@ -40,6 +40,10 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
+	Map<String, String> get locales => {
+		'en': 'English',
+		'ja': 'Japanese',
+	};
 	late final TranslationsSplashPageEn splashPage = TranslationsSplashPageEn._(_root);
 	late final TranslationsSignUpPageEn signUpPage = TranslationsSignUpPageEn._(_root);
 	late final TranslationsSignInPageEn signInPage = TranslationsSignInPageEn._(_root);
@@ -2767,6 +2771,9 @@ class TranslationsSettingPageSectionAccountSettingEn {
 	/// en: 'Push Notifications'
 	String get pushNotification => 'Push Notifications';
 
+	/// en: 'Locale'
+	String get locale => 'Locale';
+
 	/// en: 'Logout'
 	String get logout => 'Logout';
 
@@ -3185,6 +3192,8 @@ class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivation
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
+			'locales.en' => 'English',
+			'locales.ja' => 'Japanese',
 			'splashPage.appName' => 'Reimi',
 			'splashPage.title' => 'Connect through weather, a dating app',
 			'splashPage.loading' => 'Loading...',
@@ -3400,6 +3409,7 @@ extension on Translations {
 			'settingPage.section.accountSetting.title' => 'Account Settings',
 			'settingPage.section.accountSetting.identityVerification' => 'Identity Verification',
 			'settingPage.section.accountSetting.pushNotification' => 'Push Notifications',
+			'settingPage.section.accountSetting.locale' => 'Locale',
 			'settingPage.section.accountSetting.logout' => 'Logout',
 			'settingPage.section.accountSetting.withdrawal' => 'Delete Account',
 			'settingPage.section.history.title' => 'History',
@@ -3694,11 +3704,11 @@ extension on Translations {
 			'kEnum.occupation.executive' => 'Executive',
 			'kEnum.occupation.legal' => 'Legal',
 			'kEnum.occupation.lawyer' => 'Lawyer',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.certifiedPublicAccountant' => 'CPA',
 			'kEnum.occupation.taxAccountant' => 'Tax Accountant',
 			'kEnum.occupation.freelance' => 'Freelance',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.publicServant' => 'Civil Servant',
 			'kEnum.occupation.firefighter' => 'Firefighter',
 			'kEnum.occupation.police' => 'Police Officer',

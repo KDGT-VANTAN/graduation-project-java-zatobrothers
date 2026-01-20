@@ -1,4 +1,8 @@
 {
+  "locales(map)": {
+    "en": "英語",
+    "ja": "日本語"
+  },
   "splashPage": {
     "appName": "Reimi",
     "title": "天気で繋がる、出会いのアプリ",
@@ -389,6 +393,7 @@
         "title": "アカウント設定",
         "identityVerification": "本人確認",
         "pushNotification": "プッシュ通知",
+        "locale": "言語",
         "logout": "ログアウト",
         "withdrawal": "退会"
       },
