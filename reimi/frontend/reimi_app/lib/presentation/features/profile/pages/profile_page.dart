@@ -27,7 +27,6 @@ import 'package:reimi_app/domain/value_objects/education.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/height.dart';
 import 'package:reimi_app/domain/value_objects/holiday.dart';
-import 'package:reimi_app/domain/value_objects/media_purpose.dart';
 import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
@@ -35,7 +34,6 @@ import 'package:reimi_app/presentation/features/profile/notifiers/profile_edit_n
 import 'package:reimi_app/presentation/features/profile/states/profile_edit_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_edit_page.dart';
-import 'package:reimi_app/presentation/features/storage/upload_media_notifier.dart';
 import 'package:reimi_app/presentation/shared/utils/enum_picker.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';
@@ -233,11 +231,7 @@ class ProfilePage extends HookConsumerWidget {
                       label: labels[index],
                       subPhotoUrl: subPhoto,
                       onTap: () async {
-                        final uploadMediaNotifier =
-                            ref.read(uploadMediaNotifierProvider.notifier);
-                        final file = await uploadMediaNotifier.pickImage(
-                          mediaPurpose: MediaPurpose.subPhoto,
-                        );
+                        final file = await pickImageFromGallery();
                         if (file != null) {
                           notifier.setSubPhoto(
                             url: file.path,
