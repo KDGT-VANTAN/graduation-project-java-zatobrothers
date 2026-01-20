@@ -8,6 +8,7 @@ import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart
 import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/like/like_page.dart';
+import 'package:reimi_app/presentation/features/locale/locale_setting_page.dart';
 import 'package:reimi_app/presentation/features/matching/matching_completed_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_page.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
@@ -232,13 +233,6 @@ GoRouter goRouter(Ref ref) {
       ),
       // ----- account -----
       GoRoute(
-        path: SettingPage.routeLocation,
-        name: SettingPage.routeName,
-        builder: (context, state) {
-          return const SettingPage();
-        },
-      ),
-      GoRoute(
         path: ProfilePage.routeLocation,
         name: ProfilePage.routeName,
         builder: (context, state) {
@@ -260,6 +254,20 @@ GoRouter goRouter(Ref ref) {
             onSave: onSave,
             isMultiline: isMultiline,
           );
+        },
+      ),
+      GoRoute(
+        path: SettingPage.routeLocation,
+        name: SettingPage.routeName,
+        builder: (context, state) {
+          return const SettingPage();
+        },
+      ),
+      GoRoute(
+        path: LocaleSettingPage.routeLocation,
+        name: LocaleSettingPage.routeName,
+        builder: (context, state) {
+          return const LocaleSettingPage();
         },
       ),
       // ----- weather_personality -----
