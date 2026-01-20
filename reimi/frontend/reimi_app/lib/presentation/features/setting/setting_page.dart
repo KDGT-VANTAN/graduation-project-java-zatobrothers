@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
+import 'package:reimi_app/presentation/features/locale/locale_setting_page.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/features/setting/widgets/settings_tile.dart';
@@ -57,6 +58,14 @@ class SettingPage extends ConsumerWidget {
                             .pushNotification,
                         shouldNavigate: true,
                         onTap: () {},
+                      ),
+                      const SizedBox(height: 8),
+                      SettingsTile(
+                        title: t.settingPage.section.accountSetting.locale,
+                        shouldNavigate: true,
+                        onTap: () {
+                          context.push(LocaleSettingPage.routeLocation);
+                        },
                       ),
                       const SizedBox(height: 8),
                       SettingsTile(
