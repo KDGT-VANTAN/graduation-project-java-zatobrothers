@@ -36,7 +36,12 @@ extension UpdateProfileFormData on UpdateProfileDto {
     map.addAll(toJson()..removeWhere((k, v) => v == null));
 
     // mainPhoto（必須）
-    map['mainPhoto'] = await _toMultipart(mainPhoto);
+    final mainPhotoMultipart = await _toMultipart(mainPhoto);
+    if (mainPhotoMultipart != null) {
+      map['mainPhoto'] = mainPhotoMultipart;
+    } else {
+      map.remove('mainPhoto');
+    }
 
     // subPhotos（存在する場合のみ）
     if (subPhotos != null &&
@@ -46,7 +51,7 @@ extension UpdateProfileFormData on UpdateProfileDto {
         subPhotos!.map(_toMultipart),
       );
     } else {
-      map['subPhotos'] = null;
+      map.remove('subPhotos');
     }
 
     return FormData.fromMap(map);
@@ -54,17 +59,9 @@ extension UpdateProfileFormData on UpdateProfileDto {
 
   /// 変更されていなければ URL → bytes → MultipartFile
   /// 変更されていれば ローカルファイル → MultipartFile
-  Future<MultipartFile> _toMultipart(String value) async {
+  Future<MultipartFile?> _toMultipart(String value) async {
     if (value.startsWith('https://storage.googleapis.com/')) {
-      final bytes = await Dio().get<List<int>>(
-        value,
-        options: Options(responseType: ResponseType.bytes),
-      );
-
-      return MultipartFile.fromBytes(
-        bytes.data!,
-        filename: p.basename(Uri.parse(value).path),
-      );
+      return null;
     }
 
     // 新しく選択された画像
