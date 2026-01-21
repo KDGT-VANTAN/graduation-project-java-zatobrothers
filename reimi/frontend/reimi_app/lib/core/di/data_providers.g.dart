@@ -117,7 +117,7 @@ final profileRepositoryProvider =
 // ignore: unused_element
 typedef ProfileRepositoryRef = AutoDisposeProviderRef<ProfileRepository>;
 String _$likeRemoteDataSourceHash() =>
-    r'8cfd5563d76e465f5c013176bd1a802d65bd256e';
+    r'390f75c50549b20c2fff1a7fbb71e654d9bcef4b';
 
 /// See also [likeRemoteDataSource].
 @ProviderFor(likeRemoteDataSource)
@@ -152,6 +152,46 @@ final likeRepositoryProvider = AutoDisposeProvider<LikeRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LikeRepositoryRef = AutoDisposeProviderRef<LikeRepository>;
+String _$rainbowLikeRemoteDataSourceHash() =>
+    r'beadec72034aef69aad6023559862250584bc580';
+
+/// See also [rainbowLikeRemoteDataSource].
+@ProviderFor(rainbowLikeRemoteDataSource)
+final rainbowLikeRemoteDataSourceProvider =
+    AutoDisposeProvider<RainbowLikeRemoteDataSource>.internal(
+  rainbowLikeRemoteDataSource,
+  name: r'rainbowLikeRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$rainbowLikeRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RainbowLikeRemoteDataSourceRef
+    = AutoDisposeProviderRef<RainbowLikeRemoteDataSource>;
+String _$rainbowLikeRepositoryHash() =>
+    r'87abf102bad4544a3457336a20a5aeae718c1576';
+
+/// See also [rainbowLikeRepository].
+@ProviderFor(rainbowLikeRepository)
+final rainbowLikeRepositoryProvider =
+    AutoDisposeProvider<RainbowLikeRepository>.internal(
+  rainbowLikeRepository,
+  name: r'rainbowLikeRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$rainbowLikeRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RainbowLikeRepositoryRef
+    = AutoDisposeProviderRef<RainbowLikeRepository>;
 String _$chatRoomRemoteDataSourceHash() =>
     r'61cb361f319670579420dd1304daf4427d41d686';
 

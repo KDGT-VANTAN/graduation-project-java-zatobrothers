@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/firebase/firebase_auth_provider.dart';
 import 'package:reimi_app/core/firebase/firebase_storage_provider.dart';
+import 'package:reimi_app/data/datasources/mocks/rainbow_like_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/weather_personality_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/chat_room_remote_datasource.dart';
@@ -13,6 +14,7 @@ import 'package:reimi_app/data/datasources/mocks/profile_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/user_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/weather_report_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/profile_remote_datasource.dart';
+import 'package:reimi_app/data/datasources/remote/rainbow_like_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/storage_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/user_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/weather_personality_remote_datasource.dart';
@@ -23,6 +25,7 @@ import 'package:reimi_app/data/repositories/chat_room_repository_impl.dart';
 import 'package:reimi_app/data/repositories/like_repository_impl.dart';
 import 'package:reimi_app/data/repositories/message_repository_Impl.dart';
 import 'package:reimi_app/data/repositories/profile_repository_impl.dart';
+import 'package:reimi_app/data/repositories/rainbow_like_repository_impl.dart';
 import 'package:reimi_app/data/repositories/storage_repository_impl.dart';
 import 'package:reimi_app/data/repositories/user_repository_impl.dart';
 import 'package:reimi_app/data/repositories/weather_personality_repository_impl.dart';
@@ -32,6 +35,7 @@ import 'package:reimi_app/domain/repositories/chat_room_repository.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
 import 'package:reimi_app/domain/repositories/message_repository.dart';
 import 'package:reimi_app/domain/repositories/profile_repository.dart';
+import 'package:reimi_app/domain/repositories/rainbow_like_repository.dart';
 import 'package:reimi_app/domain/repositories/storage_repository.dart';
 import 'package:reimi_app/domain/repositories/user_repository.dart';
 import 'package:reimi_app/domain/repositories/weather_personality_repository.dart';
@@ -81,12 +85,25 @@ ProfileRepository profileRepository(Ref ref) {
 @riverpod
 LikeRemoteDataSource likeRemoteDataSource(Ref ref) {
   if (useMock) return const LikeMockDataSource();
-  return const LikeRemoteDataSourceImpl();
+  return LikeRemoteDataSourceImpl(ref.watch(dioClientProvider));
 }
 
 @riverpod
 LikeRepository likeRepository(Ref ref) {
   return LikeRepositoryImpl(ref.watch(likeRemoteDataSourceProvider));
+}
+
+// rainbow_like関連
+@riverpod
+RainbowLikeRemoteDataSource rainbowLikeRemoteDataSource(Ref ref) {
+  if (useMock) return const RainbowLikeMockDataSource();
+  return RainbowLikeRemoteDataSourceImpl(ref.watch(dioClientProvider));
+}
+
+@riverpod
+RainbowLikeRepository rainbowLikeRepository(Ref ref) {
+  return RainbowLikeRepositoryImpl(
+      ref.watch(rainbowLikeRemoteDataSourceProvider));
 }
 
 // chatRoom関連
