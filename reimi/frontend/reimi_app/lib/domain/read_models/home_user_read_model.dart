@@ -14,7 +14,7 @@ abstract class HomeUserReadModel with _$HomeUserReadModel {
     required Address address,
     required String mainPhotoUrl,
     required String introduction,
-    required bool isTodayReported,
+    bool? isTodayReported,
   }) = _HomeUserReadModel;
 
   factory HomeUserReadModel.fromJson(Map<String, dynamic> json) =>

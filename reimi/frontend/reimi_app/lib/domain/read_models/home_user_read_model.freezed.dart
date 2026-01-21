@@ -21,7 +21,7 @@ mixin _$HomeUserReadModel {
   Address get address;
   String get mainPhotoUrl;
   String get introduction;
-  bool get isTodayReported;
+  bool? get isTodayReported;
 
   /// Create a copy of HomeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -76,7 +76,7 @@ abstract mixin class $HomeUserReadModelCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool isTodayReported});
+      bool? isTodayReported});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$HomeUserReadModelCopyWithImpl<$Res>
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? introduction = null,
-    Object? isTodayReported = null,
+    Object? isTodayReported = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -125,10 +125,10 @@ class _$HomeUserReadModelCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
-      isTodayReported: null == isTodayReported
+      isTodayReported: freezed == isTodayReported
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -233,7 +233,7 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported)?
+            bool? isTodayReported)?
         $default, {
     required TResult orElse(),
   }) {
@@ -269,7 +269,7 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported)
+            bool? isTodayReported)
         $default,
   ) {
     final _that = this;
@@ -303,7 +303,7 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool isTodayReported)?
+            bool? isTodayReported)?
         $default,
   ) {
     final _that = this;
@@ -327,7 +327,7 @@ class _HomeUserReadModel implements HomeUserReadModel {
       required this.address,
       required this.mainPhotoUrl,
       required this.introduction,
-      required this.isTodayReported});
+      this.isTodayReported});
   factory _HomeUserReadModel.fromJson(Map<String, dynamic> json) =>
       _$HomeUserReadModelFromJson(json);
 
@@ -345,7 +345,7 @@ class _HomeUserReadModel implements HomeUserReadModel {
   @override
   final String introduction;
   @override
-  final bool isTodayReported;
+  final bool? isTodayReported;
 
   /// Create a copy of HomeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -406,7 +406,7 @@ abstract mixin class _$HomeUserReadModelCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool isTodayReported});
+      bool? isTodayReported});
 }
 
 /// @nodoc
@@ -428,7 +428,7 @@ class __$HomeUserReadModelCopyWithImpl<$Res>
     Object? address = null,
     Object? mainPhotoUrl = null,
     Object? introduction = null,
-    Object? isTodayReported = null,
+    Object? isTodayReported = freezed,
   }) {
     return _then(_HomeUserReadModel(
       id: null == id
@@ -455,10 +455,10 @@ class __$HomeUserReadModelCopyWithImpl<$Res>
           ? _self.introduction
           : introduction // ignore: cast_nullable_to_non_nullable
               as String,
-      isTodayReported: null == isTodayReported
+      isTodayReported: freezed == isTodayReported
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
