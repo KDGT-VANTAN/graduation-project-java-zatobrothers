@@ -515,6 +515,20 @@
     "comment": {
       "title": "コメント",
       "placeHolder": "コメントを追加"
+    },
+    "rainbowLike": {
+      "title": "レインボーいいねを送る",
+      "messageTips": {
+        "label": "メッセージのコツ",
+        "contentText": "相手の写真や自己紹介文に触れつつ、共感した点を伝えることで、自然な会話につながりやすくなります。"
+      },
+      "textField": {
+        "placeHolder": "はじめまして！\n写真の雰囲気がとても素敵で、思わずいいねしました。\n\n〇〇がお好きなんですね。\nよかったらお話しできたら嬉しいです！"
+      },
+      "noticeTexts": {
+        "contentText1": "・「レインボーいいね」を1つ消費して送信します。",
+        "contentText2": "・メールアドレス、SNSアカウント、電話番号などの個人情報は送信できません。"
+      }
     }
   },
   "button": {
@@ -539,7 +553,8 @@
     "returnToAccountPage": "アカウント画面に戻る",
     "completion": "完了",
     "weatherPersonalityTest": "ウェザーパーソナリティ診断",
-    "goTochatPage": "チャット画面へ"
+    "goTochatPage": "チャット画面へ",
+    "rainbowLike": "レインボーいいね！"
   },
   "segmentedSwitch": {
     "like": {

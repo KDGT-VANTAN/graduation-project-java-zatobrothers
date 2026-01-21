@@ -506,6 +506,7 @@ class TranslationsModalSheetEn {
 	late final TranslationsModalSheetRefineSearchUserEn refineSearchUser = TranslationsModalSheetRefineSearchUserEn._(_root);
 	late final TranslationsModalSheetPickMediaEn pickMedia = TranslationsModalSheetPickMediaEn._(_root);
 	late final TranslationsModalSheetCommentEn comment = TranslationsModalSheetCommentEn._(_root);
+	late final TranslationsModalSheetRainbowLikeEn rainbowLike = TranslationsModalSheetRainbowLikeEn._(_root);
 }
 
 // Path: button
@@ -581,6 +582,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Go To Chat Screen'
 	String get goTochatPage => 'Go To Chat Screen';
+
+	/// en: 'Rainbow Like!'
+	String get rainbowLike => 'Rainbow Like!';
 }
 
 // Path: segmentedSwitch
@@ -1666,6 +1670,22 @@ class TranslationsModalSheetCommentEn {
 
 	/// en: 'Enter comment'
 	String get placeHolder => 'Enter comment';
+}
+
+// Path: modalSheet.rainbowLike
+class TranslationsModalSheetRainbowLikeEn {
+	TranslationsModalSheetRainbowLikeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Send Rainbow Like'
+	String get title => 'Send Rainbow Like';
+
+	late final TranslationsModalSheetRainbowLikeMessageTipsEn messageTips = TranslationsModalSheetRainbowLikeMessageTipsEn._(_root);
+	late final TranslationsModalSheetRainbowLikeTextFieldEn textField = TranslationsModalSheetRainbowLikeTextFieldEn._(_root);
+	late final TranslationsModalSheetRainbowLikeNoticeTextsEn noticeTexts = TranslationsModalSheetRainbowLikeNoticeTextsEn._(_root);
 }
 
 // Path: segmentedSwitch.like
@@ -2880,6 +2900,48 @@ class TranslationsModalSheetPickMediaLabelEn {
 	String get selectExistingVideo => 'Select Existing Video';
 }
 
+// Path: modalSheet.rainbowLike.messageTips
+class TranslationsModalSheetRainbowLikeMessageTipsEn {
+	TranslationsModalSheetRainbowLikeMessageTipsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Messaging Tips'
+	String get label => 'Messaging Tips';
+
+	/// en: 'By mentioning the other person's photos or profile and sharing what resonated with you, it's easier to start a natural conversation.'
+	String get contentText => 'By mentioning the other person\'s photos or profile and sharing what resonated with you, it\'s easier to start a natural conversation.';
+}
+
+// Path: modalSheet.rainbowLike.textField
+class TranslationsModalSheetRainbowLikeTextFieldEn {
+	TranslationsModalSheetRainbowLikeTextFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Nice to meet you! I loved the vibe of your photos and couldn't help but send a like. I see you like 〇〇. I'd love to chat if you're interested!'
+	String get placeHolder => 'Nice to meet you!\nI loved the vibe of your photos and couldn\'t help but send a like.\n\nI see you like 〇〇.\nI\'d love to chat if you\'re interested!';
+}
+
+// Path: modalSheet.rainbowLike.noticeTexts
+class TranslationsModalSheetRainbowLikeNoticeTextsEn {
+	TranslationsModalSheetRainbowLikeNoticeTextsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '・Sending will consume 1 Rainbow Like.'
+	String get contentText1 => '・Sending will consume 1 Rainbow Like.';
+
+	/// en: '・Personal information such as email addresses, social media accounts, and phone numbers cannot be sent.'
+	String get contentText2 => '・Personal information such as email addresses, social media accounts, and phone numbers cannot be sent.';
+}
+
 // Path: kEnum.address.prefecture
 class TranslationsKEnumAddressPrefectureEn {
 	TranslationsKEnumAddressPrefectureEn._(this._root);
@@ -3470,6 +3532,12 @@ extension on Translations {
 			'modalSheet.pickMedia.label.selectExistingVideo' => 'Select Existing Video',
 			'modalSheet.comment.title' => 'Comment',
 			'modalSheet.comment.placeHolder' => 'Enter comment',
+			'modalSheet.rainbowLike.title' => 'Send Rainbow Like',
+			'modalSheet.rainbowLike.messageTips.label' => 'Messaging Tips',
+			'modalSheet.rainbowLike.messageTips.contentText' => 'By mentioning the other person\'s photos or profile and sharing what resonated with you, it\'s easier to start a natural conversation.',
+			'modalSheet.rainbowLike.textField.placeHolder' => 'Nice to meet you!\nI loved the vibe of your photos and couldn\'t help but send a like.\n\nI see you like 〇〇.\nI\'d love to chat if you\'re interested!',
+			'modalSheet.rainbowLike.noticeTexts.contentText1' => '・Sending will consume 1 Rainbow Like.',
+			'modalSheet.rainbowLike.noticeTexts.contentText2' => '・Personal information such as email addresses, social media accounts, and phone numbers cannot be sent.',
 			'button.next' => 'Next',
 			'button.confirmation' => 'Confirm',
 			'button.cancel' => 'Cancel',
@@ -3492,6 +3560,7 @@ extension on Translations {
 			'button.completion' => 'Complete',
 			'button.weatherPersonalityTest' => 'Weather Personality Test',
 			'button.goTochatPage' => 'Go To Chat Screen',
+			'button.rainbowLike' => 'Rainbow Like!',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
@@ -3697,6 +3766,8 @@ extension on Translations {
 			'kEnum.occupation.realEstate' => 'Real Estate',
 			'kEnum.occupation.tradingCompany' => 'Trading Company',
 			'kEnum.occupation.manufacturer' => 'Manufacturer',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.researcher' => 'Researcher',
 			'kEnum.occupation.majorCompany' => 'Major Company',
 			'kEnum.occupation.foreignCompany' => 'Foreign Company',
@@ -3704,8 +3775,6 @@ extension on Translations {
 			'kEnum.occupation.executive' => 'Executive',
 			'kEnum.occupation.legal' => 'Legal',
 			'kEnum.occupation.lawyer' => 'Lawyer',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.certifiedPublicAccountant' => 'CPA',
 			'kEnum.occupation.taxAccountant' => 'Tax Accountant',
 			'kEnum.occupation.freelance' => 'Freelance',

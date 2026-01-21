@@ -415,6 +415,7 @@ class _TranslationsModalSheetJa implements TranslationsModalSheetEn {
 	@override late final _TranslationsModalSheetRefineSearchUserJa refineSearchUser = _TranslationsModalSheetRefineSearchUserJa._(_root);
 	@override late final _TranslationsModalSheetPickMediaJa pickMedia = _TranslationsModalSheetPickMediaJa._(_root);
 	@override late final _TranslationsModalSheetCommentJa comment = _TranslationsModalSheetCommentJa._(_root);
+	@override late final _TranslationsModalSheetRainbowLikeJa rainbowLike = _TranslationsModalSheetRainbowLikeJa._(_root);
 }
 
 // Path: button
@@ -446,6 +447,7 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get completion => '完了';
 	@override String get weatherPersonalityTest => 'ウェザーパーソナリティ診断';
 	@override String get goTochatPage => 'チャット画面へ';
+	@override String get rainbowLike => 'レインボーいいね！';
 }
 
 // Path: segmentedSwitch
@@ -1220,6 +1222,19 @@ class _TranslationsModalSheetCommentJa implements TranslationsModalSheetCommentE
 	@override String get placeHolder => 'コメントを追加';
 }
 
+// Path: modalSheet.rainbowLike
+class _TranslationsModalSheetRainbowLikeJa implements TranslationsModalSheetRainbowLikeEn {
+	_TranslationsModalSheetRainbowLikeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'レインボーいいねを送る';
+	@override late final _TranslationsModalSheetRainbowLikeMessageTipsJa messageTips = _TranslationsModalSheetRainbowLikeMessageTipsJa._(_root);
+	@override late final _TranslationsModalSheetRainbowLikeTextFieldJa textField = _TranslationsModalSheetRainbowLikeTextFieldJa._(_root);
+	@override late final _TranslationsModalSheetRainbowLikeNoticeTextsJa noticeTexts = _TranslationsModalSheetRainbowLikeNoticeTextsJa._(_root);
+}
+
 // Path: segmentedSwitch.like
 class _TranslationsSegmentedSwitchLikeJa implements TranslationsSegmentedSwitchLikeEn {
 	_TranslationsSegmentedSwitchLikeJa._(this._root);
@@ -1890,6 +1905,38 @@ class _TranslationsModalSheetPickMediaLabelJa implements TranslationsModalSheetP
 	@override String get selectExistingVideo => '既存の動画を選択';
 }
 
+// Path: modalSheet.rainbowLike.messageTips
+class _TranslationsModalSheetRainbowLikeMessageTipsJa implements TranslationsModalSheetRainbowLikeMessageTipsEn {
+	_TranslationsModalSheetRainbowLikeMessageTipsJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'メッセージのコツ';
+	@override String get contentText => '相手の写真や自己紹介文に触れつつ、共感した点を伝えることで、自然な会話につながりやすくなります。';
+}
+
+// Path: modalSheet.rainbowLike.textField
+class _TranslationsModalSheetRainbowLikeTextFieldJa implements TranslationsModalSheetRainbowLikeTextFieldEn {
+	_TranslationsModalSheetRainbowLikeTextFieldJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get placeHolder => 'はじめまして！\n写真の雰囲気がとても素敵で、思わずいいねしました。\n\n〇〇がお好きなんですね。\nよかったらお話しできたら嬉しいです！';
+}
+
+// Path: modalSheet.rainbowLike.noticeTexts
+class _TranslationsModalSheetRainbowLikeNoticeTextsJa implements TranslationsModalSheetRainbowLikeNoticeTextsEn {
+	_TranslationsModalSheetRainbowLikeNoticeTextsJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get contentText1 => '・「レインボーいいね」を1つ消費して送信します。';
+	@override String get contentText2 => '・メールアドレス、SNSアカウント、電話番号などの個人情報は送信できません。';
+}
+
 // Path: kEnum.address.prefecture
 class _TranslationsKEnumAddressPrefectureJa implements TranslationsKEnumAddressPrefectureEn {
 	_TranslationsKEnumAddressPrefectureJa._(this._root);
@@ -2328,6 +2375,12 @@ extension on TranslationsJa {
 			'modalSheet.pickMedia.label.selectExistingVideo' => '既存の動画を選択',
 			'modalSheet.comment.title' => 'コメント',
 			'modalSheet.comment.placeHolder' => 'コメントを追加',
+			'modalSheet.rainbowLike.title' => 'レインボーいいねを送る',
+			'modalSheet.rainbowLike.messageTips.label' => 'メッセージのコツ',
+			'modalSheet.rainbowLike.messageTips.contentText' => '相手の写真や自己紹介文に触れつつ、共感した点を伝えることで、自然な会話につながりやすくなります。',
+			'modalSheet.rainbowLike.textField.placeHolder' => 'はじめまして！\n写真の雰囲気がとても素敵で、思わずいいねしました。\n\n〇〇がお好きなんですね。\nよかったらお話しできたら嬉しいです！',
+			'modalSheet.rainbowLike.noticeTexts.contentText1' => '・「レインボーいいね」を1つ消費して送信します。',
+			'modalSheet.rainbowLike.noticeTexts.contentText2' => '・メールアドレス、SNSアカウント、電話番号などの個人情報は送信できません。',
 			'button.next' => '次へ',
 			'button.confirmation' => '確認',
 			'button.cancel' => 'キャンセル',
@@ -2350,6 +2403,7 @@ extension on TranslationsJa {
 			'button.completion' => '完了',
 			'button.weatherPersonalityTest' => 'ウェザーパーソナリティ診断',
 			'button.goTochatPage' => 'チャット画面へ',
+			'button.rainbowLike' => 'レインボーいいね！',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
@@ -2555,6 +2609,8 @@ extension on TranslationsJa {
 			'kEnum.occupation.realEstate' => '不動産',
 			'kEnum.occupation.tradingCompany' => '商社',
 			'kEnum.occupation.manufacturer' => 'メーカー',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.researcher' => '研究職',
 			'kEnum.occupation.majorCompany' => '大手企業',
 			'kEnum.occupation.foreignCompany' => '外資企業',
@@ -2562,8 +2618,6 @@ extension on TranslationsJa {
 			'kEnum.occupation.executive' => '経営者・役員',
 			'kEnum.occupation.legal' => '法務関係',
 			'kEnum.occupation.lawyer' => '弁護士',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.certifiedPublicAccountant' => '公認会計士',
 			'kEnum.occupation.taxAccountant' => '税理士',
 			'kEnum.occupation.freelance' => '自由業',
