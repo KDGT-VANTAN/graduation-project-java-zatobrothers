@@ -1,4 +1,5 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/presentation/features/profile/states/profile_detail_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -32,9 +33,44 @@ class ProfileDetailNotifier extends _$ProfileDetailNotifier {
     }
   }
 
-  Future<void> onTapLikeButton() async {}
+  void updateMessage(String message) {
+    state = state.copyWith(message: message);
+  }
 
-  Future<void> onTapRainbowLikeButton() async {}
+  Future<void> onTapLikeButton(String userId) async {
+    try {
+      await ref.read(likeUserUseCaseProvider).call(userId);
+
+      state = state.copyWith();
+    } on ApiException catch (e) {
+      state = state.copyWith(
+        errorMessage: e.message,
+      );
+    } catch (_) {
+      state = state.copyWith(
+        errorMessage: 'いいねできませんでした。',
+      );
+    }
+  }
+
+  Future<void> onTapRainbowLikeButton(String userId) async {
+    try {
+      await ref.read(rainbowLikeUserUseCaseProvider).call(
+            userId: userId,
+            message: state.message,
+          );
+
+      state = state.copyWith();
+    } on ApiException catch (e) {
+      state = state.copyWith(
+        errorMessage: e.message,
+      );
+    } catch (_) {
+      state = state.copyWith(
+        errorMessage: 'レインボーいいねできませんでした。',
+      );
+    }
+  }
 
   Future<void> onTapSkippedButton() async {}
 
