@@ -23,7 +23,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(
                     "/swagger-ui/**",
-                    "/v3/api-docs/**"
+                    "/v3/api-docs/**",
+                    "/images/weather-personalities/**"
                 ).permitAll()
                 .anyRequest().authenticated())
             .addFilterBefore(
