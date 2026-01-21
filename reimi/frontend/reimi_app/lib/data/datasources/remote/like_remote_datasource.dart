@@ -1,44 +1,52 @@
-import 'package:reimi_app/domain/entities/like_entity.dart';
+import 'package:dio/dio.dart';
+import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
 
 abstract class LikeRemoteDataSource {
   Future<List<LikeUserReadModel>> fetchLikeUsersFromUser();
   Future<List<LikeUserReadModel>> fetchLikeUsersToUser();
-  Future<bool> isLiked({
-    required String fromUserId,
-    required String toUserId,
-  });
-  Future<LikeEntity> like({
-    required String fromUserId,
-    required String toUserId,
-  });
+  Future<void> likeUser(String userId);
 }
 
 class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
-  const LikeRemoteDataSourceImpl();
+  const LikeRemoteDataSourceImpl(this._dio);
+  final Dio _dio;
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() {
-    // TODO: implement fetchLikeUsersFromUser
-    throw UnimplementedError();
+  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
+    try {
+      final response = await _dio.get('/api/v1/likes/users/received');
+      final List data = response.data as List;
+      return data
+          .map((e) => LikeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on DioException catch (e) {
+      throw ApiException.fromDioError(e);
+    }
   }
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() {
-    // TODO: implement fetchLikeUsersToUser
-    throw UnimplementedError();
+  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
+    try {
+      final response = await _dio.get('/api/v1/likes/users/given');
+      final List data = response.data as List;
+      return data
+          .map((e) => LikeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on DioException catch (e) {
+      throw ApiException.fromDioError(e);
+    }
   }
 
   @override
-  Future<bool> isLiked({required String fromUserId, required String toUserId}) {
-    // TODO: implement isLiked
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<LikeEntity> like(
-      {required String fromUserId, required String toUserId}) {
-    // TODO: implement like
-    throw UnimplementedError();
+  Future<void> likeUser(String userId) async {
+    try {
+      final response = await _dio.post('/api/v1/likes/$userId');
+      if (response.statusCode != 201) {
+        throw ApiException.fromResponse(response);
+      }
+    } on DioException catch (e) {
+      throw ApiException.fromDioError(e);
+    }
   }
 }
