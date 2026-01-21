@@ -17,9 +17,7 @@ mixin _$ProfileDetailState {
   UserWithProfileReadModel? get profile;
   bool get isLoading;
   String? get errorMessage;
-  bool get isLiked;
-  bool get isRainbowLiked;
-  bool get isSkipped;
+  String get message;
 
   /// Create a copy of ProfileDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,20 +37,16 @@ mixin _$ProfileDetailState {
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.isLiked, isLiked) || other.isLiked == isLiked) &&
-            (identical(other.isRainbowLiked, isRainbowLiked) ||
-                other.isRainbowLiked == isRainbowLiked) &&
-            (identical(other.isSkipped, isSkipped) ||
-                other.isSkipped == isSkipped));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile, isLoading, errorMessage,
-      isLiked, isRainbowLiked, isSkipped);
+  int get hashCode =>
+      Object.hash(runtimeType, profile, isLoading, errorMessage, message);
 
   @override
   String toString() {
-    return 'ProfileDetailState(profile: $profile, isLoading: $isLoading, errorMessage: $errorMessage, isLiked: $isLiked, isRainbowLiked: $isRainbowLiked, isSkipped: $isSkipped)';
+    return 'ProfileDetailState(profile: $profile, isLoading: $isLoading, errorMessage: $errorMessage, message: $message)';
   }
 }
 
@@ -66,9 +60,7 @@ abstract mixin class $ProfileDetailStateCopyWith<$Res> {
       {UserWithProfileReadModel? profile,
       bool isLoading,
       String? errorMessage,
-      bool isLiked,
-      bool isRainbowLiked,
-      bool isSkipped});
+      String message});
 
   $UserWithProfileReadModelCopyWith<$Res>? get profile;
 }
@@ -89,9 +81,7 @@ class _$ProfileDetailStateCopyWithImpl<$Res>
     Object? profile = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
-    Object? isLiked = null,
-    Object? isRainbowLiked = null,
-    Object? isSkipped = null,
+    Object? message = null,
   }) {
     return _then(_self.copyWith(
       profile: freezed == profile
@@ -106,18 +96,10 @@ class _$ProfileDetailStateCopyWithImpl<$Res>
           ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLiked: null == isLiked
-          ? _self.isLiked
-          : isLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isRainbowLiked: null == isRainbowLiked
-          ? _self.isRainbowLiked
-          : isRainbowLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSkipped: null == isSkipped
-          ? _self.isSkipped
-          : isSkipped // ignore: cast_nullable_to_non_nullable
-              as bool,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -229,21 +211,16 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            UserWithProfileReadModel? profile,
-            bool isLoading,
-            String? errorMessage,
-            bool isLiked,
-            bool isRainbowLiked,
-            bool isSkipped)?
+    TResult Function(UserWithProfileReadModel? profile, bool isLoading,
+            String? errorMessage, String message)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _ProfileDetailState() when $default != null:
-        return $default(_that.profile, _that.isLoading, _that.errorMessage,
-            _that.isLiked, _that.isRainbowLiked, _that.isSkipped);
+        return $default(
+            _that.profile, _that.isLoading, _that.errorMessage, _that.message);
       case _:
         return orElse();
     }
@@ -264,20 +241,15 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            UserWithProfileReadModel? profile,
-            bool isLoading,
-            String? errorMessage,
-            bool isLiked,
-            bool isRainbowLiked,
-            bool isSkipped)
+    TResult Function(UserWithProfileReadModel? profile, bool isLoading,
+            String? errorMessage, String message)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileDetailState():
-        return $default(_that.profile, _that.isLoading, _that.errorMessage,
-            _that.isLiked, _that.isRainbowLiked, _that.isSkipped);
+        return $default(
+            _that.profile, _that.isLoading, _that.errorMessage, _that.message);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -297,20 +269,15 @@ extension ProfileDetailStatePatterns on ProfileDetailState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            UserWithProfileReadModel? profile,
-            bool isLoading,
-            String? errorMessage,
-            bool isLiked,
-            bool isRainbowLiked,
-            bool isSkipped)?
+    TResult? Function(UserWithProfileReadModel? profile, bool isLoading,
+            String? errorMessage, String message)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ProfileDetailState() when $default != null:
-        return $default(_that.profile, _that.isLoading, _that.errorMessage,
-            _that.isLiked, _that.isRainbowLiked, _that.isSkipped);
+        return $default(
+            _that.profile, _that.isLoading, _that.errorMessage, _that.message);
       case _:
         return null;
     }
@@ -324,9 +291,7 @@ class _ProfileDetailState implements ProfileDetailState {
       {this.profile,
       this.isLoading = false,
       this.errorMessage,
-      this.isLiked = false,
-      this.isRainbowLiked = false,
-      this.isSkipped = false});
+      this.message = ''});
 
   @override
   final UserWithProfileReadModel? profile;
@@ -337,13 +302,7 @@ class _ProfileDetailState implements ProfileDetailState {
   final String? errorMessage;
   @override
   @JsonKey()
-  final bool isLiked;
-  @override
-  @JsonKey()
-  final bool isRainbowLiked;
-  @override
-  @JsonKey()
-  final bool isSkipped;
+  final String message;
 
   /// Create a copy of ProfileDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -363,20 +322,16 @@ class _ProfileDetailState implements ProfileDetailState {
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.isLiked, isLiked) || other.isLiked == isLiked) &&
-            (identical(other.isRainbowLiked, isRainbowLiked) ||
-                other.isRainbowLiked == isRainbowLiked) &&
-            (identical(other.isSkipped, isSkipped) ||
-                other.isSkipped == isSkipped));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile, isLoading, errorMessage,
-      isLiked, isRainbowLiked, isSkipped);
+  int get hashCode =>
+      Object.hash(runtimeType, profile, isLoading, errorMessage, message);
 
   @override
   String toString() {
-    return 'ProfileDetailState(profile: $profile, isLoading: $isLoading, errorMessage: $errorMessage, isLiked: $isLiked, isRainbowLiked: $isRainbowLiked, isSkipped: $isSkipped)';
+    return 'ProfileDetailState(profile: $profile, isLoading: $isLoading, errorMessage: $errorMessage, message: $message)';
   }
 }
 
@@ -392,9 +347,7 @@ abstract mixin class _$ProfileDetailStateCopyWith<$Res>
       {UserWithProfileReadModel? profile,
       bool isLoading,
       String? errorMessage,
-      bool isLiked,
-      bool isRainbowLiked,
-      bool isSkipped});
+      String message});
 
   @override
   $UserWithProfileReadModelCopyWith<$Res>? get profile;
@@ -416,9 +369,7 @@ class __$ProfileDetailStateCopyWithImpl<$Res>
     Object? profile = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
-    Object? isLiked = null,
-    Object? isRainbowLiked = null,
-    Object? isSkipped = null,
+    Object? message = null,
   }) {
     return _then(_ProfileDetailState(
       profile: freezed == profile
@@ -433,18 +384,10 @@ class __$ProfileDetailStateCopyWithImpl<$Res>
           ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLiked: null == isLiked
-          ? _self.isLiked
-          : isLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isRainbowLiked: null == isRainbowLiked
-          ? _self.isRainbowLiked
-          : isRainbowLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isSkipped: null == isSkipped
-          ? _self.isSkipped
-          : isSkipped // ignore: cast_nullable_to_non_nullable
-              as bool,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 

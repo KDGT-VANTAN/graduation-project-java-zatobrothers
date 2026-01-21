@@ -9,8 +9,6 @@ abstract class ProfileDetailState with _$ProfileDetailState {
     UserWithProfileReadModel? profile,
     @Default(false) bool isLoading,
     String? errorMessage,
-    @Default(false) bool isLiked,
-    @Default(false) bool isRainbowLiked,
-    @Default(false) bool isSkipped,
+    @Default('') String message,
   }) = _ProfileDetailState;
 }
