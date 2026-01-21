@@ -13,6 +13,8 @@ _LikeUserReadModel _$LikeUserReadModelFromJson(Map<String, dynamic> json) =>
       birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
       mainPhotoUrl: json['mainPhotoUrl'] as String,
+      introduction: json['introduction'] as String?,
+      isTodayReported: json['isTodayReported'] as bool?,
     );
 
 Map<String, dynamic> _$LikeUserReadModelToJson(_LikeUserReadModel instance) =>
@@ -22,6 +24,8 @@ Map<String, dynamic> _$LikeUserReadModelToJson(_LikeUserReadModel instance) =>
       'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
       'mainPhotoUrl': instance.mainPhotoUrl,
+      'introduction': instance.introduction,
+      'isTodayReported': instance.isTodayReported,
     };
 
 const _$AddressEnumMap = {

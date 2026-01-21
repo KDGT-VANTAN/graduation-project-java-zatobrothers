@@ -1,5 +1,4 @@
 import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
-import 'package:reimi_app/domain/entities/like_entity.dart';
 import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
@@ -18,16 +17,8 @@ class LikeMockDataSource implements LikeRemoteDataSource {
   }
 
   @override
-  Future<bool> isLiked({required String fromUserId, required String toUserId}) {
-    // TODO: implement isLiked
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<LikeEntity> like(
-      {required String fromUserId, required String toUserId}) {
-    // TODO: implement like
-    throw UnimplementedError();
+  Future<void> likeUser(String userId) async {
+    return;
   }
 }
 
@@ -39,6 +30,7 @@ final List<LikeUserReadModel> mockLikeUsersFromUser = [
     birthDate: DateTime(1995, 5, 15),
     address: Address.tokyo,
     mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
+    introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
   ),
   // 高橋 美咲 (004) - あなたに「いいね」してくれたユーザー
   LikeUserReadModel(
@@ -47,6 +39,7 @@ final List<LikeUserReadModel> mockLikeUsersFromUser = [
     birthDate: DateTime(1988, 7, 12),
     address: Address.fukuoka,
     mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
+    introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
   ),
 ];
 
@@ -58,6 +51,7 @@ final List<LikeUserReadModel> mockLikeUsersToUser = [
     birthDate: DateTime(1978, 11, 3),
     address: Address.osaka,
     mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
+    introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
   ),
   // 渡辺 由美子 (006) - ログインが少し前のユーザー
   LikeUserReadModel(
@@ -66,5 +60,6 @@ final List<LikeUserReadModel> mockLikeUsersToUser = [
     birthDate: DateTime(1965, 2, 28),
     address: Address.tokyo,
     mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
+    introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
   ),
 ];

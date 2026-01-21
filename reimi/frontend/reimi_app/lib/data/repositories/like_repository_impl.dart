@@ -1,5 +1,4 @@
 import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
-import 'package:reimi_app/domain/entities/like_entity.dart';
 import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
 
@@ -18,20 +17,7 @@ class LikeRepositoryImpl implements LikeRepository {
   }
 
   @override
-  Future<bool> isLiked({
-    required String fromUserId,
-    required String toUserId,
-  }) {
-    // TODO: implement like
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<LikeEntity> like({
-    required String fromUserId,
-    required String toUserId,
-  }) {
-    // TODO: implement like
-    throw UnimplementedError();
+  Future<void> likeUser(String userId) async {
+    return _remote.likeUser(userId);
   }
 }

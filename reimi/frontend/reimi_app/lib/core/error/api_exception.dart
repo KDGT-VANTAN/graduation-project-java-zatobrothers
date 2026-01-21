@@ -73,7 +73,9 @@ abstract class ApiException implements Exception {
 
       // 409
       case 'USER_ALREADY_EXISTS':
-        return UserAlreadyExistsException(message);
+      case 'LIKE_ALREADY_SENT':
+      case 'RAINBOW_LIKE_ALREADY_SENT':
+        return ConflictException(code: code, message: message);
 
       // 413
       case 'PAYLOAD_TOO_LARGE':
@@ -114,9 +116,11 @@ class ResourceNotFoundException extends ApiException {
 }
 
 // 409: 重複エラー
-class UserAlreadyExistsException extends ApiException {
-  const UserAlreadyExistsException(String message)
-      : super(code: 'USER_ALREADY_EXISTS', message: message);
+class ConflictException extends ApiException {
+  const ConflictException({
+    required super.code,
+    required super.message,
+  });
 }
 
 // 413: ファイルアップロードサイズ超過エラー

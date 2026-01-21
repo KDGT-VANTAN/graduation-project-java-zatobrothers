@@ -23,6 +23,7 @@ import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.
 import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
+import 'package:reimi_app/presentation/features/profile/widgets/show_rainbow_like_modal_sheet.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/bottom_action_buttons_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
@@ -52,12 +53,10 @@ class ProfileDetailPage extends HookConsumerWidget {
       t.profilePage.placeholder.subPhoto.labels.holiday,
     ];
     final notifier = ref.read(profileDetailNotifierProvider.notifier);
-    final profile = ref.watch(
-      profileDetailNotifierProvider.select((state) => state.profile),
-    );
+    final profile = ref
+        .watch(profileDetailNotifierProvider.select((state) => state.profile));
     final isLoading = ref.watch(
-      profileDetailNotifierProvider.select((state) => state.isLoading),
-    );
+        profileDetailNotifierProvider.select((state) => state.isLoading));
 
     useEffect(() {
       Future.microtask(() {
@@ -498,11 +497,14 @@ class ProfileDetailPage extends HookConsumerWidget {
               leftButtonOnTap: () {
                 notifier.onTapSkippedButton();
               },
-              centerButtonOnTap: () {
-                notifier.onTapRainbowLikeButton();
+              centerButtonOnTap: () async {
+                showRainbowLikeModalSheet(
+                  context: context,
+                  notifier: notifier,
+                );
               },
-              rightButtonOnTap: () {
-                notifier.onTapLikeButton();
+              rightButtonOnTap: () async {
+                await notifier.onTapLikeButton(userId);
               },
             ),
     );

@@ -13,6 +13,8 @@ abstract class LikeUserReadModel with _$LikeUserReadModel {
     @YyyyMmDdDateConverter() required DateTime birthDate,
     required Address address,
     required String mainPhotoUrl,
+    String? introduction,
+    bool? isTodayReported,
   }) = _LikeUserReadModel;
 
   factory LikeUserReadModel.fromJson(Map<String, dynamic> json) =>

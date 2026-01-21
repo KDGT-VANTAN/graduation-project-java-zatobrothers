@@ -120,7 +120,8 @@ class SmallUserCard extends StatelessWidget {
                   ' ${user.birthDate.toAge}',
                   style: theme.textTheme.bodySmall,
                 ),
-                if (true)
+                if (user.isTodayReported != null &&
+                    user.isTodayReported == true)
                   Padding(
                     padding: const EdgeInsets.only(left: 4),
                     child: Assets.images.status.weatherReportStatus.image(

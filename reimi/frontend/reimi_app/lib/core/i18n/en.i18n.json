@@ -515,6 +515,20 @@
     "comment": {
       "title": "Comment",
       "placeHolder": "Enter comment"
+    },
+    "rainbowLike": {
+      "title": "Send Rainbow Like",
+      "messageTips": {
+        "label": "Messaging Tips",
+        "contentText": "By mentioning the other person's photos or profile and sharing what resonated with you, it's easier to start a natural conversation."
+      },
+      "textField": {
+        "placeHolder": "Nice to meet you!\nI loved the vibe of your photos and couldn't help but send a like.\n\nI see you like 〇〇.\nI'd love to chat if you're interested!"
+      },
+      "noticeTexts": {
+        "contentText1": "・Sending will consume 1 Rainbow Like.",
+        "contentText2": "・Personal information such as email addresses, social media accounts, and phone numbers cannot be sent."
+      }
     }
   },
   "button": {
@@ -539,7 +553,8 @@
     "returnToAccountPage": "Return To Account Page",
     "completion": "Complete",
     "weatherPersonalityTest": "Weather Personality Test",
-    "goTochatPage": "Go To Chat Screen"
+    "goTochatPage": "Go To Chat Screen",
+    "rainbowLike": "Rainbow Like!"
   },
   "segmentedSwitch": {
     "like": {

@@ -20,6 +20,8 @@ mixin _$LikeUserReadModel {
   DateTime get birthDate;
   Address get address;
   String get mainPhotoUrl;
+  String? get introduction;
+  bool? get isTodayReported;
 
   /// Create a copy of LikeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -43,17 +45,21 @@ mixin _$LikeUserReadModel {
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl));
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.introduction, introduction) ||
+                other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, birthDate, address, mainPhotoUrl);
+  int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
+      mainPhotoUrl, introduction, isTodayReported);
 
   @override
   String toString() {
-    return 'LikeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl)';
+    return 'LikeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
   }
 }
 
@@ -68,7 +74,9 @@ abstract mixin class $LikeUserReadModelCopyWith<$Res> {
       String name,
       @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
-      String mainPhotoUrl});
+      String mainPhotoUrl,
+      String? introduction,
+      bool? isTodayReported});
 }
 
 /// @nodoc
@@ -89,6 +97,8 @@ class _$LikeUserReadModelCopyWithImpl<$Res>
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
+    Object? introduction = freezed,
+    Object? isTodayReported = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -111,6 +121,14 @@ class _$LikeUserReadModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      introduction: freezed == introduction
+          ? _self.introduction
+          : introduction // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isTodayReported: freezed == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -213,7 +231,9 @@ extension LikeUserReadModelPatterns on LikeUserReadModel {
             String name,
             @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl)?
+            String mainPhotoUrl,
+            String? introduction,
+            bool? isTodayReported)?
         $default, {
     required TResult orElse(),
   }) {
@@ -221,7 +241,7 @@ extension LikeUserReadModelPatterns on LikeUserReadModel {
     switch (_that) {
       case _LikeUserReadModel() when $default != null:
         return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl);
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         return orElse();
     }
@@ -247,14 +267,16 @@ extension LikeUserReadModelPatterns on LikeUserReadModel {
             String name,
             @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl)
+            String mainPhotoUrl,
+            String? introduction,
+            bool? isTodayReported)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserReadModel():
         return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl);
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -279,14 +301,16 @@ extension LikeUserReadModelPatterns on LikeUserReadModel {
             String name,
             @YyyyMmDdDateConverter() DateTime birthDate,
             Address address,
-            String mainPhotoUrl)?
+            String mainPhotoUrl,
+            String? introduction,
+            bool? isTodayReported)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserReadModel() when $default != null:
         return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl);
+            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
       case _:
         return null;
     }
@@ -301,7 +325,9 @@ class _LikeUserReadModel implements LikeUserReadModel {
       required this.name,
       @YyyyMmDdDateConverter() required this.birthDate,
       required this.address,
-      required this.mainPhotoUrl});
+      required this.mainPhotoUrl,
+      this.introduction,
+      this.isTodayReported});
   factory _LikeUserReadModel.fromJson(Map<String, dynamic> json) =>
       _$LikeUserReadModelFromJson(json);
 
@@ -316,6 +342,10 @@ class _LikeUserReadModel implements LikeUserReadModel {
   final Address address;
   @override
   final String mainPhotoUrl;
+  @override
+  final String? introduction;
+  @override
+  final bool? isTodayReported;
 
   /// Create a copy of LikeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -343,17 +373,21 @@ class _LikeUserReadModel implements LikeUserReadModel {
                 other.birthDate == birthDate) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl));
+                other.mainPhotoUrl == mainPhotoUrl) &&
+            (identical(other.introduction, introduction) ||
+                other.introduction == introduction) &&
+            (identical(other.isTodayReported, isTodayReported) ||
+                other.isTodayReported == isTodayReported));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, birthDate, address, mainPhotoUrl);
+  int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
+      mainPhotoUrl, introduction, isTodayReported);
 
   @override
   String toString() {
-    return 'LikeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl)';
+    return 'LikeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
   }
 }
 
@@ -370,7 +404,9 @@ abstract mixin class _$LikeUserReadModelCopyWith<$Res>
       String name,
       @YyyyMmDdDateConverter() DateTime birthDate,
       Address address,
-      String mainPhotoUrl});
+      String mainPhotoUrl,
+      String? introduction,
+      bool? isTodayReported});
 }
 
 /// @nodoc
@@ -391,6 +427,8 @@ class __$LikeUserReadModelCopyWithImpl<$Res>
     Object? birthDate = null,
     Object? address = null,
     Object? mainPhotoUrl = null,
+    Object? introduction = freezed,
+    Object? isTodayReported = freezed,
   }) {
     return _then(_LikeUserReadModel(
       id: null == id
@@ -413,6 +451,14 @@ class __$LikeUserReadModelCopyWithImpl<$Res>
           ? _self.mainPhotoUrl
           : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      introduction: freezed == introduction
+          ? _self.introduction
+          : introduction // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isTodayReported: freezed == isTodayReported
+          ? _self.isTodayReported
+          : isTodayReported // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }

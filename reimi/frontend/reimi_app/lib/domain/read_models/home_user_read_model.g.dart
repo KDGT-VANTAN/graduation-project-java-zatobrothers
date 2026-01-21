@@ -14,7 +14,7 @@ _HomeUserReadModel _$HomeUserReadModelFromJson(Map<String, dynamic> json) =>
       address: $enumDecode(_$AddressEnumMap, json['address']),
       mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String,
-      isTodayReported: json['isTodayReported'] as bool,
+      isTodayReported: json['isTodayReported'] as bool?,
     );
 
 Map<String, dynamic> _$HomeUserReadModelToJson(_HomeUserReadModel instance) =>

@@ -1,7 +1,9 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:reimi_app/application/usecases/like/like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
+import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
-import 'package:reimi_app/application/usecases/user/get_like_users_to_user_usecase.dart';
+import 'package:reimi_app/application/usecases/like/get_like_users_to_user_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_result_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/test_weather_personality_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/post_weather_report_usecase.dart';
@@ -11,7 +13,7 @@ import 'package:reimi_app/application/usecases/chat_room/get_unmessaged_match_us
 import 'package:reimi_app/application/usecases/storage/upload_media_usecase.dart';
 import 'package:reimi_app/application/usecases/user/get_current_user_usecase.dart';
 import 'package:reimi_app/application/usecases/user/get_home_users_usecase.dart';
-import 'package:reimi_app/application/usecases/user/get_like_users_from_user_usecase.dart';
+import 'package:reimi_app/application/usecases/like/get_like_users_from_user_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/get_user_profile_usecase.dart';
 import 'package:reimi_app/application/usecases/message/send_message_usecase.dart';
 import 'package:reimi_app/application/usecases/auth/sign_in_with_provider_usecase.dart';
@@ -42,16 +44,6 @@ GetHomeUsersUseCase getHomeUsersUseCase(Ref ref) {
 }
 
 @riverpod
-GetLikeUsersFromUserUseCase getLikeUsersFromUserUseCase(Ref ref) {
-  return GetLikeUsersFromUserUseCase(ref.watch(likeRepositoryProvider));
-}
-
-@riverpod
-GetLikeUsersToUserUseCase getLikeUsersToUserUseCase(Ref ref) {
-  return GetLikeUsersToUserUseCase(ref.watch(likeRepositoryProvider));
-}
-
-@riverpod
 GetCurrentUserUseCase getCurrentUserUseCase(Ref ref) {
   return GetCurrentUserUseCase(ref.watch(userRepositoryProvider));
 }
@@ -70,6 +62,28 @@ GetUserProfileUseCase getUserProfileUseCase(Ref ref) {
 @riverpod
 UpdateUserProfileUseCase updateUserProfileUseCase(Ref ref) {
   return UpdateUserProfileUseCase(ref.watch(profileRepositoryProvider));
+}
+
+// like関連
+@riverpod
+GetLikeUsersFromUserUseCase getLikeUsersFromUserUseCase(Ref ref) {
+  return GetLikeUsersFromUserUseCase(ref.watch(likeRepositoryProvider));
+}
+
+@riverpod
+GetLikeUsersToUserUseCase getLikeUsersToUserUseCase(Ref ref) {
+  return GetLikeUsersToUserUseCase(ref.watch(likeRepositoryProvider));
+}
+
+@riverpod
+LikeUserUseCase likeUserUseCase(Ref ref) {
+  return LikeUserUseCase(ref.watch(likeRepositoryProvider));
+}
+
+// rainbow_like関連
+@riverpod
+RainbowLikeUserUseCase rainbowLikeUserUseCase(Ref ref) {
+  return RainbowLikeUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
 }
 
 // chat_room関連
