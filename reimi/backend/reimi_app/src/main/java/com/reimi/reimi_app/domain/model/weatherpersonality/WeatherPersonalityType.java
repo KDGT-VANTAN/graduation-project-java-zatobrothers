@@ -5,18 +5,18 @@ public class WeatherPersonalityType {
     private final WeatherPersonalityCode code;
     private final String name;
     private final String description;
-    private final String imageUrl;
+    private final String imagePath;
 
     private WeatherPersonalityType (
         WeatherPersonalityCode code,
         String name,
         String description,
-        String imageUrl
+        String imagePath
     ) {
         this.code = code;
         this.name = name;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.imagePath = imagePath;
     }
 
     // 16タイプ
@@ -185,8 +185,17 @@ public class WeatherPersonalityType {
         };
     }
 
+    public static WeatherPersonalityType from(WeatherPersonalityCode code) {
+        for (WeatherPersonalityType type : values()) {
+            if (type.code.equals(code)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("存在しないタイプコードです");
+    }
+
     public WeatherPersonalityCode getCode() { return code; }
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public String getImageUrl() { return imageUrl; }
+    public String getImagePath() { return imagePath; }
 }
