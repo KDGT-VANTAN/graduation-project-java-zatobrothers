@@ -26,5 +26,15 @@ public class WeatherPersonalityTypeEntity {
     @Column(name = "image_path", nullable = false, updatable = false)
     private String imagePath;
 
-    public WeatherPersonalityTypeEntity() {}
+    public WeatherPersonalityTypeEntity(
+        String code,
+        String name,
+        String description,
+        String imagePath
+    ) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
 }
