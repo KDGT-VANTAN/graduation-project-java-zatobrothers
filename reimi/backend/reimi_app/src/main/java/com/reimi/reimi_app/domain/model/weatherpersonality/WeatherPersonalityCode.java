@@ -21,4 +21,12 @@ public enum WeatherPersonalityCode {
     NFOR,
     NFIE,
     NFIR;
+
+    public static WeatherPersonalityCode from(String code) {
+        try {
+            return WeatherPersonalityCode.valueOf(code);
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw new IllegalArgumentException("存在しないタイプコードです");
+        }
+    }
 }
