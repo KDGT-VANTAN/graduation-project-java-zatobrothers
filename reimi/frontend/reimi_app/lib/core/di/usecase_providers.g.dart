@@ -319,6 +319,26 @@ final getWeatherReportsUseCaseProvider =
 // ignore: unused_element
 typedef GetWeatherReportsUseCaseRef
     = AutoDisposeProviderRef<GetWeatherReportsUseCase>;
+String _$getMyWeatherReportsUseCaseHash() =>
+    r'20a49f0be9a681a55a64d1ac40b3eac0355002b8';
+
+/// See also [getMyWeatherReportsUseCase].
+@ProviderFor(getMyWeatherReportsUseCase)
+final getMyWeatherReportsUseCaseProvider =
+    AutoDisposeProvider<GetMyWeatherReportsUseCase>.internal(
+  getMyWeatherReportsUseCase,
+  name: r'getMyWeatherReportsUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getMyWeatherReportsUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetMyWeatherReportsUseCaseRef
+    = AutoDisposeProviderRef<GetMyWeatherReportsUseCase>;
 String _$getWeatherReportUseCaseHash() =>
     r'd247a7af6f2a1e9ac9d14af5cf71b1689de57a4b';
 
