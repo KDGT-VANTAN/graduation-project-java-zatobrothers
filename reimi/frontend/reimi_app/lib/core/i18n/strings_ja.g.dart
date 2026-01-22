@@ -52,6 +52,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
 	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
 	@override late final _TranslationsWeatherReportPageJa weatherReportPage = _TranslationsWeatherReportPageJa._(_root);
+	@override late final _TranslationsMyWeatherReportPageJa myWeatherReportPage = _TranslationsMyWeatherReportPageJa._(_root);
 	@override late final _TranslationsWeatherReportPostPageJa weatherReportPostPage = _TranslationsWeatherReportPostPageJa._(_root);
 	@override late final _TranslationsWeatherSelectPageJa weatherSelectPage = _TranslationsWeatherSelectPageJa._(_root);
 	@override late final _TranslationsFeelingSelectPageJa feelingSelectPage = _TranslationsFeelingSelectPageJa._(_root);
@@ -204,8 +205,20 @@ class _TranslationsWeatherReportPageJa implements TranslationsWeatherReportPageE
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get sectionTitle => 'ウェザーリポート';
+	@override String get title => 'ウェザーリポート';
 	@override String get isEmptyCase => '現在、表示できるリポートがありません。';
+}
+
+// Path: myWeatherReportPage
+class _TranslationsMyWeatherReportPageJa implements TranslationsMyWeatherReportPageEn {
+	_TranslationsMyWeatherReportPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'マイウェザーリポート';
+	@override String get isEmptyCase => 'まだ投稿したことがありません。\nウェザーリポート送信画面から投稿しましょう！';
+	@override late final _TranslationsMyWeatherReportPageWeekdaysJa weekdays = _TranslationsMyWeatherReportPageWeekdaysJa._(_root);
 }
 
 // Path: weatherReportPostPage
@@ -639,6 +652,22 @@ class _TranslationsChatPageSubSectionTitleJa implements TranslationsChatPageSubS
 
 	// Translations
 	@override String get matching => '最初のメッセージを送りましょう！';
+}
+
+// Path: myWeatherReportPage.weekdays
+class _TranslationsMyWeatherReportPageWeekdaysJa implements TranslationsMyWeatherReportPageWeekdaysEn {
+	_TranslationsMyWeatherReportPageWeekdaysJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get sunday => '日';
+	@override String get monday => '月';
+	@override String get tuesday => '火';
+	@override String get wednesday => '水';
+	@override String get thursday => '木';
+	@override String get friday => '金';
+	@override String get saturday => '土';
 }
 
 // Path: weatherReportPostPage.placeHolder
@@ -2151,8 +2180,17 @@ extension on TranslationsJa {
 			'chatPage.subSectionTitle.matching' => '最初のメッセージを送りましょう！',
 			'chatDetailPage.nullCase' => 'プロフィール情報が取得できませんでした。',
 			'chatDetailPage.placeHolder' => 'メッセージを入力',
-			'weatherReportPage.sectionTitle' => 'ウェザーリポート',
+			'weatherReportPage.title' => 'ウェザーリポート',
 			'weatherReportPage.isEmptyCase' => '現在、表示できるリポートがありません。',
+			'myWeatherReportPage.title' => 'マイウェザーリポート',
+			'myWeatherReportPage.isEmptyCase' => 'まだ投稿したことがありません。\nウェザーリポート送信画面から投稿しましょう！',
+			'myWeatherReportPage.weekdays.sunday' => '日',
+			'myWeatherReportPage.weekdays.monday' => '月',
+			'myWeatherReportPage.weekdays.tuesday' => '火',
+			'myWeatherReportPage.weekdays.wednesday' => '水',
+			'myWeatherReportPage.weekdays.thursday' => '木',
+			'myWeatherReportPage.weekdays.friday' => '金',
+			'myWeatherReportPage.weekdays.saturday' => '土',
 			'weatherReportPostPage.title' => 'ウェザーリポート送信',
 			'weatherReportPostPage.placeHolder.media' => '写真・動画を追加',
 			'weatherReportPostPage.placeHolder.comment1' => 'コメントを入力',
@@ -2600,6 +2638,8 @@ extension on TranslationsJa {
 			'kEnum.occupation.consulting' => 'コンサル',
 			'kEnum.occupation.massMedia' => 'マスコミ',
 			'kEnum.occupation.advertising' => '広告',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.publishing' => '出版',
 			'kEnum.occupation.education' => '教育関係',
 			'kEnum.occupation.retail' => '小売',
@@ -2609,8 +2649,6 @@ extension on TranslationsJa {
 			'kEnum.occupation.realEstate' => '不動産',
 			'kEnum.occupation.tradingCompany' => '商社',
 			'kEnum.occupation.manufacturer' => 'メーカー',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.researcher' => '研究職',
 			'kEnum.occupation.majorCompany' => '大手企業',
 			'kEnum.occupation.foreignCompany' => '外資企業',

@@ -112,8 +112,21 @@
     "placeHolder": "メッセージを入力"
   },
   "weatherReportPage": {
-    "sectionTitle": "ウェザーリポート",
+    "title": "ウェザーリポート",
     "isEmptyCase": "現在、表示できるリポートがありません。"
+  },
+  "myWeatherReportPage": {
+    "title": "マイウェザーリポート",
+    "isEmptyCase": "まだ投稿したことがありません。\nウェザーリポート送信画面から投稿しましょう！",
+    "weekdays": {
+      "sunday": "日",
+      "monday": "月",
+      "tuesday": "火",
+      "wednesday": "水",
+      "thursday": "木",
+      "friday": "金",
+      "saturday": "土"
+    }
   },
   "weatherReportPostPage": {
     "title": "ウェザーリポート送信",
