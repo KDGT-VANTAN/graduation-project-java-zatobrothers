@@ -7,10 +7,12 @@ import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_detail_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_post_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/my_weather_report_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/states/weather_report_state.dart';
 import 'package:reimi_app/presentation/features/weather_report/widgets/weather_report_card.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
+import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
 class WeatherReportPage extends HookConsumerWidget {
@@ -57,12 +59,33 @@ class WeatherReportPage extends HookConsumerWidget {
             child: CustomScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               slivers: [
-                const Gap(height: 16),
-                SliverSectionTitle(
-                  title: t.weatherReportPage.sectionTitle,
-                  paddingHorizontal: 16,
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  sliver: SliverAppBar(
+                    floating: true,
+                    snap: true,
+                    centerTitle: false,
+                    title: Text(
+                      t.weatherReportPage.title,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                    ),
+                    actions: [
+                      CircleIconButton(
+                        icon: const Icon(LineIcons.calendar),
+                        onPressed: () {
+                          context.push(MyWeatherReportPage.routeLocation);
+                        },
+                      ),
+                    ],
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                  ),
                 ),
-                const Gap(height: 8),
+                const Gap(height: 4),
                 if (isLoading) ...[
                   const SliverFillRemaining(
                     hasScrollBody: false,
