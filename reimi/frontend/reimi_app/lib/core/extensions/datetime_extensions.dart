@@ -2,7 +2,10 @@ import 'package:intl/intl.dart';
 
 extension DateTimeFormatExtension on DateTime {
   // yyyy年MM月dd日形式
-  String get toJapaneseDate => DateFormat('yyyy年MM月dd日').format(this);
+  String get toJapaneseDateyyyyMMdd => DateFormat('yyyy年MM月dd日').format(this);
+
+  // yyyy年MM月形式
+  String get toJapaneseDateyyyyMM => DateFormat('yyyy年MM月').format(this);
 
   // yyyy年M月d日形式(0埋めなし)
   String get toJapaneseDateShort => DateFormat('yyyy年M月d日').format(this);
