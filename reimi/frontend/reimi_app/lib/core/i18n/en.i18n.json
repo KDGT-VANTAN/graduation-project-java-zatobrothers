@@ -112,8 +112,21 @@
     "placeHolder": "Enter message"
   },
   "weatherReportPage": {
-    "sectionTitle": "Weather Report",
+    "title": "Weather Report",
     "isEmptyCase": "There are currently no reports to display."
+  },
+  "myWeatherReportPage": {
+    "title": "My Weather Report",
+    "isEmptyCase": "You haven't posted yet. \nPost from the Weather Report Submission screen!",
+    "weekdays": {
+      "sunday": "Sun",
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat"
+    }
   },
   "weatherReportPostPage": {
     "title": "Send Weather Report",

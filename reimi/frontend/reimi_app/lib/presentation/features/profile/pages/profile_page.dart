@@ -546,7 +546,7 @@ class ProfilePage extends HookConsumerWidget {
                       BasicInfoTile(
                         title: t.profilePage.section.basicInformation.items
                             .birthDate,
-                        value: birthDate?.toJapaneseDate,
+                        value: birthDate?.toJapaneseDateyyyyMMdd,
                         onTap: null,
                         isReadOnly: true,
                       ),

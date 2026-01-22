@@ -75,7 +75,7 @@ class UserBirthdatePage extends ConsumerWidget {
           contentText1: t.dialog.userBirthDate.contentText1,
           contentText2: t.dialog.userBirthDate.contentText2,
           context: context,
-          value: birthDate!.toJapaneseDate,
+          value: birthDate!.toJapaneseDateyyyyMMdd,
           onConfirm: () {
             notifier.nextPage();
             context.push(UserAddressPage.routeLocation);

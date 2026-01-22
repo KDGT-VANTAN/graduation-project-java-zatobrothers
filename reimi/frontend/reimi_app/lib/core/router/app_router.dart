@@ -46,6 +46,7 @@ import 'package:reimi_app/presentation/features/weather_report/pages/weather_rep
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_post_page.dart';
+import 'package:reimi_app/presentation/features/weather_report/pages/my_weather_report_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_select_page.dart';
 import 'package:reimi_app/presentation/shared/pages/error_page.dart';
 import 'package:reimi_app/presentation/shared/pages/loading_page.dart';
@@ -229,6 +230,13 @@ GoRouter goRouter(Ref ref) {
           final extra = state.extra! as Map<String, Object>;
           final reportId = extra['reportId'] as String;
           return WeatherReportDetailPage(reportId: reportId);
+        },
+      ),
+      GoRoute(
+        path: MyWeatherReportPage.routeLocation,
+        name: MyWeatherReportPage.routeName,
+        builder: (context, state) {
+          return const MyWeatherReportPage();
         },
       ),
       // ----- account -----

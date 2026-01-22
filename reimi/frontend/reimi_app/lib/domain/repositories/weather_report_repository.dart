@@ -4,6 +4,7 @@ import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.da
 
 abstract class WeatherReportRepository {
   Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports();
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports();
   Future<WeatherReportReadModel?> fetchWeatherReport(String reportId);
   Future<void> postWeatherReport(PostWeatherReportParams params);
 }

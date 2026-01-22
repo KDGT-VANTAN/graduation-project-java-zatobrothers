@@ -55,6 +55,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
 	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
+	late final TranslationsMyWeatherReportPageEn myWeatherReportPage = TranslationsMyWeatherReportPageEn._(_root);
 	late final TranslationsWeatherReportPostPageEn weatherReportPostPage = TranslationsWeatherReportPostPageEn._(_root);
 	late final TranslationsWeatherSelectPageEn weatherSelectPage = TranslationsWeatherSelectPageEn._(_root);
 	late final TranslationsFeelingSelectPageEn feelingSelectPage = TranslationsFeelingSelectPageEn._(_root);
@@ -252,10 +253,27 @@ class TranslationsWeatherReportPageEn {
 	// Translations
 
 	/// en: 'Weather Report'
-	String get sectionTitle => 'Weather Report';
+	String get title => 'Weather Report';
 
 	/// en: 'There are currently no reports to display.'
 	String get isEmptyCase => 'There are currently no reports to display.';
+}
+
+// Path: myWeatherReportPage
+class TranslationsMyWeatherReportPageEn {
+	TranslationsMyWeatherReportPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'My Weather Report'
+	String get title => 'My Weather Report';
+
+	/// en: 'You haven't posted yet. Post from the Weather Report Submission screen!'
+	String get isEmptyCase => 'You haven\'t posted yet. \nPost from the Weather Report Submission screen!';
+
+	late final TranslationsMyWeatherReportPageWeekdaysEn weekdays = TranslationsMyWeatherReportPageWeekdaysEn._(_root);
 }
 
 // Path: weatherReportPostPage
@@ -825,6 +843,36 @@ class TranslationsChatPageSubSectionTitleEn {
 
 	/// en: 'Send your first message!'
 	String get matching => 'Send your first message!';
+}
+
+// Path: myWeatherReportPage.weekdays
+class TranslationsMyWeatherReportPageWeekdaysEn {
+	TranslationsMyWeatherReportPageWeekdaysEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Sun'
+	String get sunday => 'Sun';
+
+	/// en: 'Mon'
+	String get monday => 'Mon';
+
+	/// en: 'Tue'
+	String get tuesday => 'Tue';
+
+	/// en: 'Wed'
+	String get wednesday => 'Wed';
+
+	/// en: 'Thu'
+	String get thursday => 'Thu';
+
+	/// en: 'Fri'
+	String get friday => 'Fri';
+
+	/// en: 'Sat'
+	String get saturday => 'Sat';
 }
 
 // Path: weatherReportPostPage.placeHolder
@@ -3308,8 +3356,17 @@ extension on Translations {
 			'chatPage.subSectionTitle.matching' => 'Send your first message!',
 			'chatDetailPage.nullCase' => 'Profile information could not be retrieved.',
 			'chatDetailPage.placeHolder' => 'Enter message',
-			'weatherReportPage.sectionTitle' => 'Weather Report',
+			'weatherReportPage.title' => 'Weather Report',
 			'weatherReportPage.isEmptyCase' => 'There are currently no reports to display.',
+			'myWeatherReportPage.title' => 'My Weather Report',
+			'myWeatherReportPage.isEmptyCase' => 'You haven\'t posted yet. \nPost from the Weather Report Submission screen!',
+			'myWeatherReportPage.weekdays.sunday' => 'Sun',
+			'myWeatherReportPage.weekdays.monday' => 'Mon',
+			'myWeatherReportPage.weekdays.tuesday' => 'Tue',
+			'myWeatherReportPage.weekdays.wednesday' => 'Wed',
+			'myWeatherReportPage.weekdays.thursday' => 'Thu',
+			'myWeatherReportPage.weekdays.friday' => 'Fri',
+			'myWeatherReportPage.weekdays.saturday' => 'Sat',
 			'weatherReportPostPage.title' => 'Send Weather Report',
 			'weatherReportPostPage.placeHolder.media' => 'Add photo/video',
 			'weatherReportPostPage.placeHolder.comment1' => 'Enter comment',
@@ -3757,6 +3814,8 @@ extension on Translations {
 			'kEnum.occupation.consulting' => 'Consulting',
 			'kEnum.occupation.massMedia' => 'Media',
 			'kEnum.occupation.advertising' => 'Advertising',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.publishing' => 'Publishing',
 			'kEnum.occupation.education' => 'Education',
 			'kEnum.occupation.retail' => 'Retail',
@@ -3766,8 +3825,6 @@ extension on Translations {
 			'kEnum.occupation.realEstate' => 'Real Estate',
 			'kEnum.occupation.tradingCompany' => 'Trading Company',
 			'kEnum.occupation.manufacturer' => 'Manufacturer',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.researcher' => 'Researcher',
 			'kEnum.occupation.majorCompany' => 'Major Company',
 			'kEnum.occupation.foreignCompany' => 'Foreign Company',

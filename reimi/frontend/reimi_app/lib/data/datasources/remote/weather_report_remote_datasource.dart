@@ -4,6 +4,7 @@ import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.da
 
 abstract class WeatherReportRemoteDataSource {
   Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports();
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports();
   Future<WeatherReportReadModel?> fetchWeatherReport(String reportId);
   Future<void> postWeatherReport(PostWeatherReportDto dto);
 }
@@ -14,6 +15,11 @@ class WeatherReportRemoteDataSourceImpl
 
   @override
   Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports() async {
+    return [];
+  }
+
+  @override
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() async {
     return [];
   }
 
