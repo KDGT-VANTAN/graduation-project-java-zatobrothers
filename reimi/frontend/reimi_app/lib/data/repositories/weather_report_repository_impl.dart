@@ -15,6 +15,11 @@ class WeatherReportRepositoryImpl implements WeatherReportRepository {
   }
 
   @override
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() {
+    return _remote.fetchMyWeatherReports();
+  }
+
+  @override
   Future<WeatherReportReadModel?> fetchWeatherReport(String reportId) {
     return _remote.fetchWeatherReport(reportId);
   }

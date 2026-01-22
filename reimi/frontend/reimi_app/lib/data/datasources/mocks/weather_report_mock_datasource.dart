@@ -17,6 +17,11 @@ class WeatherReportMockDataSource implements WeatherReportRemoteDataSource {
   }
 
   @override
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() async {
+    return mockSimpleWeatherReports;
+  }
+
+  @override
   Future<WeatherReportReadModel?> fetchWeatherReport(String reportId) async {
     for (final weatherReport in mockWeatherReports) {
       if (weatherReport.reportId == reportId) {
@@ -41,7 +46,7 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(hours: 1)),
+    createdAt: DateTime.now().subtract(const Duration(days: 60)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_002',
@@ -50,7 +55,7 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(days: 1)),
+    createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_003',
@@ -59,7 +64,7 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+    createdAt: DateTime.now().subtract(const Duration(minutes: 105)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_004',
@@ -68,7 +73,7 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(hours: 8)),
+    createdAt: DateTime.now().subtract(const Duration(days: 40)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_005',
@@ -76,16 +81,15 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     comment: '夕焼けが燃えるように綺麗でした。明日は晴れるかな？',
     mediaType: MediaType.image,
     url:
-        'https://images.unsplash.com/photo-1470252649358-96962407e9d9?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(hours: 3)),
+        'https://t3.ftcdn.net/jpg/01/02/02/48/360_F_102024845_ZkQQ04KmyHVuRKNjJNwq82U6SdsyaH80.jpg',
+    createdAt: DateTime.now().subtract(const Duration(days: 52)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_006',
     userId: 'user_f678',
     comment: '夜空が澄んでいて星が少しだけ見えます。',
     mediaType: MediaType.image,
-    url:
-        'https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?auto=format&fit=crop&q=80&w=1000',
+    url: 'https://user0514.cdnw.net/shared/img/thumb/UKA20906018_TP_V.jpg',
     createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
   ),
   WeatherReportSimpleReadModel(
@@ -95,7 +99,7 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(days: 1, hours: 5)),
+    createdAt: DateTime.now().subtract(const Duration(days: 9, hours: 5)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_008',
