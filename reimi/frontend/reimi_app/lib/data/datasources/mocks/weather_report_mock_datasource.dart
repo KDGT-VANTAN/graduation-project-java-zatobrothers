@@ -55,11 +55,11 @@ final List<WeatherReportSimpleReadModel> mockSimpleWeatherReports = [
     mediaType: MediaType.image,
     url:
         'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&q=80&w=1000',
-    createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
+    createdAt: DateTime.now().subtract(const Duration(days: 1)),
   ),
   WeatherReportSimpleReadModel(
     reportId: 'report_003',
-    userId: 'user_c789',
+    userId: 'user_000',
     comment: '入道雲が出てきました。夏本番という感じですね。',
     mediaType: MediaType.image,
     url:
@@ -165,6 +165,23 @@ final List<WeatherReportReadModel> mockWeatherReports = [
     reportComment: ['#夕焼け', '#マジックアワー'],
     likeCount: 89,
     commentCount: 3,
+    createdAt: DateTime.now().subtract(const Duration(hours: 3)),
+  ),
+  WeatherReportReadModel(
+    reportId: 'report_003',
+    userId: 'user_000',
+    userName: 'メンダコ',
+    mainPhotoUrl: Assets.images.sample.user000SampleImage.path,
+    comment: '入道雲が出てきました。夏本番という感じですね。',
+    weatherType: WeatherType.noStar,
+    feelingType: FeelingType.warm,
+    forecastType: ForecastType.noChange,
+    mediaType: MediaType.image,
+    url:
+        'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&q=80&w=1000',
+    reportComment: ['#入道雲', '#夏'],
+    likeCount: 96,
+    commentCount: 4,
     createdAt: DateTime.now().subtract(const Duration(hours: 3)),
   ),
 ];
