@@ -37,4 +37,6 @@ public class WeatherPersonalityTypeEntity {
         this.description = description;
         this.imagePath = imagePath;
     }
+
+    public WeatherPersonalityTypeEntity() {}
 }
