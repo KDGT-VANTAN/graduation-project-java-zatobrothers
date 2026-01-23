@@ -8,5 +8,6 @@ abstract class WeatherReportDetailState with _$WeatherReportDetailState {
     WeatherReportReadModel? weatherReport,
     @Default(false) bool isLoading,
     String? errorMessage,
+    @Default(false) bool isMyReport,
   }) = _WeatherReportDetailState;
 }
