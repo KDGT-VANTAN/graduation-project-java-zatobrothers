@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.userweatherpersonalitytype;
 
+import org.springframework.stereotype.Repository;
+
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
@@ -9,6 +11,7 @@ import com.reimi.reimi_app.infrastructure.persistence.mapper.UserWeatherPersonal
 import com.reimi.reimi_app.infrastructure.persistence.repository.user.JpaUserRepository;
 import com.reimi.reimi_app.infrastructure.persistence.repository.weatherpersonalitytype.JpaWeatherPersonalityTypeRepository;
 
+@Repository
 public class UserWeatherPersonalityTypeRepositoryImpl implements UserWeatherPersonalityTypeRepository {
 
     private final JpaUserWeatherPersonalityTypeRepository jpaUserWeatherPersonalityTypeRepository;
@@ -33,7 +36,7 @@ public class UserWeatherPersonalityTypeRepositoryImpl implements UserWeatherPers
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
         WeatherPersonalityTypeEntity weatherPersonalityTypEntity = jpaWeatherPersonalityTypeRepository
-            .findByCode(userWeatherPersonalityType.getWeatherPersonalityCode().name())
+            .findByCode(userWeatherPersonalityType.getWeatherPersonalityType().getCode().name())
             .orElseThrow(() -> new ResourceNotFoundException("ウェザーパーソナリティタイプ"));
 
         jpaUserWeatherPersonalityTypeRepository
