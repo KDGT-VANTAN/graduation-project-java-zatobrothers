@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
+import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/my_weather_report_notifier.dart';
@@ -332,63 +333,68 @@ class _CalendarDayCell extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
-      child: Container(
-        color: const Color(0xFF3F566B),
-        child: Stack(
-          children: [
-            if (report != null)
-              GestureDetector(
-                onTap: () {
-                  context.push(
-                    WeatherReportDetailPage.routeLocation,
-                    extra: {'reportId': report!.reportId},
-                  );
-                },
-                child: ClipRRect(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: report == null
+            ? null
+            : () {
+                context.push(
+                  WeatherReportDetailPage.routeLocation,
+                  extra: {'reportId': report!.reportId},
+                );
+              },
+        child: Container(
+          color: const Color(0xFF3F566B),
+          child: Stack(
+            children: [
+              if (report != null)
+                ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    report!.url,
+                  child: Image(
+                    image: report!.url.toImageProvider(),
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: double.infinity,
                   ),
                 ),
-              )
-            else
-              const SizedBox.shrink(),
-            Positioned(
-              top: 6,
-              left: 6,
-              child: Text(
-                '${date.day}',
-                style: theme.textTheme.titleMedium!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  shadows: report != null
-                      ? const [
-                          Shadow(
-                            blurRadius: 4,
-                            color: Colors.black54,
-                          ),
-                        ]
-                      : null,
-                ),
-              ),
-            ),
-            if (isToday)
               Positioned(
-                top: 4,
-                right: 4,
-                child: Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
+                top: 6,
+                left: 6,
+                child: IgnorePointer(
+                  child: Text(
+                    '${date.day}',
+                    style: theme.textTheme.titleMedium!.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      shadows: report != null
+                          ? const [
+                              Shadow(
+                                blurRadius: 4,
+                                color: Colors.black54,
+                              ),
+                            ]
+                          : null,
+                    ),
                   ),
                 ),
               ),
-          ],
+              if (isToday)
+                Positioned(
+                  top: 4,
+                  right: 4,
+                  child: IgnorePointer(
+                    child: Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        color: Colors.orange,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
