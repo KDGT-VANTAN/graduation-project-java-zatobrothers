@@ -23,7 +23,7 @@ public class WeatherPersonalityTypeRepositoryImpl implements WeatherPersonalityT
     @Override
     public Optional<WeatherPersonalityType> findByCode(WeatherPersonalityCode weatherPersonalityCode) {
         return jpaWeatherPersonalityTypeRepository
-            .findById(weatherPersonalityCode.name())
+            .findByCode(weatherPersonalityCode.name())
             .map(WeatherPersonalityTypeMapper::toDomain);
     }
 
