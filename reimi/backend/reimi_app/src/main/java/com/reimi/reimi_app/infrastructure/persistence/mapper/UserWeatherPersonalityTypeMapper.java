@@ -16,7 +16,7 @@ public class UserWeatherPersonalityTypeMapper {
         entity.setId(userWeatherPersonalityType.getId().value());
         entity.setUserId(userWeatherPersonalityType.getUserId().value());
         entity.setUser(userEntity);
-        entity.setTypeCode(userWeatherPersonalityType.getWeatherPersonalityCode().name());
+        entity.setTypeCode(weatherPersonalityTypeEntity.getCode());
         entity.setWeatherPersonalityType(weatherPersonalityTypeEntity);
         entity.setScoreSensitivity(userWeatherPersonalityType.getWeatherPersonalityScore().sensitivity());
         entity.setScorePreparedness(userWeatherPersonalityType.getWeatherPersonalityScore().preparedness());

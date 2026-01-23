@@ -8,6 +8,7 @@ import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalit
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityDiagnosis;
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityScore;
+import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
 
 @Service
@@ -30,9 +31,11 @@ public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase 
 
         WeatherPersonalityCode code = diagnosis.decideType(weatherPersonalityScore, command.answers());
 
+        WeatherPersonalityType type = WeatherPersonalityType.from(code);
+
         UserWeatherPersonalityType result = UserWeatherPersonalityType.result(
             command.userId(),
-            code,
+            type,
             weatherPersonalityScore
         );
 
