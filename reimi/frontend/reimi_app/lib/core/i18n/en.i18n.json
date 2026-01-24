@@ -167,6 +167,7 @@
   },
   "profilePage": {
     "title": "Edit Profile",
+    "nullCase": "Profile information could not be retrieved.",
     "section": {
       "mainPhoto": "Main Photo",
       "subPhoto": "Sub Photos",
@@ -249,6 +250,55 @@
       "contentText4": "and classify you into one of 16 character types\n\n",
       "contentText5": "",
       "contentText6": "Answer 16 questions to discover\nyour Weather Personality type"
+    }
+  },
+  "weatherPersonalityDetailPage": {
+    "title": "Test Result",
+    "nullCase": "Failed to get test results.",
+    "section": {
+      "mainResult": {
+        "typeCode": "Assessment Type Code",
+        "you": "You are"
+      },
+      "godsRuling": {
+        "title": "The Gods' Ruling Statement"
+      },
+      "behaviorTendency": {
+        "title": "Behavioral Tendencies"
+      },
+      "axisFeature":{
+        "title": "4-Axis Characteristics"
+      },
+      "axisScore":{
+        "title": "4-Axis Score",
+        "axis": {
+          "sensitivity": {
+            "sensitive": "S (High Sensitivity)",
+            "neutral": "N (Low Sensitivity)"
+          },
+          "preparedness": {
+            "planned": "P (Planned)",
+            "flexible": "F (Flexible)"
+          },
+          "activity": {
+            "outdoor": "O (Outdoor)",
+            "indoor": "I (Indoor)"
+          },
+          "motivation": {
+            "emotional": "E (Emotional)",
+            "rational": "R (Rational)"
+          }
+        }
+      },
+      "compatibleType": {
+        "title": "Compatible Type"
+      },
+      "incompatibleType": {
+        "title": "Incompatible Type"
+      },
+      "godsMessage": {
+        "title": "A Word from the Gods"
+      }
     }
   },
   "weatherPersonalityTestJudgingPage": {
@@ -502,6 +552,10 @@
     "completeTest":{
       "title": "Confirmation of completion of Test",
       "contentText": "Would you like to submit your answers and complete the test?"
+    },
+    "reTest":{
+      "title": "Confirmation of Re-Test",
+      "contentText": "If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?"
     }
   },
   "modalSheet": {
@@ -567,7 +621,8 @@
     "completion": "Complete",
     "weatherPersonalityTest": "Weather Personality Test",
     "goTochatPage": "Go To Chat Screen",
-    "rainbowLike": "Rainbow Like!"
+    "rainbowLike": "Rainbow Like!",
+    "retest": "Re-test"
   },
   "segmentedSwitch": {
     "like": {
