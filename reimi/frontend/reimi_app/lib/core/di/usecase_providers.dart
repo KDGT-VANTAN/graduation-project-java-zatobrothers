@@ -4,6 +4,7 @@ import 'package:reimi_app/application/usecases/profile/update_user_profile_useca
 import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
 import 'package:reimi_app/application/usecases/like/get_like_users_to_user_usecase.dart';
+import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_detail_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_result_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/test_weather_personality_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/get_my_weather_reports_usecase.dart';
@@ -146,5 +147,11 @@ TestWeatherPersonalityUseCase testWeatherPersonalityUseCase(Ref ref) {
 @riverpod
 GetWeatherPersonalityResultUseCase getWeatherPersonalityResultUseCase(Ref ref) {
   return GetWeatherPersonalityResultUseCase(
+      ref.watch(weatherPersonalityRepositoryProvider));
+}
+
+@riverpod
+GetWeatherPersonalityDetailUseCase getWeatherPersonalityDetailUseCase(Ref ref) {
+  return GetWeatherPersonalityDetailUseCase(
       ref.watch(weatherPersonalityRepositoryProvider));
 }

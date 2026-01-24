@@ -438,5 +438,25 @@ final getWeatherPersonalityResultUseCaseProvider =
 // ignore: unused_element
 typedef GetWeatherPersonalityResultUseCaseRef
     = AutoDisposeProviderRef<GetWeatherPersonalityResultUseCase>;
+String _$getWeatherPersonalityDetailUseCaseHash() =>
+    r'f83366acf9b8191122b6288a2d2ce32d449f5e4b';
+
+/// See also [getWeatherPersonalityDetailUseCase].
+@ProviderFor(getWeatherPersonalityDetailUseCase)
+final getWeatherPersonalityDetailUseCaseProvider =
+    AutoDisposeProvider<GetWeatherPersonalityDetailUseCase>.internal(
+  getWeatherPersonalityDetailUseCase,
+  name: r'getWeatherPersonalityDetailUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherPersonalityDetailUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherPersonalityDetailUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherPersonalityDetailUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
