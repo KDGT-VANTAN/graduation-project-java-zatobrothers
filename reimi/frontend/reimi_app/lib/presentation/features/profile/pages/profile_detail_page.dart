@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
@@ -26,6 +27,7 @@ import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.
 import 'package:reimi_app/presentation/features/profile/widgets/show_rainbow_like_modal_sheet.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/bottom_action_buttons_bar.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
@@ -89,11 +91,11 @@ class ProfileDetailPage extends HookConsumerWidget {
                   snap: true,
                   title: Text(
                     t.profileDetailPage.title,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
+                    style: theme.textTheme.titleMedium!.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -175,7 +177,8 @@ class ProfileDetailPage extends HookConsumerWidget {
                     ),
                   ),
                   const Gap(height: 32),
-                  if (profile.subPhotos == null) ...[
+                  if (profile.subPhotos == null ||
+                      profile.subPhotos!.isEmpty) ...[
                     const SliverToBoxAdapter(
                       child: SizedBox.shrink(),
                     ),
@@ -222,18 +225,54 @@ class ProfileDetailPage extends HookConsumerWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     sliver: SliverToBoxAdapter(
                       child: GlassTile(
-                        onTap: () {},
+                        onTap: () {
+                          context.push(
+                            WeatherPersonalityDetailPage.routeLocation,
+                            extra: {'userId': userId},
+                          );
+                        },
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Icon(Icons.wb_sunny, color: Colors.orange),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Text(
-                                '晴れ男',
-                                style: theme.textTheme.bodyMedium,
-                              ),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 22,
+                                  backgroundColor: Colors.white,
+                                  child: CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: theme.colorScheme.primary,
+                                    backgroundImage: Assets
+                                        .images
+                                        .weatherPersonality
+                                        .spoeTraineeSeaOtterImage
+                                        .path
+                                        .toImageProvider(),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  'SPOE',
+                                  style: theme.textTheme.bodyMedium!.copyWith(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '(トレーニーラッコ)',
+                                  style: theme.textTheme.bodyMedium!.copyWith(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
-                            const Icon(Icons.chevron_right),
+                            Icon(
+                              Icons.chevron_right,
+                              size: 22,
+                              color: Colors.black87.withValues(alpha: 0.4),
+                            ),
                           ],
                         ),
                       ),

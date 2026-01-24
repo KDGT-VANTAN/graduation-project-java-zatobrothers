@@ -8,7 +8,8 @@ import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/notifiers/account_notifier.dart';
 import 'package:reimi_app/presentation/features/account/states/account_state.dart';
-import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_result_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
@@ -148,29 +149,60 @@ class AccountPage extends HookConsumerWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(height: 12),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.7),
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.wb_sunny, color: Colors.orange),
-                              const SizedBox(width: 8),
-                              Text(
-                                '晴れ男',
-                                style: theme.textTheme.bodyMedium,
-                              ),
-                            ],
+                        const SizedBox(height: 24),
+                        GestureDetector(
+                          onTap: () {
+                            context.push(
+                              WeatherPersonalityDetailPage.routeLocation,
+                              extra: {'userId': user.id},
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.7),
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: Colors.white,
+                                  child: CircleAvatar(
+                                    radius: 18,
+                                    backgroundColor: theme.colorScheme.primary,
+                                    backgroundImage: Assets
+                                        .images
+                                        .weatherPersonality
+                                        .spoeTraineeSeaOtterImage
+                                        .path
+                                        .toImageProvider(),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  'SPOE',
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '(トレーニーラッコ)',
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                              ],
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 24),
                         Row(
                           children: [
                             Expanded(
@@ -199,7 +231,7 @@ class AccountPage extends HookConsumerWidget {
                           label: t.button.weatherPersonalityTest,
                           onPressed: () {
                             context.push(
-                              WeatherPersonalityConceptPage.routeLocation,
+                              WeatherPersonalityTestResultPage.routeLocation,
                             );
                           },
                         ),
