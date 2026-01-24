@@ -20,6 +20,7 @@ import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.Diagnos
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -44,7 +45,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
     @PostMapping("/diagnoses/score/user-weather-personality-type")
     @DiagnoseWeatherPersonalityType
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> diagnose(
-        @RequestBody DiagnoseWeatherPersonalityRequest request
+        @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
     ) {
         List<AnswerChoice> answers = List.of(
             request.q1Answer(),

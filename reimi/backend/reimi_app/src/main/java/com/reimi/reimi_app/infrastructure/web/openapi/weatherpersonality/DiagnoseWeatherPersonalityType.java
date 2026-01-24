@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,7 +35,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         responseCode = "201",
         description = "ユーザーのウェザーパーソナリティ診断が正常に行われました",
         content = @Content(
-            mediaType = "application/json"
+            mediaType = "application/json",
+            schema = @Schema(implementation = DiagnoseResultWeatherPersonalityResponse.class)
         )
     ),
     @ApiResponse(
@@ -62,8 +64,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                         "code": "INVALID_REQUEST",
                         "message": "入力値が不正です",
                         "details": {
-                            "email": "メールアドレスの形式が不正です",
-                            "introduction": "自己紹介文は20文字以上500文字以下で入力してください"
+                            "q1Answer": "Q1の回答は必須です"
                         }
                     }
                     """
