@@ -83,11 +83,11 @@ class ChatDetailPage extends HookConsumerWidget {
                   elevation: 0,
                   title: Text(
                     userProfile?.name ?? '',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
+                    style: theme.textTheme.titleMedium!.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
                   actions: userProfile == null
                       ? null

@@ -7,37 +7,47 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/services/share/share_payload.dart';
 import 'package:reimi_app/core/services/share/share_provider.dart';
+import 'package:reimi_app/domain/read_models/type_compatibility_read_model.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
-import 'package:reimi_app/presentation/features/account/account_page.dart';
-import 'package:reimi_app/presentation/features/weather_personality/notifiers/weather_personality_test_result_notifier.dart';
-import 'package:reimi_app/presentation/features/weather_personality/states/weather_personality_test_result_state.dart';
+import 'package:reimi_app/presentation/features/weather_personality/notifiers/weather_personality_detail_notifier.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q1_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/states/weather_personality_detail_state.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/action_button.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_feature_card.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_score_bar.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/text_card.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_share_card.dart';
+import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 import 'package:screenshot/screenshot.dart';
 
-class WeatherPersonalityTestResultPage extends HookConsumerWidget {
-  const WeatherPersonalityTestResultPage({super.key});
-  static String get routeName => 'weather_personality_test_result';
+class WeatherPersonalityDetailPage extends HookConsumerWidget {
+  static String get routeName => 'weather_personality_detail';
   static String get routeLocation => '/$routeName';
+  const WeatherPersonalityDetailPage({
+    super.key,
+    required this.userId,
+  });
+  final String? userId;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final t = Translations.of(context);
     final notifier =
-        ref.read(weatherPersonalityTestResultNotifierProvider.notifier);
+        ref.read(weatherPersonalityDetailNotifierProvider.notifier);
     final weatherPersonality = ref.watch(
-        weatherPersonalityTestResultNotifierProvider
+        weatherPersonalityDetailNotifierProvider
             .select((state) => state.weatherPersonality));
-    final isLoading = ref.watch(weatherPersonalityTestResultNotifierProvider
+    final isLoading = ref.watch(weatherPersonalityDetailNotifierProvider
         .select((state) => state.isLoading));
+    final isMyWeatherPersonality = ref.watch(
+        weatherPersonalityDetailNotifierProvider
+            .select((state) => state.isMyWeatherPersonality));
 
     final mainController = useAnimationController(
       duration: const Duration(milliseconds: 600),
@@ -75,15 +85,15 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
 
     useEffect(() {
       Future.microtask(() {
-        notifier.init();
+        notifier.init(userId);
       });
       final timer = Timer(
         const Duration(milliseconds: 400),
         () => subController.forward(),
       );
 
-      final subscription = ref.listenManual<WeatherPersonalityTestResultState>(
-        weatherPersonalityTestResultNotifierProvider,
+      final subscription = ref.listenManual<WeatherPersonalityDetailState>(
+        weatherPersonalityDetailNotifierProvider,
         (prev, next) {
           if (next.errorMessage == null) return;
           AppSnackBar.error(context, next.errorMessage!);
@@ -102,6 +112,48 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
           child: CustomScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
+              SliverAppBar(
+                floating: true,
+                snap: true,
+                centerTitle: true,
+                title: Text(
+                  t.weatherPersonalityDetailPage.title,
+                  style: theme.textTheme.titleMedium!.copyWith(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
+                ),
+                actions: isMyWeatherPersonality
+                    ? [
+                        TextButton(
+                          onPressed: () async {
+                            await customConfirmationDialog(
+                              context: context,
+                              title: t.dialog.reTest.title,
+                              contentText: t.dialog.reTest.contentText,
+                              buttonLabel: t.button.retest,
+                              onPressed: () {
+                                context.go(
+                                    WeatherPersonalityTestQ1Page.routeLocation);
+                              },
+                              accentColor: theme.colorScheme.primary,
+                            );
+                          },
+                          child: Text(
+                            t.button.retest,
+                            style: theme.textTheme.labelLarge!.copyWith(
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                      ]
+                    : null,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+              ),
               if (isLoading) ...[
                 const SliverFillRemaining(
                   hasScrollBody: false,
@@ -116,54 +168,15 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                   ),
                   sliver: SliverFillRemaining(
                     hasScrollBody: false,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          t.weatherPersonalityTestResultPage.nullCase,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            context.go(AccountPage.routeLocation);
-                          },
-                          child: Text(
-                            t.button.returnToAccountPage,
-                            style: theme.textTheme.labelLarge!.copyWith(
-                              color: theme.colorScheme.primary,
-                            ),
-                          ),
-                        )
-                      ],
+                    child: Center(
+                      child: Text(
+                        t.weatherPersonalityDetailPage.nullCase,
+                        style: theme.textTheme.bodyMedium,
+                      ),
                     ),
                   ),
                 ),
               ] else ...[
-                const Gap(height: 16),
-                SliverToBoxAdapter(
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFE9F7FB),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Text(
-                        t.weatherPersonalityTestResultPage.section.title,
-                        style: theme.textTheme.titleSmall!.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF3A5F6F),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const Gap(height: 16),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
@@ -218,39 +231,39 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                       child: Column(
                         children: [
                           SectionTitle(
-                            title: t.weatherPersonalityTestResultPage.section
+                            title: t.weatherPersonalityDetailPage.section
                                 .axisScore.title,
                           ),
                           const SizedBox(height: 16),
                           AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.sensitivity.sensitive,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.sensitivity.neutral,
+                            leftLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.sensitivity.neutral,
+                            rightLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.sensitivity.sensitive,
                             score: weatherPersonality.axisScore[0],
                           ),
                           const SizedBox(height: 20),
                           AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.preparedness.planned,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.preparedness.flexible,
+                            leftLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.preparedness.flexible,
+                            rightLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.preparedness.planned,
                             score: weatherPersonality.axisScore[1],
                           ),
                           const SizedBox(height: 20),
                           AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.activity.outdoor,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.activity.indoor,
+                            leftLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.activity.indoor,
+                            rightLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.activity.outdoor,
                             score: weatherPersonality.axisScore[2],
                           ),
                           const SizedBox(height: 20),
                           AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.motivation.emotional,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.motivation.rational,
+                            leftLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.motivation.rational,
+                            rightLabel: t.weatherPersonalityDetailPage.section
+                                .axisScore.axis.motivation.emotional,
                             score: weatherPersonality.axisScore[3],
                           ),
                         ],
@@ -265,7 +278,7 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                     child: Column(
                       children: [
                         SectionTitle(
-                          title: t.weatherPersonalityTestResultPage.section
+                          title: t.weatherPersonalityDetailPage.section
                               .axisFeature.title,
                         ),
                         const SizedBox(height: 16),
@@ -314,8 +327,8 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
-                    child: GodsMessageCard(
-                      godsMessage: weatherPersonality.godsMessage,
+                    child: CompatibleTypeCard(
+                      compatibleTypes: weatherPersonality.compatibleTypes,
                     ),
                   ),
                 ),
@@ -323,43 +336,45 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
-                    child: ActionButton(
-                      icon: const Icon(Icons.share),
-                      label: Text(
-                        t.button.shareResults,
-                        style: theme.textTheme.labelLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      foregroundColor: Colors.white,
-                      backgroundColor: theme.colorScheme.primary,
-                      onPressed: () async {
-                        await onShareTestResult();
-                      },
+                    child: IncompatibleTypeCard(
+                      incompatibleTypes: weatherPersonality.incompatibleTypes,
                     ),
                   ),
                 ),
-                const Gap(height: 16),
+                const Gap(height: 32),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
-                    child: ActionButton(
-                      label: Text(
-                        t.button.returnToAccountPage,
-                        style: theme.textTheme.labelLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: theme.colorScheme.primary,
-                        ),
-                      ),
-                      foregroundColor: theme.colorScheme.primary,
-                      backgroundColor: Colors.white,
-                      onPressed: () {
-                        context.go(AccountPage.routeLocation);
-                      },
+                    child: GodsMessageCard(
+                      godsMessage: weatherPersonality.godsMessage,
                     ),
                   ),
                 ),
+                const Gap(height: 32),
+                isMyWeatherPersonality
+                    ? SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        sliver: SliverToBoxAdapter(
+                          child: ActionButton(
+                            icon: const Icon(Icons.share),
+                            label: Text(
+                              t.button.shareResults,
+                              style: theme.textTheme.labelLarge!.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            foregroundColor: Colors.white,
+                            backgroundColor: theme.colorScheme.primary,
+                            onPressed: () async {
+                              await onShareTestResult();
+                            },
+                          ),
+                        ),
+                      )
+                    : const SliverToBoxAdapter(
+                        child: SizedBox.shrink(),
+                      ),
                 const Gap(height: 40),
               ],
             ],
@@ -403,7 +418,7 @@ class _MainResultCard extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            t.weatherPersonalityTestResultPage.section.mainResult.typeCode,
+            t.weatherPersonalityDetailPage.section.mainResult.typeCode,
             style: theme.textTheme.titleSmall!.copyWith(
               color: Colors.black54,
               fontWeight: FontWeight.w600,
@@ -441,7 +456,7 @@ class _MainResultCard extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Text(
-            t.weatherPersonalityTestResultPage.section.mainResult.you,
+            t.weatherPersonalityDetailPage.section.mainResult.you,
             style: theme.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -502,7 +517,7 @@ class _GodsRulingCard extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              t.weatherPersonalityTestResultPage.section.godsRuling.title,
+              t.weatherPersonalityDetailPage.section.godsRuling.title,
               style: theme.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -537,7 +552,7 @@ class BehaviorTendencyCard extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              t.weatherPersonalityTestResultPage.section.behaviorTendency.title,
+              t.weatherPersonalityDetailPage.section.behaviorTendency.title,
               style: theme.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -591,6 +606,189 @@ class _BulletText extends StatelessWidget {
   }
 }
 
+class CompatibleTypeCard extends StatelessWidget {
+  const CompatibleTypeCard({
+    super.key,
+    required this.compatibleTypes,
+  });
+  final List<TypeCompatibilityReadModel> compatibleTypes;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final t = Translations.of(context);
+
+    return TextCard(
+      padding: const EdgeInsets.symmetric(
+        vertical: 24,
+        horizontal: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              t.weatherPersonalityDetailPage.section.compatibleType.title,
+              style: theme.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+                compatibleTypes.map((type) => TypeCard(type: type)).toList(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class IncompatibleTypeCard extends StatelessWidget {
+  const IncompatibleTypeCard({
+    super.key,
+    required this.incompatibleTypes,
+  });
+  final List<TypeCompatibilityReadModel> incompatibleTypes;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final t = Translations.of(context);
+
+    return TextCard(
+      padding: const EdgeInsets.symmetric(
+        vertical: 24,
+        horizontal: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              t.weatherPersonalityDetailPage.section.incompatibleType.title,
+              style: theme.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+                incompatibleTypes.map((type) => TypeCard(type: type)).toList(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class TypeCard extends StatelessWidget {
+  const TypeCard({
+    super.key,
+    required this.type,
+  });
+  final TypeCompatibilityReadModel type;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            theme.colorScheme.secondary.withValues(alpha: 0.1),
+            theme.colorScheme.tertiary.withValues(alpha: 0.1),
+            theme.colorScheme.primary.withValues(alpha: 0.1),
+          ],
+        ),
+      ),
+      width: 150,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 140,
+            height: 140,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  theme.colorScheme.secondary.withValues(alpha: 0.7),
+                  theme.colorScheme.tertiary.withValues(alpha: 0.7),
+                  theme.colorScheme.primary.withValues(alpha: 0.7),
+                ],
+              ),
+            ),
+            alignment: Alignment.center,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Image(
+                  image: type.typeCharacterImageUrl.toImageProvider(),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  type.typeCode,
+                  softWrap: true,
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                Text(
+                  '(${type.typeName})',
+                  softWrap: true,
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Point:',
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  type.compatibilityPoint,
+                  softWrap: true,
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class GodsMessageCard extends StatelessWidget {
   const GodsMessageCard({
     super.key,
@@ -622,7 +820,7 @@ class GodsMessageCard extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               Text(
-                t.weatherPersonalityTestResultPage.section.godsMessage.title,
+                t.weatherPersonalityDetailPage.section.godsMessage.title,
                 style: theme.textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

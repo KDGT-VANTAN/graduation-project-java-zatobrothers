@@ -6,15 +6,17 @@ class TextCard extends StatelessWidget {
     required this.child,
     this.color,
     this.colors,
+    this.padding,
   });
   final Widget? child;
   final Color? color;
   final List<Color>? colors;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: padding ?? const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: color ?? const Color(0xFFE9F7FB),
         borderRadius: BorderRadius.circular(24),

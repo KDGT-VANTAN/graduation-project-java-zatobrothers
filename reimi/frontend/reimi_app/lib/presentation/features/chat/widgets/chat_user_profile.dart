@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/extensions/value_objects/address_extension.dart';
@@ -21,6 +22,7 @@ import 'package:reimi_app/presentation/features/profile/widgets/glass_tile.dart'
 import 'package:reimi_app/presentation/features/profile/widgets/main_photo_card.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/rank_input_tile.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/sub_photo_card.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/custom_divider.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 
@@ -90,8 +92,7 @@ List<Widget> chatUserProfile({
       ),
     ),
     const Gap(height: 32),
-    if (userProfile.subPhotos == null ||
-        userProfile.subPhotos!.isEmpty) ...[
+    if (userProfile.subPhotos == null || userProfile.subPhotos!.isEmpty) ...[
       const SliverToBoxAdapter(
         child: SizedBox.shrink(),
       ),
@@ -137,18 +138,51 @@ List<Widget> chatUserProfile({
       padding: const EdgeInsets.symmetric(horizontal: 24),
       sliver: SliverToBoxAdapter(
         child: GlassTile(
-          onTap: () {},
+          onTap: () {
+            context.push(
+              WeatherPersonalityDetailPage.routeLocation,
+              extra: {'userId': userProfile.id},
+            );
+          },
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Icon(Icons.wb_sunny, color: Colors.orange),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  '晴れ男',
-                  style: theme.textTheme.bodyMedium,
-                ),
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: theme.colorScheme.primary,
+                      backgroundImage: Assets.images.weatherPersonality
+                          .spoeTraineeSeaOtterImage.path
+                          .toImageProvider(),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    'SPOE',
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    '(トレーニーラッコ)',
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-              const Icon(Icons.chevron_right),
+              Icon(
+                Icons.chevron_right,
+                size: 22,
+                color: Colors.black87.withValues(alpha: 0.4),
+              ),
             ],
           ),
         ),

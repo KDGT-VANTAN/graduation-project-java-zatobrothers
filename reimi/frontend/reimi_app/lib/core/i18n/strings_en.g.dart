@@ -65,6 +65,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
 	late final TranslationsWeatherPersonalityConceptPageEn weatherPersonalityConceptPage = TranslationsWeatherPersonalityConceptPageEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageEn weatherPersonalityDetailPage = TranslationsWeatherPersonalityDetailPageEn._(_root);
 	late final TranslationsWeatherPersonalityTestJudgingPageEn weatherPersonalityTestJudgingPage = TranslationsWeatherPersonalityTestJudgingPageEn._(_root);
 	late final TranslationsWeatherPersonalityTestPageEn weatherPersonalityTestPage = TranslationsWeatherPersonalityTestPageEn._(_root);
 	late final TranslationsWeatherPersonalityTestResultPageEn weatherPersonalityTestResultPage = TranslationsWeatherPersonalityTestResultPageEn._(_root);
@@ -376,6 +377,9 @@ class TranslationsProfilePageEn {
 	/// en: 'Edit Profile'
 	String get title => 'Edit Profile';
 
+	/// en: 'Profile information could not be retrieved.'
+	String get nullCase => 'Profile information could not be retrieved.';
+
 	late final TranslationsProfilePageSectionEn section = TranslationsProfilePageSectionEn._(_root);
 	late final TranslationsProfilePageEditEn edit = TranslationsProfilePageEditEn._(_root);
 	late final TranslationsProfilePagePlaceholderEn placeholder = TranslationsProfilePagePlaceholderEn._(_root);
@@ -408,6 +412,23 @@ class TranslationsWeatherPersonalityConceptPageEn {
 	String get title => 'Weather Personality Assessment';
 
 	late final TranslationsWeatherPersonalityConceptPageContentTextEn contentText = TranslationsWeatherPersonalityConceptPageContentTextEn._(_root);
+}
+
+// Path: weatherPersonalityDetailPage
+class TranslationsWeatherPersonalityDetailPageEn {
+	TranslationsWeatherPersonalityDetailPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Test Result'
+	String get title => 'Test Result';
+
+	/// en: 'Failed to get test results.'
+	String get nullCase => 'Failed to get test results.';
+
+	late final TranslationsWeatherPersonalityDetailPageSectionEn section = TranslationsWeatherPersonalityDetailPageSectionEn._(_root);
 }
 
 // Path: weatherPersonalityTestJudgingPage
@@ -511,6 +532,7 @@ class TranslationsDialogEn {
 	late final TranslationsDialogDestructionChangesEn destructionChanges = TranslationsDialogDestructionChangesEn._(_root);
 	late final TranslationsDialogInterruptTestEn interruptTest = TranslationsDialogInterruptTestEn._(_root);
 	late final TranslationsDialogCompleteTestEn completeTest = TranslationsDialogCompleteTestEn._(_root);
+	late final TranslationsDialogReTestEn reTest = TranslationsDialogReTestEn._(_root);
 }
 
 // Path: modalSheet
@@ -603,6 +625,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Rainbow Like!'
 	String get rainbowLike => 'Rainbow Like!';
+
+	/// en: 'Re-test'
+	String get retest => 'Re-test';
 }
 
 // Path: segmentedSwitch
@@ -1014,6 +1039,23 @@ class TranslationsWeatherPersonalityConceptPageContentTextEn {
 
 	/// en: 'Answer 16 questions to discover your Weather Personality type'
 	String get contentText6 => 'Answer 16 questions to discover\nyour Weather Personality type';
+}
+
+// Path: weatherPersonalityDetailPage.section
+class TranslationsWeatherPersonalityDetailPageSectionEn {
+	TranslationsWeatherPersonalityDetailPageSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsWeatherPersonalityDetailPageSectionMainResultEn mainResult = TranslationsWeatherPersonalityDetailPageSectionMainResultEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionGodsRulingEn godsRuling = TranslationsWeatherPersonalityDetailPageSectionGodsRulingEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyEn behaviorTendency = TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisFeatureEn axisFeature = TranslationsWeatherPersonalityDetailPageSectionAxisFeatureEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreEn axisScore = TranslationsWeatherPersonalityDetailPageSectionAxisScoreEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeEn compatibleType = TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeEn incompatibleType = TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionGodsMessageEn godsMessage = TranslationsWeatherPersonalityDetailPageSectionGodsMessageEn._(_root);
 }
 
 // Path: weatherPersonalityTestJudgingPage.contentText
@@ -1667,6 +1709,21 @@ class TranslationsDialogCompleteTestEn {
 
 	/// en: 'Would you like to submit your answers and complete the test?'
 	String get contentText => 'Would you like to submit your answers and complete the test?';
+}
+
+// Path: dialog.reTest
+class TranslationsDialogReTestEn {
+	TranslationsDialogReTestEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Confirmation of Re-Test'
+	String get title => 'Confirmation of Re-Test';
+
+	/// en: 'If you run the test again, the current test results will be deleted. Do you really want to run the test again?'
+	String get contentText => 'If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?';
 }
 
 // Path: modalSheet.sortUser
@@ -2745,6 +2802,107 @@ class TranslationsProfilePagePlaceholderBasicInformationEn {
 	String get toolTip => 'This field cannot be changed.';
 }
 
+// Path: weatherPersonalityDetailPage.section.mainResult
+class TranslationsWeatherPersonalityDetailPageSectionMainResultEn {
+	TranslationsWeatherPersonalityDetailPageSectionMainResultEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Assessment Type Code'
+	String get typeCode => 'Assessment Type Code';
+
+	/// en: 'You are'
+	String get you => 'You are';
+}
+
+// Path: weatherPersonalityDetailPage.section.godsRuling
+class TranslationsWeatherPersonalityDetailPageSectionGodsRulingEn {
+	TranslationsWeatherPersonalityDetailPageSectionGodsRulingEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'The Gods' Ruling Statement'
+	String get title => 'The Gods\' Ruling Statement';
+}
+
+// Path: weatherPersonalityDetailPage.section.behaviorTendency
+class TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyEn {
+	TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Behavioral Tendencies'
+	String get title => 'Behavioral Tendencies';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisFeature
+class TranslationsWeatherPersonalityDetailPageSectionAxisFeatureEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisFeatureEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '4-Axis Characteristics'
+	String get title => '4-Axis Characteristics';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '4-Axis Score'
+	String get title => '4-Axis Score';
+
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn axis = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn._(_root);
+}
+
+// Path: weatherPersonalityDetailPage.section.compatibleType
+class TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeEn {
+	TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Compatible Type'
+	String get title => 'Compatible Type';
+}
+
+// Path: weatherPersonalityDetailPage.section.incompatibleType
+class TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeEn {
+	TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Incompatible Type'
+	String get title => 'Incompatible Type';
+}
+
+// Path: weatherPersonalityDetailPage.section.godsMessage
+class TranslationsWeatherPersonalityDetailPageSectionGodsMessageEn {
+	TranslationsWeatherPersonalityDetailPageSectionGodsMessageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'A Word from the Gods'
+	String get title => 'A Word from the Gods';
+}
+
 // Path: weatherPersonalityTestResultPage.section.mainResult
 class TranslationsWeatherPersonalityTestResultPageSectionMainResultEn {
 	TranslationsWeatherPersonalityTestResultPageSectionMainResultEn._(this._root);
@@ -3221,6 +3379,19 @@ class TranslationsProfilePagePlaceholderSubPhotoLabelsEn {
 	String get holiday => 'Day Off';
 }
 
+// Path: weatherPersonalityDetailPage.section.axisScore.axis
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn sensitivity = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessEn preparedness = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn activity = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn._(_root);
+	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn motivation = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn._(_root);
+}
+
 // Path: weatherPersonalityTestResultPage.section.axisScore.axis
 class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
 	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn._(this._root);
@@ -3232,6 +3403,66 @@ class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
 	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn preparedness = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn._(_root);
 	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn activity = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn._(_root);
 	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn motivation = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn._(_root);
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.sensitivity
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'S (High Sensitivity)'
+	String get sensitive => 'S (High Sensitivity)';
+
+	/// en: 'N (Low Sensitivity)'
+	String get neutral => 'N (Low Sensitivity)';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.preparedness
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'P (Planned)'
+	String get planned => 'P (Planned)';
+
+	/// en: 'F (Flexible)'
+	String get flexible => 'F (Flexible)';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.activity
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'O (Outdoor)'
+	String get outdoor => 'O (Outdoor)';
+
+	/// en: 'I (Indoor)'
+	String get indoor => 'I (Indoor)';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.motivation
+class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn {
+	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'E (Emotional)'
+	String get emotional => 'E (Emotional)';
+
+	/// en: 'R (Rational)'
+	String get rational => 'R (Rational)';
 }
 
 // Path: weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity
@@ -3387,6 +3618,7 @@ extension on Translations {
 			'weatherReportDetailPage.label.forecast' => 'Sensory Forecast',
 			'accountPage.nullCase' => 'User information could not be obtained.',
 			'profilePage.title' => 'Edit Profile',
+			'profilePage.nullCase' => 'Profile information could not be retrieved.',
 			'profilePage.section.mainPhoto' => 'Main Photo',
 			'profilePage.section.subPhoto' => 'Sub Photos',
 			'profilePage.section.weatherPersonality' => 'Weather Personality',
@@ -3440,6 +3672,25 @@ extension on Translations {
 			'weatherPersonalityConceptPage.contentText.contentText4' => 'and classify you into one of 16 character types\n\n',
 			'weatherPersonalityConceptPage.contentText.contentText5' => '',
 			'weatherPersonalityConceptPage.contentText.contentText6' => 'Answer 16 questions to discover\nyour Weather Personality type',
+			'weatherPersonalityDetailPage.title' => 'Test Result',
+			'weatherPersonalityDetailPage.nullCase' => 'Failed to get test results.',
+			'weatherPersonalityDetailPage.section.mainResult.typeCode' => 'Assessment Type Code',
+			'weatherPersonalityDetailPage.section.mainResult.you' => 'You are',
+			'weatherPersonalityDetailPage.section.godsRuling.title' => 'The Gods\' Ruling Statement',
+			'weatherPersonalityDetailPage.section.behaviorTendency.title' => 'Behavioral Tendencies',
+			'weatherPersonalityDetailPage.section.axisFeature.title' => '4-Axis Characteristics',
+			'weatherPersonalityDetailPage.section.axisScore.title' => '4-Axis Score',
+			'weatherPersonalityDetailPage.section.axisScore.axis.sensitivity.sensitive' => 'S (High Sensitivity)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.sensitivity.neutral' => 'N (Low Sensitivity)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.preparedness.planned' => 'P (Planned)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.preparedness.flexible' => 'F (Flexible)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.activity.outdoor' => 'O (Outdoor)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.activity.indoor' => 'I (Indoor)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.motivation.emotional' => 'E (Emotional)',
+			'weatherPersonalityDetailPage.section.axisScore.axis.motivation.rational' => 'R (Rational)',
+			'weatherPersonalityDetailPage.section.compatibleType.title' => 'Compatible Type',
+			'weatherPersonalityDetailPage.section.incompatibleType.title' => 'Incompatible Type',
+			'weatherPersonalityDetailPage.section.godsMessage.title' => 'A Word from the Gods',
 			'weatherPersonalityTestJudgingPage.loading' => 'Assessing',
 			'weatherPersonalityTestJudgingPage.contentText.contentTitle' => 'Assessment Complete',
 			'weatherPersonalityTestJudgingPage.contentText.contentText1' => 'The gods have finished reviewing\nall records of your past life\'s actions.',
@@ -3577,6 +3828,8 @@ extension on Translations {
 			'dialog.interruptTest.contentText' => 'Your answers will not be saved.\nDo you really want to stop the test?',
 			'dialog.completeTest.title' => 'Confirmation of completion of Test',
 			'dialog.completeTest.contentText' => 'Would you like to submit your answers and complete the test?',
+			'dialog.reTest.title' => 'Confirmation of Re-Test',
+			'dialog.reTest.contentText' => 'If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?',
 			'modalSheet.sortUser.title' => 'Sort',
 			'modalSheet.refineSearchUser.title' => 'Filter',
 			'modalSheet.refineSearchUser.section.age' => 'Age',
@@ -3618,6 +3871,7 @@ extension on Translations {
 			'button.weatherPersonalityTest' => 'Weather Personality Test',
 			'button.goTochatPage' => 'Go To Chat Screen',
 			'button.rainbowLike' => 'Rainbow Like!',
+			'button.retest' => 'Re-test',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
@@ -3791,6 +4045,8 @@ extension on Translations {
 			'kEnum.holiday.irregular' => 'Irregular',
 			'kEnum.occupation.universityStudent' => 'University Student',
 			'kEnum.occupation.graduateStudent' => 'Graduate Student',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.vocationalStudent' => 'Vocational Student',
 			'kEnum.occupation.juniorCollegeStudent' => 'Junior College Student',
 			'kEnum.occupation.technicalCollegeStudent' => 'Technical College Student',
@@ -3814,8 +4070,6 @@ extension on Translations {
 			'kEnum.occupation.consulting' => 'Consulting',
 			'kEnum.occupation.massMedia' => 'Media',
 			'kEnum.occupation.advertising' => 'Advertising',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.publishing' => 'Publishing',
 			'kEnum.occupation.education' => 'Education',
 			'kEnum.occupation.retail' => 'Retail',

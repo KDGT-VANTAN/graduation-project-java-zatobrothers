@@ -62,6 +62,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
 	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityConceptPageJa weatherPersonalityConceptPage = _TranslationsWeatherPersonalityConceptPageJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageJa weatherPersonalityDetailPage = _TranslationsWeatherPersonalityDetailPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestJudgingPageJa weatherPersonalityTestJudgingPage = _TranslationsWeatherPersonalityTestJudgingPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestPageJa weatherPersonalityTestPage = _TranslationsWeatherPersonalityTestPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestResultPageJa weatherPersonalityTestResultPage = _TranslationsWeatherPersonalityTestResultPageJa._(_root);
@@ -296,6 +297,7 @@ class _TranslationsProfilePageJa implements TranslationsProfilePageEn {
 
 	// Translations
 	@override String get title => 'プロフィール編集';
+	@override String get nullCase => 'プロフィール情報が取得できませんでした。';
 	@override late final _TranslationsProfilePageSectionJa section = _TranslationsProfilePageSectionJa._(_root);
 	@override late final _TranslationsProfilePageEditJa edit = _TranslationsProfilePageEditJa._(_root);
 	@override late final _TranslationsProfilePagePlaceholderJa placeholder = _TranslationsProfilePagePlaceholderJa._(_root);
@@ -321,6 +323,18 @@ class _TranslationsWeatherPersonalityConceptPageJa implements TranslationsWeathe
 	// Translations
 	@override String get title => 'ウェザーパーソナリティ診断';
 	@override late final _TranslationsWeatherPersonalityConceptPageContentTextJa contentText = _TranslationsWeatherPersonalityConceptPageContentTextJa._(_root);
+}
+
+// Path: weatherPersonalityDetailPage
+class _TranslationsWeatherPersonalityDetailPageJa implements TranslationsWeatherPersonalityDetailPageEn {
+	_TranslationsWeatherPersonalityDetailPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '診断結果';
+	@override String get nullCase => '診断結果の取得に失敗しました。';
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionJa section = _TranslationsWeatherPersonalityDetailPageSectionJa._(_root);
 }
 
 // Path: weatherPersonalityTestJudgingPage
@@ -415,6 +429,7 @@ class _TranslationsDialogJa implements TranslationsDialogEn {
 	@override late final _TranslationsDialogDestructionChangesJa destructionChanges = _TranslationsDialogDestructionChangesJa._(_root);
 	@override late final _TranslationsDialogInterruptTestJa interruptTest = _TranslationsDialogInterruptTestJa._(_root);
 	@override late final _TranslationsDialogCompleteTestJa completeTest = _TranslationsDialogCompleteTestJa._(_root);
+	@override late final _TranslationsDialogReTestJa reTest = _TranslationsDialogReTestJa._(_root);
 }
 
 // Path: modalSheet
@@ -461,6 +476,7 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get weatherPersonalityTest => 'ウェザーパーソナリティ診断';
 	@override String get goTochatPage => 'チャット画面へ';
 	@override String get rainbowLike => 'レインボーいいね！';
+	@override String get retest => '再診断';
 }
 
 // Path: segmentedSwitch
@@ -761,6 +777,23 @@ class _TranslationsWeatherPersonalityConceptPageContentTextJa implements Transla
 	@override String get contentText4 => '16タイプのキャラ';
 	@override String get contentText5 => 'に分類されます\n\n';
 	@override String get contentText6 => '16の質問に答えて、\nあなたのウェザーパーソナルタイプを\n診断しましょう';
+}
+
+// Path: weatherPersonalityDetailPage.section
+class _TranslationsWeatherPersonalityDetailPageSectionJa implements TranslationsWeatherPersonalityDetailPageSectionEn {
+	_TranslationsWeatherPersonalityDetailPageSectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionMainResultJa mainResult = _TranslationsWeatherPersonalityDetailPageSectionMainResultJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionGodsRulingJa godsRuling = _TranslationsWeatherPersonalityDetailPageSectionGodsRulingJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyJa behaviorTendency = _TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisFeatureJa axisFeature = _TranslationsWeatherPersonalityDetailPageSectionAxisFeatureJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreJa axisScore = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeJa compatibleType = _TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeJa incompatibleType = _TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionGodsMessageJa godsMessage = _TranslationsWeatherPersonalityDetailPageSectionGodsMessageJa._(_root);
 }
 
 // Path: weatherPersonalityTestJudgingPage.contentText
@@ -1207,6 +1240,17 @@ class _TranslationsDialogCompleteTestJa implements TranslationsDialogCompleteTes
 	// Translations
 	@override String get title => '診断完了の確認';
 	@override String get contentText => '回答した内容を送信し、診断を完了しますか？';
+}
+
+// Path: dialog.reTest
+class _TranslationsDialogReTestJa implements TranslationsDialogReTestEn {
+	_TranslationsDialogReTestJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '再診断の確認';
+	@override String get contentText => '診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？';
 }
 
 // Path: modalSheet.sortUser
@@ -1794,6 +1838,88 @@ class _TranslationsProfilePagePlaceholderBasicInformationJa implements Translati
 	@override String get toolTip => 'この項目は変更できません。';
 }
 
+// Path: weatherPersonalityDetailPage.section.mainResult
+class _TranslationsWeatherPersonalityDetailPageSectionMainResultJa implements TranslationsWeatherPersonalityDetailPageSectionMainResultEn {
+	_TranslationsWeatherPersonalityDetailPageSectionMainResultJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get typeCode => ' 診断タイプコード';
+	@override String get you => 'あなたは';
+}
+
+// Path: weatherPersonalityDetailPage.section.godsRuling
+class _TranslationsWeatherPersonalityDetailPageSectionGodsRulingJa implements TranslationsWeatherPersonalityDetailPageSectionGodsRulingEn {
+	_TranslationsWeatherPersonalityDetailPageSectionGodsRulingJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '神様の裁定文';
+}
+
+// Path: weatherPersonalityDetailPage.section.behaviorTendency
+class _TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyJa implements TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyEn {
+	_TranslationsWeatherPersonalityDetailPageSectionBehaviorTendencyJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '行動傾向';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisFeature
+class _TranslationsWeatherPersonalityDetailPageSectionAxisFeatureJa implements TranslationsWeatherPersonalityDetailPageSectionAxisFeatureEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisFeatureJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '4軸の特徴';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '4軸スコア';
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisJa axis = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisJa._(_root);
+}
+
+// Path: weatherPersonalityDetailPage.section.compatibleType
+class _TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeJa implements TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeEn {
+	_TranslationsWeatherPersonalityDetailPageSectionCompatibleTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'あなたと相性の良いタイプ';
+}
+
+// Path: weatherPersonalityDetailPage.section.incompatibleType
+class _TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeJa implements TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeEn {
+	_TranslationsWeatherPersonalityDetailPageSectionIncompatibleTypeJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '注意が必要なタイプ';
+}
+
+// Path: weatherPersonalityDetailPage.section.godsMessage
+class _TranslationsWeatherPersonalityDetailPageSectionGodsMessageJa implements TranslationsWeatherPersonalityDetailPageSectionGodsMessageEn {
+	_TranslationsWeatherPersonalityDetailPageSectionGodsMessageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '神様からの一言';
+}
+
 // Path: weatherPersonalityTestResultPage.section.mainResult
 class _TranslationsWeatherPersonalityTestResultPageSectionMainResultJa implements TranslationsWeatherPersonalityTestResultPageSectionMainResultEn {
 	_TranslationsWeatherPersonalityTestResultPageSectionMainResultJa._(this._root);
@@ -2061,6 +2187,19 @@ class _TranslationsProfilePagePlaceholderSubPhotoLabelsJa implements Translation
 	@override String get holiday => '休日';
 }
 
+// Path: weatherPersonalityDetailPage.section.axisScore.axis
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa sensitivity = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessJa preparedness = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityJa activity = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityJa._(_root);
+	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa motivation = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa._(_root);
+}
+
 // Path: weatherPersonalityTestResultPage.section.axisScore.axis
 class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
 	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa._(this._root);
@@ -2072,6 +2211,50 @@ class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa implem
 	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa preparedness = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa activity = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa motivation = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa._(_root);
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.sensitivity
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get sensitive => 'S（高感受）';
+	@override String get neutral => 'N（低感受）';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.preparedness
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisPreparednessJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get planned => 'P（計画）';
+	@override String get flexible => 'F（柔軟）';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.activity
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get outdoor => 'O（外向）';
+	@override String get indoor => 'I（内向）';
+}
+
+// Path: weatherPersonalityDetailPage.section.axisScore.axis.motivation
+class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn {
+	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get emotional => 'E（情緒）';
+	@override String get rational => 'R（実用）';
 }
 
 // Path: weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity
@@ -2211,6 +2394,7 @@ extension on TranslationsJa {
 			'weatherReportDetailPage.label.forecast' => '五感予想',
 			'accountPage.nullCase' => 'ユーザー情報が取得できませんでした。',
 			'profilePage.title' => 'プロフィール編集',
+			'profilePage.nullCase' => 'プロフィール情報が取得できませんでした。',
 			'profilePage.section.mainPhoto' => 'メイン写真',
 			'profilePage.section.subPhoto' => 'サブ写真',
 			'profilePage.section.weatherPersonality' => 'ウェザーパーソナリティ',
@@ -2264,6 +2448,25 @@ extension on TranslationsJa {
 			'weatherPersonalityConceptPage.contentText.contentText4' => '16タイプのキャラ',
 			'weatherPersonalityConceptPage.contentText.contentText5' => 'に分類されます\n\n',
 			'weatherPersonalityConceptPage.contentText.contentText6' => '16の質問に答えて、\nあなたのウェザーパーソナルタイプを\n診断しましょう',
+			'weatherPersonalityDetailPage.title' => '診断結果',
+			'weatherPersonalityDetailPage.nullCase' => '診断結果の取得に失敗しました。',
+			'weatherPersonalityDetailPage.section.mainResult.typeCode' => ' 診断タイプコード',
+			'weatherPersonalityDetailPage.section.mainResult.you' => 'あなたは',
+			'weatherPersonalityDetailPage.section.godsRuling.title' => '神様の裁定文',
+			'weatherPersonalityDetailPage.section.behaviorTendency.title' => '行動傾向',
+			'weatherPersonalityDetailPage.section.axisFeature.title' => '4軸の特徴',
+			'weatherPersonalityDetailPage.section.axisScore.title' => '4軸スコア',
+			'weatherPersonalityDetailPage.section.axisScore.axis.sensitivity.sensitive' => 'S（高感受）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.sensitivity.neutral' => 'N（低感受）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.preparedness.planned' => 'P（計画）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.preparedness.flexible' => 'F（柔軟）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.activity.outdoor' => 'O（外向）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.activity.indoor' => 'I（内向）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.motivation.emotional' => 'E（情緒）',
+			'weatherPersonalityDetailPage.section.axisScore.axis.motivation.rational' => 'R（実用）',
+			'weatherPersonalityDetailPage.section.compatibleType.title' => 'あなたと相性の良いタイプ',
+			'weatherPersonalityDetailPage.section.incompatibleType.title' => '注意が必要なタイプ',
+			'weatherPersonalityDetailPage.section.godsMessage.title' => '神様からの一言',
 			'weatherPersonalityTestJudgingPage.loading' => '診断中',
 			'weatherPersonalityTestJudgingPage.contentText.contentTitle' => '診断完了',
 			'weatherPersonalityTestJudgingPage.contentText.contentText1' => '神様は、前世の行動記録を\nすべて見終えました。',
@@ -2401,6 +2604,8 @@ extension on TranslationsJa {
 			'dialog.interruptTest.contentText' => '回答内容は保存されません。\n本当に診断を中断しますか？',
 			'dialog.completeTest.title' => '診断完了の確認',
 			'dialog.completeTest.contentText' => '回答した内容を送信し、診断を完了しますか？',
+			'dialog.reTest.title' => '再診断の確認',
+			'dialog.reTest.contentText' => '診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？',
 			'modalSheet.sortUser.title' => '並び替え',
 			'modalSheet.refineSearchUser.title' => '絞り込み条件',
 			'modalSheet.refineSearchUser.section.age' => '年齢',
@@ -2442,6 +2647,7 @@ extension on TranslationsJa {
 			'button.weatherPersonalityTest' => 'ウェザーパーソナリティ診断',
 			'button.goTochatPage' => 'チャット画面へ',
 			'button.rainbowLike' => 'レインボーいいね！',
+			'button.retest' => '再診断',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
@@ -2615,6 +2821,8 @@ extension on TranslationsJa {
 			'kEnum.holiday.irregular' => '不定休',
 			'kEnum.occupation.universityStudent' => '大学生',
 			'kEnum.occupation.graduateStudent' => '大学院生',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.vocationalStudent' => '専門学生',
 			'kEnum.occupation.juniorCollegeStudent' => '短大生',
 			'kEnum.occupation.technicalCollegeStudent' => '高専生',
@@ -2638,8 +2846,6 @@ extension on TranslationsJa {
 			'kEnum.occupation.consulting' => 'コンサル',
 			'kEnum.occupation.massMedia' => 'マスコミ',
 			'kEnum.occupation.advertising' => '広告',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.publishing' => '出版',
 			'kEnum.occupation.education' => '教育関係',
 			'kEnum.occupation.retail' => '小売',

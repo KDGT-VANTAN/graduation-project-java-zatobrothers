@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AxisScoreBar extends StatelessWidget {
   final String leftLabel;
   final String rightLabel;
-  final int score; // -8 ~ +8 想定
+  final int score; // -8 ~ +8
 
   const AxisScoreBar({
     super.key,
@@ -15,30 +15,23 @@ class AxisScoreBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final double normalized = score / 16;
+
+    // 0.0 ~ 1.0（左右それぞれの最大幅に対する割合）
+    final double ratio = (score.abs() / 8).clamp(0, 1);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Text(
-              leftLabel,
-              style: theme.textTheme.titleSmall!.copyWith(
-                fontSize: 12,
-              ),
-            ),
+            Text(leftLabel, style: theme.textTheme.titleSmall),
             const Spacer(),
-            Text(
-              rightLabel,
-              style: theme.textTheme.titleSmall!.copyWith(
-                fontSize: 12,
-              ),
-            ),
+            Text(rightLabel, style: theme.textTheme.titleSmall),
           ],
         ),
         const SizedBox(height: 8),
         Stack(
+          alignment: Alignment.center,
           children: [
             Container(
               height: 22,
@@ -47,34 +40,53 @@ class AxisScoreBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(32),
               ),
             ),
-            FractionallySizedBox(
-              widthFactor: normalized,
-              child: Container(
-                height: 22,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  gradient: LinearGradient(
-                    colors: [
-                      theme.colorScheme.secondary,
-                      theme.colorScheme.primary,
-                    ],
+            Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: score < 0
+                        ? FractionallySizedBox(
+                            widthFactor: ratio,
+                            alignment: Alignment.centerRight,
+                            child: _bar(theme.colorScheme.primary),
+                          )
+                        : const SizedBox.shrink(),
                   ),
                 ),
-              ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: score > 0
+                        ? FractionallySizedBox(
+                            widthFactor: ratio,
+                            alignment: Alignment.centerLeft,
+                            child: _bar(theme.colorScheme.secondary),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                ),
+              ],
             ),
-            Positioned.fill(
-              child: Center(
-                child: Text(
-                  displayScore(score),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            Text(
+              displayScore(score),
+              style: theme.textTheme.labelLarge!.copyWith(
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
       ],
+    );
+  }
+
+  Widget _bar(Color color) {
+    return Container(
+      height: 22,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
+        color: color,
+      ),
     );
   }
 }

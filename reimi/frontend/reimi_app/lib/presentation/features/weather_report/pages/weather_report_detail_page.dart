@@ -33,6 +33,9 @@ class WeatherReportDetailPage extends HookConsumerWidget {
         .select((state) => state.weatherReport));
     final isLoading = ref.watch(
         weatherReportDetailNotifierProvider.select((state) => state.isLoading));
+    // コメントアウトしているReportBodyあたりを参照 ↓↓
+    // final isMyReport = ref.watch(weatherReportDetailNotifierProvider
+    //     .select((state) => state.isMyReport));
 
     useEffect(() {
       Future.microtask(() {
@@ -261,6 +264,29 @@ class WeatherReportDetailPage extends HookConsumerWidget {
     );
   }
 }
+
+// TODO: 
+// 自分の投稿の時だけ背景デザインを夜パターンに変更すると、
+// マイウェザーリポート画面から遷移する時の違和感がなくなりそう
+// class ReportBody extends StatelessWidget {
+//   const ReportBody({
+//     super.key,
+//     required this.isMyReport,
+//     required this.child,
+//   });
+
+//   final bool isMyReport;
+//   final Widget? child;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     if (isMyReport) {
+//       return BackgroundContainerNight(child: child);
+//     } else {
+//       return BackgroundContainerNoon(child: child);
+//     }
+//   }
+// }
 
 class _InfoRow extends StatelessWidget {
   const _InfoRow({

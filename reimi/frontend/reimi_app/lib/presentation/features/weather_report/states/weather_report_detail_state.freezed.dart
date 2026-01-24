@@ -17,6 +17,7 @@ mixin _$WeatherReportDetailState {
   WeatherReportReadModel? get weatherReport;
   bool get isLoading;
   String? get errorMessage;
+  bool get isMyReport;
 
   /// Create a copy of WeatherReportDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,16 +37,18 @@ mixin _$WeatherReportDetailState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isMyReport, isMyReport) ||
+                other.isMyReport == isMyReport));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, weatherReport, isLoading, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, weatherReport, isLoading, errorMessage, isMyReport);
 
   @override
   String toString() {
-    return 'WeatherReportDetailState(weatherReport: $weatherReport, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'WeatherReportDetailState(weatherReport: $weatherReport, isLoading: $isLoading, errorMessage: $errorMessage, isMyReport: $isMyReport)';
   }
 }
 
@@ -58,7 +61,8 @@ abstract mixin class $WeatherReportDetailStateCopyWith<$Res> {
   $Res call(
       {WeatherReportReadModel? weatherReport,
       bool isLoading,
-      String? errorMessage});
+      String? errorMessage,
+      bool isMyReport});
 
   $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
 }
@@ -79,6 +83,7 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
     Object? weatherReport = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? isMyReport = null,
   }) {
     return _then(_self.copyWith(
       weatherReport: freezed == weatherReport
@@ -93,6 +98,10 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
           ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isMyReport: null == isMyReport
+          ? _self.isMyReport
+          : isMyReport // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -205,15 +214,15 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage)?
+            String? errorMessage, bool isMyReport)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _WeatherReportDetailState() when $default != null:
-        return $default(
-            _that.weatherReport, _that.isLoading, _that.errorMessage);
+        return $default(_that.weatherReport, _that.isLoading,
+            _that.errorMessage, _that.isMyReport);
       case _:
         return orElse();
     }
@@ -235,14 +244,14 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage)
+            String? errorMessage, bool isMyReport)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportDetailState():
-        return $default(
-            _that.weatherReport, _that.isLoading, _that.errorMessage);
+        return $default(_that.weatherReport, _that.isLoading,
+            _that.errorMessage, _that.isMyReport);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -263,14 +272,14 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage)?
+            String? errorMessage, bool isMyReport)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportDetailState() when $default != null:
-        return $default(
-            _that.weatherReport, _that.isLoading, _that.errorMessage);
+        return $default(_that.weatherReport, _that.isLoading,
+            _that.errorMessage, _that.isMyReport);
       case _:
         return null;
     }
@@ -281,7 +290,10 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
 class _WeatherReportDetailState implements WeatherReportDetailState {
   const _WeatherReportDetailState(
-      {this.weatherReport, this.isLoading = false, this.errorMessage});
+      {this.weatherReport,
+      this.isLoading = false,
+      this.errorMessage,
+      this.isMyReport = false});
 
   @override
   final WeatherReportReadModel? weatherReport;
@@ -290,6 +302,9 @@ class _WeatherReportDetailState implements WeatherReportDetailState {
   final bool isLoading;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool isMyReport;
 
   /// Create a copy of WeatherReportDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -310,16 +325,18 @@ class _WeatherReportDetailState implements WeatherReportDetailState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isMyReport, isMyReport) ||
+                other.isMyReport == isMyReport));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, weatherReport, isLoading, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, weatherReport, isLoading, errorMessage, isMyReport);
 
   @override
   String toString() {
-    return 'WeatherReportDetailState(weatherReport: $weatherReport, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'WeatherReportDetailState(weatherReport: $weatherReport, isLoading: $isLoading, errorMessage: $errorMessage, isMyReport: $isMyReport)';
   }
 }
 
@@ -334,7 +351,8 @@ abstract mixin class _$WeatherReportDetailStateCopyWith<$Res>
   $Res call(
       {WeatherReportReadModel? weatherReport,
       bool isLoading,
-      String? errorMessage});
+      String? errorMessage,
+      bool isMyReport});
 
   @override
   $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
@@ -356,6 +374,7 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
     Object? weatherReport = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? isMyReport = null,
   }) {
     return _then(_WeatherReportDetailState(
       weatherReport: freezed == weatherReport
@@ -370,6 +389,10 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
           ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isMyReport: null == isMyReport
+          ? _self.isMyReport
+          : isMyReport // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 

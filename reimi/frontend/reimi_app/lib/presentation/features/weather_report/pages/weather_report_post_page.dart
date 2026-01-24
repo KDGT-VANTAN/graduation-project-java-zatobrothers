@@ -109,11 +109,11 @@ class WeatherReportPostPage extends HookConsumerWidget {
         ),
         title: Text(
           t.weatherReportPostPage.title,
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
+          style: theme.textTheme.titleMedium!.copyWith(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

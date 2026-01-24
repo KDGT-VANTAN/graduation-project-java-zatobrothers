@@ -167,6 +167,7 @@
   },
   "profilePage": {
     "title": "プロフィール編集",
+    "nullCase": "プロフィール情報が取得できませんでした。",
     "section": {
       "mainPhoto": "メイン写真",
       "subPhoto": "サブ写真",
@@ -249,6 +250,55 @@
       "contentText4": "16タイプのキャラ",
       "contentText5": "に分類されます\n\n",
       "contentText6": "16の質問に答えて、\nあなたのウェザーパーソナルタイプを\n診断しましょう"
+    }
+  },
+  "weatherPersonalityDetailPage": {
+    "title": "診断結果",
+    "nullCase": "診断結果の取得に失敗しました。",
+    "section": {
+      "mainResult": {
+        "typeCode": " 診断タイプコード",
+        "you": "あなたは"
+      },
+      "godsRuling": {
+        "title": "神様の裁定文"
+      },
+      "behaviorTendency": {
+        "title": "行動傾向"
+      },
+      "axisFeature":{
+        "title": "4軸の特徴"
+      },
+      "axisScore":{
+        "title": "4軸スコア",
+        "axis": {
+          "sensitivity": {
+            "sensitive": "S（高感受）",
+            "neutral": "N（低感受）"
+          },
+          "preparedness": {
+            "planned": "P（計画）",
+            "flexible": "F（柔軟）"
+          },
+          "activity": {
+            "outdoor": "O（外向）",
+            "indoor": "I（内向）"
+          },
+          "motivation": {
+            "emotional": "E（情緒）",
+            "rational": "R（実用）"
+          }
+        }
+      },
+      "compatibleType": {
+        "title": "あなたと相性の良いタイプ"
+      },
+      "incompatibleType": {
+        "title": "注意が必要なタイプ"
+      },
+      "godsMessage": {
+        "title": "神様からの一言"
+      }
     }
   },
   "weatherPersonalityTestJudgingPage": {
@@ -502,6 +552,10 @@
     "completeTest":{
       "title": "診断完了の確認",
       "contentText": "回答した内容を送信し、診断を完了しますか？"
+    },
+    "reTest":{
+      "title": "再診断の確認",
+      "contentText": "診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？"
     }
   },
   "modalSheet": {
@@ -567,7 +621,8 @@
     "completion": "完了",
     "weatherPersonalityTest": "ウェザーパーソナリティ診断",
     "goTochatPage": "チャット画面へ",
-    "rainbowLike": "レインボーいいね！"
+    "rainbowLike": "レインボーいいね！",
+    "retest": "再診断"
   },
   "segmentedSwitch": {
     "like": {
