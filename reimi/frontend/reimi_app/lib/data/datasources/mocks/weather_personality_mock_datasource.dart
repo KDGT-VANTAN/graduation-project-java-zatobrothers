@@ -19,8 +19,8 @@ class WeatherPersonalityMockDataSource
   }
 
   @override
-  Future<WeatherPersonalityDetailReadModel>
-      fetchWeatherPersonalityDetail() async {
+  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(
+      String userId) async {
     return mockWeatherPersonalityDetail;
   }
 }

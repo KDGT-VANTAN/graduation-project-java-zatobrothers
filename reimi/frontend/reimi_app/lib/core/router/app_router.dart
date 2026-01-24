@@ -291,7 +291,9 @@ GoRouter goRouter(Ref ref) {
         path: WeatherPersonalityDetailPage.routeLocation,
         name: WeatherPersonalityDetailPage.routeName,
         builder: (context, state) {
-          return const WeatherPersonalityDetailPage();
+          final extra = state.extra! as Map<String, Object?>;
+          final userId = extra['userId'] as String?;
+          return WeatherPersonalityDetailPage(userId: userId);
         },
       ),
       GoRoute(

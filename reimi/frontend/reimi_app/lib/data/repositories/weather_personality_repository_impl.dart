@@ -21,7 +21,7 @@ class WeatherPersonalityRepositoryImpl implements WeatherPersonalityRepository {
   }
 
   @override
-  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail() {
-    return _remote.fetchWeatherPersonalityDetail();
+  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(String userId) {
+    return _remote.fetchWeatherPersonalityDetail(userId);
   }
 }

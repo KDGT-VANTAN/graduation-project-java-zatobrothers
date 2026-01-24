@@ -5,7 +5,7 @@ import 'package:reimi_app/domain/read_models/weather_personality_result_read_mod
 abstract class WeatherPersonalityRemoteDataSource {
   Future<void> testWeatherPersonality(TestWeatherPersonalityDto dto);
   Future<WeatherPersonalityResultReadModel> fetchWeatherPersonalityResult();
-  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail();
+  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(String userId);
 }
 
 class WeatherPersonalityRemoteDataSourceImpl
@@ -25,7 +25,7 @@ class WeatherPersonalityRemoteDataSourceImpl
   }
   
   @override
-  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail() {
+  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(String userId) {
     // TODO: implement fetchWeatherPersonalityDetail
     throw UnimplementedError();
   }

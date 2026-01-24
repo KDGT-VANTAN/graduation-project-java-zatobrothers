@@ -5,5 +5,5 @@ import 'package:reimi_app/domain/read_models/weather_personality_result_read_mod
 abstract class WeatherPersonalityRepository {
   Future<void> testWeatherPersonality(TestWeatherPersonalityParams params);
   Future<WeatherPersonalityResultReadModel> fetchWeatherPersonalityResult();
-  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail();
+  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(String userId);
 }
