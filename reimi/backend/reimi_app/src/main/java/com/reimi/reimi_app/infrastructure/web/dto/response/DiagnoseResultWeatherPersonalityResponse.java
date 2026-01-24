@@ -16,6 +16,6 @@ public record DiagnoseResultWeatherPersonalityResponse(
     @Schema(description = "タイプ説明", example = "「共感的ムードメーカー」そのもの")
     String typeDescription,
 
-    @Schema(description = "タイプイメージ画像URL", example = "")
+    @Schema(description = "タイプイメージ画像URL", example = "http://localhost:8080/images/weather-personalities/トレーニーラッコ_イメージ画像.png")
     String typeImageUrl
 ) {}
