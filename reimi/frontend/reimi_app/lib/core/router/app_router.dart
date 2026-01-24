@@ -22,6 +22,7 @@ import 'package:reimi_app/presentation/features/user_registration/pages/user_int
 import 'package:reimi_app/presentation/features/user_registration/pages/user_main_photo_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_name_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_judging_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q10_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_q11_page.dart';
@@ -284,6 +285,13 @@ GoRouter goRouter(Ref ref) {
         name: WeatherPersonalityConceptPage.routeName,
         builder: (context, state) {
           return const WeatherPersonalityConceptPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityDetailPage.routeLocation,
+        name: WeatherPersonalityDetailPage.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityDetailPage();
         },
       ),
       GoRoute(
