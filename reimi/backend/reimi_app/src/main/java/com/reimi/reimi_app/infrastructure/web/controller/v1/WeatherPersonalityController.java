@@ -16,10 +16,14 @@ import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.weatherpersonality.AnswerChoice;
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityType;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
+@Tag(name = "WeatherPersonality", description = "ウェザーパーソナリティ診断関連のAPI")
 public class WeatherPersonalityController extends ApiV1Controller {
 
     private final WeatherPersonalityUseCase weatherPersonalityUseCase;
@@ -38,6 +42,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
     }
 
     @PostMapping("/diagnoses/score/user-weather-personality-type")
+    @DiagnoseWeatherPersonalityType
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> diagnose(
         @RequestBody DiagnoseWeatherPersonalityRequest request
     ) {
