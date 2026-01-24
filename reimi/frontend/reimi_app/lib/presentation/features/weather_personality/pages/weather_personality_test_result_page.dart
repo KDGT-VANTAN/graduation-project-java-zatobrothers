@@ -214,48 +214,6 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        SectionTitle(
-                          title: t.weatherPersonalityTestResultPage.section
-                              .axisFeature.title,
-                        ),
-                        const SizedBox(height: 16),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '感受性',
-                          code: 'S（高）',
-                          description: weatherPersonality.axisFeatures[0],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '準備性',
-                          code: 'P（計画型）',
-                          description: weatherPersonality.axisFeatures[1],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '外行動性',
-                          code: 'O（Outdoor）',
-                          description: weatherPersonality.axisFeatures[2],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '動機特性',
-                          code: 'E（情緒）',
-                          description: weatherPersonality.axisFeatures[3],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const Gap(height: 32),
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  sliver: SliverToBoxAdapter(
                     child: TextCard(
                       child: Column(
                         children: [
@@ -297,6 +255,48 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ),
+                const Gap(height: 32),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  sliver: SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        SectionTitle(
+                          title: t.weatherPersonalityTestResultPage.section
+                              .axisFeature.title,
+                        ),
+                        const SizedBox(height: 16),
+                        AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
+                          title: '感受性',
+                          code: 'S（高）',
+                          description: weatherPersonality.axisFeatures[0],
+                        ),
+                        const SizedBox(height: 12),
+                        AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
+                          title: '準備性',
+                          code: 'P（計画型）',
+                          description: weatherPersonality.axisFeatures[1],
+                        ),
+                        const SizedBox(height: 12),
+                        AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
+                          title: '外行動性',
+                          code: 'O（Outdoor）',
+                          description: weatherPersonality.axisFeatures[2],
+                        ),
+                        const SizedBox(height: 12),
+                        AxisFeatureCard(
+                          //TODO: スコアによって title、code が変わる
+                          title: '動機特性',
+                          code: 'E（情緒）',
+                          description: weatherPersonality.axisFeatures[3],
+                        ),
+                      ],
                     ),
                   ),
                 ),
