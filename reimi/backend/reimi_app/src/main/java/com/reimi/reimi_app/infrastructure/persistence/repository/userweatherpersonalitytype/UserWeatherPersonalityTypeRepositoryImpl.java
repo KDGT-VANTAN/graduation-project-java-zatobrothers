@@ -3,6 +3,7 @@ package com.reimi.reimi_app.infrastructure.persistence.repository.userweatherper
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
+import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
 import com.reimi.reimi_app.infrastructure.persistence.entity.UserEntity;
@@ -28,6 +29,11 @@ public class UserWeatherPersonalityTypeRepositoryImpl implements UserWeatherPers
         this.jpaUserRepository = jpaUserRepository;
         this.jpaWeatherPersonalityTypeRepository = jpaWeatherPersonalityTypeRepository;
     }
+
+    @Override
+    public boolean exists(UserId UserId) {
+        return jpaUserWeatherPersonalityTypeRepository.existsByUserId(UserId.value());
+    };
 
     @Override
     public void save(UserWeatherPersonalityType userWeatherPersonalityType) {
