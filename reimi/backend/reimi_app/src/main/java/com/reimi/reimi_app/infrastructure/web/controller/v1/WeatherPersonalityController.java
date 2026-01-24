@@ -82,7 +82,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
                 result.getWeatherPersonalityType().getCode(),
                 result.getWeatherPersonalityType().getName(),
                 result.getWeatherPersonalityType().getDescription(),
-                result.getWeatherPersonalityType().getImagePath()
+                result.getWeatherPersonalityType().getTypeImageUrl()
             );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.reimi.reimi_app.application.command.DiagnoseWeatherPersonalityCommand;
 import com.reimi.reimi_app.application.exception.client.DiagnoseResultAlreadyExistsException;
+import com.reimi.reimi_app.application.service.ImageUrlResolver;
 import com.reimi.reimi_app.application.usecase.WeatherPersonalityUseCase;
 import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
@@ -16,11 +17,14 @@ import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepositor
 public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase {
 
     private final UserWeatherPersonalityTypeRepository userWeatherPersonalityTypeRepository;
+    private final ImageUrlResolver imageUrlResolver;
 
     public WeatherPersonalityUseCaseImpl(
-        UserWeatherPersonalityTypeRepository userWeatherPersonalityTypeRepository
+        UserWeatherPersonalityTypeRepository userWeatherPersonalityTypeRepository,
+        ImageUrlResolver imageUrlResolver
     ) {
         this.userWeatherPersonalityTypeRepository = userWeatherPersonalityTypeRepository;
+        this.imageUrlResolver = imageUrlResolver;
     }
 
     @Override
@@ -49,6 +53,12 @@ public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase 
         );
 
         userWeatherPersonalityTypeRepository.save(result);
+
+        String typeImageUrl = imageUrlResolver.resolve(
+            result.getWeatherPersonalityType().getImagePath()
+        );
+
+        result.getWeatherPersonalityType().setTypeImageUrl(typeImageUrl);
 
         return result;
     }

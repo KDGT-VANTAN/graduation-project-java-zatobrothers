@@ -198,4 +198,10 @@ public class WeatherPersonalityType {
     public String getName() { return name; }
     public String getDescription() { return description; }
     public String getImagePath() { return imagePath; }
+
+    //タイプのイメージ画像をURLとして管理したいためシリアライズ対象外とする
+    private transient String typeImageUrl;
+
+    public String getTypeImageUrl() { return typeImageUrl; }
+    public void setTypeImageUrl(String typeImageUrl) { this.typeImageUrl = typeImageUrl; }
 }
