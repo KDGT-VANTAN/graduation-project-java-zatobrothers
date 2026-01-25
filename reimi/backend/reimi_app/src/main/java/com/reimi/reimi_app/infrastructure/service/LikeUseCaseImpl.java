@@ -10,6 +10,7 @@ import com.reimi.reimi_app.application.exception.client.LikeAlreadyExistsExcepti
 import com.reimi.reimi_app.application.exception.client.MatchAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.RainbowLikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
+import com.reimi.reimi_app.application.service.NotificationService;
 import com.reimi.reimi_app.application.usecase.LikeUseCase;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoom;
 import com.reimi.reimi_app.domain.model.like.Like;
@@ -35,6 +36,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
     private final ChatRoomRepository chatRoomRepository;
     private final ImageStorageComponent imageStorage;
     private final AuthenticatedUserProvider authenticatedUserProvider;
+    private final NotificationService notificationService;
 
     public LikeUseCaseImpl(
         UserRepository userRepository,
@@ -43,7 +45,8 @@ public class LikeUseCaseImpl implements LikeUseCase {
         MatchRepository matchRepository,
         ChatRoomRepository chatRoomRepository,
         ImageStorageComponent imageStorage,
-        AuthenticatedUserProvider authenticatedUserProvider
+        AuthenticatedUserProvider authenticatedUserProvider,
+        NotificationService notificationService
     ) {
         this.userRepository = userRepository;
         this.likeRepository = likeRepository;
@@ -52,6 +55,7 @@ public class LikeUseCaseImpl implements LikeUseCase {
         this.chatRoomRepository = chatRoomRepository;
         this.imageStorage = imageStorage;
         this.authenticatedUserProvider = authenticatedUserProvider;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -112,6 +116,9 @@ public class LikeUseCaseImpl implements LikeUseCase {
 
         ChatRoom chatRoom = ChatRoom.create(match.getId());
         chatRoomRepository.save(chatRoom);
+
+        // マッチングが成立したことを、先にいいねしていたユーザーに通知する
+        notificationService.notifyMatchCreated(fromUserId, toUserId);
     }
 
     @Override
