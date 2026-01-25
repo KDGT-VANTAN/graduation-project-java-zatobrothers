@@ -34,7 +34,7 @@ public class DeviceTokenController extends ApiV1Controller {
         this.authenticatedUserProvider = authenticatedUserProvider;
     }
 
-    @PostMapping(path = "/device-tokens")
+    @PostMapping(path = "/users/device-tokens")
     @RegisterDeviceTokenApi
     public ResponseEntity<Void> registerDeviceToken(@Valid @RequestBody RegisterDeviceTokenRequest request) {
 
