@@ -23,7 +23,7 @@ public class DeviceTokenRepository {
         return jpaDeviceTokenRepository.findByToken(token);
     }
 
-    public List<DeviceTokenEntity> findByUserId(UUID userId) {
+    public List<DeviceTokenEntity> findAllByUserId(UUID userId) {
         return jpaDeviceTokenRepository.findByUserId(userId);
     }
 
