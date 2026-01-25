@@ -9,11 +9,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public class DeviceTokenRepositoryImpl {
+public class DeviceTokenRepository {
 
     private final JpaDeviceTokenRepository jpaDeviceTokenRepository;
 
-    public DeviceTokenRepositoryImpl(
+    public DeviceTokenRepository(
         JpaDeviceTokenRepository jpaDeviceTokenRepository
     ) {
         this.jpaDeviceTokenRepository = jpaDeviceTokenRepository;
