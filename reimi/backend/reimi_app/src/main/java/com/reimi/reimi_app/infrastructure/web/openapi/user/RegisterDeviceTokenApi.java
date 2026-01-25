@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 )
 @ApiResponses({
     @ApiResponse(
-        responseCode = "201",
+        responseCode = "200",
         description = "ユーザーのデバイストークン登録が完了しました",
         content = @Content(
             mediaType = "application/json"
