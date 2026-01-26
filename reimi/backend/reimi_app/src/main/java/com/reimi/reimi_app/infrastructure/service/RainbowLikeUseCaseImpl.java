@@ -9,6 +9,7 @@ import com.reimi.reimi_app.application.exception.client.LikeAlreadyExistsExcepti
 import com.reimi.reimi_app.application.exception.client.MatchAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.RainbowLikeAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
+import com.reimi.reimi_app.application.service.NotificationService;
 import com.reimi.reimi_app.application.usecase.RainbowLikeUseCase;
 import com.reimi.reimi_app.domain.model.chatroom.ChatRoom;
 import com.reimi.reimi_app.domain.model.match.Match;
@@ -36,6 +37,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     private final ChatRoomRepository chatRoomRepository;
     private final MessageRepository messageRepository;
     private final AuthenticatedUserProvider authenticatedUserProvider;
+    private final NotificationService notificationService;
 
     public RainbowLikeUseCaseImpl(
         UserRepository userRepository,
@@ -45,7 +47,8 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         ChatRoomRepository chatRoomRepository,
         MessageRepository messageRepository,
         ImageStorageComponent imageStorage,
-        AuthenticatedUserProvider authenticatedUserProvider
+        AuthenticatedUserProvider authenticatedUserProvider,
+        NotificationService notificationService
     ) {
         this.userRepository = userRepository;
         this.rainbowLikeRepository = rainbowLikeRepository;
@@ -54,6 +57,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         this.chatRoomRepository = chatRoomRepository;
         this.messageRepository = messageRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -130,5 +134,11 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         );
 
         messageRepository.save(message);
+
+        User fromUser = userRepository.findUserByUserId(fromUserId)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        // マッチングが成立したことを、先にレインボーいいねしていたユーザーに通知する
+        notificationService.notifyMatchCreated(fromUser, toUserId);
     }
 }
