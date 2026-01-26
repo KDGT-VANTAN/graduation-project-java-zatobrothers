@@ -1,10 +1,7 @@
 package com.reimi.reimi_app.infrastructure.notification;
 
-import java.util.concurrent.Executors;
-
 import org.springframework.stereotype.Component;
 
-import com.google.api.core.ApiFuture;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
@@ -29,15 +26,11 @@ public class FcmPushNotificationSender implements PushNotificationSender {
             .putData("type", "MATCH")
             .build();
 
-        ApiFuture<String> future = FirebaseMessaging.getInstance().sendAsync(message);
-
-        future.addListener(() -> {
-            try {
-                String response = future.get();
-                System.out.println("マッチング通知成功: " + response);
-            } catch (Exception e) {
-                System.err.println("マッチング通知失敗: " + e.getMessage());
-            }
-        }, Executors.newSingleThreadExecutor());
+        try {
+            String response = FirebaseMessaging.getInstance().sendAsync(message).get();
+            System.out.println("マッチング通知成功: " + response);
+        } catch (Exception e) {
+            System.err.println("マッチング通知失敗: " + e.getMessage());
+        }
     }
 }
