@@ -81,8 +81,12 @@ public class WeatherPersonalityController extends ApiV1Controller {
             new DiagnoseResultWeatherPersonalityResponse(
                 result.getWeatherPersonalityType().getCode(),
                 result.getWeatherPersonalityType().getName(),
-                result.getWeatherPersonalityType().getDescription(),
-                result.getWeatherPersonalityType().getTypeImageUrl()
+                result.getWeatherPersonalityType().getCatchphrase(),
+                result.getWeatherPersonalityType().getTypeImageUrl(),
+                result.getWeatherPersonalityType().getRulingStatement(),
+                result.getWeatherPersonalityType().getAxisFeatures(),
+                result.getWeatherPersonalityType().getBehaviorTendencies(),
+                result.getWeatherPersonalityType().getGodsMessage()
             );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
