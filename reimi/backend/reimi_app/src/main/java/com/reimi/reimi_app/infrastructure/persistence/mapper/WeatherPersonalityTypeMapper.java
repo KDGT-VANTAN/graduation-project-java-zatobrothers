@@ -15,8 +15,12 @@ public class WeatherPersonalityTypeMapper {
         return new WeatherPersonalityTypeEntity(
             type.getCode().name(),
             type.getName(),
-            type.getDescription(),
-            type.getImagePath()
+            type.getCatchphrase(),
+            type.getImagePath(),
+            type.getRulingStatement(),
+            type.getAxisFeatures(),
+            type.getBehaviorTendencies(),
+            type.getGodsMessage()
         );
     }
 
