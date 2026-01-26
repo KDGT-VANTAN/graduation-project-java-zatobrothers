@@ -135,7 +135,10 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
         messageRepository.save(message);
 
+        User fromUser = userRepository.findUserByUserId(fromUserId)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
         // マッチングが成立したことを、先にレインボーいいねしていたユーザーに通知する
-        notificationService.notifyMatchCreated(fromUserId, toUserId);
+        notificationService.notifyMatchCreated(fromUser, toUserId);
     }
 }
