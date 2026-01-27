@@ -39,6 +39,20 @@ public class RainbowLike {
         );
     }
 
+    public static RainbowLike reconstruct(
+        RainbowLikeId id,
+        UserId fromUserId,
+        UserId toUserId,
+        String message
+    ) {
+        return new RainbowLike(
+            id,
+            fromUserId,
+            toUserId,
+            message
+        );
+    }
+
     public RainbowLikeId getId() { return id; }
     public UserId getFromUserId() { return fromUserId; }
     public UserId getToUserId() { return toUserId; }
