@@ -1,5 +1,11 @@
 package com.reimi.reimi_app.infrastructure.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +42,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     private final MatchRepository matchRepository;
     private final ChatRoomRepository chatRoomRepository;
     private final MessageRepository messageRepository;
+    private final ImageStorageComponent imageStorage;
     private final AuthenticatedUserProvider authenticatedUserProvider;
     private final NotificationService notificationService;
 
@@ -56,6 +63,7 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
         this.matchRepository = matchRepository;
         this.chatRoomRepository = chatRoomRepository;
         this.messageRepository = messageRepository;
+        this.imageStorage = imageStorage;
         this.authenticatedUserProvider = authenticatedUserProvider;
         this.notificationService = notificationService;
     }
@@ -140,5 +148,39 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
 
         // マッチングが成立したことを、先にレインボーいいねしていたユーザーに通知する
         notificationService.notifyMatchCreated(fromUser, toUserId);
+    }
+
+    @Override
+    public List<User> getRainbowLikeReceivedUserList() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        User toUser = userRepository.findMeByFirebaseUid(myFirebaseUid)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        UserId toUserId = toUser.getId();
+
+        List<RainbowLike> rainbowLikes = rainbowLikeRepository.findRainbowLikesReceivedByToUserId(toUserId);
+
+        Map<UserId, RainbowLike> rainbowLikeMap = rainbowLikes.stream()
+            .collect(Collectors.toMap(RainbowLike::getFromUserId, Function.identity()));
+
+        List<UserId> rainbowLikedUserIds = new ArrayList<>(rainbowLikeMap.keySet());
+
+        if (rainbowLikedUserIds.isEmpty()) {
+            return List.of();
+        }
+
+        List<User> users = userRepository.findByIds(rainbowLikedUserIds);
+
+        for (User user : users) {
+            RainbowLike rainbowLike = rainbowLikeMap.get(user.getId());
+            if (rainbowLike != null) {
+                user.setRainbowLikeMessage(rainbowLike.getMessage());
+            }
+            user.setSignedMainPhotoUrl(imageStorage.getSignedUrl(user.getMainPhotoUrl()));
+        }
+
+        return users;
     }
 }
