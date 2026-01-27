@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
-import com.reimi.reimi_app.infrastructure.web.dto.response.GetUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetLikedUserListResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         content = @Content(
             mediaType = "application/json",
             array = @ArraySchema(
-                schema = @Schema(implementation = GetUserListResponse.class)
+                schema = @Schema(implementation = GetLikedUserListResponse.class)
             )
         )
     ),
