@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.rainbowlike;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.domain.model.rainbowlike.RainbowLike;
@@ -30,4 +32,14 @@ public class RainbowLikeRepositoryImpl implements RainbowLikeRepository {
     public void save(RainbowLike rainbowLike) {
         jpaRainbowLikeRepository.save(RainbowLikeMapper.toEntity(rainbowLike));
     }
+
+    @Override
+    public List<RainbowLike> findRainbowLikesReceivedByToUserId(UserId toUserId) {
+        return jpaRainbowLikeRepository
+            .findRainbowLikesReceivedByToUserId(toUserId.value())
+            .stream()
+            .map(RainbowLikeMapper::toDomain)
+            .toList();
+    }
+
 }
