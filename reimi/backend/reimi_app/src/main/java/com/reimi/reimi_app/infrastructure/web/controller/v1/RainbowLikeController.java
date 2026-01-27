@@ -14,6 +14,7 @@ import com.reimi.reimi_app.application.usecase.RainbowLikeUseCase;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.request.SendRainbowLikeRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetRainbowLikedUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.GetRainbowLikeReceivedUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.RainbowLikeUserApi;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -51,6 +52,7 @@ public class RainbowLikeController extends ApiV1Controller {
     }
 
     @GetMapping(path = "/rainbow-likes/users/received")
+    @GetRainbowLikeReceivedUsersApi
     public ResponseEntity<List<GetRainbowLikedUserListResponse>> getRainbowLikeReceivedUsers() {
 
         List<GetRainbowLikedUserListResponse> response = rainbowLikeUseCase.getRainbowLikeReceivedUserList()
