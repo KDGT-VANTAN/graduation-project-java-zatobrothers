@@ -14,3 +14,9 @@ extension HomeUserDtoMapper on HomeUserDto {
     );
   }
 }
+
+extension HomeUserDtoListMapper on List<HomeUserDto> {
+  List<HomeUserReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

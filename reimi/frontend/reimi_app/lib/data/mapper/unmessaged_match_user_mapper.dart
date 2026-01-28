@@ -9,3 +9,9 @@ extension UnmessagedMatchUserDtoMapper on UnmessagedMatchUserDto {
     );
   }
 }
+
+extension UnmessagedMatchUserDtoListMapper on List<UnmessagedMatchUserDto> {
+  List<UnmessagedMatchUserReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

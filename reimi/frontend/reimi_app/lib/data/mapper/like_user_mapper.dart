@@ -14,3 +14,9 @@ extension LikeUserDtoMapper on LikeUserDto {
     );
   }
 }
+
+extension LikeUserDtoListMapper on List<LikeUserDto> {
+  List<LikeUserReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

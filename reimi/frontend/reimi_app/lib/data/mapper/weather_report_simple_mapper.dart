@@ -13,3 +13,9 @@ extension WeatherReportSimpleDtoMapper on WeatherReportSimpleDto {
     );
   }
 }
+
+extension WeatherReportSimpleDtoListMapper on List<WeatherReportSimpleDto> {
+  List<WeatherReportSimpleReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

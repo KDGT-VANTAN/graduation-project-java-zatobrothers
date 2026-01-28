@@ -1,6 +1,6 @@
 import 'package:reimi_app/data/datasources/remote/chat_room_remote_datasource.dart';
-import 'package:reimi_app/domain/read_models/chat_room_summary_read_model.dart';
-import 'package:reimi_app/domain/read_models/unmessaged_match_user_read_model.dart';
+import 'package:reimi_app/data/dtos/chat_room_summary_dto.dart';
+import 'package:reimi_app/data/dtos/unmessaged_match_user_dto.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
@@ -8,38 +8,38 @@ class ChatRoomMockDataSource implements ChatRoomRemoteDataSource {
   const ChatRoomMockDataSource();
 
   @override
-  Future<List<UnmessagedMatchUserReadModel>> fetchUnmessagedMatchUsers() async {
+  Future<List<UnmessagedMatchUserDto>> fetchUnmessagedMatchUsers() async {
     return mockUnmessagedMatchUsers;
   }
 
   @override
-  Future<List<ChatRoomSummaryReadModel>> fetchChatRoomSummaries() async {
+  Future<List<ChatRoomSummaryDto>> fetchChatRoomSummaries() async {
     return mockChatRoomSummaries;
   }
 }
 
 final mockUnmessagedMatchUsers = [
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_001',
     mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
   ),
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_002',
     mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
   ),
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_003',
     mainPhotoUrl: Assets.images.sample.user003SampleImage.path,
   ),
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_004',
     mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
   ),
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_005',
     mainPhotoUrl: Assets.images.sample.user005SampleImage.path,
   ),
-  UnmessagedMatchUserReadModel(
+  UnmessagedMatchUserDto(
     id: 'user_006',
     mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
   ),
@@ -47,7 +47,7 @@ final mockUnmessagedMatchUsers = [
 
 final mockChatRoomSummaries = [
   // ユーザー1
-  ChatRoomSummaryReadModel(
+  ChatRoomSummaryDto(
     chatRoomId: 'room_001',
     userId: 'chat_user_001',
     name: 'さくら',
@@ -59,7 +59,7 @@ final mockChatRoomSummaries = [
     unreadCount: 2,
   ),
   // ユーザー2
-  ChatRoomSummaryReadModel(
+  ChatRoomSummaryDto(
     chatRoomId: 'room_002',
     userId: 'chat_user_002',
     name: 'ゆうき',
@@ -71,7 +71,7 @@ final mockChatRoomSummaries = [
     unreadCount: 0,
   ),
   // ユーザー3
-  ChatRoomSummaryReadModel(
+  ChatRoomSummaryDto(
     chatRoomId: 'room_003',
     userId: 'chat_user_003',
     name: 'あおい',
@@ -83,7 +83,7 @@ final mockChatRoomSummaries = [
     unreadCount: 1,
   ),
   // ユーザー4
-  ChatRoomSummaryReadModel(
+  ChatRoomSummaryDto(
     chatRoomId: 'room_004',
     userId: 'chat_user_004',
     name: 'りく',
@@ -95,7 +95,7 @@ final mockChatRoomSummaries = [
     unreadCount: 0,
   ),
   // ユーザー5
-  ChatRoomSummaryReadModel(
+  ChatRoomSummaryDto(
     chatRoomId: 'room_005',
     userId: 'chat_user_005',
     name: 'みお',

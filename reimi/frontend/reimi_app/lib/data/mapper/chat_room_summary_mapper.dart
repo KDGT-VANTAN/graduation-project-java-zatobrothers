@@ -16,3 +16,9 @@ extension ChatRoomSummaryDtoMapper on ChatRoomSummaryDto {
     );
   }
 }
+
+extension ChatRoomSummaryDtoListMapper on List<ChatRoomSummaryDto> {
+  List<ChatRoomSummaryReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

@@ -11,3 +11,9 @@ extension TypeCompatibilityDtoMapper on TypeCompatibilityDto {
     );
   }
 }
+
+extension TypeCompatibilityDtoListMapper on List<TypeCompatibilityDto> {
+  List<TypeCompatibilityReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}

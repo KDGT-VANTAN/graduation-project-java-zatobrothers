@@ -13,3 +13,9 @@ extension ChatMessageDtoMapper on ChatMessageDto {
     );
   }
 }
+
+extension ChatMessageDtoListMapper on List<ChatMessageDto> {
+  List<ChatMessageReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
+  }
+}
