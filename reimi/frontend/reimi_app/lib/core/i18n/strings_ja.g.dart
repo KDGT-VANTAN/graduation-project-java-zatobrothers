@@ -921,7 +921,7 @@ class _TranslationsWeatherPersonalityTestPageQ9Ja implements TranslationsWeather
 	@override String get title => 'Q9';
 	@override String get question => '神様は、前世のあなたが朝起きて空模様を見た瞬間の様子を見ていました。';
 	@override String get answerA => '天気によって、その日の気分ややる気がはっきり変わっていた';
-	@override String get answerB => '天気は天気として受け止め、気分はあまり左右されなかった\'';
+	@override String get answerB => '天気は天気として受け止め、気分はあまり左右されなかった';
 }
 
 // Path: weatherPersonalityTestPage.q10
@@ -2505,7 +2505,7 @@ extension on TranslationsJa {
 			'weatherPersonalityTestPage.q9.title' => 'Q9',
 			'weatherPersonalityTestPage.q9.question' => '神様は、前世のあなたが朝起きて空模様を見た瞬間の様子を見ていました。',
 			'weatherPersonalityTestPage.q9.answerA' => '天気によって、その日の気分ややる気がはっきり変わっていた',
-			'weatherPersonalityTestPage.q9.answerB' => '天気は天気として受け止め、気分はあまり左右されなかった\'',
+			'weatherPersonalityTestPage.q9.answerB' => '天気は天気として受け止め、気分はあまり左右されなかった',
 			'weatherPersonalityTestPage.q10.title' => 'Q10',
 			'weatherPersonalityTestPage.q10.question' => '神様は、低気圧や雨の日のあなたの様子を覚えています。',
 			'weatherPersonalityTestPage.q10.answerA' => 'なんとなく気分が沈んだり、身体が重く感じることが多かった',
