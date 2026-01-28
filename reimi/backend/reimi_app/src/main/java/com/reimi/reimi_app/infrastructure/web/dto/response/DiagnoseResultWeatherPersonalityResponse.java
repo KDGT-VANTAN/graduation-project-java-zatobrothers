@@ -1,9 +1,11 @@
 package com.reimi.reimi_app.infrastructure.web.dto.response;
 
 import java.util.List;
+import java.util.Map;
 
 import com.reimi.reimi_app.domain.model.weatherpersonality.AxisFeature;
 import com.reimi.reimi_app.domain.model.weatherpersonality.BehaviorTendency;
+import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxis;
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -34,6 +36,19 @@ public record DiagnoseResultWeatherPersonalityResponse(
         "  }\n" +
         "]")
     List<AxisFeature> axisFeatures,
+
+    @Schema(
+        description = "ユーザーの軸ごとのスコア",
+        example = """
+        {
+            "SENSITIVITY": 8,
+            "PREPAREDNESS": 8,
+            "ACTIVITY": 8,
+            "MOTIVATION": 8
+        }
+        """
+    )
+    Map<WeatherPersonalityAxis, Integer> userAxisScore,
 
     @Schema(description = "あなたの行動傾向（具体例つき）", example = "[\n" +
         "  {\n" +
