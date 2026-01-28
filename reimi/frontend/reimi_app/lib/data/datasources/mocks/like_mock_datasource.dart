@@ -1,5 +1,5 @@
 import 'package:reimi_app/data/datasources/remote/like_remote_datasource.dart';
-import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
+import 'package:reimi_app/data/dtos/like_user_dto.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
@@ -7,12 +7,12 @@ class LikeMockDataSource implements LikeRemoteDataSource {
   const LikeMockDataSource();
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
+  Future<List<LikeUserDto>> fetchLikeUsersFromUser() async {
     return mockLikeUsersFromUser;
   }
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
+  Future<List<LikeUserDto>> fetchLikeUsersToUser() async {
     return mockLikeUsersToUser;
   }
 
@@ -22,9 +22,9 @@ class LikeMockDataSource implements LikeRemoteDataSource {
   }
 }
 
-final List<LikeUserReadModel> mockLikeUsersFromUser = [
+final List<LikeUserDto> mockLikeUsersFromUser = [
   // 佐藤 葵 (001) - あなたに「いいね」してくれたユーザー
-  LikeUserReadModel(
+  LikeUserDto(
     id: 'user_001',
     name: '佐藤 葵',
     birthDate: DateTime(1995, 5, 15),
@@ -33,7 +33,7 @@ final List<LikeUserReadModel> mockLikeUsersFromUser = [
     introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
   ),
   // 高橋 美咲 (004) - あなたに「いいね」してくれたユーザー
-  LikeUserReadModel(
+  LikeUserDto(
     id: 'user_004',
     name: '高橋 美咲',
     birthDate: DateTime(1988, 7, 12),
@@ -43,9 +43,9 @@ final List<LikeUserReadModel> mockLikeUsersFromUser = [
   ),
 ];
 
-final List<LikeUserReadModel> mockLikeUsersToUser = [
+final List<LikeUserDto> mockLikeUsersToUser = [
   // 田中 健 (002) - あなたが「いいね」を送ったユーザー
-  LikeUserReadModel(
+  LikeUserDto(
     id: 'user_002',
     name: '田中 健',
     birthDate: DateTime(1978, 11, 3),
@@ -54,7 +54,7 @@ final List<LikeUserReadModel> mockLikeUsersToUser = [
     introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
   ),
   // 渡辺 由美子 (006) - ログインが少し前のユーザー
-  LikeUserReadModel(
+  LikeUserDto(
     id: 'user_006',
     name: '渡辺 由美子',
     birthDate: DateTime(1965, 2, 28),

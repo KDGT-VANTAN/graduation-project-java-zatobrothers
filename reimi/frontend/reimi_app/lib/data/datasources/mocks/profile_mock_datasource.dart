@@ -1,6 +1,6 @@
 import 'package:reimi_app/data/datasources/remote/profile_remote_datasource.dart';
 import 'package:reimi_app/data/dtos/update_profile_dto.dart';
-import 'package:reimi_app/domain/read_models/user_with_profile_read_model.dart';
+import 'package:reimi_app/data/dtos/user_with_profile_dto.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/alcohol.dart';
 import 'package:reimi_app/domain/value_objects/annual_income.dart';
@@ -19,7 +19,7 @@ class ProfileMockDataSource implements ProfileRemoteDataSource {
   const ProfileMockDataSource();
 
   @override
-  Future<UserWithProfileReadModel> fetchUserProfile(String userId) async {
+  Future<UserWithProfileDto> fetchUserProfile(String userId) async {
     // 仮実装
     for (var userProfile in mockUserProfiles) {
       if (userProfile.id == userId) {
@@ -36,9 +36,9 @@ class ProfileMockDataSource implements ProfileRemoteDataSource {
   }) async {}
 }
 
-final List<UserWithProfileReadModel> mockUserProfiles = [
+final List<UserWithProfileDto> mockUserProfiles = [
   // user_001: 佐藤 葵
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_001',
     name: '佐藤 葵',
     gender: Gender.woman,
@@ -64,7 +64,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_002: 田中 健
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_002',
     name: '田中 健',
     gender: Gender.man,
@@ -90,7 +90,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_003: 鈴木 翔太
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_003',
     name: '鈴木 翔太',
     gender: Gender.man,
@@ -120,7 +120,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_004: 高橋 美咲
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_004',
     name: '高橋 美咲',
     gender: Gender.woman,
@@ -146,7 +146,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_005: 伊藤 健太
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_005',
     name: '伊藤 健太',
     gender: Gender.man,
@@ -172,7 +172,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_006: 渡辺 由美子
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_006',
     name: '渡辺 由美子',
     gender: Gender.woman,
@@ -198,7 +198,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // user_000: 山田 涼介
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'user_000',
     name: '山田 涼介',
     gender: Gender.man,
@@ -225,7 +225,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // chat_user_001: さくら
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'chat_user_001',
     name: 'さくら',
     gender: Gender.woman,
@@ -251,7 +251,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // chat_user_002: ゆうき
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'chat_user_002',
     name: 'ゆうき',
     gender: Gender.man,
@@ -277,7 +277,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // chat_user_003: あおい
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'chat_user_003',
     name: 'あおい',
     gender: Gender.woman,
@@ -303,7 +303,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // chat_user_004: りく
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'chat_user_004',
     name: 'りく',
     gender: Gender.man,
@@ -329,7 +329,7 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
   ),
 
   // chat_user_005: みお
-  UserWithProfileReadModel(
+  UserWithProfileDto(
     id: 'chat_user_005',
     name: 'みお',
     gender: Gender.woman,

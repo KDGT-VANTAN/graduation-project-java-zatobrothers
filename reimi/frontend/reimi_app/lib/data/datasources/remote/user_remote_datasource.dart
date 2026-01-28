@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
+import 'package:reimi_app/data/dtos/app_user_dto.dart';
 import 'package:reimi_app/data/dtos/create_user_dto.dart';
+import 'package:reimi_app/data/dtos/home_user_dto.dart';
 import 'package:reimi_app/data/mapper/create_user_mapper.dart';
-import 'package:reimi_app/domain/read_models/app_user_read_model.dart';
-import 'package:reimi_app/domain/read_models/home_user_read_model.dart';
 
 abstract class UserRemoteDataSource {
-  Future<List<HomeUserReadModel>> fetchHomeUsers();
-  Future<AppUserReadModel> fetchCurrentUser();
+  Future<List<HomeUserDto>> fetchHomeUsers();
+  Future<AppUserDto> fetchCurrentUser();
   Future<void> createUser(CreateUserDto dto);
 }
 
@@ -16,12 +16,12 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final Dio _dio;
 
   @override
-  Future<List<HomeUserReadModel>> fetchHomeUsers() async {
+  Future<List<HomeUserDto>> fetchHomeUsers() async {
     try {
       final response = await _dio.get('/api/v1/users');
       final List data = response.data as List;
       return data
-          .map((e) => HomeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => HomeUserDto.fromJson(e as Map<String, dynamic>))
           .toList();
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
@@ -29,10 +29,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<AppUserReadModel> fetchCurrentUser() async {
+  Future<AppUserDto> fetchCurrentUser() async {
     try {
       final response = await _dio.get('/api/v1/users/me');
-      return AppUserReadModel.fromJson(response.data);
+      return AppUserDto.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
     }

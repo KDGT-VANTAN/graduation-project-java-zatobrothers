@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/data/dtos/update_profile_dto.dart';
+import 'package:reimi_app/data/dtos/user_with_profile_dto.dart';
 import 'package:reimi_app/data/mapper/update_profile_mapper.dart';
-import 'package:reimi_app/domain/read_models/user_with_profile_read_model.dart';
 
 abstract class ProfileRemoteDataSource {
-  Future<UserWithProfileReadModel> fetchUserProfile(String userId);
+  Future<UserWithProfileDto> fetchUserProfile(String userId);
   Future<void> updateUserProfile({
     required UpdateProfileDto dto,
     required String userId,
@@ -17,10 +17,10 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   final Dio _dio;
 
   @override
-  Future<UserWithProfileReadModel> fetchUserProfile(String userId) async {
+  Future<UserWithProfileDto> fetchUserProfile(String userId) async {
     try {
       final response = await _dio.get('/api/v1/users/$userId/profile');
-      return UserWithProfileReadModel.fromJson(response.data);
+      return UserWithProfileDto.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
     }

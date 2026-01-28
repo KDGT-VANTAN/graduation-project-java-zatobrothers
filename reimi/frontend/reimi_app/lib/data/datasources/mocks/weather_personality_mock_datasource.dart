@@ -1,8 +1,8 @@
 import 'package:reimi_app/data/datasources/remote/weather_personality_remote_datasource.dart';
 import 'package:reimi_app/data/dtos/test_weather_personality_dto.dart';
-import 'package:reimi_app/domain/read_models/type_compatibility_read_model.dart';
-import 'package:reimi_app/domain/read_models/weather_personality_detail_read_model.dart';
-import 'package:reimi_app/domain/read_models/weather_personality_result_read_model.dart';
+import 'package:reimi_app/data/dtos/type_compatibility_dto.dart';
+import 'package:reimi_app/data/dtos/weather_personality_detail_dto.dart';
+import 'package:reimi_app/data/dtos/weather_personality_result_dto.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
 class WeatherPersonalityMockDataSource
@@ -13,19 +13,18 @@ class WeatherPersonalityMockDataSource
   Future<void> testWeatherPersonality(TestWeatherPersonalityDto dto) async {}
 
   @override
-  Future<WeatherPersonalityResultReadModel>
-      fetchWeatherPersonalityResult() async {
+  Future<WeatherPersonalityResultDto> fetchWeatherPersonalityResult() async {
     return mockWeatherPersonalityResult;
   }
 
   @override
-  Future<WeatherPersonalityDetailReadModel> fetchWeatherPersonalityDetail(
+  Future<WeatherPersonalityDetailDto> fetchWeatherPersonalityDetail(
       String userId) async {
     return mockWeatherPersonalityDetail;
   }
 }
 
-final mockWeatherPersonalityResult = WeatherPersonalityResultReadModel(
+final mockWeatherPersonalityResult = WeatherPersonalityResultDto(
   typeCode: 'SP0E',
   typeName: 'トレーニーラッコ',
   typeCatchphrase: '感情で揺れ、計画で浮かぶ。日々バランス感覚を鍛えている存在。',
@@ -52,7 +51,7 @@ final mockWeatherPersonalityResult = WeatherPersonalityResultReadModel(
       '揺れながらも浮いていられるなら、それは才能です。',
 );
 
-final mockWeatherPersonalityDetail = WeatherPersonalityDetailReadModel(
+final mockWeatherPersonalityDetail = WeatherPersonalityDetailDto(
   typeCode: 'SP0E',
   typeName: 'トレーニーラッコ',
   typeCatchphrase: '感情で揺れ、計画で浮かぶ。天気予報を信じすぎるラッコ。',
@@ -81,14 +80,14 @@ final mockWeatherPersonalityDetail = WeatherPersonalityDetailReadModel(
       '揺れるのは悪いことではありません。\n'
       '揺れながらも浮いていられるなら、それは才能です。',
   compatibleTypes: [
-    TypeCompatibilityReadModel(
+    TypeCompatibilityDto(
       typeCode: 'SPOE',
       typeName: 'トレーニーラッコ',
       typeCharacterImageUrl:
           Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
       compatibilityPoint: '感受性と外向性が近く、計画と即応が自然に役割分担できる。',
     ),
-    TypeCompatibilityReadModel(
+    TypeCompatibilityDto(
       typeCode: 'NFIE',
       typeName: 'やわらかタコ',
       typeCharacterImageUrl:
@@ -97,14 +96,14 @@ final mockWeatherPersonalityDetail = WeatherPersonalityDetailReadModel(
     ),
   ],
   incompatibleTypes: [
-    TypeCompatibilityReadModel(
+    TypeCompatibilityDto(
       typeCode: 'SPOE',
       typeName: 'トレーニーラッコ',
       typeCharacterImageUrl:
           Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
       compatibilityPoint: '判断が合理と内向に寄りがちで、感情ベースの動きが伝わりにくい。',
     ),
-    TypeCompatibilityReadModel(
+    TypeCompatibilityDto(
       typeCode: 'NFIE',
       typeName: 'やわらかタコ',
       typeCharacterImageUrl:

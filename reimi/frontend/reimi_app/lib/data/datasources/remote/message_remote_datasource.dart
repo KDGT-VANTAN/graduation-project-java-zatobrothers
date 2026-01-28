@@ -1,9 +1,9 @@
+import 'package:reimi_app/data/dtos/chat_message_dto.dart';
 import 'package:reimi_app/data/dtos/send_message_dto.dart';
-import 'package:reimi_app/domain/read_models/chat_message_read_model.dart';
 
 abstract class MessageRemoteDataSource {
   Future<void> sendMessage(SendMessageDto dto);
-  Stream<List<ChatMessageReadModel>> watchMessages(String chatRoomId);
+  Stream<List<ChatMessageDto>> watchMessages(String chatRoomId);
 }
 
 class MessageRemoteDataSourceImpl implements MessageRemoteDataSource {
@@ -16,7 +16,7 @@ class MessageRemoteDataSourceImpl implements MessageRemoteDataSource {
   }
 
   @override
-  Stream<List<ChatMessageReadModel>> watchMessages(String chatRoomId) {
+  Stream<List<ChatMessageDto>> watchMessages(String chatRoomId) {
     // TODO: implement watchMessages
     throw UnimplementedError();
   }

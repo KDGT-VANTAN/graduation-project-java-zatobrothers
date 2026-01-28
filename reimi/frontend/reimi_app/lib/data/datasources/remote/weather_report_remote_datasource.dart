@@ -1,11 +1,11 @@
 import 'package:reimi_app/data/dtos/post_weather_report_dto.dart';
-import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
-import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
+import 'package:reimi_app/data/dtos/weather_report_dto.dart';
+import 'package:reimi_app/data/dtos/weather_report_simple_dto.dart';
 
 abstract class WeatherReportRemoteDataSource {
-  Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports();
-  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports();
-  Future<WeatherReportReadModel?> fetchWeatherReport(String reportId);
+  Future<List<WeatherReportSimpleDto>> fetchWeatherReports();
+  Future<List<WeatherReportSimpleDto>> fetchMyWeatherReports();
+  Future<WeatherReportDto?> fetchWeatherReport(String reportId);
   Future<void> postWeatherReport(PostWeatherReportDto dto);
 }
 
@@ -14,17 +14,17 @@ class WeatherReportRemoteDataSourceImpl
   const WeatherReportRemoteDataSourceImpl();
 
   @override
-  Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports() async {
+  Future<List<WeatherReportSimpleDto>> fetchWeatherReports() async {
     return [];
   }
 
   @override
-  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() async {
+  Future<List<WeatherReportSimpleDto>> fetchMyWeatherReports() async {
     return [];
   }
 
   @override
-  Future<WeatherReportReadModel> fetchWeatherReport(String reportId) {
+  Future<WeatherReportDto?> fetchWeatherReport(String reportId) {
     // TODO: implement fetchWeatherReport
     throw UnimplementedError();
   }

@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
-import 'package:reimi_app/domain/read_models/like_user_read_model.dart';
+import 'package:reimi_app/data/dtos/like_user_dto.dart';
+
 
 abstract class LikeRemoteDataSource {
-  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser();
-  Future<List<LikeUserReadModel>> fetchLikeUsersToUser();
+  Future<List<LikeUserDto>> fetchLikeUsersFromUser();
+  Future<List<LikeUserDto>> fetchLikeUsersToUser();
   Future<void> likeUser(String userId);
 }
 
@@ -13,12 +14,12 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
   final Dio _dio;
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
+  Future<List<LikeUserDto>> fetchLikeUsersFromUser() async {
     try {
       final response = await _dio.get('/api/v1/likes/users/received');
       final List data = response.data as List;
       return data
-          .map((e) => LikeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => LikeUserDto.fromJson(e as Map<String, dynamic>))
           .toList();
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
@@ -26,12 +27,12 @@ class LikeRemoteDataSourceImpl implements LikeRemoteDataSource {
   }
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
+  Future<List<LikeUserDto>> fetchLikeUsersToUser() async {
     try {
       final response = await _dio.get('/api/v1/likes/users/given');
       final List data = response.data as List;
       return data
-          .map((e) => LikeUserReadModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => LikeUserDto.fromJson(e as Map<String, dynamic>))
           .toList();
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
