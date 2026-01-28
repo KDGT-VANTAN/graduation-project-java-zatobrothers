@@ -9,7 +9,7 @@ class LoadingDots extends HookWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(3, (i) => AnimatedDot(delay: i * 200)),
+      children: List.generate(3, (i) => AnimatedDot(delay: i * 400)),
     );
   }
 }
