@@ -9,7 +9,7 @@ class RainbowLikeRepositoryImpl implements RainbowLikeRepository {
   Future<void> rainbowlikeUser({
     required String userId,
     required String message,
-  }) async {
+  }) {
     return _remote.rainbowlikeUser(
       userId: userId,
       message: message,

@@ -8,8 +8,8 @@ class UpdateUserProfileUseCase {
   Future<void> call({
     required UpdateProfileParams params,
     required String userId,
-  }) async {
-    return await _repository.updateUserProfile(
+  }) {
+    return _repository.updateUserProfile(
       params: params,
       userId: userId,
     );
