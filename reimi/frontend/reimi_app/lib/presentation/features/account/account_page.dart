@@ -8,8 +8,8 @@ import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/notifiers/account_notifier.dart';
 import 'package:reimi_app/presentation/features/account/states/account_state.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
-import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_result_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_button.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
@@ -231,7 +231,7 @@ class AccountPage extends HookConsumerWidget {
                           label: t.button.weatherPersonalityTest,
                           onPressed: () {
                             context.push(
-                              WeatherPersonalityTestResultPage.routeLocation,
+                              WeatherPersonalityConceptPage.routeLocation,
                             );
                           },
                         ),

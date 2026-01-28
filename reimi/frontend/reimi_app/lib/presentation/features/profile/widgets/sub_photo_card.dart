@@ -60,23 +60,24 @@ class SubPhotoCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    right: 3,
-                    bottom: 3,
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                        alignment: AlignmentGeometry.center,
-                        icon: Icon(
-                          LineIcons.alternateTrash,
-                          size: 20,
-                          color: theme.colorScheme.primary,
+                  if (onTap != null)
+                    Positioned(
+                      right: 3,
+                      bottom: 3,
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          alignment: AlignmentGeometry.center,
+                          icon: Icon(
+                            LineIcons.alternateTrash,
+                            size: 20,
+                            color: theme.colorScheme.primary,
+                          ),
+                          onPressed: onDelete,
                         ),
-                        onPressed: onDelete,
                       ),
                     ),
-                  ),
                 ],
               ),
             ]

@@ -16,7 +16,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<AppUserReadModel> fetchCurrentUser() async {
+  Future<AppUserReadModel> fetchCurrentUser() {
     return _remote.fetchCurrentUser();
   }
 

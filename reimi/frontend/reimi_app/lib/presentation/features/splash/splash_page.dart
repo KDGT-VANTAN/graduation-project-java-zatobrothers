@@ -22,7 +22,7 @@ class SplashPage extends HookConsumerWidget {
     final isLoading = useState(true);
 
     final floatController = useAnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 800),
     )..repeat(reverse: true);
 
     final fadeOutController = useAnimationController(

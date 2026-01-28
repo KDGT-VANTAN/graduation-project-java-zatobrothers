@@ -5,8 +5,8 @@ class GetLikeUsersFromUserUseCase {
   const GetLikeUsersFromUserUseCase(this._repository);
   final LikeRepository _repository;
 
-  Future<List<LikeUserReadModel>> call() async {
-    final likeUsers = await _repository.fetchLikeUsersFromUser();
+  Future<List<LikeUserReadModel>> call() {
+    final likeUsers = _repository.fetchLikeUsersFromUser();
     return likeUsers;
   }
 }

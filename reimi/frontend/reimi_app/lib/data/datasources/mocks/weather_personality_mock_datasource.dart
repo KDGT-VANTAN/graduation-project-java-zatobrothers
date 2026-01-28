@@ -28,14 +28,11 @@ class WeatherPersonalityMockDataSource
 final mockWeatherPersonalityResult = WeatherPersonalityResultReadModel(
   typeCode: 'SP0E',
   typeName: 'トレーニーラッコ',
-  typeCatchphrase: '感情で揺れ、計画で浮かぶ。天気予報を信じすぎるラッコ。',
+  typeCatchphrase: '感情で揺れ、計画で浮かぶ。日々バランス感覚を鍛えている存在。',
   typeCharacterImageUrl:
       Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
-  rulingStatement: '神様は、前世のあなたが\n'
-      '空模様を確認してから一日を始める姿を、何度も見ていました。\n\n'
-      '雨が降りそうな日は少し不安そうに、\n'
-      '晴れの日には理由もなく機嫌がよくなる——\n\n'
-      'その姿は、まるで波に身を任せるラッコのようでした。',
+  rulingStatement:
+      '神様は、前世のあなたが\n空模様を確認してから一日を始める姿を、何度も見ていました。\n雨が降りそうな日は少し不安そうに、\n晴れの日には理由もなく機嫌がよくなる。\nけれどあなたは、ただ振り回される存在ではありませんでした。\n落ち込むことを知っていたから、\n前もって心の準備をし、\n楽しめる未来をちゃんと確保していたのです。\n感情を抱えたまま溺れずに、\n計画という浮き輪で水面に浮かび続けたその生き方を、\n神様は「実にラッコらしい」と評価しました。\nよって、あなたは\nトレーニーラッコとして生まれ変わることになりました。',
   axisFeatures: [
     '天気・空気・人の機嫌を即座に察知。ちょっとした曇り空でも「今日はそういう日かも」と感じ取る。',
     '感情が揺れることを前提に、「落ちた時用の逃げ道」をあらかじめ用意する賢さ。',

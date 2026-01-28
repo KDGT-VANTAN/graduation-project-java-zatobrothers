@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/application/usecases/like/like_user_usecase.dart';
+import 'package:reimi_app/application/usecases/notification/register_device_token_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
 import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
@@ -154,4 +155,11 @@ GetWeatherPersonalityResultUseCase getWeatherPersonalityResultUseCase(Ref ref) {
 GetWeatherPersonalityDetailUseCase getWeatherPersonalityDetailUseCase(Ref ref) {
   return GetWeatherPersonalityDetailUseCase(
       ref.watch(weatherPersonalityRepositoryProvider));
+}
+
+// notification関連
+@riverpod
+RegisterDeviceTokenUseCase registerDeviceTokenUseCase(Ref ref) {
+  return RegisterDeviceTokenUseCase(
+      ref.watch(notificationRepositoryProvider));
 }

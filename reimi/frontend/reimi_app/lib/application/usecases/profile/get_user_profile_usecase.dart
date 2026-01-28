@@ -5,7 +5,7 @@ class GetUserProfileUseCase {
   const GetUserProfileUseCase(this._repository);
   final ProfileRepository _repository;
 
-  Future<UserWithProfileReadModel> call(String userId) async {
-    return await _repository.fetchUserProfile(userId);
+  Future<UserWithProfileReadModel> call(String userId) {
+    return _repository.fetchUserProfile(userId);
   }
 }

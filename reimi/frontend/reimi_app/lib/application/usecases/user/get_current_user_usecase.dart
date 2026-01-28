@@ -5,7 +5,7 @@ class GetCurrentUserUseCase {
   const GetCurrentUserUseCase(this._repository);
   final UserRepository _repository;
 
-  Future<AppUserReadModel> call() async {
-    return await _repository.fetchCurrentUser();
+  Future<AppUserReadModel> call() {
+    return _repository.fetchCurrentUser();
   }
 }

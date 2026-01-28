@@ -111,8 +111,12 @@ final List<UserWithProfileReadModel> mockUserProfiles = [
     holiday: Holiday.weekday,
     sunnyDayHobbies: ['キャンプ', 'サウナ', 'スケボー'],
     rainyDayHobbies: ['ゲーム', 'アニメ', 'プログラミング'],
-    subPhotos: [],
-    isTodayReported: false,
+    subPhotos: [
+      'https://cypher.urashico2.com/blog/wp-content/uploads/2024/01/231225_015.jpg',
+      'https://future-architect.github.io/images/2021/20210513a/IMG_0030.jpg',
+      'https://www.snowpeak.co.jp/mag-spw/wp-content/uploads/2020/08/%E3%83%89%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0-2-2400x1600.jpg',
+    ],
+    isTodayReported: true,
   ),
 
   // user_004: 高橋 美咲

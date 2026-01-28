@@ -5,8 +5,7 @@ class GetHomeUsersUseCase {
   GetHomeUsersUseCase(this._repository);
   final UserRepository _repository;
 
-  Future<List<HomeUserReadModel>> call() async {
-    final users = await _repository.fetchHomeUsers();
-    return users;
+  Future<List<HomeUserReadModel>> call() {
+    return _repository.fetchHomeUsers();
   }
 }

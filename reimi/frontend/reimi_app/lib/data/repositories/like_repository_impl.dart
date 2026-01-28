@@ -7,17 +7,17 @@ class LikeRepositoryImpl implements LikeRepository {
   final LikeRemoteDataSource _remote;
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() async {
+  Future<List<LikeUserReadModel>> fetchLikeUsersFromUser() {
     return _remote.fetchLikeUsersFromUser();
   }
 
   @override
-  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() async {
+  Future<List<LikeUserReadModel>> fetchLikeUsersToUser() {
     return _remote.fetchLikeUsersToUser();
   }
 
   @override
-  Future<void> likeUser(String userId) async {
+  Future<void> likeUser(String userId) {
     return _remote.likeUser(userId);
   }
 }
