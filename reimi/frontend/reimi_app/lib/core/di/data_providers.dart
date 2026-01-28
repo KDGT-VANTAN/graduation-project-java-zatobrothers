@@ -13,6 +13,7 @@ import 'package:reimi_app/data/datasources/mocks/message_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/profile_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/user_mock_datasource.dart';
 import 'package:reimi_app/data/datasources/mocks/weather_report_mock_datasource.dart';
+import 'package:reimi_app/data/datasources/remote/notification_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/profile_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/rainbow_like_remote_datasource.dart';
 import 'package:reimi_app/data/datasources/remote/storage_remote_datasource.dart';
@@ -24,6 +25,7 @@ import 'package:reimi_app/data/repositories/auth_repository_impl.dart';
 import 'package:reimi_app/data/repositories/chat_room_repository_impl.dart';
 import 'package:reimi_app/data/repositories/like_repository_impl.dart';
 import 'package:reimi_app/data/repositories/message_repository_Impl.dart';
+import 'package:reimi_app/data/repositories/notification_repository_impl.dart';
 import 'package:reimi_app/data/repositories/profile_repository_impl.dart';
 import 'package:reimi_app/data/repositories/rainbow_like_repository_impl.dart';
 import 'package:reimi_app/data/repositories/storage_repository_impl.dart';
@@ -34,6 +36,7 @@ import 'package:reimi_app/domain/repositories/auth_repository.dart';
 import 'package:reimi_app/domain/repositories/chat_room_repository.dart';
 import 'package:reimi_app/domain/repositories/like_repository.dart';
 import 'package:reimi_app/domain/repositories/message_repository.dart';
+import 'package:reimi_app/domain/repositories/notification_repository.dart';
 import 'package:reimi_app/domain/repositories/profile_repository.dart';
 import 'package:reimi_app/domain/repositories/rainbow_like_repository.dart';
 import 'package:reimi_app/domain/repositories/storage_repository.dart';
@@ -165,4 +168,16 @@ WeatherPersonalityRemoteDataSource weatherPersonalityRemoteDataSource(Ref ref) {
 WeatherPersonalityRepository weatherPersonalityRepository(Ref ref) {
   return WeatherPersonalityRepositoryImpl(
       ref.watch(weatherPersonalityRemoteDataSourceProvider));
+}
+
+// notifiecation関連
+@riverpod
+NotificationRemoteDataSource notificationRemoteDataSource(Ref ref) {
+  return NotificationRemoteDataSourceImpl(ref.watch(dioClientProvider));
+}
+
+@riverpod
+NotificationRepository notificationRepository(Ref ref) {
+  return NotificationRepositoryImpl(
+      ref.watch(notificationRemoteDataSourceProvider));
 }

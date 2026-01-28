@@ -387,5 +387,45 @@ final weatherPersonalityRepositoryProvider =
 // ignore: unused_element
 typedef WeatherPersonalityRepositoryRef
     = AutoDisposeProviderRef<WeatherPersonalityRepository>;
+String _$notificationRemoteDataSourceHash() =>
+    r'82bccbdf84949cb5beb10c987555dacfbec04e4f';
+
+/// See also [notificationRemoteDataSource].
+@ProviderFor(notificationRemoteDataSource)
+final notificationRemoteDataSourceProvider =
+    AutoDisposeProvider<NotificationRemoteDataSource>.internal(
+  notificationRemoteDataSource,
+  name: r'notificationRemoteDataSourceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$notificationRemoteDataSourceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef NotificationRemoteDataSourceRef
+    = AutoDisposeProviderRef<NotificationRemoteDataSource>;
+String _$notificationRepositoryHash() =>
+    r'1d72aedf961fc7f7fba8b4493771db8e633c5dd8';
+
+/// See also [notificationRepository].
+@ProviderFor(notificationRepository)
+final notificationRepositoryProvider =
+    AutoDisposeProvider<NotificationRepository>.internal(
+  notificationRepository,
+  name: r'notificationRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$notificationRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef NotificationRepositoryRef
+    = AutoDisposeProviderRef<NotificationRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
