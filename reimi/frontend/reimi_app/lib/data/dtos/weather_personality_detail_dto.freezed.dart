@@ -22,8 +22,8 @@ mixin _$WeatherPersonalityDetailDto {
   List<String> get axisFeatures;
   List<int> get axisScore;
   List<String> get behaviorTendencyList;
-  List<TypeCompatibilityReadModel> get compatibleTypes;
-  List<TypeCompatibilityReadModel> get incompatibleTypes;
+  List<TypeCompatibilityDto> get compatibleTypes;
+  List<TypeCompatibilityDto> get incompatibleTypes;
   String get godsMessage;
 
   /// Create a copy of WeatherPersonalityDetailDto
@@ -104,8 +104,8 @@ abstract mixin class $WeatherPersonalityDetailDtoCopyWith<$Res> {
       List<String> axisFeatures,
       List<int> axisScore,
       List<String> behaviorTendencyList,
-      List<TypeCompatibilityReadModel> compatibleTypes,
-      List<TypeCompatibilityReadModel> incompatibleTypes,
+      List<TypeCompatibilityDto> compatibleTypes,
+      List<TypeCompatibilityDto> incompatibleTypes,
       String godsMessage});
 }
 
@@ -170,11 +170,11 @@ class _$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       compatibleTypes: null == compatibleTypes
           ? _self.compatibleTypes
           : compatibleTypes // ignore: cast_nullable_to_non_nullable
-              as List<TypeCompatibilityReadModel>,
+              as List<TypeCompatibilityDto>,
       incompatibleTypes: null == incompatibleTypes
           ? _self.incompatibleTypes
           : incompatibleTypes // ignore: cast_nullable_to_non_nullable
-              as List<TypeCompatibilityReadModel>,
+              as List<TypeCompatibilityDto>,
       godsMessage: null == godsMessage
           ? _self.godsMessage
           : godsMessage // ignore: cast_nullable_to_non_nullable
@@ -285,8 +285,8 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             List<String> axisFeatures,
             List<int> axisScore,
             List<String> behaviorTendencyList,
-            List<TypeCompatibilityReadModel> compatibleTypes,
-            List<TypeCompatibilityReadModel> incompatibleTypes,
+            List<TypeCompatibilityDto> compatibleTypes,
+            List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)?
         $default, {
     required TResult orElse(),
@@ -335,8 +335,8 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             List<String> axisFeatures,
             List<int> axisScore,
             List<String> behaviorTendencyList,
-            List<TypeCompatibilityReadModel> compatibleTypes,
-            List<TypeCompatibilityReadModel> incompatibleTypes,
+            List<TypeCompatibilityDto> compatibleTypes,
+            List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)
         $default,
   ) {
@@ -383,8 +383,8 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             List<String> axisFeatures,
             List<int> axisScore,
             List<String> behaviorTendencyList,
-            List<TypeCompatibilityReadModel> compatibleTypes,
-            List<TypeCompatibilityReadModel> incompatibleTypes,
+            List<TypeCompatibilityDto> compatibleTypes,
+            List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)?
         $default,
   ) {
@@ -421,8 +421,8 @@ class _WeatherPersonalityDetailDto implements WeatherPersonalityDetailDto {
       required final List<String> axisFeatures,
       required final List<int> axisScore,
       required final List<String> behaviorTendencyList,
-      required final List<TypeCompatibilityReadModel> compatibleTypes,
-      required final List<TypeCompatibilityReadModel> incompatibleTypes,
+      required final List<TypeCompatibilityDto> compatibleTypes,
+      required final List<TypeCompatibilityDto> incompatibleTypes,
       required this.godsMessage})
       : _axisFeatures = axisFeatures,
         _axisScore = axisScore,
@@ -467,17 +467,17 @@ class _WeatherPersonalityDetailDto implements WeatherPersonalityDetailDto {
     return EqualUnmodifiableListView(_behaviorTendencyList);
   }
 
-  final List<TypeCompatibilityReadModel> _compatibleTypes;
+  final List<TypeCompatibilityDto> _compatibleTypes;
   @override
-  List<TypeCompatibilityReadModel> get compatibleTypes {
+  List<TypeCompatibilityDto> get compatibleTypes {
     if (_compatibleTypes is EqualUnmodifiableListView) return _compatibleTypes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_compatibleTypes);
   }
 
-  final List<TypeCompatibilityReadModel> _incompatibleTypes;
+  final List<TypeCompatibilityDto> _incompatibleTypes;
   @override
-  List<TypeCompatibilityReadModel> get incompatibleTypes {
+  List<TypeCompatibilityDto> get incompatibleTypes {
     if (_incompatibleTypes is EqualUnmodifiableListView)
       return _incompatibleTypes;
     // ignore: implicit_dynamic_type
@@ -572,8 +572,8 @@ abstract mixin class _$WeatherPersonalityDetailDtoCopyWith<$Res>
       List<String> axisFeatures,
       List<int> axisScore,
       List<String> behaviorTendencyList,
-      List<TypeCompatibilityReadModel> compatibleTypes,
-      List<TypeCompatibilityReadModel> incompatibleTypes,
+      List<TypeCompatibilityDto> compatibleTypes,
+      List<TypeCompatibilityDto> incompatibleTypes,
       String godsMessage});
 }
 
@@ -638,11 +638,11 @@ class __$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       compatibleTypes: null == compatibleTypes
           ? _self._compatibleTypes
           : compatibleTypes // ignore: cast_nullable_to_non_nullable
-              as List<TypeCompatibilityReadModel>,
+              as List<TypeCompatibilityDto>,
       incompatibleTypes: null == incompatibleTypes
           ? _self._incompatibleTypes
           : incompatibleTypes // ignore: cast_nullable_to_non_nullable
-              as List<TypeCompatibilityReadModel>,
+              as List<TypeCompatibilityDto>,
       godsMessage: null == godsMessage
           ? _self.godsMessage
           : godsMessage // ignore: cast_nullable_to_non_nullable

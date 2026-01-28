@@ -24,12 +24,10 @@ _WeatherPersonalityDetailDto _$WeatherPersonalityDetailDtoFromJson(
           .map((e) => e as String)
           .toList(),
       compatibleTypes: (json['compatibleTypes'] as List<dynamic>)
-          .map((e) =>
-              TypeCompatibilityReadModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => TypeCompatibilityDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       incompatibleTypes: (json['incompatibleTypes'] as List<dynamic>)
-          .map((e) =>
-              TypeCompatibilityReadModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => TypeCompatibilityDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       godsMessage: json['godsMessage'] as String,
     );

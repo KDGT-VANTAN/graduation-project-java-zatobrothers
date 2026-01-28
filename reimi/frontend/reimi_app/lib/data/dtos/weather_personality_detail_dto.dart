@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:reimi_app/domain/read_models/type_compatibility_read_model.dart';
+import 'package:reimi_app/data/dtos/type_compatibility_dto.dart';
 
 part 'weather_personality_detail_dto.freezed.dart';
 part 'weather_personality_detail_dto.g.dart';
@@ -16,8 +16,8 @@ abstract class WeatherPersonalityDetailDto
     required List<String> axisFeatures,
     required List<int> axisScore,
     required List<String> behaviorTendencyList,
-    required List<TypeCompatibilityReadModel> compatibleTypes,
-    required List<TypeCompatibilityReadModel> incompatibleTypes,
+    required List<TypeCompatibilityDto> compatibleTypes,
+    required List<TypeCompatibilityDto> incompatibleTypes,
     required String godsMessage,
   }) = _WeatherPersonalityDetailDto;
 
