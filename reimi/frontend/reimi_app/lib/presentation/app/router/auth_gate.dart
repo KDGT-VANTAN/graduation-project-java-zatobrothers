@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
+import 'package:reimi_app/presentation/app/initializer/app_initializer_notifier.dart';
 import 'package:reimi_app/presentation/app/session/app_user_state.dart';
 import 'package:reimi_app/presentation/app/auth/states/auth_state.dart';
 import 'package:reimi_app/presentation/app/session/app_user_state_notifier.dart';
@@ -35,6 +36,7 @@ class AuthGate extends ConsumerWidget {
               data: (state) {
                 state.when(
                   existingUser: (_) {
+                    ref.read(appInitializerNotifierProvider.notifier);
                     _goAfterFrame(context, HomePage.routeLocation);
                   },
                   newUser: () {
