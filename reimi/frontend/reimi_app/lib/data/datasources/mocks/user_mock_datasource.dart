@@ -38,28 +38,6 @@ final mockUser = AppUserReadModel(
 );
 
 final List<HomeUserReadModel> mockHomeUsers = [
-  // user_001: 佐藤 葵
-  HomeUserReadModel(
-    id: 'user_001',
-    name: '佐藤 葵',
-    birthDate: DateTime(1995, 5, 15),
-    address: Address.tokyo,
-    mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
-    introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
-    isTodayReported: false,
-  ),
-
-  // user_002: 田中 健
-  HomeUserReadModel(
-    id: 'user_002',
-    name: '田中 健',
-    birthDate: DateTime(1978, 11, 3),
-    address: Address.osaka,
-    mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
-    introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
-    isTodayReported: true,
-  ),
-
   // user_003: 鈴木 翔太
   HomeUserReadModel(
     id: 'user_003',
@@ -71,14 +49,25 @@ final List<HomeUserReadModel> mockHomeUsers = [
     isTodayReported: false,
   ),
 
-  // user_004: 高橋 美咲
+  // user_001: 佐藤 葵
   HomeUserReadModel(
-    id: 'user_004',
-    name: '高橋 美咲',
-    birthDate: DateTime(1988, 7, 12),
-    address: Address.fukuoka,
-    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
-    introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
+    id: 'user_001',
+    name: '佐藤 葵',
+    birthDate: DateTime(1995, 5, 15),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
+    introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
+    isTodayReported: false,
+  ),
+
+  // user_006: 渡辺 由美子
+  HomeUserReadModel(
+    id: 'user_006',
+    name: '渡辺 由美子',
+    birthDate: DateTime(1965, 2, 28),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
+    introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
     isTodayReported: false,
   ),
 
@@ -93,15 +82,15 @@ final List<HomeUserReadModel> mockHomeUsers = [
     isTodayReported: true,
   ),
 
-  // user_006: 渡辺 由美子
+  // user_002: 田中 健
   HomeUserReadModel(
-    id: 'user_006',
-    name: '渡辺 由美子',
-    birthDate: DateTime(1965, 2, 28),
-    address: Address.tokyo,
-    mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
-    introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
-    isTodayReported: false,
+    id: 'user_002',
+    name: '田中 健',
+    birthDate: DateTime(1978, 11, 3),
+    address: Address.osaka,
+    mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
+    introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
+    isTodayReported: true,
   ),
 
   // user_000: 山田 涼介
@@ -114,5 +103,16 @@ final List<HomeUserReadModel> mockHomeUsers = [
     introduction:
         '都内でITコンサルタントとして働いています。仕事は忙しいですが、オンとオフはしっかり切り替えるタイプです。休日は趣味のドライブや、話題のレストランを開拓するのが好きです。',
     isTodayReported: true,
+  ),
+
+  // user_004: 高橋 美咲
+  HomeUserReadModel(
+    id: 'user_004',
+    name: '高橋 美咲',
+    birthDate: DateTime(1988, 7, 12),
+    address: Address.fukuoka,
+    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
+    introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
+    isTodayReported: false,
   ),
 ];
