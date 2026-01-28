@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.infrastructure.web.openapi.like;
+package com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
-import com.reimi.reimi_app.infrastructure.web.dto.response.GetLikedUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.GetRainbowLikedUserListResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -19,17 +19,17 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "自分がいいねされたユーザー一覧取得",
-    description = "自分がいいねされたユーザの一覧を取得できるAPI"
+    summary = "自分がレインボーいいねされたユーザー一覧取得",
+    description = "自分がレインボーいいねされたユーザの一覧を取得できるAPI"
 )
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",
-        description = "自分がいいねされたユーザーの一覧取得成功",
+        description = "自分がレインボーいいねされたユーザーの一覧取得成功",
         content = @Content(
             mediaType = "application/json",
             array = @ArraySchema(
-                schema = @Schema(implementation = GetLikedUserListResponse.class)
+                schema = @Schema(implementation = GetRainbowLikedUserListResponse.class)
             )
         )
     ),
@@ -82,5 +82,5 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 })
-public @interface GetLikeReceivedUsersApi {
+public @interface GetRainbowLikeReceivedUsersApi {
 }

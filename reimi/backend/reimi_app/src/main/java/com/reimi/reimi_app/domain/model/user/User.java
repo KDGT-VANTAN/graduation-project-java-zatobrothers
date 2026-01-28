@@ -120,9 +120,15 @@ public class User {
     public Status getStatus() { return status; }
     public Profile getProfile() { return profile; }
 
-    //メイン写真を署名URLとして管理したいためシリアライズ対象外とする
+    // メイン写真を署名URLとして管理したいためシリアライズ対象外とする
     private transient String signedMainPhotoUrl;
 
     public String getSignedMainPhotoUrl() { return signedMainPhotoUrl; }
     public void setSignedMainPhotoUrl(String signedMainPhotoUrl) { this.signedMainPhotoUrl = signedMainPhotoUrl; }
+
+    // レインボーいいねの一覧取得時にメッセージも一緒に送信したいため
+    private transient String rainbowLikeMessage;
+
+    public String getRainbowLikeMessage() { return rainbowLikeMessage; }
+    public void setRainbowLikeMessage(String rainbowLikeMessage) { this.rainbowLikeMessage = rainbowLikeMessage; }
 }
