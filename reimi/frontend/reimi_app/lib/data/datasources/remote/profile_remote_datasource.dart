@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/data/dtos/update_profile_dto.dart';
-import 'package:reimi_app/data/extensions/update_profile_dto_extension.dart';
+import 'package:reimi_app/data/mapper/update_profile_mapper.dart';
 import 'package:reimi_app/domain/read_models/user_with_profile_read_model.dart';
 
 abstract class ProfileRemoteDataSource {
