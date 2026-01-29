@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxi
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityType;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.GetUserWeatherPersonalityType;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -45,9 +47,9 @@ public class WeatherPersonalityController extends ApiV1Controller {
         this.userUseCase = userUseCase;
     }
 
-    @PostMapping("/diagnoses/score/user-weather-personality-type")
+    @PostMapping("/user-weather-personality-type")
     @DiagnoseWeatherPersonalityType
-    public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> diagnose(
+    public ResponseEntity<Void> diagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
     ) {
         List<AnswerChoice> answers = List.of(
@@ -73,12 +75,21 @@ public class WeatherPersonalityController extends ApiV1Controller {
         User user = userUseCase.getUser(myFirebaseUid)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
-        var result = weatherPersonalityUseCase.diagnose(
+        weatherPersonalityUseCase.diagnose(
             new DiagnoseWeatherPersonalityCommand(
                 user.getId(),
                 answers
             )
         );
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/user-weather-personality-type")
+    @GetUserWeatherPersonalityType
+    public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
+    ) {
+        var result = weatherPersonalityUseCase.getUserResult();
 
         Map<WeatherPersonalityAxis, Integer> userAxisScoreMap = new LinkedHashMap<>();
         userAxisScoreMap.put(WeatherPersonalityAxis.SENSITIVITY, result.getWeatherPersonalityScore().sensitivity());
@@ -99,6 +110,6 @@ public class WeatherPersonalityController extends ApiV1Controller {
                 result.getWeatherPersonalityType().getGodsMessage()
             );
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.ok(response);
     }
 }

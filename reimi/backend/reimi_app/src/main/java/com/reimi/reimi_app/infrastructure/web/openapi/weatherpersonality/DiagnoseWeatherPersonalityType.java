@@ -7,7 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
-import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,7 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ウェザーパーソナリティ診断結果スコアリング",
-    description = "ユーザーのウェザーパーソナリティタイプの診断結果をスコアリングしてレスポンスするAPI",
+    description = "ユーザーのウェザーパーソナリティタイプの診断結果をスコアリングして保存するAPI",
     requestBody = @RequestBody(
         required = true,
         content = @Content(
@@ -35,8 +34,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         responseCode = "201",
         description = "ユーザーのウェザーパーソナリティ診断が正常に行われました",
         content = @Content(
-            mediaType = "application/json",
-            schema = @Schema(implementation = DiagnoseResultWeatherPersonalityResponse.class)
+            mediaType = "application/json"
         )
     ),
     @ApiResponse(

@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.userweatherpersonalitytype;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
@@ -53,4 +55,11 @@ public class UserWeatherPersonalityTypeRepositoryImpl implements UserWeatherPers
                 weatherPersonalityTypEntity
             ));
     };
+
+    @Override
+    public Optional<UserWeatherPersonalityType> findByUserId(UserId userId) {
+        return jpaUserWeatherPersonalityTypeRepository
+            .findByUserId(userId.value())
+            .map(UserWeatherPersonalityTypeMapper::toDomain);
+    }
 }

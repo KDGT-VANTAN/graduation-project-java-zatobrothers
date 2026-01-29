@@ -5,5 +5,7 @@ import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalit
 
 public interface WeatherPersonalityUseCase {
 
-    UserWeatherPersonalityType diagnose(DiagnoseWeatherPersonalityCommand command);
+    void diagnose(DiagnoseWeatherPersonalityCommand command);
+
+    UserWeatherPersonalityType getUserResult();
 }

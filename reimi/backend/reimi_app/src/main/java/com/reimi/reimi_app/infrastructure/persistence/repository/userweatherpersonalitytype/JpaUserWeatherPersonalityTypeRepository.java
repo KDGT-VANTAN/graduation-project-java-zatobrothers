@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.userweatherpersonalitytype;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,4 +9,6 @@ import com.reimi.reimi_app.infrastructure.persistence.entity.UserWeatherPersonal
 
 public interface JpaUserWeatherPersonalityTypeRepository extends JpaRepository<UserWeatherPersonalityTypeEntity, UUID> {
     boolean existsByUserId(UUID UserId);
+
+    Optional<UserWeatherPersonalityTypeEntity> findByUserId(UUID userId);
 }

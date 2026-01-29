@@ -7,6 +7,22 @@ public class WeatherPersonalityScore {
     private int activity;
     private int motivation;
 
+    public WeatherPersonalityScore() {
+        this(0, 0, 0, 0);
+    }
+
+    public WeatherPersonalityScore(
+        int sensitivity,
+        int preparedness,
+        int activity,
+        int motivation
+    ) {
+        this.sensitivity = sensitivity;
+        this.preparedness = preparedness;
+        this.activity = activity;
+        this.motivation = motivation;
+    }
+
     public void addSensitivity(int value) {
         sensitivity += value;
     }
