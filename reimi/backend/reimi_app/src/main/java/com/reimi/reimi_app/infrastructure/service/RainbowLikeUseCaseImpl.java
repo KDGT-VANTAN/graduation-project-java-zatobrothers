@@ -151,6 +151,40 @@ public class RainbowLikeUseCaseImpl implements RainbowLikeUseCase {
     }
 
     @Override
+    public List<User> getRainbowLikeGivenUserList() {
+
+        String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+        User fromUser = userRepository.findMeByFirebaseUid(myFirebaseUid)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+        UserId fromUserId = fromUser.getId();
+
+        List<RainbowLike> rainbowLikes = rainbowLikeRepository.findRainbowLikesGivenByFromUserId(fromUserId);
+
+        Map<UserId, RainbowLike> rainbowLikeMap = rainbowLikes.stream()
+            .collect(Collectors.toMap(RainbowLike::getToUserId, Function.identity()));
+
+        List<UserId> rainbowLikedUserIds = new ArrayList<>(rainbowLikeMap.keySet());
+
+        if (rainbowLikedUserIds.isEmpty()) {
+            return List.of();
+        }
+
+        List<User> users = userRepository.findByIds(rainbowLikedUserIds);
+
+        for (User user : users) {
+            RainbowLike rainbowLike = rainbowLikeMap.get(user.getId());
+            if (rainbowLike != null) {
+                user.setRainbowLikeMessage(rainbowLike.getMessage());
+            }
+            user.setSignedMainPhotoUrl(imageStorage.getSignedUrl(user.getMainPhotoUrl()));
+        }
+
+        return users;
+    }
+
+    @Override
     public List<User> getRainbowLikeReceivedUserList() {
 
         String myFirebaseUid = authenticatedUserProvider.getFirebaseUid();

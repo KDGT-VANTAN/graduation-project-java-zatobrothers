@@ -11,5 +11,7 @@ public interface RainbowLikeRepository {
 
     void save(RainbowLike rainbowLike);
 
+    List<RainbowLike> findRainbowLikesGivenByFromUserId(UserId toUserId);
+
     List<RainbowLike> findRainbowLikesReceivedByToUserId(UserId toUserId);
 }

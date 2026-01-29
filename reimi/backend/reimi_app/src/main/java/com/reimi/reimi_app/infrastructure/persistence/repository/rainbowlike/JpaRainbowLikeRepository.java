@@ -14,7 +14,14 @@ public interface JpaRainbowLikeRepository extends JpaRepository<RainbowLikeEntit
     @Query("""
         select r
         from RainbowLikeEntity r
+        where r.fromUserId = :fromUserId
+    """)
+    List<RainbowLikeEntity> findRainbowLikesByFromUserId(UUID fromUserId);
+
+    @Query("""
+        select r
+        from RainbowLikeEntity r
         where r.toUserId = :toUserId
     """)
-    List<RainbowLikeEntity> findRainbowLikesReceivedByToUserId(UUID toUserId);
+    List<RainbowLikeEntity> findRainbowLikesByToUserId(UUID toUserId);
 }
