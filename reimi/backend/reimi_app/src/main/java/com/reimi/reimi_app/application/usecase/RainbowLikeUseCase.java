@@ -8,5 +8,7 @@ import com.reimi.reimi_app.domain.model.user.User;
 public interface RainbowLikeUseCase {
     void rainbowLikeUser(SendRainbowLikeCommand command);
 
+    List<User> getRainbowLikeGivenUserList();
+
     List<User> getRainbowLikeReceivedUserList();
 }
