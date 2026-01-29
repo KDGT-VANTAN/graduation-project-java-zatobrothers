@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_report_read_model.dart';
+part of 'weather_report_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WeatherReportReadModel _$WeatherReportReadModelFromJson(
-        Map<String, dynamic> json) =>
-    _WeatherReportReadModel(
+_WeatherReportDto _$WeatherReportDtoFromJson(Map<String, dynamic> json) =>
+    _WeatherReportDto(
       reportId: json['reportId'] as String,
       userId: json['userId'] as String,
       userName: json['userName'] as String,
@@ -29,8 +28,7 @@ _WeatherReportReadModel _$WeatherReportReadModelFromJson(
       longitude: (json['longitude'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$WeatherReportReadModelToJson(
-        _WeatherReportReadModel instance) =>
+Map<String, dynamic> _$WeatherReportDtoToJson(_WeatherReportDto instance) =>
     <String, dynamic>{
       'reportId': instance.reportId,
       'userId': instance.userId,

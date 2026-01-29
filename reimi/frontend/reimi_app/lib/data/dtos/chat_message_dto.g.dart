@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_message_read_model.dart';
+part of 'chat_message_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ChatMessageReadModel _$ChatMessageReadModelFromJson(
-        Map<String, dynamic> json) =>
-    _ChatMessageReadModel(
+_ChatMessageDto _$ChatMessageDtoFromJson(Map<String, dynamic> json) =>
+    _ChatMessageDto(
       messageId: json['messageId'] as String,
       chatRoomId: json['chatRoomId'] as String,
       senderId: json['senderId'] as String,
@@ -17,8 +16,7 @@ _ChatMessageReadModel _$ChatMessageReadModelFromJson(
       sentAt: DateTime.parse(json['sentAt'] as String),
     );
 
-Map<String, dynamic> _$ChatMessageReadModelToJson(
-        _ChatMessageReadModel instance) =>
+Map<String, dynamic> _$ChatMessageDtoToJson(_ChatMessageDto instance) =>
     <String, dynamic>{
       'messageId': instance.messageId,
       'chatRoomId': instance.chatRoomId,

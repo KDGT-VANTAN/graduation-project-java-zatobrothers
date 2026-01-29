@@ -5,7 +5,6 @@ import 'package:reimi_app/domain/value_objects/gender.dart';
 import 'package:reimi_app/domain/value_objects/user_status.dart';
 
 part 'app_user_read_model.freezed.dart';
-part 'app_user_read_model.g.dart';
 
 @freezed
 abstract class AppUserReadModel with _$AppUserReadModel {
@@ -18,7 +17,4 @@ abstract class AppUserReadModel with _$AppUserReadModel {
     required String email,
     required UserStatus status,
   }) = _AppUserReadModel;
-
-  factory AppUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$AppUserReadModelFromJson(json);
 }

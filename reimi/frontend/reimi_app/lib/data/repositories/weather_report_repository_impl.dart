@@ -1,5 +1,7 @@
 import 'package:reimi_app/data/datasources/remote/weather_report_remote_datasource.dart';
-import 'package:reimi_app/data/extensions/post_weather_report_dto_extension.dart';
+import 'package:reimi_app/data/mapper/post_weather_report_mapper.dart';
+import 'package:reimi_app/data/mapper/weather_report_mapper.dart';
+import 'package:reimi_app/data/mapper/weather_report_simple_mapper.dart';
 import 'package:reimi_app/domain/params/post_weather_report_params.dart';
 import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
 import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
@@ -10,18 +12,21 @@ class WeatherReportRepositoryImpl implements WeatherReportRepository {
   final WeatherReportRemoteDataSource _remote;
 
   @override
-  Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports() {
-    return _remote.fetchWeatherReports();
+  Future<List<WeatherReportSimpleReadModel>> fetchWeatherReports() async {
+    final dtos = await _remote.fetchWeatherReports();
+    return dtos.toReadModels();
   }
 
   @override
-  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() {
-    return _remote.fetchMyWeatherReports();
+  Future<List<WeatherReportSimpleReadModel>> fetchMyWeatherReports() async {
+    final dtos = await _remote.fetchMyWeatherReports();
+    return dtos.toReadModels();
   }
 
   @override
-  Future<WeatherReportReadModel?> fetchWeatherReport(String reportId) {
-    return _remote.fetchWeatherReport(reportId);
+  Future<WeatherReportReadModel?> fetchWeatherReport(String reportId) async {
+    final dto = await _remote.fetchWeatherReport(reportId);
+    return dto?.toReadModel();
   }
 
   @override

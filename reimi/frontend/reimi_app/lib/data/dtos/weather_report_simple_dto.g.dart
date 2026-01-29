@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_report_simple_read_model.dart';
+part of 'weather_report_simple_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WeatherReportSimpleReadModel _$WeatherReportSimpleReadModelFromJson(
+_WeatherReportSimpleDto _$WeatherReportSimpleDtoFromJson(
         Map<String, dynamic> json) =>
-    _WeatherReportSimpleReadModel(
+    _WeatherReportSimpleDto(
       reportId: json['reportId'] as String,
       userId: json['userId'] as String,
       comment: json['comment'] as String,
@@ -17,8 +17,8 @@ _WeatherReportSimpleReadModel _$WeatherReportSimpleReadModelFromJson(
       createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$WeatherReportSimpleReadModelToJson(
-        _WeatherReportSimpleReadModel instance) =>
+Map<String, dynamic> _$WeatherReportSimpleDtoToJson(
+        _WeatherReportSimpleDto instance) =>
     <String, dynamic>{
       'reportId': instance.reportId,
       'userId': instance.userId,

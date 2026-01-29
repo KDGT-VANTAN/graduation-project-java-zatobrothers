@@ -39,9 +39,6 @@ mixin _$WeatherReportReadModel {
       _$WeatherReportReadModelCopyWithImpl<WeatherReportReadModel>(
           this as WeatherReportReadModel, _$identity);
 
-  /// Serializes this WeatherReportReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -78,7 +75,6 @@ mixin _$WeatherReportReadModel {
                 other.longitude == longitude));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -486,7 +482,7 @@ extension WeatherReportReadModelPatterns on WeatherReportReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _WeatherReportReadModel implements WeatherReportReadModel {
   const _WeatherReportReadModel(
       {required this.reportId,
@@ -506,8 +502,6 @@ class _WeatherReportReadModel implements WeatherReportReadModel {
       this.latitude,
       this.longitude})
       : _reportComment = reportComment;
-  factory _WeatherReportReadModel.fromJson(Map<String, dynamic> json) =>
-      _$WeatherReportReadModelFromJson(json);
 
   @override
   final String reportId;
@@ -560,13 +554,6 @@ class _WeatherReportReadModel implements WeatherReportReadModel {
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherReportReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -602,7 +589,6 @@ class _WeatherReportReadModel implements WeatherReportReadModel {
                 other.longitude == longitude));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,

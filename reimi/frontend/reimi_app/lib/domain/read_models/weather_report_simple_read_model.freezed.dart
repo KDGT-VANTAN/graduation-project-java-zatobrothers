@@ -30,9 +30,6 @@ mixin _$WeatherReportSimpleReadModel {
               WeatherReportSimpleReadModel>(
           this as WeatherReportSimpleReadModel, _$identity);
 
-  /// Serializes this WeatherReportSimpleReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -49,7 +46,6 @@ mixin _$WeatherReportSimpleReadModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, reportId, userId, comment, mediaType, url, createdAt);
@@ -292,7 +288,7 @@ extension WeatherReportSimpleReadModelPatterns on WeatherReportSimpleReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _WeatherReportSimpleReadModel implements WeatherReportSimpleReadModel {
   const _WeatherReportSimpleReadModel(
       {required this.reportId,
@@ -301,8 +297,6 @@ class _WeatherReportSimpleReadModel implements WeatherReportSimpleReadModel {
       required this.mediaType,
       required this.url,
       required this.createdAt});
-  factory _WeatherReportSimpleReadModel.fromJson(Map<String, dynamic> json) =>
-      _$WeatherReportSimpleReadModelFromJson(json);
 
   @override
   final String reportId;
@@ -327,13 +321,6 @@ class _WeatherReportSimpleReadModel implements WeatherReportSimpleReadModel {
           _WeatherReportSimpleReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherReportSimpleReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -349,7 +336,6 @@ class _WeatherReportSimpleReadModel implements WeatherReportSimpleReadModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, reportId, userId, comment, mediaType, url, createdAt);

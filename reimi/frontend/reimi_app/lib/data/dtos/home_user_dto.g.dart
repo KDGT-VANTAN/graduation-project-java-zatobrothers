@@ -1,37 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_room_summary_read_model.dart';
+part of 'home_user_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ChatRoomSummaryReadModel _$ChatRoomSummaryReadModelFromJson(
-        Map<String, dynamic> json) =>
-    _ChatRoomSummaryReadModel(
-      chatRoomId: json['chatRoomId'] as String,
-      userId: json['userId'] as String,
+_HomeUserDto _$HomeUserDtoFromJson(Map<String, dynamic> json) => _HomeUserDto(
+      id: json['id'] as String,
       name: json['name'] as String,
       birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
       mainPhotoUrl: json['mainPhotoUrl'] as String,
-      lastMessageText: json['lastMessageText'] as String,
-      lastSentAt: DateTime.parse(json['lastSentAt'] as String),
-      unreadCount: (json['unreadCount'] as num?)?.toInt() ?? 0,
+      introduction: json['introduction'] as String,
+      isTodayReported: json['isTodayReported'] as bool?,
     );
 
-Map<String, dynamic> _$ChatRoomSummaryReadModelToJson(
-        _ChatRoomSummaryReadModel instance) =>
+Map<String, dynamic> _$HomeUserDtoToJson(_HomeUserDto instance) =>
     <String, dynamic>{
-      'chatRoomId': instance.chatRoomId,
-      'userId': instance.userId,
+      'id': instance.id,
       'name': instance.name,
       'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
       'mainPhotoUrl': instance.mainPhotoUrl,
-      'lastMessageText': instance.lastMessageText,
-      'lastSentAt': instance.lastSentAt.toIso8601String(),
-      'unreadCount': instance.unreadCount,
+      'introduction': instance.introduction,
+      'isTodayReported': instance.isTodayReported,
     };
 
 const _$AddressEnumMap = {

@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_with_profile_read_model.dart';
+part of 'user_with_profile_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UserWithProfileReadModel _$UserWithProfileReadModelFromJson(
-        Map<String, dynamic> json) =>
-    _UserWithProfileReadModel(
+_UserWithProfileDto _$UserWithProfileDtoFromJson(Map<String, dynamic> json) =>
+    _UserWithProfileDto(
       id: json['id'] as String,
       name: json['name'] as String,
       gender: $enumDecode(_$GenderEnumMap, json['gender']),
@@ -41,8 +40,7 @@ _UserWithProfileReadModel _$UserWithProfileReadModelFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$UserWithProfileReadModelToJson(
-        _UserWithProfileReadModel instance) =>
+Map<String, dynamic> _$UserWithProfileDtoToJson(_UserWithProfileDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_personality_result_read_model.dart';
+part of 'weather_personality_detail_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WeatherPersonalityResultReadModel _$WeatherPersonalityResultReadModelFromJson(
+_WeatherPersonalityDetailDto _$WeatherPersonalityDetailDtoFromJson(
         Map<String, dynamic> json) =>
-    _WeatherPersonalityResultReadModel(
+    _WeatherPersonalityDetailDto(
       typeCode: json['typeCode'] as String,
       typeName: json['typeName'] as String,
       typeCatchphrase: json['typeCatchphrase'] as String,
@@ -23,11 +23,17 @@ _WeatherPersonalityResultReadModel _$WeatherPersonalityResultReadModelFromJson(
       behaviorTendencyList: (json['behaviorTendencyList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      compatibleTypes: (json['compatibleTypes'] as List<dynamic>)
+          .map((e) => TypeCompatibilityDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      incompatibleTypes: (json['incompatibleTypes'] as List<dynamic>)
+          .map((e) => TypeCompatibilityDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
       godsMessage: json['godsMessage'] as String,
     );
 
-Map<String, dynamic> _$WeatherPersonalityResultReadModelToJson(
-        _WeatherPersonalityResultReadModel instance) =>
+Map<String, dynamic> _$WeatherPersonalityDetailDtoToJson(
+        _WeatherPersonalityDetailDto instance) =>
     <String, dynamic>{
       'typeCode': instance.typeCode,
       'typeName': instance.typeName,
@@ -37,5 +43,7 @@ Map<String, dynamic> _$WeatherPersonalityResultReadModelToJson(
       'axisFeatures': instance.axisFeatures,
       'axisScore': instance.axisScore,
       'behaviorTendencyList': instance.behaviorTendencyList,
+      'compatibleTypes': instance.compatibleTypes,
+      'incompatibleTypes': instance.incompatibleTypes,
       'godsMessage': instance.godsMessage,
     };

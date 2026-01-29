@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_personality_detail_read_model.dart';
+part of 'weather_personality_result_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WeatherPersonalityDetailReadModel _$WeatherPersonalityDetailReadModelFromJson(
+_WeatherPersonalityResultDto _$WeatherPersonalityResultDtoFromJson(
         Map<String, dynamic> json) =>
-    _WeatherPersonalityDetailReadModel(
+    _WeatherPersonalityResultDto(
       typeCode: json['typeCode'] as String,
       typeName: json['typeName'] as String,
       typeCatchphrase: json['typeCatchphrase'] as String,
@@ -23,19 +23,11 @@ _WeatherPersonalityDetailReadModel _$WeatherPersonalityDetailReadModelFromJson(
       behaviorTendencyList: (json['behaviorTendencyList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      compatibleTypes: (json['compatibleTypes'] as List<dynamic>)
-          .map((e) =>
-              TypeCompatibilityReadModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      incompatibleTypes: (json['incompatibleTypes'] as List<dynamic>)
-          .map((e) =>
-              TypeCompatibilityReadModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
       godsMessage: json['godsMessage'] as String,
     );
 
-Map<String, dynamic> _$WeatherPersonalityDetailReadModelToJson(
-        _WeatherPersonalityDetailReadModel instance) =>
+Map<String, dynamic> _$WeatherPersonalityResultDtoToJson(
+        _WeatherPersonalityResultDto instance) =>
     <String, dynamic>{
       'typeCode': instance.typeCode,
       'typeName': instance.typeName,
@@ -45,7 +37,5 @@ Map<String, dynamic> _$WeatherPersonalityDetailReadModelToJson(
       'axisFeatures': instance.axisFeatures,
       'axisScore': instance.axisScore,
       'behaviorTendencyList': instance.behaviorTendencyList,
-      'compatibleTypes': instance.compatibleTypes,
-      'incompatibleTypes': instance.incompatibleTypes,
       'godsMessage': instance.godsMessage,
     };

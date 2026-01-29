@@ -31,9 +31,6 @@ mixin _$AppUserReadModel {
       _$AppUserReadModelCopyWithImpl<AppUserReadModel>(
           this as AppUserReadModel, _$identity);
 
-  /// Serializes this AppUserReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -49,7 +46,6 @@ mixin _$AppUserReadModel {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, gender, birthDate, address, email, status);
@@ -315,7 +311,7 @@ extension AppUserReadModelPatterns on AppUserReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _AppUserReadModel implements AppUserReadModel {
   const _AppUserReadModel(
       {required this.id,
@@ -325,8 +321,6 @@ class _AppUserReadModel implements AppUserReadModel {
       required this.address,
       required this.email,
       required this.status});
-  factory _AppUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$AppUserReadModelFromJson(json);
 
   @override
   final String id;
@@ -353,13 +347,6 @@ class _AppUserReadModel implements AppUserReadModel {
       __$AppUserReadModelCopyWithImpl<_AppUserReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$AppUserReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -374,7 +361,6 @@ class _AppUserReadModel implements AppUserReadModel {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, gender, birthDate, address, email, status);

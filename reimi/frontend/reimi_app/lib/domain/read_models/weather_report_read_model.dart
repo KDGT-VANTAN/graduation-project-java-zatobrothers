@@ -5,7 +5,6 @@ import 'package:reimi_app/domain/value_objects/media_type.dart';
 import 'package:reimi_app/domain/value_objects/weather_type.dart';
 
 part 'weather_report_read_model.freezed.dart';
-part 'weather_report_read_model.g.dart';
 
 @freezed
 abstract class WeatherReportReadModel with _$WeatherReportReadModel {
@@ -27,7 +26,4 @@ abstract class WeatherReportReadModel with _$WeatherReportReadModel {
     double? latitude,
     double? longitude,
   }) = _WeatherReportReadModel;
-
-  factory WeatherReportReadModel.fromJson(Map<String, dynamic> json) =>
-      _$WeatherReportReadModelFromJson(json);
 }

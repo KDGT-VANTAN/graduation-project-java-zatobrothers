@@ -7,7 +7,7 @@ part of 'app_initializer_notifier.dart';
 // **************************************************************************
 
 String _$appInitializerNotifierHash() =>
-    r'263fdf56d3deb94bb8ae441077e5a182cb900890';
+    r'ebf6844d71eeab37a70df99c0b097d0bb73538bb';
 
 /// See also [AppInitializerNotifier].
 @ProviderFor(AppInitializerNotifier)

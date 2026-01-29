@@ -1,32 +1,37 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'like_user_read_model.dart';
+part of 'app_user_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_LikeUserReadModel _$LikeUserReadModelFromJson(Map<String, dynamic> json) =>
-    _LikeUserReadModel(
+_AppUserDto _$AppUserDtoFromJson(Map<String, dynamic> json) => _AppUserDto(
       id: json['id'] as String,
       name: json['name'] as String,
+      gender: $enumDecode(_$GenderEnumMap, json['gender']),
       birthDate: DateTime.parse(json['birthDate'] as String),
       address: $enumDecode(_$AddressEnumMap, json['address']),
-      mainPhotoUrl: json['mainPhotoUrl'] as String,
-      introduction: json['introduction'] as String?,
-      isTodayReported: json['isTodayReported'] as bool?,
+      email: json['email'] as String,
+      status: $enumDecode(_$UserStatusEnumMap, json['status']),
     );
 
-Map<String, dynamic> _$LikeUserReadModelToJson(_LikeUserReadModel instance) =>
+Map<String, dynamic> _$AppUserDtoToJson(_AppUserDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'gender': _$GenderEnumMap[instance.gender]!,
       'birthDate': instance.birthDate.toIso8601String(),
       'address': _$AddressEnumMap[instance.address]!,
-      'mainPhotoUrl': instance.mainPhotoUrl,
-      'introduction': instance.introduction,
-      'isTodayReported': instance.isTodayReported,
+      'email': instance.email,
+      'status': _$UserStatusEnumMap[instance.status]!,
     };
+
+const _$GenderEnumMap = {
+  Gender.man: 'MAN',
+  Gender.woman: 'WOMAN',
+  Gender.other: 'OTHER',
+};
 
 const _$AddressEnumMap = {
   Address.hokkaido: 'HOKKAIDO',
@@ -77,4 +82,11 @@ const _$AddressEnumMap = {
   Address.kagoshima: 'KAGOSHIMA',
   Address.okinawa: 'OKINAWA',
   Address.other: 'OTHER',
+};
+
+const _$UserStatusEnumMap = {
+  UserStatus.active: 'ACTIVE',
+  UserStatus.withdrawn: 'WITHDRAWN',
+  UserStatus.banned: 'BANNED',
+  UserStatus.suspended: 'SUSPENDED',
 };
