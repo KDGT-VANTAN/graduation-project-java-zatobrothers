@@ -11,6 +11,7 @@ extension HomeUserDtoMapper on HomeUserDto {
       mainPhotoUrl: mainPhotoUrl,
       introduction: introduction,
       isTodayReported: isTodayReported,
+      typeCharacterImageUrl: typeCharacterImageUrl,
     );
   }
 }

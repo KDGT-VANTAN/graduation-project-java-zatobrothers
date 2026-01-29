@@ -22,6 +22,7 @@ mixin _$HomeUserDto {
   String get mainPhotoUrl;
   String get introduction;
   bool? get isTodayReported;
+  String? get typeCharacterImageUrl;
 
   /// Create a copy of HomeUserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -48,17 +49,19 @@ mixin _$HomeUserDto {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
+                other.typeCharacterImageUrl == typeCharacterImageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeCharacterImageUrl);
 
   @override
   String toString() {
-    return 'HomeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'HomeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeCharacterImageUrl: $typeCharacterImageUrl)';
   }
 }
 
@@ -75,7 +78,8 @@ abstract mixin class $HomeUserDtoCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeCharacterImageUrl});
 }
 
 /// @nodoc
@@ -97,6 +101,7 @@ class _$HomeUserDtoCopyWithImpl<$Res> implements $HomeUserDtoCopyWith<$Res> {
     Object? mainPhotoUrl = null,
     Object? introduction = null,
     Object? isTodayReported = freezed,
+    Object? typeCharacterImageUrl = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -127,6 +132,10 @@ class _$HomeUserDtoCopyWithImpl<$Res> implements $HomeUserDtoCopyWith<$Res> {
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeCharacterImageUrl: freezed == typeCharacterImageUrl
+          ? _self.typeCharacterImageUrl
+          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -231,15 +240,23 @@ extension HomeUserDtoPatterns on HomeUserDto {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _HomeUserDto() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         return orElse();
     }
@@ -267,14 +284,22 @@ extension HomeUserDtoPatterns on HomeUserDto {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserDto():
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -301,14 +326,22 @@ extension HomeUserDtoPatterns on HomeUserDto {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserDto() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         return null;
     }
@@ -325,7 +358,8 @@ class _HomeUserDto implements HomeUserDto {
       required this.address,
       required this.mainPhotoUrl,
       required this.introduction,
-      this.isTodayReported});
+      this.isTodayReported,
+      this.typeCharacterImageUrl});
   factory _HomeUserDto.fromJson(Map<String, dynamic> json) =>
       _$HomeUserDtoFromJson(json);
 
@@ -344,6 +378,8 @@ class _HomeUserDto implements HomeUserDto {
   final String introduction;
   @override
   final bool? isTodayReported;
+  @override
+  final String? typeCharacterImageUrl;
 
   /// Create a copy of HomeUserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -375,17 +411,19 @@ class _HomeUserDto implements HomeUserDto {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
+                other.typeCharacterImageUrl == typeCharacterImageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeCharacterImageUrl);
 
   @override
   String toString() {
-    return 'HomeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'HomeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeCharacterImageUrl: $typeCharacterImageUrl)';
   }
 }
 
@@ -404,7 +442,8 @@ abstract mixin class _$HomeUserDtoCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeCharacterImageUrl});
 }
 
 /// @nodoc
@@ -426,6 +465,7 @@ class __$HomeUserDtoCopyWithImpl<$Res> implements _$HomeUserDtoCopyWith<$Res> {
     Object? mainPhotoUrl = null,
     Object? introduction = null,
     Object? isTodayReported = freezed,
+    Object? typeCharacterImageUrl = freezed,
   }) {
     return _then(_HomeUserDto(
       id: null == id
@@ -456,6 +496,10 @@ class __$HomeUserDtoCopyWithImpl<$Res> implements _$HomeUserDtoCopyWith<$Res> {
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeCharacterImageUrl: freezed == typeCharacterImageUrl
+          ? _self.typeCharacterImageUrl
+          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

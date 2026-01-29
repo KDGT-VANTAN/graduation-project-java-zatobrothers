@@ -15,6 +15,7 @@ abstract class HomeUserDto with _$HomeUserDto {
     required String mainPhotoUrl,
     required String introduction,
     bool? isTodayReported,
+    String? typeCharacterImageUrl,
   }) = _HomeUserDto;
 
   factory HomeUserDto.fromJson(Map<String, dynamic> json) =>

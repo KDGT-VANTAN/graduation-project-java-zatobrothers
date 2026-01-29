@@ -66,9 +66,8 @@ class UserCard extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image(
-                              image: Assets.images.weatherPersonality
-                                  .nfieSoftOctopusImage.path
-                                  .toImageProvider(),
+                              image:
+                                  user.typeCharacterImageUrl.toImageProvider(),
                               fit: BoxFit.cover,
                             ),
                           ),

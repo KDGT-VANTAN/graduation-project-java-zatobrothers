@@ -22,6 +22,7 @@ mixin _$HomeUserReadModel {
   String get mainPhotoUrl;
   String get introduction;
   bool? get isTodayReported;
+  String? get typeCharacterImageUrl;
 
   /// Create a copy of HomeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -46,16 +47,18 @@ mixin _$HomeUserReadModel {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
+                other.typeCharacterImageUrl == typeCharacterImageUrl));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeCharacterImageUrl);
 
   @override
   String toString() {
-    return 'HomeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'HomeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeCharacterImageUrl: $typeCharacterImageUrl)';
   }
 }
 
@@ -72,7 +75,8 @@ abstract mixin class $HomeUserReadModelCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeCharacterImageUrl});
 }
 
 /// @nodoc
@@ -95,6 +99,7 @@ class _$HomeUserReadModelCopyWithImpl<$Res>
     Object? mainPhotoUrl = null,
     Object? introduction = null,
     Object? isTodayReported = freezed,
+    Object? typeCharacterImageUrl = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -125,6 +130,10 @@ class _$HomeUserReadModelCopyWithImpl<$Res>
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeCharacterImageUrl: freezed == typeCharacterImageUrl
+          ? _self.typeCharacterImageUrl
+          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -229,15 +238,23 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _HomeUserReadModel() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         return orElse();
     }
@@ -265,14 +282,22 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserReadModel():
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -299,14 +324,22 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
             Address address,
             String mainPhotoUrl,
             String introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeCharacterImageUrl)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomeUserReadModel() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeCharacterImageUrl);
       case _:
         return null;
     }
@@ -323,7 +356,8 @@ class _HomeUserReadModel implements HomeUserReadModel {
       required this.address,
       required this.mainPhotoUrl,
       required this.introduction,
-      this.isTodayReported});
+      this.isTodayReported,
+      this.typeCharacterImageUrl});
 
   @override
   final String id;
@@ -340,6 +374,8 @@ class _HomeUserReadModel implements HomeUserReadModel {
   final String introduction;
   @override
   final bool? isTodayReported;
+  @override
+  final String? typeCharacterImageUrl;
 
   /// Create a copy of HomeUserReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -364,16 +400,18 @@ class _HomeUserReadModel implements HomeUserReadModel {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
+                other.typeCharacterImageUrl == typeCharacterImageUrl));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeCharacterImageUrl);
 
   @override
   String toString() {
-    return 'HomeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'HomeUserReadModel(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeCharacterImageUrl: $typeCharacterImageUrl)';
   }
 }
 
@@ -392,7 +430,8 @@ abstract mixin class _$HomeUserReadModelCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeCharacterImageUrl});
 }
 
 /// @nodoc
@@ -415,6 +454,7 @@ class __$HomeUserReadModelCopyWithImpl<$Res>
     Object? mainPhotoUrl = null,
     Object? introduction = null,
     Object? isTodayReported = freezed,
+    Object? typeCharacterImageUrl = freezed,
   }) {
     return _then(_HomeUserReadModel(
       id: null == id
@@ -445,6 +485,10 @@ class __$HomeUserReadModelCopyWithImpl<$Res>
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeCharacterImageUrl: freezed == typeCharacterImageUrl
+          ? _self.typeCharacterImageUrl
+          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

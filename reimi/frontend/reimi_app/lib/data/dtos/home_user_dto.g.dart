@@ -14,6 +14,7 @@ _HomeUserDto _$HomeUserDtoFromJson(Map<String, dynamic> json) => _HomeUserDto(
       mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String,
       isTodayReported: json['isTodayReported'] as bool?,
+      typeCharacterImageUrl: json['typeCharacterImageUrl'] as String?,
     );
 
 Map<String, dynamic> _$HomeUserDtoToJson(_HomeUserDto instance) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$HomeUserDtoToJson(_HomeUserDto instance) =>
       'mainPhotoUrl': instance.mainPhotoUrl,
       'introduction': instance.introduction,
       'isTodayReported': instance.isTodayReported,
+      'typeCharacterImageUrl': instance.typeCharacterImageUrl,
     };
 
 const _$AddressEnumMap = {
