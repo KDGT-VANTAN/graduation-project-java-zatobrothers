@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +48,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
 
     @PostMapping("/diagnoses/score/user-weather-personality-type")
     @DiagnoseWeatherPersonalityType
-    public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> diagnose(
+    public ResponseEntity<Void> diagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
     ) {
         List<AnswerChoice> answers = List.of(
@@ -73,12 +74,20 @@ public class WeatherPersonalityController extends ApiV1Controller {
         User user = userUseCase.getUser(myFirebaseUid)
             .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
 
-        var result = weatherPersonalityUseCase.diagnose(
+        weatherPersonalityUseCase.diagnose(
             new DiagnoseWeatherPersonalityCommand(
                 user.getId(),
                 answers
             )
         );
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/diagnoses/score/user-weather-personality-type")
+    public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
+    ) {
+        var result = weatherPersonalityUseCase.getUserResult();
 
         Map<WeatherPersonalityAxis, Integer> userAxisScoreMap = new LinkedHashMap<>();
         userAxisScoreMap.put(WeatherPersonalityAxis.SENSITIVITY, result.getWeatherPersonalityScore().sensitivity());
@@ -99,6 +108,6 @@ public class WeatherPersonalityController extends ApiV1Controller {
                 result.getWeatherPersonalityType().getGodsMessage()
             );
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.ok(response);
     }
 }
