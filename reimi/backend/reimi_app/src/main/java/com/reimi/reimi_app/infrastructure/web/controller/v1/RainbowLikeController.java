@@ -14,6 +14,7 @@ import com.reimi.reimi_app.application.usecase.RainbowLikeUseCase;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.web.dto.request.SendRainbowLikeRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.GetRainbowLikedUserListResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.GetRainbowLikeGivenUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.GetRainbowLikeReceivedUsersApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.rainbowlike.RainbowLikeUserApi;
 
@@ -49,6 +50,25 @@ public class RainbowLikeController extends ApiV1Controller {
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping(path = "/rainbow-likes/users/given")
+    @GetRainbowLikeGivenUsersApi
+    public ResponseEntity<List<GetRainbowLikedUserListResponse>> getRainbowLikeGivenUsers() {
+
+        List<GetRainbowLikedUserListResponse> response = rainbowLikeUseCase.getRainbowLikeGivenUserList()
+                .stream()
+                .map(user -> new GetRainbowLikedUserListResponse(
+                    user.getId().value(),
+                    user.getName(),
+                    user.getBirthDate(),
+                    user.getAddress(),
+                    user.getSignedMainPhotoUrl(),
+                    user.getRainbowLikeMessage()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(path = "/rainbow-likes/users/received")
