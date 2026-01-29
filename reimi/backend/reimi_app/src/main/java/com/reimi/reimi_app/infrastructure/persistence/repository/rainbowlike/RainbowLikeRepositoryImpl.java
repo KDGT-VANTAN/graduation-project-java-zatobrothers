@@ -34,9 +34,18 @@ public class RainbowLikeRepositoryImpl implements RainbowLikeRepository {
     }
 
     @Override
+    public List<RainbowLike> findRainbowLikesGivenByFromUserId(UserId fromUserId) {
+        return jpaRainbowLikeRepository
+            .findRainbowLikesByFromUserId(fromUserId.value())
+            .stream()
+            .map(RainbowLikeMapper::toDomain)
+            .toList();
+    }
+
+    @Override
     public List<RainbowLike> findRainbowLikesReceivedByToUserId(UserId toUserId) {
         return jpaRainbowLikeRepository
-            .findRainbowLikesReceivedByToUserId(toUserId.value())
+            .findRainbowLikesByToUserId(toUserId.value())
             .stream()
             .map(RainbowLikeMapper::toDomain)
             .toList();
