@@ -21,6 +21,7 @@ import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxi
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityType;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.GetUserWeatherPersonalityType;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -85,6 +86,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
     }
 
     @GetMapping("/diagnoses/score/user-weather-personality-type")
+    @GetUserWeatherPersonalityType
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
     ) {
         var result = weatherPersonalityUseCase.getUserResult();
