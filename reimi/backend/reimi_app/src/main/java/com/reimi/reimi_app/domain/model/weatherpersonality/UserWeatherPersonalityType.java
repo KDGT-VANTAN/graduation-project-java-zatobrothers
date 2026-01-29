@@ -36,6 +36,29 @@ public class UserWeatherPersonalityType {
 
     }
 
+    public static UserWeatherPersonalityType reconstruct(
+        UserWeatherPersonalityTypeId id,
+        UserId userId,
+        WeatherPersonalityType type,
+        int sensitivity,
+        int preparedness,
+        int activity,
+        int motivation
+    ) {
+        WeatherPersonalityScore weatherPersonalityScore = new WeatherPersonalityScore(
+            sensitivity,
+            preparedness,
+            activity,
+            motivation
+        );
+        return new UserWeatherPersonalityType(
+            id,
+            userId,
+            type,
+            weatherPersonalityScore
+        );
+    }
+
     public UserWeatherPersonalityTypeId getId() { return id; }
     public UserId getUserId() { return userId; }
     public WeatherPersonalityType getWeatherPersonalityType() { return type; }
