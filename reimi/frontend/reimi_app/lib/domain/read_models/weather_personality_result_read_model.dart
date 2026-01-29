@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_personality_result_read_model.freezed.dart';
-part 'weather_personality_result_read_model.g.dart';
 
 @freezed
 abstract class WeatherPersonalityResultReadModel
@@ -17,8 +16,4 @@ abstract class WeatherPersonalityResultReadModel
     required List<String> behaviorTendencyList,
     required String godsMessage,
   }) = _WeatherPersonalityResultReadModel;
-
-  factory WeatherPersonalityResultReadModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WeatherPersonalityResultReadModelFromJson(json);
 }

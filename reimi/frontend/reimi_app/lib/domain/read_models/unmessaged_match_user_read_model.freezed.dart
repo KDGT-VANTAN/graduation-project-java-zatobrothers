@@ -26,9 +26,6 @@ mixin _$UnmessagedMatchUserReadModel {
               UnmessagedMatchUserReadModel>(
           this as UnmessagedMatchUserReadModel, _$identity);
 
-  /// Serializes this UnmessagedMatchUserReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -39,7 +36,6 @@ mixin _$UnmessagedMatchUserReadModel {
                 other.mainPhotoUrl == mainPhotoUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, mainPhotoUrl);
 
@@ -246,12 +242,10 @@ extension UnmessagedMatchUserReadModelPatterns on UnmessagedMatchUserReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _UnmessagedMatchUserReadModel implements UnmessagedMatchUserReadModel {
   const _UnmessagedMatchUserReadModel(
       {required this.id, required this.mainPhotoUrl});
-  factory _UnmessagedMatchUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$UnmessagedMatchUserReadModelFromJson(json);
 
   @override
   final String id;
@@ -268,13 +262,6 @@ class _UnmessagedMatchUserReadModel implements UnmessagedMatchUserReadModel {
           _UnmessagedMatchUserReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$UnmessagedMatchUserReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -284,7 +271,6 @@ class _UnmessagedMatchUserReadModel implements UnmessagedMatchUserReadModel {
                 other.mainPhotoUrl == mainPhotoUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, mainPhotoUrl);
 

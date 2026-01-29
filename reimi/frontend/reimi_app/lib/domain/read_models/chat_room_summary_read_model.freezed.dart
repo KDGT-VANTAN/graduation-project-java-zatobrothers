@@ -33,9 +33,6 @@ mixin _$ChatRoomSummaryReadModel {
       _$ChatRoomSummaryReadModelCopyWithImpl<ChatRoomSummaryReadModel>(
           this as ChatRoomSummaryReadModel, _$identity);
 
-  /// Serializes this ChatRoomSummaryReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -58,7 +55,6 @@ mixin _$ChatRoomSummaryReadModel {
                 other.unreadCount == unreadCount));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -375,7 +371,7 @@ extension ChatRoomSummaryReadModelPatterns on ChatRoomSummaryReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _ChatRoomSummaryReadModel implements ChatRoomSummaryReadModel {
   const _ChatRoomSummaryReadModel(
       {required this.chatRoomId,
@@ -387,8 +383,6 @@ class _ChatRoomSummaryReadModel implements ChatRoomSummaryReadModel {
       required this.lastMessageText,
       required this.lastSentAt,
       this.unreadCount = 0});
-  factory _ChatRoomSummaryReadModel.fromJson(Map<String, dynamic> json) =>
-      _$ChatRoomSummaryReadModelFromJson(json);
 
   @override
   final String chatRoomId;
@@ -421,13 +415,6 @@ class _ChatRoomSummaryReadModel implements ChatRoomSummaryReadModel {
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$ChatRoomSummaryReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -449,7 +436,6 @@ class _ChatRoomSummaryReadModel implements ChatRoomSummaryReadModel {
                 other.unreadCount == unreadCount));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,

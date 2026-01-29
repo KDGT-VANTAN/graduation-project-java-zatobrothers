@@ -31,9 +31,6 @@ mixin _$LikeUserReadModel {
       _$LikeUserReadModelCopyWithImpl<LikeUserReadModel>(
           this as LikeUserReadModel, _$identity);
 
-  /// Serializes this LikeUserReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -52,7 +49,6 @@ mixin _$LikeUserReadModel {
                 other.isTodayReported == isTodayReported));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
       mainPhotoUrl, introduction, isTodayReported);
@@ -318,7 +314,7 @@ extension LikeUserReadModelPatterns on LikeUserReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _LikeUserReadModel implements LikeUserReadModel {
   const _LikeUserReadModel(
       {required this.id,
@@ -328,8 +324,6 @@ class _LikeUserReadModel implements LikeUserReadModel {
       required this.mainPhotoUrl,
       this.introduction,
       this.isTodayReported});
-  factory _LikeUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$LikeUserReadModelFromJson(json);
 
   @override
   final String id;
@@ -356,13 +350,6 @@ class _LikeUserReadModel implements LikeUserReadModel {
       __$LikeUserReadModelCopyWithImpl<_LikeUserReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$LikeUserReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -380,7 +367,6 @@ class _LikeUserReadModel implements LikeUserReadModel {
                 other.isTodayReported == isTodayReported));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
       mainPhotoUrl, introduction, isTodayReported);

@@ -3,7 +3,6 @@ import 'package:reimi_app/core/utils/yyyy_mm_dd_date_converter.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 
 part 'like_user_read_model.freezed.dart';
-part 'like_user_read_model.g.dart';
 
 @freezed
 abstract class LikeUserReadModel with _$LikeUserReadModel {
@@ -16,7 +15,4 @@ abstract class LikeUserReadModel with _$LikeUserReadModel {
     String? introduction,
     bool? isTodayReported,
   }) = _LikeUserReadModel;
-
-  factory LikeUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$LikeUserReadModelFromJson(json);
 }

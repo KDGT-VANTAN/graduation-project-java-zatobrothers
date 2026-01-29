@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reimi_app/domain/read_models/type_compatibility_read_model.dart';
 
 part 'weather_personality_detail_read_model.freezed.dart';
-part 'weather_personality_detail_read_model.g.dart';
 
 @freezed
 abstract class WeatherPersonalityDetailReadModel
@@ -20,8 +19,4 @@ abstract class WeatherPersonalityDetailReadModel
     required List<TypeCompatibilityReadModel> incompatibleTypes,
     required String godsMessage,
   }) = _WeatherPersonalityDetailReadModel;
-
-  factory WeatherPersonalityDetailReadModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WeatherPersonalityDetailReadModelFromJson(json);
 }

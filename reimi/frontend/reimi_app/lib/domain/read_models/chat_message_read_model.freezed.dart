@@ -29,9 +29,6 @@ mixin _$ChatMessageReadModel {
       _$ChatMessageReadModelCopyWithImpl<ChatMessageReadModel>(
           this as ChatMessageReadModel, _$identity);
 
-  /// Serializes this ChatMessageReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -49,7 +46,6 @@ mixin _$ChatMessageReadModel {
             (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, messageId, chatRoomId, senderId,
       content, messageType, sentAt);
@@ -291,7 +287,7 @@ extension ChatMessageReadModelPatterns on ChatMessageReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _ChatMessageReadModel implements ChatMessageReadModel {
   const _ChatMessageReadModel(
       {required this.messageId,
@@ -300,8 +296,6 @@ class _ChatMessageReadModel implements ChatMessageReadModel {
       required this.content,
       required this.messageType,
       required this.sentAt});
-  factory _ChatMessageReadModel.fromJson(Map<String, dynamic> json) =>
-      _$ChatMessageReadModelFromJson(json);
 
   @override
   final String messageId;
@@ -326,13 +320,6 @@ class _ChatMessageReadModel implements ChatMessageReadModel {
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$ChatMessageReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -349,7 +336,6 @@ class _ChatMessageReadModel implements ChatMessageReadModel {
             (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, messageId, chatRoomId, senderId,
       content, messageType, sentAt);

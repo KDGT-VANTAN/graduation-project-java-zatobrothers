@@ -31,9 +31,6 @@ mixin _$HomeUserReadModel {
       _$HomeUserReadModelCopyWithImpl<HomeUserReadModel>(
           this as HomeUserReadModel, _$identity);
 
-  /// Serializes this HomeUserReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -52,7 +49,6 @@ mixin _$HomeUserReadModel {
                 other.isTodayReported == isTodayReported));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
       mainPhotoUrl, introduction, isTodayReported);
@@ -318,7 +314,7 @@ extension HomeUserReadModelPatterns on HomeUserReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _HomeUserReadModel implements HomeUserReadModel {
   const _HomeUserReadModel(
       {required this.id,
@@ -328,8 +324,6 @@ class _HomeUserReadModel implements HomeUserReadModel {
       required this.mainPhotoUrl,
       required this.introduction,
       this.isTodayReported});
-  factory _HomeUserReadModel.fromJson(Map<String, dynamic> json) =>
-      _$HomeUserReadModelFromJson(json);
 
   @override
   final String id;
@@ -356,13 +350,6 @@ class _HomeUserReadModel implements HomeUserReadModel {
       __$HomeUserReadModelCopyWithImpl<_HomeUserReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$HomeUserReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -380,7 +367,6 @@ class _HomeUserReadModel implements HomeUserReadModel {
                 other.isTodayReported == isTodayReported));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
       mainPhotoUrl, introduction, isTodayReported);

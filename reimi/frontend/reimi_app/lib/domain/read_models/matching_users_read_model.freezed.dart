@@ -26,9 +26,6 @@ mixin _$MatchingUsersReadModel {
       _$MatchingUsersReadModelCopyWithImpl<MatchingUsersReadModel>(
           this as MatchingUsersReadModel, _$identity);
 
-  /// Serializes this MatchingUsersReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -43,7 +40,6 @@ mixin _$MatchingUsersReadModel {
                 other.currentUserMainPhotoUrl == currentUserMainPhotoUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, otherUserName,
       otherUserMainPhotoUrl, currentUserMainPhotoUrl);
@@ -267,14 +263,12 @@ extension MatchingUsersReadModelPatterns on MatchingUsersReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _MatchingUsersReadModel implements MatchingUsersReadModel {
   const _MatchingUsersReadModel(
       {required this.otherUserName,
       required this.otherUserMainPhotoUrl,
       required this.currentUserMainPhotoUrl});
-  factory _MatchingUsersReadModel.fromJson(Map<String, dynamic> json) =>
-      _$MatchingUsersReadModelFromJson(json);
 
   @override
   final String otherUserName;
@@ -293,13 +287,6 @@ class _MatchingUsersReadModel implements MatchingUsersReadModel {
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$MatchingUsersReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -313,7 +300,6 @@ class _MatchingUsersReadModel implements MatchingUsersReadModel {
                 other.currentUserMainPhotoUrl == currentUserMainPhotoUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, otherUserName,
       otherUserMainPhotoUrl, currentUserMainPhotoUrl);

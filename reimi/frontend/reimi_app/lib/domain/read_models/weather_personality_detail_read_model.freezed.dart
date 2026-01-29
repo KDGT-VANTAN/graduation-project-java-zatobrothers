@@ -35,9 +35,6 @@ mixin _$WeatherPersonalityDetailReadModel {
               WeatherPersonalityDetailReadModel>(
           this as WeatherPersonalityDetailReadModel, _$identity);
 
-  /// Serializes this WeatherPersonalityDetailReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -66,7 +63,6 @@ mixin _$WeatherPersonalityDetailReadModel {
                 other.godsMessage == godsMessage));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -411,7 +407,7 @@ extension WeatherPersonalityDetailReadModelPatterns
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _WeatherPersonalityDetailReadModel
     implements WeatherPersonalityDetailReadModel {
   const _WeatherPersonalityDetailReadModel(
@@ -431,9 +427,6 @@ class _WeatherPersonalityDetailReadModel
         _behaviorTendencyList = behaviorTendencyList,
         _compatibleTypes = compatibleTypes,
         _incompatibleTypes = incompatibleTypes;
-  factory _WeatherPersonalityDetailReadModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WeatherPersonalityDetailReadModelFromJson(json);
 
   @override
   final String typeCode;
@@ -501,13 +494,6 @@ class _WeatherPersonalityDetailReadModel
           _WeatherPersonalityDetailReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$WeatherPersonalityDetailReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -536,7 +522,6 @@ class _WeatherPersonalityDetailReadModel
                 other.godsMessage == godsMessage));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,

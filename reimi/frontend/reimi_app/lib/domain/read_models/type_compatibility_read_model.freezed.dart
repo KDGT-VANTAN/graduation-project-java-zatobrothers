@@ -28,9 +28,6 @@ mixin _$TypeCompatibilityReadModel {
           _$TypeCompatibilityReadModelCopyWithImpl<TypeCompatibilityReadModel>(
               this as TypeCompatibilityReadModel, _$identity);
 
-  /// Serializes this TypeCompatibilityReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -46,7 +43,6 @@ mixin _$TypeCompatibilityReadModel {
                 other.compatibilityPoint == compatibilityPoint));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, typeCode, typeName,
       typeCharacterImageUrl, compatibilityPoint);
@@ -276,15 +272,13 @@ extension TypeCompatibilityReadModelPatterns on TypeCompatibilityReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _TypeCompatibilityReadModel implements TypeCompatibilityReadModel {
   const _TypeCompatibilityReadModel(
       {required this.typeCode,
       required this.typeName,
       required this.typeCharacterImageUrl,
       required this.compatibilityPoint});
-  factory _TypeCompatibilityReadModel.fromJson(Map<String, dynamic> json) =>
-      _$TypeCompatibilityReadModelFromJson(json);
 
   @override
   final String typeCode;
@@ -305,13 +299,6 @@ class _TypeCompatibilityReadModel implements TypeCompatibilityReadModel {
           _TypeCompatibilityReadModel>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$TypeCompatibilityReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -326,7 +313,6 @@ class _TypeCompatibilityReadModel implements TypeCompatibilityReadModel {
                 other.compatibilityPoint == compatibilityPoint));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, typeCode, typeName,
       typeCharacterImageUrl, compatibilityPoint);

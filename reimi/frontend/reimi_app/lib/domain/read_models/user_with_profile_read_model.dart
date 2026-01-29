@@ -14,7 +14,6 @@ import 'package:reimi_app/domain/value_objects/occupation.dart';
 import 'package:reimi_app/domain/value_objects/smoking.dart';
 
 part 'user_with_profile_read_model.freezed.dart';
-part 'user_with_profile_read_model.g.dart';
 
 @freezed
 abstract class UserWithProfileReadModel with _$UserWithProfileReadModel {
@@ -42,7 +41,4 @@ abstract class UserWithProfileReadModel with _$UserWithProfileReadModel {
     List<String>? rainyDayHobbies,
     List<String>? subPhotos,
   }) = _UserWithProfileReadModel;
-
-  factory UserWithProfileReadModel.fromJson(Map<String, dynamic> json) =>
-      _$UserWithProfileReadModelFromJson(json);
 }

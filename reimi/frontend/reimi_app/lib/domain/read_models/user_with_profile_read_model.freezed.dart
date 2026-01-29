@@ -46,9 +46,6 @@ mixin _$UserWithProfileReadModel {
       _$UserWithProfileReadModelCopyWithImpl<UserWithProfileReadModel>(
           this as UserWithProfileReadModel, _$identity);
 
-  /// Serializes this UserWithProfileReadModel to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -91,7 +88,6 @@ mixin _$UserWithProfileReadModel {
             const DeepCollectionEquality().equals(other.subPhotos, subPhotos));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -578,7 +574,7 @@ extension UserWithProfileReadModelPatterns on UserWithProfileReadModel {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _UserWithProfileReadModel implements UserWithProfileReadModel {
   const _UserWithProfileReadModel(
       {required this.id,
@@ -606,8 +602,6 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
       : _sunnyDayHobbies = sunnyDayHobbies,
         _rainyDayHobbies = rainyDayHobbies,
         _subPhotos = subPhotos;
-  factory _UserWithProfileReadModel.fromJson(Map<String, dynamic> json) =>
-      _$UserWithProfileReadModelFromJson(json);
 
   @override
   final String id;
@@ -688,13 +682,6 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$UserWithProfileReadModelToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -737,7 +724,6 @@ class _UserWithProfileReadModel implements UserWithProfileReadModel {
                 .equals(other._subPhotos, _subPhotos));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
