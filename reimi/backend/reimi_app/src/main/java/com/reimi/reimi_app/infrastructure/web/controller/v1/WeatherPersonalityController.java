@@ -47,7 +47,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
         this.userUseCase = userUseCase;
     }
 
-    @PostMapping("/diagnoses/score/user-weather-personality-type")
+    @PostMapping("/user-weather-personality-type")
     @DiagnoseWeatherPersonalityType
     public ResponseEntity<Void> diagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
@@ -85,7 +85,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/diagnoses/score/user-weather-personality-type")
+    @GetMapping("/user-weather-personality-type")
     @GetUserWeatherPersonalityType
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
     ) {
