@@ -94,6 +94,30 @@ class $AssetsImagesSampleGen {
   AssetGenImage get mainPhotoSample =>
       const AssetGenImage('assets/images/sample/main_photo_sample.png');
 
+  /// File path: assets/images/sample/new_user_000_sample_image.png
+  AssetGenImage get newUser000SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_000_sample_image.png');
+
+  /// File path: assets/images/sample/new_user_001_sample_image.png
+  AssetGenImage get newUser001SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_001_sample_image.png');
+
+  /// File path: assets/images/sample/new_user_002_sample_image.png
+  AssetGenImage get newUser002SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_002_sample_image.png');
+
+  /// File path: assets/images/sample/new_user_003_sample_image.png
+  AssetGenImage get newUser003SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_003_sample_image.png');
+
+  /// File path: assets/images/sample/new_user_004_sample_image.png
+  AssetGenImage get newUser004SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_004_sample_image.png');
+
+  /// File path: assets/images/sample/new_user_005_sample_image.png
+  AssetGenImage get newUser005SampleImage =>
+      const AssetGenImage('assets/images/sample/new_user_005_sample_image.png');
+
   /// File path: assets/images/sample/user_000_sample_image.png
   AssetGenImage get user000SampleImage =>
       const AssetGenImage('assets/images/sample/user_000_sample_image.png');
@@ -130,6 +154,12 @@ class $AssetsImagesSampleGen {
         chatUser004SampleImage,
         chatUser005SampleImage,
         mainPhotoSample,
+        newUser000SampleImage,
+        newUser001SampleImage,
+        newUser002SampleImage,
+        newUser003SampleImage,
+        newUser004SampleImage,
+        newUser005SampleImage,
         user000SampleImage,
         user001SampleImage,
         user002SampleImage,
@@ -158,6 +188,34 @@ class $AssetsImagesWeatherPersonalityGen {
   AssetGenImage get nfieSoftOctopusImage => const AssetGenImage(
       'assets/images/weather_personality/nfie_soft_octopus_image.png');
 
+  /// File path: assets/images/weather_personality/nfir_freelance_mole_image.png
+  AssetGenImage get nfirFreelanceMoleImage => const AssetGenImage(
+      'assets/images/weather_personality/nfir_freelance_mole_image.png');
+
+  /// File path: assets/images/weather_personality/nfoe_vibes_rising_parrot_image.png
+  AssetGenImage get nfoeVibesRisingParrotImage => const AssetGenImage(
+      'assets/images/weather_personality/nfoe_vibes_rising_parrot_image.png');
+
+  /// File path: assets/images/weather_personality/nfor_goat_on_the_cliff_image.png
+  AssetGenImage get nforGoatOnTheCliffImage => const AssetGenImage(
+      'assets/images/weather_personality/nfor_goat_on_the_cliff_image.png');
+
+  /// File path: assets/images/weather_personality/npie_mentor_owl_image.png
+  AssetGenImage get npieMentorOwlImage => const AssetGenImage(
+      'assets/images/weather_personality/npie_mentor_owl_image.png');
+
+  /// File path: assets/images/weather_personality/npir_working_mole_rat_image.png
+  AssetGenImage get npirWorkingMoleRatImage => const AssetGenImage(
+      'assets/images/weather_personality/npir_working_mole_rat_image.png');
+
+  /// File path: assets/images/weather_personality/npoe_dolphins_in_the_aquarium_image.png
+  AssetGenImage get npoeDolphinsInTheAquariumImage => const AssetGenImage(
+      'assets/images/weather_personality/npoe_dolphins_in_the_aquarium_image.png');
+
+  /// File path: assets/images/weather_personality/npor_consult_bald_eagle_image.png
+  AssetGenImage get nporConsultBaldEagleImage => const AssetGenImage(
+      'assets/images/weather_personality/npor_consult_bald_eagle_image.png');
+
   /// File path: assets/images/weather_personality/reimi_god.png
   AssetGenImage get reimiGod =>
       const AssetGenImage('assets/images/weather_personality/reimi_god.png');
@@ -166,13 +224,59 @@ class $AssetsImagesWeatherPersonalityGen {
   AssetGenImage get reimiGodIcon => const AssetGenImage(
       'assets/images/weather_personality/reimi_god_icon.png');
 
+  /// File path: assets/images/weather_personality/sfie_family_cat_image.png
+  AssetGenImage get sfieFamilyCatImage => const AssetGenImage(
+      'assets/images/weather_personality/sfie_family_cat_image.png');
+
+  /// File path: assets/images/weather_personality/sfir_minimalist_hermit_crab_image.png
+  AssetGenImage get sfirMinimalistHermitCrabImage => const AssetGenImage(
+      'assets/images/weather_personality/sfir_minimalist_hermit_crab_image.png');
+
+  /// File path: assets/images/weather_personality/sfoe_street_performing_red_panda_image.png
+  AssetGenImage get sfoeStreetPerformingRedPandaImage => const AssetGenImage(
+      'assets/images/weather_personality/sfoe_street_performing_red_panda_image.png');
+
+  /// File path: assets/images/weather_personality/sfor_crows_in_the_garden_image.png
+  AssetGenImage get sforCrowsInTheGardenImage => const AssetGenImage(
+      'assets/images/weather_personality/sfor_crows_in_the_garden_image.png');
+
+  /// File path: assets/images/weather_personality/spie_sentimental_squirrel_image.png
+  AssetGenImage get spieSentimentalSquirrelImage => const AssetGenImage(
+      'assets/images/weather_personality/spie_sentimental_squirrel_image.png');
+
+  /// File path: assets/images/weather_personality/spir_field_worker_beaver_image.png
+  AssetGenImage get spirFieldWorkerBeaverImage => const AssetGenImage(
+      'assets/images/weather_personality/spir_field_worker_beaver_image.png');
+
   /// File path: assets/images/weather_personality/spoe_trainee_sea_otter_image.png
   AssetGenImage get spoeTraineeSeaOtterImage => const AssetGenImage(
       'assets/images/weather_personality/spoe_trainee_sea_otter_image.png');
 
+  /// File path: assets/images/weather_personality/spor_perfectionist_lion_image.png
+  AssetGenImage get sporPerfectionistLionImage => const AssetGenImage(
+      'assets/images/weather_personality/spor_perfectionist_lion_image.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [nfieSoftOctopusImage, reimiGod, reimiGodIcon, spoeTraineeSeaOtterImage];
+  List<AssetGenImage> get values => [
+        nfieSoftOctopusImage,
+        nfirFreelanceMoleImage,
+        nfoeVibesRisingParrotImage,
+        nforGoatOnTheCliffImage,
+        npieMentorOwlImage,
+        npirWorkingMoleRatImage,
+        npoeDolphinsInTheAquariumImage,
+        nporConsultBaldEagleImage,
+        reimiGod,
+        reimiGodIcon,
+        sfieFamilyCatImage,
+        sfirMinimalistHermitCrabImage,
+        sfoeStreetPerformingRedPandaImage,
+        sforCrowsInTheGardenImage,
+        spieSentimentalSquirrelImage,
+        spirFieldWorkerBeaverImage,
+        spoeTraineeSeaOtterImage,
+        sporPerfectionistLionImage
+      ];
 }
 
 class Assets {
