@@ -47,6 +47,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         data: formData,
         options: Options(
           contentType: 'multipart/form-data',
+          validateStatus: (_) => true,
         ),
       );
       if (response.statusCode != 201) {

@@ -38,6 +38,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
         data: formData,
         options: Options(
           contentType: 'multipart/form-data',
+          validateStatus: (_) => true,
         ),
       );
       if (response.statusCode != 204) {
