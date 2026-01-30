@@ -14,9 +14,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$TypeCompatibilityDto {
-  String get typeCode;
+  WeatherPersonalityCode get typeCode;
   String get typeName;
-  String get typeCharacterImageUrl;
+  String get typeImageUrl;
   String get compatibilityPoint;
 
   /// Create a copy of TypeCompatibilityDto
@@ -39,20 +39,20 @@ mixin _$TypeCompatibilityDto {
                 other.typeCode == typeCode) &&
             (identical(other.typeName, typeName) ||
                 other.typeName == typeName) &&
-            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
-                other.typeCharacterImageUrl == typeCharacterImageUrl) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl) &&
             (identical(other.compatibilityPoint, compatibilityPoint) ||
                 other.compatibilityPoint == compatibilityPoint));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, typeCode, typeName,
-      typeCharacterImageUrl, compatibilityPoint);
+  int get hashCode => Object.hash(
+      runtimeType, typeCode, typeName, typeImageUrl, compatibilityPoint);
 
   @override
   String toString() {
-    return 'TypeCompatibilityDto(typeCode: $typeCode, typeName: $typeName, typeCharacterImageUrl: $typeCharacterImageUrl, compatibilityPoint: $compatibilityPoint)';
+    return 'TypeCompatibilityDto(typeCode: $typeCode, typeName: $typeName, typeImageUrl: $typeImageUrl, compatibilityPoint: $compatibilityPoint)';
   }
 }
 
@@ -63,9 +63,9 @@ abstract mixin class $TypeCompatibilityDtoCopyWith<$Res> {
       _$TypeCompatibilityDtoCopyWithImpl;
   @useResult
   $Res call(
-      {String typeCode,
+      {WeatherPersonalityCode typeCode,
       String typeName,
-      String typeCharacterImageUrl,
+      String typeImageUrl,
       String compatibilityPoint});
 }
 
@@ -84,21 +84,21 @@ class _$TypeCompatibilityDtoCopyWithImpl<$Res>
   $Res call({
     Object? typeCode = null,
     Object? typeName = null,
-    Object? typeCharacterImageUrl = null,
+    Object? typeImageUrl = null,
     Object? compatibilityPoint = null,
   }) {
     return _then(_self.copyWith(
       typeCode: null == typeCode
           ? _self.typeCode
           : typeCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherPersonalityCode,
       typeName: null == typeName
           ? _self.typeName
           : typeName // ignore: cast_nullable_to_non_nullable
               as String,
-      typeCharacterImageUrl: null == typeCharacterImageUrl
-          ? _self.typeCharacterImageUrl
-          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+      typeImageUrl: null == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       compatibilityPoint: null == compatibilityPoint
           ? _self.compatibilityPoint
@@ -201,16 +201,16 @@ extension TypeCompatibilityDtoPatterns on TypeCompatibilityDto {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String typeCode, String typeName,
-            String typeCharacterImageUrl, String compatibilityPoint)?
+    TResult Function(WeatherPersonalityCode typeCode, String typeName,
+            String typeImageUrl, String compatibilityPoint)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _TypeCompatibilityDto() when $default != null:
-        return $default(_that.typeCode, _that.typeName,
-            _that.typeCharacterImageUrl, _that.compatibilityPoint);
+        return $default(_that.typeCode, _that.typeName, _that.typeImageUrl,
+            _that.compatibilityPoint);
       case _:
         return orElse();
     }
@@ -231,15 +231,15 @@ extension TypeCompatibilityDtoPatterns on TypeCompatibilityDto {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String typeCode, String typeName,
-            String typeCharacterImageUrl, String compatibilityPoint)
+    TResult Function(WeatherPersonalityCode typeCode, String typeName,
+            String typeImageUrl, String compatibilityPoint)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _TypeCompatibilityDto():
-        return $default(_that.typeCode, _that.typeName,
-            _that.typeCharacterImageUrl, _that.compatibilityPoint);
+        return $default(_that.typeCode, _that.typeName, _that.typeImageUrl,
+            _that.compatibilityPoint);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -259,15 +259,15 @@ extension TypeCompatibilityDtoPatterns on TypeCompatibilityDto {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String typeCode, String typeName,
-            String typeCharacterImageUrl, String compatibilityPoint)?
+    TResult? Function(WeatherPersonalityCode typeCode, String typeName,
+            String typeImageUrl, String compatibilityPoint)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _TypeCompatibilityDto() when $default != null:
-        return $default(_that.typeCode, _that.typeName,
-            _that.typeCharacterImageUrl, _that.compatibilityPoint);
+        return $default(_that.typeCode, _that.typeName, _that.typeImageUrl,
+            _that.compatibilityPoint);
       case _:
         return null;
     }
@@ -280,17 +280,17 @@ class _TypeCompatibilityDto implements TypeCompatibilityDto {
   const _TypeCompatibilityDto(
       {required this.typeCode,
       required this.typeName,
-      required this.typeCharacterImageUrl,
+      required this.typeImageUrl,
       required this.compatibilityPoint});
   factory _TypeCompatibilityDto.fromJson(Map<String, dynamic> json) =>
       _$TypeCompatibilityDtoFromJson(json);
 
   @override
-  final String typeCode;
+  final WeatherPersonalityCode typeCode;
   @override
   final String typeName;
   @override
-  final String typeCharacterImageUrl;
+  final String typeImageUrl;
   @override
   final String compatibilityPoint;
 
@@ -319,20 +319,20 @@ class _TypeCompatibilityDto implements TypeCompatibilityDto {
                 other.typeCode == typeCode) &&
             (identical(other.typeName, typeName) ||
                 other.typeName == typeName) &&
-            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
-                other.typeCharacterImageUrl == typeCharacterImageUrl) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl) &&
             (identical(other.compatibilityPoint, compatibilityPoint) ||
                 other.compatibilityPoint == compatibilityPoint));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, typeCode, typeName,
-      typeCharacterImageUrl, compatibilityPoint);
+  int get hashCode => Object.hash(
+      runtimeType, typeCode, typeName, typeImageUrl, compatibilityPoint);
 
   @override
   String toString() {
-    return 'TypeCompatibilityDto(typeCode: $typeCode, typeName: $typeName, typeCharacterImageUrl: $typeCharacterImageUrl, compatibilityPoint: $compatibilityPoint)';
+    return 'TypeCompatibilityDto(typeCode: $typeCode, typeName: $typeName, typeImageUrl: $typeImageUrl, compatibilityPoint: $compatibilityPoint)';
   }
 }
 
@@ -345,9 +345,9 @@ abstract mixin class _$TypeCompatibilityDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String typeCode,
+      {WeatherPersonalityCode typeCode,
       String typeName,
-      String typeCharacterImageUrl,
+      String typeImageUrl,
       String compatibilityPoint});
 }
 
@@ -366,21 +366,21 @@ class __$TypeCompatibilityDtoCopyWithImpl<$Res>
   $Res call({
     Object? typeCode = null,
     Object? typeName = null,
-    Object? typeCharacterImageUrl = null,
+    Object? typeImageUrl = null,
     Object? compatibilityPoint = null,
   }) {
     return _then(_TypeCompatibilityDto(
       typeCode: null == typeCode
           ? _self.typeCode
           : typeCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherPersonalityCode,
       typeName: null == typeName
           ? _self.typeName
           : typeName // ignore: cast_nullable_to_non_nullable
               as String,
-      typeCharacterImageUrl: null == typeCharacterImageUrl
-          ? _self.typeCharacterImageUrl
-          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+      typeImageUrl: null == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       compatibilityPoint: null == compatibilityPoint
           ? _self.compatibilityPoint

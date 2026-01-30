@@ -14,22 +14,22 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$TestWeatherPersonalityParams {
-  int get q1Answer;
-  int get q2Answer;
-  int get q3Answer;
-  int get q4Answer;
-  int get q5Answer;
-  int get q6Answer;
-  int get q7Answer;
-  int get q8Answer;
-  int get q9Answer;
-  int get q10Answer;
-  int get q11Answer;
-  int get q12Answer;
-  int get q13Answer;
-  int get q14Answer;
-  int get q15Answer;
-  int get q16Answer;
+  AnswerChoice get q1Answer;
+  AnswerChoice get q2Answer;
+  AnswerChoice get q3Answer;
+  AnswerChoice get q4Answer;
+  AnswerChoice get q5Answer;
+  AnswerChoice get q6Answer;
+  AnswerChoice get q7Answer;
+  AnswerChoice get q8Answer;
+  AnswerChoice get q9Answer;
+  AnswerChoice get q10Answer;
+  AnswerChoice get q11Answer;
+  AnswerChoice get q12Answer;
+  AnswerChoice get q13Answer;
+  AnswerChoice get q14Answer;
+  AnswerChoice get q15Answer;
+  AnswerChoice get q16Answer;
 
   /// Create a copy of TestWeatherPersonalityParams
   /// with the given fields replaced by the non-null parameter values.
@@ -113,22 +113,22 @@ abstract mixin class $TestWeatherPersonalityParamsCopyWith<$Res> {
       _$TestWeatherPersonalityParamsCopyWithImpl;
   @useResult
   $Res call(
-      {int q1Answer,
-      int q2Answer,
-      int q3Answer,
-      int q4Answer,
-      int q5Answer,
-      int q6Answer,
-      int q7Answer,
-      int q8Answer,
-      int q9Answer,
-      int q10Answer,
-      int q11Answer,
-      int q12Answer,
-      int q13Answer,
-      int q14Answer,
-      int q15Answer,
-      int q16Answer});
+      {AnswerChoice q1Answer,
+      AnswerChoice q2Answer,
+      AnswerChoice q3Answer,
+      AnswerChoice q4Answer,
+      AnswerChoice q5Answer,
+      AnswerChoice q6Answer,
+      AnswerChoice q7Answer,
+      AnswerChoice q8Answer,
+      AnswerChoice q9Answer,
+      AnswerChoice q10Answer,
+      AnswerChoice q11Answer,
+      AnswerChoice q12Answer,
+      AnswerChoice q13Answer,
+      AnswerChoice q14Answer,
+      AnswerChoice q15Answer,
+      AnswerChoice q16Answer});
 }
 
 /// @nodoc
@@ -165,67 +165,67 @@ class _$TestWeatherPersonalityParamsCopyWithImpl<$Res>
       q1Answer: null == q1Answer
           ? _self.q1Answer
           : q1Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q2Answer: null == q2Answer
           ? _self.q2Answer
           : q2Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q3Answer: null == q3Answer
           ? _self.q3Answer
           : q3Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q4Answer: null == q4Answer
           ? _self.q4Answer
           : q4Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q5Answer: null == q5Answer
           ? _self.q5Answer
           : q5Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q6Answer: null == q6Answer
           ? _self.q6Answer
           : q6Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q7Answer: null == q7Answer
           ? _self.q7Answer
           : q7Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q8Answer: null == q8Answer
           ? _self.q8Answer
           : q8Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q9Answer: null == q9Answer
           ? _self.q9Answer
           : q9Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q10Answer: null == q10Answer
           ? _self.q10Answer
           : q10Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q11Answer: null == q11Answer
           ? _self.q11Answer
           : q11Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q12Answer: null == q12Answer
           ? _self.q12Answer
           : q12Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q13Answer: null == q13Answer
           ? _self.q13Answer
           : q13Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q14Answer: null == q14Answer
           ? _self.q14Answer
           : q14Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q15Answer: null == q15Answer
           ? _self.q15Answer
           : q15Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q16Answer: null == q16Answer
           ? _self.q16Answer
           : q16Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
     ));
   }
 }
@@ -324,22 +324,22 @@ extension TestWeatherPersonalityParamsPatterns on TestWeatherPersonalityParams {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int q1Answer,
-            int q2Answer,
-            int q3Answer,
-            int q4Answer,
-            int q5Answer,
-            int q6Answer,
-            int q7Answer,
-            int q8Answer,
-            int q9Answer,
-            int q10Answer,
-            int q11Answer,
-            int q12Answer,
-            int q13Answer,
-            int q14Answer,
-            int q15Answer,
-            int q16Answer)?
+            AnswerChoice q1Answer,
+            AnswerChoice q2Answer,
+            AnswerChoice q3Answer,
+            AnswerChoice q4Answer,
+            AnswerChoice q5Answer,
+            AnswerChoice q6Answer,
+            AnswerChoice q7Answer,
+            AnswerChoice q8Answer,
+            AnswerChoice q9Answer,
+            AnswerChoice q10Answer,
+            AnswerChoice q11Answer,
+            AnswerChoice q12Answer,
+            AnswerChoice q13Answer,
+            AnswerChoice q14Answer,
+            AnswerChoice q15Answer,
+            AnswerChoice q16Answer)?
         $default, {
     required TResult orElse(),
   }) {
@@ -384,22 +384,22 @@ extension TestWeatherPersonalityParamsPatterns on TestWeatherPersonalityParams {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int q1Answer,
-            int q2Answer,
-            int q3Answer,
-            int q4Answer,
-            int q5Answer,
-            int q6Answer,
-            int q7Answer,
-            int q8Answer,
-            int q9Answer,
-            int q10Answer,
-            int q11Answer,
-            int q12Answer,
-            int q13Answer,
-            int q14Answer,
-            int q15Answer,
-            int q16Answer)
+            AnswerChoice q1Answer,
+            AnswerChoice q2Answer,
+            AnswerChoice q3Answer,
+            AnswerChoice q4Answer,
+            AnswerChoice q5Answer,
+            AnswerChoice q6Answer,
+            AnswerChoice q7Answer,
+            AnswerChoice q8Answer,
+            AnswerChoice q9Answer,
+            AnswerChoice q10Answer,
+            AnswerChoice q11Answer,
+            AnswerChoice q12Answer,
+            AnswerChoice q13Answer,
+            AnswerChoice q14Answer,
+            AnswerChoice q15Answer,
+            AnswerChoice q16Answer)
         $default,
   ) {
     final _that = this;
@@ -442,22 +442,22 @@ extension TestWeatherPersonalityParamsPatterns on TestWeatherPersonalityParams {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int q1Answer,
-            int q2Answer,
-            int q3Answer,
-            int q4Answer,
-            int q5Answer,
-            int q6Answer,
-            int q7Answer,
-            int q8Answer,
-            int q9Answer,
-            int q10Answer,
-            int q11Answer,
-            int q12Answer,
-            int q13Answer,
-            int q14Answer,
-            int q15Answer,
-            int q16Answer)?
+            AnswerChoice q1Answer,
+            AnswerChoice q2Answer,
+            AnswerChoice q3Answer,
+            AnswerChoice q4Answer,
+            AnswerChoice q5Answer,
+            AnswerChoice q6Answer,
+            AnswerChoice q7Answer,
+            AnswerChoice q8Answer,
+            AnswerChoice q9Answer,
+            AnswerChoice q10Answer,
+            AnswerChoice q11Answer,
+            AnswerChoice q12Answer,
+            AnswerChoice q13Answer,
+            AnswerChoice q14Answer,
+            AnswerChoice q15Answer,
+            AnswerChoice q16Answer)?
         $default,
   ) {
     final _that = this;
@@ -508,37 +508,37 @@ class _TestWeatherPersonalityParams implements TestWeatherPersonalityParams {
       required this.q16Answer});
 
   @override
-  final int q1Answer;
+  final AnswerChoice q1Answer;
   @override
-  final int q2Answer;
+  final AnswerChoice q2Answer;
   @override
-  final int q3Answer;
+  final AnswerChoice q3Answer;
   @override
-  final int q4Answer;
+  final AnswerChoice q4Answer;
   @override
-  final int q5Answer;
+  final AnswerChoice q5Answer;
   @override
-  final int q6Answer;
+  final AnswerChoice q6Answer;
   @override
-  final int q7Answer;
+  final AnswerChoice q7Answer;
   @override
-  final int q8Answer;
+  final AnswerChoice q8Answer;
   @override
-  final int q9Answer;
+  final AnswerChoice q9Answer;
   @override
-  final int q10Answer;
+  final AnswerChoice q10Answer;
   @override
-  final int q11Answer;
+  final AnswerChoice q11Answer;
   @override
-  final int q12Answer;
+  final AnswerChoice q12Answer;
   @override
-  final int q13Answer;
+  final AnswerChoice q13Answer;
   @override
-  final int q14Answer;
+  final AnswerChoice q14Answer;
   @override
-  final int q15Answer;
+  final AnswerChoice q15Answer;
   @override
-  final int q16Answer;
+  final AnswerChoice q16Answer;
 
   /// Create a copy of TestWeatherPersonalityParams
   /// with the given fields replaced by the non-null parameter values.
@@ -624,22 +624,22 @@ abstract mixin class _$TestWeatherPersonalityParamsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int q1Answer,
-      int q2Answer,
-      int q3Answer,
-      int q4Answer,
-      int q5Answer,
-      int q6Answer,
-      int q7Answer,
-      int q8Answer,
-      int q9Answer,
-      int q10Answer,
-      int q11Answer,
-      int q12Answer,
-      int q13Answer,
-      int q14Answer,
-      int q15Answer,
-      int q16Answer});
+      {AnswerChoice q1Answer,
+      AnswerChoice q2Answer,
+      AnswerChoice q3Answer,
+      AnswerChoice q4Answer,
+      AnswerChoice q5Answer,
+      AnswerChoice q6Answer,
+      AnswerChoice q7Answer,
+      AnswerChoice q8Answer,
+      AnswerChoice q9Answer,
+      AnswerChoice q10Answer,
+      AnswerChoice q11Answer,
+      AnswerChoice q12Answer,
+      AnswerChoice q13Answer,
+      AnswerChoice q14Answer,
+      AnswerChoice q15Answer,
+      AnswerChoice q16Answer});
 }
 
 /// @nodoc
@@ -676,67 +676,67 @@ class __$TestWeatherPersonalityParamsCopyWithImpl<$Res>
       q1Answer: null == q1Answer
           ? _self.q1Answer
           : q1Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q2Answer: null == q2Answer
           ? _self.q2Answer
           : q2Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q3Answer: null == q3Answer
           ? _self.q3Answer
           : q3Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q4Answer: null == q4Answer
           ? _self.q4Answer
           : q4Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q5Answer: null == q5Answer
           ? _self.q5Answer
           : q5Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q6Answer: null == q6Answer
           ? _self.q6Answer
           : q6Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q7Answer: null == q7Answer
           ? _self.q7Answer
           : q7Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q8Answer: null == q8Answer
           ? _self.q8Answer
           : q8Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q9Answer: null == q9Answer
           ? _self.q9Answer
           : q9Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q10Answer: null == q10Answer
           ? _self.q10Answer
           : q10Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q11Answer: null == q11Answer
           ? _self.q11Answer
           : q11Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q12Answer: null == q12Answer
           ? _self.q12Answer
           : q12Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q13Answer: null == q13Answer
           ? _self.q13Answer
           : q13Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q14Answer: null == q14Answer
           ? _self.q14Answer
           : q14Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q15Answer: null == q15Answer
           ? _self.q15Answer
           : q15Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
       q16Answer: null == q16Answer
           ? _self.q16Answer
           : q16Answer // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AnswerChoice,
     ));
   }
 }

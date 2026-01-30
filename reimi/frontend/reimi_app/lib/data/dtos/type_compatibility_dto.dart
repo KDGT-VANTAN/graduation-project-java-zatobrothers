@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:reimi_app/domain/value_objects/weather_personality_code.dart';
 
 part 'type_compatibility_dto.freezed.dart';
 part 'type_compatibility_dto.g.dart';
@@ -6,9 +7,9 @@ part 'type_compatibility_dto.g.dart';
 @freezed
 abstract class TypeCompatibilityDto with _$TypeCompatibilityDto {
   const factory TypeCompatibilityDto({
-    required String typeCode,
+    required WeatherPersonalityCode typeCode,
     required String typeName,
-    required String typeCharacterImageUrl,
+    required String typeImageUrl,
     required String compatibilityPoint,
   }) = _TypeCompatibilityDto;
 

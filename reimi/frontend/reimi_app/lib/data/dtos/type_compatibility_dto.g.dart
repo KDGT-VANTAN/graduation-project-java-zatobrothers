@@ -9,17 +9,36 @@ part of 'type_compatibility_dto.dart';
 _TypeCompatibilityDto _$TypeCompatibilityDtoFromJson(
         Map<String, dynamic> json) =>
     _TypeCompatibilityDto(
-      typeCode: json['typeCode'] as String,
+      typeCode: $enumDecode(_$WeatherPersonalityCodeEnumMap, json['typeCode']),
       typeName: json['typeName'] as String,
-      typeCharacterImageUrl: json['typeCharacterImageUrl'] as String,
+      typeImageUrl: json['typeImageUrl'] as String,
       compatibilityPoint: json['compatibilityPoint'] as String,
     );
 
 Map<String, dynamic> _$TypeCompatibilityDtoToJson(
         _TypeCompatibilityDto instance) =>
     <String, dynamic>{
-      'typeCode': instance.typeCode,
+      'typeCode': _$WeatherPersonalityCodeEnumMap[instance.typeCode]!,
       'typeName': instance.typeName,
-      'typeCharacterImageUrl': instance.typeCharacterImageUrl,
+      'typeImageUrl': instance.typeImageUrl,
       'compatibilityPoint': instance.compatibilityPoint,
     };
+
+const _$WeatherPersonalityCodeEnumMap = {
+  WeatherPersonalityCode.spoe: 'SPOE',
+  WeatherPersonalityCode.spor: 'SPOR',
+  WeatherPersonalityCode.spie: 'SPIE',
+  WeatherPersonalityCode.spir: 'SPIR',
+  WeatherPersonalityCode.sfoe: 'SFOE',
+  WeatherPersonalityCode.sfor: 'SFOR',
+  WeatherPersonalityCode.sfie: 'SFIE',
+  WeatherPersonalityCode.sfir: 'SFIR',
+  WeatherPersonalityCode.npoe: 'NPOE',
+  WeatherPersonalityCode.npor: 'NPOR',
+  WeatherPersonalityCode.npie: 'NPIE',
+  WeatherPersonalityCode.npir: 'NPIR',
+  WeatherPersonalityCode.nfoe: 'NFOE',
+  WeatherPersonalityCode.nfor: 'NFOR',
+  WeatherPersonalityCode.nfie: 'NFIE',
+  WeatherPersonalityCode.nfir: 'NFIR',
+};
