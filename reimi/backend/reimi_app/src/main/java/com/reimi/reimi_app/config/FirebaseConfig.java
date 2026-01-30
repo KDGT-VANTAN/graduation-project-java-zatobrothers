@@ -1,10 +1,9 @@
 package com.reimi.reimi_app.config;
 
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,16 +14,16 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.cloud.StorageClient;
 
-import org.springframework.core.io.Resource;
-
+import io.github.cdimascio.dotenv.Dotenv;
 
 @Configuration
 public class FirebaseConfig {
-    @Value("classpath:private-key.json")
-    private Resource privateKey;
 
-    @Value("${firebase.storage.bucket}")
-    private String storageBucket;
+    private final Dotenv dotenv;
+
+    public FirebaseConfig(Dotenv dotenv) {
+        this.dotenv = dotenv;
+    }
 
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
@@ -33,11 +32,14 @@ public class FirebaseConfig {
             return FirebaseApp.getInstance();
         }
 
-        InputStream credentials = privateKey.getInputStream();
+        String credentialsPath = dotenv.get("GOOGLE_APPLICATION_CREDENTIALS");
+        String bucket = dotenv.get("FIREBASE_STORAGE_BUCKET");
+
+        FileInputStream serviceAccount = new FileInputStream(credentialsPath);
 
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
-            .setCredentials(GoogleCredentials.fromStream(credentials))
-            .setStorageBucket(storageBucket)
+            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+            .setStorageBucket(bucket)
             .build();
 
         return FirebaseApp.initializeApp(firebaseOptions);
