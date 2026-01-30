@@ -18,13 +18,15 @@ services:
     volumes:
       - ./:/app
       - ~/.m2:/root/.m2
+    env_file:
+      - .env
     environment:
-      SPRING_PROFILES_ACTIVE: dev
-      SPRING_DEVTOOLS_RESTART_ENABLED: true
-      SPRING_DEVTOOLS_LIVERELOAD_ENABLED: true
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/reimi_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      SPRING_DEVTOOLS_RESTART_ENABLED: ${SPRING_DEVTOOLS_RESTART_ENABLED:-true}
+      SPRING_DEVTOOLS_LIVERELOAD_ENABLED: ${SPRING_DEVTOOLS_LIVERELOAD_ENABLED:-true}
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:postgresql://db:5432/reimi_db}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD:-postgres}
 
     depends_on:
       - db
@@ -32,10 +34,12 @@ services:
     image: postgres:15.5
     container_name: reimi-db
     restart: always
+    env_file:
+        - .env
     environment:
-      POSTGRES_DB: reimi_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB:-reimi_db}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
     ports:
       - "5432:5432"
     volumes:
