@@ -6,14 +6,14 @@ class WeatherPersonalityShareCard extends StatelessWidget {
     super.key,
     required this.typeCode,
     required this.typeName,
-    required this.catchphrase,
-    required this.characterImageUrl,
+    required this.typeCatchphrase,
+    required this.typeImageUrl,
   });
 
   final String typeCode;
   final String typeName;
-  final String catchphrase;
-  final String characterImageUrl;
+  final String typeCatchphrase;
+  final String typeImageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -72,14 +72,14 @@ class WeatherPersonalityShareCard extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(4),
               child: Image(
-                image: characterImageUrl.toImageProvider(),
+                image: typeImageUrl.toImageProvider(),
               ),
             ),
             const Spacer(flex: 1),
             Column(
               children: [
                 Text(
-                  '「$catchphrase」',
+                  typeCatchphrase,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyLarge!.copyWith(
                     color: Colors.white,

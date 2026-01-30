@@ -47,7 +47,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser000SampleImage.path,
     introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
     isTodayReported: true,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
   ),
 
@@ -60,7 +60,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser001SampleImage.path,
     introduction: 'エンジニアを目指して勉強中です！最近はキャンプにハマっています。一緒に盛り上がれる友達募集中です。',
     isTodayReported: false,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.sporPerfectionistLionImage.path,
   ),
 
@@ -73,7 +73,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser002SampleImage.path,
     introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
     isTodayReported: true,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.spieSentimentalSquirrelImage.path,
   ),
 
@@ -86,7 +86,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser003SampleImage.path,
     introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
     isTodayReported: true,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.sfoeStreetPerformingRedPandaImage.path,
   ),
 
@@ -99,7 +99,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser004SampleImage.path,
     introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
     isTodayReported: false,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.sforCrowsInTheGardenImage.path,
   ),
 
@@ -112,7 +112,7 @@ final List<HomeUserDto> mockHomeUsers = [
     mainPhotoUrl: Assets.images.sample.newUser005SampleImage.path,
     introduction: '北海道の大自然の中で育ちました。冬はスキー、夏はハイキングをしています。アクティブな方が好きです！',
     isTodayReported: true,
-    typeCharacterImageUrl:
+    typeImageUrl:
         Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
   ),
 

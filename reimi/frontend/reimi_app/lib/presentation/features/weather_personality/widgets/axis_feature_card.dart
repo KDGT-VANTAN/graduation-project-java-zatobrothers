@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:reimi_app/core/extensions/value_objects/weather_personality_axis_extension.dart';
+import 'package:reimi_app/core/extensions/value_objects/weather_personality_polarity_extension.dart';
+import 'package:reimi_app/domain/read_models/axis_feature_read_model.dart';
 
 class AxisFeatureCard extends StatelessWidget {
-  final String title;
-  final String code;
-  final String description;
-
   const AxisFeatureCard({
     super.key,
-    required this.title,
-    required this.code,
-    required this.description,
+    required this.axisFeature,
   });
+  final AxisFeatureReadModel axisFeature;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +26,14 @@ class AxisFeatureCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                title,
+                axisFeature.axis.displayName(context),
                 style: theme.textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
               Text(
-                code,
+                axisFeature.polarity.displayName(context),
                 style: theme.textTheme.titleSmall!.copyWith(
                   color: theme.colorScheme.primary,
                   fontWeight: FontWeight.w600,
@@ -45,7 +43,7 @@ class AxisFeatureCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            description,
+            axisFeature.description,
             style: theme.textTheme.bodyMedium!.copyWith(
               fontSize: 13,
               color: const Color(0xFF4A5F72),

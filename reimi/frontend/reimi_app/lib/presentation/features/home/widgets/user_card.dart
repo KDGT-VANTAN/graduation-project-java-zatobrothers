@@ -67,7 +67,7 @@ class UserCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                             child: Image(
                               image:
-                                  user.typeCharacterImageUrl.toImageProvider(),
+                                  user.typeImageUrl.toImageProvider(),
                               fit: BoxFit.cover,
                             ),
                           ),

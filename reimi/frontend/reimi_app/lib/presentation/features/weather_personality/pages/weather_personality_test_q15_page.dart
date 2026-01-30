@@ -26,8 +26,8 @@ class WeatherPersonalityTestQ15Page extends ConsumerWidget {
       answerB: t.weatherPersonalityTestPage.q15.answerB,
       isSelected: q15Answer != null,
       value: q15Answer,
-      onTapAnswerOption: (score) {
-        notifier.updateQ15Answer(score);
+      onTapAnswerOption: (choice) {
+        notifier.updateQ15Answer(choice);
       },
       onPressedNext: () {
         notifier.nextPage();
