@@ -22,6 +22,7 @@ public class SecurityConfig {
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(
+                    "/",
                     "/swagger-ui/**",
                     "/v3/api-docs/**",
                     "/images/weather-personalities/**"
