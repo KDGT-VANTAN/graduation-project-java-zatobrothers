@@ -424,25 +424,7 @@
         "title": "4軸の特徴"
       },
       "axisScore":{
-        "title": "4軸スコア",
-        "axis": {
-          "sensitivity": {
-            "sensitive": "S（高感受）",
-            "neutral": "N（低感受）"
-          },
-          "preparedness": {
-            "planned": "P（計画）",
-            "flexible": "F（柔軟）"
-          },
-          "activity": {
-            "outdoor": "O（外向）",
-            "indoor": "I（内向）"
-          },
-          "motivation": {
-            "emotional": "E（情緒）",
-            "rational": "R（実用）"
-          }
-        }
+        "title": "4軸スコア"
       },
       "godsMessage": {
         "title": "神様からの一言"
@@ -708,6 +690,12 @@
       "between20And30M": "2000万〜3000万円",
       "over30M": "3000万円以上"
     },
+    "answerChoice": {
+      "stronglyA": "Aにかなり近い",
+      "slightlyA": "Aにやや近い",
+      "slightlyB": "Bにやや近い",
+      "stronglyB": "Bにかなり近い"
+    },
     "bloodType": {
       "a": "A型",
       "b": "B型",
@@ -911,6 +899,22 @@
     "sortType": {
       "login": "ログイン順",
       "compatibility": "相性順"
+    },
+    "weatherPersonalityAxis": {
+      "sensitivity": "感受性",
+      "preparedness": "準備性",
+      "activity": "活動性",
+      "motivation": "動機特性"
+    },
+    "weatherPersonalityPolarity": {
+      "sensitive": "S（高）",
+      "neutral": "N（低）",
+      "planned": "P（計画型）",
+      "flexible": "F（柔軟型）",
+      "outdoor": "O（アウトドア）",
+      "indoor": "I（インドア）",
+      "emotional": "E（情緒）",
+      "rational": "R（実用）"
     },
     "weatherType": {
       "clearStar": "星がはっきり",

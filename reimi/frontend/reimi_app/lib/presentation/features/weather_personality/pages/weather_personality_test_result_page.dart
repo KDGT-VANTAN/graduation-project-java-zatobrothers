@@ -5,8 +5,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
+import 'package:reimi_app/core/extensions/value_objects/weather_personality_polarity_extension.dart';
 import 'package:reimi_app/core/services/share/share_payload.dart';
 import 'package:reimi_app/core/services/share/share_provider.dart';
+import 'package:reimi_app/domain/read_models/behavior_tendency_read_model.dart';
+import 'package:reimi_app/domain/read_models/weather_personality_result_read_model.dart';
+import 'package:reimi_app/domain/value_objects/weather_personality_axis.dart';
+import 'package:reimi_app/domain/value_objects/weather_personality_polarity.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
@@ -54,10 +59,10 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
 
       final bytes = await screenshotController.captureFromWidget(
         WeatherPersonalityShareCard(
-          typeCode: weatherPersonality.typeCode,
+          typeCode: weatherPersonality.typeCode.displayCode,
           typeName: weatherPersonality.typeName,
-          catchphrase: weatherPersonality.typeCatchphrase,
-          characterImageUrl: weatherPersonality.typeCharacterImageUrl,
+          typeCatchphrase: weatherPersonality.typeCatchphrase,
+          typeImageUrl: weatherPersonality.typeImageUrl,
         ),
         delay: const Duration(milliseconds: 100),
       );
@@ -177,11 +182,7 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                       child: FadeTransition(
                         opacity: mainController,
                         child: _MainResultCard(
-                          typeCode: weatherPersonality.typeCode,
-                          typeName: weatherPersonality.typeName,
-                          typeCatchphrase: weatherPersonality.typeCatchphrase,
-                          typeCharacterImageUrl:
-                              weatherPersonality.typeCharacterImageUrl,
+                          weatherPersonality: weatherPersonality,
                         ),
                       ),
                     ),
@@ -222,37 +223,69 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                                 .axisScore.title,
                           ),
                           const SizedBox(height: 16),
-                          AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.sensitivity.sensitive,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.sensitivity.neutral,
-                            score: weatherPersonality.axisScore[0],
-                          ),
-                          const SizedBox(height: 20),
-                          AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.preparedness.planned,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.preparedness.flexible,
-                            score: weatherPersonality.axisScore[1],
-                          ),
-                          const SizedBox(height: 20),
-                          AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.activity.outdoor,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.activity.indoor,
-                            score: weatherPersonality.axisScore[2],
-                          ),
-                          const SizedBox(height: 20),
-                          AxisScoreBar(
-                            leftLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.motivation.emotional,
-                            rightLabel: t.weatherPersonalityTestResultPage
-                                .section.axisScore.axis.motivation.rational,
-                            score: weatherPersonality.axisScore[3],
-                          ),
+                          Column(
+                            children: weatherPersonality.userAxisScore.entries
+                                .map((entry) {
+                              final axis = entry.key;
+                              final score = entry.value;
+
+                              switch (axis) {
+                                case WeatherPersonalityAxis.sensitivity:
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AxisScoreBar(
+                                      leftLabel: WeatherPersonalityPolarity
+                                          .neutral
+                                          .displayName(context),
+                                      rightLabel: WeatherPersonalityPolarity
+                                          .sensitive
+                                          .displayName(context),
+                                      score: score,
+                                    ),
+                                  );
+                                case WeatherPersonalityAxis.preparedness:
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AxisScoreBar(
+                                      leftLabel: WeatherPersonalityPolarity
+                                          .flexible
+                                          .displayName(context),
+                                      rightLabel: WeatherPersonalityPolarity
+                                          .planned
+                                          .displayName(context),
+                                      score: score,
+                                    ),
+                                  );
+                                case WeatherPersonalityAxis.activity:
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AxisScoreBar(
+                                      leftLabel: WeatherPersonalityPolarity
+                                          .indoor
+                                          .displayName(context),
+                                      rightLabel: WeatherPersonalityPolarity
+                                          .outdoor
+                                          .displayName(context),
+                                      score: score,
+                                    ),
+                                  );
+
+                                case WeatherPersonalityAxis.motivation:
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: AxisScoreBar(
+                                      leftLabel: WeatherPersonalityPolarity
+                                          .rational
+                                          .displayName(context),
+                                      rightLabel: WeatherPersonalityPolarity
+                                          .emotional
+                                          .displayName(context),
+                                      score: score,
+                                    ),
+                                  );
+                              }
+                            }).toList(),
+                          )
                         ],
                       ),
                     ),
@@ -269,44 +302,23 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
                               .axisFeature.title,
                         ),
                         const SizedBox(height: 16),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '感受性',
-                          code: 'S（高）',
-                          description: weatherPersonality.axisFeatures[0],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '準備性',
-                          code: 'P（計画型）',
-                          description: weatherPersonality.axisFeatures[1],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '外行動性',
-                          code: 'O（Outdoor）',
-                          description: weatherPersonality.axisFeatures[2],
-                        ),
-                        const SizedBox(height: 12),
-                        AxisFeatureCard(
-                          //TODO: スコアによって title、code が変わる
-                          title: '動機特性',
-                          code: 'E（情緒）',
-                          description: weatherPersonality.axisFeatures[3],
-                        ),
+                        for (final axisFeature
+                            in weatherPersonality.axisFeatures) ...[
+                          AxisFeatureCard(
+                            axisFeature: axisFeature,
+                          ),
+                          const SizedBox(height: 12),
+                        ],
                       ],
                     ),
                   ),
                 ),
-                const Gap(height: 32),
+                const Gap(height: 20),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
                     child: BehaviorTendencyCard(
-                      behaviorTendencyList:
-                          weatherPersonality.behaviorTendencyList,
+                      behaviorTendencies: weatherPersonality.behaviorTendencies,
                     ),
                   ),
                 ),
@@ -372,15 +384,9 @@ class WeatherPersonalityTestResultPage extends HookConsumerWidget {
 
 class _MainResultCard extends StatelessWidget {
   const _MainResultCard({
-    required this.typeCode,
-    required this.typeName,
-    required this.typeCatchphrase,
-    required this.typeCharacterImageUrl,
+    required this.weatherPersonality,
   });
-  final String typeCode;
-  final String typeName;
-  final String typeCatchphrase;
-  final String typeCharacterImageUrl;
+  final WeatherPersonalityResultReadModel weatherPersonality;
 
   @override
   Widget build(BuildContext context) {
@@ -411,7 +417,7 @@ class _MainResultCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            typeCode,
+            weatherPersonality.typeCode.displayCode,
             style: theme.textTheme.titleLarge!.copyWith(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -436,7 +442,7 @@ class _MainResultCard extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Image(
-              image: typeCharacterImageUrl.toImageProvider(),
+              image: weatherPersonality.typeImageUrl.toImageProvider(),
             ),
           ),
           const SizedBox(height: 24),
@@ -448,7 +454,7 @@ class _MainResultCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            typeName,
+            weatherPersonality.typeName,
             style: theme.textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.bold,
               color: theme.colorScheme.primary,
@@ -470,7 +476,7 @@ class _MainResultCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              typeCatchphrase,
+              weatherPersonality.typeCatchphrase,
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium!.copyWith(
                 fontSize: 13,
@@ -522,9 +528,9 @@ class _GodsRulingCard extends StatelessWidget {
 class BehaviorTendencyCard extends StatelessWidget {
   const BehaviorTendencyCard({
     super.key,
-    required this.behaviorTendencyList,
+    required this.behaviorTendencies,
   });
-  final List<String> behaviorTendencyList;
+  final List<BehaviorTendencyReadModel> behaviorTendencies;
 
   @override
   Widget build(BuildContext context) {
@@ -543,10 +549,12 @@ class BehaviorTendencyCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           Column(
-            children:
-                behaviorTendencyList.map((text) => _BulletText(text)).toList(),
+            children: behaviorTendencies
+                .map((behaviorTendency) =>
+                    _BehaviorTendencieListTile(behaviorTendency))
+                .toList(),
           ),
         ],
       ),
@@ -554,32 +562,42 @@ class BehaviorTendencyCard extends StatelessWidget {
   }
 }
 
-class _BulletText extends StatelessWidget {
-  const _BulletText(this.text);
+class _BehaviorTendencieListTile extends StatelessWidget {
+  const _BehaviorTendencieListTile(this.behaviorTendency);
 
-  final String text;
+  final BehaviorTendencyReadModel behaviorTendency;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: Row(
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 9),
-            child: Icon(
-              Icons.circle,
-              size: 6,
-              color: theme.colorScheme.primary,
-            ),
+          const Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: Icon(Icons.circle, size: 6),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 4),
           Expanded(
             child: Text(
-              text,
+              behaviorTendency.summary,
+              style: theme.textTheme.titleSmall!.copyWith(
+                color: const Color(0xFF4A5F72),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+      subtitle: Row(
+        children: [
+          const SizedBox(width: 10),
+          Flexible(
+            child: Text(
+              behaviorTendency.detail,
               style: theme.textTheme.bodyMedium!.copyWith(
                 color: const Color(0xFF4A5F72),
               ),

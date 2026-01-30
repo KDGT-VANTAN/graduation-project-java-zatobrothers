@@ -14,5 +14,6 @@ abstract class HomeUserReadModel with _$HomeUserReadModel {
     required String mainPhotoUrl,
     required String introduction,
     bool? isTodayReported,
+    String? typeImageUrl,
   }) = _HomeUserReadModel;
 }

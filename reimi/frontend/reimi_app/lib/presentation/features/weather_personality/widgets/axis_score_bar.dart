@@ -69,7 +69,7 @@ class AxisScoreBar extends StatelessWidget {
               ],
             ),
             Text(
-              displayScore(score),
+              score.toString(),
               style: theme.textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -88,17 +88,5 @@ class AxisScoreBar extends StatelessWidget {
         color: color,
       ),
     );
-  }
-}
-
-String displayScore(int score) {
-  if (score == 0) {
-    return '0';
-  } else if (score > 0) {
-    return '+$score';
-  } else if (score < 0) {
-    return '-$score';
-  } else {
-    return score.toString();
   }
 }

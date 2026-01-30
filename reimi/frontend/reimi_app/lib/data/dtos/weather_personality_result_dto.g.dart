@@ -9,19 +9,20 @@ part of 'weather_personality_result_dto.dart';
 _WeatherPersonalityResultDto _$WeatherPersonalityResultDtoFromJson(
         Map<String, dynamic> json) =>
     _WeatherPersonalityResultDto(
-      typeCode: json['typeCode'] as String,
+      typeCode: $enumDecode(_$WeatherPersonalityCodeEnumMap, json['typeCode']),
       typeName: json['typeName'] as String,
       typeCatchphrase: json['typeCatchphrase'] as String,
-      typeCharacterImageUrl: json['typeCharacterImageUrl'] as String,
+      typeImageUrl: json['typeImageUrl'] as String,
       rulingStatement: json['rulingStatement'] as String,
       axisFeatures: (json['axisFeatures'] as List<dynamic>)
-          .map((e) => e as String)
+          .map((e) => AxisFeatureDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      axisScore: (json['axisScore'] as List<dynamic>)
-          .map((e) => (e as num).toInt())
-          .toList(),
-      behaviorTendencyList: (json['behaviorTendencyList'] as List<dynamic>)
-          .map((e) => e as String)
+      userAxisScore: (json['userAxisScore'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry($enumDecode(_$WeatherPersonalityAxisEnumMap, k),
+            (e as num).toInt()),
+      ),
+      behaviorTendencies: (json['behaviorTendencies'] as List<dynamic>)
+          .map((e) => BehaviorTendencyDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       godsMessage: json['godsMessage'] as String,
     );
@@ -29,13 +30,40 @@ _WeatherPersonalityResultDto _$WeatherPersonalityResultDtoFromJson(
 Map<String, dynamic> _$WeatherPersonalityResultDtoToJson(
         _WeatherPersonalityResultDto instance) =>
     <String, dynamic>{
-      'typeCode': instance.typeCode,
+      'typeCode': _$WeatherPersonalityCodeEnumMap[instance.typeCode]!,
       'typeName': instance.typeName,
       'typeCatchphrase': instance.typeCatchphrase,
-      'typeCharacterImageUrl': instance.typeCharacterImageUrl,
+      'typeImageUrl': instance.typeImageUrl,
       'rulingStatement': instance.rulingStatement,
       'axisFeatures': instance.axisFeatures,
-      'axisScore': instance.axisScore,
-      'behaviorTendencyList': instance.behaviorTendencyList,
+      'userAxisScore': instance.userAxisScore
+          .map((k, e) => MapEntry(_$WeatherPersonalityAxisEnumMap[k]!, e)),
+      'behaviorTendencies': instance.behaviorTendencies,
       'godsMessage': instance.godsMessage,
     };
+
+const _$WeatherPersonalityCodeEnumMap = {
+  WeatherPersonalityCode.spoe: 'SPOE',
+  WeatherPersonalityCode.spor: 'SPOR',
+  WeatherPersonalityCode.spie: 'SPIE',
+  WeatherPersonalityCode.spir: 'SPIR',
+  WeatherPersonalityCode.sfoe: 'SFOE',
+  WeatherPersonalityCode.sfor: 'SFOR',
+  WeatherPersonalityCode.sfie: 'SFIE',
+  WeatherPersonalityCode.sfir: 'SFIR',
+  WeatherPersonalityCode.npoe: 'NPOE',
+  WeatherPersonalityCode.npor: 'NPOR',
+  WeatherPersonalityCode.npie: 'NPIE',
+  WeatherPersonalityCode.npir: 'NPIR',
+  WeatherPersonalityCode.nfoe: 'NFOE',
+  WeatherPersonalityCode.nfor: 'NFOR',
+  WeatherPersonalityCode.nfie: 'NFIE',
+  WeatherPersonalityCode.nfir: 'NFIR',
+};
+
+const _$WeatherPersonalityAxisEnumMap = {
+  WeatherPersonalityAxis.sensitivity: 'SENSITIVITY',
+  WeatherPersonalityAxis.preparedness: 'PREPAREDNESS',
+  WeatherPersonalityAxis.activity: 'ACTIVITY',
+  WeatherPersonalityAxis.motivation: 'MOTIVATION',
+};

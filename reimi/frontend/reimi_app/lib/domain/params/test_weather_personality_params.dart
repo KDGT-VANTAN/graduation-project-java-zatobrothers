@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:reimi_app/domain/value_objects/answer_choice.dart';
 
 part 'test_weather_personality_params.freezed.dart';
 
@@ -6,21 +7,21 @@ part 'test_weather_personality_params.freezed.dart';
 abstract class TestWeatherPersonalityParams
     with _$TestWeatherPersonalityParams {
   const factory TestWeatherPersonalityParams({
-    required int q1Answer,
-    required int q2Answer,
-    required int q3Answer,
-    required int q4Answer,
-    required int q5Answer,
-    required int q6Answer,
-    required int q7Answer,
-    required int q8Answer,
-    required int q9Answer,
-    required int q10Answer,
-    required int q11Answer,
-    required int q12Answer,
-    required int q13Answer,
-    required int q14Answer,
-    required int q15Answer,
-    required int q16Answer,
+    required AnswerChoice q1Answer,
+    required AnswerChoice q2Answer,
+    required AnswerChoice q3Answer,
+    required AnswerChoice q4Answer,
+    required AnswerChoice q5Answer,
+    required AnswerChoice q6Answer,
+    required AnswerChoice q7Answer,
+    required AnswerChoice q8Answer,
+    required AnswerChoice q9Answer,
+    required AnswerChoice q10Answer,
+    required AnswerChoice q11Answer,
+    required AnswerChoice q12Answer,
+    required AnswerChoice q13Answer,
+    required AnswerChoice q14Answer,
+    required AnswerChoice q15Answer,
+    required AnswerChoice q16Answer,
   }) = _TestWeatherPersonalityParams;
 }

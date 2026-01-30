@@ -161,7 +161,7 @@ StorageRepository storageRepository(Ref ref) {
 @riverpod
 WeatherPersonalityRemoteDataSource weatherPersonalityRemoteDataSource(Ref ref) {
   if (useMock) return const WeatherPersonalityMockDataSource();
-  return const WeatherPersonalityRemoteDataSourceImpl();
+  return WeatherPersonalityRemoteDataSourceImpl(ref.watch(dioClientProvider));
 }
 
 @riverpod

@@ -6,7 +6,7 @@ extension TypeCompatibilityDtoMapper on TypeCompatibilityDto {
     return TypeCompatibilityReadModel(
       typeCode: typeCode,
       typeName: typeName,
-      typeCharacterImageUrl: typeCharacterImageUrl,
+      typeImageUrl: typeImageUrl,
       compatibilityPoint: compatibilityPoint,
     );
   }

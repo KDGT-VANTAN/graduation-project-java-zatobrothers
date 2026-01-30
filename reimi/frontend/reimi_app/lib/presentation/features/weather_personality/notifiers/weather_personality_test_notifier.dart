@@ -1,6 +1,7 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/domain/params/test_weather_personality_params.dart';
+import 'package:reimi_app/domain/value_objects/answer_choice.dart';
 import 'package:reimi_app/presentation/features/weather_personality/states/weather_personality_test_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -25,67 +26,67 @@ class WeatherPersonalityTestNotifier extends _$WeatherPersonalityTestNotifier {
     }
   }
 
-  void updateQ1Answer(int q1Answer) {
+  void updateQ1Answer(AnswerChoice q1Answer) {
     state = state.copyWith(q1Answer: q1Answer);
   }
 
-  void updateQ2Answer(int q2Answer) {
+  void updateQ2Answer(AnswerChoice q2Answer) {
     state = state.copyWith(q2Answer: q2Answer);
   }
 
-  void updateQ3Answer(int q3Answer) {
+  void updateQ3Answer(AnswerChoice q3Answer) {
     state = state.copyWith(q3Answer: q3Answer);
   }
 
-  void updateQ4Answer(int q4Answer) {
+  void updateQ4Answer(AnswerChoice q4Answer) {
     state = state.copyWith(q4Answer: q4Answer);
   }
 
-  void updateQ5Answer(int q5Answer) {
+  void updateQ5Answer(AnswerChoice q5Answer) {
     state = state.copyWith(q5Answer: q5Answer);
   }
 
-  void updateQ6Answer(int q6Answer) {
+  void updateQ6Answer(AnswerChoice q6Answer) {
     state = state.copyWith(q6Answer: q6Answer);
   }
 
-  void updateQ7Answer(int q7Answer) {
+  void updateQ7Answer(AnswerChoice q7Answer) {
     state = state.copyWith(q7Answer: q7Answer);
   }
 
-  void updateQ8Answer(int q8Answer) {
+  void updateQ8Answer(AnswerChoice q8Answer) {
     state = state.copyWith(q8Answer: q8Answer);
   }
 
-  void updateQ9Answer(int q9Answer) {
+  void updateQ9Answer(AnswerChoice q9Answer) {
     state = state.copyWith(q9Answer: q9Answer);
   }
 
-  void updateQ10Answer(int q10Answer) {
+  void updateQ10Answer(AnswerChoice q10Answer) {
     state = state.copyWith(q10Answer: q10Answer);
   }
 
-  void updateQ11Answer(int q11Answer) {
+  void updateQ11Answer(AnswerChoice q11Answer) {
     state = state.copyWith(q11Answer: q11Answer);
   }
 
-  void updateQ12Answer(int q12Answer) {
+  void updateQ12Answer(AnswerChoice q12Answer) {
     state = state.copyWith(q12Answer: q12Answer);
   }
 
-  void updateQ13Answer(int q13Answer) {
+  void updateQ13Answer(AnswerChoice q13Answer) {
     state = state.copyWith(q13Answer: q13Answer);
   }
 
-  void updateQ14Answer(int q14Answer) {
+  void updateQ14Answer(AnswerChoice q14Answer) {
     state = state.copyWith(q14Answer: q14Answer);
   }
 
-  void updateQ15Answer(int q15Answer) {
+  void updateQ15Answer(AnswerChoice q15Answer) {
     state = state.copyWith(q15Answer: q15Answer);
   }
 
-  void updateQ16Answer(int q16Answer) {
+  void updateQ16Answer(AnswerChoice q16Answer) {
     state = state.copyWith(q16Answer: q16Answer);
   }
 

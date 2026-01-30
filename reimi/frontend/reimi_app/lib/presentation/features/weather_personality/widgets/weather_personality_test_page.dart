@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:reimi_app/core/extensions/value_objects/answer_choice_extension.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
+import 'package:reimi_app/domain/value_objects/answer_choice.dart';
 import 'package:reimi_app/presentation/features/account/account_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/notifiers/weather_personality_test_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/answer_option_card.dart';
@@ -27,8 +29,8 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
   final String answerA;
   final String answerB;
   final bool isSelected;
-  final int? value;
-  final void Function(int score) onTapAnswerOption;
+  final AnswerChoice? value;
+  final void Function(AnswerChoice choice) onTapAnswerOption;
   final void Function()? onPressedNext;
 
   @override
@@ -190,14 +192,18 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
                           children: [
                             Text(
                               'A：',
-                              style: theme.textTheme.bodyMedium!
-                                  .copyWith(color: Colors.white70),
+                              style: theme.textTheme.bodyMedium!.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             Flexible(
                               child: Text(
                                 answerA,
-                                style: theme.textTheme.bodyMedium!
-                                    .copyWith(color: Colors.white70),
+                                style: theme.textTheme.bodyMedium!.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],
@@ -208,14 +214,18 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
                           children: [
                             Text(
                               'B：',
-                              style: theme.textTheme.bodyMedium!
-                                  .copyWith(color: Colors.white70),
+                              style: theme.textTheme.bodyMedium!.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             Flexible(
                               child: Text(
                                 answerB,
-                                style: theme.textTheme.bodyMedium!
-                                    .copyWith(color: Colors.white70),
+                                style: theme.textTheme.bodyMedium!.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],
@@ -232,35 +242,35 @@ class WeatherPersonalityTestPage extends ConsumerWidget {
                   delegate: SliverChildListDelegate.fixed(
                     [
                       AnswerOptionCard(
-                        label: 'Aにかなり近い',
+                        label: AnswerChoice.stronglyA.displayName(context),
                         onTap: () {
-                          onTapAnswerOption(2);
+                          onTapAnswerOption(AnswerChoice.stronglyA);
                         },
-                        isSelected: value == 2,
+                        isSelected: value == AnswerChoice.stronglyA,
                       ),
                       const SizedBox(height: 12),
                       AnswerOptionCard(
-                        label: 'Aにやや近い',
+                        label: AnswerChoice.slightlyA.displayName(context),
                         onTap: () {
-                          onTapAnswerOption(1);
+                          onTapAnswerOption(AnswerChoice.slightlyA);
                         },
-                        isSelected: value == 1,
+                        isSelected: value == AnswerChoice.slightlyA,
                       ),
                       const SizedBox(height: 12),
                       AnswerOptionCard(
-                        label: 'Bにやや近い',
+                        label: AnswerChoice.slightlyB.displayName(context),
                         onTap: () {
-                          onTapAnswerOption(-1);
+                          onTapAnswerOption(AnswerChoice.slightlyB);
                         },
-                        isSelected: value == -1,
+                        isSelected: value == AnswerChoice.slightlyB,
                       ),
                       const SizedBox(height: 12),
                       AnswerOptionCard(
-                        label: 'Bにかなり近い',
+                        label: AnswerChoice.stronglyB.displayName(context),
                         onTap: () {
-                          onTapAnswerOption(-2);
+                          onTapAnswerOption(AnswerChoice.stronglyB);
                         },
-                        isSelected: value == -2,
+                        isSelected: value == AnswerChoice.stronglyB,
                       ),
                     ],
                   ),

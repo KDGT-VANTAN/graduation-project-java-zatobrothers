@@ -14,14 +14,14 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherPersonalityDetailDto {
-  String get typeCode;
+  WeatherPersonalityCode get typeCode;
   String get typeName;
   String get typeCatchphrase;
-  String get typeCharacterImageUrl;
+  String get typeImageUrl;
   String get rulingStatement;
-  List<String> get axisFeatures;
-  List<int> get axisScore;
-  List<String> get behaviorTendencyList;
+  List<AxisFeatureDto> get axisFeatures;
+  Map<WeatherPersonalityAxis, int> get userAxisScore;
+  List<BehaviorTendencyDto> get behaviorTendencies;
   List<TypeCompatibilityDto> get compatibleTypes;
   List<TypeCompatibilityDto> get incompatibleTypes;
   String get godsMessage;
@@ -49,15 +49,16 @@ mixin _$WeatherPersonalityDetailDto {
                 other.typeName == typeName) &&
             (identical(other.typeCatchphrase, typeCatchphrase) ||
                 other.typeCatchphrase == typeCatchphrase) &&
-            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
-                other.typeCharacterImageUrl == typeCharacterImageUrl) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl) &&
             (identical(other.rulingStatement, rulingStatement) ||
                 other.rulingStatement == rulingStatement) &&
             const DeepCollectionEquality()
                 .equals(other.axisFeatures, axisFeatures) &&
-            const DeepCollectionEquality().equals(other.axisScore, axisScore) &&
             const DeepCollectionEquality()
-                .equals(other.behaviorTendencyList, behaviorTendencyList) &&
+                .equals(other.userAxisScore, userAxisScore) &&
+            const DeepCollectionEquality()
+                .equals(other.behaviorTendencies, behaviorTendencies) &&
             const DeepCollectionEquality()
                 .equals(other.compatibleTypes, compatibleTypes) &&
             const DeepCollectionEquality()
@@ -73,18 +74,18 @@ mixin _$WeatherPersonalityDetailDto {
       typeCode,
       typeName,
       typeCatchphrase,
-      typeCharacterImageUrl,
+      typeImageUrl,
       rulingStatement,
       const DeepCollectionEquality().hash(axisFeatures),
-      const DeepCollectionEquality().hash(axisScore),
-      const DeepCollectionEquality().hash(behaviorTendencyList),
+      const DeepCollectionEquality().hash(userAxisScore),
+      const DeepCollectionEquality().hash(behaviorTendencies),
       const DeepCollectionEquality().hash(compatibleTypes),
       const DeepCollectionEquality().hash(incompatibleTypes),
       godsMessage);
 
   @override
   String toString() {
-    return 'WeatherPersonalityDetailDto(typeCode: $typeCode, typeName: $typeName, typeCatchphrase: $typeCatchphrase, typeCharacterImageUrl: $typeCharacterImageUrl, rulingStatement: $rulingStatement, axisFeatures: $axisFeatures, axisScore: $axisScore, behaviorTendencyList: $behaviorTendencyList, compatibleTypes: $compatibleTypes, incompatibleTypes: $incompatibleTypes, godsMessage: $godsMessage)';
+    return 'WeatherPersonalityDetailDto(typeCode: $typeCode, typeName: $typeName, typeCatchphrase: $typeCatchphrase, typeImageUrl: $typeImageUrl, rulingStatement: $rulingStatement, axisFeatures: $axisFeatures, userAxisScore: $userAxisScore, behaviorTendencies: $behaviorTendencies, compatibleTypes: $compatibleTypes, incompatibleTypes: $incompatibleTypes, godsMessage: $godsMessage)';
   }
 }
 
@@ -96,14 +97,14 @@ abstract mixin class $WeatherPersonalityDetailDtoCopyWith<$Res> {
       _$WeatherPersonalityDetailDtoCopyWithImpl;
   @useResult
   $Res call(
-      {String typeCode,
+      {WeatherPersonalityCode typeCode,
       String typeName,
       String typeCatchphrase,
-      String typeCharacterImageUrl,
+      String typeImageUrl,
       String rulingStatement,
-      List<String> axisFeatures,
-      List<int> axisScore,
-      List<String> behaviorTendencyList,
+      List<AxisFeatureDto> axisFeatures,
+      Map<WeatherPersonalityAxis, int> userAxisScore,
+      List<BehaviorTendencyDto> behaviorTendencies,
       List<TypeCompatibilityDto> compatibleTypes,
       List<TypeCompatibilityDto> incompatibleTypes,
       String godsMessage});
@@ -125,11 +126,11 @@ class _$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
     Object? typeCode = null,
     Object? typeName = null,
     Object? typeCatchphrase = null,
-    Object? typeCharacterImageUrl = null,
+    Object? typeImageUrl = null,
     Object? rulingStatement = null,
     Object? axisFeatures = null,
-    Object? axisScore = null,
-    Object? behaviorTendencyList = null,
+    Object? userAxisScore = null,
+    Object? behaviorTendencies = null,
     Object? compatibleTypes = null,
     Object? incompatibleTypes = null,
     Object? godsMessage = null,
@@ -138,7 +139,7 @@ class _$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       typeCode: null == typeCode
           ? _self.typeCode
           : typeCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherPersonalityCode,
       typeName: null == typeName
           ? _self.typeName
           : typeName // ignore: cast_nullable_to_non_nullable
@@ -147,9 +148,9 @@ class _$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
           ? _self.typeCatchphrase
           : typeCatchphrase // ignore: cast_nullable_to_non_nullable
               as String,
-      typeCharacterImageUrl: null == typeCharacterImageUrl
-          ? _self.typeCharacterImageUrl
-          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+      typeImageUrl: null == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       rulingStatement: null == rulingStatement
           ? _self.rulingStatement
@@ -158,15 +159,15 @@ class _$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       axisFeatures: null == axisFeatures
           ? _self.axisFeatures
           : axisFeatures // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      axisScore: null == axisScore
-          ? _self.axisScore
-          : axisScore // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      behaviorTendencyList: null == behaviorTendencyList
-          ? _self.behaviorTendencyList
-          : behaviorTendencyList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<AxisFeatureDto>,
+      userAxisScore: null == userAxisScore
+          ? _self.userAxisScore
+          : userAxisScore // ignore: cast_nullable_to_non_nullable
+              as Map<WeatherPersonalityAxis, int>,
+      behaviorTendencies: null == behaviorTendencies
+          ? _self.behaviorTendencies
+          : behaviorTendencies // ignore: cast_nullable_to_non_nullable
+              as List<BehaviorTendencyDto>,
       compatibleTypes: null == compatibleTypes
           ? _self.compatibleTypes
           : compatibleTypes // ignore: cast_nullable_to_non_nullable
@@ -277,14 +278,14 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String typeCode,
+            WeatherPersonalityCode typeCode,
             String typeName,
             String typeCatchphrase,
-            String typeCharacterImageUrl,
+            String typeImageUrl,
             String rulingStatement,
-            List<String> axisFeatures,
-            List<int> axisScore,
-            List<String> behaviorTendencyList,
+            List<AxisFeatureDto> axisFeatures,
+            Map<WeatherPersonalityAxis, int> userAxisScore,
+            List<BehaviorTendencyDto> behaviorTendencies,
             List<TypeCompatibilityDto> compatibleTypes,
             List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)?
@@ -298,11 +299,11 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             _that.typeCode,
             _that.typeName,
             _that.typeCatchphrase,
-            _that.typeCharacterImageUrl,
+            _that.typeImageUrl,
             _that.rulingStatement,
             _that.axisFeatures,
-            _that.axisScore,
-            _that.behaviorTendencyList,
+            _that.userAxisScore,
+            _that.behaviorTendencies,
             _that.compatibleTypes,
             _that.incompatibleTypes,
             _that.godsMessage);
@@ -327,14 +328,14 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String typeCode,
+            WeatherPersonalityCode typeCode,
             String typeName,
             String typeCatchphrase,
-            String typeCharacterImageUrl,
+            String typeImageUrl,
             String rulingStatement,
-            List<String> axisFeatures,
-            List<int> axisScore,
-            List<String> behaviorTendencyList,
+            List<AxisFeatureDto> axisFeatures,
+            Map<WeatherPersonalityAxis, int> userAxisScore,
+            List<BehaviorTendencyDto> behaviorTendencies,
             List<TypeCompatibilityDto> compatibleTypes,
             List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)
@@ -347,11 +348,11 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             _that.typeCode,
             _that.typeName,
             _that.typeCatchphrase,
-            _that.typeCharacterImageUrl,
+            _that.typeImageUrl,
             _that.rulingStatement,
             _that.axisFeatures,
-            _that.axisScore,
-            _that.behaviorTendencyList,
+            _that.userAxisScore,
+            _that.behaviorTendencies,
             _that.compatibleTypes,
             _that.incompatibleTypes,
             _that.godsMessage);
@@ -375,14 +376,14 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String typeCode,
+            WeatherPersonalityCode typeCode,
             String typeName,
             String typeCatchphrase,
-            String typeCharacterImageUrl,
+            String typeImageUrl,
             String rulingStatement,
-            List<String> axisFeatures,
-            List<int> axisScore,
-            List<String> behaviorTendencyList,
+            List<AxisFeatureDto> axisFeatures,
+            Map<WeatherPersonalityAxis, int> userAxisScore,
+            List<BehaviorTendencyDto> behaviorTendencies,
             List<TypeCompatibilityDto> compatibleTypes,
             List<TypeCompatibilityDto> incompatibleTypes,
             String godsMessage)?
@@ -395,11 +396,11 @@ extension WeatherPersonalityDetailDtoPatterns on WeatherPersonalityDetailDto {
             _that.typeCode,
             _that.typeName,
             _that.typeCatchphrase,
-            _that.typeCharacterImageUrl,
+            _that.typeImageUrl,
             _that.rulingStatement,
             _that.axisFeatures,
-            _that.axisScore,
-            _that.behaviorTendencyList,
+            _that.userAxisScore,
+            _that.behaviorTendencies,
             _that.compatibleTypes,
             _that.incompatibleTypes,
             _that.godsMessage);
@@ -416,55 +417,55 @@ class _WeatherPersonalityDetailDto implements WeatherPersonalityDetailDto {
       {required this.typeCode,
       required this.typeName,
       required this.typeCatchphrase,
-      required this.typeCharacterImageUrl,
+      required this.typeImageUrl,
       required this.rulingStatement,
-      required final List<String> axisFeatures,
-      required final List<int> axisScore,
-      required final List<String> behaviorTendencyList,
+      required final List<AxisFeatureDto> axisFeatures,
+      required final Map<WeatherPersonalityAxis, int> userAxisScore,
+      required final List<BehaviorTendencyDto> behaviorTendencies,
       required final List<TypeCompatibilityDto> compatibleTypes,
       required final List<TypeCompatibilityDto> incompatibleTypes,
       required this.godsMessage})
       : _axisFeatures = axisFeatures,
-        _axisScore = axisScore,
-        _behaviorTendencyList = behaviorTendencyList,
+        _userAxisScore = userAxisScore,
+        _behaviorTendencies = behaviorTendencies,
         _compatibleTypes = compatibleTypes,
         _incompatibleTypes = incompatibleTypes;
   factory _WeatherPersonalityDetailDto.fromJson(Map<String, dynamic> json) =>
       _$WeatherPersonalityDetailDtoFromJson(json);
 
   @override
-  final String typeCode;
+  final WeatherPersonalityCode typeCode;
   @override
   final String typeName;
   @override
   final String typeCatchphrase;
   @override
-  final String typeCharacterImageUrl;
+  final String typeImageUrl;
   @override
   final String rulingStatement;
-  final List<String> _axisFeatures;
+  final List<AxisFeatureDto> _axisFeatures;
   @override
-  List<String> get axisFeatures {
+  List<AxisFeatureDto> get axisFeatures {
     if (_axisFeatures is EqualUnmodifiableListView) return _axisFeatures;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_axisFeatures);
   }
 
-  final List<int> _axisScore;
+  final Map<WeatherPersonalityAxis, int> _userAxisScore;
   @override
-  List<int> get axisScore {
-    if (_axisScore is EqualUnmodifiableListView) return _axisScore;
+  Map<WeatherPersonalityAxis, int> get userAxisScore {
+    if (_userAxisScore is EqualUnmodifiableMapView) return _userAxisScore;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_axisScore);
+    return EqualUnmodifiableMapView(_userAxisScore);
   }
 
-  final List<String> _behaviorTendencyList;
+  final List<BehaviorTendencyDto> _behaviorTendencies;
   @override
-  List<String> get behaviorTendencyList {
-    if (_behaviorTendencyList is EqualUnmodifiableListView)
-      return _behaviorTendencyList;
+  List<BehaviorTendencyDto> get behaviorTendencies {
+    if (_behaviorTendencies is EqualUnmodifiableListView)
+      return _behaviorTendencies;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_behaviorTendencyList);
+    return EqualUnmodifiableListView(_behaviorTendencies);
   }
 
   final List<TypeCompatibilityDto> _compatibleTypes;
@@ -514,16 +515,16 @@ class _WeatherPersonalityDetailDto implements WeatherPersonalityDetailDto {
                 other.typeName == typeName) &&
             (identical(other.typeCatchphrase, typeCatchphrase) ||
                 other.typeCatchphrase == typeCatchphrase) &&
-            (identical(other.typeCharacterImageUrl, typeCharacterImageUrl) ||
-                other.typeCharacterImageUrl == typeCharacterImageUrl) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl) &&
             (identical(other.rulingStatement, rulingStatement) ||
                 other.rulingStatement == rulingStatement) &&
             const DeepCollectionEquality()
                 .equals(other._axisFeatures, _axisFeatures) &&
             const DeepCollectionEquality()
-                .equals(other._axisScore, _axisScore) &&
+                .equals(other._userAxisScore, _userAxisScore) &&
             const DeepCollectionEquality()
-                .equals(other._behaviorTendencyList, _behaviorTendencyList) &&
+                .equals(other._behaviorTendencies, _behaviorTendencies) &&
             const DeepCollectionEquality()
                 .equals(other._compatibleTypes, _compatibleTypes) &&
             const DeepCollectionEquality()
@@ -539,18 +540,18 @@ class _WeatherPersonalityDetailDto implements WeatherPersonalityDetailDto {
       typeCode,
       typeName,
       typeCatchphrase,
-      typeCharacterImageUrl,
+      typeImageUrl,
       rulingStatement,
       const DeepCollectionEquality().hash(_axisFeatures),
-      const DeepCollectionEquality().hash(_axisScore),
-      const DeepCollectionEquality().hash(_behaviorTendencyList),
+      const DeepCollectionEquality().hash(_userAxisScore),
+      const DeepCollectionEquality().hash(_behaviorTendencies),
       const DeepCollectionEquality().hash(_compatibleTypes),
       const DeepCollectionEquality().hash(_incompatibleTypes),
       godsMessage);
 
   @override
   String toString() {
-    return 'WeatherPersonalityDetailDto(typeCode: $typeCode, typeName: $typeName, typeCatchphrase: $typeCatchphrase, typeCharacterImageUrl: $typeCharacterImageUrl, rulingStatement: $rulingStatement, axisFeatures: $axisFeatures, axisScore: $axisScore, behaviorTendencyList: $behaviorTendencyList, compatibleTypes: $compatibleTypes, incompatibleTypes: $incompatibleTypes, godsMessage: $godsMessage)';
+    return 'WeatherPersonalityDetailDto(typeCode: $typeCode, typeName: $typeName, typeCatchphrase: $typeCatchphrase, typeImageUrl: $typeImageUrl, rulingStatement: $rulingStatement, axisFeatures: $axisFeatures, userAxisScore: $userAxisScore, behaviorTendencies: $behaviorTendencies, compatibleTypes: $compatibleTypes, incompatibleTypes: $incompatibleTypes, godsMessage: $godsMessage)';
   }
 }
 
@@ -564,14 +565,14 @@ abstract mixin class _$WeatherPersonalityDetailDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String typeCode,
+      {WeatherPersonalityCode typeCode,
       String typeName,
       String typeCatchphrase,
-      String typeCharacterImageUrl,
+      String typeImageUrl,
       String rulingStatement,
-      List<String> axisFeatures,
-      List<int> axisScore,
-      List<String> behaviorTendencyList,
+      List<AxisFeatureDto> axisFeatures,
+      Map<WeatherPersonalityAxis, int> userAxisScore,
+      List<BehaviorTendencyDto> behaviorTendencies,
       List<TypeCompatibilityDto> compatibleTypes,
       List<TypeCompatibilityDto> incompatibleTypes,
       String godsMessage});
@@ -593,11 +594,11 @@ class __$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
     Object? typeCode = null,
     Object? typeName = null,
     Object? typeCatchphrase = null,
-    Object? typeCharacterImageUrl = null,
+    Object? typeImageUrl = null,
     Object? rulingStatement = null,
     Object? axisFeatures = null,
-    Object? axisScore = null,
-    Object? behaviorTendencyList = null,
+    Object? userAxisScore = null,
+    Object? behaviorTendencies = null,
     Object? compatibleTypes = null,
     Object? incompatibleTypes = null,
     Object? godsMessage = null,
@@ -606,7 +607,7 @@ class __$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       typeCode: null == typeCode
           ? _self.typeCode
           : typeCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherPersonalityCode,
       typeName: null == typeName
           ? _self.typeName
           : typeName // ignore: cast_nullable_to_non_nullable
@@ -615,9 +616,9 @@ class __$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
           ? _self.typeCatchphrase
           : typeCatchphrase // ignore: cast_nullable_to_non_nullable
               as String,
-      typeCharacterImageUrl: null == typeCharacterImageUrl
-          ? _self.typeCharacterImageUrl
-          : typeCharacterImageUrl // ignore: cast_nullable_to_non_nullable
+      typeImageUrl: null == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       rulingStatement: null == rulingStatement
           ? _self.rulingStatement
@@ -626,15 +627,15 @@ class __$WeatherPersonalityDetailDtoCopyWithImpl<$Res>
       axisFeatures: null == axisFeatures
           ? _self._axisFeatures
           : axisFeatures // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      axisScore: null == axisScore
-          ? _self._axisScore
-          : axisScore // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      behaviorTendencyList: null == behaviorTendencyList
-          ? _self._behaviorTendencyList
-          : behaviorTendencyList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<AxisFeatureDto>,
+      userAxisScore: null == userAxisScore
+          ? _self._userAxisScore
+          : userAxisScore // ignore: cast_nullable_to_non_nullable
+              as Map<WeatherPersonalityAxis, int>,
+      behaviorTendencies: null == behaviorTendencies
+          ? _self._behaviorTendencies
+          : behaviorTendencies // ignore: cast_nullable_to_non_nullable
+              as List<BehaviorTendencyDto>,
       compatibleTypes: null == compatibleTypes
           ? _self._compatibleTypes
           : compatibleTypes // ignore: cast_nullable_to_non_nullable
