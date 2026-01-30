@@ -348,7 +348,7 @@ final storageRepositoryProvider =
 // ignore: unused_element
 typedef StorageRepositoryRef = AutoDisposeProviderRef<StorageRepository>;
 String _$weatherPersonalityRemoteDataSourceHash() =>
-    r'946b434db58824d5bddad92baf0cf54f5815f546';
+    r'3baf5dbed3dbf9c30c1f4f9354b6ef7e695209fc';
 
 /// See also [weatherPersonalityRemoteDataSource].
 @ProviderFor(weatherPersonalityRemoteDataSource)
