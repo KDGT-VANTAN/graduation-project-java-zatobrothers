@@ -7,9 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Component
-@ConfigurationProperties(prefix = "app.image")
+@ConfigurationProperties(prefix = "app")
 @Getter
 @Setter
 public class ImageProperties {
-    private String baseUrl;
+    private String url;
 }
