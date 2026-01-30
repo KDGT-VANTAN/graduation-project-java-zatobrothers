@@ -1,0 +1,64 @@
+spring:
+    # アプリ名
+    application:
+        name: reimi_app
+    # デフォルトプロファイル
+    profiles:
+        active: ${SPRING_PROFILES_ACTIVE}
+
+    jackson:
+        time-zone: Asia/Tokyo
+
+    # データベース接続
+    datasource:
+        url: ${SPRING_DATASOURCE_URL}
+        username: ${SPRING_DATASOURCE_USERNAME}
+        password: ${SPRING_DATASOURCE_PASSWORD}
+        driver-class-name: org.postgresql.Driver
+
+    # JPA/Hibernate設定
+    jpa:
+        hibernate:
+            ddl-auto: ${SPRING_JPA_DDL_AUTO:update}
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: ${SPRING_JPA_SHOW_SQL:true}
+        open-in-view: true
+        properties:
+            hibernate:
+                format_sql: true
+
+    # ファイルアップロード関連
+    servlet:
+        multipart:
+            max-file-size: 5MB
+            max-request-size: 5MB
+
+    # Flyway設定
+    flyway:
+        enabled: ${SPRING_FLYWAY_ENABLED:false}
+        locations: classpath:db/migration
+
+# ポート設定
+server:
+    port: ${PORT:8080}
+
+# OpenAPI関連
+springdoc:
+    api-docs:
+        enabled: true
+    swagger-ui:
+        enabled: true
+
+# Firebase関連
+firebase:
+    storage:
+        bucket: ${FIREBASE_STORAGE_BUCKET}
+
+# アプリケーションベースURL
+app:
+    url: ${APP_URL:http://localhost:8080}
+
+# ログ出力
+logging:
+    level:
+        org.springframework.security: DEBUG
