@@ -17,6 +17,6 @@ public class ConfigBasedImageUrlResolver implements ImageUrlResolver {
 
     @Override
     public String resolve(String imagePath) {
-        return properties.getBaseUrl() + imagePath;
+        return properties.getUrl() + imagePath;
     }
 }
