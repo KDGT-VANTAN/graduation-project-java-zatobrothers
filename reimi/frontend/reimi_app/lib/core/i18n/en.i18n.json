@@ -424,25 +424,7 @@
         "title": "4-Axis Characteristics"
       },
       "axisScore":{
-        "title": "4-Axis Score",
-        "axis": {
-          "sensitivity": {
-            "sensitive": "S (High Sensitivity)",
-            "neutral": "N (Low Sensitivity)"
-          },
-          "preparedness": {
-            "planned": "P (Planned)",
-            "flexible": "F (Flexible)"
-          },
-          "activity": {
-            "outdoor": "O (Outdoor)",
-            "indoor": "I (Indoor)"
-          },
-          "motivation": {
-            "emotional": "E (Emotional)",
-            "rational": "R (Rational)"
-          }
-        }
+        "title": "4-Axis Score"
       },
       "godsMessage": {
         "title": "A Word from the Gods"
@@ -708,6 +690,12 @@
       "between20And30M": "¥20M - ¥30M",
       "over30M": "Over ¥30M"
     },
+    "answerChoice": {
+      "stronglyA": "Strongly A",
+      "slightlyA": "Slightly A",
+      "slightlyB": "Slightly B",
+      "stronglyB": "Strongly B"
+    },
     "bloodType": {
       "a": "Type A",
       "b": "Type B",
@@ -911,6 +899,22 @@
     "sortType": {
       "login": "Recently Active",
       "compatibility": "Compatibility"
+    },
+    "weatherPersonalityAxis": {
+      "sensitivity": "Sensitivity",
+      "preparedness": "Preparedness",
+      "activity": "Activity",
+      "motivation": "Motivation"
+    },
+    "weatherPersonalityPolarity": {
+      "sensitive": "S (Sensitivity)",
+      "neutral": "N (Neutral)",
+      "planned": "P (Planned)",
+      "flexible": "F (Flexible)",
+      "outdoor": "O (Outdoor)",
+      "indoor": "I (Indoor)",
+      "emotional": "E (Emotional)",
+      "rational": "R (Rational)"
     },
     "weatherType": {
       "clearStar": "Clear Stars",

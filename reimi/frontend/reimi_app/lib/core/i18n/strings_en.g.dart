@@ -661,6 +661,7 @@ class TranslationsKEnumEn {
 	late final TranslationsKEnumAddressEn address = TranslationsKEnumAddressEn._(_root);
 	late final TranslationsKEnumAlcoholEn alcohol = TranslationsKEnumAlcoholEn._(_root);
 	late final TranslationsKEnumAnnualIncomeEn annualIncome = TranslationsKEnumAnnualIncomeEn._(_root);
+	late final TranslationsKEnumAnswerChoiceEn answerChoice = TranslationsKEnumAnswerChoiceEn._(_root);
 	late final TranslationsKEnumBloodTypeEn bloodType = TranslationsKEnumBloodTypeEn._(_root);
 	late final TranslationsKEnumBodyShapeEn bodyShape = TranslationsKEnumBodyShapeEn._(_root);
 	late final TranslationsKEnumCommunicationStyleEn communicationStyle = TranslationsKEnumCommunicationStyleEn._(_root);
@@ -673,6 +674,8 @@ class TranslationsKEnumEn {
 	late final TranslationsKEnumOccupationEn occupation = TranslationsKEnumOccupationEn._(_root);
 	late final TranslationsKEnumSmokingEn smoking = TranslationsKEnumSmokingEn._(_root);
 	late final TranslationsKEnumSortTypeEn sortType = TranslationsKEnumSortTypeEn._(_root);
+	late final TranslationsKEnumWeatherPersonalityAxisEn weatherPersonalityAxis = TranslationsKEnumWeatherPersonalityAxisEn._(_root);
+	late final TranslationsKEnumWeatherPersonalityPolarityEn weatherPersonalityPolarity = TranslationsKEnumWeatherPersonalityPolarityEn._(_root);
 	late final TranslationsKEnumWeatherTypeEn weatherType = TranslationsKEnumWeatherTypeEn._(_root);
 	late final TranslationsKEnumWindDirectionEn windDirection = TranslationsKEnumWindDirectionEn._(_root);
 }
@@ -1902,6 +1905,27 @@ class TranslationsKEnumAnnualIncomeEn {
 	String get over30M => 'Over ¥30M';
 }
 
+// Path: kEnum.answerChoice
+class TranslationsKEnumAnswerChoiceEn {
+	TranslationsKEnumAnswerChoiceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Strongly A'
+	String get stronglyA => 'Strongly A';
+
+	/// en: 'Slightly A'
+	String get slightlyA => 'Slightly A';
+
+	/// en: 'Slightly B'
+	String get slightlyB => 'Slightly B';
+
+	/// en: 'Strongly B'
+	String get stronglyB => 'Strongly B';
+}
+
 // Path: kEnum.bloodType
 class TranslationsKEnumBloodTypeEn {
 	TranslationsKEnumBloodTypeEn._(this._root);
@@ -2550,6 +2574,60 @@ class TranslationsKEnumSortTypeEn {
 	String get compatibility => 'Compatibility';
 }
 
+// Path: kEnum.weatherPersonalityAxis
+class TranslationsKEnumWeatherPersonalityAxisEn {
+	TranslationsKEnumWeatherPersonalityAxisEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Sensitivity'
+	String get sensitivity => 'Sensitivity';
+
+	/// en: 'Preparedness'
+	String get preparedness => 'Preparedness';
+
+	/// en: 'Activity'
+	String get activity => 'Activity';
+
+	/// en: 'Motivation'
+	String get motivation => 'Motivation';
+}
+
+// Path: kEnum.weatherPersonalityPolarity
+class TranslationsKEnumWeatherPersonalityPolarityEn {
+	TranslationsKEnumWeatherPersonalityPolarityEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'S (Sensitivity)'
+	String get sensitive => 'S (Sensitivity)';
+
+	/// en: 'N (Neutral)'
+	String get neutral => 'N (Neutral)';
+
+	/// en: 'P (Planned)'
+	String get planned => 'P (Planned)';
+
+	/// en: 'F (Flexible)'
+	String get flexible => 'F (Flexible)';
+
+	/// en: 'O (Outdoor)'
+	String get outdoor => 'O (Outdoor)';
+
+	/// en: 'I (Indoor)'
+	String get indoor => 'I (Indoor)';
+
+	/// en: 'E (Emotional)'
+	String get emotional => 'E (Emotional)';
+
+	/// en: 'R (Rational)'
+	String get rational => 'R (Rational)';
+}
+
 // Path: kEnum.weatherType
 class TranslationsKEnumWeatherTypeEn {
 	TranslationsKEnumWeatherTypeEn._(this._root);
@@ -2964,8 +3042,6 @@ class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreEn {
 
 	/// en: '4-Axis Score'
 	String get title => '4-Axis Score';
-
-	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn axis = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn._(_root);
 }
 
 // Path: weatherPersonalityTestResultPage.section.godsMessage
@@ -3392,19 +3468,6 @@ class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisEn {
 	late final TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn motivation = TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn._(_root);
 }
 
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis
-class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
-	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn sensitivity = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn._(_root);
-	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn preparedness = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn._(_root);
-	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn activity = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn._(_root);
-	late final TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn motivation = TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn._(_root);
-}
-
 // Path: weatherPersonalityDetailPage.section.axisScore.axis.sensitivity
 class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn {
 	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn._(this._root);
@@ -3453,66 +3516,6 @@ class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityEn {
 // Path: weatherPersonalityDetailPage.section.axisScore.axis.motivation
 class TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn {
 	TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'E (Emotional)'
-	String get emotional => 'E (Emotional)';
-
-	/// en: 'R (Rational)'
-	String get rational => 'R (Rational)';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity
-class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn {
-	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'S (High Sensitivity)'
-	String get sensitive => 'S (High Sensitivity)';
-
-	/// en: 'N (Low Sensitivity)'
-	String get neutral => 'N (Low Sensitivity)';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.preparedness
-class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn {
-	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'P (Planned)'
-	String get planned => 'P (Planned)';
-
-	/// en: 'F (Flexible)'
-	String get flexible => 'F (Flexible)';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.activity
-class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn {
-	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'O (Outdoor)'
-	String get outdoor => 'O (Outdoor)';
-
-	/// en: 'I (Indoor)'
-	String get indoor => 'I (Indoor)';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.motivation
-class TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn {
-	TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3766,14 +3769,6 @@ extension on Translations {
 			'weatherPersonalityTestResultPage.section.behaviorTendency.title' => 'Behavioral Tendencies',
 			'weatherPersonalityTestResultPage.section.axisFeature.title' => '4-Axis Characteristics',
 			'weatherPersonalityTestResultPage.section.axisScore.title' => '4-Axis Score',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.sensitive' => 'S (High Sensitivity)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.neutral' => 'N (Low Sensitivity)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.planned' => 'P (Planned)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.flexible' => 'F (Flexible)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.outdoor' => 'O (Outdoor)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.indoor' => 'I (Indoor)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.emotional' => 'E (Emotional)',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.rational' => 'R (Rational)',
 			'weatherPersonalityTestResultPage.section.godsMessage.title' => 'A Word from the Gods',
 			'settingPage.title' => 'Settings',
 			'settingPage.section.accountSetting.title' => 'Account Settings',
@@ -3937,6 +3932,10 @@ extension on Translations {
 			'kEnum.annualIncome.between15And20M' => '¥15M - ¥20M',
 			'kEnum.annualIncome.between20And30M' => '¥20M - ¥30M',
 			'kEnum.annualIncome.over30M' => 'Over ¥30M',
+			'kEnum.answerChoice.stronglyA' => 'Strongly A',
+			'kEnum.answerChoice.slightlyA' => 'Slightly A',
+			'kEnum.answerChoice.slightlyB' => 'Slightly B',
+			'kEnum.answerChoice.stronglyB' => 'Strongly B',
 			'kEnum.bloodType.a' => 'Type A',
 			'kEnum.bloodType.b' => 'Type B',
 			'kEnum.bloodType.o' => 'Type O',
@@ -4045,12 +4044,12 @@ extension on Translations {
 			'kEnum.holiday.irregular' => 'Irregular',
 			'kEnum.occupation.universityStudent' => 'University Student',
 			'kEnum.occupation.graduateStudent' => 'Graduate Student',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.vocationalStudent' => 'Vocational Student',
 			'kEnum.occupation.juniorCollegeStudent' => 'Junior College Student',
 			'kEnum.occupation.technicalCollegeStudent' => 'Technical College Student',
 			'kEnum.occupation.distribution' => 'Distribution',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.foodIndustry' => 'Food Industry',
 			'kEnum.occupation.pharmaceutical' => 'Pharmaceutical',
 			'kEnum.occupation.medical' => 'Medical',
@@ -4119,6 +4118,18 @@ extension on Translations {
 			'kEnum.smoking.yes' => 'Smoke',
 			'kEnum.sortType.login' => 'Recently Active',
 			'kEnum.sortType.compatibility' => 'Compatibility',
+			'kEnum.weatherPersonalityAxis.sensitivity' => 'Sensitivity',
+			'kEnum.weatherPersonalityAxis.preparedness' => 'Preparedness',
+			'kEnum.weatherPersonalityAxis.activity' => 'Activity',
+			'kEnum.weatherPersonalityAxis.motivation' => 'Motivation',
+			'kEnum.weatherPersonalityPolarity.sensitive' => 'S (Sensitivity)',
+			'kEnum.weatherPersonalityPolarity.neutral' => 'N (Neutral)',
+			'kEnum.weatherPersonalityPolarity.planned' => 'P (Planned)',
+			'kEnum.weatherPersonalityPolarity.flexible' => 'F (Flexible)',
+			'kEnum.weatherPersonalityPolarity.outdoor' => 'O (Outdoor)',
+			'kEnum.weatherPersonalityPolarity.indoor' => 'I (Indoor)',
+			'kEnum.weatherPersonalityPolarity.emotional' => 'E (Emotional)',
+			'kEnum.weatherPersonalityPolarity.rational' => 'R (Rational)',
 			'kEnum.weatherType.clearStar' => 'Clear Stars',
 			'kEnum.weatherType.faintStar' => 'Faint Stars',
 			'kEnum.weatherType.noStar' => 'No Stars',

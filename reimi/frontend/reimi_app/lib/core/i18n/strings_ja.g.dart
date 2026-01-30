@@ -510,6 +510,7 @@ class _TranslationsKEnumJa implements TranslationsKEnumEn {
 	@override late final _TranslationsKEnumAddressJa address = _TranslationsKEnumAddressJa._(_root);
 	@override late final _TranslationsKEnumAlcoholJa alcohol = _TranslationsKEnumAlcoholJa._(_root);
 	@override late final _TranslationsKEnumAnnualIncomeJa annualIncome = _TranslationsKEnumAnnualIncomeJa._(_root);
+	@override late final _TranslationsKEnumAnswerChoiceJa answerChoice = _TranslationsKEnumAnswerChoiceJa._(_root);
 	@override late final _TranslationsKEnumBloodTypeJa bloodType = _TranslationsKEnumBloodTypeJa._(_root);
 	@override late final _TranslationsKEnumBodyShapeJa bodyShape = _TranslationsKEnumBodyShapeJa._(_root);
 	@override late final _TranslationsKEnumCommunicationStyleJa communicationStyle = _TranslationsKEnumCommunicationStyleJa._(_root);
@@ -522,6 +523,8 @@ class _TranslationsKEnumJa implements TranslationsKEnumEn {
 	@override late final _TranslationsKEnumOccupationJa occupation = _TranslationsKEnumOccupationJa._(_root);
 	@override late final _TranslationsKEnumSmokingJa smoking = _TranslationsKEnumSmokingJa._(_root);
 	@override late final _TranslationsKEnumSortTypeJa sortType = _TranslationsKEnumSortTypeJa._(_root);
+	@override late final _TranslationsKEnumWeatherPersonalityAxisJa weatherPersonalityAxis = _TranslationsKEnumWeatherPersonalityAxisJa._(_root);
+	@override late final _TranslationsKEnumWeatherPersonalityPolarityJa weatherPersonalityPolarity = _TranslationsKEnumWeatherPersonalityPolarityJa._(_root);
 	@override late final _TranslationsKEnumWeatherTypeJa weatherType = _TranslationsKEnumWeatherTypeJa._(_root);
 	@override late final _TranslationsKEnumWindDirectionJa windDirection = _TranslationsKEnumWindDirectionJa._(_root);
 }
@@ -1381,6 +1384,19 @@ class _TranslationsKEnumAnnualIncomeJa implements TranslationsKEnumAnnualIncomeE
 	@override String get over30M => '3000万円以上';
 }
 
+// Path: kEnum.answerChoice
+class _TranslationsKEnumAnswerChoiceJa implements TranslationsKEnumAnswerChoiceEn {
+	_TranslationsKEnumAnswerChoiceJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get stronglyA => 'Aにかなり近い';
+	@override String get slightlyA => 'Aにやや近い';
+	@override String get slightlyB => 'Bにやや近い';
+	@override String get stronglyB => 'Bにかなり近い';
+}
+
 // Path: kEnum.bloodType
 class _TranslationsKEnumBloodTypeJa implements TranslationsKEnumBloodTypeEn {
 	_TranslationsKEnumBloodTypeJa._(this._root);
@@ -1667,6 +1683,36 @@ class _TranslationsKEnumSortTypeJa implements TranslationsKEnumSortTypeEn {
 	// Translations
 	@override String get login => 'ログイン順';
 	@override String get compatibility => '相性順';
+}
+
+// Path: kEnum.weatherPersonalityAxis
+class _TranslationsKEnumWeatherPersonalityAxisJa implements TranslationsKEnumWeatherPersonalityAxisEn {
+	_TranslationsKEnumWeatherPersonalityAxisJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get sensitivity => '感受性';
+	@override String get preparedness => '準備性';
+	@override String get activity => '活動性';
+	@override String get motivation => '動機特性';
+}
+
+// Path: kEnum.weatherPersonalityPolarity
+class _TranslationsKEnumWeatherPersonalityPolarityJa implements TranslationsKEnumWeatherPersonalityPolarityEn {
+	_TranslationsKEnumWeatherPersonalityPolarityJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get sensitive => 'S（高）';
+	@override String get neutral => 'N（低）';
+	@override String get planned => 'P（計画型）';
+	@override String get flexible => 'F（柔軟型）';
+	@override String get outdoor => 'O（アウトドア）';
+	@override String get indoor => 'I（インドア）';
+	@override String get emotional => 'E（情緒）';
+	@override String get rational => 'R（実用）';
 }
 
 // Path: kEnum.weatherType
@@ -1969,7 +2015,6 @@ class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreJa implements
 
 	// Translations
 	@override String get title => '4軸スコア';
-	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa axis = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa._(_root);
 }
 
 // Path: weatherPersonalityTestResultPage.section.godsMessage
@@ -2200,19 +2245,6 @@ class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisJa implements
 	@override late final _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa motivation = _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa._(_root);
 }
 
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis
-class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisEn {
-	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityJa sensitivity = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityJa._(_root);
-	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa preparedness = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa._(_root);
-	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa activity = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa._(_root);
-	@override late final _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa motivation = _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa._(_root);
-}
-
 // Path: weatherPersonalityDetailPage.section.axisScore.axis.sensitivity
 class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityEn {
 	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisSensitivityJa._(this._root);
@@ -2249,50 +2281,6 @@ class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisActivityJa im
 // Path: weatherPersonalityDetailPage.section.axisScore.axis.motivation
 class _TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa implements TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationEn {
 	_TranslationsWeatherPersonalityDetailPageSectionAxisScoreAxisMotivationJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get emotional => 'E（情緒）';
-	@override String get rational => 'R（実用）';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity
-class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityEn {
-	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisSensitivityJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get sensitive => 'S（高感受）';
-	@override String get neutral => 'N（低感受）';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.preparedness
-class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessEn {
-	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisPreparednessJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get planned => 'P（計画）';
-	@override String get flexible => 'F（柔軟）';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.activity
-class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityEn {
-	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisActivityJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get outdoor => 'O（外向）';
-	@override String get indoor => 'I（内向）';
-}
-
-// Path: weatherPersonalityTestResultPage.section.axisScore.axis.motivation
-class _TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa implements TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationEn {
-	_TranslationsWeatherPersonalityTestResultPageSectionAxisScoreAxisMotivationJa._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -2542,14 +2530,6 @@ extension on TranslationsJa {
 			'weatherPersonalityTestResultPage.section.behaviorTendency.title' => '行動傾向',
 			'weatherPersonalityTestResultPage.section.axisFeature.title' => '4軸の特徴',
 			'weatherPersonalityTestResultPage.section.axisScore.title' => '4軸スコア',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.sensitive' => 'S（高感受）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.sensitivity.neutral' => 'N（低感受）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.planned' => 'P（計画）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.preparedness.flexible' => 'F（柔軟）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.outdoor' => 'O（外向）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.activity.indoor' => 'I（内向）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.emotional' => 'E（情緒）',
-			'weatherPersonalityTestResultPage.section.axisScore.axis.motivation.rational' => 'R（実用）',
 			'weatherPersonalityTestResultPage.section.godsMessage.title' => '神様からの一言',
 			'settingPage.title' => '設定',
 			'settingPage.section.accountSetting.title' => 'アカウント設定',
@@ -2713,6 +2693,10 @@ extension on TranslationsJa {
 			'kEnum.annualIncome.between15And20M' => '1500万〜2000万円',
 			'kEnum.annualIncome.between20And30M' => '2000万〜3000万円',
 			'kEnum.annualIncome.over30M' => '3000万円以上',
+			'kEnum.answerChoice.stronglyA' => 'Aにかなり近い',
+			'kEnum.answerChoice.slightlyA' => 'Aにやや近い',
+			'kEnum.answerChoice.slightlyB' => 'Bにやや近い',
+			'kEnum.answerChoice.stronglyB' => 'Bにかなり近い',
 			'kEnum.bloodType.a' => 'A型',
 			'kEnum.bloodType.b' => 'B型',
 			'kEnum.bloodType.o' => 'O型',
@@ -2821,12 +2805,12 @@ extension on TranslationsJa {
 			'kEnum.holiday.irregular' => '不定休',
 			'kEnum.occupation.universityStudent' => '大学生',
 			'kEnum.occupation.graduateStudent' => '大学院生',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.vocationalStudent' => '専門学生',
 			'kEnum.occupation.juniorCollegeStudent' => '短大生',
 			'kEnum.occupation.technicalCollegeStudent' => '高専生',
 			'kEnum.occupation.distribution' => '流通',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.foodIndustry' => '食品関係',
 			'kEnum.occupation.pharmaceutical' => '製薬',
 			'kEnum.occupation.medical' => '医療関係',
@@ -2895,6 +2879,18 @@ extension on TranslationsJa {
 			'kEnum.smoking.yes' => '吸う',
 			'kEnum.sortType.login' => 'ログイン順',
 			'kEnum.sortType.compatibility' => '相性順',
+			'kEnum.weatherPersonalityAxis.sensitivity' => '感受性',
+			'kEnum.weatherPersonalityAxis.preparedness' => '準備性',
+			'kEnum.weatherPersonalityAxis.activity' => '活動性',
+			'kEnum.weatherPersonalityAxis.motivation' => '動機特性',
+			'kEnum.weatherPersonalityPolarity.sensitive' => 'S（高）',
+			'kEnum.weatherPersonalityPolarity.neutral' => 'N（低）',
+			'kEnum.weatherPersonalityPolarity.planned' => 'P（計画型）',
+			'kEnum.weatherPersonalityPolarity.flexible' => 'F（柔軟型）',
+			'kEnum.weatherPersonalityPolarity.outdoor' => 'O（アウトドア）',
+			'kEnum.weatherPersonalityPolarity.indoor' => 'I（インドア）',
+			'kEnum.weatherPersonalityPolarity.emotional' => 'E（情緒）',
+			'kEnum.weatherPersonalityPolarity.rational' => 'R（実用）',
 			'kEnum.weatherType.clearStar' => '星がはっきり',
 			'kEnum.weatherType.faintStar' => '星がうっすら',
 			'kEnum.weatherType.noStar' => '星が見えない',
