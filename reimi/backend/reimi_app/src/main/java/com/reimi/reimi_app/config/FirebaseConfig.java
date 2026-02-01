@@ -1,7 +1,5 @@
 package com.reimi.reimi_app.config;
 
-
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
@@ -32,13 +30,12 @@ public class FirebaseConfig {
             return FirebaseApp.getInstance();
         }
 
-        String credentialsPath = dotenv.get("GOOGLE_APPLICATION_CREDENTIALS");
+        String projectId = dotenv.get("FIREBASE_PROJECT_ID");
         String bucket = dotenv.get("FIREBASE_STORAGE_BUCKET");
 
-        FileInputStream serviceAccount = new FileInputStream(credentialsPath);
-
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
-            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+            .setCredentials(GoogleCredentials.getApplicationDefault())
+            .setProjectId(projectId)
             .setStorageBucket(bucket)
             .build();
 

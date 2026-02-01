@@ -9,7 +9,6 @@ src/main/resources/flyway.properties
 !**/src/test/**/target/
 
 .env
-secrets/
 
 ### STS ###
 .apt_generated

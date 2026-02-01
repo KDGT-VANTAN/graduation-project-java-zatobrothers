@@ -53,6 +53,8 @@ springdoc:
 firebase:
     storage:
         bucket: ${FIREBASE_STORAGE_BUCKET}
+    project:
+        id: ${FIREBASE_PROJECT_ID}
 
 # アプリケーションベースURL
 app:
