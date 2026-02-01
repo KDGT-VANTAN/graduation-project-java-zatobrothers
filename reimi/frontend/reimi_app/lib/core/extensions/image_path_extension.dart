@@ -6,7 +6,7 @@ import 'package:reimi_app/gen/assets.gen.dart';
 extension ImagePathX on String? {
   ImageProvider<Object> toImageProvider() {
     if (this == null || this!.isEmpty) {
-      return AssetImage(Assets.images.icons.appIcon.path);
+      return AssetImage(Assets.images.logo.appIcon.path);
     }
 
     if (this!.startsWith('http')) {

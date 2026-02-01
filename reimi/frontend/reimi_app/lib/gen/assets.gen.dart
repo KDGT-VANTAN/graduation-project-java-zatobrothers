@@ -14,11 +14,12 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// Directory path: assets/images/icons
-  $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
-
   /// Directory path: assets/images/items
   $AssetsImagesItemsGen get items => const $AssetsImagesItemsGen();
+
+  /// Directory path: assets/images/launcher_icon
+  $AssetsImagesLauncherIconGen get launcherIcon =>
+      const $AssetsImagesLauncherIconGen();
 
   /// Directory path: assets/images/logo
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
@@ -34,17 +35,6 @@ class $AssetsImagesGen {
       const $AssetsImagesWeatherPersonalityGen();
 }
 
-class $AssetsImagesIconsGen {
-  const $AssetsImagesIconsGen();
-
-  /// File path: assets/images/icons/app_icon.png
-  AssetGenImage get appIcon =>
-      const AssetGenImage('assets/images/icons/app_icon.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [appIcon];
-}
-
 class $AssetsImagesItemsGen {
   const $AssetsImagesItemsGen();
 
@@ -56,15 +46,34 @@ class $AssetsImagesItemsGen {
   List<AssetGenImage> get values => [rainbowLike];
 }
 
+class $AssetsImagesLauncherIconGen {
+  const $AssetsImagesLauncherIconGen();
+
+  /// File path: assets/images/launcher_icon/icon-dev.png
+  AssetGenImage get iconDev =>
+      const AssetGenImage('assets/images/launcher_icon/icon-dev.png');
+
+  /// File path: assets/images/launcher_icon/icon-prod.png
+  AssetGenImage get iconProd =>
+      const AssetGenImage('assets/images/launcher_icon/icon-prod.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [iconDev, iconProd];
+}
+
 class $AssetsImagesLogoGen {
   const $AssetsImagesLogoGen();
+
+  /// File path: assets/images/logo/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/images/logo/app_icon.png');
 
   /// File path: assets/images/logo/icons8_google.png
   AssetGenImage get icons8Google =>
       const AssetGenImage('assets/images/logo/icons8_google.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [icons8Google];
+  List<AssetGenImage> get values => [appIcon, icons8Google];
 }
 
 class $AssetsImagesSampleGen {
