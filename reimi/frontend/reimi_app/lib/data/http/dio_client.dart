@@ -9,11 +9,12 @@ part 'dio_client.g.dart';
 
 @Riverpod(keepAlive: true)
 Dio dioClient(Ref ref) {
+  const baseUrl = String.fromEnvironment('baseUrl');
   final logger = ref.watch(appLoggerProvider);
 
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'http://localhost:8080',
+      baseUrl: baseUrl,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     ),
