@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>590316043514-k2v56l7ku97bksiogihp3cfmds7iemej.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.590316043514-k2v56l7ku97bksiogihp3cfmds7iemej</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>590316043514-73drhdgkebj8b5iup1ngas8sqcjlfvha.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAJx5tluHcvcwdPFKVuPTo7dm-e5CQhZ3I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>590316043514</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.reimiApp.dev</string>
+	<key>PROJECT_ID</key>
+	<string>reimi-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>reimi-dev.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:590316043514:ios:2fc3f2b9214ce1f69e1d43</string>
+</dict>
+</plist>
