@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_prod.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDFnkGYOJGMaP5ikMDCbgldi-wvzzR4n04',
-    appId: '1:590316043514:android:f256758ebda78c1a9e1d43',
-    messagingSenderId: '590316043514',
-    projectId: 'reimi-dev',
-    storageBucket: 'reimi-dev.firebasestorage.app',
+    apiKey: 'AIzaSyBEcpCdbdor8NwRZHGjAuBZdms5WgZ3KjY',
+    appId: '1:600606426205:android:72b80b01d5f43da2d6b9b4',
+    messagingSenderId: '600606426205',
+    projectId: 'reimi-prod',
+    storageBucket: 'reimi-prod.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAJx5tluHcvcwdPFKVuPTo7dm-e5CQhZ3I',
-    appId: '1:590316043514:ios:d61ef214e82438589e1d43',
-    messagingSenderId: '590316043514',
-    projectId: 'reimi-dev',
-    storageBucket: 'reimi-dev.firebasestorage.app',
+    apiKey: 'AIzaSyCHer6V8ULvFIp-IJOJC6kKT6Nfz7dyXF0',
+    appId: '1:600606426205:ios:a8cb332bf6e57974d6b9b4',
+    messagingSenderId: '600606426205',
+    projectId: 'reimi-prod',
+    storageBucket: 'reimi-prod.firebasestorage.app',
     iosBundleId: 'com.example.reimiApp',
   );
 }

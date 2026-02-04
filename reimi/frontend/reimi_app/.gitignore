@@ -94,6 +94,8 @@ app.*.map.json
 !*.xcworkspace/contents.xcworkspacedata
 
 # 環境ごとの設定ファイルなど
+**dart_defines/
 .env
 **/android/app/google-services.json
 **/ios/Runner/GoogleService-Info.plist
+**/ios/Flutter/Dart-Defines.xcconfig

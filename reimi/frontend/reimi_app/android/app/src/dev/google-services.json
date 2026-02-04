@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "590316043514",
+    "project_id": "reimi-dev",
+    "storage_bucket": "reimi-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590316043514:android:3f6ad4629a5bb3ec9e1d43",
+        "android_client_info": {
+          "package_name": "com.example.reimi_app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590316043514-usjm243o432q8nd7v5iqlsfoq27849v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reimi_app.dev",
+            "certificate_hash": "dbe0d9367263de42b9be1b494c8feed2672272dd"
+          }
+        },
+        {
+          "client_id": "590316043514-navgaj2uo53tv2g7421pu6d18usgai8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFnkGYOJGMaP5ikMDCbgldi-wvzzR4n04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590316043514-navgaj2uo53tv2g7421pu6d18usgai8l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "590316043514-k2v56l7ku97bksiogihp3cfmds7iemej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.reimiApp.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

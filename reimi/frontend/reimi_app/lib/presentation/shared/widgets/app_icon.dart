@@ -25,7 +25,7 @@ class AppIcon extends StatelessWidget {
         ],
       ),
       clipBehavior: Clip.antiAlias,
-      child: Assets.images.icons.appIcon.image(
+      child: Assets.images.logo.appIcon.image(
         fit: BoxFit.cover,
       ),
     );

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "600606426205",
+    "project_id": "reimi-prod",
+    "storage_bucket": "reimi-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600606426205:android:72b80b01d5f43da2d6b9b4",
+        "android_client_info": {
+          "package_name": "com.example.reimi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600606426205-ktkaimf8ie4iofoa6ah2jfsost6sen7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEcpCdbdor8NwRZHGjAuBZdms5WgZ3KjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600606426205-ktkaimf8ie4iofoa6ah2jfsost6sen7k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600606426205-plujmns1ft32g0dhbichk7dh96mamvs9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.reimiApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
