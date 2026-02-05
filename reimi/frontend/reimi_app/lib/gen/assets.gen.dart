@@ -99,33 +99,13 @@ class $AssetsImagesSampleGen {
   AssetGenImage get chatUser005SampleImage => const AssetGenImage(
       'assets/images/sample/chat_user_005_sample_image.png');
 
+  /// File path: assets/images/sample/current_user_sample_image.png
+  AssetGenImage get currentUserSampleImage =>
+      const AssetGenImage('assets/images/sample/current_user_sample_image.png');
+
   /// File path: assets/images/sample/main_photo_sample.png
   AssetGenImage get mainPhotoSample =>
       const AssetGenImage('assets/images/sample/main_photo_sample.png');
-
-  /// File path: assets/images/sample/new_user_000_sample_image.png
-  AssetGenImage get newUser000SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_000_sample_image.png');
-
-  /// File path: assets/images/sample/new_user_001_sample_image.png
-  AssetGenImage get newUser001SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_001_sample_image.png');
-
-  /// File path: assets/images/sample/new_user_002_sample_image.png
-  AssetGenImage get newUser002SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_002_sample_image.png');
-
-  /// File path: assets/images/sample/new_user_003_sample_image.png
-  AssetGenImage get newUser003SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_003_sample_image.png');
-
-  /// File path: assets/images/sample/new_user_004_sample_image.png
-  AssetGenImage get newUser004SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_004_sample_image.png');
-
-  /// File path: assets/images/sample/new_user_005_sample_image.png
-  AssetGenImage get newUser005SampleImage =>
-      const AssetGenImage('assets/images/sample/new_user_005_sample_image.png');
 
   /// File path: assets/images/sample/user_000_sample_image.png
   AssetGenImage get user000SampleImage =>
@@ -151,10 +131,6 @@ class $AssetsImagesSampleGen {
   AssetGenImage get user005SampleImage =>
       const AssetGenImage('assets/images/sample/user_005_sample_image.png');
 
-  /// File path: assets/images/sample/user_006_sample_image.png
-  AssetGenImage get user006SampleImage =>
-      const AssetGenImage('assets/images/sample/user_006_sample_image.png');
-
   /// List of all assets
   List<AssetGenImage> get values => [
         chatUser001SampleImage,
@@ -162,20 +138,14 @@ class $AssetsImagesSampleGen {
         chatUser003SampleImage,
         chatUser004SampleImage,
         chatUser005SampleImage,
+        currentUserSampleImage,
         mainPhotoSample,
-        newUser000SampleImage,
-        newUser001SampleImage,
-        newUser002SampleImage,
-        newUser003SampleImage,
-        newUser004SampleImage,
-        newUser005SampleImage,
         user000SampleImage,
         user001SampleImage,
         user002SampleImage,
         user003SampleImage,
         user004SampleImage,
-        user005SampleImage,
-        user006SampleImage
+        user005SampleImage
       ];
 }
 
