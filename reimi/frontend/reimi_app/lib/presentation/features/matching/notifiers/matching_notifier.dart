@@ -21,9 +21,9 @@ class MatchingNotifier extends _$MatchingNotifier {
     try {
       state = state.copyWith(
         users: MatchingUsersReadModel(
-          otherUserName: 'さくら',
-          otherUserMainPhotoUrl: Assets.images.sample.user003SampleImage.path,
-          currentUserMainPhotoUrl: Assets.images.sample.user001SampleImage.path,
+          otherUserName: 'あおい',
+          otherUserMainPhotoUrl: Assets.images.sample.user000SampleImage.path,
+          currentUserMainPhotoUrl: Assets.images.sample.currentUserSampleImage.path,
         ),
         isLoading: false,
       );

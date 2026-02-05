@@ -14,5 +14,6 @@ abstract class LikeUserReadModel with _$LikeUserReadModel {
     required String mainPhotoUrl,
     String? introduction,
     bool? isTodayReported,
+    String? typeImageUrl,
   }) = _LikeUserReadModel;
 }

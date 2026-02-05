@@ -15,6 +15,7 @@ abstract class LikeUserDto with _$LikeUserDto {
     required String mainPhotoUrl,
     String? introduction,
     bool? isTodayReported,
+    String? typeImageUrl,
   }) = _LikeUserDto;
 
   factory LikeUserDto.fromJson(Map<String, dynamic> json) =>

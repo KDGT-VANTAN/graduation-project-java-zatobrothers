@@ -22,6 +22,7 @@ mixin _$LikeUserDto {
   String get mainPhotoUrl;
   String? get introduction;
   bool? get isTodayReported;
+  String? get typeImageUrl;
 
   /// Create a copy of LikeUserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -48,17 +49,19 @@ mixin _$LikeUserDto {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeImageUrl);
 
   @override
   String toString() {
-    return 'LikeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'LikeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeImageUrl: $typeImageUrl)';
   }
 }
 
@@ -75,7 +78,8 @@ abstract mixin class $LikeUserDtoCopyWith<$Res> {
       Address address,
       String mainPhotoUrl,
       String? introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeImageUrl});
 }
 
 /// @nodoc
@@ -97,6 +101,7 @@ class _$LikeUserDtoCopyWithImpl<$Res> implements $LikeUserDtoCopyWith<$Res> {
     Object? mainPhotoUrl = null,
     Object? introduction = freezed,
     Object? isTodayReported = freezed,
+    Object? typeImageUrl = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -127,6 +132,10 @@ class _$LikeUserDtoCopyWithImpl<$Res> implements $LikeUserDtoCopyWith<$Res> {
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeImageUrl: freezed == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -231,15 +240,23 @@ extension LikeUserDtoPatterns on LikeUserDto {
             Address address,
             String mainPhotoUrl,
             String? introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeImageUrl)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _LikeUserDto() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeImageUrl);
       case _:
         return orElse();
     }
@@ -267,14 +284,22 @@ extension LikeUserDtoPatterns on LikeUserDto {
             Address address,
             String mainPhotoUrl,
             String? introduction,
-            bool? isTodayReported)
+            bool? isTodayReported,
+            String? typeImageUrl)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserDto():
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeImageUrl);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -301,14 +326,22 @@ extension LikeUserDtoPatterns on LikeUserDto {
             Address address,
             String mainPhotoUrl,
             String? introduction,
-            bool? isTodayReported)?
+            bool? isTodayReported,
+            String? typeImageUrl)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _LikeUserDto() when $default != null:
-        return $default(_that.id, _that.name, _that.birthDate, _that.address,
-            _that.mainPhotoUrl, _that.introduction, _that.isTodayReported);
+        return $default(
+            _that.id,
+            _that.name,
+            _that.birthDate,
+            _that.address,
+            _that.mainPhotoUrl,
+            _that.introduction,
+            _that.isTodayReported,
+            _that.typeImageUrl);
       case _:
         return null;
     }
@@ -325,7 +358,8 @@ class _LikeUserDto implements LikeUserDto {
       required this.address,
       required this.mainPhotoUrl,
       this.introduction,
-      this.isTodayReported});
+      this.isTodayReported,
+      this.typeImageUrl});
   factory _LikeUserDto.fromJson(Map<String, dynamic> json) =>
       _$LikeUserDtoFromJson(json);
 
@@ -344,6 +378,8 @@ class _LikeUserDto implements LikeUserDto {
   final String? introduction;
   @override
   final bool? isTodayReported;
+  @override
+  final String? typeImageUrl;
 
   /// Create a copy of LikeUserDto
   /// with the given fields replaced by the non-null parameter values.
@@ -375,17 +411,19 @@ class _LikeUserDto implements LikeUserDto {
             (identical(other.introduction, introduction) ||
                 other.introduction == introduction) &&
             (identical(other.isTodayReported, isTodayReported) ||
-                other.isTodayReported == isTodayReported));
+                other.isTodayReported == isTodayReported) &&
+            (identical(other.typeImageUrl, typeImageUrl) ||
+                other.typeImageUrl == typeImageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, birthDate, address,
-      mainPhotoUrl, introduction, isTodayReported);
+      mainPhotoUrl, introduction, isTodayReported, typeImageUrl);
 
   @override
   String toString() {
-    return 'LikeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported)';
+    return 'LikeUserDto(id: $id, name: $name, birthDate: $birthDate, address: $address, mainPhotoUrl: $mainPhotoUrl, introduction: $introduction, isTodayReported: $isTodayReported, typeImageUrl: $typeImageUrl)';
   }
 }
 
@@ -404,7 +442,8 @@ abstract mixin class _$LikeUserDtoCopyWith<$Res>
       Address address,
       String mainPhotoUrl,
       String? introduction,
-      bool? isTodayReported});
+      bool? isTodayReported,
+      String? typeImageUrl});
 }
 
 /// @nodoc
@@ -426,6 +465,7 @@ class __$LikeUserDtoCopyWithImpl<$Res> implements _$LikeUserDtoCopyWith<$Res> {
     Object? mainPhotoUrl = null,
     Object? introduction = freezed,
     Object? isTodayReported = freezed,
+    Object? typeImageUrl = freezed,
   }) {
     return _then(_LikeUserDto(
       id: null == id
@@ -456,6 +496,10 @@ class __$LikeUserDtoCopyWithImpl<$Res> implements _$LikeUserDtoCopyWith<$Res> {
           ? _self.isTodayReported
           : isTodayReported // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeImageUrl: freezed == typeImageUrl
+          ? _self.typeImageUrl
+          : typeImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

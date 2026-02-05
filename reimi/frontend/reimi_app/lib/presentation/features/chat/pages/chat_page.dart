@@ -123,7 +123,11 @@ class ChatPage extends HookConsumerWidget {
                           onTap: (otherUserId) {
                             context.push(
                               ChatDetailPage.routeLocation,
-                              extra: {'otherUserId': otherUserId},
+                              extra: {
+                                'otherUserId': otherUserId,
+                                // TODO: モックデータ使用
+                                'chatRoomId': 'room_001',
+                              },
                             );
                           },
                         ),

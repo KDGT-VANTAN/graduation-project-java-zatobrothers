@@ -170,8 +170,8 @@ final List<WeatherReportDto> mockWeatherReports = [
   WeatherReportDto(
     reportId: 'report_003',
     userId: 'user_000',
-    userName: 'メンダコ',
-    mainPhotoUrl: Assets.images.sample.user000SampleImage.path,
+    userName: 'はるき',
+    mainPhotoUrl: Assets.images.sample.currentUserSampleImage.path,
     comment: '入道雲が出てきました。夏本番という感じですね。',
     weatherType: WeatherType.noStar,
     feelingType: FeelingType.warm,

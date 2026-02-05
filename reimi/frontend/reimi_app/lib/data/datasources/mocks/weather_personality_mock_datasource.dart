@@ -156,31 +156,33 @@ final mockWeatherPersonalityDetail = WeatherPersonalityDetailDto(
       '揺れながらも浮いていられるなら、それは才能です。',
   compatibleTypes: [
     TypeCompatibilityDto(
-      typeCode: WeatherPersonalityCode.spoe,
-      typeName: 'トレーニーラッコ',
+      typeCode: WeatherPersonalityCode.sfor,
+      typeName: '庭先のカラス',
       typeImageUrl:
-          Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
+          Assets.images.weatherPersonality.sforCrowsInTheGardenImage.path,
       compatibilityPoint: '感受性と外向性が近く、計画と即応が自然に役割分担できる。',
     ),
     TypeCompatibilityDto(
-      typeCode: WeatherPersonalityCode.nfie,
-      typeName: 'やわらかタコ',
-      typeImageUrl: Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
+      typeCode: WeatherPersonalityCode.sfoe,
+      typeName: '大道芸レッサーパンダ',
+      typeImageUrl: Assets
+          .images.weatherPersonality.sfoeStreetPerformingRedPandaImage.path,
       compatibilityPoint: '気分や空気感を共有しやすく、一緒にいるだけで前向きになれる。',
     ),
   ],
   incompatibleTypes: [
     TypeCompatibilityDto(
-      typeCode: WeatherPersonalityCode.spoe,
-      typeName: 'トレーニーラッコ',
+      typeCode: WeatherPersonalityCode.nfir,
+      typeName: 'フリーランスモグラ',
       typeImageUrl:
-          Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
+          Assets.images.weatherPersonality.nfirFreelanceMoleImage.path,
       compatibilityPoint: '判断が合理と内向に寄りがちで、感情ベースの動きが伝わりにくい。',
     ),
     TypeCompatibilityDto(
-      typeCode: WeatherPersonalityCode.nfie,
-      typeName: 'やわらかタコ',
-      typeImageUrl: Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
+      typeCode: WeatherPersonalityCode.nfor,
+      typeName: '崖の上のヤギ',
+      typeImageUrl:
+          Assets.images.weatherPersonality.nforGoatOnTheCliffImage.path,
       compatibilityPoint: '行動は噛み合っても、感情への向き合い方がズレやすい。',
     ),
   ],

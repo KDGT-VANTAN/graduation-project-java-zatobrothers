@@ -32,16 +32,12 @@ final mockUnmessagedMatchUsers = [
     mainPhotoUrl: Assets.images.sample.user003SampleImage.path,
   ),
   UnmessagedMatchUserDto(
-    id: 'user_004',
-    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
-  ),
-  UnmessagedMatchUserDto(
     id: 'user_005',
     mainPhotoUrl: Assets.images.sample.user005SampleImage.path,
   ),
   UnmessagedMatchUserDto(
-    id: 'user_006',
-    mainPhotoUrl: Assets.images.sample.user006SampleImage.path,
+    id: 'user_004',
+    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
   ),
 ];
 
@@ -74,7 +70,7 @@ final mockChatRoomSummaries = [
   ChatRoomSummaryDto(
     chatRoomId: 'room_003',
     userId: 'chat_user_003',
-    name: 'あおい',
+    name: 'はるな',
     birthDate: DateTime(2002, 11, 10),
     address: Address.osaka,
     mainPhotoUrl: Assets.images.sample.chatUser003SampleImage.path,
