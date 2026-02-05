@@ -116,7 +116,7 @@ class AccountPage extends HookConsumerWidget {
                               child: CircleAvatar(
                                 radius: 54,
                                 backgroundImage: Assets
-                                    .images.sample.user000SampleImage.path
+                                    .images.sample.currentUserSampleImage.path
                                     .toImageProvider(),
                               ),
                             ),

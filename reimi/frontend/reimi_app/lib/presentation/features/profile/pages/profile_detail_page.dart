@@ -18,6 +18,7 @@ import 'package:reimi_app/core/extensions/value_objects/occupation_extension.dar
 import 'package:reimi_app/core/extensions/value_objects/smoking_extension.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
+import 'package:reimi_app/presentation/features/matching/matching_completed_page.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_detail_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/states/profile_detail_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/basic_info_tile.dart';
@@ -543,7 +544,8 @@ class ProfileDetailPage extends HookConsumerWidget {
                 );
               },
               rightButtonOnTap: () async {
-                await notifier.onTapLikeButton(userId);
+                context.go(MatchingCompletedPage.routeLocation);
+                // await notifier.onTapLikeButton(userId);
               },
             ),
     );
