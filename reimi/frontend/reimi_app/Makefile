@@ -20,3 +20,11 @@ gen:
 .PHONY: slang
 slang:
 	fvm dart run slang
+
+.PHONY: run-dev
+run-dev:
+	fvm flutter run --dart-define-from-file=dart_defines/dev.env
+
+.PHONY: run-prod
+run-prod:
+	fvm flutter run --dart-define-from-file=dart_defines/prod.env
