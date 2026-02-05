@@ -14,6 +14,7 @@ _LikeUserDto _$LikeUserDtoFromJson(Map<String, dynamic> json) => _LikeUserDto(
       mainPhotoUrl: json['mainPhotoUrl'] as String,
       introduction: json['introduction'] as String?,
       isTodayReported: json['isTodayReported'] as bool?,
+      typeImageUrl: json['typeImageUrl'] as String?,
     );
 
 Map<String, dynamic> _$LikeUserDtoToJson(_LikeUserDto instance) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$LikeUserDtoToJson(_LikeUserDto instance) =>
       'mainPhotoUrl': instance.mainPhotoUrl,
       'introduction': instance.introduction,
       'isTodayReported': instance.isTodayReported,
+      'typeImageUrl': instance.typeImageUrl,
     };
 
 const _$AddressEnumMap = {

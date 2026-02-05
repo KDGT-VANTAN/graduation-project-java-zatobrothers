@@ -11,6 +11,7 @@ extension LikeUserDtoMapper on LikeUserDto {
       mainPhotoUrl: mainPhotoUrl,
       introduction: introduction,
       isTodayReported: isTodayReported,
+      typeImageUrl: typeImageUrl,
     );
   }
 }
