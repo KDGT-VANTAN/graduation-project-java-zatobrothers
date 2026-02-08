@@ -1,7 +1,9 @@
 package com.reimi.reimi_app.infrastructure.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -60,12 +62,20 @@ public class ItemUseCaseImpl implements ItemUseCase {
 
         List<UserItem> userItems = userItemRepository.findByUserId(userId);
 
+        // すべてのItemTypeCodeを0個として初期化
         Map<ItemTypeCode, Integer> items =
-            userItems.stream()
+            Arrays.stream(ItemTypeCode.values())
                 .collect(Collectors.toMap(
-                    userItem -> ItemTypeCode.fromItemTypeId(userItem.getId().itemTypeId()),
-                    userItem -> userItem.getQuantity()
+                    Function.identity(),
+                    item -> 0
                 ));
+        // 存在しているユーザーアイテムの個数をputする
+        userItems.forEach(userItem -> {
+            ItemTypeCode code =
+                ItemTypeCode.fromItemTypeId(userItem.getId().itemTypeId());
+
+            items.put(code, userItem.getQuantity());
+        });
 
         UserWeatherPersonalityType userType = userWeatherPersonalityTypeRepository.findByUserId(userId)
             .orElseThrow(() -> new ResourceNotFoundException("ウェザーパーソナリティ診断結果"));
