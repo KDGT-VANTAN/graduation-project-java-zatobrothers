@@ -1,6 +1,6 @@
 # プロジェクト概要
 
-本リポジトリは、Flutter で開発されているモバイルアプリのフロントエンドプロジェクトです。
+Flutter で開発されているモバイルアプリのフロントエンドプロジェクトです。
 Clean Architecture をベースに、`application / domain / data / presentation` の責務を分離した構成になっています。
 
 ---

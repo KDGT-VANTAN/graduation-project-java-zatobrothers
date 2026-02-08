@@ -1,0 +1,2412 @@
+openapi: 3.1.0
+info:
+  title: Reimi
+  description: 天気で繋がる、出会いのアプリ
+  version: "1.0"
+servers:
+- url: http://localhost:8080
+  description: ローカルサーバー
+security:
+- bearerAuth: []
+tags:
+- name: Match
+  description: マッチング関連のAPI
+- name: UserProfile
+  description: プロフィール関連のAPI
+- name: Like
+  description: いいね関連のAPI
+- name: ChatRoom
+  description: チャットルーム関連のAPI
+- name: RainbowLike
+  description: レインボーいいね関連のAPI
+- name: WeatherPersonality
+  description: ウェザーパーソナリティ診断関連のAPI
+- name: User
+  description: ユーザー関連のAPI
+paths:
+  /api/v1/users/{userId}/profile:
+    get:
+      tags:
+      - UserProfile
+      summary: ユーザープロフィール取得
+      description: ユーザーのプロフィール詳細を取得できるAPI
+      operationId: getProfile
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ユーザープロフィール取得成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserWithProfileResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+    put:
+      tags:
+      - UserProfile
+      summary: ユーザープロフィール編集
+      description: ユーザーのプロフィール編集API
+      operationId: editProfile
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/UpdateUserProfileRequest"
+        required: true
+      responses:
+        "204":
+          description: ユーザープロフィールが更新されました
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                フォーマット不正:
+                  description: リクエスト形式が正しくない場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 無効なリクエストです
+                バリデーションエラー:
+                  description: 入力値のバリデーションに失敗した場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 入力値が不正です
+                    details:
+                      email: メールアドレスの形式が不正です
+                      introduction: 自己紹介文は20文字以上500文字以下で入力してください
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "403":
+          description: 権限エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: ACCESS_DENIED
+                message: この操作を行う権限がありません
+        "413":
+          description: ファイルアップロードサイズ超過エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: PAYLOAD_TOO_LARGE
+                message: アップロード可能なファイルサイズを超えています
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/users:
+    get:
+      tags:
+      - User
+      summary: ユーザー一覧取得
+      description: 登録されているユーザーの一覧を取得できるAPI
+      operationId: getUsers
+      responses:
+        "200":
+          description: ユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+    post:
+      tags:
+      - User
+      summary: ユーザー新規登録
+      description: ユーザーの新規登録実行時のAPI
+      operationId: registerUser
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/RegisterUserRequest"
+        required: true
+      responses:
+        "201":
+          description: ユーザーの新規登録が完了しました
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                フォーマット不正:
+                  description: リクエスト形式が正しくない場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 無効なリクエストです
+                バリデーションエラー:
+                  description: 入力値のバリデーションに失敗した場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 入力値が不正です
+                    details:
+                      email: メールアドレスの形式が不正です
+                      introduction: 自己紹介文は20文字以上500文字以下で入力してください
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "409":
+          description: 重複エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                ユーザー重複:
+                  description: 既に登録されているユーザーで新規登録をした場合
+                  value:
+                    code: USER_ALREADY_EXISTS
+                    message: 既に登録済みのユーザーです
+                メール重複:
+                  description: 既に登録されているメールアドレスで新規登録をした場合
+                  value:
+                    code: EMAIL_ALREADY_EXISTS
+                    message: 既に使用されているメールアドレスです
+        "413":
+          description: ファイルアップロードサイズ超過エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: PAYLOAD_TOO_LARGE
+                message: アップロード可能なファイルサイズを超えています
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/users/device-tokens:
+    post:
+      tags:
+      - User
+      summary: ユーザーデバイストークン登録
+      description: ユーザーがデバイストークンを登録（再割り当て）できるAPI
+      operationId: registerDeviceToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterDeviceTokenRequest"
+        required: true
+      responses:
+        "200":
+          description: ユーザーのデバイストークン登録が完了しました
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                フォーマット不正:
+                  description: リクエスト形式が正しくない場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 無効なリクエストです
+                バリデーションエラー:
+                  description: 入力値のバリデーションに失敗した場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 入力値が不正です
+                    details:
+                      email: メールアドレスの形式が不正です
+                      introduction: 自己紹介文は20文字以上500文字以下で入力してください
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/user-weather-personality-type:
+    get:
+      tags:
+      - WeatherPersonality
+      summary: ウェザーパーソナリティ診断結果表示
+      description: ユーザーのウェザーパーソナリティタイプの診断結果をレスポンスするAPI
+      operationId: getResult
+      responses:
+        "200":
+          description: ユーザーのウェザーパーソナリティ診断結果の取得成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiagnoseResultWeatherPersonalityResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ウェザーパーソナリティ診断結果が見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+    post:
+      tags:
+      - WeatherPersonality
+      summary: ウェザーパーソナリティ診断結果スコアリング
+      description: ユーザーのウェザーパーソナリティタイプの診断結果をスコアリングして保存するAPI
+      operationId: diagnose
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DiagnoseWeatherPersonalityRequest"
+        required: true
+      responses:
+        "201":
+          description: ユーザーのウェザーパーソナリティ診断が正常に行われました
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                フォーマット不正:
+                  description: リクエスト形式が正しくない場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 無効なリクエストです
+                バリデーションエラー:
+                  description: 入力値のバリデーションに失敗した場合
+                  value:
+                    code: INVALID_REQUEST
+                    message: 入力値が不正です
+                    details:
+                      q1Answer: Q1の回答は必須です
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "409":
+          description: 重複エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: DIAGNOSE_RESUlT_ALREADY_EXISTS
+                message: 既に診断済みです
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/rainbow-likes/{userId}:
+    post:
+      tags:
+      - RainbowLike
+      summary: ユーザーレインボーいいね
+      description: ユーザーにレインボーいいねを送れるAPI。ユーザー双方がレインボーいいねを送信した場合のみマッチングが成立する。
+      operationId: rainbowLike
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendRainbowLikeRequest"
+        required: true
+      responses:
+        "201":
+          description: レインボーいいね送信が成功
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INVALID_REQUEST
+                message: ユーザー自身にはレインボーいいねできません
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "409":
+          description: 重複エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                レインボーいいね重複:
+                  description: 既にレインボーいいねを送信している場合
+                  value:
+                    code: RAINBOW_LIKE_ALREADY_SENT
+                    message: 既にレインボーいいねを送信しています
+                マッチング重複:
+                  description: 既にマッチングが成立している場合
+                  value:
+                    code: MATCH_ALREADY_EXISTS
+                    message: 既にマッチングが成立しています
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/likes/{userId}:
+    post:
+      tags:
+      - Like
+      summary: ユーザーいいね
+      description: ユーザーにいいねを送れるAPI。ユーザー双方がいいねを送信した場合のみマッチングが成立する。
+      operationId: like
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "201":
+          description: いいね送信が成功
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INVALID_REQUEST
+                message: ユーザー自身にはいいねできません
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "409":
+          description: 重複エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              examples:
+                いいね重複:
+                  description: 既にいいねを送信している場合
+                  value:
+                    code: LIKE_ALREADY_SENT
+                    message: 既にいいねを送信しています
+                マッチング重複:
+                  description: 既にマッチングが成立している場合
+                  value:
+                    code: MATCH_ALREADY_EXISTS
+                    message: 既にマッチングが成立しています
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/chat-rooms/{chatRoomId}/messages:
+    get:
+      tags:
+      - ChatRoom
+      summary: チャットルームのメッセージ一覧取得
+      description: チャットルームに送信されたメッセージの一覧を取得できるAPI
+      operationId: getChatRoomMessages
+      parameters:
+      - name: chatRoomId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: メッセージの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetMessageListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "403":
+          description: 権限エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: ACCESS_DENIED
+                message: この操作を行う権限がありません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: チャットルームが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+    post:
+      tags:
+      - ChatRoom
+      summary: チャットルームにメッセージ送信
+      description: マッチング成立後に作成されるチャットルームにメッセージを送信できるAPI
+      operationId: sendTextMessage
+      parameters:
+      - name: chatRoomId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendMessageRequest"
+        required: true
+      responses:
+        "201":
+          description: メッセージ送信が成功
+          content:
+            application/json: {}
+        "400":
+          description: 無効なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INVALID_REQUEST
+                message: メッセージは必須です
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "403":
+          description: 権限エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: ACCESS_DENIED
+                message: この操作を行う権限がありません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: チャットルームが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/users/me:
+    get:
+      tags:
+      - User
+      summary: ユーザー取得
+      description: ログインしているユーザー情報を取得できるAPI
+      operationId: getMe
+      responses:
+        "200":
+          description: ユーザーの取得成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMeResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/rainbow-likes/users/received:
+    get:
+      tags:
+      - RainbowLike
+      summary: 自分がレインボーいいねされたユーザー一覧取得
+      description: 自分がレインボーいいねされたユーザの一覧を取得できるAPI
+      operationId: getRainbowLikeReceivedUsers
+      responses:
+        "200":
+          description: 自分がレインボーいいねされたユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetRainbowLikedUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/rainbow-likes/users/given:
+    get:
+      tags:
+      - RainbowLike
+      summary: 自分がレインボーいいねしたユーザー一覧取得
+      description: 自分がレインボーいいねしたユーザの一覧を取得できるAPI
+      operationId: getRainbowLikeGivenUsers
+      responses:
+        "200":
+          description: 自分がレインボーいいねしたユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetRainbowLikedUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/matches:
+    get:
+      tags:
+      - Match
+      summary: マッチング成立したユーザー一覧取得
+      description: マッチングが成立したユーザーの一覧を取得できるAPI
+      operationId: getMatchedUsers
+      responses:
+        "200":
+          description: マッチング成立したユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetMatchedUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/likes/users/received:
+    get:
+      tags:
+      - Like
+      summary: 自分がいいねされたユーザー一覧取得
+      description: 自分がいいねされたユーザの一覧を取得できるAPI
+      operationId: getLikeReceivedUsers
+      responses:
+        "200":
+          description: 自分がいいねされたユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetLikedUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /api/v1/likes/users/given:
+    get:
+      tags:
+      - Like
+      summary: 自分がいいねしたユーザー一覧取得
+      description: 自分がいいねしたユーザの一覧を取得できるAPI
+      operationId: getLikeGivenUsers
+      responses:
+        "200":
+          description: 自分がいいねしたユーザーの一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GetLikedUserListResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: UNAUTHENTICATED
+                message: 認証されていません
+        "404":
+          description: リソース不存在エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: RESOURCE_NOT_FOUND
+                message: ユーザーが見つかりません
+        "500":
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                code: INTERNAL_SERVER_ERROR
+                message: 予期しないエラーが発生しました
+  /:
+    get:
+      tags:
+      - health-check-controller
+      operationId: home
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+components:
+  schemas:
+    UpdateUserProfileRequest:
+      type: object
+      description: ユーザープロフィール編集用リクエスト
+      properties:
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+          maxLength: 16
+          minLength: 0
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhoto:
+          type: string
+          format: binary
+          description: メイン写真
+        introduction:
+          type: string
+          description: 自己紹介文
+          example: 都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。
+          maxLength: 500
+          minLength: 20
+        height:
+          type: integer
+          format: int32
+          description: 身長
+          example: 160
+          maximum: 200
+          minimum: 130
+        bodyShape:
+          type: string
+          description: 体型
+          enum:
+          - SLIM
+          - SLENDER
+          - NORMAL
+          - MUSCULAR
+          - CHUBBY
+          - OVERWEIGHT
+          example: NORMAL
+        annualIncome:
+          type: string
+          description: 平均
+          enum:
+          - UNDER_2M
+          - BETWEEN_2M_TO_4M
+          - BETWEEN_4M_TO_6M
+          - BETWEEN_6M_TO_8M
+          - BETWEEN_8M_TO_10M
+          - BETWEEN_10M_TO_15M
+          - BETWEEN_15M_TO_20M
+          - BETWEEN_20M_TO_30M
+          - OVER_30M
+          example: BETWEEN_2M_TO_4M
+        bloodType:
+          type: string
+          description: 血液型
+          enum:
+          - A
+          - B
+          - O
+          - AB
+          - UNKNOWN
+          example: A
+        hometown:
+          type: string
+          description: 出身地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: IWATE
+        communicationStyle:
+          type: string
+          description: コミュニケーション方法
+          enum:
+          - CALL
+          - MESSAGE
+          - IN_PERSON
+          example: CALL
+        occupation:
+          type: string
+          description: 職業
+          enum:
+          - UNIVERSITY_STUDENT
+          - GRADUATE_STUDENT
+          - VOCATIONAL_STUDENT
+          - JUNIOR_COLLEGE_STUDENT
+          - TECHNICAL_COLLEGE_STUDENT
+          - DISTRIBUTION
+          - FOOD_INDUSTRY
+          - PHARMACEUTICAL
+          - MEDICAL
+          - WELFARE_CARE
+          - DOCTOR
+          - NURSE
+          - PHARMACIST
+          - TELECOMMUNICATION
+          - WEB
+          - IT
+          - ENGINEER
+          - CREATOR
+          - DESIGNER
+          - ARCHITECTURE_INTERIOR
+          - FINANCE
+          - INSURANCE
+          - CONSULTING
+          - MASS_MEDIA
+          - ADVERTISING
+          - PUBLISHING
+          - EDUCATION
+          - RETAIL
+          - TRANSPORTATION
+          - ENTERTAINMENT
+          - TRAVEL
+          - REAL_ESTATE
+          - TRADING_COMPANY
+          - MANUFACTURER
+          - RESEARCHER
+          - MAJOR_COMPANY
+          - FOREIGN_COMPANY
+          - LISTED_COMPANY
+          - EXECUTIVE
+          - LEGAL
+          - LAWYER
+          - CPA
+          - TAX_ACCOUNTANT
+          - FREELANCE
+          - PUBLIC_SERVANT
+          - FIREFIGHTER
+          - POLICE
+          - SELF_DEFENSE_FORCE
+          - ATHLETE
+          - PILOT
+          - INVESTOR
+          - CABIN_ATTENDANT
+          - APPAREL
+          - BEAUTY
+          - BRIDAL
+          - CHEF_NUTRITIONIST
+          - CHILDCARE_WORKER
+          - SERVICE
+          - SECRETARY
+          - ANNOUNCER
+          - RECEPTIONIST
+          - ENTERTAINER_MODEL
+          - INFLUENCER
+          - YOUTUBER
+          - PRO_GAMER
+          - COMPANY_EMPLOYEE
+          - OFFICE_WORK
+          - SELF_EMPLOYED
+          - OTHER
+          example: COMPANY_EMPLOYEE
+        education:
+          type: string
+          description: 学歴
+          enum:
+          - HIGH_SCHOOL_GRADUATE
+          - JUNIOR_COLLEGE_GRADUATE
+          - VOCATIONAL_SCHOOL_GRADUATE
+          - TECHNICAL_COLLEGE_GRADUATE
+          - UNIVERSITY_GRADUATE
+          - GRADUATE_SCHOOL_GRADUATE
+          - OTHER
+          example: UNIVERSITY_GRADUATE
+        smoking:
+          type: string
+          description: タバコ
+          enum:
+          - "NO"
+          - SOMETIMES
+          - "YES"
+          example: "NO"
+        alcohol:
+          type: string
+          description: お酒
+          enum:
+          - "NO"
+          - SOMETIMES
+          - "YES"
+          example: "YES"
+        holiday:
+          type: string
+          description: 休日
+          enum:
+          - WEEKEND
+          - WEEKDAY
+          - IRREGULAR
+          example: WEEKEND
+        sunnyDayHobbies:
+          type: array
+          description: 晴れの日にやりたいこと（3つ）
+          example:
+          - 公園でピクニック
+          - カフェ巡り
+          - ランニング
+          items:
+            type: string
+        rainyDayHobbies:
+          type: array
+          description: 雨の日にやりたいこと（3つ）
+          example:
+          - 家で映画
+          - 読書
+          - 料理
+          items:
+            type: string
+        subPhoto:
+          type: string
+          format: binary
+          description: ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）
+    ApiErrorResponse:
+      type: object
+      description: 共通エラーレスポンス
+      properties:
+        code:
+          type: string
+          description: コード
+        message:
+          type: string
+          description: エラーメッセージ
+        details:
+          type: object
+          additionalProperties:
+            type: string
+          description: 詳細内容（主にバリデーションエラー）
+    RegisterUserRequest:
+      type: object
+      description: ユーザー新規登録用リクエスト
+      properties:
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+          maxLength: 16
+          minLength: 0
+        gender:
+          type: string
+          description: 性別
+          enum:
+          - MAN
+          - WOMAN
+          - OTHER
+          example: MAN
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhoto:
+          type: string
+          format: binary
+          description: メイン写真
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+          example: taro.yamada@example.com
+          maxLength: 64
+          minLength: 0
+        introduction:
+          type: string
+          description: 自己紹介文
+          example: 都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。
+          maxLength: 500
+          minLength: 20
+      required:
+      - address
+      - birthDate
+      - email
+      - gender
+      - introduction
+      - mainPhoto
+      - name
+    RegisterDeviceTokenRequest:
+      type: object
+      description: デバイストークン登録用リクエスト
+      properties:
+        token:
+          type: string
+          description: デバイストークン
+          example: eYxZzP1xQZK:APA91bF8QJm3yZf2k1H9lRk5...
+          minLength: 1
+      required:
+      - token
+    DiagnoseWeatherPersonalityRequest:
+      type: object
+      description: ユーザーのウェザーパーソナリティ診断回答用リクエスト
+      properties:
+        q1Answer:
+          type: string
+          description: 質問１
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q2Answer:
+          type: string
+          description: 質問２
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q3Answer:
+          type: string
+          description: 質問３
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q4Answer:
+          type: string
+          description: 質問４
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q5Answer:
+          type: string
+          description: 質問５
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q6Answer:
+          type: string
+          description: 質問６
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q7Answer:
+          type: string
+          description: 質問７
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q8Answer:
+          type: string
+          description: 質問８
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q9Answer:
+          type: string
+          description: 質問９
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q10Answer:
+          type: string
+          description: 質問１０
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q11Answer:
+          type: string
+          description: 質問１１
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q12Answer:
+          type: string
+          description: 質問１２
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q13Answer:
+          type: string
+          description: 質問１３
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q14Answer:
+          type: string
+          description: 質問１４
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q15Answer:
+          type: string
+          description: 質問１５
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+        q16Answer:
+          type: string
+          description: 質問１６
+          enum:
+          - STRONGLY_A
+          - SLIGHTLY_A
+          - SLIGHTLY_B
+          - STRONGLY_B
+          example: STRONGLY_A
+      required:
+      - q10Answer
+      - q11Answer
+      - q12Answer
+      - q13Answer
+      - q14Answer
+      - q15Answer
+      - q16Answer
+      - q1Answer
+      - q2Answer
+      - q3Answer
+      - q4Answer
+      - q5Answer
+      - q6Answer
+      - q7Answer
+      - q8Answer
+      - q9Answer
+    SendRainbowLikeRequest:
+      type: object
+      description: メッセージ送信用リクエスト
+      properties:
+        message:
+          type: string
+          description: 特別なメッセージ
+          example: プロフィール見て気になって、特別ないいねしました！！
+          minLength: 1
+      required:
+      - message
+    SendMessageRequest:
+      type: object
+      description: メッセージ送信用リクエスト
+      properties:
+        text:
+          type: string
+          description: テキストメッセージ
+          example: よろしくお願いします！
+          minLength: 1
+      required:
+      - text
+    GetUserListResponse:
+      type: object
+      description: ユーザー一覧取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhotoUrl:
+          type: string
+          description: メイン写真URL
+        introduction:
+          type: string
+          description: 自己紹介文
+          example: 都内でエンジニアをしています。休日はカフェ巡りやランニングを楽しんでいます。
+    UserWithProfileResponse:
+      type: object
+      description: ユーザープロフィール取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+        gender:
+          type: string
+          description: 性別
+          enum:
+          - MAN
+          - WOMAN
+          - OTHER
+          example: MAN
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhotoUrl:
+          type: string
+          description: メイン写真URL
+        introduction:
+          type: string
+          description: 自己紹介文
+        height:
+          type: integer
+          format: int32
+          description: 身長
+          example: 160
+        bodyShape:
+          type: string
+          description: 体型
+          enum:
+          - SLIM
+          - SLENDER
+          - NORMAL
+          - MUSCULAR
+          - CHUBBY
+          - OVERWEIGHT
+          example: NORMAL
+        annualIncome:
+          type: string
+          description: 平均
+          enum:
+          - UNDER_2M
+          - BETWEEN_2M_TO_4M
+          - BETWEEN_4M_TO_6M
+          - BETWEEN_6M_TO_8M
+          - BETWEEN_8M_TO_10M
+          - BETWEEN_10M_TO_15M
+          - BETWEEN_15M_TO_20M
+          - BETWEEN_20M_TO_30M
+          - OVER_30M
+          example: BETWEEN_2M_TO_4M
+        bloodType:
+          type: string
+          description: 血液型
+          enum:
+          - A
+          - B
+          - O
+          - AB
+          - UNKNOWN
+          example: A
+        hometown:
+          type: string
+          description: 出身地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: IWATE
+        communicationStyle:
+          type: string
+          description: コミュニケーション方法
+          enum:
+          - CALL
+          - MESSAGE
+          - IN_PERSON
+          example: CALL
+        occupation:
+          type: string
+          description: 職業
+          enum:
+          - UNIVERSITY_STUDENT
+          - GRADUATE_STUDENT
+          - VOCATIONAL_STUDENT
+          - JUNIOR_COLLEGE_STUDENT
+          - TECHNICAL_COLLEGE_STUDENT
+          - DISTRIBUTION
+          - FOOD_INDUSTRY
+          - PHARMACEUTICAL
+          - MEDICAL
+          - WELFARE_CARE
+          - DOCTOR
+          - NURSE
+          - PHARMACIST
+          - TELECOMMUNICATION
+          - WEB
+          - IT
+          - ENGINEER
+          - CREATOR
+          - DESIGNER
+          - ARCHITECTURE_INTERIOR
+          - FINANCE
+          - INSURANCE
+          - CONSULTING
+          - MASS_MEDIA
+          - ADVERTISING
+          - PUBLISHING
+          - EDUCATION
+          - RETAIL
+          - TRANSPORTATION
+          - ENTERTAINMENT
+          - TRAVEL
+          - REAL_ESTATE
+          - TRADING_COMPANY
+          - MANUFACTURER
+          - RESEARCHER
+          - MAJOR_COMPANY
+          - FOREIGN_COMPANY
+          - LISTED_COMPANY
+          - EXECUTIVE
+          - LEGAL
+          - LAWYER
+          - CPA
+          - TAX_ACCOUNTANT
+          - FREELANCE
+          - PUBLIC_SERVANT
+          - FIREFIGHTER
+          - POLICE
+          - SELF_DEFENSE_FORCE
+          - ATHLETE
+          - PILOT
+          - INVESTOR
+          - CABIN_ATTENDANT
+          - APPAREL
+          - BEAUTY
+          - BRIDAL
+          - CHEF_NUTRITIONIST
+          - CHILDCARE_WORKER
+          - SERVICE
+          - SECRETARY
+          - ANNOUNCER
+          - RECEPTIONIST
+          - ENTERTAINER_MODEL
+          - INFLUENCER
+          - YOUTUBER
+          - PRO_GAMER
+          - COMPANY_EMPLOYEE
+          - OFFICE_WORK
+          - SELF_EMPLOYED
+          - OTHER
+          example: COMPANY_EMPLOYEE
+        education:
+          type: string
+          description: 学歴
+          enum:
+          - HIGH_SCHOOL_GRADUATE
+          - JUNIOR_COLLEGE_GRADUATE
+          - VOCATIONAL_SCHOOL_GRADUATE
+          - TECHNICAL_COLLEGE_GRADUATE
+          - UNIVERSITY_GRADUATE
+          - GRADUATE_SCHOOL_GRADUATE
+          - OTHER
+          example: UNIVERSITY_GRADUATE
+        smoking:
+          type: string
+          description: タバコ
+          enum:
+          - "NO"
+          - SOMETIMES
+          - "YES"
+          example: "NO"
+        alcohol:
+          type: string
+          description: お酒
+          enum:
+          - "NO"
+          - SOMETIMES
+          - "YES"
+          example: "YES"
+        holiday:
+          type: string
+          description: 休日
+          enum:
+          - WEEKEND
+          - WEEKDAY
+          - IRREGULAR
+          example: WEEKEND
+        sunnyDayHobbies:
+          type: array
+          description: 晴れの日にやりたいこと（3つ）
+          example:
+          - 公園でピクニック
+          - カフェ巡り
+          - ランニング
+          items:
+            type: string
+        rainyDayHobbies:
+          type: array
+          description: 雨の日にやりたいこと（3つ）
+          example:
+          - 家で映画
+          - 読書
+          - 料理
+          items:
+            type: string
+        subPhotos:
+          type: string
+          format: binary
+          description: ユーザープロフィールのサブ写真（6枚までファイルアップロード可能）
+    GetMeResponse:
+      type: object
+      description: ユーザー取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+        gender:
+          type: string
+          description: 性別
+          enum:
+          - MAN
+          - WOMAN
+          - OTHER
+          example: MAN
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        email:
+          type: string
+          description: メールアドレス
+          example: taro.yamada@example.com
+        status:
+          type: string
+          description: アカウントの状態
+          enum:
+          - ACTIVE
+          - WITHDRAWN
+          - BANNED
+          - SUSPENDED
+          example: ACTIVE
+    AxisFeature:
+      type: object
+      properties:
+        axis:
+          type: string
+          enum:
+          - SENSITIVITY
+          - PREPAREDNESS
+          - ACTIVITY
+          - MOTIVATION
+        polarity:
+          type: string
+          enum:
+          - SENSITIVE
+          - NEUTRAL
+          - PLANNED
+          - FLEXIBLE
+          - OUTDOOR
+          - INDOOR
+          - EMOTIONAL
+          - RATIONAL
+        description:
+          type: string
+    BehaviorTendency:
+      type: object
+      properties:
+        summary:
+          type: string
+        detail:
+          type: string
+    DiagnoseResultWeatherPersonalityResponse:
+      type: object
+      description: ユーザーのウェザーパーソナリティ診断結果表示用レスポンス
+      properties:
+        typeCode:
+          type: string
+          description: タイプコード
+          enum:
+          - SPOE
+          - SPOR
+          - SPIE
+          - SPIR
+          - SFOE
+          - SFOR
+          - SFIE
+          - SFIR
+          - NPOE
+          - NPOR
+          - NPIE
+          - NPIR
+          - NFOE
+          - NFOR
+          - NFIE
+          - NFIR
+          example: SPOE
+        typeName:
+          type: string
+          description: タイプ名
+          example: トレーニーラッコ
+        typeCatchphrase:
+          type: string
+          description: タイプキャッチコピー
+          example: 「感情で揺れ、計画で浮かぶ。日々バランス感覚を鍛えている存在。」
+        typeImageUrl:
+          type: string
+          description: タイプイメージ画像URL
+          example: http://localhost:8080/images/weather-personalities/トレーニーラッコ_イメージ画像.png
+        rulingStatement:
+          type: string
+          description: 神様の裁定文（ストーリー）
+          example: 神様は、前世のあなたが...
+        axisFeatures:
+          type: array
+          description: 4軸に対する特徴
+          example:
+          - axis: SENSITIVITY
+            polarity: SENSITIVE
+            description: |-
+              天気・空気・人の機嫌を即座に察知。
+              ちょっとした曇り空でも『今日はそういう日かも』と感じ取る。
+          items:
+            $ref: "#/components/schemas/AxisFeature"
+        userAxisScore:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+          description: ユーザーの軸ごとのスコア
+          example:
+            SENSITIVITY: 8
+            PREPAREDNESS: 8
+            ACTIVITY: 8
+            MOTIVATION: 8
+        behaviorTendencies:
+          type: array
+          description: あなたの行動傾向（具体例つき）
+          example:
+          - summary: 天気予報を見てから予定を組み直す
+            detail: 『雨か…じゃあカフェ多めの日にしよう』と柔軟に修正。
+          items:
+            $ref: "#/components/schemas/BehaviorTendency"
+        godsMessage:
+          type: string
+          description: 神様からの一言
+          example: あなたは、感情を弱点にせず、...
+    GetRainbowLikedUserListResponse:
+      type: object
+      description: 自分がレインボーいいねした（された）ユーザー一覧取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhotoUrl:
+          type: string
+          description: メイン写真URL
+        message:
+          type: string
+          description: 特別なメッセージ
+          example: プロフィール見て気になって、特別ないいねしました！！
+    GetMatchedUserListResponse:
+      type: object
+      description: マッチング成立したユーザー一覧取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        mainPhotoUrl:
+          type: string
+          description: メイン写真URL
+    GetLikedUserListResponse:
+      type: object
+      description: 自分がいいねした（された）ユーザー一覧取得用レスポンス
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ユーザーID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        name:
+          type: string
+          description: 名前
+          example: 山田 太郎
+        birthDate:
+          type: string
+          format: date
+          description: 生年月日
+          example: 1996-04-18
+        address:
+          type: string
+          description: 居住地
+          enum:
+          - HOKKAIDO
+          - AOMORI
+          - IWATE
+          - MIYAGI
+          - AKITA
+          - YAMAGATA
+          - FUKUSHIMA
+          - IBARAKI
+          - TOCHIGI
+          - GUNMA
+          - SAITAMA
+          - CHIBA
+          - TOKYO
+          - KANAGAWA
+          - NIIGATA
+          - TOYAMA
+          - ISHIKAWA
+          - FUKUI
+          - YAMANASHI
+          - NAGANO
+          - GIFU
+          - SHIZUOKA
+          - AICHI
+          - MIE
+          - SHIGA
+          - KYOTO
+          - OSAKA
+          - HYOGO
+          - NARA
+          - WAKAYAMA
+          - TOTTORI
+          - SHIMANE
+          - OKAYAMA
+          - HIROSHIMA
+          - YAMAGUCHI
+          - TOKUSHIMA
+          - KAGAWA
+          - EHIME
+          - KOCHI
+          - FUKUOKA
+          - SAGA
+          - NAGASAKI
+          - KUMAMOTO
+          - OITA
+          - MIYAZAKI
+          - KAGOSHIMA
+          - OKINAWA
+          - OTHER
+          example: TOKYO
+        mainPhotoUrl:
+          type: string
+          description: メイン写真URL
+    GetMessageListResponse:
+      type: object
+      description: チャットルームのメッセージ一覧取得用レスポンス
+      properties:
+        messageId:
+          type: string
+          format: uuid
+          description: メッセージID
+          example: 5bf5eb52-c5fb-4a4c-b6e3-25e53c28bf93
+        senderId:
+          type: string
+          format: uuid
+          description: 送信したユーザーID
+          example: 4f1ab383-9382-4c42-bac6-318cb06ed246
+        content:
+          type: string
+          description: メッセージコンテンツ
+          example: よろしくお願いします！
+        messageType:
+          type: string
+          description: メッセージタイプ
+          enum:
+          - TEXT
+          - IMAGE
+          - STAMP
+          example: TEXT
+        sentAt:
+          type: string
+          format: date-time
+          description: 送信日時
+          example: 2026-01-17T21:41:27.944723Z
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
