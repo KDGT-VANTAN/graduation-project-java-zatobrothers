@@ -20,4 +20,11 @@ public enum ItemTypeCode {
             throw new IllegalArgumentException("存在しないアイテムコードです");
         }
     }
+
+    public static ItemTypeCode fromItemTypeId(ItemTypeId id) {
+        return switch (id) {
+            case RAINBOW_LIKE -> RAINBOW_LIKE;
+        };
+    }
+
 }
