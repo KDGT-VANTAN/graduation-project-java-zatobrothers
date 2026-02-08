@@ -1,24 +1,31 @@
 package com.reimi.reimi_app.domain.model.item;
 
-import com.reimi.reimi_app.domain.model.user.UserId;
-
 public class UserItem {
 
-    private final UserId userId;
-    private final ItemTypeId itemTypeId;
+    private final UserItemId id;
     private int quantity;
 
     private UserItem(
-        UserId userId,
-        ItemTypeId itemTypeId,
+        UserItemId id,
         int quantity
     ) {
-        this.userId = userId;
-        this.itemTypeId = itemTypeId;
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("アイテムの数量は1以上である必要があります");
+        }
+        this.id = id;
         this.quantity = quantity;
     }
 
-    public UserId getUserId() { return userId; }
-    public ItemTypeId getItemTypeId() { return itemTypeId; }
+    public static UserItem reconstruct(
+        UserItemId id,
+        int count
+    ) {
+        return new UserItem(
+            id,
+            count
+        );
+    }
+
+    public UserItemId getId() { return id; }
     public int getQuantity() { return quantity; }
 }
