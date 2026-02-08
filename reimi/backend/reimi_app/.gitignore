@@ -8,6 +8,7 @@ src/main/resources/flyway.properties
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+secrets/
 .env
 
 ### STS ###
