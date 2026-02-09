@@ -20,7 +20,7 @@ import 'package:reimi_app/presentation/features/weather_personality/states/weath
 import 'package:reimi_app/presentation/features/weather_personality/widgets/action_button.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_feature_card.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/axis_score_bar.dart';
-import 'package:reimi_app/presentation/features/weather_personality/widgets/text_card.dart';
+import 'package:reimi_app/presentation/shared/widgets/text_card.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_share_card.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';

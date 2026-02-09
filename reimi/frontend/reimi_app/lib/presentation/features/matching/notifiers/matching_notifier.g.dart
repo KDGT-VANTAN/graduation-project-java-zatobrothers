@@ -6,7 +6,7 @@ part of 'matching_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$matchingNotifierHash() => r'81b7d63c534b1bce69a924e2339cfb0c420375d6';
+String _$matchingNotifierHash() => r'44be8d9332a8a65893754463711fa6cc01acf4d4';
 
 /// See also [MatchingNotifier].
 @ProviderFor(MatchingNotifier)
