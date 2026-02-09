@@ -97,6 +97,19 @@
     "nullCase": "Matching information could not be obtained.",
     "message": "Send us a message and start a conversation!"
   },
+  "aIMatchingPage": {
+    "title": "We've found your perfect match!",
+    "subTitle": "Special suggestions from AI taking today's weather into consideration",
+    "nullCase": "Could not obtain user information to suggest.",
+    "section": {
+      "suggestionReason": {
+        "title": "💡Why AI made this suggestion"
+      },
+      "todayWeatherCompatibilityPoint": {
+        "title": "🌦️What would you do if the weather was like today?"
+      }
+    }
+  },
   "chatPage": {
     "isEmptyCase": "Let's find new encounters!",
     "sectionTitle": {

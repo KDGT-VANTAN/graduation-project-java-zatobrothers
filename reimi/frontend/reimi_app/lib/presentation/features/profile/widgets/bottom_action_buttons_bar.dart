@@ -42,7 +42,7 @@ class BottomActionButtonsBar extends StatelessWidget {
               CircleButton(
                 size: 72,
                 onTap: centerButtonOnTap,
-                gradient: earthToneRainbowGradient.withOpacity(0.6),
+                gradient: earthToneRainbowSweepGradient.withOpacity(0.6),
                 child: Assets.images.items.rainbowLike.image(
                   height: 48,
                   width: 48,

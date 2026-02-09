@@ -7,6 +7,7 @@ import 'package:reimi_app/core/extensions/value_objects/forecast_type_extension.
 import 'package:reimi_app/core/extensions/value_objects/weather_type_extension.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
+import 'package:reimi_app/presentation/features/matching/pages/ai_matching_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_post_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_select_page.dart';
@@ -62,7 +63,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
             weatherReportCompleteDialog(
               context: context,
               onConfirm: () {
-                context.go(WeatherReportPage.routeLocation);
+                context.go(AIMatchingPage.routeLocation);
               },
             );
           }
@@ -160,9 +161,10 @@ class WeatherReportPostPage extends HookConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 InfoTile(
-                    label: t.weatherReportPostPage.label.location,
-                    value: '東京都渋谷区',
-                    onTap: () {}),
+                  label: t.weatherReportPostPage.label.location,
+                  value: '東京都渋谷区',
+                  onTap: () {},
+                ),
                 const SizedBox(height: 12),
                 InfoTile(
                   label: t.weatherReportPostPage.label.weatherFeelingForecast,

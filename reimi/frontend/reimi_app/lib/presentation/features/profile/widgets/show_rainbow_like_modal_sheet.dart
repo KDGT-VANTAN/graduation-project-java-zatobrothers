@@ -267,8 +267,8 @@ class _SendButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(26),
             gradient: onTap == null
-                ? earthToneRainbowGradient.withOpacity(0.1)
-                : earthToneRainbowGradient.withOpacity(0.9),
+                ? earthToneRainbowSweepGradient.withOpacity(0.1)
+                : earthToneRainbowSweepGradient.withOpacity(0.9),
             boxShadow: const [
               BoxShadow(
                 color: Colors.black12,

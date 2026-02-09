@@ -97,6 +97,19 @@
     "nullCase": "マッチング情報が取得できませんでした。",
     "message": "メッセージを送って会話を始めましょう！"
   },
+  "aIMatchingPage": {
+    "title": "あなたにぴったりの相手を見つけました！",
+    "subTitle": "今日の天気を考慮した、AIからの特別な提案です",
+    "nullCase": "提案するユーザー情報が取得できませんでした。",
+    "section": {
+      "suggestionReason": {
+        "title": "💡AIが提案した理由"
+      },
+      "todayWeatherCompatibilityPoint": {
+        "title": "🌦️今日みたいな天気なら何をする？"
+      }
+    }
+  },
   "chatPage": {
     "isEmptyCase": "新しい出会いをみつけましょう！",
     "sectionTitle": {
