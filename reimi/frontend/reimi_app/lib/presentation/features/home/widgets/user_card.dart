@@ -50,11 +50,11 @@ class UserCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 5,
-                      right: 5,
+                      bottom: 6,
+                      right: 6,
                       child: CircleBadge(
                         color: Colors.white.withValues(alpha: 0.8),
-                        size: 48,
+                        size: 50,
                         child: Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -66,40 +66,10 @@ class UserCard extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image(
-                              image:
-                                  user.typeImageUrl.toImageProvider(),
+                              image: user.typeImageUrl.toImageProvider(),
                               fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 7,
-                      right: 7,
-                      child: CircleBadge(
-                        color: theme.colorScheme.secondary,
-                        size: 40,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '99',
-                              style: theme.textTheme.labelSmall!.copyWith(
-                                fontSize: 13,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              '%',
-                              style: theme.textTheme.labelSmall!.copyWith(
-                                fontSize: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),
