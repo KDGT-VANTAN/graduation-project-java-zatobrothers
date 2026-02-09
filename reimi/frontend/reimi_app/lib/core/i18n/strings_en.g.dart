@@ -52,6 +52,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsHomePageEn homePage = TranslationsHomePageEn._(_root);
 	late final TranslationsLikePageEn likePage = TranslationsLikePageEn._(_root);
 	late final TranslationsMatchingCompletedPageEn matchingCompletedPage = TranslationsMatchingCompletedPageEn._(_root);
+	late final TranslationsAIMatchingPageEn aIMatchingPage = TranslationsAIMatchingPageEn._(_root);
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
 	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
@@ -213,6 +214,26 @@ class TranslationsMatchingCompletedPageEn {
 
 	/// en: 'Send us a message and start a conversation!'
 	String get message => 'Send us a message and start a conversation!';
+}
+
+// Path: aIMatchingPage
+class TranslationsAIMatchingPageEn {
+	TranslationsAIMatchingPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'We've found your perfect match!'
+	String get title => 'We\'ve found your perfect match!';
+
+	/// en: 'Special suggestions from AI taking today's weather into consideration'
+	String get subTitle => 'Special suggestions from AI taking today\'s weather into consideration';
+
+	/// en: 'Could not obtain user information to suggest.'
+	String get nullCase => 'Could not obtain user information to suggest.';
+
+	late final TranslationsAIMatchingPageSectionEn section = TranslationsAIMatchingPageSectionEn._(_root);
 }
 
 // Path: chatPage
@@ -844,6 +865,17 @@ class TranslationsUserRegistrationPageMainPhotoEn {
 	String get question => 'Select your main photo';
 
 	late final TranslationsUserRegistrationPageMainPhotoItemsEn items = TranslationsUserRegistrationPageMainPhotoItemsEn._(_root);
+}
+
+// Path: aIMatchingPage.section
+class TranslationsAIMatchingPageSectionEn {
+	TranslationsAIMatchingPageSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsAIMatchingPageSectionSuggestionReasonEn suggestionReason = TranslationsAIMatchingPageSectionSuggestionReasonEn._(_root);
+	late final TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn todayWeatherCompatibilityPoint = TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn._(_root);
 }
 
 // Path: chatPage.sectionTitle
@@ -2769,6 +2801,30 @@ class TranslationsUserRegistrationPageMainPhotoItemsEn {
 	String get photoRecommendationHint => 'A smiling face photo is recommended';
 }
 
+// Path: aIMatchingPage.section.suggestionReason
+class TranslationsAIMatchingPageSectionSuggestionReasonEn {
+	TranslationsAIMatchingPageSectionSuggestionReasonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '💡Why AI made this suggestion'
+	String get title => '💡Why AI made this suggestion';
+}
+
+// Path: aIMatchingPage.section.todayWeatherCompatibilityPoint
+class TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn {
+	TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: '🌦️What would you do if the weather was like today?'
+	String get title => '🌦️What would you do if the weather was like today?';
+}
+
 // Path: profilePage.section.basicInformation
 class TranslationsProfilePageSectionBasicInformationEn {
 	TranslationsProfilePageSectionBasicInformationEn._(this._root);
@@ -3584,6 +3640,11 @@ extension on Translations {
 			'matchingCompletedPage.subTitle' => ({required Object name}) => 'Congratulations! \nYou\'ve been matched with ${name}.',
 			'matchingCompletedPage.nullCase' => 'Matching information could not be obtained.',
 			'matchingCompletedPage.message' => 'Send us a message and start a conversation!',
+			'aIMatchingPage.title' => 'We\'ve found your perfect match!',
+			'aIMatchingPage.subTitle' => 'Special suggestions from AI taking today\'s weather into consideration',
+			'aIMatchingPage.nullCase' => 'Could not obtain user information to suggest.',
+			'aIMatchingPage.section.suggestionReason.title' => '💡Why AI made this suggestion',
+			'aIMatchingPage.section.todayWeatherCompatibilityPoint.title' => '🌦️What would you do if the weather was like today?',
 			'chatPage.isEmptyCase' => 'Let\'s find new encounters!',
 			'chatPage.sectionTitle.matching' => 'Matches',
 			'chatPage.sectionTitle.messages' => 'Messages',
@@ -4043,13 +4104,13 @@ extension on Translations {
 			'kEnum.holiday.weekday' => 'Weekdays',
 			'kEnum.holiday.irregular' => 'Irregular',
 			'kEnum.occupation.universityStudent' => 'University Student',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.graduateStudent' => 'Graduate Student',
 			'kEnum.occupation.vocationalStudent' => 'Vocational Student',
 			'kEnum.occupation.juniorCollegeStudent' => 'Junior College Student',
 			'kEnum.occupation.technicalCollegeStudent' => 'Technical College Student',
 			'kEnum.occupation.distribution' => 'Distribution',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.foodIndustry' => 'Food Industry',
 			'kEnum.occupation.pharmaceutical' => 'Pharmaceutical',
 			'kEnum.occupation.medical' => 'Medical',

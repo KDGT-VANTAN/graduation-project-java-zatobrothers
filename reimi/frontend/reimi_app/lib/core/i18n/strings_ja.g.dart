@@ -49,6 +49,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsHomePageJa homePage = _TranslationsHomePageJa._(_root);
 	@override late final _TranslationsLikePageJa likePage = _TranslationsLikePageJa._(_root);
 	@override late final _TranslationsMatchingCompletedPageJa matchingCompletedPage = _TranslationsMatchingCompletedPageJa._(_root);
+	@override late final _TranslationsAIMatchingPageJa aIMatchingPage = _TranslationsAIMatchingPageJa._(_root);
 	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
 	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
 	@override late final _TranslationsWeatherReportPageJa weatherReportPage = _TranslationsWeatherReportPageJa._(_root);
@@ -174,6 +175,19 @@ class _TranslationsMatchingCompletedPageJa implements TranslationsMatchingComple
 	@override String subTitle({required Object name}) => 'おめでとうございます！\n${name}さんとマッチングしました';
 	@override String get nullCase => 'マッチング情報が取得できませんでした。';
 	@override String get message => 'メッセージを送って会話を始めましょう！';
+}
+
+// Path: aIMatchingPage
+class _TranslationsAIMatchingPageJa implements TranslationsAIMatchingPageEn {
+	_TranslationsAIMatchingPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'あなたにぴったりの相手を見つけました！';
+	@override String get subTitle => '今日の天気を考慮した、AIからの特別な提案です';
+	@override String get nullCase => '提案するユーザー情報が取得できませんでした。';
+	@override late final _TranslationsAIMatchingPageSectionJa section = _TranslationsAIMatchingPageSectionJa._(_root);
 }
 
 // Path: chatPage
@@ -650,6 +664,17 @@ class _TranslationsUserRegistrationPageMainPhotoJa implements TranslationsUserRe
 	// Translations
 	@override String get question => 'メイン写真を選んでください';
 	@override late final _TranslationsUserRegistrationPageMainPhotoItemsJa items = _TranslationsUserRegistrationPageMainPhotoItemsJa._(_root);
+}
+
+// Path: aIMatchingPage.section
+class _TranslationsAIMatchingPageSectionJa implements TranslationsAIMatchingPageSectionEn {
+	_TranslationsAIMatchingPageSectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsAIMatchingPageSectionSuggestionReasonJa suggestionReason = _TranslationsAIMatchingPageSectionSuggestionReasonJa._(_root);
+	@override late final _TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointJa todayWeatherCompatibilityPoint = _TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointJa._(_root);
 }
 
 // Path: chatPage.sectionTitle
@@ -1804,6 +1829,26 @@ class _TranslationsUserRegistrationPageMainPhotoItemsJa implements TranslationsU
 	@override String get photoRecommendationHint => '笑顔の顔写真がおすすめ';
 }
 
+// Path: aIMatchingPage.section.suggestionReason
+class _TranslationsAIMatchingPageSectionSuggestionReasonJa implements TranslationsAIMatchingPageSectionSuggestionReasonEn {
+	_TranslationsAIMatchingPageSectionSuggestionReasonJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '💡AIが提案した理由';
+}
+
+// Path: aIMatchingPage.section.todayWeatherCompatibilityPoint
+class _TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointJa implements TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn {
+	_TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '🌦️今日みたいな天気なら何をする？';
+}
+
 // Path: profilePage.section.basicInformation
 class _TranslationsProfilePageSectionBasicInformationJa implements TranslationsProfilePageSectionBasicInformationEn {
 	_TranslationsProfilePageSectionBasicInformationJa._(this._root);
@@ -2345,6 +2390,11 @@ extension on TranslationsJa {
 			'matchingCompletedPage.subTitle' => ({required Object name}) => 'おめでとうございます！\n${name}さんとマッチングしました',
 			'matchingCompletedPage.nullCase' => 'マッチング情報が取得できませんでした。',
 			'matchingCompletedPage.message' => 'メッセージを送って会話を始めましょう！',
+			'aIMatchingPage.title' => 'あなたにぴったりの相手を見つけました！',
+			'aIMatchingPage.subTitle' => '今日の天気を考慮した、AIからの特別な提案です',
+			'aIMatchingPage.nullCase' => '提案するユーザー情報が取得できませんでした。',
+			'aIMatchingPage.section.suggestionReason.title' => '💡AIが提案した理由',
+			'aIMatchingPage.section.todayWeatherCompatibilityPoint.title' => '🌦️今日みたいな天気なら何をする？',
 			'chatPage.isEmptyCase' => '新しい出会いをみつけましょう！',
 			'chatPage.sectionTitle.matching' => 'マッチング',
 			'chatPage.sectionTitle.messages' => 'メッセージ',
@@ -2804,13 +2854,13 @@ extension on TranslationsJa {
 			'kEnum.holiday.weekday' => '平日',
 			'kEnum.holiday.irregular' => '不定休',
 			'kEnum.occupation.universityStudent' => '大学生',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.occupation.graduateStudent' => '大学院生',
 			'kEnum.occupation.vocationalStudent' => '専門学生',
 			'kEnum.occupation.juniorCollegeStudent' => '短大生',
 			'kEnum.occupation.technicalCollegeStudent' => '高専生',
 			'kEnum.occupation.distribution' => '流通',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.occupation.foodIndustry' => '食品関係',
 			'kEnum.occupation.pharmaceutical' => '製薬',
 			'kEnum.occupation.medical' => '医療関係',
