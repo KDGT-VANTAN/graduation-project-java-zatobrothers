@@ -551,6 +551,10 @@
     "reTest":{
       "title": "Confirmation of Re-Test",
       "contentText": "If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?"
+    },
+    "likeMessage":{
+      "title": "message received",
+      "nullCase": "There are no messages."
     }
   },
   "modalSheet": {

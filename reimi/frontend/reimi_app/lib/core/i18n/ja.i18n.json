@@ -551,6 +551,10 @@
     "reTest":{
       "title": "再診断の確認",
       "contentText": "診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？"
+    },
+    "likeMessage":{
+      "title": "届いたメッセージ",
+      "nullCase": "メッセージがありません。"
     }
   },
   "modalSheet": {

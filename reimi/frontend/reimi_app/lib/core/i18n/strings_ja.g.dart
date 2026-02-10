@@ -444,6 +444,7 @@ class _TranslationsDialogJa implements TranslationsDialogEn {
 	@override late final _TranslationsDialogInterruptTestJa interruptTest = _TranslationsDialogInterruptTestJa._(_root);
 	@override late final _TranslationsDialogCompleteTestJa completeTest = _TranslationsDialogCompleteTestJa._(_root);
 	@override late final _TranslationsDialogReTestJa reTest = _TranslationsDialogReTestJa._(_root);
+	@override late final _TranslationsDialogLikeMessageJa likeMessage = _TranslationsDialogLikeMessageJa._(_root);
 }
 
 // Path: modalSheet
@@ -1279,6 +1280,17 @@ class _TranslationsDialogReTestJa implements TranslationsDialogReTestEn {
 	// Translations
 	@override String get title => '再診断の確認';
 	@override String get contentText => '診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？';
+}
+
+// Path: dialog.likeMessage
+class _TranslationsDialogLikeMessageJa implements TranslationsDialogLikeMessageEn {
+	_TranslationsDialogLikeMessageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '届いたメッセージ';
+	@override String get nullCase => 'メッセージがありません。';
 }
 
 // Path: modalSheet.sortUser
@@ -2636,6 +2648,8 @@ extension on TranslationsJa {
 			'dialog.completeTest.contentText' => '回答した内容を送信し、診断を完了しますか？',
 			'dialog.reTest.title' => '再診断の確認',
 			'dialog.reTest.contentText' => '診断をやり直すと、現在の診断結果は削除されます。\n本当に再診断しますか？',
+			'dialog.likeMessage.title' => '届いたメッセージ',
+			'dialog.likeMessage.nullCase' => 'メッセージがありません。',
 			'modalSheet.sortUser.title' => '並び替え',
 			'modalSheet.refineSearchUser.title' => '絞り込み条件',
 			'modalSheet.refineSearchUser.section.age' => '年齢',
@@ -2852,10 +2866,10 @@ extension on TranslationsJa {
 			'kEnum.height.over200cm' => '200cm以上',
 			'kEnum.holiday.weekend' => '土日',
 			'kEnum.holiday.weekday' => '平日',
-			'kEnum.holiday.irregular' => '不定休',
-			'kEnum.occupation.universityStudent' => '大学生',
 			_ => null,
 		} ?? switch (path) {
+			'kEnum.holiday.irregular' => '不定休',
+			'kEnum.occupation.universityStudent' => '大学生',
 			'kEnum.occupation.graduateStudent' => '大学院生',
 			'kEnum.occupation.vocationalStudent' => '専門学生',
 			'kEnum.occupation.juniorCollegeStudent' => '短大生',

@@ -554,6 +554,7 @@ class TranslationsDialogEn {
 	late final TranslationsDialogInterruptTestEn interruptTest = TranslationsDialogInterruptTestEn._(_root);
 	late final TranslationsDialogCompleteTestEn completeTest = TranslationsDialogCompleteTestEn._(_root);
 	late final TranslationsDialogReTestEn reTest = TranslationsDialogReTestEn._(_root);
+	late final TranslationsDialogLikeMessageEn likeMessage = TranslationsDialogLikeMessageEn._(_root);
 }
 
 // Path: modalSheet
@@ -1759,6 +1760,21 @@ class TranslationsDialogReTestEn {
 
 	/// en: 'If you run the test again, the current test results will be deleted. Do you really want to run the test again?'
 	String get contentText => 'If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?';
+}
+
+// Path: dialog.likeMessage
+class TranslationsDialogLikeMessageEn {
+	TranslationsDialogLikeMessageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'message received'
+	String get title => 'message received';
+
+	/// en: 'There are no messages.'
+	String get nullCase => 'There are no messages.';
 }
 
 // Path: modalSheet.sortUser
@@ -3886,6 +3902,8 @@ extension on Translations {
 			'dialog.completeTest.contentText' => 'Would you like to submit your answers and complete the test?',
 			'dialog.reTest.title' => 'Confirmation of Re-Test',
 			'dialog.reTest.contentText' => 'If you run the test again, the current test results will be deleted. \nDo you really want to run the test again?',
+			'dialog.likeMessage.title' => 'message received',
+			'dialog.likeMessage.nullCase' => 'There are no messages.',
 			'modalSheet.sortUser.title' => 'Sort',
 			'modalSheet.refineSearchUser.title' => 'Filter',
 			'modalSheet.refineSearchUser.section.age' => 'Age',
@@ -4102,10 +4120,10 @@ extension on Translations {
 			'kEnum.height.over200cm' => 'Over 200cm',
 			'kEnum.holiday.weekend' => 'Weekends',
 			'kEnum.holiday.weekday' => 'Weekdays',
-			'kEnum.holiday.irregular' => 'Irregular',
-			'kEnum.occupation.universityStudent' => 'University Student',
 			_ => null,
 		} ?? switch (path) {
+			'kEnum.holiday.irregular' => 'Irregular',
+			'kEnum.occupation.universityStudent' => 'University Student',
 			'kEnum.occupation.graduateStudent' => 'Graduate Student',
 			'kEnum.occupation.vocationalStudent' => 'Vocational Student',
 			'kEnum.occupation.juniorCollegeStudent' => 'Junior College Student',
