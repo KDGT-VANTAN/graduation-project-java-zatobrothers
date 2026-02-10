@@ -2,6 +2,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/application/usecases/like/like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/notification/register_device_token_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
+import 'package:reimi_app/application/usecases/rainbow_like/get_rainbow_like_users_from_user_usecase.dart';
+import 'package:reimi_app/application/usecases/rainbow_like/get_rainbow_like_users_to_user_usecase.dart';
 import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
 import 'package:reimi_app/application/usecases/like/get_like_users_to_user_usecase.dart';
@@ -88,6 +90,18 @@ LikeUserUseCase likeUserUseCase(Ref ref) {
 RainbowLikeUserUseCase rainbowLikeUserUseCase(Ref ref) {
   return RainbowLikeUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
 }
+
+@riverpod
+GetRainbowLikeUsersFromUserUseCase getRainbowLikeUsersFromUserUseCase(Ref ref) {
+  return GetRainbowLikeUsersFromUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
+}
+
+
+@riverpod
+GetRainbowLikeUsersToUserUseCase getRainbowLikeUsersToUserUseCase(Ref ref) {
+  return GetRainbowLikeUsersToUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
+}
+
 
 // chat_room関連
 @riverpod
