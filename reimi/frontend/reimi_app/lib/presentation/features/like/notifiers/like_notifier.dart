@@ -1,5 +1,8 @@
 import 'package:reimi_app/core/di/usecase_providers.dart';
+import 'package:reimi_app/domain/read_models/like_user_item.dart';
 import 'package:reimi_app/presentation/features/like/enum/like_segment.dart';
+import 'package:reimi_app/presentation/features/like/mapper/like_user_mapper.dart';
+import 'package:reimi_app/presentation/features/like/mapper/rainbow_like_user_mapper.dart';
 import 'package:reimi_app/presentation/features/like/states/like_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -31,11 +34,9 @@ class LikeNotifier extends _$LikeNotifier {
   Future<void> loadLikeUsers(LikeSegment segment) async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
-      final users = await switch (segment) {
-        LikeSegment.fromUser =>
-          ref.read(getLikeUsersFromUserUseCaseProvider).call(),
-        LikeSegment.toUser =>
-          ref.read(getLikeUsersToUserUseCaseProvider).call(),
+      final users = switch (segment) {
+        LikeSegment.fromUser => await _loadFromUserLikeUsers(),
+        LikeSegment.toUser => await _loadToUserLikeUsers(),
       };
       state = state.copyWith(
         users: users,
@@ -47,6 +48,39 @@ class LikeNotifier extends _$LikeNotifier {
         errorMessage: e.toString(),
       );
     }
+  }
+
+  Future<List<LikeUserItem>> _loadFromUserLikeUsers() async {
+    final likeUsers =
+        await ref.read(getLikeUsersFromUserUseCaseProvider).call();
+    final rainbowLikeUsers =
+        await ref.read(getRainbowLikeUsersFromUserUseCaseProvider).call();
+
+    final normalLikes = likeUsers.map((e) => e.toLikeUserItem()).toList();
+    final rainbowLikes =
+        rainbowLikeUsers.map((e) => e.toLikeUserItem()).toList();
+
+    final merged = <LikeUserItem>[
+      ...rainbowLikes,
+      ...normalLikes,
+    ];
+    return merged;
+  }
+
+  Future<List<LikeUserItem>> _loadToUserLikeUsers() async {
+    final likeUsers = await ref.read(getLikeUsersToUserUseCaseProvider).call();
+    final rainbowLikeUsers =
+        await ref.read(getRainbowLikeUsersToUserUseCaseProvider).call();
+
+    final normalLikes = likeUsers.map((e) => e.toLikeUserItem()).toList();
+    final rainbowLikes =
+        rainbowLikeUsers.map((e) => e.toLikeUserItem()).toList();
+
+    final merged = <LikeUserItem>[
+      ...rainbowLikes,
+      ...normalLikes,
+    ];
+    return merged;
   }
 
   Future<void> refresh() async {
