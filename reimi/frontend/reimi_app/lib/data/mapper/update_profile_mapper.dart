@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as p;
 import 'package:reimi_app/data/dtos/update_profile_dto.dart';
 import 'package:reimi_app/domain/params/update_profile_params.dart';

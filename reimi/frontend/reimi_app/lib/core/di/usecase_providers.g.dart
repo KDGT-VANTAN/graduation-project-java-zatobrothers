@@ -221,6 +221,46 @@ final rainbowLikeUserUseCaseProvider =
 // ignore: unused_element
 typedef RainbowLikeUserUseCaseRef
     = AutoDisposeProviderRef<RainbowLikeUserUseCase>;
+String _$getRainbowLikeUsersFromUserUseCaseHash() =>
+    r'f91f285e2c62a22ef2fab4abfde9f1f3ab9b806f';
+
+/// See also [getRainbowLikeUsersFromUserUseCase].
+@ProviderFor(getRainbowLikeUsersFromUserUseCase)
+final getRainbowLikeUsersFromUserUseCaseProvider =
+    AutoDisposeProvider<GetRainbowLikeUsersFromUserUseCase>.internal(
+  getRainbowLikeUsersFromUserUseCase,
+  name: r'getRainbowLikeUsersFromUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getRainbowLikeUsersFromUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetRainbowLikeUsersFromUserUseCaseRef
+    = AutoDisposeProviderRef<GetRainbowLikeUsersFromUserUseCase>;
+String _$getRainbowLikeUsersToUserUseCaseHash() =>
+    r'8126957c886462e59fcb60843804f05555bdc859';
+
+/// See also [getRainbowLikeUsersToUserUseCase].
+@ProviderFor(getRainbowLikeUsersToUserUseCase)
+final getRainbowLikeUsersToUserUseCaseProvider =
+    AutoDisposeProvider<GetRainbowLikeUsersToUserUseCase>.internal(
+  getRainbowLikeUsersToUserUseCase,
+  name: r'getRainbowLikeUsersToUserUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getRainbowLikeUsersToUserUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetRainbowLikeUsersToUserUseCaseRef
+    = AutoDisposeProviderRef<GetRainbowLikeUsersToUserUseCase>;
 String _$getUnmessagedMatchUsersUseCaseHash() =>
     r'f19b364e5540940c6a4f04ed894ab18b2229c5e6';
 

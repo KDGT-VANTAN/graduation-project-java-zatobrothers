@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$LikeState {
-  List<LikeUserReadModel> get users;
+  List<LikeUserItem> get users;
   LikeSegment get segment;
   bool get isLoading;
   String? get errorMessage;
@@ -59,7 +59,7 @@ abstract mixin class $LikeStateCopyWith<$Res> {
       _$LikeStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<LikeUserReadModel> users,
+      {List<LikeUserItem> users,
       LikeSegment segment,
       bool isLoading,
       String? errorMessage});
@@ -86,7 +86,7 @@ class _$LikeStateCopyWithImpl<$Res> implements $LikeStateCopyWith<$Res> {
       users: null == users
           ? _self.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<LikeUserReadModel>,
+              as List<LikeUserItem>,
       segment: null == segment
           ? _self.segment
           : segment // ignore: cast_nullable_to_non_nullable
@@ -196,7 +196,7 @@ extension LikeStatePatterns on LikeState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LikeUserReadModel> users, LikeSegment segment,
+    TResult Function(List<LikeUserItem> users, LikeSegment segment,
             bool isLoading, String? errorMessage)?
         $default, {
     required TResult orElse(),
@@ -226,7 +226,7 @@ extension LikeStatePatterns on LikeState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<LikeUserReadModel> users, LikeSegment segment,
+    TResult Function(List<LikeUserItem> users, LikeSegment segment,
             bool isLoading, String? errorMessage)
         $default,
   ) {
@@ -254,7 +254,7 @@ extension LikeStatePatterns on LikeState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<LikeUserReadModel> users, LikeSegment segment,
+    TResult? Function(List<LikeUserItem> users, LikeSegment segment,
             bool isLoading, String? errorMessage)?
         $default,
   ) {
@@ -273,16 +273,16 @@ extension LikeStatePatterns on LikeState {
 
 class _LikeState implements LikeState {
   const _LikeState(
-      {final List<LikeUserReadModel> users = const <LikeUserReadModel>[],
+      {final List<LikeUserItem> users = const <LikeUserItem>[],
       this.segment = LikeSegment.fromUser,
       this.isLoading = false,
       this.errorMessage})
       : _users = users;
 
-  final List<LikeUserReadModel> _users;
+  final List<LikeUserItem> _users;
   @override
   @JsonKey()
-  List<LikeUserReadModel> get users {
+  List<LikeUserItem> get users {
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_users);
@@ -341,7 +341,7 @@ abstract mixin class _$LikeStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<LikeUserReadModel> users,
+      {List<LikeUserItem> users,
       LikeSegment segment,
       bool isLoading,
       String? errorMessage});
@@ -368,7 +368,7 @@ class __$LikeStateCopyWithImpl<$Res> implements _$LikeStateCopyWith<$Res> {
       users: null == users
           ? _self._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<LikeUserReadModel>,
+              as List<LikeUserItem>,
       segment: null == segment
           ? _self.segment
           : segment // ignore: cast_nullable_to_non_nullable

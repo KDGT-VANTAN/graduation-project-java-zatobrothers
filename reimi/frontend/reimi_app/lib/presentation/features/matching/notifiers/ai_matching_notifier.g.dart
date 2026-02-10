@@ -7,7 +7,7 @@ part of 'ai_matching_notifier.dart';
 // **************************************************************************
 
 String _$aIMatchingNotifierHash() =>
-    r'271b35d907e9ce5fafa810ff8147f397bab9ec08';
+    r'488fa88ad76114c1e5c97e452bac20a7aa98e666';
 
 /// See also [AIMatchingNotifier].
 @ProviderFor(AIMatchingNotifier)

@@ -7,9 +7,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dio_client.g.dart';
 
+const baseUrl = String.fromEnvironment('baseUrl');
+
 @Riverpod(keepAlive: true)
 Dio dioClient(Ref ref) {
-  const baseUrl = String.fromEnvironment('baseUrl');
   final logger = ref.watch(appLoggerProvider);
 
   final dio = Dio(
