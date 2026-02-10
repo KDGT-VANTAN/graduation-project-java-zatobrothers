@@ -6,7 +6,7 @@ import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/like/notifiers/like_notifier.dart';
 import 'package:reimi_app/presentation/features/like/states/like_state.dart';
 import 'package:reimi_app/presentation/features/like/widgets/like_segment_switch.dart';
-import 'package:reimi_app/presentation/features/like/widgets/small_user_card.dart';
+import 'package:reimi_app/presentation/features/like/widgets/like_user_card.dart';
 import 'package:reimi_app/presentation/features/profile/pages/profile_detail_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
@@ -100,7 +100,7 @@ class LikePage extends HookConsumerWidget {
                             ),
                             child: FadeTransition(
                               opacity: mainController,
-                              child: SmallUserCard(
+                              child: LikeUserCard(
                                 user: users[index],
                                 onTap: () {
                                   context.push(
