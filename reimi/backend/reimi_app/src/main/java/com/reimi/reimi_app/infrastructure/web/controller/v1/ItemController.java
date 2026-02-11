@@ -1,5 +1,7 @@
 package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,17 +31,22 @@ public class ItemController {
 
         UserItemOutput output = itemUseCase.getUserItemList();
 
-        var userType =
-            output.userWeatherPersonalityType().getWeatherPersonalityType();
+        var optionalUserType =
+            Optional.ofNullable(output.userWeatherPersonalityType())
+                .map(type -> type.getWeatherPersonalityType());
+
+        String typeCode = optionalUserType.map(type -> type.getCode().name()).orElse(null);
+        String typeName = optionalUserType.map(type -> type.getName()).orElse(null);
+        String typeImageUrl = optionalUserType.map(type -> type.getTypeImageUrl()).orElse(null);
 
         UserAccountDetailResponse response =
             new UserAccountDetailResponse(
                 output.userId().value(),
                 output.name(),
                 output.mainPhotoUrl(),
-                userType.getCode(),
-                userType.getName(),
-                userType.getTypeImageUrl(),
+                typeCode,
+                typeName,
+                typeImageUrl,
                 output.items()
             );
 

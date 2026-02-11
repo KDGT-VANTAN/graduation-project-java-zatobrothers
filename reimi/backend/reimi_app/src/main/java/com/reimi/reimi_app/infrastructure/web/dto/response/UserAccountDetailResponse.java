@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.reimi.reimi_app.domain.model.item.ItemTypeCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -21,7 +20,7 @@ public record UserAccountDetailResponse (
         String mainPhotoUrl,
 
         @Schema(description = "タイプコード", example = "SPOE")
-        WeatherPersonalityCode typeCode,
+        String typeCode,
 
         @Schema(description = "タイプ名", example = "トレーニーラッコ")
         String typeName,
