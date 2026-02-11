@@ -924,7 +924,7 @@ class _TranslationsWeatherPersonalityTestPageQ7Ja implements TranslationsWeather
 	@override String get title => 'Q7';
 	@override String get question => '神様は、予定が天気で崩れそうな時のあなたを見ていました。';
 	@override String get answerA => '事前に代替案を考えて安心していた';
-	@override String get answerB => '状況次第で決めればいいと思っていた\'';
+	@override String get answerB => '状況次第で決めればいいと思っていた';
 }
 
 // Path: weatherPersonalityTestPage.q8
@@ -2547,7 +2547,7 @@ extension on TranslationsJa {
 			'weatherPersonalityTestPage.q7.title' => 'Q7',
 			'weatherPersonalityTestPage.q7.question' => '神様は、予定が天気で崩れそうな時のあなたを見ていました。',
 			'weatherPersonalityTestPage.q7.answerA' => '事前に代替案を考えて安心していた',
-			'weatherPersonalityTestPage.q7.answerB' => '状況次第で決めればいいと思っていた\'',
+			'weatherPersonalityTestPage.q7.answerB' => '状況次第で決めればいいと思っていた',
 			'weatherPersonalityTestPage.q8.title' => 'Q8',
 			'weatherPersonalityTestPage.q8.question' => '神様は、前世のあなたが「想定外」が起きた瞬間を観測しています。',
 			'weatherPersonalityTestPage.q8.answerA' => '予測していなかったことに少しストレスを感じていた',
