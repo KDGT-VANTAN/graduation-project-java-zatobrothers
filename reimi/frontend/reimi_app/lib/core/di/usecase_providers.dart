@@ -7,6 +7,7 @@ import 'package:reimi_app/application/usecases/rainbow_like/get_rainbow_like_use
 import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
 import 'package:reimi_app/application/usecases/like/get_like_users_to_user_usecase.dart';
+import 'package:reimi_app/application/usecases/user/get_user_account_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_detail_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_result_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/test_weather_personality_usecase.dart';
@@ -58,6 +59,11 @@ RegisterUserUseCase registerUserUseCase(Ref ref) {
   return RegisterUserUseCase(ref.watch(userRepositoryProvider));
 }
 
+@riverpod
+GetUserAccountUseCase getUserAccountUseCase(Ref ref) {
+  return GetUserAccountUseCase(ref.watch(userRepositoryProvider));
+}
+
 // profile関連
 @riverpod
 GetUserProfileUseCase getUserProfileUseCase(Ref ref) {
@@ -93,15 +99,15 @@ RainbowLikeUserUseCase rainbowLikeUserUseCase(Ref ref) {
 
 @riverpod
 GetRainbowLikeUsersFromUserUseCase getRainbowLikeUsersFromUserUseCase(Ref ref) {
-  return GetRainbowLikeUsersFromUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
+  return GetRainbowLikeUsersFromUserUseCase(
+      ref.watch(rainbowLikeRepositoryProvider));
 }
-
 
 @riverpod
 GetRainbowLikeUsersToUserUseCase getRainbowLikeUsersToUserUseCase(Ref ref) {
-  return GetRainbowLikeUsersToUserUseCase(ref.watch(rainbowLikeRepositoryProvider));
+  return GetRainbowLikeUsersToUserUseCase(
+      ref.watch(rainbowLikeRepositoryProvider));
 }
-
 
 // chat_room関連
 @riverpod
@@ -174,6 +180,5 @@ GetWeatherPersonalityDetailUseCase getWeatherPersonalityDetailUseCase(Ref ref) {
 // notification関連
 @riverpod
 RegisterDeviceTokenUseCase registerDeviceTokenUseCase(Ref ref) {
-  return RegisterDeviceTokenUseCase(
-      ref.watch(notificationRepositoryProvider));
+  return RegisterDeviceTokenUseCase(ref.watch(notificationRepositoryProvider));
 }

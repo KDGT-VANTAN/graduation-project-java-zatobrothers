@@ -104,6 +104,26 @@ final registerUserUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef RegisterUserUseCaseRef = AutoDisposeProviderRef<RegisterUserUseCase>;
+String _$getUserAccountUseCaseHash() =>
+    r'0eca88427a1b3e9fa9ce4f1a27898222e996ec39';
+
+/// See also [getUserAccountUseCase].
+@ProviderFor(getUserAccountUseCase)
+final getUserAccountUseCaseProvider =
+    AutoDisposeProvider<GetUserAccountUseCase>.internal(
+  getUserAccountUseCase,
+  name: r'getUserAccountUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getUserAccountUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUserAccountUseCaseRef
+    = AutoDisposeProviderRef<GetUserAccountUseCase>;
 String _$getUserProfileUseCaseHash() =>
     r'4cd021971ff338091f95f1d76bea522877386b22';
 

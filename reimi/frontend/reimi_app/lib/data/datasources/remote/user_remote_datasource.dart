@@ -3,12 +3,14 @@ import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/data/dtos/app_user_dto.dart';
 import 'package:reimi_app/data/dtos/create_user_dto.dart';
 import 'package:reimi_app/data/dtos/home_user_dto.dart';
+import 'package:reimi_app/data/dtos/user_account_dto.dart';
 import 'package:reimi_app/data/mapper/create_user_mapper.dart';
 
 abstract class UserRemoteDataSource {
   Future<List<HomeUserDto>> fetchHomeUsers();
   Future<AppUserDto> fetchCurrentUser();
   Future<void> createUser(CreateUserDto dto);
+  Future<UserAccountDto> fetchUserAccount();
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -53,6 +55,16 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       if (response.statusCode != 201) {
         throw ApiException.fromResponse(response);
       }
+    } on DioException catch (e) {
+      throw ApiException.fromDioError(e);
+    }
+  }
+
+  @override
+  Future<UserAccountDto> fetchUserAccount() async {
+    try {
+      final response = await _dio.get('/users/me/account');
+      return UserAccountDto.fromJson(response.data);
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);
     }
