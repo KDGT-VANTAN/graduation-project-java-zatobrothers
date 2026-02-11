@@ -2,9 +2,12 @@ import 'package:reimi_app/data/datasources/remote/user_remote_datasource.dart';
 import 'package:reimi_app/data/dtos/app_user_dto.dart';
 import 'package:reimi_app/data/dtos/create_user_dto.dart';
 import 'package:reimi_app/data/dtos/home_user_dto.dart';
+import 'package:reimi_app/data/dtos/user_account_dto.dart';
 import 'package:reimi_app/domain/value_objects/address.dart';
 import 'package:reimi_app/domain/value_objects/gender.dart';
+import 'package:reimi_app/domain/value_objects/item_type_code.dart';
 import 'package:reimi_app/domain/value_objects/user_status.dart';
+import 'package:reimi_app/domain/value_objects/weather_personality_code.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 
 class UserMockDataSource implements UserRemoteDataSource {
@@ -21,8 +24,13 @@ class UserMockDataSource implements UserRemoteDataSource {
   }
 
   @override
-  Future<bool> createUser(CreateUserDto dto) {
-    throw UnimplementedError();
+  Future<void> createUser(CreateUserDto dto) async {
+    return;
+  }
+
+  @override
+  Future<UserAccountDto> fetchUserAccount() async {
+    return mockUserAccount;
   }
 }
 
@@ -115,3 +123,15 @@ final List<HomeUserDto> mockHomeUsers = [
     typeImageUrl: Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
   ),
 ];
+
+final mockUserAccount = UserAccountDto(
+  id: 'user_000',
+  name: 'はるき',
+  mainPhotoUrl: Assets.images.sample.currentUserSampleImage.path,
+  typeCode: WeatherPersonalityCode.spoe,
+  typeName: 'トレーニーラッコ',
+  typeImageUrl: Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
+  items: {
+    ItemTypeCode.rainbowLike: 3,
+  },
+);
