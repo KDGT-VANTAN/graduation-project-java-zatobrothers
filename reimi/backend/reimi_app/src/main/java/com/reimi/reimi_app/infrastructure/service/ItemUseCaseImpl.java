@@ -77,14 +77,16 @@ public class ItemUseCaseImpl implements ItemUseCase {
             items.put(code, userItem.getQuantity());
         });
 
-        UserWeatherPersonalityType userType = userWeatherPersonalityTypeRepository.findByUserId(userId)
-            .orElseThrow(() -> new ResourceNotFoundException("ウェザーパーソナリティ診断結果"));
-
-        String typeImageUrl = imageUrlResolver.resolve(
-                userType.getWeatherPersonalityType().getImagePath()
-            );
-
-        userType.getWeatherPersonalityType().setTypeImageUrl(typeImageUrl);
+        UserWeatherPersonalityType userType =
+            userWeatherPersonalityTypeRepository.findByUserId(userId)
+                .map(type -> {
+                    String typeImageUrl = imageUrlResolver.resolve(
+                        type.getWeatherPersonalityType().getImagePath()
+                    );
+                    type.getWeatherPersonalityType().setTypeImageUrl(typeImageUrl);
+                    return type;
+                })
+                .orElse(null);
 
         user.setSignedMainPhotoUrl(imageStorage.getSignedUrl(user.getMainPhotoUrl()));
 
