@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AccountState {
-  AppUserReadModel? get user;
+  UserAccountReadModel? get userAccount;
   bool get isLoading;
   String? get errorMessage;
 
@@ -31,7 +31,8 @@ mixin _$AccountState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AccountState &&
-            (identical(other.user, user) || other.user == user) &&
+            (identical(other.userAccount, userAccount) ||
+                other.userAccount == userAccount) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -39,11 +40,12 @@ mixin _$AccountState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isLoading, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, userAccount, isLoading, errorMessage);
 
   @override
   String toString() {
-    return 'AccountState(user: $user, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'AccountState(userAccount: $userAccount, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -53,9 +55,12 @@ abstract mixin class $AccountStateCopyWith<$Res> {
           AccountState value, $Res Function(AccountState) _then) =
       _$AccountStateCopyWithImpl;
   @useResult
-  $Res call({AppUserReadModel? user, bool isLoading, String? errorMessage});
+  $Res call(
+      {UserAccountReadModel? userAccount,
+      bool isLoading,
+      String? errorMessage});
 
-  $AppUserReadModelCopyWith<$Res>? get user;
+  $UserAccountReadModelCopyWith<$Res>? get userAccount;
 }
 
 /// @nodoc
@@ -70,15 +75,15 @@ class _$AccountStateCopyWithImpl<$Res> implements $AccountStateCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = freezed,
+    Object? userAccount = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_self.copyWith(
-      user: freezed == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as AppUserReadModel?,
+      userAccount: freezed == userAccount
+          ? _self.userAccount
+          : userAccount // ignore: cast_nullable_to_non_nullable
+              as UserAccountReadModel?,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -94,13 +99,13 @@ class _$AccountStateCopyWithImpl<$Res> implements $AccountStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AppUserReadModelCopyWith<$Res>? get user {
-    if (_self.user == null) {
+  $UserAccountReadModelCopyWith<$Res>? get userAccount {
+    if (_self.userAccount == null) {
       return null;
     }
 
-    return $AppUserReadModelCopyWith<$Res>(_self.user!, (value) {
-      return _then(_self.copyWith(user: value));
+    return $UserAccountReadModelCopyWith<$Res>(_self.userAccount!, (value) {
+      return _then(_self.copyWith(userAccount: value));
     });
   }
 }
@@ -198,15 +203,15 @@ extension AccountStatePatterns on AccountState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            AppUserReadModel? user, bool isLoading, String? errorMessage)?
+    TResult Function(UserAccountReadModel? userAccount, bool isLoading,
+            String? errorMessage)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _AccountState() when $default != null:
-        return $default(_that.user, _that.isLoading, _that.errorMessage);
+        return $default(_that.userAccount, _that.isLoading, _that.errorMessage);
       case _:
         return orElse();
     }
@@ -227,14 +232,14 @@ extension AccountStatePatterns on AccountState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            AppUserReadModel? user, bool isLoading, String? errorMessage)
+    TResult Function(UserAccountReadModel? userAccount, bool isLoading,
+            String? errorMessage)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _AccountState():
-        return $default(_that.user, _that.isLoading, _that.errorMessage);
+        return $default(_that.userAccount, _that.isLoading, _that.errorMessage);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -254,14 +259,14 @@ extension AccountStatePatterns on AccountState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            AppUserReadModel? user, bool isLoading, String? errorMessage)?
+    TResult? Function(UserAccountReadModel? userAccount, bool isLoading,
+            String? errorMessage)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _AccountState() when $default != null:
-        return $default(_that.user, _that.isLoading, _that.errorMessage);
+        return $default(_that.userAccount, _that.isLoading, _that.errorMessage);
       case _:
         return null;
     }
@@ -271,10 +276,11 @@ extension AccountStatePatterns on AccountState {
 /// @nodoc
 
 class _AccountState implements AccountState {
-  const _AccountState({this.user, this.isLoading = false, this.errorMessage});
+  const _AccountState(
+      {this.userAccount, this.isLoading = false, this.errorMessage});
 
   @override
-  final AppUserReadModel? user;
+  final UserAccountReadModel? userAccount;
   @override
   @JsonKey()
   final bool isLoading;
@@ -294,7 +300,8 @@ class _AccountState implements AccountState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AccountState &&
-            (identical(other.user, user) || other.user == user) &&
+            (identical(other.userAccount, userAccount) ||
+                other.userAccount == userAccount) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -302,11 +309,12 @@ class _AccountState implements AccountState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isLoading, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, userAccount, isLoading, errorMessage);
 
   @override
   String toString() {
-    return 'AccountState(user: $user, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'AccountState(userAccount: $userAccount, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 }
 
@@ -318,10 +326,13 @@ abstract mixin class _$AccountStateCopyWith<$Res>
       __$AccountStateCopyWithImpl;
   @override
   @useResult
-  $Res call({AppUserReadModel? user, bool isLoading, String? errorMessage});
+  $Res call(
+      {UserAccountReadModel? userAccount,
+      bool isLoading,
+      String? errorMessage});
 
   @override
-  $AppUserReadModelCopyWith<$Res>? get user;
+  $UserAccountReadModelCopyWith<$Res>? get userAccount;
 }
 
 /// @nodoc
@@ -337,15 +348,15 @@ class __$AccountStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? user = freezed,
+    Object? userAccount = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_AccountState(
-      user: freezed == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as AppUserReadModel?,
+      userAccount: freezed == userAccount
+          ? _self.userAccount
+          : userAccount // ignore: cast_nullable_to_non_nullable
+              as UserAccountReadModel?,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -361,13 +372,13 @@ class __$AccountStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AppUserReadModelCopyWith<$Res>? get user {
-    if (_self.user == null) {
+  $UserAccountReadModelCopyWith<$Res>? get userAccount {
+    if (_self.userAccount == null) {
       return null;
     }
 
-    return $AppUserReadModelCopyWith<$Res>(_self.user!, (value) {
-      return _then(_self.copyWith(user: value));
+    return $UserAccountReadModelCopyWith<$Res>(_self.userAccount!, (value) {
+      return _then(_self.copyWith(userAccount: value));
     });
   }
 }

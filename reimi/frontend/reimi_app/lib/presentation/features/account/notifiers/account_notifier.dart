@@ -12,15 +12,15 @@ class AccountNotifier extends _$AccountNotifier {
   }
 
   Future<void> init() async {
-    await loadUser();
+    await loadUserAccount();
   }
 
-  Future<void> loadUser() async {
+  Future<void> loadUserAccount() async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
-      final user = await ref.read(getCurrentUserUseCaseProvider).call();
+      final userAccount = await ref.read(getUserAccountUseCaseProvider).call();
       state = state.copyWith(
-        user: user,
+        userAccount: userAccount,
         isLoading: false,
       );
     } catch (e) {
@@ -32,6 +32,6 @@ class AccountNotifier extends _$AccountNotifier {
   }
 
   Future<void> refresh() async {
-    await loadUser();
+    await loadUserAccount();
   }
 }

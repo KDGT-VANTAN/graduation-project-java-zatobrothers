@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
+import 'package:reimi_app/domain/value_objects/item_type_code.dart';
 import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/notifiers/account_notifier.dart';
@@ -28,8 +29,8 @@ class AccountPage extends HookConsumerWidget {
     final theme = Theme.of(context);
     final t = Translations.of(context);
     final notifier = ref.read(accountNotifierProvider.notifier);
-    final user =
-        ref.watch(accountNotifierProvider.select((state) => state.user));
+    final userAccount =
+        ref.watch(accountNotifierProvider.select((state) => state.userAccount));
     final isLoading =
         ref.watch(accountNotifierProvider.select((state) => state.isLoading));
 
@@ -85,7 +86,7 @@ class AccountPage extends HookConsumerWidget {
                     child: CircularProgressIndicator(),
                   ),
                 ),
-              ] else if (user == null) ...[
+              ] else if (userAccount == null) ...[
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   sliver: SliverFillRemaining(
@@ -115,9 +116,8 @@ class AccountPage extends HookConsumerWidget {
                                   Colors.white.withValues(alpha: 0.9),
                               child: CircleAvatar(
                                 radius: 54,
-                                backgroundImage: Assets
-                                    .images.sample.currentUserSampleImage.path
-                                    .toImageProvider(),
+                                backgroundImage:
+                                    userAccount.mainPhotoUrl.toImageProvider(),
                               ),
                             ),
                             Positioned(
@@ -144,65 +144,64 @@ class AccountPage extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          user.name,
+                          userAccount.name,
                           style: theme.textTheme.bodyLarge!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 24),
-                        GestureDetector(
-                          onTap: () {
-                            context.push(
-                              WeatherPersonalityDetailPage.routeLocation,
-                              extra: {'userId': user.id},
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.7),
-                              borderRadius: BorderRadius.circular(32),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: Colors.white,
-                                  child: CircleAvatar(
-                                    radius: 18,
-                                    backgroundColor: theme.colorScheme.primary,
-                                    backgroundImage: Assets
-                                        .images
-                                        .weatherPersonality
-                                        .spoeTraineeSeaOtterImage
-                                        .path
-                                        .toImageProvider(),
+                        if (userAccount.typeCode != null) ...[
+                          GestureDetector(
+                            onTap: () {
+                              context.push(
+                                WeatherPersonalityDetailPage.routeLocation,
+                                extra: {'userId': userAccount.id},
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: 0.7),
+                                borderRadius: BorderRadius.circular(32),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 18,
+                                      backgroundColor:
+                                          theme.colorScheme.primary,
+                                      backgroundImage: userAccount.typeImageUrl
+                                          .toImageProvider(),
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'SPOE',
-                                  style: theme.textTheme.titleSmall!.copyWith(
-                                    color: theme.colorScheme.primary,
-                                    fontWeight: FontWeight.bold,
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    userAccount.typeCode!.displayCode,
+                                    style: theme.textTheme.titleSmall!.copyWith(
+                                      color: theme.colorScheme.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  '(トレーニーラッコ)',
-                                  style: theme.textTheme.titleSmall!.copyWith(
-                                    color: theme.colorScheme.primary,
-                                    fontWeight: FontWeight.bold,
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '(${userAccount.typeName})',
+                                    style: theme.textTheme.titleSmall!.copyWith(
+                                      color: theme.colorScheme.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 8),
-                              ],
+                                  const SizedBox(width: 8),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 24),
+                          const SizedBox(height: 24),
+                        ],
                         Row(
                           children: [
                             Expanded(
@@ -211,7 +210,9 @@ class AccountPage extends HookConsumerWidget {
                                   height: 32,
                                   width: 32,
                                 ),
-                                label: '50',
+                                label: userAccount
+                                    .items[ItemTypeCode.rainbowLike]
+                                    .toString(),
                               ),
                             ),
                             const SizedBox(width: 24),
@@ -226,16 +227,18 @@ class AccountPage extends HookConsumerWidget {
                             ),
                           ],
                         ),
-                        const Spacer(flex: 1),
-                        WeatherPersonalityButton(
-                          label: t.button.weatherPersonalityTest,
-                          onPressed: () {
-                            context.push(
-                              WeatherPersonalityConceptPage.routeLocation,
-                            );
-                          },
-                        ),
-                        const Spacer(flex: 1),
+                        if (userAccount.typeCode == null) ...[
+                          const Spacer(flex: 1),
+                          WeatherPersonalityButton(
+                            label: t.button.weatherPersonalityTest,
+                            onPressed: () {
+                              context.push(
+                                WeatherPersonalityConceptPage.routeLocation,
+                              );
+                            },
+                          ),
+                          const Spacer(flex: 1),
+                        ]
                       ],
                     ),
                   ),
