@@ -1,5 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/application/usecases/like/like_user_usecase.dart';
+import 'package:reimi_app/application/usecases/location/get_current_location_usecase.dart';
+import 'package:reimi_app/application/usecases/location/get_current_prefecture_city_usecase.dart';
 import 'package:reimi_app/application/usecases/notification/register_device_token_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
 import 'package:reimi_app/application/usecases/rainbow_like/get_rainbow_like_users_from_user_usecase.dart';
@@ -27,6 +29,8 @@ import 'package:reimi_app/application/usecases/message/watch_messages_usecase.da
 import 'package:reimi_app/application/usecases/user/register_user_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/get_weather_report_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/get_weather_reports_usecase.dart';
+import 'package:reimi_app/core/services/location/geocoding_provider.dart';
+import 'package:reimi_app/core/services/location/geolocator_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'usecase_providers.g.dart';
@@ -181,4 +185,15 @@ GetWeatherPersonalityDetailUseCase getWeatherPersonalityDetailUseCase(Ref ref) {
 @riverpod
 RegisterDeviceTokenUseCase registerDeviceTokenUseCase(Ref ref) {
   return RegisterDeviceTokenUseCase(ref.watch(notificationRepositoryProvider));
+}
+
+// location関連
+@riverpod
+GetCurrentLocationUseCase getCurrentLocationUseCase(Ref ref) {
+  return GetCurrentLocationUseCase(ref.watch(geolocatorServiceProvider));
+}
+
+@riverpod
+GetCurrentPrefectureCityUseCase getCurrentPrefectureCityUseCase(Ref ref) {
+  return GetCurrentPrefectureCityUseCase(ref.watch(geocodingServiceProvider));
 }

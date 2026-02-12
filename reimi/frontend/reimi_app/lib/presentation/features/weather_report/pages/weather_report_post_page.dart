@@ -52,6 +52,8 @@ class WeatherReportPostPage extends HookConsumerWidget {
     final status = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.status));
     final controller = useTextEditingController(text: comment);
+    final prefectureCity = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.prefectureCity));
 
     useEffect(() {
       final subscription = ref.listenManual<WeatherReportPostState>(
@@ -162,8 +164,10 @@ class WeatherReportPostPage extends HookConsumerWidget {
                 const SizedBox(height: 12),
                 InfoTile(
                   label: t.weatherReportPostPage.label.location,
-                  value: '東京都渋谷区',
-                  onTap: () {},
+                  value: prefectureCity?.fullName ?? '',
+                  onTap: () async {
+                    await notifier.updateLocation();
+                  },
                 ),
                 const SizedBox(height: 12),
                 InfoTile(

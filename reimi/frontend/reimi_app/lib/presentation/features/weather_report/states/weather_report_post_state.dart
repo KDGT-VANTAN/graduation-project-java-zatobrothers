@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reimi_app/domain/value_objects/feeling_type.dart';
 import 'package:reimi_app/domain/value_objects/forecast_type.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
+import 'package:reimi_app/domain/value_objects/prefecture_city.dart';
 import 'package:reimi_app/domain/value_objects/weather_type.dart';
 
 part 'weather_report_post_state.freezed.dart';
@@ -17,6 +18,7 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
     String? url,
     double? latitude,
     double? longitude,
+    PrefectureCity? prefectureCity,
     @Default(false) bool isChanged,
     @Default(WeatherReportPostStatus.idle) WeatherReportPostStatus status,
     String? errorMessage,
