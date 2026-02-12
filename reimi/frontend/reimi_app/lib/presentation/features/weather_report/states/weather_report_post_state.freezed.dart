@@ -22,6 +22,7 @@ mixin _$WeatherReportPostState {
   String? get url;
   double? get latitude;
   double? get longitude;
+  PrefectureCity? get prefectureCity;
   bool get isChanged;
   WeatherReportPostStatus get status;
   String? get errorMessage;
@@ -53,6 +54,8 @@ mixin _$WeatherReportPostState {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.prefectureCity, prefectureCity) ||
+                other.prefectureCity == prefectureCity) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged) &&
             (identical(other.status, status) || other.status == status) &&
@@ -71,13 +74,14 @@ mixin _$WeatherReportPostState {
       url,
       latitude,
       longitude,
+      prefectureCity,
       isChanged,
       status,
       errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -96,9 +100,12 @@ abstract mixin class $WeatherReportPostStateCopyWith<$Res> {
       String? url,
       double? latitude,
       double? longitude,
+      PrefectureCity? prefectureCity,
       bool isChanged,
       WeatherReportPostStatus status,
       String? errorMessage});
+
+  $PrefectureCityCopyWith<$Res>? get prefectureCity;
 }
 
 /// @nodoc
@@ -122,6 +129,7 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? prefectureCity = freezed,
     Object? isChanged = null,
     Object? status = null,
     Object? errorMessage = freezed,
@@ -159,6 +167,10 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      prefectureCity: freezed == prefectureCity
+          ? _self.prefectureCity
+          : prefectureCity // ignore: cast_nullable_to_non_nullable
+              as PrefectureCity?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
@@ -172,6 +184,20 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of WeatherReportPostState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PrefectureCityCopyWith<$Res>? get prefectureCity {
+    if (_self.prefectureCity == null) {
+      return null;
+    }
+
+    return $PrefectureCityCopyWith<$Res>(_self.prefectureCity!, (value) {
+      return _then(_self.copyWith(prefectureCity: value));
+    });
   }
 }
 
@@ -277,6 +303,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
+            PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
             String? errorMessage)?
@@ -295,6 +322,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
+            _that.prefectureCity,
             _that.isChanged,
             _that.status,
             _that.errorMessage);
@@ -327,6 +355,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
+            PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
             String? errorMessage)
@@ -344,6 +373,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
+            _that.prefectureCity,
             _that.isChanged,
             _that.status,
             _that.errorMessage);
@@ -375,6 +405,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             String? url,
             double? latitude,
             double? longitude,
+            PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
             String? errorMessage)?
@@ -392,6 +423,7 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.url,
             _that.latitude,
             _that.longitude,
+            _that.prefectureCity,
             _that.isChanged,
             _that.status,
             _that.errorMessage);
@@ -413,6 +445,7 @@ class _WeatherReportPostState extends WeatherReportPostState {
       this.url,
       this.latitude,
       this.longitude,
+      this.prefectureCity,
       this.isChanged = false,
       this.status = WeatherReportPostStatus.idle,
       this.errorMessage})
@@ -434,6 +467,8 @@ class _WeatherReportPostState extends WeatherReportPostState {
   final double? latitude;
   @override
   final double? longitude;
+  @override
+  final PrefectureCity? prefectureCity;
   @override
   @JsonKey()
   final bool isChanged;
@@ -471,6 +506,8 @@ class _WeatherReportPostState extends WeatherReportPostState {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.prefectureCity, prefectureCity) ||
+                other.prefectureCity == prefectureCity) &&
             (identical(other.isChanged, isChanged) ||
                 other.isChanged == isChanged) &&
             (identical(other.status, status) || other.status == status) &&
@@ -489,13 +526,14 @@ class _WeatherReportPostState extends WeatherReportPostState {
       url,
       latitude,
       longitude,
+      prefectureCity,
       isChanged,
       status,
       errorMessage);
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -516,9 +554,13 @@ abstract mixin class _$WeatherReportPostStateCopyWith<$Res>
       String? url,
       double? latitude,
       double? longitude,
+      PrefectureCity? prefectureCity,
       bool isChanged,
       WeatherReportPostStatus status,
       String? errorMessage});
+
+  @override
+  $PrefectureCityCopyWith<$Res>? get prefectureCity;
 }
 
 /// @nodoc
@@ -542,6 +584,7 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? prefectureCity = freezed,
     Object? isChanged = null,
     Object? status = null,
     Object? errorMessage = freezed,
@@ -579,6 +622,10 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      prefectureCity: freezed == prefectureCity
+          ? _self.prefectureCity
+          : prefectureCity // ignore: cast_nullable_to_non_nullable
+              as PrefectureCity?,
       isChanged: null == isChanged
           ? _self.isChanged
           : isChanged // ignore: cast_nullable_to_non_nullable
@@ -592,6 +639,20 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of WeatherReportPostState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PrefectureCityCopyWith<$Res>? get prefectureCity {
+    if (_self.prefectureCity == null) {
+      return null;
+    }
+
+    return $PrefectureCityCopyWith<$Res>(_self.prefectureCity!, (value) {
+      return _then(_self.copyWith(prefectureCity: value));
+    });
   }
 }
 
