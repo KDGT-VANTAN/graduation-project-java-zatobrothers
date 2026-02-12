@@ -79,5 +79,5 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 })
-public @interface GetUserWeatherPersonalityType {
+public @interface GetUserWeatherPersonalityTypeApi {
 }
