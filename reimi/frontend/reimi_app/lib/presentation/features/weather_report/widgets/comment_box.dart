@@ -31,7 +31,8 @@ class CommentBox extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
-        maxLines: null,
+        minLines: 1,
+        maxLines: 5,
         keyboardType: TextInputType.multiline,
         style: theme.textTheme.bodyMedium!.copyWith(
           color: Colors.white,

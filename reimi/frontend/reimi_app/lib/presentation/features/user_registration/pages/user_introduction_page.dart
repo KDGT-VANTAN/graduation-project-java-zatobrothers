@@ -50,7 +50,8 @@ class UserIntroductionPage extends HookConsumerWidget {
             ),
             child: TextField(
               controller: controller,
-              maxLines: null,
+              minLines: 1,
+              maxLines: 6,
               keyboardType: TextInputType.multiline,
               style: theme.textTheme.bodyLarge!.copyWith(
                 color: Colors.white,
