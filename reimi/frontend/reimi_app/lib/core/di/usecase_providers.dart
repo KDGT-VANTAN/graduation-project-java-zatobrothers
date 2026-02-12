@@ -30,7 +30,7 @@ import 'package:reimi_app/application/usecases/user/register_user_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/get_weather_report_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_report/get_weather_reports_usecase.dart';
 import 'package:reimi_app/core/services/location/geocoding_provider.dart';
-import 'package:reimi_app/core/services/location/location_provider.dart';
+import 'package:reimi_app/core/services/location/geolocator_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'usecase_providers.g.dart';
