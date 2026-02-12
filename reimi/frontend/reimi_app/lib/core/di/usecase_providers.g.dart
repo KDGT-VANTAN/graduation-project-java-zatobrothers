@@ -538,5 +538,45 @@ final registerDeviceTokenUseCaseProvider =
 // ignore: unused_element
 typedef RegisterDeviceTokenUseCaseRef
     = AutoDisposeProviderRef<RegisterDeviceTokenUseCase>;
+String _$getCurrentLocationUseCaseHash() =>
+    r'd045bd8c9ddf702071e3e0cd1d4a7513f64dc32b';
+
+/// See also [getCurrentLocationUseCase].
+@ProviderFor(getCurrentLocationUseCase)
+final getCurrentLocationUseCaseProvider =
+    AutoDisposeProvider<GetCurrentLocationUseCase>.internal(
+  getCurrentLocationUseCase,
+  name: r'getCurrentLocationUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getCurrentLocationUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetCurrentLocationUseCaseRef
+    = AutoDisposeProviderRef<GetCurrentLocationUseCase>;
+String _$getCurrentPrefectureCityUseCaseHash() =>
+    r'8f3da6cfc618404a66d372a340167c59757d7147';
+
+/// See also [getCurrentPrefectureCityUseCase].
+@ProviderFor(getCurrentPrefectureCityUseCase)
+final getCurrentPrefectureCityUseCaseProvider =
+    AutoDisposeProvider<GetCurrentPrefectureCityUseCase>.internal(
+  getCurrentPrefectureCityUseCase,
+  name: r'getCurrentPrefectureCityUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getCurrentPrefectureCityUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetCurrentPrefectureCityUseCaseRef
+    = AutoDisposeProviderRef<GetCurrentPrefectureCityUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
