@@ -68,6 +68,7 @@ class ChatDetailPage extends HookConsumerWidget {
     }, []);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: BackgroundContainerNoon(
         child: SafeArea(
           child: RefreshIndicator(
@@ -165,68 +166,78 @@ class ChatDetailPage extends HookConsumerWidget {
       ),
       bottomNavigationBar: userProfile == null
           ? null
-          : Container(
-              decoration: const BoxDecoration(
-                color: Color(0xFFDDEFF6),
+          : AnimatedPadding(
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.easeOut,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(24),
-                            border: inputText.isNotEmpty
-                                ? Border.all(
-                                    color: theme.colorScheme.primary,
-                                    width: 1.4,
-                                  )
-                                : null,
-                          ),
-                          child: TextField(
-                            controller: controller,
-                            style: theme.textTheme.bodySmall!.copyWith(
-                              color: Colors.black87,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFFDDEFF6),
+                ),
+                child: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(24),
+                              border: inputText.isNotEmpty
+                                  ? Border.all(
+                                      color: theme.colorScheme.primary,
+                                      width: 1.4,
+                                    )
+                                  : null,
                             ),
-                            decoration: InputDecoration(
-                              hintText: t.chatDetailPage.placeHolder,
-                              hintStyle: theme.textTheme.bodySmall!.copyWith(
-                                color: Colors.black38,
+                            child: TextField(
+                              controller: controller,
+                              minLines: 1,
+                              maxLines: 6,
+                              keyboardType: TextInputType.multiline,
+                              style: theme.textTheme.bodySmall!.copyWith(
+                                color: Colors.black87,
                               ),
-                              border: InputBorder.none,
+                              decoration: InputDecoration(
+                                hintText: t.chatDetailPage.placeHolder,
+                                hintStyle: theme.textTheme.bodySmall!.copyWith(
+                                  color: Colors.black38,
+                                ),
+                                border: InputBorder.none,
+                              ),
+                              onChanged: (value) {
+                                notifier.updateInput(value);
+                              },
                             ),
-                            onChanged: (value) {
-                              notifier.updateInput(value);
-                            },
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      CircleIconButton(
-                        backgroundColor: inputText.isEmpty
-                            ? Colors.white
-                            : theme.colorScheme.primary,
-                        icon: Transform.rotate(
-                          angle: -0.785,
-                          child: Icon(
-                            LineIcons.paperPlane,
-                            color: inputText.isEmpty
-                                ? Colors.black38
-                                : Colors.white,
-                            size: 26,
+                        const SizedBox(width: 12),
+                        CircleIconButton(
+                          backgroundColor: inputText.isEmpty
+                              ? Colors.white
+                              : theme.colorScheme.primary,
+                          icon: Transform.rotate(
+                            angle: -0.785,
+                            child: Icon(
+                              LineIcons.paperPlane,
+                              color: inputText.isEmpty
+                                  ? Colors.black38
+                                  : Colors.white,
+                              size: 26,
+                            ),
                           ),
-                        ),
-                        onPressed: () async {
-                          await notifier.sendMessage();
-                          controller.clear();
-                        },
-                      )
-                    ],
+                          onPressed: () async {
+                            await notifier.sendMessage();
+                            controller.clear();
+                          },
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

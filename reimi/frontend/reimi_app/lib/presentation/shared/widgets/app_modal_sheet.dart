@@ -26,7 +26,14 @@ class AppModalSheet extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        child: child,
+        child: AnimatedPadding(
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.easeOut,
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: child,
+        ),
       ),
     );
   }
