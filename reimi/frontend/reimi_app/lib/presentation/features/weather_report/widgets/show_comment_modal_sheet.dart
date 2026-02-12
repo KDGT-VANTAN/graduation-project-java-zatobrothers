@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
+import 'package:reimi_app/presentation/features/weather_report/notifiers/weather_report_detail_notifier.dart';
 import 'package:reimi_app/presentation/shared/utils/show_app_modal_bottom_sheet.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_modal_sheet.dart';
 
-void showCommentModalSheet(BuildContext context) {
+void showCommentModalSheet({
+  required BuildContext context,
+  required WeatherReportDetailNotifier notifier,
+}) {
   showAppModalBottomSheet(
     context: context,
-    child: const CommentModalSheet(),
+    child: CommentModalSheet(notifier: notifier),
   );
 }
 
-class CommentModalSheet extends StatelessWidget {
-  const CommentModalSheet({super.key});
+class CommentModalSheet extends HookConsumerWidget {
+  const CommentModalSheet({
+    super.key,
+    required this.notifier,
+  });
+  final WeatherReportDetailNotifier notifier;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final t = Translations.of(context);
+    final controller = useTextEditingController();
+    final comment = ref.watch(
+        weatherReportDetailNotifierProvider.select((state) => state.comment));
+
     return AppModalSheet(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -31,14 +45,23 @@ class CommentModalSheet extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(height: 1, thickness: 0.5),
           const SizedBox(height: 16),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.5,
+          Flexible(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.5,
+              ),
+              child: const _CommentList(),
             ),
-            child: const _CommentList(),
           ),
           const Divider(height: 1, thickness: 0.5),
-          const _InputField(),
+          _InputField(
+            comment: comment,
+            controller: controller,
+            onChanged: (value) {
+              notifier.inputComment(value);
+            },
+            onSendButton: notifier.sendMessage,
+          ),
         ],
       ),
     );
@@ -116,80 +139,87 @@ class _CommentTile extends StatelessWidget {
 }
 
 class _InputField extends StatelessWidget {
-  const _InputField();
+  const _InputField({
+    required this.comment,
+    required this.controller,
+    required this.onChanged,
+    required this.onSendButton,
+  });
+  final String? comment;
+  final TextEditingController controller;
+  final void Function(String)? onChanged;
+  final void Function()? onSendButton;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 8,
-        top: 8,
-      ),
-      child: Row(
-        children: [
-          const CircleAvatar(
-            radius: 18,
-            backgroundImage: NetworkImage(
-              'https://odm-shop.talkingheads.biz/cdn/shop/files/ODM___0926c___2048x2048_bb7644ab-436e-408f-adda-cecfdf09e2ac_2048x.jpg?v=1697105317',
+    return Row(
+      children: [
+        const CircleAvatar(
+          radius: 18,
+          backgroundImage: NetworkImage(
+            'https://odm-shop.talkingheads.biz/cdn/shop/files/ODM___0926c___2048x2048_bb7644ab-436e-408f-adda-cecfdf09e2ac_2048x.jpg?v=1697105317',
+          ),
+        ),
+        const SizedBox(width: 8),
+        Flexible(
+          child: Container(
+            height: 48,
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              border: comment == null || comment!.isEmpty
+                  ? Border.all(
+                      color: Colors.black38,
+                      width: 1.4,
+                    )
+                  : Border.all(
+                      color: theme.colorScheme.primary,
+                      width: 1.4,
+                    ),
+            ),
+            child: TextField(
+              controller: controller,
+              minLines: 1,
+              maxLines: 3,
+              cursorColor: comment == null || comment!.isEmpty
+                  ? Colors.black38
+                  : theme.colorScheme.primary,
+              keyboardType: TextInputType.text,
+              style: theme.textTheme.bodySmall!.copyWith(
+                color: Colors.black87,
+              ),
+              decoration: InputDecoration(
+                hintText: t.modalSheet.comment.placeHolder,
+                hintStyle: theme.textTheme.bodySmall!.copyWith(
+                  color: Colors.black38,
+                ),
+                border: InputBorder.none,
+              ),
+              onChanged: onChanged,
             ),
           ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  color: theme.colorScheme.primary,
-                  width: 1.4,
-                ),
-
-                // border: inputText.isNotEmpty
-                //     ? Border.all(
-                //         color: theme.colorScheme.primary,
-                //         width: 1.4,
-                //       )
-                //     : null,
-              ),
-              child: TextField(
-                // controller: controller,
-                style: theme.textTheme.bodySmall!.copyWith(
-                  color: Colors.black87,
-                ),
-                decoration: InputDecoration(
-                  hintText: t.modalSheet.comment.placeHolder,
-                  hintStyle: theme.textTheme.bodySmall!.copyWith(
-                    color: Colors.black38,
-                  ),
-                  border: InputBorder.none,
-                ),
-                onChanged: (value) {
-                  // notifier.updateInput(value);
-                },
-              ),
+        ),
+        const SizedBox(width: 8),
+        GestureDetector(
+          child: Transform.rotate(
+            angle: -0.785,
+            child: Icon(
+              LineIcons.paperPlane,
+              color: comment == null || comment!.isEmpty
+                  ? Colors.black38
+                  : theme.colorScheme.primary,
+              size: 26,
             ),
           ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            child: Transform.rotate(
-              angle: -0.785,
-              child: Icon(
-                LineIcons.paperPlane,
-                // color: inputText.isEmpty ? Colors.black38 : Colors.white,
-                color: theme.colorScheme.primary,
-                size: 26,
-              ),
-            ),
-            onTap: () async {
-              // await notifier.sendMessage();
-              // controller.clear();
-            },
-          )
-        ],
-      ),
+          onTap: () {
+            onSendButton;
+            controller.clear();
+          },
+        )
+      ],
     );
   }
 }
