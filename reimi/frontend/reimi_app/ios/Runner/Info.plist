@@ -46,6 +46,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>カメラへのアクセスを許可してください。</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>現在地を取得して周辺情報を表示するために使用します</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>現在地を取得して周辺情報を表示するために使用します</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>写真ライブラリへのアクセスを許可してください。</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -54,6 +58,7 @@
 	<array>
 		<string>fetch</string>
 		<string>remote-notification</string>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

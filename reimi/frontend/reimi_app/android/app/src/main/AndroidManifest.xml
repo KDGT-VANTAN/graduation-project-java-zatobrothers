@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- インターネット権限(通常は既にある) -->
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 位置情報取得権限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     
     <!-- Android 11以降でWebブラウザ起動に必要 -->
     <queries>
