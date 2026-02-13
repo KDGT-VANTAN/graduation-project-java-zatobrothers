@@ -1,16 +1,17 @@
 package com.reimi.reimi_app.infrastructure.web.dto.request.report;
 
 import java.math.BigDecimal;
-import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
 import com.reimi.reimi_app.domain.model.report.value.ForecastType;
+import com.reimi.reimi_app.domain.model.report.value.MediaType;
 import com.reimi.reimi_app.domain.model.report.value.WeatherType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Schema(description = "ユーザーのウェザーリポート投稿用リクエスト")
 public record PostWeatherReportRequest(
@@ -39,10 +40,13 @@ public record PostWeatherReportRequest(
     @Schema(description = "経度", example = "139.767125")
     BigDecimal longitude,
 
+    @NotNull(message = "メディアタイプは必須です")
+    @Schema(description = "メディアタイプ", example = "IMAGE")
+    MediaType mediaType,
+
     @NotNull(message = "写真は必須です")
-    @Size(min = 1, message = "1つ以上の写真を追加してください")
-    @Schema(description = "メディア情報")
-    List<WeatherMediaRequest> mediaList,
+    @Schema(description = "天気の写真", type = "string", format = "binary")
+    MultipartFile weatherPhoto,
 
     @Schema(description = "観測値情報（任意）")
     WeatherObservationRequest observation

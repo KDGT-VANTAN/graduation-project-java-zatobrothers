@@ -1,10 +1,9 @@
 package com.reimi.reimi_app.infrastructure.web.controller.v1;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,19 +29,19 @@ public class WeatherReportController extends ApiV1Controller {
         this.weatherReportUseCase = weatherReportUseCase;
     }
 
-    @PostMapping("/weather-reports")
+    @PostMapping(
+        path = "/weather-reports",
+        consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @PostWeatherReportApi
     public ResponseEntity<Void> post(
-        @RequestBody @Valid PostWeatherReportRequest request
+        @ModelAttribute @Valid PostWeatherReportRequest request
     ) {
         // media変換
-        List<WeatherMediaCommand> mediaCommands =
-                request.mediaList().stream()
-                        .map(media -> new WeatherMediaCommand(
-                                media.mediaType(),
-                                media.url()
-                        ))
-                        .toList();
+        WeatherMediaCommand mediaCommand = new WeatherMediaCommand(
+            request.mediaType(),
+            request.weatherPhoto()
+        );
 
         // observation変換（null許容）
         WeatherObservationCommand observationCommand = null;
@@ -65,7 +64,7 @@ public class WeatherReportController extends ApiV1Controller {
                 request.forecastType(),
                 request.latitude(),
                 request.longitude(),
-                mediaCommands,
+                mediaCommand,
                 observationCommand
             )
         );

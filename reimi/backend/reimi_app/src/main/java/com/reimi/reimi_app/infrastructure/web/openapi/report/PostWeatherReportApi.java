@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
     requestBody = @RequestBody(
         required = true,
         content = @Content(
-            mediaType = "application/json",
+            mediaType = "multipart/form-data",
             schema = @Schema(implementation = PostWeatherReportRequest.class)
         )
     )
@@ -102,6 +102,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                     """
                 )
             }
+        )
+    ),
+    @ApiResponse(
+        responseCode = "413",
+        description = "ファイルアップロードサイズ超過エラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "PAYLOAD_TOO_LARGE",
+                    "message": "アップロード可能なファイルサイズを超えています"
+                }
+                """
+            )
         )
     ),
     @ApiResponse(
