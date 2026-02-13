@@ -8,7 +8,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.Getter;
 
+@Getter
 @Embeddable
 public class WeatherObservationEmbeddable {
 
