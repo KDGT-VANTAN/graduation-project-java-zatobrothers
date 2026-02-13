@@ -68,7 +68,6 @@ class ChatDetailPage extends HookConsumerWidget {
     }, []);
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       body: BackgroundContainerNoon(
         child: SafeArea(
           child: RefreshIndicator(

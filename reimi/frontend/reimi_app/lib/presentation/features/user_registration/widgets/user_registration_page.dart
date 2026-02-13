@@ -33,7 +33,7 @@ class UserRegistrationPage extends ConsumerWidget {
     );
     return Scaffold(
       backgroundColor: theme.colorScheme.primary,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           ...ArcBackground.buildArcs(

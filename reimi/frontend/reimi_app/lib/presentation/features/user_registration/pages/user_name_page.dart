@@ -40,7 +40,7 @@ class UserNamePage extends ConsumerWidget {
           child: TextField(
             minLines: 1,
             maxLines: 3,
-            keyboardType: TextInputType.name,
+            keyboardType: TextInputType.text,
             style: theme.textTheme.bodyLarge!.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.w600,

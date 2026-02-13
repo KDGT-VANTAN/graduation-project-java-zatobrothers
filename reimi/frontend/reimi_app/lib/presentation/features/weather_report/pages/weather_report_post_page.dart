@@ -83,7 +83,6 @@ class WeatherReportPostPage extends HookConsumerWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.transparent,
       body: BackgroundContainerNight(
         child: CustomScrollView(
