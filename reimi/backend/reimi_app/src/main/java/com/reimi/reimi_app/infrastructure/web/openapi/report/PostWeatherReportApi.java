@@ -5,7 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import com.reimi.reimi_app.infrastructure.web.dto.request.report.PostWeatherReportRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.request.PostWeatherReportRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
 
 import io.swagger.v3.oas.annotations.Operation;

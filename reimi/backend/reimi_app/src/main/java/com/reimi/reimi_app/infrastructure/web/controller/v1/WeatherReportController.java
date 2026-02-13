@@ -11,7 +11,7 @@ import com.reimi.reimi_app.application.command.report.PostWeatherReportCommand;
 import com.reimi.reimi_app.application.command.report.WeatherMediaCommand;
 import com.reimi.reimi_app.application.command.report.WeatherObservationCommand;
 import com.reimi.reimi_app.application.usecase.WeatherReportUseCase;
-import com.reimi.reimi_app.infrastructure.web.dto.request.report.PostWeatherReportRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.request.PostWeatherReportRequest;
 import com.reimi.reimi_app.infrastructure.web.openapi.report.PostWeatherReportApi;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -44,17 +44,14 @@ public class WeatherReportController extends ApiV1Controller {
         );
 
         // observation変換（null許容）
-        WeatherObservationCommand observationCommand = null;
-
-        if (request.observation() != null) {
-            observationCommand = new WeatherObservationCommand(
-                    request.observation().temperature(),
-                    request.observation().humidity(),
-                    request.observation().pressure(),
-                    request.observation().windSpeed(),
-                    request.observation().windDirection()
-            );
-        }
+        WeatherObservationCommand observationCommand =
+            request.hasObservation() ? new WeatherObservationCommand(
+                    request.temperature(),
+                    request.humidity(),
+                    request.pressure(),
+                    request.windSpeed(),
+                    request.windDirection()
+                ) : null;
 
         weatherReportUseCase.postWeatherReport(
             new PostWeatherReportCommand(
