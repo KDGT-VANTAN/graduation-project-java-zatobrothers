@@ -51,6 +51,22 @@ public class WeatherObservation {
         );
     }
 
+    public static WeatherObservation reconstruct(
+        BigDecimal temperature,
+        BigDecimal humidity,
+        BigDecimal pressure,
+        BigDecimal windSpeed,
+        WindDirection windDirection
+    ) {
+        return new WeatherObservation(
+            temperature,
+            humidity,
+            pressure,
+            windSpeed,
+            windDirection
+        );
+    }
+
     public BigDecimal getTemperature() { return temperature; }
     public BigDecimal getHumidity() { return humidity; }
     public BigDecimal getPressure() { return pressure; }
