@@ -1,6 +1,7 @@
 package com.reimi.reimi_app.infrastructure.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -96,4 +97,17 @@ public class WeatherReportUseCaseImpl implements WeatherReportUseCase {
 
         weatherReportRepository.save(weatherReport);
     }
+
+    @Override
+    public List<WeatherReport> getTodayWeatherReportList(LocalDate today) {
+
+        List<WeatherReport> todayWeatherReports = weatherReportRepository.findByDate(today);
+
+        for (WeatherReport report : todayWeatherReports) {
+            report.getMedia().setSignedWeatherPhotoUrl(imageStorage.getSignedUrl(report.getMedia().getUrl()));
+        }
+
+        return todayWeatherReports;
+    }
+
 }
