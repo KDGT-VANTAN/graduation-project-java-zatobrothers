@@ -1,6 +1,7 @@
 package com.reimi.reimi_app.domain.model.report;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
 import com.reimi.reimi_app.domain.model.report.value.ForecastType;
@@ -18,6 +19,7 @@ public class WeatherReport {
     private final ForecastType forecast;
     private final BigDecimal latitude;
     private final BigDecimal longitude;
+    private final OffsetDateTime createAt;
     private final WeatherMedia media;
 
     private WeatherObservation observation;
@@ -31,7 +33,9 @@ public class WeatherReport {
         ForecastType forecast,
         BigDecimal latitude,
         BigDecimal longitude,
-        WeatherMedia media
+        OffsetDateTime createAt,
+        WeatherMedia media,
+        WeatherObservation observation
     ) {
         this.id = id;
         this.userId = userId;
@@ -41,7 +45,9 @@ public class WeatherReport {
         this.forecast = forecast;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.createAt = createAt;
         this.media = media;
+        this.observation = observation;
     }
 
     public static WeatherReport create(
@@ -65,7 +71,37 @@ public class WeatherReport {
             forecast,
             latitude,
             longitude,
-            media
+            null,
+            media,
+            null
+        );
+    }
+
+    public static WeatherReport reconstruct(
+        WeatherReportId id,
+        UserId userId,
+        String comment,
+        WeatherType weather,
+        FeelingType feeling,
+        ForecastType forecast,
+        BigDecimal latitude,
+        BigDecimal longitude,
+        OffsetDateTime createAt,
+        WeatherMedia media,
+        WeatherObservation observation
+    ) {
+        return new WeatherReport(
+            id,
+            userId,
+            comment,
+            weather,
+            feeling,
+            forecast,
+            latitude,
+            longitude,
+            createAt,
+            media,
+            observation
         );
     }
 
@@ -93,6 +129,7 @@ public class WeatherReport {
     public ForecastType getForecast() { return forecast; }
     public BigDecimal getLatitude() { return latitude; }
     public BigDecimal getLongitude() { return longitude; }
+    public OffsetDateTime getCreateAt() { return createAt; }
     public WeatherMedia getMedia() { return media; }
     public WeatherObservation getObservation() { return observation; }
 
