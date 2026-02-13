@@ -1,7 +1,6 @@
 package com.reimi.reimi_app.infrastructure.service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,8 @@ import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.domain.repository.WeatherReportRepository;
+import com.reimi.reimi_app.infrastructure.storage.image.ImageStorageComponent;
+import com.reimi.reimi_app.infrastructure.storage.image.ImageStoragePath;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import jakarta.transaction.Transactional;
@@ -25,15 +26,21 @@ public class WeatherReportUseCaseImpl implements WeatherReportUseCase {
     private final WeatherReportRepository weatherReportRepository;
     private final AuthenticatedUserProvider authenticatedUserProvider;
     private final UserRepository userRepository;
+    private final ImageStorageComponent imageStorage;
+    private final ImageStoragePath imageStoragePath;
 
     public WeatherReportUseCaseImpl(
         WeatherReportRepository weatherReportRepository,
         AuthenticatedUserProvider authenticatedUserProvider,
-        UserRepository userRepository
+        UserRepository userRepository,
+        ImageStorageComponent imageStorage,
+        ImageStoragePath imageStoragePath
     ) {
         this.weatherReportRepository = weatherReportRepository;
         this.authenticatedUserProvider = authenticatedUserProvider;
         this.userRepository = userRepository;
+        this.imageStorage = imageStorage;
+        this.imageStoragePath = imageStoragePath;
     }
 
     @Override
@@ -53,13 +60,15 @@ public class WeatherReportUseCaseImpl implements WeatherReportUseCase {
             throw new ReportAlreadyPostedTodayException();
         }
 
-        List<WeatherMedia> mediaList = command.mediaList()
-            .stream()
-            .map(media -> WeatherMedia.create(
-                media.mediaType(),
-                media.url()
-            ))
-            .toList();
+        // ウェザーリポート投稿のメディアファイルのベースパスを取得
+        String basePath = imageStoragePath.userWeatherReportPhotoPath(userId.value(), today);
+        //写真の画像アップロード
+        String filePath = imageStorage.imageUpload(command.media().weatherPhoto(), basePath);
+
+        WeatherMedia media = WeatherMedia.create(
+                command.media().mediaType(),
+                filePath
+        );
 
         WeatherReport weatherReport = WeatherReport.create(
             userId,
@@ -69,7 +78,7 @@ public class WeatherReportUseCaseImpl implements WeatherReportUseCase {
             command.forecast(),
             command.latitude(),
             command.longitude(),
-            mediaList
+            media
         );
 
         // observationオブジェクトが存在していた場合
