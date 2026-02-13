@@ -20,8 +20,8 @@ import com.reimi.reimi_app.domain.model.weatherpersonality.AnswerChoice;
 import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxis;
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
-import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityType;
-import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.GetUserWeatherPersonalityType;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityTypeApi;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.GetUserWeatherPersonalityTypeApi;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -48,7 +48,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
     }
 
     @PostMapping("/user-weather-personality-type")
-    @DiagnoseWeatherPersonalityType
+    @DiagnoseWeatherPersonalityTypeApi
     public ResponseEntity<Void> diagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
     ) {
@@ -86,7 +86,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
     }
 
     @GetMapping("/user-weather-personality-type")
-    @GetUserWeatherPersonalityType
+    @GetUserWeatherPersonalityTypeApi
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
     ) {
         var result = weatherPersonalityUseCase.getUserResult();
