@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
@@ -20,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -75,12 +73,12 @@ public class WeatherReportEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
 
-    @OneToMany(
+    @OneToOne(
         mappedBy = "weatherReport",
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<WeatherMediaEntity> mediaList = new ArrayList<>();
+    private WeatherMediaEntity media;
 
     @Embedded
     private WeatherObservationEmbeddable observation;

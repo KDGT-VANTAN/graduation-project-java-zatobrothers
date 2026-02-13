@@ -13,7 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -36,8 +36,8 @@ public class WeatherMediaEntity {
     @Column(name = "url", nullable = false, updatable = false)
     private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "weather_report_id", nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "weather_report_id", nullable = false, updatable = false, unique = true)
     private WeatherReportEntity weatherReport;
 
     @Column(name = "created_at", nullable = false, updatable = false)
