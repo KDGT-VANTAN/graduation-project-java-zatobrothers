@@ -31,7 +31,7 @@ public class WeatherReportMapper {
         entity.setMedia(mediaEntity);
 
         if (weatherReport.getObservation() != null) {
-            WeatherObservationEmbeddable embeddable = new WeatherObservationEmbeddable();
+            WeatherObservationEmbeddable embeddable =
                 new WeatherObservationEmbeddable(
                     weatherReport.getObservation().getTemperature(),
                     weatherReport.getObservation().getHumidity(),
