@@ -52,43 +52,43 @@ make run-dev
 `lib/` 配下は以下のような構成になっています（※ ファイル名は省略しています）。
 
 ```text
-lib
-├── app
-├── application
-│   └── usecases
-├── core
-│   ├── config
-│   ├── di
-│   ├── error
-│   ├── extensions
-│   ├── firebase
-│   ├── i18n
-│   ├── locale
-│   ├── logger
-│   ├── router
-│   ├── services
-│   ├── storage
-│   ├── theme
-│   └── utils
-├── data
-│   ├── datasources
-│   ├── dtos
-│   ├── http
-│   ├── mapper
-│   └── repositories
-├── domain
-│   ├── entities
-│   ├── params
-│   ├── read_models
-│   ├── repositories
-│   └── value_objects
-├── firebase_options
-├── gen
-├── presentation
-│   ├── app
-│   ├── features
-│   ├── shared
-└── main.dart
+lib                               # アプリケーションのルートディレクトリ
+├── app                           # MyAppウィジェット、初期設定など
+├── application                   # アプリケーション層（ビジネス操作の調整役）
+│   └── usecases                  # 各機能のユースケース（1操作＝1クラス）
+├── core                          # アプリ横断の共通基盤（技術的・環境的関心ごと）
+│   ├── config                    # Flavorや環境変数などのアプリ設定
+│   ├── di                        # Riverpod等の依存性注入定義
+│   ├── error                     # 共通例外クラス定義
+│   ├── extensions                # Dart拡張メソッド
+│   ├── firebase                  # Firebase初期化・ラッパー処理
+│   ├── i18n                      # 国際化関連設定（翻訳キーなど）
+│   ├── locale                    # ロケール管理（言語切替など）
+│   ├── logger                    # LoggerやCrashlytics連携設定
+│   ├── router                    # GoRouter等のルーティング定義
+│   ├── services                  # アプリ全体で使うサービス層
+│   ├── storage                   # ローカルストレージ（SharedPreferencesなど）
+│   ├── theme                     # ThemeDataやデザインシステム定義
+│   └── utils                     # 汎用ユーティリティ関数
+├── data                          # データ層（外部通信・永続化・DTO変換など）
+│   ├── datasources               # APIやDBなどのデータ取得実装
+│   ├── dtos                      # API通信用DTO（JSONシリアライズ対象）
+│   ├── http                      # DioクライアントやHTTP設定
+│   ├── mapper                    # DTO ⇄ Entity 変換処理
+│   └── repositories              # Repository実装（Domainの抽象を実装）
+├── domain                        # ドメイン層（ビジネスルールの中心）
+│   ├── entities                  # ドメインエンティティ（不変条件を持つモデル）
+│   ├── params                    # UseCase入力用パラメータクラス
+│   ├── read_models               # 表示専用の読み取りモデル（集約結果など）
+│   ├── repositories              # Repository抽象インターフェース
+│   └── value_objects             # 値オブジェクト（不変な概念）
+├── firebase_options              # FlutterFire CLI生成のFirebase設定
+├── gen                           # 自動生成ファイル（Assets）
+├── presentation                  # UI層（状態管理・画面・Widget）
+│   ├── app                       # アプリとして成立させるための横断的制御
+│   ├── features                  # 機能単位のUI（画面・notifier・state）
+│   ├── shared                    # 複数featureで共有するUIコンポーネント
+└── main.dart                     # アプリ起動エントリーポイント（初期化・runApp）
 ```
 
 ---

@@ -49,7 +49,7 @@ class WeatherPersonalityConceptPage extends StatelessWidget {
               Positioned(
                 child: Column(
                   children: [
-                    const SizedBox(height: 250),
+                    const SizedBox(height: 210),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(

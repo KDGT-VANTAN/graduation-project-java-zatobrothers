@@ -41,6 +41,12 @@ class WeatherReportDetailNotifier extends _$WeatherReportDetailNotifier {
     state = state.copyWith(isMyReport: isMyReport);
   }
 
+  void inputComment(String comment) {
+    state = state.copyWith(comment: comment);
+  }
+
+  Future<void> sendMessage() async {}
+
   Future<void> refresh(String reportId) async {
     await loadWeatherReport(reportId);
   }

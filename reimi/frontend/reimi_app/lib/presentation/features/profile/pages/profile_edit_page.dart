@@ -66,7 +66,7 @@ class ProfileEditPage extends HookConsumerWidget {
                   ),
                   child: TextField(
                     controller: controller,
-                    maxLines: isMultiline ? null : 1,
+                    maxLines: isMultiline ? 6 : 1,
                     keyboardType: isMultiline
                         ? TextInputType.multiline
                         : TextInputType.text,

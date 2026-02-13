@@ -184,7 +184,10 @@ class WeatherReportDetailPage extends HookConsumerWidget {
                               color: const Color(0xFF7FBEC6),
                               onTap: () {
                                 // TODO: 投稿コメントの仕様を決める
-                                showCommentModalSheet(context);
+                                showCommentModalSheet(
+                                  context: context,
+                                  notifier: notifier,
+                                );
                               },
                             ),
                           ],

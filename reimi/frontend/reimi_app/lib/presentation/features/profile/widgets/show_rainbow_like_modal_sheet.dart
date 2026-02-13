@@ -190,7 +190,8 @@ class _MessageInputField extends StatelessWidget {
         const SizedBox(height: 8),
         TextField(
           controller: controller,
-          maxLines: 6,
+          minLines: 1,
+          maxLines: 5,
           maxLength: 100,
           keyboardType: TextInputType.multiline,
           decoration: InputDecoration(
