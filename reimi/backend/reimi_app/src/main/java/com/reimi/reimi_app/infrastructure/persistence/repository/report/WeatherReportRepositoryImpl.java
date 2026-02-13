@@ -1,6 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.repository.report;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,15 @@ public class WeatherReportRepositoryImpl implements WeatherReportRepository {
     @Override
     public void save(WeatherReport weatherReport) {
         jpaWeatherReportRepository.save(WeatherReportMapper.toEntity(weatherReport));
+    }
+
+    @Override
+    public List<WeatherReport> findByDate(LocalDate date) {
+        return jpaWeatherReportRepository
+            .findByReportDate(date)
+            .stream()
+            .map(WeatherReportMapper::toDomain)
+            .toList();
     }
 
 }
