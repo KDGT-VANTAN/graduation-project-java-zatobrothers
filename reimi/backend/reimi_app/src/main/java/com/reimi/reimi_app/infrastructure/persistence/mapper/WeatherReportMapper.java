@@ -26,6 +26,7 @@ public class WeatherReportMapper {
             mediaEntity.setId(media.getId().value());
             mediaEntity.setMediaType(media.getMediaType());
             mediaEntity.setUrl(media.getUrl());
+            mediaEntity.setWeatherReport(entity);
 
         entity.setMedia(mediaEntity);
 

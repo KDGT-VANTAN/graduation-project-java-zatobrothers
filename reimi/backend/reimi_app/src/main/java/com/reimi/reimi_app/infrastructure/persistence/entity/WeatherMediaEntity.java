@@ -36,7 +36,7 @@ public class WeatherMediaEntity {
     @Column(name = "url", nullable = false, updatable = false)
     private String url;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "weather_report_id", nullable = false, updatable = false, unique = true)
     private WeatherReportEntity weatherReport;
 
