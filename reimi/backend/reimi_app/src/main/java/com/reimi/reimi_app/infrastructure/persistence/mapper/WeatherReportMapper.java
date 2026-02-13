@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.infrastructure.persistence.mapper;
 
+import com.reimi.reimi_app.domain.model.report.WeatherMedia;
 import com.reimi.reimi_app.domain.model.report.WeatherReport;
 import com.reimi.reimi_app.infrastructure.persistence.embeddable.WeatherObservationEmbeddable;
 import com.reimi.reimi_app.infrastructure.persistence.entity.WeatherMediaEntity;
@@ -19,17 +20,14 @@ public class WeatherReportMapper {
             entity.setLatitude(weatherReport.getLatitude());
             entity.setLongitude(weatherReport.getLongitude());
 
-        weatherReport.getMediaList().forEach(media -> {
-            WeatherMediaEntity mediaEntity =
-                new WeatherMediaEntity(
-                    media.getId().value(),
-                    media.getMediaType(),
-                    media.getUrl(),
-                    entity
-                );
+        WeatherMedia media = weatherReport.getMedia();
 
-            entity.getMediaList().add(mediaEntity);
-        });
+        WeatherMediaEntity mediaEntity = new WeatherMediaEntity();
+            mediaEntity.setId(media.getId().value());
+            mediaEntity.setMediaType(media.getMediaType());
+            mediaEntity.setUrl(media.getUrl());
+
+        entity.setMedia(mediaEntity);
 
         if (weatherReport.getObservation() != null) {
             WeatherObservationEmbeddable embeddable = new WeatherObservationEmbeddable();

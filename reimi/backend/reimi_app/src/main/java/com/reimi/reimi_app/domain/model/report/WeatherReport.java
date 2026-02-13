@@ -1,9 +1,6 @@
 package com.reimi.reimi_app.domain.model.report;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
 import com.reimi.reimi_app.domain.model.report.value.ForecastType;
@@ -21,7 +18,7 @@ public class WeatherReport {
     private final ForecastType forecast;
     private final BigDecimal latitude;
     private final BigDecimal longitude;
-    private final List<WeatherMedia> mediaList;
+    private final WeatherMedia media;
 
     private WeatherObservation observation;
 
@@ -34,13 +31,8 @@ public class WeatherReport {
         ForecastType forecast,
         BigDecimal latitude,
         BigDecimal longitude,
-        List<WeatherMedia> mediaList
+        WeatherMedia media
     ) {
-        if (mediaList == null || mediaList.isEmpty()) {
-            throw new IllegalArgumentException(
-                "1つ以上の写真を追加してください。"
-            );
-        }
         this.id = id;
         this.userId = userId;
         this.comment = comment;
@@ -49,7 +41,7 @@ public class WeatherReport {
         this.forecast = forecast;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.mediaList = new ArrayList<>(mediaList);
+        this.media = media;
     }
 
     public static WeatherReport create(
@@ -60,7 +52,7 @@ public class WeatherReport {
         ForecastType forecast,
         BigDecimal latitude,
         BigDecimal longitude,
-        List<WeatherMedia> mediaList
+        WeatherMedia media
     ) {
         WeatherReportId weatherReportId = WeatherReportId.generate();
 
@@ -73,7 +65,7 @@ public class WeatherReport {
             forecast,
             latitude,
             longitude,
-            mediaList
+            media
         );
     }
 
@@ -101,8 +93,7 @@ public class WeatherReport {
     public ForecastType getForecast() { return forecast; }
     public BigDecimal getLatitude() { return latitude; }
     public BigDecimal getLongitude() { return longitude; }
-    public List<WeatherMedia> getMedia() { return mediaList; }
-    public List<WeatherMedia> getMediaList() { return Collections.unmodifiableList(mediaList); }
+    public WeatherMedia getMedia() { return media; }
     public WeatherObservation getObservation() { return observation; }
 
 }
