@@ -83,7 +83,7 @@ class WeatherPersonalityDetailPage extends HookConsumerWidget {
         ImageSharePayload(
           bytes: bytes,
           fileName: 'test_result.png',
-          text: 'あなたの診断結果はこちら✨',
+          text: t.card.weatherPersonalityShareCard.shareMessage,
         ),
       );
     }

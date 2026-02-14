@@ -55,6 +55,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsAIMatchingPageEn aIMatchingPage = TranslationsAIMatchingPageEn._(_root);
 	late final TranslationsChatPageEn chatPage = TranslationsChatPageEn._(_root);
 	late final TranslationsChatDetailPageEn chatDetailPage = TranslationsChatDetailPageEn._(_root);
+	late final TranslationsGoOutConditionsPageEn goOutConditionsPage = TranslationsGoOutConditionsPageEn._(_root);
+	late final TranslationsGoOutSuggestionPageEn goOutSuggestionPage = TranslationsGoOutSuggestionPageEn._(_root);
 	late final TranslationsWeatherReportPageEn weatherReportPage = TranslationsWeatherReportPageEn._(_root);
 	late final TranslationsMyWeatherReportPageEn myWeatherReportPage = TranslationsMyWeatherReportPageEn._(_root);
 	late final TranslationsWeatherReportPostPageEn weatherReportPostPage = TranslationsWeatherReportPostPageEn._(_root);
@@ -77,6 +79,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
 	late final TranslationsSegmentedSwitchEn segmentedSwitch = TranslationsSegmentedSwitchEn._(_root);
 	late final TranslationsSnackBarEn snackBar = TranslationsSnackBarEn._(_root);
+	late final TranslationsCardEn card = TranslationsCardEn._(_root);
 	late final TranslationsKEnumEn kEnum = TranslationsKEnumEn._(_root);
 }
 
@@ -264,6 +267,40 @@ class TranslationsChatDetailPageEn {
 
 	/// en: 'Enter message'
 	String get placeHolder => 'Enter message';
+}
+
+// Path: goOutConditionsPage
+class TranslationsGoOutConditionsPageEn {
+	TranslationsGoOutConditionsPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Set Outing Conditions'
+	String get title => 'Set Outing Conditions';
+
+	/// en: 'We'll suggest the best outing plan based on your conditions and the day's weather forecast.'
+	String get description => 'We\'ll suggest the best outing plan based on your conditions\nand the day\'s weather forecast.';
+
+	late final TranslationsGoOutConditionsPageSectionEn section = TranslationsGoOutConditionsPageSectionEn._(_root);
+}
+
+// Path: goOutSuggestionPage
+class TranslationsGoOutSuggestionPageEn {
+	TranslationsGoOutSuggestionPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Outing Suggestions with $name'
+	String title({required Object name}) => 'Outing Suggestions with ${name}';
+
+	/// en: 'Unable to retrieve outing suggestions.'
+	String get nullCase => 'Unable to retrieve outing suggestions.';
+
+	late final TranslationsGoOutSuggestionPageSectionEn section = TranslationsGoOutSuggestionPageSectionEn._(_root);
 }
 
 // Path: weatherReportPage
@@ -650,6 +687,15 @@ class TranslationsButtonEn {
 
 	/// en: 'Re-test'
 	String get retest => 'Re-test';
+
+	/// en: 'Suggest An Outing'
+	String get suggestGoOut => 'Suggest An Outing';
+
+	/// en: 'Return'
+	String get kReturn => 'Return';
+
+	/// en: 'Confirm Weather News'
+	String get confirmWeatherNews => 'Confirm Weather News';
 }
 
 // Path: segmentedSwitch
@@ -671,6 +717,17 @@ class TranslationsSnackBarEn {
 
 	// Translations
 	late final TranslationsSnackBarProfileEn profile = TranslationsSnackBarProfileEn._(_root);
+}
+
+// Path: card
+class TranslationsCardEn {
+	TranslationsCardEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsCardWeathernewsRecommendEn weathernewsRecommend = TranslationsCardWeathernewsRecommendEn._(_root);
+	late final TranslationsCardWeatherPersonalityShareCardEn weatherPersonalityShareCard = TranslationsCardWeatherPersonalityShareCardEn._(_root);
 }
 
 // Path: kEnum
@@ -904,6 +961,33 @@ class TranslationsChatPageSubSectionTitleEn {
 
 	/// en: 'Send your first message!'
 	String get matching => 'Send your first message!';
+}
+
+// Path: goOutConditionsPage.section
+class TranslationsGoOutConditionsPageSectionEn {
+	TranslationsGoOutConditionsPageSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsGoOutConditionsPageSectionDateEn date = TranslationsGoOutConditionsPageSectionDateEn._(_root);
+	late final TranslationsGoOutConditionsPageSectionPlaceEn place = TranslationsGoOutConditionsPageSectionPlaceEn._(_root);
+}
+
+// Path: goOutSuggestionPage.section
+class TranslationsGoOutSuggestionPageSectionEn {
+	TranslationsGoOutSuggestionPageSectionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsGoOutSuggestionPageSectionGoOutInformationEn goOutInformation = TranslationsGoOutSuggestionPageSectionGoOutInformationEn._(_root);
+
+	/// en: 'With this weather, how about these outings?'
+	String get suggestionText => 'With this weather, how about these outings?';
+
+	/// en: 'Weather Trend for This Day'
+	String get weatherTrendency => 'Weather Trend for This Day';
 }
 
 // Path: myWeatherReportPage.weekdays
@@ -1886,6 +1970,42 @@ class TranslationsSnackBarProfileEn {
 	String get success => 'Your profile has been updated!';
 }
 
+// Path: card.weathernewsRecommend
+class TranslationsCardWeathernewsRecommendEn {
+	TranslationsCardWeathernewsRecommendEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'If you're planning today's outing'
+	String get title1 => 'If you\'re planning today\'s outing';
+
+	/// en: 'More detailed weather information'
+	String get title2 => 'More detailed weather information';
+
+	/// en: 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!'
+	String get description => 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!';
+}
+
+// Path: card.weatherPersonalityShareCard
+class TranslationsCardWeatherPersonalityShareCardEn {
+	TranslationsCardWeatherPersonalityShareCardEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'your type is'
+	String get yourType => 'your type is';
+
+	/// en: 'Test by Weather Personality'
+	String get testSource => 'Test by Weather Personality';
+
+	/// en: 'Here are my results 👇 Check yours with the Weather Personality Test!'
+	String get shareMessage => 'Here are my results 👇 Check yours with the Weather Personality Test!';
+}
+
 // Path: kEnum.address
 class TranslationsKEnumAddressEn {
 	TranslationsKEnumAddressEn._(this._root);
@@ -2841,6 +2961,54 @@ class TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointEn {
 	String get title => '🌦️What would you do if the weather was like today?';
 }
 
+// Path: goOutConditionsPage.section.date
+class TranslationsGoOutConditionsPageSectionDateEn {
+	TranslationsGoOutConditionsPageSectionDateEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Outing Date'
+	String get title => 'Outing Date';
+
+	/// en: 'yyyy/mm/dd'
+	String get placeHolder => 'yyyy/mm/dd';
+}
+
+// Path: goOutConditionsPage.section.place
+class TranslationsGoOutConditionsPageSectionPlaceEn {
+	TranslationsGoOutConditionsPageSectionPlaceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Outing Location'
+	String get title => 'Outing Location';
+
+	/// en: 'e.g., Tokyo Tower, Shibuya'
+	String get placeHolder => 'e.g., Tokyo Tower, Shibuya';
+}
+
+// Path: goOutSuggestionPage.section.goOutInformation
+class TranslationsGoOutSuggestionPageSectionGoOutInformationEn {
+	TranslationsGoOutSuggestionPageSectionGoOutInformationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Date'
+	String get date => 'Date';
+
+	/// en: 'Location'
+	String get place => 'Location';
+
+	/// en: 'Expected Weather'
+	String get expectedWeather => 'Expected Weather';
+}
+
 // Path: profilePage.section.basicInformation
 class TranslationsProfilePageSectionBasicInformationEn {
 	TranslationsProfilePageSectionBasicInformationEn._(this._root);
@@ -3667,6 +3835,19 @@ extension on Translations {
 			'chatPage.subSectionTitle.matching' => 'Send your first message!',
 			'chatDetailPage.nullCase' => 'Profile information could not be retrieved.',
 			'chatDetailPage.placeHolder' => 'Enter message',
+			'goOutConditionsPage.title' => 'Set Outing Conditions',
+			'goOutConditionsPage.description' => 'We\'ll suggest the best outing plan based on your conditions\nand the day\'s weather forecast.',
+			'goOutConditionsPage.section.date.title' => 'Outing Date',
+			'goOutConditionsPage.section.date.placeHolder' => 'yyyy/mm/dd',
+			'goOutConditionsPage.section.place.title' => 'Outing Location',
+			'goOutConditionsPage.section.place.placeHolder' => 'e.g., Tokyo Tower, Shibuya',
+			'goOutSuggestionPage.title' => ({required Object name}) => 'Outing Suggestions with ${name}',
+			'goOutSuggestionPage.nullCase' => 'Unable to retrieve outing suggestions.',
+			'goOutSuggestionPage.section.goOutInformation.date' => 'Date',
+			'goOutSuggestionPage.section.goOutInformation.place' => 'Location',
+			'goOutSuggestionPage.section.goOutInformation.expectedWeather' => 'Expected Weather',
+			'goOutSuggestionPage.section.suggestionText' => 'With this weather, how about these outings?',
+			'goOutSuggestionPage.section.weatherTrendency' => 'Weather Trend for This Day',
 			'weatherReportPage.title' => 'Weather Report',
 			'weatherReportPage.isEmptyCase' => 'There are currently no reports to display.',
 			'myWeatherReportPage.title' => 'My Weather Report',
@@ -3946,11 +4127,20 @@ extension on Translations {
 			'button.goTochatPage' => 'Go To Chat Screen',
 			'button.rainbowLike' => 'Rainbow Like!',
 			'button.retest' => 'Re-test',
+			'button.suggestGoOut' => 'Suggest An Outing',
+			'button.kReturn' => 'Return',
+			'button.confirmWeatherNews' => 'Confirm Weather News',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
 			'segmentedSwitch.chat.profile' => 'Profile',
 			'snackBar.profile.success' => 'Your profile has been updated!',
+			'card.weathernewsRecommend.title1' => 'If you\'re planning today\'s outing',
+			'card.weathernewsRecommend.title2' => 'More detailed weather information',
+			'card.weathernewsRecommend.description' => 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!',
+			'card.weatherPersonalityShareCard.yourType' => 'your type is',
+			'card.weatherPersonalityShareCard.testSource' => 'Test by Weather Personality',
+			'card.weatherPersonalityShareCard.shareMessage' => 'Here are my results 👇 Check yours with the Weather Personality Test!',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
 			'kEnum.address.prefecture.aomori' => 'Aomori',
 			'kEnum.address.prefecture.iwate' => 'Iwate',
@@ -4098,6 +4288,8 @@ extension on Translations {
 			'kEnum.height.just178cm' => '178cm',
 			'kEnum.height.just179cm' => '179cm',
 			'kEnum.height.just180cm' => '180cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',
@@ -4120,8 +4312,6 @@ extension on Translations {
 			'kEnum.height.over200cm' => 'Over 200cm',
 			'kEnum.holiday.weekend' => 'Weekends',
 			'kEnum.holiday.weekday' => 'Weekdays',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.holiday.irregular' => 'Irregular',
 			'kEnum.occupation.universityStudent' => 'University Student',
 			'kEnum.occupation.graduateStudent' => 'Graduate Student',

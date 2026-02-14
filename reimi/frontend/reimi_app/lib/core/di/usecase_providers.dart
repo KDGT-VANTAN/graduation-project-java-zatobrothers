@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/application/usecases/like/like_user_usecase.dart';
 import 'package:reimi_app/application/usecases/location/get_current_location_usecase.dart';
 import 'package:reimi_app/application/usecases/location/get_current_prefecture_city_usecase.dart';
+import 'package:reimi_app/application/usecases/location/get_location_from_address_usecase.dart';
 import 'package:reimi_app/application/usecases/notification/register_device_token_usecase.dart';
 import 'package:reimi_app/application/usecases/profile/update_user_profile_usecase.dart';
 import 'package:reimi_app/application/usecases/rainbow_like/get_rainbow_like_users_from_user_usecase.dart';
@@ -196,4 +197,9 @@ GetCurrentLocationUseCase getCurrentLocationUseCase(Ref ref) {
 @riverpod
 GetCurrentPrefectureCityUseCase getCurrentPrefectureCityUseCase(Ref ref) {
   return GetCurrentPrefectureCityUseCase(ref.watch(geocodingServiceProvider));
+}
+
+@riverpod
+GetLocationFromAddressUseCase getLocationFromAddressUseCase(Ref ref) {
+  return GetLocationFromAddressUseCase(ref.watch(geocodingServiceProvider));
 }

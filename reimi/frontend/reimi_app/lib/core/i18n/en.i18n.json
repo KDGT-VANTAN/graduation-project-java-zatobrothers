@@ -124,6 +124,33 @@
     "nullCase": "Profile information could not be retrieved.",
     "placeHolder": "Enter message"
   },
+  "goOutConditionsPage": {
+    "title": "Set Outing Conditions",
+    "description": "We'll suggest the best outing plan based on your conditions\nand the day's weather forecast.",
+    "section": {
+      "date": {
+        "title": "Outing Date",
+        "placeHolder": "yyyy/mm/dd"
+      },
+      "place": {
+        "title": "Outing Location",
+        "placeHolder": "e.g., Tokyo Tower, Shibuya"
+      }
+    }
+  },
+  "goOutSuggestionPage": {
+    "title": "Outing Suggestions with $name",
+    "nullCase": "Unable to retrieve outing suggestions.",
+    "section": {
+      "goOutInformation": {
+        "date": "Date",
+        "place": "Location",
+        "expectedWeather": "Expected Weather"
+      },
+      "suggestionText": "With this weather, how about these outings?",
+      "weatherTrendency": "Weather Trend for This Day"
+    }
+  },
   "weatherReportPage": {
     "title": "Weather Report",
     "isEmptyCase": "There are currently no reports to display."
@@ -621,7 +648,10 @@
     "weatherPersonalityTest": "Weather Personality Test",
     "goTochatPage": "Go To Chat Screen",
     "rainbowLike": "Rainbow Like!",
-    "retest": "Re-test"
+    "retest": "Re-test",
+    "suggestGoOut": "Suggest An Outing",
+    "return": "Return",
+    "confirmWeatherNews": "Confirm Weather News"
   },
   "segmentedSwitch": {
     "like": {
@@ -636,6 +666,18 @@
   "snackBar": {
     "profile": {
       "success": "Your profile has been updated!"
+    }
+  },
+    "card": {
+    "weathernewsRecommend": {
+      "title1": "If you're planning today's outing",
+      "title2": "More detailed weather information",
+      "description": "Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!"
+    },
+    "weatherPersonalityShareCard": {
+      "yourType": "your type is",
+      "testSource": "Test by Weather Personality",
+      "shareMessage": "Here are my results 👇 Check yours with the Weather Personality Test!"
     }
   },
   "enum": {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/core/theme/custom_colors.dart';
 import 'package:reimi_app/presentation/shared/widgets/text_card.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,6 +19,7 @@ class WeathernewsRecommendCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final t = Translations.of(context);
 
     return TextCard(
       padding: padding,
@@ -43,7 +45,7 @@ class WeathernewsRecommendCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           SizedBox(
-            height: 56,
+            height: 52,
             width: double.infinity,
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -69,7 +71,7 @@ class WeathernewsRecommendCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'ウェザーニュースで詳しい天気を見る',
+                      t.button.confirmWeatherNews,
                       style: theme.textTheme.labelLarge!.copyWith(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,

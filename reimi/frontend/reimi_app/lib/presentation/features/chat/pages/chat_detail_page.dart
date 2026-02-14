@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:reimi_app/presentation/features/chat/enum/chat_segment.dart';
@@ -10,6 +11,7 @@ import 'package:reimi_app/presentation/features/chat/states/chat_detail_state.da
 import 'package:reimi_app/presentation/features/chat/widgets/chat_message_list.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_segment_switch.dart';
 import 'package:reimi_app/presentation/features/chat/widgets/chat_user_profile.dart';
+import 'package:reimi_app/presentation/features/go_out/pages/go_out_conditions_page.dart';
 import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/circle_icon_button.dart';
@@ -160,6 +162,27 @@ class ChatDetailPage extends HookConsumerWidget {
                 ],
               ],
             ),
+          ),
+        ),
+      ),
+      floatingActionButton: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32),
+            side: BorderSide(
+              color: theme.colorScheme.primary,
+              width: 1.6,
+            ),
+          ),
+        ),
+        onPressed: () {
+          context.push(GoOutConditionsPage.routeLocation);
+        },
+        child: Text(
+          'おでかけ提案',
+          style: theme.textTheme.labelLarge!.copyWith(
+            color: theme.colorScheme.primary,
           ),
         ),
       ),

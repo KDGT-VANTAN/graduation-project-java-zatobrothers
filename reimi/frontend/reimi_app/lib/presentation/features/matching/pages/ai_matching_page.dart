@@ -140,26 +140,20 @@ class AIMatchingPage extends HookConsumerWidget {
                             Text(
                               t.aIMatchingPage.title,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              style: theme.textTheme.titleMedium!.copyWith(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               t.aIMatchingPage.subTitle,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 13,
-                                    color: Colors.black.withValues(alpha: 0.4),
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              style: theme.textTheme.titleSmall!.copyWith(
+                                fontSize: 13,
+                                color: Colors.black.withValues(alpha: 0.4),
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ],
                         ),
@@ -221,13 +215,12 @@ class AIMatchingPage extends HookConsumerWidget {
                   ),
                 ),
                 const Gap(height: 24),
-                const SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   sliver: SliverToBoxAdapter(
                     child: WeathernewsRecommendCard(
-                      title: '今日のおでかけプランを立てるなら',
-                      description:
-                          'ウェザーニュース公式アプリで時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！',
+                      title: t.card.weathernewsRecommend.title1,
+                      description: t.card.weathernewsRecommend.description,
                     ),
                   ),
                 ),
