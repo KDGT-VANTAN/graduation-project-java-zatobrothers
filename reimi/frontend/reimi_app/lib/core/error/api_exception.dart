@@ -76,6 +76,7 @@ abstract class ApiException implements Exception {
       case 'LIKE_ALREADY_SENT':
       case 'RAINBOW_LIKE_ALREADY_SENT':
       case 'DIAGNOSE_RESUlT_ALREADY_EXISTS':
+      case 'REPORT_ALREADY_POSTED_TODAY':
         return ConflictException(code: code, message: message);
 
       // 413
