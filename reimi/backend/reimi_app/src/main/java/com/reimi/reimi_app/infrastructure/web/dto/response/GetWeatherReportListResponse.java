@@ -7,7 +7,7 @@ import com.reimi.reimi_app.domain.model.report.value.MediaType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "ウェザーリポート一覧用レスポンス")
+@Schema(description = "ウェザーリポート一覧取得用レスポンス")
 public record GetWeatherReportListResponse (
 
     @Schema(description = "ウェザーリポートID", example = "fb3cd942-7fb2-4aaa-a67c-520dc969ba4a")

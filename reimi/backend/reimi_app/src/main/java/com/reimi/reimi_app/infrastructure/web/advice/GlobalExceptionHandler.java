@@ -1,5 +1,6 @@
 package com.reimi.reimi_app.infrastructure.web.advice;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.reimi.reimi_app.application.exception.ClientErrorException;
+import com.reimi.reimi_app.application.exception.client.WeatherApiException;
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
 
 @RestControllerAdvice
@@ -100,6 +102,24 @@ public class GlobalExceptionHandler {
             .body(new ApiErrorResponse(
                 "INVALID_REQUEST",
                 "入力値が不正です",
+                details
+            )
+        );
+    }
+
+    // ウェザーニューズAPIのエラー処理
+    @ExceptionHandler(WeatherApiException.class)
+    public ResponseEntity<ApiErrorResponse> handleWeatherApiException(WeatherApiException ex) {
+
+        Map<String, String> details = new HashMap<>();
+        details.put("code", ex.getCode());
+        details.put("message", ex.getMessage());
+
+        return ResponseEntity
+            .status(HttpStatus.BAD_GATEWAY)
+            .body(new ApiErrorResponse(
+                "EXTERNAL_API_ERROR",
+                "外部APIでエラーが発生しました",
                 details
             )
         );
