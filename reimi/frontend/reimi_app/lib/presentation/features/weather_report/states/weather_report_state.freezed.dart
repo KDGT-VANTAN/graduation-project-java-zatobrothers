@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportState {
-  List<WeatherReportSimpleReadModel> get weatherReports;
+  List<WeatherReportReadModel> get weatherReports;
   bool get isLoading;
   String? get errorMessage;
 
@@ -59,7 +59,7 @@ abstract mixin class $WeatherReportStateCopyWith<$Res> {
       _$WeatherReportStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<WeatherReportSimpleReadModel> weatherReports,
+      {List<WeatherReportReadModel> weatherReports,
       bool isLoading,
       String? errorMessage});
 }
@@ -85,7 +85,7 @@ class _$WeatherReportStateCopyWithImpl<$Res>
       weatherReports: null == weatherReports
           ? _self.weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
-              as List<WeatherReportSimpleReadModel>,
+              as List<WeatherReportReadModel>,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -191,7 +191,7 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleReadModel> weatherReports,
+    TResult Function(List<WeatherReportReadModel> weatherReports,
             bool isLoading, String? errorMessage)?
         $default, {
     required TResult orElse(),
@@ -221,7 +221,7 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(List<WeatherReportSimpleReadModel> weatherReports,
+    TResult Function(List<WeatherReportReadModel> weatherReports,
             bool isLoading, String? errorMessage)
         $default,
   ) {
@@ -249,7 +249,7 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(List<WeatherReportSimpleReadModel> weatherReports,
+    TResult? Function(List<WeatherReportReadModel> weatherReports,
             bool isLoading, String? errorMessage)?
         $default,
   ) {
@@ -268,16 +268,16 @@ extension WeatherReportStatePatterns on WeatherReportState {
 
 class _WeatherReportState implements WeatherReportState {
   const _WeatherReportState(
-      {final List<WeatherReportSimpleReadModel> weatherReports =
-          const <WeatherReportSimpleReadModel>[],
+      {final List<WeatherReportReadModel> weatherReports =
+          const <WeatherReportReadModel>[],
       this.isLoading = false,
       this.errorMessage})
       : _weatherReports = weatherReports;
 
-  final List<WeatherReportSimpleReadModel> _weatherReports;
+  final List<WeatherReportReadModel> _weatherReports;
   @override
   @JsonKey()
-  List<WeatherReportSimpleReadModel> get weatherReports {
+  List<WeatherReportReadModel> get weatherReports {
     if (_weatherReports is EqualUnmodifiableListView) return _weatherReports;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_weatherReports);
@@ -332,7 +332,7 @@ abstract mixin class _$WeatherReportStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<WeatherReportSimpleReadModel> weatherReports,
+      {List<WeatherReportReadModel> weatherReports,
       bool isLoading,
       String? errorMessage});
 }
@@ -358,7 +358,7 @@ class __$WeatherReportStateCopyWithImpl<$Res>
       weatherReports: null == weatherReports
           ? _self._weatherReports
           : weatherReports // ignore: cast_nullable_to_non_nullable
-              as List<WeatherReportSimpleReadModel>,
+              as List<WeatherReportReadModel>,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
-import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
+import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
 
 class WeatherReportCard extends StatelessWidget {
   const WeatherReportCard({
@@ -10,7 +10,7 @@ class WeatherReportCard extends StatelessWidget {
     required this.onTap,
   });
 
-  final WeatherReportSimpleReadModel weatherReport;
+  final WeatherReportReadModel weatherReport;
   final void Function()? onTap;
 
   @override
