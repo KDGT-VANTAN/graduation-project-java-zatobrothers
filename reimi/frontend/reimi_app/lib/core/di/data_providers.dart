@@ -137,7 +137,7 @@ MessageRepository messageRepository(Ref ref) {
 @riverpod
 WeatherReportRemoteDataSource weatherReportRemoteDataSource(Ref ref) {
   if (useMock) return const WeatherReportMockDataSource();
-  return const WeatherReportRemoteDataSourceImpl();
+  return WeatherReportRemoteDataSourceImpl(ref.watch(dioClientProvider));
 }
 
 @riverpod

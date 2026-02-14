@@ -270,7 +270,7 @@ final messageRepositoryProvider =
 // ignore: unused_element
 typedef MessageRepositoryRef = AutoDisposeProviderRef<MessageRepository>;
 String _$weatherReportRemoteDataSourceHash() =>
-    r'3680d62369ba072aa066a052ed9d34443b6a4de9';
+    r'36baa5c3fe37236a34559f3e04919c7578e89b44';
 
 /// See also [weatherReportRemoteDataSource].
 @ProviderFor(weatherReportRemoteDataSource)
