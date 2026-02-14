@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum WeatherType {
-  @JsonValue('CLEAR_STAR')
-  clearStar, // 星がはっきり
-  @JsonValue('FAINT_STAR')
-  faintStar, // 星がうっすら
-  @JsonValue('NO_STAR')
-  noStar, // 星が見えない
+  @JsonValue('CLEAR_STARS')
+  clearStars, // 星がはっきり
+  @JsonValue('FAINT_STARS')
+  faintStars, // 星がうっすら
+  @JsonValue('NO_STARS')
+  noStars, // 星が見えない
   @JsonValue('DRIZZLE')
   drizzle, // ポツポツ
   @JsonValue('LIGHT_RAIN')

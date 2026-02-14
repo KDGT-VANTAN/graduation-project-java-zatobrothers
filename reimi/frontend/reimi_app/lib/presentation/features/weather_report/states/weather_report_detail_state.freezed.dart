@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportDetailState {
-  WeatherReportReadModel? get weatherReport;
+  WeatherReportDetailReadModel? get weatherReport;
   bool get isLoading;
   String? get errorMessage;
   bool get isMyReport;
@@ -61,13 +61,13 @@ abstract mixin class $WeatherReportDetailStateCopyWith<$Res> {
       _$WeatherReportDetailStateCopyWithImpl;
   @useResult
   $Res call(
-      {WeatherReportReadModel? weatherReport,
+      {WeatherReportDetailReadModel? weatherReport,
       bool isLoading,
       String? errorMessage,
       bool isMyReport,
       String? comment});
 
-  $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
+  $WeatherReportDetailReadModelCopyWith<$Res>? get weatherReport;
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
       weatherReport: freezed == weatherReport
           ? _self.weatherReport
           : weatherReport // ignore: cast_nullable_to_non_nullable
-              as WeatherReportReadModel?,
+              as WeatherReportDetailReadModel?,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -117,12 +117,13 @@ class _$WeatherReportDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $WeatherReportReadModelCopyWith<$Res>? get weatherReport {
+  $WeatherReportDetailReadModelCopyWith<$Res>? get weatherReport {
     if (_self.weatherReport == null) {
       return null;
     }
 
-    return $WeatherReportReadModelCopyWith<$Res>(_self.weatherReport!, (value) {
+    return $WeatherReportDetailReadModelCopyWith<$Res>(_self.weatherReport!,
+        (value) {
       return _then(_self.copyWith(weatherReport: value));
     });
   }
@@ -221,8 +222,12 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage, bool isMyReport, String? comment)?
+    TResult Function(
+            WeatherReportDetailReadModel? weatherReport,
+            bool isLoading,
+            String? errorMessage,
+            bool isMyReport,
+            String? comment)?
         $default, {
     required TResult orElse(),
   }) {
@@ -251,8 +256,12 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage, bool isMyReport, String? comment)
+    TResult Function(
+            WeatherReportDetailReadModel? weatherReport,
+            bool isLoading,
+            String? errorMessage,
+            bool isMyReport,
+            String? comment)
         $default,
   ) {
     final _that = this;
@@ -279,8 +288,12 @@ extension WeatherReportDetailStatePatterns on WeatherReportDetailState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(WeatherReportReadModel? weatherReport, bool isLoading,
-            String? errorMessage, bool isMyReport, String? comment)?
+    TResult? Function(
+            WeatherReportDetailReadModel? weatherReport,
+            bool isLoading,
+            String? errorMessage,
+            bool isMyReport,
+            String? comment)?
         $default,
   ) {
     final _that = this;
@@ -305,7 +318,7 @@ class _WeatherReportDetailState implements WeatherReportDetailState {
       this.comment});
 
   @override
-  final WeatherReportReadModel? weatherReport;
+  final WeatherReportDetailReadModel? weatherReport;
   @override
   @JsonKey()
   final bool isLoading;
@@ -361,14 +374,14 @@ abstract mixin class _$WeatherReportDetailStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {WeatherReportReadModel? weatherReport,
+      {WeatherReportDetailReadModel? weatherReport,
       bool isLoading,
       String? errorMessage,
       bool isMyReport,
       String? comment});
 
   @override
-  $WeatherReportReadModelCopyWith<$Res>? get weatherReport;
+  $WeatherReportDetailReadModelCopyWith<$Res>? get weatherReport;
 }
 
 /// @nodoc
@@ -394,7 +407,7 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
       weatherReport: freezed == weatherReport
           ? _self.weatherReport
           : weatherReport // ignore: cast_nullable_to_non_nullable
-              as WeatherReportReadModel?,
+              as WeatherReportDetailReadModel?,
       isLoading: null == isLoading
           ? _self.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -418,12 +431,13 @@ class __$WeatherReportDetailStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $WeatherReportReadModelCopyWith<$Res>? get weatherReport {
+  $WeatherReportDetailReadModelCopyWith<$Res>? get weatherReport {
     if (_self.weatherReport == null) {
       return null;
     }
 
-    return $WeatherReportReadModelCopyWith<$Res>(_self.weatherReport!, (value) {
+    return $WeatherReportDetailReadModelCopyWith<$Res>(_self.weatherReport!,
+        (value) {
       return _then(_self.copyWith(weatherReport: value));
     });
   }

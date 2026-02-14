@@ -785,7 +785,7 @@
       "other": "Other"
     },
     "feelingType": {
-      "freezing": "Freezing",
+      "veryCold": "Very Cold",
       "cold": "Cold",
       "comfortable": "Comfortable",
       "warm": "Warm",
@@ -794,7 +794,7 @@
     "forecastType": {
       "noChange": "No change expected",
       "improving": "Likely to improve",
-      "worsening": "Likely to worsen"
+      "deteriorating": "Likely to worsen"
     },
     "gender": {
       "man": "Male",
@@ -976,9 +976,9 @@
       "rational": "R (Rational)"
     },
     "weatherType": {
-      "clearStar": "Clear Stars",
-      "faintStar": "Faint Stars",
-      "noStar": "No Stars",
+      "clearStars": "Clear Stars",
+      "faintStars": "Faint Stars",
+      "noStars": "No Stars",
       "drizzle": "Drizzle",
       "lightRain": "Light Rain",
       "rain": "Rain",

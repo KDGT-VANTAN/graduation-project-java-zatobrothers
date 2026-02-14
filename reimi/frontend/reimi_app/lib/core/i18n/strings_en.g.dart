@@ -2201,8 +2201,8 @@ class TranslationsKEnumFeelingTypeEn {
 
 	// Translations
 
-	/// en: 'Freezing'
-	String get freezing => 'Freezing';
+	/// en: 'Very Cold'
+	String get veryCold => 'Very Cold';
 
 	/// en: 'Cold'
 	String get cold => 'Cold';
@@ -2232,7 +2232,7 @@ class TranslationsKEnumForecastTypeEn {
 	String get improving => 'Likely to improve';
 
 	/// en: 'Likely to worsen'
-	String get worsening => 'Likely to worsen';
+	String get deteriorating => 'Likely to worsen';
 }
 
 // Path: kEnum.gender
@@ -2805,13 +2805,13 @@ class TranslationsKEnumWeatherTypeEn {
 	// Translations
 
 	/// en: 'Clear Stars'
-	String get clearStar => 'Clear Stars';
+	String get clearStars => 'Clear Stars';
 
 	/// en: 'Faint Stars'
-	String get faintStar => 'Faint Stars';
+	String get faintStars => 'Faint Stars';
 
 	/// en: 'No Stars'
-	String get noStar => 'No Stars';
+	String get noStars => 'No Stars';
 
 	/// en: 'Drizzle'
 	String get drizzle => 'Drizzle';
@@ -4226,14 +4226,14 @@ extension on Translations {
 			'kEnum.education.universityGraduate' => 'University',
 			'kEnum.education.graduateSchoolGraduate' => 'Graduate School',
 			'kEnum.education.other' => 'Other',
-			'kEnum.feelingType.freezing' => 'Freezing',
+			'kEnum.feelingType.veryCold' => 'Very Cold',
 			'kEnum.feelingType.cold' => 'Cold',
 			'kEnum.feelingType.comfortable' => 'Comfortable',
 			'kEnum.feelingType.warm' => 'Warm',
 			'kEnum.feelingType.notApplicable' => 'Not Applicable',
 			'kEnum.forecastType.noChange' => 'No change expected',
 			'kEnum.forecastType.improving' => 'Likely to improve',
-			'kEnum.forecastType.worsening' => 'Likely to worsen',
+			'kEnum.forecastType.deteriorating' => 'Likely to worsen',
 			'kEnum.gender.man' => 'Male',
 			'kEnum.gender.woman' => 'Female',
 			'kEnum.gender.other' => 'Other',
@@ -4399,9 +4399,9 @@ extension on Translations {
 			'kEnum.weatherPersonalityPolarity.indoor' => 'I (Indoor)',
 			'kEnum.weatherPersonalityPolarity.emotional' => 'E (Emotional)',
 			'kEnum.weatherPersonalityPolarity.rational' => 'R (Rational)',
-			'kEnum.weatherType.clearStar' => 'Clear Stars',
-			'kEnum.weatherType.faintStar' => 'Faint Stars',
-			'kEnum.weatherType.noStar' => 'No Stars',
+			'kEnum.weatherType.clearStars' => 'Clear Stars',
+			'kEnum.weatherType.faintStars' => 'Faint Stars',
+			'kEnum.weatherType.noStars' => 'No Stars',
 			'kEnum.weatherType.drizzle' => 'Drizzle',
 			'kEnum.weatherType.lightRain' => 'Light Rain',
 			'kEnum.weatherType.rain' => 'Rain',

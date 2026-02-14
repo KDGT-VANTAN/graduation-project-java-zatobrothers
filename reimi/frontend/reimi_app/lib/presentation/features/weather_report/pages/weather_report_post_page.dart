@@ -34,8 +34,8 @@ class WeatherReportPostPage extends HookConsumerWidget {
     final t = Translations.of(context);
     final theme = Theme.of(context);
     final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
-    final url = ref
-        .watch(weatherReportPostNotifierProvider.select((state) => state.url));
+    final weatherPhoto = ref
+        .watch(weatherReportPostNotifierProvider.select((state) => state.weatherPhoto));
     final comment = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.comment));
     final weatherType = ref.watch(
@@ -138,7 +138,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AddMediaBox(
-                      url: url,
+                      weatherPhoto: weatherPhoto,
                       onTap: () {
                         showPickMediaModalSheet(
                           context: context,
@@ -147,7 +147,7 @@ class WeatherReportPostPage extends HookConsumerWidget {
                             if (file != null) {
                               notifier.updateMedia(
                                 mediaType: MediaType.image,
-                                url: file.path,
+                                weatherPhoto: file.path,
                               );
                             }
                           },

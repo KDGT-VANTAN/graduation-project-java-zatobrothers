@@ -127,7 +127,7 @@ class WeatherReportPage extends HookConsumerWidget {
                                   context.push(
                                     WeatherReportDetailPage.routeLocation,
                                     extra: {
-                                      'reportId': weatherReports[index].reportId
+                                      'reportId': weatherReports[index].id,
                                     },
                                   );
                                 },

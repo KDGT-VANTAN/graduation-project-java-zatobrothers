@@ -14,22 +14,13 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$WeatherReportReadModel {
-  String get reportId;
+  String get id;
   String get userId;
-  String get userName;
-  String get mainPhotoUrl;
   String get comment;
-  WeatherType get weatherType;
-  FeelingType get feelingType;
-  ForecastType get forecastType;
   MediaType get mediaType;
   String get url;
+  @IsoDateTimeConverter()
   DateTime get createdAt;
-  List<String>? get reportComment;
-  int? get likeCount;
-  int? get commentCount;
-  double? get latitude;
-  double? get longitude;
 
   /// Create a copy of WeatherReportReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -44,60 +35,23 @@ mixin _$WeatherReportReadModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WeatherReportReadModel &&
-            (identical(other.reportId, reportId) ||
-                other.reportId == reportId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
-            (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl) &&
             (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.weatherType, weatherType) ||
-                other.weatherType == weatherType) &&
-            (identical(other.feelingType, feelingType) ||
-                other.feelingType == feelingType) &&
-            (identical(other.forecastType, forecastType) ||
-                other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            const DeepCollectionEquality()
-                .equals(other.reportComment, reportComment) &&
-            (identical(other.likeCount, likeCount) ||
-                other.likeCount == likeCount) &&
-            (identical(other.commentCount, commentCount) ||
-                other.commentCount == commentCount) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      reportId,
-      userId,
-      userName,
-      mainPhotoUrl,
-      comment,
-      weatherType,
-      feelingType,
-      forecastType,
-      mediaType,
-      url,
-      createdAt,
-      const DeepCollectionEquality().hash(reportComment),
-      likeCount,
-      commentCount,
-      latitude,
-      longitude);
+  int get hashCode =>
+      Object.hash(runtimeType, id, userId, comment, mediaType, url, createdAt);
 
   @override
   String toString() {
-    return 'WeatherReportReadModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, createdAt: $createdAt, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportReadModel(id: $id, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, createdAt: $createdAt)';
   }
 }
 
@@ -108,22 +62,12 @@ abstract mixin class $WeatherReportReadModelCopyWith<$Res> {
       _$WeatherReportReadModelCopyWithImpl;
   @useResult
   $Res call(
-      {String reportId,
+      {String id,
       String userId,
-      String userName,
-      String mainPhotoUrl,
       String comment,
-      WeatherType weatherType,
-      FeelingType feelingType,
-      ForecastType forecastType,
       MediaType mediaType,
       String url,
-      DateTime createdAt,
-      List<String>? reportComment,
-      int? likeCount,
-      int? commentCount,
-      double? latitude,
-      double? longitude});
+      @IsoDateTimeConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -139,56 +83,26 @@ class _$WeatherReportReadModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? reportId = null,
+    Object? id = null,
     Object? userId = null,
-    Object? userName = null,
-    Object? mainPhotoUrl = null,
     Object? comment = null,
-    Object? weatherType = null,
-    Object? feelingType = null,
-    Object? forecastType = null,
     Object? mediaType = null,
     Object? url = null,
     Object? createdAt = null,
-    Object? reportComment = freezed,
-    Object? likeCount = freezed,
-    Object? commentCount = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
   }) {
     return _then(_self.copyWith(
-      reportId: null == reportId
-          ? _self.reportId
-          : reportId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _self.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
-      mainPhotoUrl: null == mainPhotoUrl
-          ? _self.mainPhotoUrl
-          : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       comment: null == comment
           ? _self.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      weatherType: null == weatherType
-          ? _self.weatherType
-          : weatherType // ignore: cast_nullable_to_non_nullable
-              as WeatherType,
-      feelingType: null == feelingType
-          ? _self.feelingType
-          : feelingType // ignore: cast_nullable_to_non_nullable
-              as FeelingType,
-      forecastType: null == forecastType
-          ? _self.forecastType
-          : forecastType // ignore: cast_nullable_to_non_nullable
-              as ForecastType,
       mediaType: null == mediaType
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
@@ -201,26 +115,6 @@ class _$WeatherReportReadModelCopyWithImpl<$Res>
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reportComment: freezed == reportComment
-          ? _self.reportComment
-          : reportComment // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      likeCount: freezed == likeCount
-          ? _self.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      commentCount: freezed == commentCount
-          ? _self.commentCount
-          : commentCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      latitude: freezed == latitude
-          ? _self.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _self.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
     ));
   }
 }
@@ -319,45 +213,20 @@ extension WeatherReportReadModelPatterns on WeatherReportReadModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String reportId,
+            String id,
             String userId,
-            String userName,
-            String mainPhotoUrl,
             String comment,
-            WeatherType weatherType,
-            FeelingType feelingType,
-            ForecastType forecastType,
             MediaType mediaType,
             String url,
-            DateTime createdAt,
-            List<String>? reportComment,
-            int? likeCount,
-            int? commentCount,
-            double? latitude,
-            double? longitude)?
+            @IsoDateTimeConverter() DateTime createdAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _WeatherReportReadModel() when $default != null:
-        return $default(
-            _that.reportId,
-            _that.userId,
-            _that.userName,
-            _that.mainPhotoUrl,
-            _that.comment,
-            _that.weatherType,
-            _that.feelingType,
-            _that.forecastType,
-            _that.mediaType,
-            _that.url,
-            _that.createdAt,
-            _that.reportComment,
-            _that.likeCount,
-            _that.commentCount,
-            _that.latitude,
-            _that.longitude);
+        return $default(_that.id, _that.userId, _that.comment, _that.mediaType,
+            _that.url, _that.createdAt);
       case _:
         return orElse();
     }
@@ -379,44 +248,19 @@ extension WeatherReportReadModelPatterns on WeatherReportReadModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String reportId,
+            String id,
             String userId,
-            String userName,
-            String mainPhotoUrl,
             String comment,
-            WeatherType weatherType,
-            FeelingType feelingType,
-            ForecastType forecastType,
             MediaType mediaType,
             String url,
-            DateTime createdAt,
-            List<String>? reportComment,
-            int? likeCount,
-            int? commentCount,
-            double? latitude,
-            double? longitude)
+            @IsoDateTimeConverter() DateTime createdAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportReadModel():
-        return $default(
-            _that.reportId,
-            _that.userId,
-            _that.userName,
-            _that.mainPhotoUrl,
-            _that.comment,
-            _that.weatherType,
-            _that.feelingType,
-            _that.forecastType,
-            _that.mediaType,
-            _that.url,
-            _that.createdAt,
-            _that.reportComment,
-            _that.likeCount,
-            _that.commentCount,
-            _that.latitude,
-            _that.longitude);
+        return $default(_that.id, _that.userId, _that.comment, _that.mediaType,
+            _that.url, _that.createdAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -437,44 +281,19 @@ extension WeatherReportReadModelPatterns on WeatherReportReadModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String reportId,
+            String id,
             String userId,
-            String userName,
-            String mainPhotoUrl,
             String comment,
-            WeatherType weatherType,
-            FeelingType feelingType,
-            ForecastType forecastType,
             MediaType mediaType,
             String url,
-            DateTime createdAt,
-            List<String>? reportComment,
-            int? likeCount,
-            int? commentCount,
-            double? latitude,
-            double? longitude)?
+            @IsoDateTimeConverter() DateTime createdAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _WeatherReportReadModel() when $default != null:
-        return $default(
-            _that.reportId,
-            _that.userId,
-            _that.userName,
-            _that.mainPhotoUrl,
-            _that.comment,
-            _that.weatherType,
-            _that.feelingType,
-            _that.forecastType,
-            _that.mediaType,
-            _that.url,
-            _that.createdAt,
-            _that.reportComment,
-            _that.likeCount,
-            _that.commentCount,
-            _that.latitude,
-            _that.longitude);
+        return $default(_that.id, _that.userId, _that.comment, _that.mediaType,
+            _that.url, _that.createdAt);
       case _:
         return null;
     }
@@ -485,64 +304,26 @@ extension WeatherReportReadModelPatterns on WeatherReportReadModel {
 
 class _WeatherReportReadModel implements WeatherReportReadModel {
   const _WeatherReportReadModel(
-      {required this.reportId,
+      {required this.id,
       required this.userId,
-      required this.userName,
-      required this.mainPhotoUrl,
       required this.comment,
-      required this.weatherType,
-      required this.feelingType,
-      required this.forecastType,
       required this.mediaType,
       required this.url,
-      required this.createdAt,
-      final List<String>? reportComment,
-      this.likeCount,
-      this.commentCount,
-      this.latitude,
-      this.longitude})
-      : _reportComment = reportComment;
+      @IsoDateTimeConverter() required this.createdAt});
 
   @override
-  final String reportId;
+  final String id;
   @override
   final String userId;
   @override
-  final String userName;
-  @override
-  final String mainPhotoUrl;
-  @override
   final String comment;
-  @override
-  final WeatherType weatherType;
-  @override
-  final FeelingType feelingType;
-  @override
-  final ForecastType forecastType;
   @override
   final MediaType mediaType;
   @override
   final String url;
   @override
+  @IsoDateTimeConverter()
   final DateTime createdAt;
-  final List<String>? _reportComment;
-  @override
-  List<String>? get reportComment {
-    final value = _reportComment;
-    if (value == null) return null;
-    if (_reportComment is EqualUnmodifiableListView) return _reportComment;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final int? likeCount;
-  @override
-  final int? commentCount;
-  @override
-  final double? latitude;
-  @override
-  final double? longitude;
 
   /// Create a copy of WeatherReportReadModel
   /// with the given fields replaced by the non-null parameter values.
@@ -558,60 +339,23 @@ class _WeatherReportReadModel implements WeatherReportReadModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WeatherReportReadModel &&
-            (identical(other.reportId, reportId) ||
-                other.reportId == reportId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
-            (identical(other.mainPhotoUrl, mainPhotoUrl) ||
-                other.mainPhotoUrl == mainPhotoUrl) &&
             (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.weatherType, weatherType) ||
-                other.weatherType == weatherType) &&
-            (identical(other.feelingType, feelingType) ||
-                other.feelingType == feelingType) &&
-            (identical(other.forecastType, forecastType) ||
-                other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            const DeepCollectionEquality()
-                .equals(other._reportComment, _reportComment) &&
-            (identical(other.likeCount, likeCount) ||
-                other.likeCount == likeCount) &&
-            (identical(other.commentCount, commentCount) ||
-                other.commentCount == commentCount) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      reportId,
-      userId,
-      userName,
-      mainPhotoUrl,
-      comment,
-      weatherType,
-      feelingType,
-      forecastType,
-      mediaType,
-      url,
-      createdAt,
-      const DeepCollectionEquality().hash(_reportComment),
-      likeCount,
-      commentCount,
-      latitude,
-      longitude);
+  int get hashCode =>
+      Object.hash(runtimeType, id, userId, comment, mediaType, url, createdAt);
 
   @override
   String toString() {
-    return 'WeatherReportReadModel(reportId: $reportId, userId: $userId, userName: $userName, mainPhotoUrl: $mainPhotoUrl, comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, createdAt: $createdAt, reportComment: $reportComment, likeCount: $likeCount, commentCount: $commentCount, latitude: $latitude, longitude: $longitude)';
+    return 'WeatherReportReadModel(id: $id, userId: $userId, comment: $comment, mediaType: $mediaType, url: $url, createdAt: $createdAt)';
   }
 }
 
@@ -624,22 +368,12 @@ abstract mixin class _$WeatherReportReadModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String reportId,
+      {String id,
       String userId,
-      String userName,
-      String mainPhotoUrl,
       String comment,
-      WeatherType weatherType,
-      FeelingType feelingType,
-      ForecastType forecastType,
       MediaType mediaType,
       String url,
-      DateTime createdAt,
-      List<String>? reportComment,
-      int? likeCount,
-      int? commentCount,
-      double? latitude,
-      double? longitude});
+      @IsoDateTimeConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -655,56 +389,26 @@ class __$WeatherReportReadModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? reportId = null,
+    Object? id = null,
     Object? userId = null,
-    Object? userName = null,
-    Object? mainPhotoUrl = null,
     Object? comment = null,
-    Object? weatherType = null,
-    Object? feelingType = null,
-    Object? forecastType = null,
     Object? mediaType = null,
     Object? url = null,
     Object? createdAt = null,
-    Object? reportComment = freezed,
-    Object? likeCount = freezed,
-    Object? commentCount = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
   }) {
     return _then(_WeatherReportReadModel(
-      reportId: null == reportId
-          ? _self.reportId
-          : reportId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _self.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
-      mainPhotoUrl: null == mainPhotoUrl
-          ? _self.mainPhotoUrl
-          : mainPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       comment: null == comment
           ? _self.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      weatherType: null == weatherType
-          ? _self.weatherType
-          : weatherType // ignore: cast_nullable_to_non_nullable
-              as WeatherType,
-      feelingType: null == feelingType
-          ? _self.feelingType
-          : feelingType // ignore: cast_nullable_to_non_nullable
-              as FeelingType,
-      forecastType: null == forecastType
-          ? _self.forecastType
-          : forecastType // ignore: cast_nullable_to_non_nullable
-              as ForecastType,
       mediaType: null == mediaType
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
@@ -717,26 +421,6 @@ class __$WeatherReportReadModelCopyWithImpl<$Res>
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      reportComment: freezed == reportComment
-          ? _self._reportComment
-          : reportComment // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      likeCount: freezed == likeCount
-          ? _self.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      commentCount: freezed == commentCount
-          ? _self.commentCount
-          : commentCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      latitude: freezed == latitude
-          ? _self.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _self.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
     ));
   }
 }

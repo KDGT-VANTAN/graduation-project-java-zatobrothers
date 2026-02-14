@@ -19,9 +19,14 @@ mixin _$WeatherReportPostState {
   FeelingType? get feelingType;
   ForecastType? get forecastType;
   MediaType? get mediaType;
-  String? get url;
+  String? get weatherPhoto;
   double? get latitude;
   double? get longitude;
+  double? get temperature;
+  double? get humidity;
+  double? get pressure;
+  double? get windSpeed;
+  WindDirection? get windDirection;
   PrefectureCity? get prefectureCity;
   bool get isChanged;
   WeatherReportPostStatus get status;
@@ -49,11 +54,22 @@ mixin _$WeatherReportPostState {
                 other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.weatherPhoto, weatherPhoto) ||
+                other.weatherPhoto == weatherPhoto) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.temperature, temperature) ||
+                other.temperature == temperature) &&
+            (identical(other.humidity, humidity) ||
+                other.humidity == humidity) &&
+            (identical(other.pressure, pressure) ||
+                other.pressure == pressure) &&
+            (identical(other.windSpeed, windSpeed) ||
+                other.windSpeed == windSpeed) &&
+            (identical(other.windDirection, windDirection) ||
+                other.windDirection == windDirection) &&
             (identical(other.prefectureCity, prefectureCity) ||
                 other.prefectureCity == prefectureCity) &&
             (identical(other.isChanged, isChanged) ||
@@ -71,9 +87,14 @@ mixin _$WeatherReportPostState {
       feelingType,
       forecastType,
       mediaType,
-      url,
+      weatherPhoto,
       latitude,
       longitude,
+      temperature,
+      humidity,
+      pressure,
+      windSpeed,
+      windDirection,
       prefectureCity,
       isChanged,
       status,
@@ -81,7 +102,7 @@ mixin _$WeatherReportPostState {
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, weatherPhoto: $weatherPhoto, latitude: $latitude, longitude: $longitude, temperature: $temperature, humidity: $humidity, pressure: $pressure, windSpeed: $windSpeed, windDirection: $windDirection, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -97,9 +118,14 @@ abstract mixin class $WeatherReportPostStateCopyWith<$Res> {
       FeelingType? feelingType,
       ForecastType? forecastType,
       MediaType? mediaType,
-      String? url,
+      String? weatherPhoto,
       double? latitude,
       double? longitude,
+      double? temperature,
+      double? humidity,
+      double? pressure,
+      double? windSpeed,
+      WindDirection? windDirection,
       PrefectureCity? prefectureCity,
       bool isChanged,
       WeatherReportPostStatus status,
@@ -126,9 +152,14 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
     Object? feelingType = freezed,
     Object? forecastType = freezed,
     Object? mediaType = freezed,
-    Object? url = freezed,
+    Object? weatherPhoto = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? temperature = freezed,
+    Object? humidity = freezed,
+    Object? pressure = freezed,
+    Object? windSpeed = freezed,
+    Object? windDirection = freezed,
     Object? prefectureCity = freezed,
     Object? isChanged = null,
     Object? status = null,
@@ -155,9 +186,9 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as MediaType?,
-      url: freezed == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
+      weatherPhoto: freezed == weatherPhoto
+          ? _self.weatherPhoto
+          : weatherPhoto // ignore: cast_nullable_to_non_nullable
               as String?,
       latitude: freezed == latitude
           ? _self.latitude
@@ -167,6 +198,26 @@ class _$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      temperature: freezed == temperature
+          ? _self.temperature
+          : temperature // ignore: cast_nullable_to_non_nullable
+              as double?,
+      humidity: freezed == humidity
+          ? _self.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      pressure: freezed == pressure
+          ? _self.pressure
+          : pressure // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windSpeed: freezed == windSpeed
+          ? _self.windSpeed
+          : windSpeed // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windDirection: freezed == windDirection
+          ? _self.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as WindDirection?,
       prefectureCity: freezed == prefectureCity
           ? _self.prefectureCity
           : prefectureCity // ignore: cast_nullable_to_non_nullable
@@ -300,9 +351,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             FeelingType? feelingType,
             ForecastType? forecastType,
             MediaType? mediaType,
-            String? url,
+            String? weatherPhoto,
             double? latitude,
             double? longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection,
             PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
@@ -319,9 +375,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
             _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection,
             _that.prefectureCity,
             _that.isChanged,
             _that.status,
@@ -352,9 +413,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             FeelingType? feelingType,
             ForecastType? forecastType,
             MediaType? mediaType,
-            String? url,
+            String? weatherPhoto,
             double? latitude,
             double? longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection,
             PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
@@ -370,9 +436,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
             _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection,
             _that.prefectureCity,
             _that.isChanged,
             _that.status,
@@ -402,9 +473,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             FeelingType? feelingType,
             ForecastType? forecastType,
             MediaType? mediaType,
-            String? url,
+            String? weatherPhoto,
             double? latitude,
             double? longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection,
             PrefectureCity? prefectureCity,
             bool isChanged,
             WeatherReportPostStatus status,
@@ -420,9 +496,14 @@ extension WeatherReportPostStatePatterns on WeatherReportPostState {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
             _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection,
             _that.prefectureCity,
             _that.isChanged,
             _that.status,
@@ -442,9 +523,14 @@ class _WeatherReportPostState extends WeatherReportPostState {
       this.feelingType,
       this.forecastType,
       this.mediaType,
-      this.url,
+      this.weatherPhoto,
       this.latitude,
       this.longitude,
+      this.temperature,
+      this.humidity,
+      this.pressure,
+      this.windSpeed,
+      this.windDirection,
       this.prefectureCity,
       this.isChanged = false,
       this.status = WeatherReportPostStatus.idle,
@@ -462,11 +548,21 @@ class _WeatherReportPostState extends WeatherReportPostState {
   @override
   final MediaType? mediaType;
   @override
-  final String? url;
+  final String? weatherPhoto;
   @override
   final double? latitude;
   @override
   final double? longitude;
+  @override
+  final double? temperature;
+  @override
+  final double? humidity;
+  @override
+  final double? pressure;
+  @override
+  final double? windSpeed;
+  @override
+  final WindDirection? windDirection;
   @override
   final PrefectureCity? prefectureCity;
   @override
@@ -501,11 +597,22 @@ class _WeatherReportPostState extends WeatherReportPostState {
                 other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.weatherPhoto, weatherPhoto) ||
+                other.weatherPhoto == weatherPhoto) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.temperature, temperature) ||
+                other.temperature == temperature) &&
+            (identical(other.humidity, humidity) ||
+                other.humidity == humidity) &&
+            (identical(other.pressure, pressure) ||
+                other.pressure == pressure) &&
+            (identical(other.windSpeed, windSpeed) ||
+                other.windSpeed == windSpeed) &&
+            (identical(other.windDirection, windDirection) ||
+                other.windDirection == windDirection) &&
             (identical(other.prefectureCity, prefectureCity) ||
                 other.prefectureCity == prefectureCity) &&
             (identical(other.isChanged, isChanged) ||
@@ -523,9 +630,14 @@ class _WeatherReportPostState extends WeatherReportPostState {
       feelingType,
       forecastType,
       mediaType,
-      url,
+      weatherPhoto,
       latitude,
       longitude,
+      temperature,
+      humidity,
+      pressure,
+      windSpeed,
+      windDirection,
       prefectureCity,
       isChanged,
       status,
@@ -533,7 +645,7 @@ class _WeatherReportPostState extends WeatherReportPostState {
 
   @override
   String toString() {
-    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
+    return 'WeatherReportPostState(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, weatherPhoto: $weatherPhoto, latitude: $latitude, longitude: $longitude, temperature: $temperature, humidity: $humidity, pressure: $pressure, windSpeed: $windSpeed, windDirection: $windDirection, prefectureCity: $prefectureCity, isChanged: $isChanged, status: $status, errorMessage: $errorMessage)';
   }
 }
 
@@ -551,9 +663,14 @@ abstract mixin class _$WeatherReportPostStateCopyWith<$Res>
       FeelingType? feelingType,
       ForecastType? forecastType,
       MediaType? mediaType,
-      String? url,
+      String? weatherPhoto,
       double? latitude,
       double? longitude,
+      double? temperature,
+      double? humidity,
+      double? pressure,
+      double? windSpeed,
+      WindDirection? windDirection,
       PrefectureCity? prefectureCity,
       bool isChanged,
       WeatherReportPostStatus status,
@@ -581,9 +698,14 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
     Object? feelingType = freezed,
     Object? forecastType = freezed,
     Object? mediaType = freezed,
-    Object? url = freezed,
+    Object? weatherPhoto = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? temperature = freezed,
+    Object? humidity = freezed,
+    Object? pressure = freezed,
+    Object? windSpeed = freezed,
+    Object? windDirection = freezed,
     Object? prefectureCity = freezed,
     Object? isChanged = null,
     Object? status = null,
@@ -610,9 +732,9 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as MediaType?,
-      url: freezed == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
+      weatherPhoto: freezed == weatherPhoto
+          ? _self.weatherPhoto
+          : weatherPhoto // ignore: cast_nullable_to_non_nullable
               as String?,
       latitude: freezed == latitude
           ? _self.latitude
@@ -622,6 +744,26 @@ class __$WeatherReportPostStateCopyWithImpl<$Res>
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      temperature: freezed == temperature
+          ? _self.temperature
+          : temperature // ignore: cast_nullable_to_non_nullable
+              as double?,
+      humidity: freezed == humidity
+          ? _self.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      pressure: freezed == pressure
+          ? _self.pressure
+          : pressure // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windSpeed: freezed == windSpeed
+          ? _self.windSpeed
+          : windSpeed // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windDirection: freezed == windDirection
+          ? _self.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as WindDirection?,
       prefectureCity: freezed == prefectureCity
           ? _self.prefectureCity
           : prefectureCity // ignore: cast_nullable_to_non_nullable

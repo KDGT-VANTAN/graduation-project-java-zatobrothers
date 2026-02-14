@@ -1,46 +1,54 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_weather_report_dto.dart';
+part of 'weather_report_detail_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_PostWeatherReportDto _$PostWeatherReportDtoFromJson(
+_WeatherReportDetailDto _$WeatherReportDetailDtoFromJson(
         Map<String, dynamic> json) =>
-    _PostWeatherReportDto(
+    _WeatherReportDetailDto(
+      id: json['id'] as String,
+      userId: json['userId'] as String,
+      userName: json['userName'] as String,
+      mainPhotoUrl: json['mainPhotoUrl'] as String,
       comment: json['comment'] as String,
       weatherType: $enumDecode(_$WeatherTypeEnumMap, json['weatherType']),
       feelingType: $enumDecode(_$FeelingTypeEnumMap, json['feelingType']),
       forecastType: $enumDecode(_$ForecastTypeEnumMap, json['forecastType']),
       mediaType: $enumDecode(_$MediaTypeEnumMap, json['mediaType']),
-      weatherPhoto: json['weatherPhoto'] as String,
-      latitude: (json['latitude'] as num).toDouble(),
-      longitude: (json['longitude'] as num).toDouble(),
-      temperature: (json['temperature'] as num?)?.toDouble(),
-      humidity: (json['humidity'] as num?)?.toDouble(),
-      pressure: (json['pressure'] as num?)?.toDouble(),
-      windSpeed: (json['windSpeed'] as num?)?.toDouble(),
-      windDirection:
-          $enumDecodeNullable(_$WindDirectionEnumMap, json['windDirection']),
+      url: json['url'] as String,
+      createdAt:
+          const IsoDateTimeConverter().fromJson(json['createdAt'] as String),
+      reportComment: (json['reportComment'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      likeCount: (json['likeCount'] as num?)?.toInt(),
+      commentCount: (json['commentCount'] as num?)?.toInt(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$PostWeatherReportDtoToJson(
-        _PostWeatherReportDto instance) =>
+Map<String, dynamic> _$WeatherReportDetailDtoToJson(
+        _WeatherReportDetailDto instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'userName': instance.userName,
+      'mainPhotoUrl': instance.mainPhotoUrl,
       'comment': instance.comment,
       'weatherType': _$WeatherTypeEnumMap[instance.weatherType]!,
       'feelingType': _$FeelingTypeEnumMap[instance.feelingType]!,
       'forecastType': _$ForecastTypeEnumMap[instance.forecastType]!,
       'mediaType': _$MediaTypeEnumMap[instance.mediaType]!,
-      'weatherPhoto': instance.weatherPhoto,
+      'url': instance.url,
+      'createdAt': const IsoDateTimeConverter().toJson(instance.createdAt),
+      'reportComment': instance.reportComment,
+      'likeCount': instance.likeCount,
+      'commentCount': instance.commentCount,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'temperature': instance.temperature,
-      'humidity': instance.humidity,
-      'pressure': instance.pressure,
-      'windSpeed': instance.windSpeed,
-      'windDirection': _$WindDirectionEnumMap[instance.windDirection],
     };
 
 const _$WeatherTypeEnumMap = {
@@ -70,16 +78,4 @@ const _$ForecastTypeEnumMap = {
 const _$MediaTypeEnumMap = {
   MediaType.image: 'IMAGE',
   MediaType.video: 'VIDEO',
-};
-
-const _$WindDirectionEnumMap = {
-  WindDirection.north: 'NORTH',
-  WindDirection.northEast: 'NORTH_EAST',
-  WindDirection.east: 'EAST',
-  WindDirection.southEast: 'SOUTH_EAST',
-  WindDirection.south: 'SOUTH',
-  WindDirection.southWest: 'SOUTH_WEST',
-  WindDirection.west: 'WEST',
-  WindDirection.northWest: 'NORTH_WEST',
-  WindDirection.unknown: 'UNKNOWN',
 };

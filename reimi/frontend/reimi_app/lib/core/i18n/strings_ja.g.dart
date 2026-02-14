@@ -1586,7 +1586,7 @@ class _TranslationsKEnumFeelingTypeJa implements TranslationsKEnumFeelingTypeEn 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get freezing => '極寒';
+	@override String get veryCold => '極寒';
 	@override String get cold => '寒い';
 	@override String get comfortable => 'ちょうどいい';
 	@override String get warm => '暖かい';
@@ -1602,7 +1602,7 @@ class _TranslationsKEnumForecastTypeJa implements TranslationsKEnumForecastTypeE
 	// Translations
 	@override String get noChange => '今と変化なさそう';
 	@override String get improving => '回復しそう';
-	@override String get worsening => '下り坂になりそう';
+	@override String get deteriorating => '下り坂になりそう';
 }
 
 // Path: kEnum.gender
@@ -1847,9 +1847,9 @@ class _TranslationsKEnumWeatherTypeJa implements TranslationsKEnumWeatherTypeEn 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get clearStar => '星がはっきり';
-	@override String get faintStar => '星がうっすら';
-	@override String get noStar => '星が見えない';
+	@override String get clearStars => '星がはっきり';
+	@override String get faintStars => '星がうっすら';
+	@override String get noStars => '星が見えない';
 	@override String get drizzle => 'ポツポツ';
 	@override String get lightRain => 'パラパラ';
 	@override String get rain => 'サー';
@@ -2926,14 +2926,14 @@ extension on TranslationsJa {
 			'kEnum.education.universityGraduate' => '大学卒',
 			'kEnum.education.graduateSchoolGraduate' => '大学院卒',
 			'kEnum.education.other' => 'その他',
-			'kEnum.feelingType.freezing' => '極寒',
+			'kEnum.feelingType.veryCold' => '極寒',
 			'kEnum.feelingType.cold' => '寒い',
 			'kEnum.feelingType.comfortable' => 'ちょうどいい',
 			'kEnum.feelingType.warm' => '暖かい',
 			'kEnum.feelingType.notApplicable' => 'あてはまらない',
 			'kEnum.forecastType.noChange' => '今と変化なさそう',
 			'kEnum.forecastType.improving' => '回復しそう',
-			'kEnum.forecastType.worsening' => '下り坂になりそう',
+			'kEnum.forecastType.deteriorating' => '下り坂になりそう',
 			'kEnum.gender.man' => '男性',
 			'kEnum.gender.woman' => '女性',
 			'kEnum.gender.other' => 'その他',
@@ -3099,9 +3099,9 @@ extension on TranslationsJa {
 			'kEnum.weatherPersonalityPolarity.indoor' => 'I（インドア）',
 			'kEnum.weatherPersonalityPolarity.emotional' => 'E（情緒）',
 			'kEnum.weatherPersonalityPolarity.rational' => 'R（実用）',
-			'kEnum.weatherType.clearStar' => '星がはっきり',
-			'kEnum.weatherType.faintStar' => '星がうっすら',
-			'kEnum.weatherType.noStar' => '星が見えない',
+			'kEnum.weatherType.clearStars' => '星がはっきり',
+			'kEnum.weatherType.faintStars' => '星がうっすら',
+			'kEnum.weatherType.noStars' => '星が見えない',
 			'kEnum.weatherType.drizzle' => 'ポツポツ',
 			'kEnum.weatherType.lightRain' => 'パラパラ',
 			'kEnum.weatherType.rain' => 'サー',

@@ -7,10 +7,10 @@ class AddMediaBox extends StatelessWidget {
   const AddMediaBox({
     super.key,
     required this.onTap,
-    required this.url,
+    required this.weatherPhoto,
   });
   final void Function()? onTap;
-  final String? url;
+  final String? weatherPhoto;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class AddMediaBox extends StatelessWidget {
             style: BorderStyle.solid,
           ),
         ),
-        child: url == null
+        child: weatherPhoto == null
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -52,7 +52,7 @@ class AddMediaBox extends StatelessWidget {
             : ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image(
-                  image: url!.toImageProvider(),
+                  image: weatherPhoto!.toImageProvider(),
                   fit: BoxFit.cover,
                 ),
               ),

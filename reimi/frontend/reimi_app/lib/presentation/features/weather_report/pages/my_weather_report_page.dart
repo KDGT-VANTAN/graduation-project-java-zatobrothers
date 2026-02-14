@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/extensions/datetime_extensions.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
-import 'package:reimi_app/domain/read_models/weather_report_simple_read_model.dart';
+import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
 import 'package:reimi_app/presentation/features/weather_report/notifiers/my_weather_report_notifier.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_detail_page.dart';
 import 'package:reimi_app/presentation/features/weather_report/states/my_weather_report_state.dart';
@@ -212,7 +212,7 @@ class _WeekdayHeader extends StatelessWidget {
 }
 
 Map<DateTime, List<DateTime>> groupByMonth(
-  List<WeatherReportSimpleReadModel> reports,
+  List<WeatherReportReadModel> reports,
 ) {
   if (reports.isEmpty) {
     return {};
@@ -266,7 +266,7 @@ class _CalendarGrid extends StatelessWidget {
 
   final DateTime month;
   final List<DateTime> days;
-  final List<WeatherReportSimpleReadModel> reports;
+  final List<WeatherReportReadModel> reports;
 
   @override
   Widget build(BuildContext context) {
@@ -324,7 +324,7 @@ class _CalendarDayCell extends StatelessWidget {
   });
 
   final DateTime date;
-  final WeatherReportSimpleReadModel? report;
+  final WeatherReportReadModel? report;
 
   @override
   Widget build(BuildContext context) {
@@ -340,7 +340,7 @@ class _CalendarDayCell extends StatelessWidget {
             : () {
                 context.push(
                   WeatherReportDetailPage.routeLocation,
-                  extra: {'reportId': report!.reportId},
+                  extra: {'reportId': report!.id},
                 );
               },
         child: Container(

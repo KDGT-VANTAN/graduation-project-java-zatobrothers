@@ -47,9 +47,9 @@ class FeelingSelectPage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 OptionTile(
-                  label: t.kEnum.feelingType.freezing,
+                  label: t.kEnum.feelingType.veryCold,
                   onTap: () {
-                    notifier.updateFeelingType(FeelingType.freezing);
+                    notifier.updateFeelingType(FeelingType.veryCold);
                     context.push(ForecastSelectPage.routeLocation);
                   },
                 ),

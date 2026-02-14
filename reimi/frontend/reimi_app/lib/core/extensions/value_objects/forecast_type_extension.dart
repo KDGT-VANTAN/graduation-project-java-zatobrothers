@@ -10,8 +10,8 @@ extension ForecastTypeExtension on ForecastType {
         return t.noChange;
       case ForecastType.improving:
         return t.improving;
-      case ForecastType.worsening:
-        return t.worsening;
+      case ForecastType.deteriorating:
+        return t.deteriorating;
     }
   }
 }
