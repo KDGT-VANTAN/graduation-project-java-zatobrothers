@@ -6,6 +6,8 @@ import 'package:reimi_app/presentation/features/auth/sign_in_page.dart';
 import 'package:reimi_app/presentation/features/auth/sign_up_page.dart';
 import 'package:reimi_app/presentation/features/chat/pages/chat_detail_page.dart';
 import 'package:reimi_app/presentation/features/chat/pages/chat_page.dart';
+import 'package:reimi_app/presentation/features/go_out/pages/go_out_conditions_page.dart';
+import 'package:reimi_app/presentation/features/go_out/pages/go_out_suggestion_page.dart';
 import 'package:reimi_app/presentation/features/home/home_page.dart';
 import 'package:reimi_app/presentation/features/like/like_page.dart';
 import 'package:reimi_app/presentation/features/locale/locale_setting_page.dart';
@@ -194,6 +196,20 @@ GoRouter goRouter(Ref ref) {
             chatRoomId: chatRoomId,
             otherUserId: otherUserId,
           );
+        },
+      ),
+      GoRoute(
+        path: GoOutConditionsPage.routeLocation,
+        name: GoOutConditionsPage.routeName,
+        builder: (context, state) {
+          return const GoOutConditionsPage();
+        },
+      ),
+      GoRoute(
+        path: GoOutSuggestionPage.routeLocation,
+        name: GoOutSuggestionPage.routeName,
+        builder: (context, state) {
+          return const GoOutSuggestionPage();
         },
       ),
       // ----- weather_report -----
