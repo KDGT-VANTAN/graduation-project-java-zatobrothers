@@ -4,22 +4,18 @@ import 'package:reimi_app/domain/read_models/weather_report_read_model.dart';
 extension WeatherReportDtoMapper on WeatherReportDto {
   WeatherReportReadModel toReadModel() {
     return WeatherReportReadModel(
-      reportId: reportId,
+      id: id,
       userId: userId,
-      userName: userName,
-      mainPhotoUrl: mainPhotoUrl,
       comment: comment,
-      weatherType: weatherType,
-      feelingType: feelingType,
-      forecastType: forecastType,
       mediaType: mediaType,
       url: url,
       createdAt: createdAt,
-      reportComment: reportComment,
-      likeCount: likeCount,
-      commentCount: commentCount,
-      latitude: latitude,
-      longitude: longitude,
     );
+  }
+}
+
+extension WeatherReportDtoListMapper on List<WeatherReportDto> {
+  List<WeatherReportReadModel> toReadModels() {
+    return map((dto) => dto.toReadModel()).toList();
   }
 }
