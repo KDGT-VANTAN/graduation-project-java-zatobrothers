@@ -6,12 +6,12 @@ extension WeatherTypeExtension on WeatherType {
   String displayName(BuildContext context) {
     final t = Translations.of(context).kEnum.weatherType;
     switch (this) {
-      case WeatherType.clearStar:
-        return t.clearStar;
-      case WeatherType.faintStar:
-        return t.faintStar;
-      case WeatherType.noStar:
-        return t.noStar;
+      case WeatherType.clearStars:
+        return t.clearStars;
+      case WeatherType.faintStars:
+        return t.faintStars;
+      case WeatherType.noStars:
+        return t.noStars;
       case WeatherType.drizzle:
         return t.drizzle;
       case WeatherType.lightRain:

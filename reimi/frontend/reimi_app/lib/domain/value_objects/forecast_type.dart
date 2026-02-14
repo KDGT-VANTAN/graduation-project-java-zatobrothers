@@ -5,6 +5,6 @@ enum ForecastType {
   noChange, // 今と変化なさそう
   @JsonValue('IMPROVING')
   improving, // 回復しそう
-  @JsonValue('WORSENING')
-  worsening, // 下り坂になりそう
+  @JsonValue('DETERIORATING')
+  deteriorating, // 下り坂になりそう
 }

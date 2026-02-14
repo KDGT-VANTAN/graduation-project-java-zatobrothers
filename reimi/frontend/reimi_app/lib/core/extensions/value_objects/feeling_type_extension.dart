@@ -6,8 +6,8 @@ extension FeelingTypeExtension on FeelingType {
   String displayName(BuildContext context) {
     final t = Translations.of(context).kEnum.feelingType;
     switch (this) {
-      case FeelingType.freezing:
-        return t.freezing;
+      case FeelingType.veryCold:
+        return t.veryCold;
       case FeelingType.cold:
         return t.cold;
       case FeelingType.comfortable:

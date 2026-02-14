@@ -63,9 +63,9 @@ class ForecastSelectPage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 OptionTile(
-                  label: t.kEnum.forecastType.worsening,
+                  label: t.kEnum.forecastType.deteriorating,
                   onTap: () {
-                    notifier.updateForecastType(ForecastType.worsening);
+                    notifier.updateForecastType(ForecastType.deteriorating);
                     context.go(WeatherReportPostPage.routeLocation);
                   },
                 ),

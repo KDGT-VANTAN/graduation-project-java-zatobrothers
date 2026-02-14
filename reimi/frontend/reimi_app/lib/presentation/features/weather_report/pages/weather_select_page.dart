@@ -47,25 +47,25 @@ class WeatherSelectPage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 OptionTile(
-                  label: t.kEnum.weatherType.clearStar,
+                  label: t.kEnum.weatherType.clearStars,
                   onTap: () {
-                    notifier.updateWeatherType(WeatherType.clearStar);
+                    notifier.updateWeatherType(WeatherType.clearStars);
                     context.push(FeelingSelectPage.routeLocation);
                   },
                 ),
                 const SizedBox(height: 16),
                 OptionTile(
-                  label: t.kEnum.weatherType.faintStar,
+                  label: t.kEnum.weatherType.faintStars,
                   onTap: () {
-                    notifier.updateWeatherType(WeatherType.faintStar);
+                    notifier.updateWeatherType(WeatherType.faintStars);
                     context.push(FeelingSelectPage.routeLocation);
                   },
                 ),
                 const SizedBox(height: 16),
                 OptionTile(
-                  label: t.kEnum.weatherType.noStar,
+                  label: t.kEnum.weatherType.noStars,
                   onTap: () {
-                    notifier.updateWeatherType(WeatherType.noStar);
+                    notifier.updateWeatherType(WeatherType.noStars);
                     context.push(FeelingSelectPage.routeLocation);
                   },
                 ),

@@ -785,7 +785,7 @@
       "other": "その他"
     },
     "feelingType": {
-      "freezing": "極寒",
+      "veryCold": "極寒",
       "cold": "寒い",
       "comfortable": "ちょうどいい",
       "warm": "暖かい",
@@ -794,7 +794,7 @@
     "forecastType": {
       "noChange": "今と変化なさそう",
       "improving": "回復しそう",
-      "worsening": "下り坂になりそう"
+      "deteriorating": "下り坂になりそう"
     },
     "gender": {
       "man": "男性",
@@ -976,9 +976,9 @@
       "rational": "R（実用）"
     },
     "weatherType": {
-      "clearStar": "星がはっきり",
-      "faintStar": "星がうっすら",
-      "noStar": "星が見えない",
+      "clearStars": "星がはっきり",
+      "faintStars": "星がうっすら",
+      "noStars": "星が見えない",
       "drizzle": "ポツポツ",
       "lightRain": "パラパラ",
       "rain": "サー",
