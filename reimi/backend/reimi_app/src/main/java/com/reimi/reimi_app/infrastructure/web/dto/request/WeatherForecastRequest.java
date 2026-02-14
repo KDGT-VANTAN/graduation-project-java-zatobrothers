@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
+@Schema(description = "ある地点での天気予報の詳細取得用リクエスト")
 public record WeatherForecastRequest (
 
     @NotNull(message = "緯度は必須です")
