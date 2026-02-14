@@ -124,6 +124,33 @@
     "nullCase": "プロフィール情報が取得できませんでした。",
     "placeHolder": "メッセージを入力"
   },
+  "goOutConditionsPage": {
+    "title": "おでかけ条件設定",
+    "description": "おでかけ条件にあわせて、その日の天気を考慮した\n最適なおでかけプランを提案します。",
+    "section": {
+      "date": {
+        "title": "おでかけ日付",
+        "placeHolder": "yyyy/mm/dd"
+      },
+      "place": {
+        "title": "おでかけ場所",
+        "placeHolder": "例：東京タワー、渋谷"
+      }
+    }
+  },
+  "goOutSuggestionPage": {
+    "title": "$nameさんとのおでかけ提案",
+    "nullCase": "おでかけ提案内容が取得できませんでした。",
+    "section": {
+      "goOutInformation": {
+        "date": "日付",
+        "place": "場所",
+        "expectedWeather": "予想される天気"
+      },
+      "suggestionText": "この天気なら、こんなおでかけはいかがですか？",
+      "weatherTrendency": "この日の天気傾向"
+    }
+  },
   "weatherReportPage": {
     "title": "ウェザーリポート",
     "isEmptyCase": "現在、表示できるリポートがありません。"
@@ -621,7 +648,10 @@
     "weatherPersonalityTest": "ウェザーパーソナリティ診断",
     "goTochatPage": "チャット画面へ",
     "rainbowLike": "レインボーいいね！",
-    "retest": "再診断"
+    "retest": "再診断",
+    "suggestGoOut": "この内容でおでかけ提案する",
+    "return": "戻る",
+    "confirmWeatherNews": "ウェザーニュースで詳しく見る"
   },
   "segmentedSwitch": {
     "like": {
@@ -636,6 +666,13 @@
   "snackBar": {
     "profile": {
       "success": "プロフィール更新が完了しました！"
+    }
+  },
+  "card": {
+    "weathernewsRecommend": {
+      "title1": "今日のおでかけプランを立てるなら",
+      "title2": "より詳しい天気情報",
+      "description": "ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！"
     }
   },
   "enum": {

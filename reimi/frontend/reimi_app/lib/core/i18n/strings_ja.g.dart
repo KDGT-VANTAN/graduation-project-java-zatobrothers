@@ -52,6 +52,8 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsAIMatchingPageJa aIMatchingPage = _TranslationsAIMatchingPageJa._(_root);
 	@override late final _TranslationsChatPageJa chatPage = _TranslationsChatPageJa._(_root);
 	@override late final _TranslationsChatDetailPageJa chatDetailPage = _TranslationsChatDetailPageJa._(_root);
+	@override late final _TranslationsGoOutConditionsPageJa goOutConditionsPage = _TranslationsGoOutConditionsPageJa._(_root);
+	@override late final _TranslationsGoOutSuggestionPageJa goOutSuggestionPage = _TranslationsGoOutSuggestionPageJa._(_root);
 	@override late final _TranslationsWeatherReportPageJa weatherReportPage = _TranslationsWeatherReportPageJa._(_root);
 	@override late final _TranslationsMyWeatherReportPageJa myWeatherReportPage = _TranslationsMyWeatherReportPageJa._(_root);
 	@override late final _TranslationsWeatherReportPostPageJa weatherReportPostPage = _TranslationsWeatherReportPostPageJa._(_root);
@@ -74,6 +76,7 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsButtonJa button = _TranslationsButtonJa._(_root);
 	@override late final _TranslationsSegmentedSwitchJa segmentedSwitch = _TranslationsSegmentedSwitchJa._(_root);
 	@override late final _TranslationsSnackBarJa snackBar = _TranslationsSnackBarJa._(_root);
+	@override late final _TranslationsCardJa card = _TranslationsCardJa._(_root);
 	@override late final _TranslationsKEnumJa kEnum = _TranslationsKEnumJa._(_root);
 }
 
@@ -211,6 +214,30 @@ class _TranslationsChatDetailPageJa implements TranslationsChatDetailPageEn {
 	// Translations
 	@override String get nullCase => 'プロフィール情報が取得できませんでした。';
 	@override String get placeHolder => 'メッセージを入力';
+}
+
+// Path: goOutConditionsPage
+class _TranslationsGoOutConditionsPageJa implements TranslationsGoOutConditionsPageEn {
+	_TranslationsGoOutConditionsPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'おでかけ条件設定';
+	@override String get description => 'おでかけ条件にあわせて、その日の天気を考慮した\n最適なおでかけプランを提案します。';
+	@override late final _TranslationsGoOutConditionsPageSectionJa section = _TranslationsGoOutConditionsPageSectionJa._(_root);
+}
+
+// Path: goOutSuggestionPage
+class _TranslationsGoOutSuggestionPageJa implements TranslationsGoOutSuggestionPageEn {
+	_TranslationsGoOutSuggestionPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String title({required Object name}) => '${name}さんとのおでかけ提案';
+	@override String get nullCase => 'おでかけ提案内容が取得できませんでした。';
+	@override late final _TranslationsGoOutSuggestionPageSectionJa section = _TranslationsGoOutSuggestionPageSectionJa._(_root);
 }
 
 // Path: weatherReportPage
@@ -492,6 +519,9 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get goTochatPage => 'チャット画面へ';
 	@override String get rainbowLike => 'レインボーいいね！';
 	@override String get retest => '再診断';
+	@override String get suggestGoOut => 'この内容でおでかけ提案する';
+	@override String get kReturn => '戻る';
+	@override String get confirmWeatherNews => 'ウェザーニュースで詳しく見る';
 }
 
 // Path: segmentedSwitch
@@ -513,6 +543,16 @@ class _TranslationsSnackBarJa implements TranslationsSnackBarEn {
 
 	// Translations
 	@override late final _TranslationsSnackBarProfileJa profile = _TranslationsSnackBarProfileJa._(_root);
+}
+
+// Path: card
+class _TranslationsCardJa implements TranslationsCardEn {
+	_TranslationsCardJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsCardWeathernewsRecommendJa weathernewsRecommend = _TranslationsCardWeathernewsRecommendJa._(_root);
 }
 
 // Path: kEnum
@@ -697,6 +737,29 @@ class _TranslationsChatPageSubSectionTitleJa implements TranslationsChatPageSubS
 
 	// Translations
 	@override String get matching => '最初のメッセージを送りましょう！';
+}
+
+// Path: goOutConditionsPage.section
+class _TranslationsGoOutConditionsPageSectionJa implements TranslationsGoOutConditionsPageSectionEn {
+	_TranslationsGoOutConditionsPageSectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsGoOutConditionsPageSectionDateJa date = _TranslationsGoOutConditionsPageSectionDateJa._(_root);
+	@override late final _TranslationsGoOutConditionsPageSectionPlaceJa place = _TranslationsGoOutConditionsPageSectionPlaceJa._(_root);
+}
+
+// Path: goOutSuggestionPage.section
+class _TranslationsGoOutSuggestionPageSectionJa implements TranslationsGoOutSuggestionPageSectionEn {
+	_TranslationsGoOutSuggestionPageSectionJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsGoOutSuggestionPageSectionGoOutInformationJa goOutInformation = _TranslationsGoOutSuggestionPageSectionGoOutInformationJa._(_root);
+	@override String get suggestionText => 'この天気なら、こんなおでかけはいかがですか？';
+	@override String get weatherTrendency => 'この日の天気傾向';
 }
 
 // Path: myWeatherReportPage.weekdays
@@ -1380,6 +1443,18 @@ class _TranslationsSnackBarProfileJa implements TranslationsSnackBarProfileEn {
 	@override String get success => 'プロフィール更新が完了しました！';
 }
 
+// Path: card.weathernewsRecommend
+class _TranslationsCardWeathernewsRecommendJa implements TranslationsCardWeathernewsRecommendEn {
+	_TranslationsCardWeathernewsRecommendJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title1 => '今日のおでかけプランを立てるなら';
+	@override String get title2 => 'より詳しい天気情報';
+	@override String get description => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！';
+}
+
 // Path: kEnum.address
 class _TranslationsKEnumAddressJa implements TranslationsKEnumAddressEn {
 	_TranslationsKEnumAddressJa._(this._root);
@@ -1859,6 +1934,40 @@ class _TranslationsAIMatchingPageSectionTodayWeatherCompatibilityPointJa impleme
 
 	// Translations
 	@override String get title => '🌦️今日みたいな天気なら何をする？';
+}
+
+// Path: goOutConditionsPage.section.date
+class _TranslationsGoOutConditionsPageSectionDateJa implements TranslationsGoOutConditionsPageSectionDateEn {
+	_TranslationsGoOutConditionsPageSectionDateJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'おでかけ日付';
+	@override String get placeHolder => 'yyyy/mm/dd';
+}
+
+// Path: goOutConditionsPage.section.place
+class _TranslationsGoOutConditionsPageSectionPlaceJa implements TranslationsGoOutConditionsPageSectionPlaceEn {
+	_TranslationsGoOutConditionsPageSectionPlaceJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'おでかけ場所';
+	@override String get placeHolder => '例：東京タワー、渋谷';
+}
+
+// Path: goOutSuggestionPage.section.goOutInformation
+class _TranslationsGoOutSuggestionPageSectionGoOutInformationJa implements TranslationsGoOutSuggestionPageSectionGoOutInformationEn {
+	_TranslationsGoOutSuggestionPageSectionGoOutInformationJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get date => '日付';
+	@override String get place => '場所';
+	@override String get expectedWeather => '予想される天気';
 }
 
 // Path: profilePage.section.basicInformation
@@ -2413,6 +2522,19 @@ extension on TranslationsJa {
 			'chatPage.subSectionTitle.matching' => '最初のメッセージを送りましょう！',
 			'chatDetailPage.nullCase' => 'プロフィール情報が取得できませんでした。',
 			'chatDetailPage.placeHolder' => 'メッセージを入力',
+			'goOutConditionsPage.title' => 'おでかけ条件設定',
+			'goOutConditionsPage.description' => 'おでかけ条件にあわせて、その日の天気を考慮した\n最適なおでかけプランを提案します。',
+			'goOutConditionsPage.section.date.title' => 'おでかけ日付',
+			'goOutConditionsPage.section.date.placeHolder' => 'yyyy/mm/dd',
+			'goOutConditionsPage.section.place.title' => 'おでかけ場所',
+			'goOutConditionsPage.section.place.placeHolder' => '例：東京タワー、渋谷',
+			'goOutSuggestionPage.title' => ({required Object name}) => '${name}さんとのおでかけ提案',
+			'goOutSuggestionPage.nullCase' => 'おでかけ提案内容が取得できませんでした。',
+			'goOutSuggestionPage.section.goOutInformation.date' => '日付',
+			'goOutSuggestionPage.section.goOutInformation.place' => '場所',
+			'goOutSuggestionPage.section.goOutInformation.expectedWeather' => '予想される天気',
+			'goOutSuggestionPage.section.suggestionText' => 'この天気なら、こんなおでかけはいかがですか？',
+			'goOutSuggestionPage.section.weatherTrendency' => 'この日の天気傾向',
 			'weatherReportPage.title' => 'ウェザーリポート',
 			'weatherReportPage.isEmptyCase' => '現在、表示できるリポートがありません。',
 			'myWeatherReportPage.title' => 'マイウェザーリポート',
@@ -2692,11 +2814,17 @@ extension on TranslationsJa {
 			'button.goTochatPage' => 'チャット画面へ',
 			'button.rainbowLike' => 'レインボーいいね！',
 			'button.retest' => '再診断',
+			'button.suggestGoOut' => 'この内容でおでかけ提案する',
+			'button.kReturn' => '戻る',
+			'button.confirmWeatherNews' => 'ウェザーニュースで詳しく見る',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
 			'segmentedSwitch.chat.profile' => 'プロフィール',
 			'snackBar.profile.success' => 'プロフィール更新が完了しました！',
+			'card.weathernewsRecommend.title1' => '今日のおでかけプランを立てるなら',
+			'card.weathernewsRecommend.title2' => 'より詳しい天気情報',
+			'card.weathernewsRecommend.description' => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！',
 			'kEnum.address.prefecture.hokkaido' => '北海道',
 			'kEnum.address.prefecture.aomori' => '青森県',
 			'kEnum.address.prefecture.iwate' => '岩手県',
@@ -2847,6 +2975,8 @@ extension on TranslationsJa {
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just184cm' => '184cm',
 			'kEnum.height.just185cm' => '185cm',
 			'kEnum.height.just186cm' => '186cm',
@@ -2866,8 +2996,6 @@ extension on TranslationsJa {
 			'kEnum.height.over200cm' => '200cm以上',
 			'kEnum.holiday.weekend' => '土日',
 			'kEnum.holiday.weekday' => '平日',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.holiday.irregular' => '不定休',
 			'kEnum.occupation.universityStudent' => '大学生',
 			'kEnum.occupation.graduateStudent' => '大学院生',
