@@ -14,9 +14,15 @@ _PostWeatherReportDto _$PostWeatherReportDtoFromJson(
       feelingType: $enumDecode(_$FeelingTypeEnumMap, json['feelingType']),
       forecastType: $enumDecode(_$ForecastTypeEnumMap, json['forecastType']),
       mediaType: $enumDecode(_$MediaTypeEnumMap, json['mediaType']),
-      url: json['url'] as String,
-      latitude: (json['latitude'] as num?)?.toDouble(),
-      longitude: (json['longitude'] as num?)?.toDouble(),
+      weatherPhoto: json['weatherPhoto'] as String,
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      temperature: (json['temperature'] as num?)?.toDouble(),
+      humidity: (json['humidity'] as num?)?.toDouble(),
+      pressure: (json['pressure'] as num?)?.toDouble(),
+      windSpeed: (json['windSpeed'] as num?)?.toDouble(),
+      windDirection:
+          $enumDecodeNullable(_$WindDirectionEnumMap, json['windDirection']),
     );
 
 Map<String, dynamic> _$PostWeatherReportDtoToJson(
@@ -27,15 +33,20 @@ Map<String, dynamic> _$PostWeatherReportDtoToJson(
       'feelingType': _$FeelingTypeEnumMap[instance.feelingType]!,
       'forecastType': _$ForecastTypeEnumMap[instance.forecastType]!,
       'mediaType': _$MediaTypeEnumMap[instance.mediaType]!,
-      'url': instance.url,
+      'weatherPhoto': instance.weatherPhoto,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
+      'temperature': instance.temperature,
+      'humidity': instance.humidity,
+      'pressure': instance.pressure,
+      'windSpeed': instance.windSpeed,
+      'windDirection': _$WindDirectionEnumMap[instance.windDirection],
     };
 
 const _$WeatherTypeEnumMap = {
-  WeatherType.clearStar: 'CLEAR_STAR',
-  WeatherType.faintStar: 'FAINT_STAR',
-  WeatherType.noStar: 'NO_STAR',
+  WeatherType.clearStars: 'CLEAR_STARS',
+  WeatherType.faintStars: 'FAINT_STARS',
+  WeatherType.noStars: 'NO_STARS',
   WeatherType.drizzle: 'DRIZZLE',
   WeatherType.lightRain: 'LIGHT_RAIN',
   WeatherType.rain: 'RAIN',
@@ -43,7 +54,7 @@ const _$WeatherTypeEnumMap = {
 };
 
 const _$FeelingTypeEnumMap = {
-  FeelingType.freezing: 'FREEZING',
+  FeelingType.veryCold: 'VERY_COLD',
   FeelingType.cold: 'COLD',
   FeelingType.comfortable: 'COMFORTABLE',
   FeelingType.warm: 'WARM',
@@ -53,10 +64,22 @@ const _$FeelingTypeEnumMap = {
 const _$ForecastTypeEnumMap = {
   ForecastType.noChange: 'NO_CHANGE',
   ForecastType.improving: 'IMPROVING',
-  ForecastType.worsening: 'WORSENING',
+  ForecastType.deteriorating: 'DETERIORATING',
 };
 
 const _$MediaTypeEnumMap = {
   MediaType.image: 'IMAGE',
   MediaType.video: 'VIDEO',
+};
+
+const _$WindDirectionEnumMap = {
+  WindDirection.north: 'NORTH',
+  WindDirection.northEast: 'NORTH_EAST',
+  WindDirection.east: 'EAST',
+  WindDirection.southEast: 'SOUTH_EAST',
+  WindDirection.south: 'SOUTH',
+  WindDirection.southWest: 'SOUTH_WEST',
+  WindDirection.west: 'WEST',
+  WindDirection.northWest: 'NORTH_WEST',
+  WindDirection.unknown: 'UNKNOWN',
 };

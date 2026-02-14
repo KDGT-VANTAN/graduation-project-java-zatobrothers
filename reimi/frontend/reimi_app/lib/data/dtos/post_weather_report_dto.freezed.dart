@@ -19,9 +19,14 @@ mixin _$PostWeatherReportDto {
   FeelingType get feelingType;
   ForecastType get forecastType;
   MediaType get mediaType;
-  String get url;
-  double? get latitude;
-  double? get longitude;
+  String get weatherPhoto;
+  double get latitude;
+  double get longitude;
+  double? get temperature;
+  double? get humidity;
+  double? get pressure;
+  double? get windSpeed;
+  WindDirection? get windDirection;
 
   /// Create a copy of PostWeatherReportDto
   /// with the given fields replaced by the non-null parameter values.
@@ -48,21 +53,45 @@ mixin _$PostWeatherReportDto {
                 other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.weatherPhoto, weatherPhoto) ||
+                other.weatherPhoto == weatherPhoto) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.temperature, temperature) ||
+                other.temperature == temperature) &&
+            (identical(other.humidity, humidity) ||
+                other.humidity == humidity) &&
+            (identical(other.pressure, pressure) ||
+                other.pressure == pressure) &&
+            (identical(other.windSpeed, windSpeed) ||
+                other.windSpeed == windSpeed) &&
+            (identical(other.windDirection, windDirection) ||
+                other.windDirection == windDirection));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, comment, weatherType,
-      feelingType, forecastType, mediaType, url, latitude, longitude);
+  int get hashCode => Object.hash(
+      runtimeType,
+      comment,
+      weatherType,
+      feelingType,
+      forecastType,
+      mediaType,
+      weatherPhoto,
+      latitude,
+      longitude,
+      temperature,
+      humidity,
+      pressure,
+      windSpeed,
+      windDirection);
 
   @override
   String toString() {
-    return 'PostWeatherReportDto(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
+    return 'PostWeatherReportDto(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, weatherPhoto: $weatherPhoto, latitude: $latitude, longitude: $longitude, temperature: $temperature, humidity: $humidity, pressure: $pressure, windSpeed: $windSpeed, windDirection: $windDirection)';
   }
 }
 
@@ -78,9 +107,14 @@ abstract mixin class $PostWeatherReportDtoCopyWith<$Res> {
       FeelingType feelingType,
       ForecastType forecastType,
       MediaType mediaType,
-      String url,
-      double? latitude,
-      double? longitude});
+      String weatherPhoto,
+      double latitude,
+      double longitude,
+      double? temperature,
+      double? humidity,
+      double? pressure,
+      double? windSpeed,
+      WindDirection? windDirection});
 }
 
 /// @nodoc
@@ -101,9 +135,14 @@ class _$PostWeatherReportDtoCopyWithImpl<$Res>
     Object? feelingType = null,
     Object? forecastType = null,
     Object? mediaType = null,
-    Object? url = null,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
+    Object? weatherPhoto = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? temperature = freezed,
+    Object? humidity = freezed,
+    Object? pressure = freezed,
+    Object? windSpeed = freezed,
+    Object? windDirection = freezed,
   }) {
     return _then(_self.copyWith(
       comment: null == comment
@@ -126,18 +165,38 @@ class _$PostWeatherReportDtoCopyWithImpl<$Res>
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as MediaType,
-      url: null == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
+      weatherPhoto: null == weatherPhoto
+          ? _self.weatherPhoto
+          : weatherPhoto // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: freezed == latitude
+      latitude: null == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
+              as double,
+      longitude: null == longitude
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      temperature: freezed == temperature
+          ? _self.temperature
+          : temperature // ignore: cast_nullable_to_non_nullable
               as double?,
+      humidity: freezed == humidity
+          ? _self.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      pressure: freezed == pressure
+          ? _self.pressure
+          : pressure // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windSpeed: freezed == windSpeed
+          ? _self.windSpeed
+          : windSpeed // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windDirection: freezed == windDirection
+          ? _self.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as WindDirection?,
     ));
   }
 }
@@ -241,9 +300,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             FeelingType feelingType,
             ForecastType forecastType,
             MediaType mediaType,
-            String url,
-            double? latitude,
-            double? longitude)?
+            String weatherPhoto,
+            double latitude,
+            double longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection)?
         $default, {
     required TResult orElse(),
   }) {
@@ -256,9 +320,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
-            _that.longitude);
+            _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection);
       case _:
         return orElse();
     }
@@ -285,9 +354,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             FeelingType feelingType,
             ForecastType forecastType,
             MediaType mediaType,
-            String url,
-            double? latitude,
-            double? longitude)
+            String weatherPhoto,
+            double latitude,
+            double longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection)
         $default,
   ) {
     final _that = this;
@@ -299,9 +373,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
-            _that.longitude);
+            _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -327,9 +406,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             FeelingType feelingType,
             ForecastType forecastType,
             MediaType mediaType,
-            String url,
-            double? latitude,
-            double? longitude)?
+            String weatherPhoto,
+            double latitude,
+            double longitude,
+            double? temperature,
+            double? humidity,
+            double? pressure,
+            double? windSpeed,
+            WindDirection? windDirection)?
         $default,
   ) {
     final _that = this;
@@ -341,9 +425,14 @@ extension PostWeatherReportDtoPatterns on PostWeatherReportDto {
             _that.feelingType,
             _that.forecastType,
             _that.mediaType,
-            _that.url,
+            _that.weatherPhoto,
             _that.latitude,
-            _that.longitude);
+            _that.longitude,
+            _that.temperature,
+            _that.humidity,
+            _that.pressure,
+            _that.windSpeed,
+            _that.windDirection);
       case _:
         return null;
     }
@@ -359,9 +448,14 @@ class _PostWeatherReportDto implements PostWeatherReportDto {
       required this.feelingType,
       required this.forecastType,
       required this.mediaType,
-      required this.url,
-      this.latitude,
-      this.longitude});
+      required this.weatherPhoto,
+      required this.latitude,
+      required this.longitude,
+      this.temperature,
+      this.humidity,
+      this.pressure,
+      this.windSpeed,
+      this.windDirection});
   factory _PostWeatherReportDto.fromJson(Map<String, dynamic> json) =>
       _$PostWeatherReportDtoFromJson(json);
 
@@ -376,11 +470,21 @@ class _PostWeatherReportDto implements PostWeatherReportDto {
   @override
   final MediaType mediaType;
   @override
-  final String url;
+  final String weatherPhoto;
   @override
-  final double? latitude;
+  final double latitude;
   @override
-  final double? longitude;
+  final double longitude;
+  @override
+  final double? temperature;
+  @override
+  final double? humidity;
+  @override
+  final double? pressure;
+  @override
+  final double? windSpeed;
+  @override
+  final WindDirection? windDirection;
 
   /// Create a copy of PostWeatherReportDto
   /// with the given fields replaced by the non-null parameter values.
@@ -412,21 +516,45 @@ class _PostWeatherReportDto implements PostWeatherReportDto {
                 other.forecastType == forecastType) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.weatherPhoto, weatherPhoto) ||
+                other.weatherPhoto == weatherPhoto) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.temperature, temperature) ||
+                other.temperature == temperature) &&
+            (identical(other.humidity, humidity) ||
+                other.humidity == humidity) &&
+            (identical(other.pressure, pressure) ||
+                other.pressure == pressure) &&
+            (identical(other.windSpeed, windSpeed) ||
+                other.windSpeed == windSpeed) &&
+            (identical(other.windDirection, windDirection) ||
+                other.windDirection == windDirection));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, comment, weatherType,
-      feelingType, forecastType, mediaType, url, latitude, longitude);
+  int get hashCode => Object.hash(
+      runtimeType,
+      comment,
+      weatherType,
+      feelingType,
+      forecastType,
+      mediaType,
+      weatherPhoto,
+      latitude,
+      longitude,
+      temperature,
+      humidity,
+      pressure,
+      windSpeed,
+      windDirection);
 
   @override
   String toString() {
-    return 'PostWeatherReportDto(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, url: $url, latitude: $latitude, longitude: $longitude)';
+    return 'PostWeatherReportDto(comment: $comment, weatherType: $weatherType, feelingType: $feelingType, forecastType: $forecastType, mediaType: $mediaType, weatherPhoto: $weatherPhoto, latitude: $latitude, longitude: $longitude, temperature: $temperature, humidity: $humidity, pressure: $pressure, windSpeed: $windSpeed, windDirection: $windDirection)';
   }
 }
 
@@ -444,9 +572,14 @@ abstract mixin class _$PostWeatherReportDtoCopyWith<$Res>
       FeelingType feelingType,
       ForecastType forecastType,
       MediaType mediaType,
-      String url,
-      double? latitude,
-      double? longitude});
+      String weatherPhoto,
+      double latitude,
+      double longitude,
+      double? temperature,
+      double? humidity,
+      double? pressure,
+      double? windSpeed,
+      WindDirection? windDirection});
 }
 
 /// @nodoc
@@ -467,9 +600,14 @@ class __$PostWeatherReportDtoCopyWithImpl<$Res>
     Object? feelingType = null,
     Object? forecastType = null,
     Object? mediaType = null,
-    Object? url = null,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
+    Object? weatherPhoto = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? temperature = freezed,
+    Object? humidity = freezed,
+    Object? pressure = freezed,
+    Object? windSpeed = freezed,
+    Object? windDirection = freezed,
   }) {
     return _then(_PostWeatherReportDto(
       comment: null == comment
@@ -492,18 +630,38 @@ class __$PostWeatherReportDtoCopyWithImpl<$Res>
           ? _self.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as MediaType,
-      url: null == url
-          ? _self.url
-          : url // ignore: cast_nullable_to_non_nullable
+      weatherPhoto: null == weatherPhoto
+          ? _self.weatherPhoto
+          : weatherPhoto // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: freezed == latitude
+      latitude: null == latitude
           ? _self.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
+              as double,
+      longitude: null == longitude
           ? _self.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      temperature: freezed == temperature
+          ? _self.temperature
+          : temperature // ignore: cast_nullable_to_non_nullable
               as double?,
+      humidity: freezed == humidity
+          ? _self.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      pressure: freezed == pressure
+          ? _self.pressure
+          : pressure // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windSpeed: freezed == windSpeed
+          ? _self.windSpeed
+          : windSpeed // ignore: cast_nullable_to_non_nullable
+              as double?,
+      windDirection: freezed == windDirection
+          ? _self.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as WindDirection?,
     ));
   }
 }
