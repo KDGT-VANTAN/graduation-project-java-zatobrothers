@@ -64,3 +64,10 @@ app:
 logging:
     level:
         org.springframework.security: DEBUG
+
+# 外部API関連
+external:
+    # ウェザーニューズ
+    weather:
+        base-url: ${WEATHER_BASE_URL}
+        api-key: ${WEATHER_API_KEY}
