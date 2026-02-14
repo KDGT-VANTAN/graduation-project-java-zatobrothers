@@ -673,6 +673,11 @@
       "title1": "If you're planning today's outing",
       "title2": "More detailed weather information",
       "description": "Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!"
+    },
+    "weatherPersonalityShareCard": {
+      "yourType": "your type is",
+      "testSource": "Test by Weather Personality",
+      "shareMessage": "Here are my results 👇 Check yours with the Weather Personality Test!"
     }
   },
   "enum": {

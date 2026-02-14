@@ -727,6 +727,7 @@ class TranslationsCardEn {
 
 	// Translations
 	late final TranslationsCardWeathernewsRecommendEn weathernewsRecommend = TranslationsCardWeathernewsRecommendEn._(_root);
+	late final TranslationsCardWeatherPersonalityShareCardEn weatherPersonalityShareCard = TranslationsCardWeatherPersonalityShareCardEn._(_root);
 }
 
 // Path: kEnum
@@ -1985,6 +1986,24 @@ class TranslationsCardWeathernewsRecommendEn {
 
 	/// en: 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!'
 	String get description => 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!';
+}
+
+// Path: card.weatherPersonalityShareCard
+class TranslationsCardWeatherPersonalityShareCardEn {
+	TranslationsCardWeatherPersonalityShareCardEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'your type is'
+	String get yourType => 'your type is';
+
+	/// en: 'Test by Weather Personality'
+	String get testSource => 'Test by Weather Personality';
+
+	/// en: 'Here are my results 👇 Check yours with the Weather Personality Test!'
+	String get shareMessage => 'Here are my results 👇 Check yours with the Weather Personality Test!';
 }
 
 // Path: kEnum.address
@@ -4119,6 +4138,9 @@ extension on Translations {
 			'card.weathernewsRecommend.title1' => 'If you\'re planning today\'s outing',
 			'card.weathernewsRecommend.title2' => 'More detailed weather information',
 			'card.weathernewsRecommend.description' => 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!',
+			'card.weatherPersonalityShareCard.yourType' => 'your type is',
+			'card.weatherPersonalityShareCard.testSource' => 'Test by Weather Personality',
+			'card.weatherPersonalityShareCard.shareMessage' => 'Here are my results 👇 Check yours with the Weather Personality Test!',
 			'kEnum.address.prefecture.hokkaido' => 'Hokkaido',
 			'kEnum.address.prefecture.aomori' => 'Aomori',
 			'kEnum.address.prefecture.iwate' => 'Iwate',
@@ -4266,11 +4288,11 @@ extension on Translations {
 			'kEnum.height.just178cm' => '178cm',
 			'kEnum.height.just179cm' => '179cm',
 			'kEnum.height.just180cm' => '180cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.height.just184cm' => '184cm',
 			'kEnum.height.just185cm' => '185cm',
 			'kEnum.height.just186cm' => '186cm',

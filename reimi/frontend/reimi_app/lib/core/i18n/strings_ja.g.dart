@@ -553,6 +553,7 @@ class _TranslationsCardJa implements TranslationsCardEn {
 
 	// Translations
 	@override late final _TranslationsCardWeathernewsRecommendJa weathernewsRecommend = _TranslationsCardWeathernewsRecommendJa._(_root);
+	@override late final _TranslationsCardWeatherPersonalityShareCardJa weatherPersonalityShareCard = _TranslationsCardWeatherPersonalityShareCardJa._(_root);
 }
 
 // Path: kEnum
@@ -1453,6 +1454,18 @@ class _TranslationsCardWeathernewsRecommendJa implements TranslationsCardWeather
 	@override String get title1 => '今日のおでかけプランを立てるなら';
 	@override String get title2 => 'より詳しい天気情報';
 	@override String get description => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！';
+}
+
+// Path: card.weatherPersonalityShareCard
+class _TranslationsCardWeatherPersonalityShareCardJa implements TranslationsCardWeatherPersonalityShareCardEn {
+	_TranslationsCardWeatherPersonalityShareCardJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get yourType => 'あなたのタイプは';
+	@override String get testSource => '診断 by Weather Personality';
+	@override String get shareMessage => '私の結果はこちら👇あなたもウェザーパーソナリティ診断でチェック！';
 }
 
 // Path: kEnum.address
@@ -2825,6 +2838,9 @@ extension on TranslationsJa {
 			'card.weathernewsRecommend.title1' => '今日のおでかけプランを立てるなら',
 			'card.weathernewsRecommend.title2' => 'より詳しい天気情報',
 			'card.weathernewsRecommend.description' => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！',
+			'card.weatherPersonalityShareCard.yourType' => 'あなたのタイプは',
+			'card.weatherPersonalityShareCard.testSource' => '診断 by Weather Personality',
+			'card.weatherPersonalityShareCard.shareMessage' => '私の結果はこちら👇あなたもウェザーパーソナリティ診断でチェック！',
 			'kEnum.address.prefecture.hokkaido' => '北海道',
 			'kEnum.address.prefecture.aomori' => '青森県',
 			'kEnum.address.prefecture.iwate' => '岩手県',
@@ -2972,11 +2988,11 @@ extension on TranslationsJa {
 			'kEnum.height.just178cm' => '178cm',
 			'kEnum.height.just179cm' => '179cm',
 			'kEnum.height.just180cm' => '180cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.height.just184cm' => '184cm',
 			'kEnum.height.just185cm' => '185cm',
 			'kEnum.height.just186cm' => '186cm',
