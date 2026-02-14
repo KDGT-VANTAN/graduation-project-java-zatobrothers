@@ -36,9 +36,9 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
 
   void updateMedia({
     required MediaType mediaType,
-    required String url,
+    required String weatherPhoto,
   }) {
-    _update((s) => s.copyWith(mediaType: mediaType, url: url));
+    _update((s) => s.copyWith(mediaType: mediaType, weatherPhoto: weatherPhoto));
   }
 
   Future<void> updatePrefectureCity(
@@ -110,9 +110,9 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
         feelingType: s.feelingType!,
         forecastType: s.forecastType!,
         mediaType: s.mediaType!,
-        url: s.url!,
-        latitude: s.latitude,
-        longitude: s.longitude,
+        weatherPhoto: s.weatherPhoto!,
+        latitude: s.latitude!,
+        longitude: s.longitude!,
       );
       await ref.read(postWeatherReportUseCaseProvider).call(params);
 

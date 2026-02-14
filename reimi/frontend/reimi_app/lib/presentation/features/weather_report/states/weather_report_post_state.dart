@@ -4,6 +4,7 @@ import 'package:reimi_app/domain/value_objects/forecast_type.dart';
 import 'package:reimi_app/domain/value_objects/media_type.dart';
 import 'package:reimi_app/domain/value_objects/prefecture_city.dart';
 import 'package:reimi_app/domain/value_objects/weather_type.dart';
+import 'package:reimi_app/domain/value_objects/wind_direction.dart';
 
 part 'weather_report_post_state.freezed.dart';
 
@@ -15,9 +16,14 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
     FeelingType? feelingType,
     ForecastType? forecastType,
     MediaType? mediaType,
-    String? url,
+    String? weatherPhoto,
     double? latitude,
     double? longitude,
+    double? temperature,
+    double? humidity,
+    double? pressure,
+    double? windSpeed,
+    WindDirection? windDirection,
     PrefectureCity? prefectureCity,
     @Default(false) bool isChanged,
     @Default(WeatherReportPostStatus.idle) WeatherReportPostStatus status,
@@ -32,7 +38,9 @@ abstract class WeatherReportPostState with _$WeatherReportPostState {
       feelingType != null &&
       forecastType != null &&
       mediaType != null &&
-      url?.isNotEmpty == true;
+      weatherPhoto?.isNotEmpty == true &&
+      latitude != null &&
+      longitude != null;
 }
 
 enum WeatherReportPostStatus {
