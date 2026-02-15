@@ -67,6 +67,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsAccountPageEn accountPage = TranslationsAccountPageEn._(_root);
 	late final TranslationsProfilePageEn profilePage = TranslationsProfilePageEn._(_root);
 	late final TranslationsProfileDetailPageEn profileDetailPage = TranslationsProfileDetailPageEn._(_root);
+	late final TranslationsWeatherPersonalityCharactersIntroductionPageEn weatherPersonalityCharactersIntroductionPage = TranslationsWeatherPersonalityCharactersIntroductionPageEn._(_root);
+	late final TranslationsWeatherPersonalityCharacterDetailPageEn weatherPersonalityCharacterDetailPage = TranslationsWeatherPersonalityCharacterDetailPageEn._(_root);
 	late final TranslationsWeatherPersonalityConceptPageEn weatherPersonalityConceptPage = TranslationsWeatherPersonalityConceptPageEn._(_root);
 	late final TranslationsWeatherPersonalityDetailPageEn weatherPersonalityDetailPage = TranslationsWeatherPersonalityDetailPageEn._(_root);
 	late final TranslationsWeatherPersonalityTestJudgingPageEn weatherPersonalityTestJudgingPage = TranslationsWeatherPersonalityTestJudgingPageEn._(_root);
@@ -422,6 +424,8 @@ class TranslationsAccountPageEn {
 
 	/// en: 'User information could not be obtained.'
 	String get nullCase => 'User information could not be obtained.';
+
+	late final TranslationsAccountPageItemsEn items = TranslationsAccountPageItemsEn._(_root);
 }
 
 // Path: profilePage
@@ -456,6 +460,36 @@ class TranslationsProfileDetailPageEn {
 
 	/// en: 'Profile information could not be retrieved.'
 	String get nullCase => 'Profile information could not be retrieved.';
+}
+
+// Path: weatherPersonalityCharactersIntroductionPage
+class TranslationsWeatherPersonalityCharactersIntroductionPageEn {
+	TranslationsWeatherPersonalityCharactersIntroductionPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Character Introduction'
+	String get title => 'Character Introduction';
+
+	/// en: 'Character information could not be obtained.'
+	String get isEmptyCase => 'Character information could not be obtained.';
+}
+
+// Path: weatherPersonalityCharacterDetailPage
+class TranslationsWeatherPersonalityCharacterDetailPageEn {
+	TranslationsWeatherPersonalityCharacterDetailPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Character Details'
+	String get title => 'Character Details';
+
+	/// en: 'Character details could not be obtained.'
+	String get nullCase => 'Character details could not be obtained.';
 }
 
 // Path: weatherPersonalityConceptPage
@@ -696,6 +730,9 @@ class TranslationsButtonEn {
 
 	/// en: 'Confirm Weather News'
 	String get confirmWeatherNews => 'Confirm Weather News';
+
+	/// en: 'See Details'
+	String get seeDetails => 'See Details';
 }
 
 // Path: segmentedSwitch
@@ -1073,6 +1110,21 @@ class TranslationsWeatherReportDetailPageLabelEn {
 
 	/// en: 'Sensory Forecast'
 	String get forecast => 'Sensory Forecast';
+}
+
+// Path: accountPage.items
+class TranslationsAccountPageItemsEn {
+	TranslationsAccountPageItemsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'What is the Weather Personality Test?'
+	String get aboutTest => 'What is the Weather Personality Test?';
+
+	/// en: 'See all characters'
+	String get seeAllCharacters => 'See all characters';
 }
 
 // Path: profilePage.section
@@ -3894,6 +3946,8 @@ extension on Translations {
 			'weatherReportDetailPage.label.feeling' => 'Feeling',
 			'weatherReportDetailPage.label.forecast' => 'Sensory Forecast',
 			'accountPage.nullCase' => 'User information could not be obtained.',
+			'accountPage.items.aboutTest' => 'What is the Weather Personality Test?',
+			'accountPage.items.seeAllCharacters' => 'See all characters',
 			'profilePage.title' => 'Edit Profile',
 			'profilePage.nullCase' => 'Profile information could not be retrieved.',
 			'profilePage.section.mainPhoto' => 'Main Photo',
@@ -3941,6 +3995,10 @@ extension on Translations {
 			'profilePage.placeholder.basicInformation.toolTip' => 'This field cannot be changed.',
 			'profileDetailPage.title' => 'Profile Details',
 			'profileDetailPage.nullCase' => 'Profile information could not be retrieved.',
+			'weatherPersonalityCharactersIntroductionPage.title' => 'Character Introduction',
+			'weatherPersonalityCharactersIntroductionPage.isEmptyCase' => 'Character information could not be obtained.',
+			'weatherPersonalityCharacterDetailPage.title' => 'Character Details',
+			'weatherPersonalityCharacterDetailPage.nullCase' => 'Character details could not be obtained.',
 			'weatherPersonalityConceptPage.title' => 'Weather Personality Assessment',
 			'weatherPersonalityConceptPage.contentText.contentTitle' => 'About the Assessment',
 			'weatherPersonalityConceptPage.contentText.contentText1' => 'If you were to be reborn as an animal,\n\n',
@@ -4146,6 +4204,7 @@ extension on Translations {
 			'button.suggestGoOut' => 'Suggest An Outing',
 			'button.kReturn' => 'Return',
 			'button.confirmWeatherNews' => 'Confirm Weather News',
+			'button.seeDetails' => 'See Details',
 			'segmentedSwitch.like.fromUser' => 'From Them',
 			'segmentedSwitch.like.toUser' => 'From Me',
 			'segmentedSwitch.chat.message' => 'Message',
@@ -4297,6 +4356,8 @@ extension on Translations {
 			'kEnum.height.just169cm' => '169cm',
 			'kEnum.height.just170cm' => '170cm',
 			'kEnum.height.just171cm' => '171cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just172cm' => '172cm',
 			'kEnum.height.just173cm' => '173cm',
 			'kEnum.height.just174cm' => '174cm',
@@ -4304,8 +4365,6 @@ extension on Translations {
 			'kEnum.height.just176cm' => '176cm',
 			'kEnum.height.just177cm' => '177cm',
 			'kEnum.height.just178cm' => '178cm',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.height.just179cm' => '179cm',
 			'kEnum.height.just180cm' => '180cm',
 			'kEnum.height.just181cm' => '181cm',
