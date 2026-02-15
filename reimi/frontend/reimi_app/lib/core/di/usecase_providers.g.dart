@@ -518,6 +518,46 @@ final getWeatherPersonalityDetailUseCaseProvider =
 // ignore: unused_element
 typedef GetWeatherPersonalityDetailUseCaseRef
     = AutoDisposeProviderRef<GetWeatherPersonalityDetailUseCase>;
+String _$getWeatherPersonalityCharactersUseCaseHash() =>
+    r'2246e48d5ec53191bbd4dc47bcfabcff1955dbb7';
+
+/// See also [getWeatherPersonalityCharactersUseCase].
+@ProviderFor(getWeatherPersonalityCharactersUseCase)
+final getWeatherPersonalityCharactersUseCaseProvider =
+    AutoDisposeProvider<GetWeatherPersonalityCharactersUseCase>.internal(
+  getWeatherPersonalityCharactersUseCase,
+  name: r'getWeatherPersonalityCharactersUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherPersonalityCharactersUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherPersonalityCharactersUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherPersonalityCharactersUseCase>;
+String _$getWeatherPersonalityCharacterDetailUseCaseHash() =>
+    r'7af9c4534ed195f7c0aabdc83fafc3b1d6b26a43';
+
+/// See also [getWeatherPersonalityCharacterDetailUseCase].
+@ProviderFor(getWeatherPersonalityCharacterDetailUseCase)
+final getWeatherPersonalityCharacterDetailUseCaseProvider =
+    AutoDisposeProvider<GetWeatherPersonalityCharacterDetailUseCase>.internal(
+  getWeatherPersonalityCharacterDetailUseCase,
+  name: r'getWeatherPersonalityCharacterDetailUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getWeatherPersonalityCharacterDetailUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWeatherPersonalityCharacterDetailUseCaseRef
+    = AutoDisposeProviderRef<GetWeatherPersonalityCharacterDetailUseCase>;
 String _$registerDeviceTokenUseCaseHash() =>
     r'cab4f58254f0ad029a5a990eef104ee3a82e5c87';
 
