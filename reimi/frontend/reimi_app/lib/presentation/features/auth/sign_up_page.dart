@@ -141,8 +141,8 @@ class SignUpPage extends HookConsumerWidget {
                             fontSize: 11,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              launchURL(urlString: '', context: context);
+                            ..onTap = () async {
+                              await launchTOSUrl(context: context);
                             },
                         ),
                         TextSpan(text: t.consent.consentText2),
@@ -155,8 +155,8 @@ class SignUpPage extends HookConsumerWidget {
                             fontSize: 11,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              launchURL(urlString: '', context: context);
+                            ..onTap = () async {
+                              await launchPPUrl(context: context);
                             },
                         ),
                         const TextSpan(text: '\n'),
