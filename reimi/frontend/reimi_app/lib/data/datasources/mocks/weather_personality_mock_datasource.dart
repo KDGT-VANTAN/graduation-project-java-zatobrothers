@@ -60,9 +60,9 @@ final mockWeatherPersonalityResult = WeatherPersonalityResultDto(
   ],
   userAxisScore: {
     WeatherPersonalityAxis.sensitivity: 8,
-    WeatherPersonalityAxis.preparedness: 0,
+    WeatherPersonalityAxis.preparedness: 1,
     WeatherPersonalityAxis.activity: 7,
-    WeatherPersonalityAxis.motivation: -5,
+    WeatherPersonalityAxis.motivation: 5,
   },
   behaviorTendencies: [
     const BehaviorTendencyDto(
@@ -125,9 +125,9 @@ final mockWeatherPersonalityDetail = WeatherPersonalityDetailDto(
   ],
   userAxisScore: {
     WeatherPersonalityAxis.sensitivity: 8,
-    WeatherPersonalityAxis.preparedness: 0,
+    WeatherPersonalityAxis.preparedness: 1,
     WeatherPersonalityAxis.activity: 7,
-    WeatherPersonalityAxis.motivation: -5,
+    WeatherPersonalityAxis.motivation: 5,
   },
   behaviorTendencies: [
     const BehaviorTendencyDto(
