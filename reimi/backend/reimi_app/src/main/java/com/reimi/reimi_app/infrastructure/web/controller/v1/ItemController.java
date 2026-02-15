@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "User", description = "ユーザー関連のAPI")
-public class ItemController {
+public class ItemController extends ApiV1Controller {
 
     private final ItemUseCase itemUseCase;
 
