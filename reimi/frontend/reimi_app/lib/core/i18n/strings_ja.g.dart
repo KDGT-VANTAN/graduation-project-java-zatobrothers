@@ -64,6 +64,8 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsAccountPageJa accountPage = _TranslationsAccountPageJa._(_root);
 	@override late final _TranslationsProfilePageJa profilePage = _TranslationsProfilePageJa._(_root);
 	@override late final _TranslationsProfileDetailPageJa profileDetailPage = _TranslationsProfileDetailPageJa._(_root);
+	@override late final _TranslationsWeatherPersonalityCharactersIntroductionPageJa weatherPersonalityCharactersIntroductionPage = _TranslationsWeatherPersonalityCharactersIntroductionPageJa._(_root);
+	@override late final _TranslationsWeatherPersonalityCharacterDetailPageJa weatherPersonalityCharacterDetailPage = _TranslationsWeatherPersonalityCharacterDetailPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityConceptPageJa weatherPersonalityConceptPage = _TranslationsWeatherPersonalityConceptPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityDetailPageJa weatherPersonalityDetailPage = _TranslationsWeatherPersonalityDetailPageJa._(_root);
 	@override late final _TranslationsWeatherPersonalityTestJudgingPageJa weatherPersonalityTestJudgingPage = _TranslationsWeatherPersonalityTestJudgingPageJa._(_root);
@@ -328,6 +330,7 @@ class _TranslationsAccountPageJa implements TranslationsAccountPageEn {
 
 	// Translations
 	@override String get nullCase => 'ユーザー情報が取得できませんでした。';
+	@override late final _TranslationsAccountPageItemsJa items = _TranslationsAccountPageItemsJa._(_root);
 }
 
 // Path: profilePage
@@ -353,6 +356,28 @@ class _TranslationsProfileDetailPageJa implements TranslationsProfileDetailPageE
 	// Translations
 	@override String get title => 'プロフィール詳細';
 	@override String get nullCase => 'プロフィール情報が取得できませんでした。';
+}
+
+// Path: weatherPersonalityCharactersIntroductionPage
+class _TranslationsWeatherPersonalityCharactersIntroductionPageJa implements TranslationsWeatherPersonalityCharactersIntroductionPageEn {
+	_TranslationsWeatherPersonalityCharactersIntroductionPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'キャラクター紹介';
+	@override String get isEmptyCase => 'キャラクター情報が取得できませんでした。';
+}
+
+// Path: weatherPersonalityCharacterDetailPage
+class _TranslationsWeatherPersonalityCharacterDetailPageJa implements TranslationsWeatherPersonalityCharacterDetailPageEn {
+	_TranslationsWeatherPersonalityCharacterDetailPageJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'キャラクター詳細';
+	@override String get nullCase => 'キャラクター詳細情報が取得できませんでした。';
 }
 
 // Path: weatherPersonalityConceptPage
@@ -522,6 +547,7 @@ class _TranslationsButtonJa implements TranslationsButtonEn {
 	@override String get suggestGoOut => 'この内容でおでかけ提案する';
 	@override String get kReturn => '戻る';
 	@override String get confirmWeatherNews => 'ウェザーニュースで詳しく見る';
+	@override String get seeDetails => '詳しく見る';
 }
 
 // Path: segmentedSwitch
@@ -814,6 +840,17 @@ class _TranslationsWeatherReportDetailPageLabelJa implements TranslationsWeather
 	@override String get weather => '天気';
 	@override String get feeling => '体感';
 	@override String get forecast => '五感予想';
+}
+
+// Path: accountPage.items
+class _TranslationsAccountPageItemsJa implements TranslationsAccountPageItemsEn {
+	_TranslationsAccountPageItemsJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get aboutTest => 'ウェザーパーソナリティ診断とは？';
+	@override String get seeAllCharacters => 'すべてのキャラクターを見る';
 }
 
 // Path: profilePage.section
@@ -2590,6 +2627,8 @@ extension on TranslationsJa {
 			'weatherReportDetailPage.label.feeling' => '体感',
 			'weatherReportDetailPage.label.forecast' => '五感予想',
 			'accountPage.nullCase' => 'ユーザー情報が取得できませんでした。',
+			'accountPage.items.aboutTest' => 'ウェザーパーソナリティ診断とは？',
+			'accountPage.items.seeAllCharacters' => 'すべてのキャラクターを見る',
 			'profilePage.title' => 'プロフィール編集',
 			'profilePage.nullCase' => 'プロフィール情報が取得できませんでした。',
 			'profilePage.section.mainPhoto' => 'メイン写真',
@@ -2637,6 +2676,10 @@ extension on TranslationsJa {
 			'profilePage.placeholder.basicInformation.toolTip' => 'この項目は変更できません。',
 			'profileDetailPage.title' => 'プロフィール詳細',
 			'profileDetailPage.nullCase' => 'プロフィール情報が取得できませんでした。',
+			'weatherPersonalityCharactersIntroductionPage.title' => 'キャラクター紹介',
+			'weatherPersonalityCharactersIntroductionPage.isEmptyCase' => 'キャラクター情報が取得できませんでした。',
+			'weatherPersonalityCharacterDetailPage.title' => 'キャラクター詳細',
+			'weatherPersonalityCharacterDetailPage.nullCase' => 'キャラクター詳細情報が取得できませんでした。',
 			'weatherPersonalityConceptPage.title' => 'ウェザーパーソナリティ診断',
 			'weatherPersonalityConceptPage.contentText.contentTitle' => '診断について',
 			'weatherPersonalityConceptPage.contentText.contentText1' => 'あなたが動物に生まれ変わるとして、\n\n',
@@ -2842,6 +2885,7 @@ extension on TranslationsJa {
 			'button.suggestGoOut' => 'この内容でおでかけ提案する',
 			'button.kReturn' => '戻る',
 			'button.confirmWeatherNews' => 'ウェザーニュースで詳しく見る',
+			'button.seeDetails' => '詳しく見る',
 			'segmentedSwitch.like.fromUser' => '相手から',
 			'segmentedSwitch.like.toUser' => '自分から',
 			'segmentedSwitch.chat.message' => 'メッセージ',
@@ -2993,6 +3037,8 @@ extension on TranslationsJa {
 			'kEnum.height.just169cm' => '169cm',
 			'kEnum.height.just170cm' => '170cm',
 			'kEnum.height.just171cm' => '171cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just172cm' => '172cm',
 			'kEnum.height.just173cm' => '173cm',
 			'kEnum.height.just174cm' => '174cm',
@@ -3000,8 +3046,6 @@ extension on TranslationsJa {
 			'kEnum.height.just176cm' => '176cm',
 			'kEnum.height.just177cm' => '177cm',
 			'kEnum.height.just178cm' => '178cm',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.height.just179cm' => '179cm',
 			'kEnum.height.just180cm' => '180cm',
 			'kEnum.height.just181cm' => '181cm',

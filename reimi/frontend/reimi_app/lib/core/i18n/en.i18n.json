@@ -203,7 +203,11 @@
     }
   },
   "accountPage": {
-    "nullCase": "User information could not be obtained."
+    "nullCase": "User information could not be obtained.",
+    "items": {
+      "aboutTest": "What is the Weather Personality Test?",
+      "seeAllCharacters": "See all characters"
+    }
   },
   "profilePage": {
     "title": "Edit Profile",
@@ -279,6 +283,14 @@
   "profileDetailPage": {
     "title": "Profile Details",
     "nullCase": "Profile information could not be retrieved."
+  },
+  "weatherPersonalityCharactersIntroductionPage": {
+    "title": "Character Introduction",
+    "isEmptyCase": "Character information could not be obtained."
+  },
+    "weatherPersonalityCharacterDetailPage": {
+    "title": "Character Details",
+    "nullCase": "Character details could not be obtained."
   },
   "weatherPersonalityConceptPage": {
     "title": "Weather Personality Assessment",
@@ -651,7 +663,8 @@
     "retest": "Re-test",
     "suggestGoOut": "Suggest An Outing",
     "return": "Return",
-    "confirmWeatherNews": "Confirm Weather News"
+    "confirmWeatherNews": "Confirm Weather News",
+    "seeDetails": "See Details"
   },
   "segmentedSwitch": {
     "like": {

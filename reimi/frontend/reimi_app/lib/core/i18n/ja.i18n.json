@@ -203,7 +203,11 @@
     }
   },
   "accountPage": {
-    "nullCase": "ユーザー情報が取得できませんでした。"
+    "nullCase": "ユーザー情報が取得できませんでした。",
+    "items": {
+      "aboutTest": "ウェザーパーソナリティ診断とは？",
+      "seeAllCharacters": "すべてのキャラクターを見る"
+    }
   },
   "profilePage": {
     "title": "プロフィール編集",
@@ -279,6 +283,14 @@
   "profileDetailPage": {
     "title": "プロフィール詳細",
     "nullCase": "プロフィール情報が取得できませんでした。"
+  },
+  "weatherPersonalityCharactersIntroductionPage": {
+    "title": "キャラクター紹介",
+    "isEmptyCase": "キャラクター情報が取得できませんでした。"
+  },
+    "weatherPersonalityCharacterDetailPage": {
+    "title": "キャラクター詳細",
+    "nullCase": "キャラクター詳細情報が取得できませんでした。"
   },
   "weatherPersonalityConceptPage": {
     "title": "ウェザーパーソナリティ診断",
@@ -651,7 +663,8 @@
     "retest": "再診断",
     "suggestGoOut": "この内容でおでかけ提案する",
     "return": "戻る",
-    "confirmWeatherNews": "ウェザーニュースで詳しく見る"
+    "confirmWeatherNews": "ウェザーニュースで詳しく見る",
+    "seeDetails": "詳しく見る"
   },
   "segmentedSwitch": {
     "like": {

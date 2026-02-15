@@ -24,6 +24,8 @@ import 'package:reimi_app/presentation/features/user_registration/pages/user_gen
 import 'package:reimi_app/presentation/features/user_registration/pages/user_introduction_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_main_photo_page.dart';
 import 'package:reimi_app/presentation/features/user_registration/pages/user_name_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_character_detail_page.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_characters_introduction_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_test_judging_page.dart';
@@ -301,7 +303,25 @@ GoRouter goRouter(Ref ref) {
         path: WeatherPersonalityConceptPage.routeLocation,
         name: WeatherPersonalityConceptPage.routeName,
         builder: (context, state) {
-          return const WeatherPersonalityConceptPage();
+          final extra = state.extra! as Map<String, Object?>;
+          final isPreTest = extra['isPreTest'] as bool;
+          return WeatherPersonalityConceptPage(isPreTest: isPreTest);
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityCharactersIntroductionPage.routeLocation,
+        name: WeatherPersonalityCharactersIntroductionPage.routeName,
+        builder: (context, state) {
+          return const WeatherPersonalityCharactersIntroductionPage();
+        },
+      ),
+      GoRoute(
+        path: WeatherPersonalityCharacterDetailPage.routeLocation,
+        name: WeatherPersonalityCharacterDetailPage.routeName,
+        builder: (context, state) {
+          final extra = state.extra! as Map<String, Object?>;
+          final typeCode = extra['typeCode'] as String?;
+          return WeatherPersonalityCharacterDetailPage(typeCode: typeCode);
         },
       ),
       GoRoute(

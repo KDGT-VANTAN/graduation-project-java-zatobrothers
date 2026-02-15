@@ -11,6 +11,8 @@ import 'package:reimi_app/application/usecases/rainbow_like/rainbow_like_user_us
 import 'package:reimi_app/application/usecases/session/get_current_user_state_usecase.dart';
 import 'package:reimi_app/application/usecases/like/get_like_users_to_user_usecase.dart';
 import 'package:reimi_app/application/usecases/user/get_user_account_usecase.dart';
+import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_character_detail_usecase.dart';
+import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_characters_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_detail_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/get_weather_personality_result_usecase.dart';
 import 'package:reimi_app/application/usecases/weather_personality/test_weather_personality_usecase.dart';
@@ -180,6 +182,25 @@ GetWeatherPersonalityResultUseCase getWeatherPersonalityResultUseCase(Ref ref) {
 GetWeatherPersonalityDetailUseCase getWeatherPersonalityDetailUseCase(Ref ref) {
   return GetWeatherPersonalityDetailUseCase(
       ref.watch(weatherPersonalityRepositoryProvider));
+}
+
+@riverpod
+GetWeatherPersonalityCharactersUseCase getWeatherPersonalityCharactersUseCase(
+  Ref ref,
+) {
+  return GetWeatherPersonalityCharactersUseCase(
+    ref.watch(weatherPersonalityRepositoryProvider),
+  );
+}
+
+@riverpod
+GetWeatherPersonalityCharacterDetailUseCase
+    getWeatherPersonalityCharacterDetailUseCase(
+  Ref ref,
+) {
+  return GetWeatherPersonalityCharacterDetailUseCase(
+    ref.watch(weatherPersonalityRepositoryProvider),
+  );
 }
 
 // notification関連
