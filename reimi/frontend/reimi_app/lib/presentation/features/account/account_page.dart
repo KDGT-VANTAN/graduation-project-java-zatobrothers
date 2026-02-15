@@ -9,6 +9,8 @@ import 'package:reimi_app/gen/assets.gen.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/features/account/notifiers/account_notifier.dart';
 import 'package:reimi_app/presentation/features/account/states/account_state.dart';
+import 'package:reimi_app/presentation/features/account/widgets/info_tile.dart';
+import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_characters_introduction_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_concept_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/pages/weather_personality_detail_page.dart';
 import 'package:reimi_app/presentation/features/weather_personality/widgets/weather_personality_button.dart';
@@ -234,10 +236,39 @@ class AccountPage extends HookConsumerWidget {
                             onPressed: () {
                               context.push(
                                 WeatherPersonalityConceptPage.routeLocation,
+                                extra: {
+                                  'isPreTest': true,
+                                },
                               );
                             },
                           ),
                           const Spacer(flex: 1),
+                        ] else ...[
+                          const SizedBox(height: 40),
+                          InfoTile(
+                            onTap: () {
+                              context.push(
+                                WeatherPersonalityConceptPage.routeLocation,
+                                extra: {
+                                  'isPreTest': false,
+                                },
+                              );
+                            },
+                            icon: LineIcons.clipboardList,
+                            title: t.accountPage.items.aboutTest,
+                          ),
+                          const SizedBox(height: 8),
+                          InfoTile(
+                            onTap: () {
+                              context.push(
+                                WeatherPersonalityCharactersIntroductionPage
+                                    .routeLocation,
+                              );
+                            },
+                            icon: LineIcons.paw,
+                            title: t.accountPage.items.seeAllCharacters,
+                          ),
+                          const Spacer(),
                         ]
                       ],
                     ),
