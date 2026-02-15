@@ -717,6 +717,7 @@ class TranslationsSnackBarEn {
 
 	// Translations
 	late final TranslationsSnackBarProfileEn profile = TranslationsSnackBarProfileEn._(_root);
+	late final TranslationsSnackBarLaunchUrlEn launchUrl = TranslationsSnackBarLaunchUrlEn._(_root);
 }
 
 // Path: card
@@ -1968,6 +1969,21 @@ class TranslationsSnackBarProfileEn {
 
 	/// en: 'Your profile has been updated!'
 	String get success => 'Your profile has been updated!';
+}
+
+// Path: snackBar.launchUrl
+class TranslationsSnackBarLaunchUrlEn {
+	TranslationsSnackBarLaunchUrlEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'The link could not be accessed.'
+	String get failure => 'The link could not be accessed.';
+
+	/// en: 'An error has occurred: $error'
+	String errorOccurred({required Object error}) => 'An error has occurred: ${error}';
 }
 
 // Path: card.weathernewsRecommend
@@ -4135,6 +4151,8 @@ extension on Translations {
 			'segmentedSwitch.chat.message' => 'Message',
 			'segmentedSwitch.chat.profile' => 'Profile',
 			'snackBar.profile.success' => 'Your profile has been updated!',
+			'snackBar.launchUrl.failure' => 'The link could not be accessed.',
+			'snackBar.launchUrl.errorOccurred' => ({required Object error}) => 'An error has occurred: ${error}',
 			'card.weathernewsRecommend.title1' => 'If you\'re planning today\'s outing',
 			'card.weathernewsRecommend.title2' => 'More detailed weather information',
 			'card.weathernewsRecommend.description' => 'Check the detailed hourly weather forecast with the official Weathernews app and make your outing the best it can be!',
@@ -4286,10 +4304,10 @@ extension on Translations {
 			'kEnum.height.just176cm' => '176cm',
 			'kEnum.height.just177cm' => '177cm',
 			'kEnum.height.just178cm' => '178cm',
-			'kEnum.height.just179cm' => '179cm',
-			'kEnum.height.just180cm' => '180cm',
 			_ => null,
 		} ?? switch (path) {
+			'kEnum.height.just179cm' => '179cm',
+			'kEnum.height.just180cm' => '180cm',
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',

@@ -666,6 +666,10 @@
   "snackBar": {
     "profile": {
       "success": "プロフィール更新が完了しました！"
+    },
+    "launchUrl": {
+      "failure": "リンク先にアクセスできませんでした。",
+      "errorOccurred": "エラーが発生しました: $error"
     }
   },
   "card": {

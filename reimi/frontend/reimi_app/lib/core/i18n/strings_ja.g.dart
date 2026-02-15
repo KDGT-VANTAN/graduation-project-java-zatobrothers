@@ -543,6 +543,7 @@ class _TranslationsSnackBarJa implements TranslationsSnackBarEn {
 
 	// Translations
 	@override late final _TranslationsSnackBarProfileJa profile = _TranslationsSnackBarProfileJa._(_root);
+	@override late final _TranslationsSnackBarLaunchUrlJa launchUrl = _TranslationsSnackBarLaunchUrlJa._(_root);
 }
 
 // Path: card
@@ -1442,6 +1443,17 @@ class _TranslationsSnackBarProfileJa implements TranslationsSnackBarProfileEn {
 
 	// Translations
 	@override String get success => 'プロフィール更新が完了しました！';
+}
+
+// Path: snackBar.launchUrl
+class _TranslationsSnackBarLaunchUrlJa implements TranslationsSnackBarLaunchUrlEn {
+	_TranslationsSnackBarLaunchUrlJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get failure => 'リンク先にアクセスできませんでした。';
+	@override String errorOccurred({required Object error}) => 'エラーが発生しました: ${error}';
 }
 
 // Path: card.weathernewsRecommend
@@ -2835,6 +2847,8 @@ extension on TranslationsJa {
 			'segmentedSwitch.chat.message' => 'メッセージ',
 			'segmentedSwitch.chat.profile' => 'プロフィール',
 			'snackBar.profile.success' => 'プロフィール更新が完了しました！',
+			'snackBar.launchUrl.failure' => 'リンク先にアクセスできませんでした。',
+			'snackBar.launchUrl.errorOccurred' => ({required Object error}) => 'エラーが発生しました: ${error}',
 			'card.weathernewsRecommend.title1' => '今日のおでかけプランを立てるなら',
 			'card.weathernewsRecommend.title2' => 'より詳しい天気情報',
 			'card.weathernewsRecommend.description' => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！',
@@ -2986,10 +3000,10 @@ extension on TranslationsJa {
 			'kEnum.height.just176cm' => '176cm',
 			'kEnum.height.just177cm' => '177cm',
 			'kEnum.height.just178cm' => '178cm',
-			'kEnum.height.just179cm' => '179cm',
-			'kEnum.height.just180cm' => '180cm',
 			_ => null,
 		} ?? switch (path) {
+			'kEnum.height.just179cm' => '179cm',
+			'kEnum.height.just180cm' => '180cm',
 			'kEnum.height.just181cm' => '181cm',
 			'kEnum.height.just182cm' => '182cm',
 			'kEnum.height.just183cm' => '183cm',
