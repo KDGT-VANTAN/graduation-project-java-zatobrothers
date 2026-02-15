@@ -7,9 +7,13 @@ import 'package:reimi_app/presentation/features/weather_personality/widgets/weat
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 
 class WeatherPersonalityConceptPage extends StatelessWidget {
-  const WeatherPersonalityConceptPage({super.key});
   static String get routeName => 'weather_personality_concept';
   static String get routeLocation => '/$routeName';
+  const WeatherPersonalityConceptPage({
+    super.key,
+    required this.isPreTest,
+  });
+  final bool isPreTest;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +53,11 @@ class WeatherPersonalityConceptPage extends StatelessWidget {
               Positioned(
                 child: Column(
                   children: [
-                    const SizedBox(height: 210),
+                    SizedBox(height: isPreTest ? 210 : 280),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
+                        width: double.infinity,
                         padding: const EdgeInsets.fromLTRB(40, 24, 40, 28),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.8),
@@ -112,14 +117,17 @@ class WeatherPersonalityConceptPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Spacer(),
-                    WeatherPersonalityButton(
-                      label: t.button.startTest,
-                      onPressed: () {
-                        context.go(WeatherPersonalityTestQ1Page.routeLocation);
-                      },
-                    ),
-                    const SizedBox(height: 32),
+                    if (isPreTest) ...[
+                      const Spacer(),
+                      WeatherPersonalityButton(
+                        label: t.button.startTest,
+                        onPressed: () {
+                          context
+                              .go(WeatherPersonalityTestQ1Page.routeLocation);
+                        },
+                      ),
+                      const SizedBox(height: 32),
+                    ],
                   ],
                 ),
               )
