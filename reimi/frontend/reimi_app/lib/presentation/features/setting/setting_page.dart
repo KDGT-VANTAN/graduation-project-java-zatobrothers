@@ -5,6 +5,7 @@ import 'package:reimi_app/core/i18n/strings.g.dart';
 import 'package:reimi_app/presentation/app/auth/notifiers/auth_notifier.dart';
 import 'package:reimi_app/presentation/features/locale/locale_setting_page.dart';
 import 'package:reimi_app/presentation/shared/utils/custom_confirmation_dialog.dart';
+import 'package:reimi_app/presentation/shared/utils/url_launcher_util.dart';
 import 'package:reimi_app/presentation/shared/widgets/section_title.dart';
 import 'package:reimi_app/presentation/features/setting/widgets/settings_tile.dart';
 import 'package:reimi_app/presentation/app/router/auth_gate.dart';
@@ -131,13 +132,17 @@ class SettingPage extends ConsumerWidget {
                       SettingsTile(
                         title: t.settingPage.section.aboutReimi.tos,
                         shouldNavigate: true,
-                        onTap: () {},
+                        onTap: () async {
+                          await launchTOSUrl(context: context);
+                        },
                       ),
                       const SizedBox(height: 8),
                       SettingsTile(
                         title: t.settingPage.section.aboutReimi.pp,
                         shouldNavigate: true,
-                        onTap: () {},
+                        onTap: () async {
+                          await launchPPUrl(context: context);
+                        },
                       ),
                       const SizedBox(height: 8),
                       SettingsTile(
