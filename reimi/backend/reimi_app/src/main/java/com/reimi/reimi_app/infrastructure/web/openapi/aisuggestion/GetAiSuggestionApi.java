@@ -77,6 +77,26 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                 """
             )
         )
+    ),
+    @ApiResponse(
+        responseCode = "502",
+        description = "外部APIエラー（Bad Gateway）",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "EXTERNAL_API_ERROR",
+                    "message": "外部APIでエラーが発生しました",
+                    "details": {
+                        "code": "400_002",
+                        "message": "key is invalid value"
+                    }
+                }
+                """
+            )
+        )
     )
 })
 public @interface GetAiSuggestionApi {
