@@ -2,6 +2,7 @@ package com.reimi.reimi_app.infrastructure.persistence.repository.report;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -43,4 +44,9 @@ public class WeatherReportRepositoryImpl implements WeatherReportRepository {
             .toList();
     }
 
+    public Optional<WeatherReport> findByUserIdAndDate(UserId userId, LocalDate date) {
+        return jpaWeatherReportRepository
+            .findByUserIdAndReportDate(userId.value(), date)
+            .map(WeatherReportMapper::toDomain);
+    };
 }
