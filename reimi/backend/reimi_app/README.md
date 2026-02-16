@@ -32,6 +32,7 @@ Spring Boot で開発されているモバイルアプリのバックエンド�
 - Springdoc OpenAPI (Swagger UI)
 - Firebase Admin SDK
 - dotenv-java
+- google-genai
 
 <br>
 <br>
