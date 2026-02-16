@@ -9,6 +9,7 @@ public class WeatherApiProperties {
 
     private String baseUrl;
     private String apiKey;
+    private String iconUrl;
 
     public String getBaseUrl() {
         return baseUrl;
@@ -23,4 +24,12 @@ public class WeatherApiProperties {
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
 }

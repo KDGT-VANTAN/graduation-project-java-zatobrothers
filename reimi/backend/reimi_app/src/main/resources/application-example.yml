@@ -71,3 +71,8 @@ external:
     weather:
         base-url: ${WEATHER_BASE_URL}
         api-key: ${WEATHER_API_KEY}
+        icon-url: ${WEATHER_ICON_URL}
+    # Gemini
+    gemini:
+        model: ${GEMINI_MODEL}
+        api-key: ${GEMINI_API_KEY}
