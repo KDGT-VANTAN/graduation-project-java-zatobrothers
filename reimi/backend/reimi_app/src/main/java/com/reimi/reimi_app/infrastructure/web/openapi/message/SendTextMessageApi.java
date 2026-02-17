@@ -18,8 +18,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "チャットルームにメッセージ送信",
-    description = "マッチング成立後に作成されるチャットルームにメッセージを送信できるAPI",
+    summary = "あるチャットルームにメッセージ送信",
+    description = "あるチャットルームにメッセージを送信できるAPI",
     requestBody = @RequestBody(
         required = true,
         content = @Content(
