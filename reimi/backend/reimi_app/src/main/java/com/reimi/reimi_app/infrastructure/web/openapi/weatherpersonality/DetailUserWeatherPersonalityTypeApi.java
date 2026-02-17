@@ -31,6 +31,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     ),
     @ApiResponse(
+        responseCode = "400",
+        description = "無効なリクエスト",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "INVALID_REQUEST",
+                    "message": "リクエストパラメータの形式が不正です"
+                }
+                """
+            )
+        )
+    ),
+    @ApiResponse(
         responseCode = "401",
         description = "認証エラー",
         content = @Content(
