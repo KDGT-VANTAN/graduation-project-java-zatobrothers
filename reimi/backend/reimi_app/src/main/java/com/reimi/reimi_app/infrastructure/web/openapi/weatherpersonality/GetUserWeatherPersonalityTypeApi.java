@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
     summary = "ウェザーパーソナリティ診断結果表示",
-    description = "ユーザーのウェザーパーソナリティタイプの診断結果をレスポンスするAPI"
+    description = "ユーザーのウェザーパーソナリティタイプの診断結果を表示するAPI"
 )
 @ApiResponses({
     @ApiResponse(
