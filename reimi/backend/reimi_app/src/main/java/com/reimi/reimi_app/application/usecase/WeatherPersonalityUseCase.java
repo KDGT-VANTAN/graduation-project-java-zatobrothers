@@ -8,4 +8,6 @@ public interface WeatherPersonalityUseCase {
     void diagnose(DiagnoseWeatherPersonalityCommand command);
 
     UserWeatherPersonalityType getUserResult();
+
+    void reDiagnose(DiagnoseWeatherPersonalityCommand command);
 }
