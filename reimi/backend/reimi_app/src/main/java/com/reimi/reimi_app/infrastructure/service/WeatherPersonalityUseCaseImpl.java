@@ -17,6 +17,8 @@ import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase {
 
@@ -83,5 +85,31 @@ public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase 
         result.getWeatherPersonalityType().setTypeImageUrl(typeImageUrl);
 
         return result;
+    }
+
+    @Override
+    @Transactional
+    public void reDiagnose(DiagnoseWeatherPersonalityCommand command) {
+
+        // 既存の診断結果を取得
+        UserWeatherPersonalityType existing = userWeatherPersonalityTypeRepository
+            .findByUserId(command.userId())
+            .orElseThrow(() -> new ResourceNotFoundException("ウェザーパーソナリティ診断結果"));
+
+        // 診断ロジックがあるドメインサービスをインスタンス化して使う
+        WeatherPersonalityDiagnosis diagnosis = new WeatherPersonalityDiagnosis();
+
+        // 4つの軸ごとにスコアリングする
+        WeatherPersonalityScore weatherPersonalityScore = diagnosis.diagnoseScore(command.answers());
+
+        //スコアリングした結果からタイプコードを決定する
+        WeatherPersonalityCode code = diagnosis.decideType(weatherPersonalityScore, command.answers());
+
+        WeatherPersonalityType type = WeatherPersonalityType.from(code);
+
+        // 既存の診断結果を書き換える
+        existing.update(type, weatherPersonalityScore);
+
+        userWeatherPersonalityTypeRepository.save(existing);
     }
 }
