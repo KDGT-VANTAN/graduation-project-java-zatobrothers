@@ -1,6 +1,8 @@
-package com.reimi.reimi_app.domain.model.weatherpersonality;
+package com.reimi.reimi_app.domain.model.weatherpersonality.diagnose;
 
 import java.util.List;
+
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
 
 public class WeatherPersonalityDiagnosis {
 
