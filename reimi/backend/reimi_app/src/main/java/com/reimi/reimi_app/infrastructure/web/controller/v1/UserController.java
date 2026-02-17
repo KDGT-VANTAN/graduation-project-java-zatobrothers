@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@Tag(name = "User", description = "ユーザー関連のAPI")
+@Tag(name = "01. User", description = "ユーザー関連のAPI")
 public class UserController extends ApiV1Controller {
 
     private final AuthenticatedUserProvider authenticatedUserProvider;

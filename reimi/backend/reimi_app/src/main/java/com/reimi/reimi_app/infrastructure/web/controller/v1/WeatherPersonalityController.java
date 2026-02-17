@@ -31,7 +31,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@Tag(name = "WeatherPersonality", description = "ウェザーパーソナリティ診断関連のAPI")
+@Tag(name = "04. WeatherPersonality", description = "ウェザーパーソナリティ診断関連のAPI")
 public class WeatherPersonalityController extends ApiV1Controller {
 
     private final WeatherPersonalityUseCase weatherPersonalityUseCase;

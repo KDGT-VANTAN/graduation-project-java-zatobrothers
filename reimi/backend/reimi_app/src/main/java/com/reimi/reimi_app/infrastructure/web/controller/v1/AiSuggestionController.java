@@ -12,7 +12,7 @@ import com.reimi.reimi_app.infrastructure.web.openapi.aisuggestion.GetAiSuggesti
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "AiSuggestion", description = "AI提案関連のAPI")
+@Tag(name = "11. AiSuggestion", description = "AI提案関連のAPI")
 public class AiSuggestionController extends ApiV1Controller {
 
     private final AiSuggestionUseCase aiSuggestionUseCase;

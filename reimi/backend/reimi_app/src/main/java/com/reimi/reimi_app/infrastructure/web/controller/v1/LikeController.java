@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Like", description = "いいね関連のAPI")
+@Tag(name = "05. Like", description = "いいね関連のAPI")
 public class LikeController extends ApiV1Controller {
 
     private final LikeUseCase likeUseCase;
