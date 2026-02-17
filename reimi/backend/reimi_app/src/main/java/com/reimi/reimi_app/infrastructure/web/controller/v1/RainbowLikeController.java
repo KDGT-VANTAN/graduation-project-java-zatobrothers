@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
-@Tag(name = "RainbowLike", description = "レインボーいいね関連のAPI")
+@Tag(name = "06. RainbowLike", description = "レインボーいいね関連のAPI")
 public class RainbowLikeController extends ApiV1Controller {
 
     private final RainbowLikeUseCase rainbowLikeUseCase;

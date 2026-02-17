@@ -48,6 +48,8 @@ springdoc:
         enabled: true
     swagger-ui:
         enabled: true
+        tagsSorter: alpha
+        operationsSorter: method
 
 # Firebase関連
 firebase:

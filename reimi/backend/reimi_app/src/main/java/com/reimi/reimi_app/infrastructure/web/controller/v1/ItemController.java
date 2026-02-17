@@ -14,7 +14,7 @@ import com.reimi.reimi_app.infrastructure.web.openapi.item.GetUserAccountDetailA
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "User", description = "ユーザー関連のAPI")
+@Tag(name = "01. User", description = "ユーザー関連のAPI")
 public class ItemController extends ApiV1Controller {
 
     private final ItemUseCase itemUseCase;

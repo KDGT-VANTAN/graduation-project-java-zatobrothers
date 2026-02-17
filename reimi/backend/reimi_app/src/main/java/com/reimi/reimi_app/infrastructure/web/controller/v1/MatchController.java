@@ -13,7 +13,7 @@ import com.reimi.reimi_app.infrastructure.web.openapi.match.GetMatchedUsersApi;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Match", description = "マッチング関連のAPI")
+@Tag(name = "07. Match", description = "マッチング関連のAPI")
 public class MatchController extends ApiV1Controller {
 
     private final MatchUseCase matchUseCase;

@@ -19,8 +19,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "チャットルームのメッセージ一覧取得",
-    description = "チャットルームに送信されたメッセージの一覧を取得できるAPI"
+    summary = "あるチャットルームのメッセージ一覧取得",
+    description = "あるチャットルームに送信されたメッセージの一覧を取得できるAPI"
 )
 @ApiResponses({
     @ApiResponse(

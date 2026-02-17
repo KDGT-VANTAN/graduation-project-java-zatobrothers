@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
-@Tag(name = "WeatherReport", description = "ウェザーリポート関連のAPI")
+@Tag(name = "09. WeatherReport", description = "ウェザーリポート関連のAPI")
 public class WeatherReportController extends ApiV1Controller {
 
     private final WeatherReportUseCase weatherReportUseCase;

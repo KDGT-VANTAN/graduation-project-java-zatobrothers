@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
-@Tag(name = "UserProfile", description = "プロフィール関連のAPI")
+@Tag(name = "03. UserProfile", description = "プロフィール関連のAPI")
 public class UserProfileController extends ApiV1Controller {
     private final UserProfileUseCase userProfileUseCase;
 

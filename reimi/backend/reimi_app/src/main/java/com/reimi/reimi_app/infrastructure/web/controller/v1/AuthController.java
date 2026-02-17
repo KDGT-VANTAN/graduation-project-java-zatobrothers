@@ -17,14 +17,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
-@Tag(name = "User", description = "ユーザー関連のAPI")
-public class DeviceTokenController extends ApiV1Controller {
+@Tag(name = "02. Auth", description = "ユーザー認証・端末トークン管理関連のAPI")
+public class AuthController extends ApiV1Controller {
 
     private final DeviceTokenService deviceTokenService;
     private final UserUseCase userUseCase;
     private final AuthenticatedUserProvider authenticatedUserProvider;
 
-    public DeviceTokenController(
+    public AuthController(
         DeviceTokenService deviceTokenService,
         UserUseCase userUseCase,
         AuthenticatedUserProvider authenticatedUserProvider
@@ -34,7 +34,7 @@ public class DeviceTokenController extends ApiV1Controller {
         this.authenticatedUserProvider = authenticatedUserProvider;
     }
 
-    @PostMapping(path = "/users/device-tokens")
+    @PostMapping(path = "/auth/device-tokens")
     @RegisterDeviceTokenApi
     public ResponseEntity<Void> registerDeviceToken(@Valid @RequestBody RegisterDeviceTokenRequest request) {
 

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@Tag(name = "ChatRoom", description = "チャットルーム関連のAPI")
+@Tag(name = "08. Message", description = "メッセージ関連のAPI")
 public class MessageController extends ApiV1Controller {
 
     private final MessageUseCase messageUseCase;
