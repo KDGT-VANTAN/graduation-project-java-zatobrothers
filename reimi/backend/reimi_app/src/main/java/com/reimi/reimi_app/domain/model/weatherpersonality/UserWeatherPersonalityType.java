@@ -6,8 +6,8 @@ public class UserWeatherPersonalityType {
 
     private final UserWeatherPersonalityTypeId id;
     private final UserId userId;
-    private final WeatherPersonalityType type;
-    private final WeatherPersonalityScore weatherPersonalityScore;
+    private WeatherPersonalityType type;
+    private WeatherPersonalityScore weatherPersonalityScore;
 
     private UserWeatherPersonalityType(
         UserWeatherPersonalityTypeId id,
@@ -34,6 +34,14 @@ public class UserWeatherPersonalityType {
             weatherPersonalityScore
         );
 
+    }
+
+    public void update(
+        WeatherPersonalityType type,
+        WeatherPersonalityScore weatherPersonalityScore
+    ) {
+        this.type = type;
+        this.weatherPersonalityScore = weatherPersonalityScore;
     }
 
     public static UserWeatherPersonalityType reconstruct(
