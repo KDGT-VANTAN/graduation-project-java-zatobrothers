@@ -17,8 +17,8 @@ import com.reimi.reimi_app.application.exception.client.ResourceNotFoundExceptio
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.application.usecase.WeatherPersonalityUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
-import com.reimi.reimi_app.domain.model.weatherpersonality.AnswerChoice;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxis;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.AnswerChoice;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityAxis;
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityTypeApi;

@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.WeatherPersonalityTypeRepository;
 import com.reimi.reimi_app.infrastructure.persistence.mapper.WeatherPersonalityTypeMapper;
 

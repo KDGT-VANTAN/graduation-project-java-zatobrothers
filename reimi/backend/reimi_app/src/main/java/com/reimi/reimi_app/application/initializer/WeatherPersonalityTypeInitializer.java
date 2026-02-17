@@ -4,7 +4,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.WeatherPersonalityTypeRepository;
 
 @Configuration

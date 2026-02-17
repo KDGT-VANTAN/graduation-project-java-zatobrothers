@@ -8,11 +8,11 @@ import com.reimi.reimi_app.application.exception.client.ResourceNotFoundExceptio
 import com.reimi.reimi_app.application.service.ImageUrlResolver;
 import com.reimi.reimi_app.application.usecase.WeatherPersonalityUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
-import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityDiagnosis;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityScore;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.WeatherPersonalityDiagnosis;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.WeatherPersonalityScore;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.user.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;

@@ -3,10 +3,10 @@ package com.reimi.reimi_app.infrastructure.web.dto.response;
 import java.util.List;
 import java.util.Map;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.AxisFeature;
-import com.reimi.reimi_app.domain.model.weatherpersonality.BehaviorTendency;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxis;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.AxisFeature;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.BehaviorTendency;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityAxis;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
