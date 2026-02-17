@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.domain.model.weatherpersonality;
+package com.reimi.reimi_app.domain.model.weatherpersonality.type;
 
 public enum WeatherPersonalityAxis {
     SENSITIVITY("感受性"),
