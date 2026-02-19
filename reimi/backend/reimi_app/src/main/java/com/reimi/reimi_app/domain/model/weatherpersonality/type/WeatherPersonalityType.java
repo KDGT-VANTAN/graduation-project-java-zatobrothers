@@ -105,22 +105,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SFOR,
-                    "感受性と外向性が近く、計画と即応が自然に役割分担できる。"
+                    WeatherPersonalityCode.SPOR,
+                    "感受性と行動リズムが近く、目的思考があなたの迷いを前向きに導いてくれる。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOE,
-                    "気分や空気感を共有しやすく、一緒にいるだけで前向きになれる。"
+                    "感情の波を共有でき、計画性の違いが良い刺激になる。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFIR,
-                    "判断が合理と内向に寄りがちで、感情ベースの動きが伝わりにくい。"
+                    "感情への関心が薄く、あなたの揺れが理解されにくい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.NFOR,
-                    "行動は噛み合っても、感情への向き合い方がズレやすい。"
+                    "効率優先の行動が、あなたには急かされているように感じやすい。"
                 )
             ),
             """
@@ -202,22 +202,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SFOE,
-                    "感受性が近く、情緒があることで推進力が柔らぐ。"
+                    WeatherPersonalityCode.SPOE,
+                    "感情への理解があり、あなたの推進力を柔らかく支えてくれる。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOR,
-                    "外向×実用で、計画と即断が現場で噛み合う。"
+                    "現場対応力が高く、計画と即断の役割分担が明確。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFIE,
-                    "内向情緒のペースに、行動スピードが強く出すぎる。"
+                    "創作優先のペースが、あなたの目的志向と噛み合いにくい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.NFOE,
-                    "感情表現は似ていても、合理判断の温度差が出やすい。"
+                    "感情主導の社交性が、合理性を乱される感覚につながる。"
                 )
             ),
             """
@@ -302,22 +302,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOR,
-                    "内向×感受性が近く、静かに深い理解が生まれる。"
+                    WeatherPersonalityCode.SPIR,
+                    "感受性を理解した上で、現実的に支えてくれる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFOR,
-                    "行動力が外側を補い、気持ちを現実に繋げてくれる。"
+                    WeatherPersonalityCode.SFIE,
+                    "感情の深さを共有でき、安心して内面を開ける。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFIR,
-                    "合理優先の判断に、感情のプロセスが置いていかれやすい。"
+                    WeatherPersonalityCode.NFOR,
+                    "外向的で合理的な行動に、心が置き去りになりやすい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "行動の速さと目的思考が、心のペースと合わない。"
+                    WeatherPersonalityCode.NFIR,
+                    "感情に踏み込まれず、距離を感じやすい。"
                 )
             ),
             """
@@ -401,22 +401,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "感受性と内向性が近く、感情と実務が安定する。"
+                    WeatherPersonalityCode.SPIE,
+                    "内面の繊細さを理解し合い、安定した関係を築ける。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFOE,
-                    "情緒を大切にする姿勢が、堅実さを和らげてくれる。"
+                    WeatherPersonalityCode.SFIR,
+                    "静かな実務力同士で、無言でも信頼が成り立つ。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFOE,
-                    "外向情緒のテンポに、落ち着きが乱されやすい。"
+                    "感情表現の方向性が違い、疲れやすい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFIE,
-                    "内向でも価値基準が違い、判断の納得点がズレやすい。"
+                    WeatherPersonalityCode.NFOR,
+                    "スピード感が合わず、慎重さが評価されにくい。"
                 )
             ),
             """
@@ -503,21 +503,21 @@ public class WeatherPersonalityType {
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.SPOE,
-                    "感受性と外向性が近く、計画があることで安心して動ける。"
+                    "感情の波を受け止めてもらえ、安心して動ける。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOR,
-                    "行動テンポが合い、勢いと判断力のバランスが良い。"
+                    "柔軟さは同じで、実用視点がブレーキ役になる。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFIR,
-                    "静かで合理的な価値観に、気分の波が理解されにくい。"
+                    "感情重視の行動が、理解されにくい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.NFOR,
-                    "目的優先の判断が続くと、自由さが制限されやすい。"
+                    "効率優先の判断に、自由さを奪われたように感じる。"
                 )
             ),
             """
@@ -600,22 +600,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "感受性と外向性が共鳴し、行動が自然と前に進む。"
+                    WeatherPersonalityCode.SPOR,
+                    "判断の速さと計画性が噛み合い、行動が加速する。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SPOR,
-                    "計画と即応が補完関係になり、決断が早い。"
+                    WeatherPersonalityCode.SFOE,
+                    "感受性が近く、場の空気を読みながら動ける。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFIE,
-                    "内向的な感情処理に、行動優先が強く映りやすい。"
+                    "内向的な創作ペースに、歯がゆさを感じやすい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.NFOE,
-                    "感情の扱い方は似ていても、判断軸がズレやすい。"
+                    "感情判断の軸が異なり、意思決定がぶれやすい。"
                 )
             ),
             """
@@ -697,22 +697,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SFOR,
-                    "感受性と内向性が近く、安心できる距離感を保てる。"
+                    WeatherPersonalityCode.SPIE,
+                    "感情の深さを尊重し合える、静かな安心関係。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFIE,
-                    "情緒と柔軟さが共鳴し、無理なく寄り添える。"
+                    WeatherPersonalityCode.SFIR,
+                    "互いに干渉しすぎず、心地よい距離を保てる。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.NFOR,
-                    "行動と合理を優先されると、感情が後回しになりやすい。"
+                    "行動量と外向性の差がストレスになりやすい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.NFIR,
-                    "静かな合理性に、気持ちを汲んでもらいにくい。"
+                    "実務優先の姿勢に、感情が置き去りになりがち。"
                 )
             ),
             """
@@ -798,22 +798,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SFIE,
-                    "感受性と内向性が近く、静かな信頼関係が築ける。"
+                    WeatherPersonalityCode.SPIR,
+                    "堅実さと感受性のバランスが取れる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SPOR,
-                    "計画と実行力が外側を支え、安心して任せられる。"
+                    WeatherPersonalityCode.SFIE,
+                    "静かな環境で、互いのペースを尊重できる。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFIR,
-                    "合理優先の判断が続くと、気持ちの居場所がなくなる。"
+                    WeatherPersonalityCode.NFOE,
+                    "社交的すぎる環境に、消耗しやすい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "行動と目的のスピード差が負担になりやすい。"
+                    WeatherPersonalityCode.NFIE,
+                    "感情表現の方向性が合わない。"
                 )
             ),
             """
@@ -896,22 +896,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "行動方向と合理性が噛み合い、判断がスムーズ。"
+                    WeatherPersonalityCode.NPOR,
+                    "計画性と外向性が一致し、強い推進力を生む。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NPOR,
-                    "計画×実用で、迷いなく前に進める。"
+                    WeatherPersonalityCode.NFOE,
+                    "柔軟な社交性が、あなたの戦略を広げてくれる。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "感受性と情緒が強く、判断基準がブレやすい。"
+                    WeatherPersonalityCode.SFIR,
+                    "感受性の高さに、対応コストを感じやすい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SPIE,
-                    "内向情緒のペースに、外向戦略が強く出がち。"
+                    WeatherPersonalityCode.SFOR,
+                    "直感的判断が多く、戦略性が噛み合いにくい。"
                 )
             ),
             """
@@ -996,22 +996,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFOE,
-                    "外向性と合理性が揃い、推進力が最大化する。"
+                    WeatherPersonalityCode.NPOE,
+                    "外向的リーダー同士で、役割分担が明確。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFIR,
-                    "計画と内向実務が補完し、精度が上がる。"
+                    WeatherPersonalityCode.NFOR,
+                    "現場対応力が、あなたの計画を実行に移す。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SFOE,
-                    "感情と内省を重視されると、判断が遅く感じる。"
+                    WeatherPersonalityCode.SFIE,
+                    "感情優先の姿勢が、非合理に見えやすい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFOR,
-                    "堅実さは似ていても、感情への配慮がズレやすい。"
+                    WeatherPersonalityCode.SFOE,
+                    "判断基準の違いから、衝突しやすい。"
                 )
             ),
             """
@@ -1095,22 +1095,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NPOR,
-                    "内向×低感受で、静かな信頼関係が築ける。"
+                    WeatherPersonalityCode.NPIR,
+                    "内向的で計画的、静かに成果を出せる関係。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "外側の行動力が、思考を現実に落とし込む。"
+                    WeatherPersonalityCode.NFIE,
+                    "創造性と分析力が補完し合う。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "感情と外向性の強さに、思考ペースが乱されやすい。"
+                    WeatherPersonalityCode.SFOR,
+                    "即断即決のスピードに疲れやすい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOE,
-                    "内向でも感情軸が違い、判断基準が合わない。"
+                    "感情の起伏が大きく、集中が削がれる。"
                 )
             ),
             """
@@ -1194,22 +1194,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFIE,
-                    "内向×低感受で、静かな相互理解が成立する。"
+                    WeatherPersonalityCode.NPIE,
+                    "精度重視の思考を共有できる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOE,
-                    "思考と感情が穏やかに循環する。"
+                    WeatherPersonalityCode.NFIR,
+                    "静かな実務同士で、安定感が高い。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.SFOE,
-                    "外向情緒の刺激が多く、集中が途切れやすい。"
+                    "感情主導の行動が読みにくい。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFOE,
-                    "感情の重さが、合理判断の邪魔になりやすい。"
+                    WeatherPersonalityCode.SPOE,
+                    "気分変動への対応が負担になりやすい。"
                 )
             ),
             """
@@ -1291,22 +1291,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NPOR,
-                    "合理と柔軟さが補完し、行動が形になりやすい。"
+                    WeatherPersonalityCode.NPOE,
+                    "計画と社交性が合わさり、人脈が広がる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFIE,
-                    "感情表現と内省が共鳴し、気持ちを言語化できる。"
+                    WeatherPersonalityCode.NFOR,
+                    "行動力と調整力で、現場が回りやすい。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "感受性の揺れに、判断軸が引っ張られやすい。"
+                    WeatherPersonalityCode.SFIR,
+                    "静かな実務ペースを乱してしまいがち。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.SFOR,
-                    "行動優先同士だが、感情処理の方法がズレる。"
+                    WeatherPersonalityCode.SPIR,
+                    "慎重さがブレーキに感じられる。"
                 )
             ),
             """
@@ -1389,22 +1389,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NPOE,
-                    "外向×合理で、状況判断が速く迷いが少ない。"
+                    WeatherPersonalityCode.NPOR,
+                    "統率と実行が噛み合う。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NPOR,
-                    "戦略と機動力が噛み合い、成果に直結する。"
+                    WeatherPersonalityCode.NFOE,
+                    "行動派同士でテンポが合う。"
                 )
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.SPOE,
-                    "情緒と感受性の揺れが、判断ノイズになりやすい。"
+                    WeatherPersonalityCode.SPIE,
+                    "内省重視の姿勢に、時間がかかると感じやすい。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOE,
-                    "感情優先の動きに、合理性が追いつかない。"
+                    "感情優先の判断が非効率に見える。"
                 )
             ),
             """
@@ -1487,22 +1487,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NFOE,
-                    "内向情緒と低感受が共鳴し、安心して感性を共有できる。"
+                    WeatherPersonalityCode.NPIE,
+                    "静かな創造と分析が共存できる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "感情と実務のバランスが取れ、落ち着いた関係。"
+                    WeatherPersonalityCode.NFIR,
+                    "柔軟性と実務力で、安定した協力関係。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.SPOR,
-                    "推進力と合理性が強く、感情処理が追いつかない。"
+                    "目的志向が強く、自由さが削がれる。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOR,
-                    "行動スピードが早く、内省の余白が削られやすい。"
+                    "即断即決に、思考が追いつかない。"
                 )
             ),
             """
@@ -1587,22 +1587,22 @@ public class WeatherPersonalityType {
             ),
             List.of(
                 new Compatibility(
-                    WeatherPersonalityCode.NPOR,
-                    "合理と計画が補完し、無駄のない協力関係。"
+                    WeatherPersonalityCode.NPIR,
+                    "淡々と成果を積み上げられる。"
                 ),
                 new Compatibility(
-                    WeatherPersonalityCode.NFOR,
-                    "機動力と内向実務が噛み合い、安定する。"
+                    WeatherPersonalityCode.NFIE,
+                    "静かな環境で、互いを尊重できる。"
                 )
             ),
             List.of(
                 new Compatibility(
                     WeatherPersonalityCode.SPOE,
-                    "情緒と外向性の刺激が強く、疲れやすい。"
+                    "感情の揺れに対応しきれない。"
                 ),
                 new Compatibility(
                     WeatherPersonalityCode.SFOE,
-                    "感情を重視される場面で、判断基準が合わない。"
+                    "行動理由が感情的すぎて理解しづらい。"
                 )
             ),
             """
