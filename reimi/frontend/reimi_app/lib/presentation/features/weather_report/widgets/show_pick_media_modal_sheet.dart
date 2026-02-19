@@ -5,11 +5,13 @@ import 'package:reimi_app/presentation/shared/widgets/app_modal_sheet.dart';
 
 void showPickMediaModalSheet({
   required BuildContext context,
+  required void Function() takePhoto,
   required void Function() selectExistingPhoto,
 }) {
   showAppModalBottomSheet(
     context: context,
     child: PickMediaModalSheet(
+      takePhoto: takePhoto,
       selectExistingPhoto: selectExistingPhoto,
     ),
   );
@@ -18,8 +20,10 @@ void showPickMediaModalSheet({
 class PickMediaModalSheet extends StatelessWidget {
   const PickMediaModalSheet({
     super.key,
+    required this.takePhoto,
     required this.selectExistingPhoto,
   });
+  final void Function() takePhoto;
   final void Function() selectExistingPhoto;
 
   @override
@@ -32,17 +36,18 @@ class PickMediaModalSheet extends StatelessWidget {
           _ActionButton(
             label: t.modalSheet.pickMedia.label.takePhoto,
             onTap: () {
+              takePhoto();
               Navigator.pop(context);
             },
           ),
           const SizedBox(height: 8),
-          _ActionButton(
-            label: t.modalSheet.pickMedia.label.recordVideo,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          const SizedBox(height: 8),
+          // _ActionButton(
+          //   label: t.modalSheet.pickMedia.label.recordVideo,
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          // const SizedBox(height: 8),
           _ActionButton(
             label: t.modalSheet.pickMedia.label.selectExistingPhoto,
             onTap: () {
@@ -50,13 +55,13 @@ class PickMediaModalSheet extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          const SizedBox(height: 8),
-          _ActionButton(
-            label: t.modalSheet.pickMedia.label.selectExistingVideo,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+          // const SizedBox(height: 8),
+          // _ActionButton(
+          //   label: t.modalSheet.pickMedia.label.selectExistingVideo,
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
           const SizedBox(height: 24),
           _CancelButton(
             onTap: () => Navigator.pop(context),
