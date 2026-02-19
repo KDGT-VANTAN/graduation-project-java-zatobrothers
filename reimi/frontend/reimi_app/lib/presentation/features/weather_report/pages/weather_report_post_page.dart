@@ -34,8 +34,8 @@ class WeatherReportPostPage extends HookConsumerWidget {
     final t = Translations.of(context);
     final theme = Theme.of(context);
     final notifier = ref.read(weatherReportPostNotifierProvider.notifier);
-    final weatherPhoto = ref
-        .watch(weatherReportPostNotifierProvider.select((state) => state.weatherPhoto));
+    final weatherPhoto = ref.watch(weatherReportPostNotifierProvider
+        .select((state) => state.weatherPhoto));
     final comment = ref.watch(
         weatherReportPostNotifierProvider.select((state) => state.comment));
     final weatherType = ref.watch(
@@ -142,6 +142,15 @@ class WeatherReportPostPage extends HookConsumerWidget {
                       onTap: () {
                         showPickMediaModalSheet(
                           context: context,
+                          takePhoto: () async {
+                            final file = await pickImageFromCamera();
+                            if (file != null) {
+                              notifier.updateMedia(
+                                mediaType: MediaType.image,
+                                weatherPhoto: file.path,
+                              );
+                            }
+                          },
                           selectExistingPhoto: () async {
                             final file = await pickImageFromGallery();
                             if (file != null) {
