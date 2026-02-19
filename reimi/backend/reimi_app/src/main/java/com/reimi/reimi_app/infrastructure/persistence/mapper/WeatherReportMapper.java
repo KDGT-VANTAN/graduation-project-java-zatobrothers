@@ -1,10 +1,10 @@
 package com.reimi.reimi_app.infrastructure.persistence.mapper;
 
-import com.reimi.reimi_app.domain.model.report.WeatherMedia;
-import com.reimi.reimi_app.domain.model.report.WeatherMediaId;
 import com.reimi.reimi_app.domain.model.report.WeatherObservation;
 import com.reimi.reimi_app.domain.model.report.WeatherReport;
 import com.reimi.reimi_app.domain.model.report.WeatherReportId;
+import com.reimi.reimi_app.domain.model.report.media.WeatherMedia;
+import com.reimi.reimi_app.domain.model.report.media.WeatherMediaId;
 import com.reimi.reimi_app.domain.model.user.UserId;
 import com.reimi.reimi_app.infrastructure.persistence.embeddable.WeatherObservationEmbeddable;
 import com.reimi.reimi_app.infrastructure.persistence.entity.WeatherMediaEntity;

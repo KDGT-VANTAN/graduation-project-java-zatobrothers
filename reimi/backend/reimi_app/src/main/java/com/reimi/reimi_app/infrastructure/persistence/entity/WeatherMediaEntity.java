@@ -4,7 +4,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
 
-import com.reimi.reimi_app.domain.model.report.value.MediaType;
+import com.reimi.reimi_app.domain.model.report.media.MediaType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

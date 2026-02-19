@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.reimi.reimi_app.domain.model.report.media.MediaType;
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
 import com.reimi.reimi_app.domain.model.report.value.ForecastType;
-import com.reimi.reimi_app.domain.model.report.value.MediaType;
 import com.reimi.reimi_app.domain.model.report.value.WeatherType;
 import com.reimi.reimi_app.domain.model.report.value.WindDirection;
 
