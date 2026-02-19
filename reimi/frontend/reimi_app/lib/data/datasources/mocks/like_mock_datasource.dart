@@ -23,55 +23,49 @@ class LikeMockDataSource implements LikeRemoteDataSource {
 }
 
 final List<LikeUserDto> mockLikeUsersFromUser = [
-  // 佐藤 葵 (001) - あなたに「いいね」してくれたユーザー
   LikeUserDto(
-    id: 'user_001',
-    name: 'あおい',
-    birthDate: DateTime(2001, 5, 15),
-    address: Address.tokyo,
-    mainPhotoUrl: Assets.images.sample.user000SampleImage.path,
-    introduction: '都内でWebデザイナーをしています。休日はカフェ巡りや美術館に行くのが好きです。よろしくお願いします！',
-    isTodayReported: true,
-    typeImageUrl:
-        Assets.images.weatherPersonality.spoeTraineeSeaOtterImage.path,
-  ),
-  // 高橋 美咲 (004) - あなたに「いいね」してくれたユーザー
-  LikeUserDto(
-    id: 'user_004',
-    name: 'みさき',
-    birthDate: DateTime(1997, 7, 12),
-    address: Address.fukuoka,
-    mainPhotoUrl: Assets.images.sample.user004SampleImage.path,
-    introduction: 'フリーランスでイラストを描いています。のんびりした性格です。美味しいご飯とお酒が大好きです。',
+    id: 'user_003',
+    name: 'しょうた',
+    birthDate: DateTime(2000, 3, 22),
+    address: Address.aichi,
+    mainPhotoUrl: Assets.images.sample.user001SampleImage.path,
+    introduction: 'エンジニアを目指して勉強中です！最近はキャンプにハマっています。一緒に盛り上がれる友達募集中です。',
     isTodayReported: false,
     typeImageUrl:
-        Assets.images.weatherPersonality.sforCrowsInTheGardenImage.path,
+        Assets.images.weatherPersonality.sporPerfectionistLionImage.path,
+  ),
+  LikeUserDto(
+    id: 'chat_user_001',
+    name: 'さくら',
+    birthDate: DateTime(2000, 4, 15),
+    address: Address.tokyo,
+    mainPhotoUrl: Assets.images.sample.chatUser001SampleImage.path,
+    introduction: 'アパレル店員をしています！休日はよくショッピングに行ったり、新作のスイーツをチェックしたりしています🍰',
+    isTodayReported: false,
+    typeImageUrl:
+        Assets.images.weatherPersonality.npoeDolphinsInTheAquariumImage.path,
   ),
 ];
 
 final List<LikeUserDto> mockLikeUsersToUser = [
-  // 田中 健 (002) - あなたが「いいね」を送ったユーザー
   LikeUserDto(
-    id: 'user_002',
-    name: 'けん',
-    birthDate: DateTime(1992, 11, 3),
-    address: Address.osaka,
-    mainPhotoUrl: Assets.images.sample.user002SampleImage.path,
-    introduction: '大阪で経営をしています。仕事人間でしたが、最近は健康のためにゴルフを始めました。',
-    isTodayReported: true,
-    typeImageUrl:
-        Assets.images.weatherPersonality.spieSentimentalSquirrelImage.path,
+    id: 'chat_user_005',
+    name: 'みお',
+    birthDate: DateTime(1999, 6, 25),
+    address: Address.chiba,
+    mainPhotoUrl: Assets.images.sample.chatUser005SampleImage.path,
+    introduction: '看護師をしています💉 忙しい毎日ですが、休日はディズニーランドに行ってリフレッシュしています！',
+    isTodayReported: false,
+    typeImageUrl: Assets.images.weatherPersonality.nforGoatOnTheCliffImage.path,
   ),
-  // 渡辺 由美子 (006) - ログインが少し前のユーザー
   LikeUserDto(
-    id: 'user_006',
-    name: 'みゆき',
-    birthDate: DateTime(2002, 2, 28),
-    address: Address.tokyo,
-    mainPhotoUrl: Assets.images.sample.user003SampleImage.path,
-    introduction: '落ち着いたお付き合いができる方を探しています。ガーデニングと海外旅行が趣味です。',
+    id: 'user_005',
+    name: 'けんた',
+    birthDate: DateTime(1996, 9, 5),
+    address: Address.hokkaido,
+    mainPhotoUrl: Assets.images.sample.user005SampleImage.path,
+    introduction: '北海道の大自然の中で育ちました。冬はスキー、夏はハイキングをしています。アクティブな方が好きです！',
     isTodayReported: true,
-    typeImageUrl:
-        Assets.images.weatherPersonality.sfoeStreetPerformingRedPandaImage.path,
+    typeImageUrl: Assets.images.weatherPersonality.nfieSoftOctopusImage.path,
   ),
 ];
