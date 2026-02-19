@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.domain.model.weatherpersonality;
+package com.reimi.reimi_app.domain.model.weatherpersonality.type;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ public class WeatherPersonalityType {
     private final String rulingStatement;
     private final List<AxisFeature> axisFeatures;
     private final List<BehaviorTendency> behaviorTendencies;
+    private final List<Compatibility> goodCompatibilities;
+    private final List<Compatibility> cautionCompatibilities;
     private final String godsMessage;
 
     private WeatherPersonalityType (
@@ -21,6 +23,8 @@ public class WeatherPersonalityType {
         String rulingStatement,
         List<AxisFeature> axisFeatures,
         List<BehaviorTendency> behaviorTendencies,
+        List<Compatibility> goodCompatibilities,
+        List<Compatibility> cautionCompatibilities,
         String godsMessage
     ) {
         this.code = code;
@@ -30,6 +34,8 @@ public class WeatherPersonalityType {
         this.rulingStatement = rulingStatement;
         this.axisFeatures = axisFeatures;
         this.behaviorTendencies = behaviorTendencies;
+        this.goodCompatibilities = goodCompatibilities;
+        this.cautionCompatibilities = cautionCompatibilities;
         this.godsMessage = godsMessage;
     }
 
@@ -95,6 +101,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "自分より他人の感情に敏感",
                     "「あ、この人今日ちょっと沈んでるな」にすぐ気づく。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOR,
+                    "感受性と行動リズムが近く、目的思考があなたの迷いを前向きに導いてくれる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "感情の波を共有でき、計画性の違いが良い刺激になる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "感情への関心が薄く、あなたの揺れが理解されにくい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "効率優先の行動が、あなたには急かされているように感じやすい。"
                 )
             ),
             """
@@ -172,6 +198,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「ついていけば大丈夫」\n「厳しいけど、結果は出す人」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOE,
+                    "感情への理解があり、あなたの推進力を柔らかく支えてくれる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOR,
+                    "現場対応力が高く、計画と即断の役割分担が明確。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFIE,
+                    "創作優先のペースが、あなたの目的志向と噛み合いにくい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "感情主導の社交性が、合理性を乱される感覚につながる。"
                 )
             ),
             """
@@ -254,6 +300,26 @@ public class WeatherPersonalityType {
                     "「静かだけど、話すと深い」\n「あの人に話すと整理される」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPIR,
+                    "感受性を理解した上で、現実的に支えてくれる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFIE,
+                    "感情の深さを共有でき、安心して内面を開ける。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "外向的で合理的な行動に、心が置き去りになりやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "感情に踏み込まれず、距離を感じやすい。"
+                )
+            ),
             """
             あなたは、
             感情をすぐに手放さなかったからこそ、
@@ -331,6 +397,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「この人が関わってると安心」\n「最後に残るのは、この人の仕事」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPIE,
+                    "内面の繊細さを理解し合い、安定した関係を築ける。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFIR,
+                    "静かな実務力同士で、無言でも信頼が成り立つ。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "感情表現の方向性が違い、疲れやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "スピード感が合わず、慎重さが評価されにくい。"
                 )
             ),
             """
@@ -414,6 +500,26 @@ public class WeatherPersonalityType {
                     "「一緒にいると楽しい」\n「予測不能だけど憎めない」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOE,
+                    "感情の波を受け止めてもらえ、安心して動ける。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOR,
+                    "柔軟さは同じで、実用視点がブレーキ役になる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "感情重視の行動が、理解されにくい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "効率優先の判断に、自由さを奪われたように感じる。"
+                )
+            ),
             """
             あなたは、
             安定を選ばなかったからこそ、
@@ -492,6 +598,26 @@ public class WeatherPersonalityType {
                     "「判断が早くて助かる」\n「気づいたら仕切ってる人」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOR,
+                    "判断の速さと計画性が噛み合い、行動が加速する。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "感受性が近く、場の空気を読みながら動ける。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFIE,
+                    "内向的な創作ペースに、歯がゆさを感じやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "感情判断の軸が異なり、意思決定がぶれやすい。"
+                )
+            ),
             """
             あなたは、
             迷っている時間そのものを
@@ -567,6 +693,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「そばにいると落ち着く」\n「話さなくても安心できる」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPIE,
+                    "感情の深さを尊重し合える、静かな安心関係。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFIR,
+                    "互いに干渉しすぎず、心地よい距離を保てる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "行動量と外向性の差がストレスになりやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "実務優先の姿勢に、感情が置き去りになりがち。"
                 )
             ),
             """
@@ -650,6 +796,26 @@ public class WeatherPersonalityType {
                     "「静かだけど頼れる」\n「抜けると困る人」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPIR,
+                    "堅実さと感受性のバランスが取れる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFIE,
+                    "静かな環境で、互いのペースを尊重できる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "社交的すぎる環境に、消耗しやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIE,
+                    "感情表現の方向性が合わない。"
+                )
+            ),
             """
             あなたは、
             すべてを感じてしまうからこそ、
@@ -726,6 +892,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「安心して任せられる」\n「一緒にいると場が締まる」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPOR,
+                    "計画性と外向性が一致し、強い推進力を生む。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "柔軟な社交性が、あなたの戦略を広げてくれる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SFIR,
+                    "感受性の高さに、対応コストを感じやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOR,
+                    "直感的判断が多く、戦略性が噛み合いにくい。"
                 )
             ),
             """
@@ -808,6 +994,26 @@ public class WeatherPersonalityType {
                     "「ブレない」\n「厳しいけど合理的」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPOE,
+                    "外向的リーダー同士で、役割分担が明確。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "現場対応力が、あなたの計画を実行に移す。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SFIE,
+                    "感情優先の姿勢が、非合理に見えやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "判断基準の違いから、衝突しやすい。"
+                )
+            ),
             """
             あなたは、
             感じることよりも、
@@ -885,6 +1091,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「話すと頭が整理される」\n「静かだけど信頼できる」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPIR,
+                    "内向的で計画的、静かに成果を出せる関係。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIE,
+                    "創造性と分析力が補完し合う。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SFOR,
+                    "即断即決のスピードに疲れやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "感情の起伏が大きく、集中が削がれる。"
                 )
             ),
             """
@@ -966,6 +1192,26 @@ public class WeatherPersonalityType {
                     "「この人がOKなら大丈夫」\n「最後の砦」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPIE,
+                    "精度重視の思考を共有できる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "静かな実務同士で、安定感が高い。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "感情主導の行動が読みにくい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SPOE,
+                    "気分変動への対応が負担になりやすい。"
+                )
+            ),
             """
             派手さは、
             世界を動かします。
@@ -1041,6 +1287,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「この人がいると場が回る」\n「なんか安心する」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPOE,
+                    "計画と社交性が合わさり、人脈が広がる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOR,
+                    "行動力と調整力で、現場が回りやすい。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SFIR,
+                    "静かな実務ペースを乱してしまいがち。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SPIR,
+                    "慎重さがブレーキに感じられる。"
                 )
             ),
             """
@@ -1121,6 +1387,26 @@ public class WeatherPersonalityType {
                     "「現場に強い」\n「この人が行けば何とかなる」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPOR,
+                    "統率と実行が噛み合う。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFOE,
+                    "行動派同士でテンポが合う。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPIE,
+                    "内省重視の姿勢に、時間がかかると感じやすい。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "感情優先の判断が非効率に見える。"
+                )
+            ),
             """
             動かぬ者に、
             道は見えません。
@@ -1197,6 +1483,26 @@ public class WeatherPersonalityType {
                 new BehaviorTendency(
                     "周囲からの評価",
                     "「何考えてるかわからないけど、すごい」\n「唯一無二」"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPIE,
+                    "静かな創造と分析が共存できる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIR,
+                    "柔軟性と実務力で、安定した協力関係。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOR,
+                    "目的志向が強く、自由さが削がれる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOR,
+                    "即断即決に、思考が追いつかない。"
                 )
             ),
             """
@@ -1279,6 +1585,26 @@ public class WeatherPersonalityType {
                     "「地味だけど最強」\n「最後に頼る人」"
                 )
             ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.NPIR,
+                    "淡々と成果を積み上げられる。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.NFIE,
+                    "静かな環境で、互いを尊重できる。"
+                )
+            ),
+            List.of(
+                new Compatibility(
+                    WeatherPersonalityCode.SPOE,
+                    "感情の揺れに対応しきれない。"
+                ),
+                new Compatibility(
+                    WeatherPersonalityCode.SFOE,
+                    "行動理由が感情的すぎて理解しづらい。"
+                )
+            ),
             """
             世界は、
             目立つ者だけで回っているのではありません。
@@ -1326,6 +1652,8 @@ public class WeatherPersonalityType {
     public String getRulingStatement() { return rulingStatement; }
     public List<AxisFeature> getAxisFeatures() { return axisFeatures; }
     public List<BehaviorTendency> getBehaviorTendencies() { return behaviorTendencies; }
+    public List<Compatibility> getGoodCompatibilities() { return goodCompatibilities; }
+    public List<Compatibility> getCautionCompatibilities() { return cautionCompatibilities; }
     public String getGodsMessage() { return godsMessage; }
 
     //タイプのイメージ画像をURLとして管理したいためシリアライズ対象外とする

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +18,13 @@ import com.reimi.reimi_app.application.exception.client.ResourceNotFoundExceptio
 import com.reimi.reimi_app.application.usecase.UserUseCase;
 import com.reimi.reimi_app.application.usecase.WeatherPersonalityUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
-import com.reimi.reimi_app.domain.model.weatherpersonality.AnswerChoice;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityAxis;
+import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.AnswerChoice;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityAxis;
 import com.reimi.reimi_app.infrastructure.web.dto.request.DiagnoseWeatherPersonalityRequest;
+import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultDetailWeatherPersonalityResponse;
 import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
+import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DetailUserWeatherPersonalityTypeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.DiagnoseWeatherPersonalityTypeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.GetUserWeatherPersonalityTypeApi;
 import com.reimi.reimi_app.infrastructure.web.openapi.weatherpersonality.ReDiagnoseWeatherPersonalityTypeApi;
@@ -49,7 +53,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
         this.userUseCase = userUseCase;
     }
 
-    @PostMapping("/user-weather-personality-type")
+    @PostMapping("/users/user-weather-personality-type")
     @DiagnoseWeatherPersonalityTypeApi
     public ResponseEntity<Void> diagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
@@ -87,7 +91,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/user-weather-personality-type")
+    @GetMapping("/users/user-weather-personality-type")
     @GetUserWeatherPersonalityTypeApi
     public ResponseEntity<DiagnoseResultWeatherPersonalityResponse> getResult(
     ) {
@@ -115,7 +119,7 @@ public class WeatherPersonalityController extends ApiV1Controller {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/user-weather-personality-type")
+    @PutMapping("/users/user-weather-personality-type")
     @ReDiagnoseWeatherPersonalityTypeApi
     public ResponseEntity<Void> reDiagnose(
         @Valid @RequestBody DiagnoseWeatherPersonalityRequest request
@@ -151,5 +155,36 @@ public class WeatherPersonalityController extends ApiV1Controller {
         );
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/users/{userId}/user-weather-personality-type")
+    @DetailUserWeatherPersonalityTypeApi
+    public ResponseEntity<DiagnoseResultDetailWeatherPersonalityResponse> getResultDetail(
+        @PathVariable UserId userId
+    ) {
+        var result = weatherPersonalityUseCase.getUserResultDetail(userId);
+
+        Map<WeatherPersonalityAxis, Integer> userAxisScoreMap = new LinkedHashMap<>();
+        userAxisScoreMap.put(WeatherPersonalityAxis.SENSITIVITY, result.getWeatherPersonalityScore().sensitivity());
+        userAxisScoreMap.put(WeatherPersonalityAxis.PREPAREDNESS, result.getWeatherPersonalityScore().preparedness());
+        userAxisScoreMap.put(WeatherPersonalityAxis.ACTIVITY, result.getWeatherPersonalityScore().activity());
+        userAxisScoreMap.put(WeatherPersonalityAxis.MOTIVATION, result.getWeatherPersonalityScore().motivation());
+
+        DiagnoseResultDetailWeatherPersonalityResponse response =
+            new DiagnoseResultDetailWeatherPersonalityResponse(
+                result.getWeatherPersonalityType().getCode(),
+                result.getWeatherPersonalityType().getName(),
+                result.getWeatherPersonalityType().getCatchphrase(),
+                result.getWeatherPersonalityType().getTypeImageUrl(),
+                result.getWeatherPersonalityType().getRulingStatement(),
+                result.getWeatherPersonalityType().getAxisFeatures(),
+                userAxisScoreMap,
+                result.getWeatherPersonalityType().getBehaviorTendencies(),
+                result.getWeatherPersonalityType().getGoodCompatibilities(),
+                result.getWeatherPersonalityType().getCautionCompatibilities(),
+                result.getWeatherPersonalityType().getGodsMessage()
+            );
+
+        return ResponseEntity.ok(response);
     }
 }

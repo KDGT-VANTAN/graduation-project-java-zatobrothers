@@ -16,7 +16,7 @@ import com.reimi.reimi_app.domain.model.item.ItemTypeCode;
 import com.reimi.reimi_app.domain.model.item.UserItem;
 import com.reimi.reimi_app.domain.model.user.User;
 import com.reimi.reimi_app.domain.model.user.UserId;
-import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.user.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserItemRepository;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;

@@ -5,13 +5,14 @@ import java.util.Map;
 
 import com.reimi.reimi_app.domain.model.weatherpersonality.type.AxisFeature;
 import com.reimi.reimi_app.domain.model.weatherpersonality.type.BehaviorTendency;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.Compatibility;
 import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityAxis;
 import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "ユーザーのウェザーパーソナリティ診断結果表示用レスポンス")
-public record DiagnoseResultWeatherPersonalityResponse(
+@Schema(description = "ウェザーパーソナリティ診断結果の詳細表示用レスポンス")
+public record DiagnoseResultDetailWeatherPersonalityResponse(
 
     @Schema(description = "タイプコード", example = "SPOE")
     WeatherPersonalityCode typeCode,
@@ -57,6 +58,22 @@ public record DiagnoseResultWeatherPersonalityResponse(
         "  }\n" +
         "]")
     List<BehaviorTendency> behaviorTendencies,
+
+    @Schema(description = "あなたと相性の良いタイプ", example = "[\n" +
+        "  {\n" +
+        "    \"type\": \"SFOR\",\n" +
+        "    \"message\": \"感受性と外向性が近く、計画と即応が自然に役割分担できる。\"\n" +
+        "  }\n" +
+        "]")
+    List<Compatibility> goodCompatibilities,
+
+    @Schema(description = "注意が必要なタイプ", example = "[\n" +
+        "  {\n" +
+        "    \"type\": \"NFIR\",\n" +
+        "    \"message\": \"判断が合理と内向に寄りがちで、感情ベースの動きが伝わりにくい。\"\n" +
+        "  }\n" +
+        "]")
+    List<Compatibility> cautionCompatibilities,
 
     @Schema(description = "神様からの一言", example = "あなたは、感情を弱点にせず、...")
     String godsMessage

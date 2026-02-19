@@ -2,8 +2,8 @@ package com.reimi.reimi_app.domain.repository;
 
 import java.util.Optional;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
 
 public interface WeatherPersonalityTypeRepository {
 

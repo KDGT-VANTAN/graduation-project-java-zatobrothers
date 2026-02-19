@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import com.reimi.reimi_app.infrastructure.web.dto.response.ApiErrorResponse;
-import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultWeatherPersonalityResponse;
+import com.reimi.reimi_app.infrastructure.web.dto.response.DiagnoseResultDetailWeatherPersonalityResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,16 +18,32 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Operation(
-    summary = "ウェザーパーソナリティ診断結果表示",
-    description = "ユーザーのウェザーパーソナリティタイプの診断結果を表示するAPI"
+    summary = "ウェザーパーソナリティ診断結果の詳細表示",
+    description = "ユーザーのウェザーパーソナリティタイプの診断結果の詳細表示をするAPI"
 )
 @ApiResponses({
     @ApiResponse(
         responseCode = "200",
-        description = "ユーザーのウェザーパーソナリティ診断結果の取得成功",
+        description = "ユーザーのウェザーパーソナリティ診断結果の詳細表示成功",
         content = @Content(
             mediaType = "application/json",
-            schema = @Schema(implementation = DiagnoseResultWeatherPersonalityResponse.class)
+            schema = @Schema(implementation = DiagnoseResultDetailWeatherPersonalityResponse.class)
+        )
+    ),
+    @ApiResponse(
+        responseCode = "400",
+        description = "無効なリクエスト",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "INVALID_REQUEST",
+                    "message": "リクエストパラメータの形式が不正です"
+                }
+                """
+            )
         )
     ),
     @ApiResponse(
@@ -41,6 +57,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
                 {
                     "code": "UNAUTHENTICATED",
                     "message": "認証されていません"
+                }
+                """
+            )
+        )
+    ),
+    @ApiResponse(
+        responseCode = "403",
+        description = "権限エラー",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class),
+            examples = @ExampleObject(
+                value = """
+                {
+                    "code": "ACCESS_DENIED",
+                    "message": "この操作を行う権限がありません"
                 }
                 """
             )
@@ -79,5 +111,5 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
         )
     )
 })
-public @interface GetUserWeatherPersonalityTypeApi {
+public @interface DetailUserWeatherPersonalityTypeApi {
 }

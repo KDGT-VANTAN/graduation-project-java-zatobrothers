@@ -1,6 +1,8 @@
-package com.reimi.reimi_app.domain.model.weatherpersonality;
+package com.reimi.reimi_app.domain.model.weatherpersonality.user;
 
 import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.WeatherPersonalityScore;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
 
 public class UserWeatherPersonalityType {
 

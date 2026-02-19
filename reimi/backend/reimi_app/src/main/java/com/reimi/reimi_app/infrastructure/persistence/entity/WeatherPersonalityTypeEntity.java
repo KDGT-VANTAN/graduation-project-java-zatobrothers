@@ -5,8 +5,8 @@ import java.util.List;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.AxisFeature;
-import com.reimi.reimi_app.domain.model.weatherpersonality.BehaviorTendency;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.AxisFeature;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.BehaviorTendency;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.domain.model.weatherpersonality;
+package com.reimi.reimi_app.domain.model.weatherpersonality.diagnose;
 
 public enum AnswerChoice {
 

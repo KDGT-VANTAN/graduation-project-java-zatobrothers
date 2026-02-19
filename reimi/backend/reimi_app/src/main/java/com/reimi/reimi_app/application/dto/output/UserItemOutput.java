@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.reimi.reimi_app.domain.model.item.ItemTypeCode;
 import com.reimi.reimi_app.domain.model.user.UserId;
-import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.user.UserWeatherPersonalityType;
 
 public record UserItemOutput(
     UserId userId,

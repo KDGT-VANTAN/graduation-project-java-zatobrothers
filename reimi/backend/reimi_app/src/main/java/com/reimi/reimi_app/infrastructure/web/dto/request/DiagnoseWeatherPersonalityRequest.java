@@ -1,6 +1,6 @@
 package com.reimi.reimi_app.infrastructure.web.dto.request;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.AnswerChoice;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.AnswerChoice;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

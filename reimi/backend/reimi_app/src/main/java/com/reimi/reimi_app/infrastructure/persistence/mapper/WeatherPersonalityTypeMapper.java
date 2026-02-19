@@ -1,7 +1,7 @@
 package com.reimi.reimi_app.infrastructure.persistence.mapper;
 
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
 import com.reimi.reimi_app.infrastructure.persistence.entity.WeatherPersonalityTypeEntity;
 
 public class WeatherPersonalityTypeMapper {

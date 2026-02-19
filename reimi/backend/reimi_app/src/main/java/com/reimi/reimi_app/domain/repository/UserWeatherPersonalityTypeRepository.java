@@ -3,7 +3,7 @@ package com.reimi.reimi_app.domain.repository;
 import java.util.Optional;
 
 import com.reimi.reimi_app.domain.model.user.UserId;
-import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.user.UserWeatherPersonalityType;
 
 public interface UserWeatherPersonalityTypeRepository {
 

@@ -3,16 +3,18 @@ package com.reimi.reimi_app.infrastructure.service;
 import org.springframework.stereotype.Service;
 
 import com.reimi.reimi_app.application.command.DiagnoseWeatherPersonalityCommand;
+import com.reimi.reimi_app.application.exception.client.AccessDeniedException;
 import com.reimi.reimi_app.application.exception.client.DiagnoseResultAlreadyExistsException;
 import com.reimi.reimi_app.application.exception.client.ResourceNotFoundException;
 import com.reimi.reimi_app.application.service.ImageUrlResolver;
 import com.reimi.reimi_app.application.usecase.WeatherPersonalityUseCase;
 import com.reimi.reimi_app.domain.model.user.User;
-import com.reimi.reimi_app.domain.model.weatherpersonality.UserWeatherPersonalityType;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityCode;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityDiagnosis;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityScore;
-import com.reimi.reimi_app.domain.model.weatherpersonality.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.user.UserId;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.WeatherPersonalityDiagnosis;
+import com.reimi.reimi_app.domain.model.weatherpersonality.diagnose.WeatherPersonalityScore;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityCode;
+import com.reimi.reimi_app.domain.model.weatherpersonality.type.WeatherPersonalityType;
+import com.reimi.reimi_app.domain.model.weatherpersonality.user.UserWeatherPersonalityType;
 import com.reimi.reimi_app.domain.repository.UserRepository;
 import com.reimi.reimi_app.domain.repository.UserWeatherPersonalityTypeRepository;
 import com.reimi.reimi_app.security.AuthenticatedUserProvider;
@@ -111,5 +113,29 @@ public class WeatherPersonalityUseCaseImpl implements WeatherPersonalityUseCase 
         existing.update(type, weatherPersonalityScore);
 
         userWeatherPersonalityTypeRepository.save(existing);
+    }
+
+    @Override
+    public UserWeatherPersonalityType getUserResultDetail(UserId userId) {
+
+    String firebaseUid = authenticatedUserProvider.getFirebaseUid();
+
+    User loginUser = userRepository.findMeByFirebaseUid(firebaseUid)
+            .orElseThrow(() -> new ResourceNotFoundException("ユーザー"));
+
+    if (!loginUser.getId().equals(userId)) {
+        throw new AccessDeniedException();
+    }
+
+    UserWeatherPersonalityType result = userWeatherPersonalityTypeRepository.findByUserId(loginUser.getId())
+        .orElseThrow(() -> new ResourceNotFoundException("ウェザーパーソナリティ診断結果"));
+
+    String typeImageUrl = imageUrlResolver.resolve(
+            result.getWeatherPersonalityType().getImagePath()
+        );
+
+        result.getWeatherPersonalityType().setTypeImageUrl(typeImageUrl);
+
+        return result;
     }
 }
