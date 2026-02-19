@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 final ImagePicker _picker = ImagePicker();
-File? pickedImageFile;
 
 Future<File?> pickImageFromGallery() async {
   final XFile? image = await _picker.pickImage(
@@ -13,7 +12,7 @@ Future<File?> pickImageFromGallery() async {
     preferredCameraDevice: CameraDevice.rear, // カメラ時は後面カメラ優先（任意）
   );
   if (image == null) return null;
-  return pickedImageFile = File(image.path);
+  return File(image.path);
 }
 
 Future<File?> pickImageFromCamera() async {

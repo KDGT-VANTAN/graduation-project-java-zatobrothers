@@ -12,11 +12,12 @@ class ProfileDetailNotifier extends _$ProfileDetailNotifier {
     return const ProfileDetailState();
   }
 
-  Future<void> init(String userId) async {
+  Future<void> init(String? userId) async {
     await loadUserProfile(userId);
   }
 
-  Future<void> loadUserProfile(String userId) async {
+  Future<void> loadUserProfile(String? userId) async {
+    if (userId == null) return;
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final profile =
@@ -74,7 +75,8 @@ class ProfileDetailNotifier extends _$ProfileDetailNotifier {
 
   Future<void> onTapSkippedButton() async {}
 
-  Future<void> refresh(String userId) async {
+  Future<void> refresh(String? userId) async {
+    if (userId == null) return;
     await loadUserProfile(userId);
   }
 }
