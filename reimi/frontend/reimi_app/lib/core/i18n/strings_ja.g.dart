@@ -1512,8 +1512,6 @@ class _TranslationsCardWeatherPersonalityShareCardJa implements TranslationsCard
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get yourType => 'あなたのタイプは';
-	@override String get testSource => '診断 by Weather Personality';
 	@override String get shareMessage => '私の結果はこちら👇あなたもウェザーパーソナリティ診断でチェック！';
 }
 
@@ -2896,8 +2894,6 @@ extension on TranslationsJa {
 			'card.weathernewsRecommend.title1' => '今日のおでかけプランを立てるなら',
 			'card.weathernewsRecommend.title2' => 'より詳しい天気情報',
 			'card.weathernewsRecommend.description' => 'ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！',
-			'card.weatherPersonalityShareCard.yourType' => 'あなたのタイプは',
-			'card.weatherPersonalityShareCard.testSource' => '診断 by Weather Personality',
 			'card.weatherPersonalityShareCard.shareMessage' => '私の結果はこちら👇あなたもウェザーパーソナリティ診断でチェック！',
 			'kEnum.address.prefecture.hokkaido' => '北海道',
 			'kEnum.address.prefecture.aomori' => '青森県',
@@ -3037,10 +3033,10 @@ extension on TranslationsJa {
 			'kEnum.height.just169cm' => '169cm',
 			'kEnum.height.just170cm' => '170cm',
 			'kEnum.height.just171cm' => '171cm',
-			_ => null,
-		} ?? switch (path) {
 			'kEnum.height.just172cm' => '172cm',
 			'kEnum.height.just173cm' => '173cm',
+			_ => null,
+		} ?? switch (path) {
 			'kEnum.height.just174cm' => '174cm',
 			'kEnum.height.just175cm' => '175cm',
 			'kEnum.height.just176cm' => '176cm',
