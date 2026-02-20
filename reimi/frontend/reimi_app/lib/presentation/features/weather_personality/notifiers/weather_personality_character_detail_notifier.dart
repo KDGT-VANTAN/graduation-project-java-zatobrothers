@@ -24,7 +24,7 @@ class WeatherPersonalityCharacterDetailNotifier
     try {
       final character = await ref
           .read(getWeatherPersonalityCharacterDetailUseCaseProvider)
-          .call();
+          .call(typeCode);
       state = state.copyWith(
         character: character,
         isLoading: false,
