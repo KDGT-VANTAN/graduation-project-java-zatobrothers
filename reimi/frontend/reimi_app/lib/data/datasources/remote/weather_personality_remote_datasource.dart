@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:reimi_app/core/error/api_exception.dart';
 import 'package:reimi_app/data/dtos/test_weather_personality_dto.dart';
+import 'package:reimi_app/data/dtos/weather_personality_character_detail_dto.dart';
+import 'package:reimi_app/data/dtos/weather_personality_character_dto.dart';
 import 'package:reimi_app/data/dtos/weather_personality_detail_dto.dart';
 import 'package:reimi_app/data/dtos/weather_personality_result_dto.dart';
 
@@ -10,6 +12,10 @@ abstract class WeatherPersonalityRemoteDataSource {
   Future<WeatherPersonalityDetailDto> fetchWeatherPersonalityDetail(
     String userId,
   );
+  Future<List<WeatherPersonalityCharacterDto>>
+      fetchWeatherPersonalityCharacters();
+  Future<WeatherPersonalityCharacterDetailDto>
+      fetchWeatherPersonalityCharacter(String typeCode);
 }
 
 class WeatherPersonalityRemoteDataSourceImpl
@@ -50,6 +56,18 @@ class WeatherPersonalityRemoteDataSourceImpl
     String userId,
   ) {
     // TODO: implement fetchWeatherPersonalityDetail
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<WeatherPersonalityCharacterDetailDto> fetchWeatherPersonalityCharacter(String typeCode) {
+    // TODO: implement fetchWeatherPersonalityCharacter
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<WeatherPersonalityCharacterDto>> fetchWeatherPersonalityCharacters() {
+    // TODO: implement fetchWeatherPersonalityCharacters
     throw UnimplementedError();
   }
 }

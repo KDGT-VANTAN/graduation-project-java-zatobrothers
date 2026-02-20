@@ -692,8 +692,6 @@
       "description": "ウェザーニュース公式アプリで、時間ごとの詳しい天気予報をチェックして、最高のおでかけにしましょう！"
     },
     "weatherPersonalityShareCard": {
-      "yourType": "あなたのタイプは",
-      "testSource": "診断 by Weather Personality",
       "shareMessage": "私の結果はこちら👇あなたもウェザーパーソナリティ診断でチェック！"
     }
   },

@@ -7,7 +7,7 @@ part of 'weather_personality_character_detail_notifier.dart';
 // **************************************************************************
 
 String _$weatherPersonalityCharacterDetailNotifierHash() =>
-    r'46e868b571bd465c6c99677595f2caa9cd5c08d9';
+    r'04a34b5bd16f5c76404d321067fafb79ef46ed8a';
 
 /// See also [WeatherPersonalityCharacterDetailNotifier].
 @ProviderFor(WeatherPersonalityCharacterDetailNotifier)

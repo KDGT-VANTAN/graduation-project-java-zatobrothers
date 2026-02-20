@@ -5,12 +5,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reimi_app/core/i18n/strings.g.dart';
+import 'package:reimi_app/presentation/features/matching/pages/matching_completed_page.dart';
 import 'package:reimi_app/presentation/features/matching/widgets/user_card.dart';
 import 'package:reimi_app/presentation/features/matching/notifiers/ai_matching_notifier.dart';
 import 'package:reimi_app/presentation/features/profile/notifiers/profile_detail_notifier.dart';
+import 'package:reimi_app/presentation/features/profile/states/profile_detail_state.dart';
 import 'package:reimi_app/presentation/features/profile/widgets/bottom_action_buttons_bar.dart';
-import 'package:reimi_app/presentation/features/profile/widgets/show_rainbow_like_modal_sheet.dart';
 import 'package:reimi_app/presentation/features/weather_report/pages/weather_report_page.dart';
+import 'package:reimi_app/presentation/shared/widgets/app_snack_bar.dart';
 import 'package:reimi_app/presentation/shared/widgets/background_container_noon.dart';
 import 'package:reimi_app/presentation/shared/widgets/sliver_widgets.dart';
 import 'package:reimi_app/presentation/shared/widgets/text_card.dart';
@@ -99,6 +101,22 @@ class AIMatchingPage extends HookConsumerWidget {
         thirdCtrltimer.cancel();
       };
     }, []);
+
+    useEffect(() {
+      Future.microtask(() {
+        profileNotifier.init(user?.id);
+      });
+
+      final subscription = ref.listenManual<ProfileDetailState>(
+        profileDetailNotifierProvider,
+        (prev, next) {
+          if (next.errorMessage == null) return;
+          AppSnackBar.error(context, next.errorMessage!);
+        },
+      );
+
+      return subscription.close;
+    }, const []);
 
     return Scaffold(
       body: BackgroundContainerNoon(
@@ -235,16 +253,12 @@ class AIMatchingPage extends HookConsumerWidget {
           : BottomActionButtonsBar(
               leftButtonOnTap: () {
                 context.go(WeatherReportPage.routeLocation);
-                // profileNotifier.onTapSkippedButton();
               },
               centerButtonOnTap: () {
-                showRainbowLikeModalSheet(
-                  context: context,
-                  notifier: profileNotifier,
-                );
+                context.go(MatchingCompletedPage.routeLocation);
               },
               rightButtonOnTap: () async {
-                // await profileNotifier.onTapLikeButton(userId);
+                context.go(MatchingCompletedPage.routeLocation);
               },
             ),
     );

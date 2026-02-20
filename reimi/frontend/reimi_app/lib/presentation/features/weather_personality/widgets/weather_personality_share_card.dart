@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reimi_app/core/extensions/image_path_extension.dart';
-import 'package:reimi_app/core/i18n/strings.g.dart';
 
 class WeatherPersonalityShareCard extends StatelessWidget {
   const WeatherPersonalityShareCard({
@@ -19,7 +18,6 @@ class WeatherPersonalityShareCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final t = Translations.of(context);
 
     return AspectRatio(
       aspectRatio: 1 / 1,
@@ -42,7 +40,7 @@ class WeatherPersonalityShareCard extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  t.card.weatherPersonalityShareCard.yourType,
+                  'あなたのタイプは',
                   style: theme.textTheme.labelMedium!.copyWith(
                     color: Colors.white70,
                   ),
@@ -91,7 +89,7 @@ class WeatherPersonalityShareCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  t.card.weatherPersonalityShareCard.testSource,
+                  '診断 by Weather Personality',
                   style: theme.textTheme.labelSmall!.copyWith(
                     color: Colors.white70,
                   ),

@@ -5,7 +5,7 @@ class GetWeatherPersonalityCharacterDetailUseCase {
   const GetWeatherPersonalityCharacterDetailUseCase(this._repository);
   final WeatherPersonalityRepository _repository;
 
-  Future<WeatherPersonalityCharacterDetailReadModel> call() {
-    return _repository.fetchWeatherPersonalityCharacter();
+  Future<WeatherPersonalityCharacterDetailReadModel> call(String typeCode) {
+    return _repository.fetchWeatherPersonalityCharacter(typeCode);
   }
 }

@@ -13,5 +13,5 @@ abstract class WeatherPersonalityRepository {
   Future<List<WeatherPersonalityCharacterReadModel>>
       fetchWeatherPersonalityCharacters();
   Future<WeatherPersonalityCharacterDetailReadModel>
-      fetchWeatherPersonalityCharacter();
+      fetchWeatherPersonalityCharacter(String typeCode);
 }

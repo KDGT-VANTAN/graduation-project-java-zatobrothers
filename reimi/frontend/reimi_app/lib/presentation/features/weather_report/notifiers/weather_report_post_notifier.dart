@@ -38,7 +38,8 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
     required MediaType mediaType,
     required String weatherPhoto,
   }) {
-    _update((s) => s.copyWith(mediaType: mediaType, weatherPhoto: weatherPhoto));
+    _update(
+        (s) => s.copyWith(mediaType: mediaType, weatherPhoto: weatherPhoto));
   }
 
   Future<void> updatePrefectureCity(
@@ -114,7 +115,8 @@ class WeatherReportPostNotifier extends _$WeatherReportPostNotifier {
         latitude: s.latitude!,
         longitude: s.longitude!,
       );
-      await ref.read(postWeatherReportUseCaseProvider).call(params);
+      // TODO: モックデータで一連の動作を確認するため、コメントアウト中
+      // await ref.read(postWeatherReportUseCaseProvider).call(params);
 
       state = state.copyWith(
         status: WeatherReportPostStatus.success,

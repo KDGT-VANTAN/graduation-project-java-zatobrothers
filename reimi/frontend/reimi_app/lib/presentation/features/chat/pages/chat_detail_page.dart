@@ -77,6 +77,7 @@ class ChatDetailPage extends HookConsumerWidget {
               await notifier.refresh();
             },
             child: CustomScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               physics: const AlwaysScrollableScrollPhysics(),
               slivers: [
                 SliverAppBar(

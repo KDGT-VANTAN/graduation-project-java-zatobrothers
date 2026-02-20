@@ -1,5 +1,7 @@
 import 'package:reimi_app/data/datasources/remote/weather_personality_remote_datasource.dart';
 import 'package:reimi_app/data/mapper/test_weather_personality_mapper.dart';
+import 'package:reimi_app/data/mapper/weather_personality_character_detail_mapper.dart';
+import 'package:reimi_app/data/mapper/weather_personality_character_mapper.dart';
 import 'package:reimi_app/data/mapper/weather_personality_detail_mapper.dart';
 import 'package:reimi_app/data/mapper/weather_personality_result_mapper.dart';
 import 'package:reimi_app/domain/params/test_weather_personality_params.dart';
@@ -35,14 +37,16 @@ class WeatherPersonalityRepositoryImpl implements WeatherPersonalityRepository {
   }
 
   @override
-  Future<WeatherPersonalityCharacterDetailReadModel> fetchWeatherPersonalityCharacter() {
-    // TODO: implement fetchWeatherPersonalityCharacter
-    throw UnimplementedError();
+  Future<WeatherPersonalityCharacterDetailReadModel>
+      fetchWeatherPersonalityCharacter(String typeCode) async {
+    final dto = await _remote.fetchWeatherPersonalityCharacter(typeCode);
+    return dto.toReadModel();
   }
 
   @override
-  Future<List<WeatherPersonalityCharacterReadModel>> fetchWeatherPersonalityCharacters() {
-    // TODO: implement fetchWeatherPersonalityCharacters
-    throw UnimplementedError();
+  Future<List<WeatherPersonalityCharacterReadModel>>
+      fetchWeatherPersonalityCharacters() async {
+    final dto = await _remote.fetchWeatherPersonalityCharacters();
+    return dto.toReadModels();
   }
 }
