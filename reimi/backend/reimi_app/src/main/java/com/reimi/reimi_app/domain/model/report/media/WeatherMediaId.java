@@ -1,4 +1,4 @@
-package com.reimi.reimi_app.domain.model.report;
+package com.reimi.reimi_app.domain.model.report.media;
 
 import java.util.UUID;
 

@@ -1,6 +1,4 @@
-package com.reimi.reimi_app.domain.model.report;
-
-import com.reimi.reimi_app.domain.model.report.value.MediaType;
+package com.reimi.reimi_app.domain.model.report.media;
 
 public class WeatherMedia {
 

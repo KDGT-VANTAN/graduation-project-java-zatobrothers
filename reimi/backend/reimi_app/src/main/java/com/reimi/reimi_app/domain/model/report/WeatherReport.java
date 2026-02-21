@@ -3,6 +3,7 @@ package com.reimi.reimi_app.domain.model.report;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import com.reimi.reimi_app.domain.model.report.media.WeatherMedia;
 import com.reimi.reimi_app.domain.model.report.value.FeelingType;
 import com.reimi.reimi_app.domain.model.report.value.ForecastType;
 import com.reimi.reimi_app.domain.model.report.value.WeatherType;
